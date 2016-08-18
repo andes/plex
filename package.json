@@ -28,6 +28,7 @@
     "mdi": "^1.6.50",
     "style-loader": "^0.13.1",
     "typescript": "^1.8.10",
+    "typopro-web": "^3.4.9",
     "webpack": "^1.13.2"
   }
 }
