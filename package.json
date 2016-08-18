@@ -1,0 +1,33 @@
+{
+  "name": "plex",
+  "version": "1.0.0",
+  "description": "Libreria de UI para ANDES",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "lite": "lite-server",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andes/plex.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andes/plex/issues"
+  },
+  "homepage": "https://github.com/andes/plex#readme",
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "mdi": "^1.6.50",
+    "style-loader": "^0.13.1",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.2"
+  }
+}
