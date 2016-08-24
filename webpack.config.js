@@ -1,8 +1,9 @@
 module.exports = {
-    entry: "./webpack.entry.ts",
+    entry: "./webpack.entry.js",
     output: {
-        path: __dirname,
-        filename: "bundle.js"
+        path: __dirname + "/build",
+        filename: "plex.js",
+        publicPath: "/build/",
     },
     module: {
         loaders: [
@@ -12,7 +13,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: "css-loader"
+                loader: "style-loader!css-loader"
+            },
+            {
+                test: /\.(jpg|png|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+                loader: 'file-loader'
             }
         ]
     }

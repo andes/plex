@@ -36,3 +36,7 @@ typings
 
 # Optional REPL history
 .node_repl_history
+
+# Varios
+#.DS_Store
+build
