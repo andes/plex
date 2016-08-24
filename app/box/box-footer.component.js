@@ -9,26 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var sidebar_component_1 = require('./template/sidebar.component');
-var box_component_1 = require('./box/box.component');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = "Dashboard";
-        this.subTitle = "Hola";
-        this.appName = "A.N.D.E.S";
+var BoxFooterComponent = (function () {
+    function BoxFooterComponent() {
     }
-    AppComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], BoxFooterComponent.prototype, "ngClass", void 0);
+    BoxFooterComponent = __decorate([
         core_1.Component({
-            selector: 'app',
-            templateUrl: 'app/template/app.html',
-            directives: [
-                box_component_1.BoxComponent,
-                sidebar_component_1.SidebarComponent
-            ]
+            selector: 'box-footer',
+            template: "\n    <div class=\"box-footer {{ngClass}}\">\n      <ng-content></ng-content>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], BoxFooterComponent);
+    return BoxFooterComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.BoxFooterComponent = BoxFooterComponent;
+//# sourceMappingURL=box-footer.component.js.map

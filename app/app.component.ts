@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { SidebarComponent } from './template/sidebar.component';
+import { BoxComponent } from './box/box.component';
 
 @Component({
     selector: 'app',
     templateUrl: 'app/template/app.html',
     directives: [
+      BoxComponent,
       SidebarComponent
     ]
 })
