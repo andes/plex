@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 // import { CommonModule } from '@angular/common';
 
-import { BoxFooterComponent } from './box-footer.component';
+import { PlexBoxFooterComponent } from './plex-box-footer.component';
 
 @Component({
-  selector: 'box',
+  selector: 'plex-box',
   directives: [
-    BoxFooterComponent
+    PlexBoxFooterComponent
   ],
   template: `
   <div class="box {{ngClass}}" >
@@ -25,7 +25,7 @@ import { BoxFooterComponent } from './box-footer.component';
 
     </div>
 
-    <ng-content select="box-footer"></ng-content>
+    <ng-content select="plex-box-footer"></ng-content>
 
 
 
@@ -33,7 +33,7 @@ import { BoxFooterComponent } from './box-footer.component';
   `
 })
 
-export class BoxComponent{
+export class PlexBoxComponent{
   @Input() title: string;
   @Input() ngClass: string;
 
