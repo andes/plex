@@ -9,21 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var BoxFooterComponent = (function () {
-    function BoxFooterComponent() {
+var PlexBoxFooterComponent = (function () {
+    function PlexBoxFooterComponent() {
     }
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], BoxFooterComponent.prototype, "ngClass", void 0);
-    BoxFooterComponent = __decorate([
+    ], PlexBoxFooterComponent.prototype, "ngClass", void 0);
+    PlexBoxFooterComponent = __decorate([
         core_1.Component({
-            selector: 'box-footer',
+            selector: 'plex-box-footer',
             template: "\n    <div class=\"box-footer {{ngClass}}\">\n      <ng-content></ng-content>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
-    ], BoxFooterComponent);
-    return BoxFooterComponent;
+    ], PlexBoxFooterComponent);
+    return PlexBoxFooterComponent;
 }());
-exports.BoxFooterComponent = BoxFooterComponent;
+exports.PlexBoxFooterComponent = PlexBoxFooterComponent;
 //# sourceMappingURL=box-footer.component.js.map

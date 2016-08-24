@@ -8,21 +8,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// AngularJS
 var core_1 = require('@angular/core');
+// propios
 var sidebar_component_1 = require('./template/sidebar.component');
-var box_component_1 = require('./box/box.component');
+var plex_box_component_1 = require('./box/plex-box.component');
+// import { PlexInputComponent }     from './box/plex-input.component';
+var plex_number_component_1 = require('./form/plex-number.component');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = "Dashboard";
         this.subTitle = "Hola";
         this.appName = "A.N.D.E.S";
+        this.user = {
+            edad: "",
+            firstName: "",
+            password: ""
+        };
     }
+    Object.defineProperty(AppComponent.prototype, "diagnostic", {
+        get: function () { return JSON.stringify(this.user); },
+        enumerable: true,
+        configurable: true
+    });
+    AppComponent.prototype.onSubmit = function () {
+        alert("Enviado");
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
             templateUrl: 'app/template/app.html',
             directives: [
-                box_component_1.BoxComponent,
+                plex_box_component_1.PlexBoxComponent,
+                plex_number_component_1.PlexNumberComponent,
                 sidebar_component_1.SidebarComponent
             ]
         }), 

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'box-footer',
+  selector: 'plex-box-footer',
   template: `
     <div class="box-footer {{ngClass}}">
       <ng-content></ng-content>
@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
   `
 })
 
-export class BoxFooterComponent{
+export class PlexBoxFooterComponent{
   @Input() ngClass: string;
   constructor(){
   }
