@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// https://github.com/angular/angular/blob/d2ad871279c410334314def0be5c5d0599f4368e/modules/%40angular/forms/src/directives/validators.ts
 var core_1 = require('@angular/core');
 var PlexNumberComponent = (function () {
     function PlexNumberComponent() {
@@ -53,6 +54,14 @@ var PlexNumberComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Number)
+    ], PlexNumberComponent.prototype, "plexMaxLength", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], PlexNumberComponent.prototype, "plexMinLength", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
     ], PlexNumberComponent.prototype, "plexMax", void 0);
     __decorate([
         core_1.Input(), 
@@ -82,7 +91,7 @@ var PlexNumberComponent = (function () {
         core_1.Component({
             selector: 'plex-number',
             // [ngClass]="{'has-error':isError}">
-            template: "\n    <div class=\"form-group\">\n\n      <label >\n          {{plexLabel}}\n      </label>\n\n      <input type=\"number\" placeholder=\"{{placeholder}}\"\n      class=\"form-control {{ngClass}}\" name=\"{{name}}\" id=\"{{id}}\"\n\n      [attr.required]=\"plexRequired\" [attr.minlength]=\"plexMin\" [attr.maxlength]=\"plexMax\"\n      [attr.readonly]=\"plexReadOnly\" [attr.disabled]=\"plexDisabled\" [attr.autofocus]=\"plexAutofocus\"\n\n      [(ngModel)]=\"plexModel\" (ngModelChange)=\"updateData($event)\"\n\n      #edad=\"ngModel\"\n      />\n\n    </div>\n     ",
+            template: "\n    <div class=\"form-group\">\n\n      <label >\n          {{plexLabel}}\n      </label>\n\n      <input type=\"number\" placeholder=\"{{placeholder}}\"\n      class=\"form-control {{ngClass}}\" name=\"{{name}}\" id=\"{{id}}\"\n\n      [attr.required]=\"plexRequired\" [attr.minlength]=\"plexMinLength\" [attr.maxlength]=\"plexMaxLength\"\n      [attr.readonly]=\"plexReadOnly\" [attr.disabled]=\"plexDisabled\" [attr.autofocus]=\"plexAutofocus\"\n\n      [(ngModel)]=\"plexModel\" (ngModelChange)=\"updateData($event)\"\n      #name=\"ngModel\"\n\n      />\n\n    </div>\n     ",
         }), 
         __metadata('design:paramtypes', [])
     ], PlexNumberComponent);

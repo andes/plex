@@ -10,41 +10,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 // AngularJS
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 // propios
 var sidebar_component_1 = require('./template/sidebar.component');
 var plex_box_component_1 = require('./box/plex-box.component');
+var validation_service_1 = require('./services/validation.service');
+var plex_text_component_1 = require('./form/plex-text.component');
 // import { PlexInputComponent }     from './box/plex-input.component';
-var plex_number_component_1 = require('./form/plex-number.component');
+// import { PlexNumberComponent }  from './form/plex-number.component';
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(fb) {
         this.title = "Dashboard";
         this.subTitle = "Hola";
         this.appName = "A.N.D.E.S";
         this.user = {
             edad: "",
-            firstName: "",
             password: ""
         };
+        // // form
+        // this.myForm = fb.group({
+        //     "firstName": this.firstName,
+        //     "password":["", Validators.required]
+        // });
+        this.myForm = fb.group({
+            "name": ["", [forms_1.Validators.required, forms_1.Validators.minLength(3), forms_1.Validators.maxLength(8), validation_service_1.ValidationService.numberValidator]],
+            'email': ['', [forms_1.Validators.required, validation_service_1.ValidationService.emailValidator]],
+            "password": ["", forms_1.Validators.required]
+        });
     }
+    AppComponent.prototype.onSubmit = function () {
+        console.log("model-based form submitted");
+        console.log(this.myForm);
+    };
     Object.defineProperty(AppComponent.prototype, "diagnostic", {
         get: function () { return JSON.stringify(this.user); },
         enumerable: true,
         configurable: true
     });
-    AppComponent.prototype.onSubmit = function () {
-        alert("Enviado");
-    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
             templateUrl: 'app/template/app.html',
             directives: [
+                plex_text_component_1.PlexTextComponent,
                 plex_box_component_1.PlexBoxComponent,
-                plex_number_component_1.PlexNumberComponent,
+                // PlexNumberComponent,
                 sidebar_component_1.SidebarComponent
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [forms_1.FormBuilder])
     ], AppComponent);
     return AppComponent;
 }());

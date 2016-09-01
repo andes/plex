@@ -40,7 +40,9 @@
                                                 <!-- Message title and timestamp -->
                                                 <h4>
                                                     Support Team
-                                                    <small><i class="mdi mdi-clock"></i> 5 mins</small>
+                                                    <small>
+                                                        <i class="mdi mdi-clock"></i>
+                                                        5 mins</small>
                                                 </h4>
                                                 <!-- The message -->
                                                 <p>Why not buy a new awesome theme?</p>
@@ -71,7 +73,8 @@
                                         <li>
                                             <!-- start notification -->
                                             <a href="#">
-                                                <i class="mdi mdi-account text-aqua"></i> 5 new members joined today
+                                                <i class="mdi mdi-account text-aqua"></i>
+                                                5 new members joined today
                                             </a>
                                         </li>
                                         <!-- end notification -->
@@ -165,7 +168,9 @@
                         </li>
                         <!-- Control Sidebar Toggle Button -->
                         <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="mdi mdi-gears"></i></a>
+                            <a href="#" data-toggle="control-sidebar">
+                                <i class="mdi mdi-gears"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -176,7 +181,6 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <sidebar></sidebar>
         </aside>
-
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -201,41 +205,64 @@
 
                     <div class="col-md-3 col-sm-6 col-xs-12">
 
-
-          <div class="alert alert-warning alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4><i class="icon fa fa-warning"></i> Alert!</h4>
-                Warning alert preview. This alert is dismissable.
-              </div>
+                        <div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4>
+                                <i class="icon fa fa-warning"></i>
+                                Alert!</h4>
+                            Warning alert preview. This alert is dismissable.
+                        </div>
 
                     </div>
 
                     <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
-                      <form role="form">
-                        <box title="Suscripción al newsletter" ngClass="box-success">
-                          <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Ingrese su email">
-                          </div>
+                        <form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
+                            <plex-box title="Form 1">
+                                {{myForm.controls.name.touched}}
+                                {{myForm.controls.name.valid}}
 
-                          <box-footer>
-                            <button type="submit" class="btn btn-primary">
-                              <i class="fa fa-envelope"></i>
-                              Suscribirse
-                            </button>
-                          </box-footer>
-                        </box>
-                      </form>
+                                <plex-text [control]="myForm.controls.name" [form]="myForm" plexName="name" plexPlaceholder="Nombre"
+                                plexModel="hola"></plex-text>
+
+                                <!-- <div class="form-group" [ngClass]="{'has-error': myForm.controls.name.touched && !myForm.controls.name.valid }">
+
+                                    <label>First Name:</label>
+                                    <input type="text" formControlName="name" class="form-control" />
+
+                                    <validation-messages [control]="myForm.controls.name"></validation-messages>
+                                </div> -->
+
+                                <div class="form-group" [ngClass]="{'has-error': myForm.controls.email.touched && !myForm.controls.email.valid }">
+                                    <label>Email:</label>
+                                    <input type="text" formControlName="email" class="form-control" />
+
+                                    <div *ngIf="myForm.controls.email.dirty && !myForm.controls.email.valid">
+                                        <span class="help-block" *ngIf="myForm.controls.email.errors.invalidEmailAddress">
+                                            Dirección de email inválida
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <p>
+                                    <label>Password:</label>
+                                    <input type="password" formControlName="password">
+                                </p>
+
+
+                                <plex-box-footer>
+                                    <button class="btn btn-primary" type="submit" >Submit</button>
+                                    <!-- <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button> -->
+                                </plex-box-footer>
+                            </plex-box>
+                        </form>
 
                     </div>
                 </div>
-
 
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
 
         <!-- Main Footer -->
         <footer class="main-footer">
@@ -251,10 +278,14 @@
             <!-- Create the tabs -->
             <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
                 <li class="active">
-                    <a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a>
+                    <a href="#control-sidebar-home-tab" data-toggle="tab">
+                        <i class="fa fa-home"></i>
+                    </a>
                 </li>
                 <li>
-                    <a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a>
+                    <a href="#control-sidebar-settings-tab" data-toggle="tab">
+                        <i class="fa fa-gears"></i>
+                    </a>
                 </li>
             </ul>
             <!-- Tab panes -->
@@ -300,9 +331,9 @@
                         <h3 class="control-sidebar-heading">General Settings</h3>
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
-                              Report panel usage
-                              <input type="checkbox" class="pull-right" checked>
-                          </label>
+                                Report panel usage
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
                             <p>
                                 Some information about this general settings option
                             </p>
