@@ -1,15 +1,26 @@
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import { NgModule }                     from '@angular/core';
+import { BrowserModule }                from '@angular/platform-browser';
+// import { FormsModule }   from '@angular/forms';
+import { ReactiveFormsModule }          from '@angular/forms';
 
-import { AppComponent }  from './app.component';
+// services
+import { ValidationService }            from './services/validation.service';
+
+// componentes
+import { ValidationMessagesComponent }  from './form/validation-messages.component';
+
+import { AppComponent }                 from './app.component';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
-  declarations: [ AppComponent ],
-  bootstrap: [ AppComponent ]
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule
+    ],
+    declarations: [
+        ValidationMessagesComponent,
+        AppComponent
+    ],
+    providers: [ ValidationService ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
