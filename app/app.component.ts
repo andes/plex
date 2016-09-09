@@ -9,17 +9,18 @@ import { SidebarComponent }     from './template/sidebar.component';
 import { PlexBoxComponent }     from './box/plex-box.component';
 
 import { ValidationService }    from './services/validation.service';
+import { PlexNumberComponent }  from './form/plex-number.component';
 import { PlexTextComponent }    from './form/plex-text.component';
 // import { PlexInputComponent }     from './box/plex-input.component';
-// import { PlexNumberComponent }  from './form/plex-number.component';
 
 @Component({
     selector: 'app',
     templateUrl: 'app/template/app.html',
     directives: [
+        PlexNumberComponent,
         PlexTextComponent,
         PlexBoxComponent,
-        // PlexNumberComponent,
+    // PlexNumberComponent,
         SidebarComponent
     ]
 })
@@ -29,7 +30,7 @@ export class AppComponent {
     public subTitle: string;
 
     public appName: string;
-
+    public user: any;
     // form
     public myForm: FormGroup;
 
@@ -39,6 +40,7 @@ export class AppComponent {
 
         this.appName = "A.N.D.E.S";
         this.user = {
+            nombre: "",
             edad: "",
             password: ""
         };
@@ -51,12 +53,12 @@ export class AppComponent {
         // });
 
         this.myForm = fb.group({
-            "name": ["", [Validators.required, Validators.minLength(3), Validators.maxLength(8), ValidationService.numberValidator]],
-            'email': ['', [Validators.required, ValidationService.emailValidator]],
+            "name": ["", [Validators.required, Validators.minLength(3), Validators.maxLength(8), ValidationService.number]],
+            'edad': ['', [ValidationService.minValue(), ValidationService.maxValue(110)]],
+            'email': ['', [Validators.required, ValidationService.email]],
             "password": ["", Validators.required]
         });
     }
-
 
     onSubmit() {
         console.log("model-based form submitted");

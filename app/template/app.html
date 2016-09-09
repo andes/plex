@@ -221,8 +221,26 @@
                                 {{myForm.controls.name.touched}}
                                 {{myForm.controls.name.valid}}
 
-                                <plex-text [control]="myForm.controls.name" [form]="myForm" plexName="name" plexPlaceholder="Nombre"
-                                plexModel="hola"></plex-text>
+                                <plex-text
+                                    plexClass="myclase"
+                                    plexAutofocus="true"
+                                    plexMaxLength="9"
+                                    plexMinLength="2"
+
+                                    [control]="myForm.controls.name"
+                                    [form]="myForm"
+                                    plexName="name"
+                                    plexPlaceholder="Ingrese su nombre completo"
+                                    [plexModel]="user.nombre">
+                                </plex-text>
+
+                                <plex-number
+                                    [control]="myForm.controls.edad"
+                                    [form]="myForm"
+                                    plexName="edad"
+                                    plexPlaceholder="Ingrese su edad"
+                                    [plexModel]="user.edad">
+                                </plex-number>
 
                                 <!-- <div class="form-group" [ngClass]="{'has-error': myForm.controls.name.touched && !myForm.controls.name.valid }">
 
@@ -250,7 +268,7 @@
 
 
                                 <plex-box-footer>
-                                    <button class="btn btn-primary" type="submit" >Submit</button>
+                                    <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">Submit</button>
                                     <!-- <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button> -->
                                 </plex-box-footer>
                             </plex-box>
