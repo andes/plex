@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
-var validation_service_1 = require('/app/services/validation.service');
+var validation_service_1 = require('../services/validation.service');
 var ValidationMessagesComponent = (function () {
     function ValidationMessagesComponent() {
     }

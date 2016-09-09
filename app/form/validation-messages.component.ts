@@ -1,7 +1,7 @@
 import { Component, Input }         from '@angular/core';
 import { FormGroup, FormControl }   from '@angular/forms';
 
-import { ValidationService }        from '/app/services/validation.service';
+import { ValidationService }        from '../services/validation.service';
 
 @Component({
     selector: 'validation-messages',

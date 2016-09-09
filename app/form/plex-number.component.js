@@ -10,35 +10,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 // https://github.com/angular/angular/blob/d2ad871279c410334314def0be5c5d0599f4368e/modules/%40angular/forms/src/directives/validators.ts
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var PlexNumberComponent = (function () {
     function PlexNumberComponent() {
         this.isError = false;
         // note that this must be named as the input name + "Change"
         this.plexModelChange = new core_1.EventEmitter();
-        // if (this.plexMin){
-        //   this.plexMin = parseInt(this.plexMin);
-        // }
-        // if (this.id && !this.name){
-        //   this.name = this.id;
-        // }
-        console.log(this.plexModel);
     }
+    PlexNumberComponent.prototype.ngOnInit = function () {
+        // console.log("INIT:");
+        // console.log("form: " + this.form);
+        // console.log("control: " + this.control);
+        // console.log("plexName: " + this.plexName);
+        // console.log("plexPlaceholder: " + this.plexPlaceholder);
+        // console.log(this.form.controls);
+    };
     PlexNumberComponent.prototype.updateData = function (value) {
         this.plexModel = value;
         this.plexModelChange.emit(value);
     };
     __decorate([
         core_1.Input(), 
+        __metadata('design:type', forms_1.FormControl)
+    ], PlexNumberComponent.prototype, "control", void 0);
+    __decorate([
+        // * requerido si o si: usado para identificar el control dentro del formulario
+        core_1.Input(), 
+        __metadata('design:type', forms_1.FormGroup)
+    ], PlexNumberComponent.prototype, "form", void 0);
+    __decorate([
+        // * requerido si o si: usado para identificar el control dentro del formulario
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], PlexNumberComponent.prototype, "plexName", void 0);
+    __decorate([
+        // * requerido si o si: usado para identificar el control dentro del formulario
+        core_1.Input(), 
         __metadata('design:type', String)
     ], PlexNumberComponent.prototype, "id", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], PlexNumberComponent.prototype, "name", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], PlexNumberComponent.prototype, "placeholder", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Boolean)
@@ -46,8 +55,13 @@ var PlexNumberComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Boolean)
+    ], PlexNumberComponent.prototype, "plexClass", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
     ], PlexNumberComponent.prototype, "plexDisabled", void 0);
     __decorate([
+        // Bug: Poder pasar una funcion a validar como parametro
         core_1.Input(), 
         __metadata('design:type', String)
     ], PlexNumberComponent.prototype, "plexLabel", void 0);
@@ -61,20 +75,12 @@ var PlexNumberComponent = (function () {
     ], PlexNumberComponent.prototype, "plexMinLength", void 0);
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Number)
-    ], PlexNumberComponent.prototype, "plexMax", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], PlexNumberComponent.prototype, "plexMin", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
+        __metadata('design:type', String)
     ], PlexNumberComponent.prototype, "plexModel", void 0);
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Boolean)
-    ], PlexNumberComponent.prototype, "plexRequired", void 0);
+        __metadata('design:type', String)
+    ], PlexNumberComponent.prototype, "plexPlaceholder", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Boolean)
@@ -90,8 +96,7 @@ var PlexNumberComponent = (function () {
     PlexNumberComponent = __decorate([
         core_1.Component({
             selector: 'plex-number',
-            // [ngClass]="{'has-error':isError}">
-            template: "\n    <div class=\"form-group\">\n\n      <label >\n          {{plexLabel}}\n      </label>\n\n      <input type=\"number\" placeholder=\"{{placeholder}}\"\n      class=\"form-control {{ngClass}}\" name=\"{{name}}\" id=\"{{id}}\"\n\n      [attr.required]=\"plexRequired\" [attr.minlength]=\"plexMinLength\" [attr.maxlength]=\"plexMaxLength\"\n      [attr.readonly]=\"plexReadOnly\" [attr.disabled]=\"plexDisabled\" [attr.autofocus]=\"plexAutofocus\"\n\n      [(ngModel)]=\"plexModel\" (ngModelChange)=\"updateData($event)\"\n      #name=\"ngModel\"\n\n      />\n\n    </div>\n     ",
+            template: "\n    <div [formGroup]=\"form\">\n        <div class=\"form-group\" [ngClass]=\"{'has-error': control.touched && !control.valid }\">\n\n            <label >{{plexLabel}}</label>\n            <input type=\"number\" formControlName=\"{{plexName}}\" class=\"form-control {{plexClass}}\" placeholder=\"{{plexPlaceholder}}\"\n\n                [attr.minlength]=\"plexMinLength\"\n                [attr.maxlength]=\"plexMaxLength\"\n                [attr.readonly]=\"plexReadOnly\"\n\n                [attr.autofocus]=\"plexAutofocus\"\n                [attr.disabled]=\"plexDisabled\"\n\n\n                [(ngModel)]=\"plexModel\" (ngModelChange)=\"updateData($event)\"\n            />\n\n            <validation-messages [control]=\"control\"></validation-messages>\n\n        </div>\n    </div>\n    ",
         }), 
         __metadata('design:paramtypes', [])
     ], PlexNumberComponent);

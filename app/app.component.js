@@ -15,15 +15,16 @@ var forms_1 = require('@angular/forms');
 var sidebar_component_1 = require('./template/sidebar.component');
 var plex_box_component_1 = require('./box/plex-box.component');
 var validation_service_1 = require('./services/validation.service');
+var plex_number_component_1 = require('./form/plex-number.component');
 var plex_text_component_1 = require('./form/plex-text.component');
 // import { PlexInputComponent }     from './box/plex-input.component';
-// import { PlexNumberComponent }  from './form/plex-number.component';
 var AppComponent = (function () {
     function AppComponent(fb) {
         this.title = "Dashboard";
         this.subTitle = "Hola";
         this.appName = "A.N.D.E.S";
         this.user = {
+            nombre: "",
             edad: "",
             password: ""
         };
@@ -33,8 +34,9 @@ var AppComponent = (function () {
         //     "password":["", Validators.required]
         // });
         this.myForm = fb.group({
-            "name": ["", [forms_1.Validators.required, forms_1.Validators.minLength(3), forms_1.Validators.maxLength(8), validation_service_1.ValidationService.numberValidator]],
-            'email': ['', [forms_1.Validators.required, validation_service_1.ValidationService.emailValidator]],
+            "name": ["", [forms_1.Validators.required, forms_1.Validators.minLength(3), forms_1.Validators.maxLength(8), validation_service_1.ValidationService.number]],
+            'edad': ['', [validation_service_1.ValidationService.minValue(), validation_service_1.ValidationService.maxValue(110)]],
+            'email': ['', [forms_1.Validators.required, validation_service_1.ValidationService.email]],
             "password": ["", forms_1.Validators.required]
         });
     }
@@ -52,6 +54,7 @@ var AppComponent = (function () {
             selector: 'app',
             templateUrl: 'app/template/app.html',
             directives: [
+                plex_number_component_1.PlexNumberComponent,
                 plex_text_component_1.PlexTextComponent,
                 plex_box_component_1.PlexBoxComponent,
                 // PlexNumberComponent,
