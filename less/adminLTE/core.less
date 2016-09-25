@@ -2,11 +2,9 @@
  * Core: General Layout Style
  * -------------------------
  */
-html,
-body,
-app {
-  
-  height: 100vh;  
+
+html, body, app {
+  height: 100vh;
 }
 
 body {
@@ -18,7 +16,9 @@ body {
   overflow-y: auto;
 }
 
+
 /* Layout */
+
 .wrapper {
   .clearfix();
   min-height: 100vh;
@@ -33,16 +33,15 @@ body {
   }
 }
 
+
 /*
  * Content Wrapper - contains the main content
  * ```.right-side has been deprecated as of v2.0.0 in favor of .content-wrapper  ```
  */
-.content-wrapper,
-.right-side,
-.main-footer {
+
+.content-wrapper, .right-side, .main-footer {
   //Using disposable variable to join statements with a comma
-  @transition-rule: @transition-speed @transition-fn,
-  margin @transition-speed @transition-fn;
+  @transition-rule: @transition-speed @transition-fn, margin @transition-speed @transition-fn;
   .transition-transform(@transition-rule);
   margin-left: @sidebar-width;
   z-index: 820;
@@ -67,8 +66,7 @@ body {
   }
 }
 
-.content-wrapper,
-.right-side {
+.content-wrapper, .right-side {
   min-height: ~"calc(100vh - 101px)";
   background-color: @body-bg;
   z-index: 800;
@@ -81,11 +79,11 @@ body {
   border-top: 1px solid @gray;
 }
 
+
 /* Fixed layout */
+
 .fixed {
-  .main-header,
-  .main-sidebar,
-  .left-side {
+  .main-header, .main-sidebar, .left-side {
     position: fixed;
   }
   .main-header {
@@ -93,8 +91,7 @@ body {
     right: 0;
     left: 0;
   }
-  .content-wrapper,
-  .right-side {
+  .content-wrapper, .right-side {
     padding-top: 50px;
     @media (max-width: @screen-header-collapse) {
       padding-top: 100px;
@@ -108,62 +105,57 @@ body {
 }
 
 body.hold-transition {
-  .content-wrapper,
-  .right-side,
-  .main-footer,
-  .main-sidebar,
-  .left-side,
-  .main-header .navbar,
-  .main-header .logo {
+  .content-wrapper, .right-side, .main-footer, .main-sidebar, .left-side, .main-header .navbar, .main-header .logo {
     /* Fix for IE */
     .transition(none);
   }
 }
 
+
 /* Content */
+
 .content {
   min-height: 250px;
   padding: 15px;
   .container-fixed(@grid-gutter-width);
 }
 
+
 /* H1 - H6 font */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: 'TypoPRO Montserrat', sans-serif;
 }
 
+
 /* General Links */
+
 a {
   color: @link-color;
 }
 
-a:hover,
-a:active,
-a:focus {
+a:hover, a:active, a:focus {
   outline: none;
   text-decoration: none;
   color: @link-hover-color;
 }
 
+
 /* Page Header */
+
 .page-header {
   margin: 10px 0 20px 0;
   font-size: 22px;
-
   > small {
     color: #666;
     display: block;
     margin-top: 5px;
   }
+}
+
+
+/* Icons */
+
+.mdi:before {
+  font-size: 1.3em;
 }

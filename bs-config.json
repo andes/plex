@@ -1,0 +1,11 @@
+{
+    "port": 8000,
+    "server": {
+        "baseDir": "./src/demo",
+        "routes": {
+            "/build": "build",
+            "/node_modules": "node_modules",
+            "/lib": "src/lib"
+        }
+    }
+}
