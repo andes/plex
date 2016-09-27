@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var box_footer_component_1 = require('./box-footer.component');
 var PlexBoxComponent = (function () {
     function PlexBoxComponent() {
     }
@@ -24,8 +23,7 @@ var PlexBoxComponent = (function () {
     PlexBoxComponent = __decorate([
         core_1.Component({
             selector: 'plex-box',
-            directives: [box_footer_component_1.PlexBoxFooterComponent],
-            template: "<div class=\"box box-{{type}}\" >\n                <div *ngIf=\"title\" class=\"box-header with-border\">\n                  <h3 class=\"box-title\">{{title}}</h3>\n                </div>\n                <div class=\"box-body\">\n                  <ng-content></ng-content>\n                </div>\n                <ng-content select=\"plex-box-footer\"></ng-content>\n            </div>"
+            template: "<div class=\"box box-{{type}}\">\n                <div *ngIf=\"title\" class=\"box-header with-border\">\n                  <h3 class=\"box-title\">{{title}}</h3>\n                </div>\n                <div class=\"box-body\">\n                  <ng-content></ng-content>\n                </div>\n            </div>"
         }), 
         __metadata('design:paramtypes', [])
     ], PlexBoxComponent);

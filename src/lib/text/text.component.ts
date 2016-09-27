@@ -32,7 +32,6 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
-        console.log(this.control);
         if (this.autofocus)
             this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
     }

@@ -9,15 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var TextDemoComponent = (function () {
-    function TextDemoComponent() {
+    function TextDemoComponent(formBuilder) {
+        this.formBuilder = formBuilder;
     }
+    TextDemoComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.form = this.formBuilder.group({
+            nombre: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5)]],
+        });
+        this.form.valueChanges.subscribe(function (value) {
+            _this.modelo = value;
+        });
+    };
     TextDemoComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: 'text.html',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [forms_1.FormBuilder])
     ], TextDemoComponent);
     return TextDemoComponent;
 }());

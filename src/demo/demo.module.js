@@ -11,9 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var module_1 = require('../lib/module');
-var demo_component_1 = require('./demo.component');
-var box_component_1 = require('./box/box.component');
 var demo_routes_1 = require('./demo.routes');
+var forms_1 = require("@angular/forms");
+var demo_component_1 = require('./demo.component');
+var home_component_1 = require('./home/home.component');
+var box_component_1 = require('./box/box.component');
+var text_component_1 = require('./text/text.component');
 var DemoModule = (function () {
     function DemoModule() {
     }
@@ -21,6 +24,8 @@ var DemoModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule,
                 module_1.PlexModule,
                 demo_routes_1.routing
             ],
@@ -29,7 +34,9 @@ var DemoModule = (function () {
             ],
             declarations: [
                 demo_component_1.DemoComponent,
-                box_component_1.BoxDemoComponent
+                box_component_1.BoxDemoComponent,
+                text_component_1.TextDemoComponent,
+                home_component_1.HomeDemoComponent
             ],
             bootstrap: [demo_component_1.DemoComponent]
         }), 

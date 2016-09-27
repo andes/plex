@@ -18,7 +18,6 @@ var PlexTextComponent = (function () {
     // Inicialización
     PlexTextComponent.prototype.ngOnInit = function () { };
     PlexTextComponent.prototype.ngAfterViewInit = function () {
-        console.log(this.control);
         if (this.autofocus)
             this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
     };

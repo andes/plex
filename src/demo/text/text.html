@@ -1,1 +1,15 @@
-TEXT
+<div class="row">
+    <div class="col-md-6">
+        <plex-box title="plex-text">
+            <form [formGroup]="form">
+                <plex-text label="Ingrese el nombre" formControlName="nombre">
+                </plex-text>
+            </form>
+        </plex-box>
+    </div>
+    <div class="col-md-6">
+        <plex-box title="Log">
+            <pre>{{modelo | json}}</pre>
+        </plex-box>
+    </div>
+</div>
