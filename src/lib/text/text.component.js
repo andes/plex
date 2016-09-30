@@ -26,10 +26,10 @@ var PlexTextComponent = (function () {
         this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
     };
     // Actualización Vista -> Modelo
-    PlexTextComponent.prototype.registerOnTouched = function () { };
+    PlexTextComponent.prototype.registerOnTouched = function () {
+    };
     PlexTextComponent.prototype.registerOnChange = function (fn) {
         this.onChange = function (value) {
-            //fn(value == '' ? null : Number.parseInt(value, 10));
             fn(value == '' ? null : value);
         };
     };
@@ -46,19 +46,19 @@ var PlexTextComponent = (function () {
         __metadata('design:type', String)
     ], PlexTextComponent.prototype, "label", void 0);
     __decorate([
-        core_1.ContentChild(forms_1.FormControlName), 
+        core_1.ContentChild(forms_1.NgControl), 
         __metadata('design:type', Object)
     ], PlexTextComponent.prototype, "control", void 0);
     PlexTextComponent = __decorate([
         core_1.Component({
             selector: 'plex-text',
             template: "<div class=\"form-group\" [ngClass]=\"{'has-error': (control.dirty || control.touched) && !control.valid }\">\n                    <label *ngIf=\"label\">{{label}}</label>\n                    <input #ref type=\"text\" class=\"form-control\" (change)=\"onChange($event.target.value)\" (input)=\"onChange($event.target.value)\" >\n                    <plex-validation-messages *ngIf=\"(control.dirty || control.touched) && !control.valid\" [control]=\"control\"></plex-validation-messages>\n               </div>",
-            // Las siguientes líneas permiten acceder al atributo formControlName
             providers: [
+                // Permite acceder al atributo formControlName/ngModel
                 {
                     provide: forms_1.NG_VALUE_ACCESSOR,
                     useExisting: core_1.forwardRef(function () { return PlexTextComponent; }),
-                    multi: true
+                    multi: true,
                 }
             ]
         }), 

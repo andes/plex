@@ -1,5 +1,5 @@
 import { ViewChild, ContentChild, Component, OnInit, Input, forwardRef, ElementRef, Renderer }   from '@angular/core';
-import {  ControlValueAccessor, FormControl, FormControlName, NG_VALUE_ACCESSOR  } from '@angular/forms';
+import {  ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR  } from '@angular/forms';
 
 @Component({
     selector: 'plex-text',
@@ -8,12 +8,12 @@ import {  ControlValueAccessor, FormControl, FormControlName, NG_VALUE_ACCESSOR 
                     <input #ref type="text" class="form-control" (change)="onChange($event.target.value)" (input)="onChange($event.target.value)" >
                     <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
                </div>`,
-    // Las siguientes líneas permiten acceder al atributo formControlName
     providers: [
+        // Permite acceder al atributo formControlName/ngModel
         {
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => PlexTextComponent),
-            multi: true
+            multi: true,
         }
     ]
 })
@@ -23,8 +23,8 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     @ViewChild('ref') ref: ElementRef;
     @Input('auto-focus') autofocus: boolean;
     @Input() label: string;
-    @ContentChild(FormControlName) control: any;
-     
+    @ContentChild(NgControl) control: any;
+
     constructor(renderer: Renderer) {
         this.renderer = renderer;
     }
@@ -42,10 +42,11 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     }
 
     // Actualización Vista -> Modelo
-    registerOnTouched() { }
+    registerOnTouched() {
+
+    }
     registerOnChange(fn: any) {
         this.onChange = function (value) {
-            //fn(value == '' ? null : Number.parseInt(value, 10));
             fn(value == '' ? null : value);
         };
     }

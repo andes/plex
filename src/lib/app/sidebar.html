@@ -1,26 +1,13 @@
 <section class="sidebar">
-    <!-- Sidebar Menu -->
-    <ul class="sidebar-menu">
-        <li class="header"><br></li>
-
-        <!-- Optionally, you can add icons to the links -->
-        <li *ngFor="let item of menu">
-            <a href="#">
-                <i class="{{item.icon}}" *ngIf="item.icon"></i>
-                <span>{{item.titulo}}</span>
-            </a>
+    <ul *ngIf="items" class="sidebar-menu">
+        <li class="header">
+            <br/>
         </li>
-
-        <li routerLink="/inicio" routerLinkActive="active">
-            <a href="#">Inicio</a>
-        </li>
-        <li routerLink="/box" routerLinkActive="active">
-            <a href="#">Box</a>
-        </li>
-        <li routerLink="/text" routerLinkActive="active">
-            <a href="#">Text</a>
-        </li>
+            <li *ngFor="let item of items" [routerLink]="item.route" routerLinkActive="active" (click)="item.handler && item.handler($event)">
+                <a href="#">
+                    <i class="{{item.icon}}" *ngIf="item.icon"></i>
+                    <span>{{item.title}}</span>
+                </a>
+            </li>
     </ul>
-    <!-- /.sidebar-menu -->
 </section>
-<!-- /.sidebar -->

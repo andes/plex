@@ -13,10 +13,13 @@ var platform_browser_1 = require('@angular/platform-browser');
 var module_1 = require('../lib/module');
 var demo_routes_1 = require('./demo.routes');
 var forms_1 = require("@angular/forms");
+var service_1 = require('../lib/core/service');
 var demo_component_1 = require('./demo.component');
 var home_component_1 = require('./home/home.component');
 var box_component_1 = require('./box/box.component');
 var text_component_1 = require('./text/text.component');
+var int_component_1 = require('./int/int.component');
+var float_component_1 = require('./float/float.component');
 var DemoModule = (function () {
     function DemoModule() {
     }
@@ -30,13 +33,16 @@ var DemoModule = (function () {
                 demo_routes_1.routing
             ],
             providers: [
-                demo_routes_1.appRoutingProviders
+                service_1.PlexService,
+                demo_routes_1.appRoutingProviders,
             ],
             declarations: [
                 demo_component_1.DemoComponent,
                 box_component_1.BoxDemoComponent,
                 text_component_1.TextDemoComponent,
-                home_component_1.HomeDemoComponent
+                home_component_1.HomeDemoComponent,
+                int_component_1.IntDemoComponent,
+                float_component_1.FloatDemoComponent
             ],
             bootstrap: [demo_component_1.DemoComponent]
         }), 

@@ -16,11 +16,23 @@ var TextDemoComponent = (function () {
     }
     TextDemoComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.form = this.formBuilder.group({
+        // Tepmlate-Form1 model
+        this.tModel = { nombre: null };
+        // Form1: Sin validador
+        this.model1 = { nombre: null };
+        this.form1 = this.formBuilder.group({
+            nombre: [''],
+        });
+        this.form1.valueChanges.subscribe(function (value) {
+            _this.model1 = value;
+        });
+        // Form2: Doble validación
+        this.model2 = { nombre: null };
+        this.form2 = this.formBuilder.group({
             nombre: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5)]],
         });
-        this.form.valueChanges.subscribe(function (value) {
-            _this.modelo = value;
+        this.form2.valueChanges.subscribe(function (value) {
+            _this.model2 = value;
         });
     };
     TextDemoComponent = __decorate([

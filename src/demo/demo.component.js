@@ -9,15 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var service_1 = require('../lib/core/service');
 var DemoComponent = (function () {
-    function DemoComponent() {
+    // Hace que PlexService sea un singleton para toda la aplicación
+    function DemoComponent(plex) {
     }
     DemoComponent = __decorate([
         core_1.Component({
             selector: 'demo',
             template: '<plex-app></plex-app>',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [service_1.PlexService])
     ], DemoComponent);
     return DemoComponent;
 }());

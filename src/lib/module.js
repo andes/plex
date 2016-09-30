@@ -15,11 +15,15 @@ var app_component_1 = require('./app/app.component');
 var sidebar_component_1 = require('./app/sidebar.component');
 var box_component_1 = require('./box/box.component');
 var text_component_1 = require('./text/text.component');
+var int_component_1 = require('./int/int.component');
+var float_component_1 = require('./float/float.component');
 var validation_messages_component_1 = require('./validation-messages/validation-messages.component');
 var MODULES = [
     app_component_1.PlexAppComponent,
     box_component_1.PlexBoxComponent,
-    text_component_1.PlexTextComponent
+    text_component_1.PlexTextComponent,
+    int_component_1.PlexIntComponent,
+    float_component_1.PlexFloatComponent
 ];
 var PlexModule = (function () {
     function PlexModule() {

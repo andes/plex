@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SidebarItem } from './sidebar-item.class'
+import { PlexService } from '../core/service';
 
 @Component({
   moduleId: module.id,
@@ -6,26 +8,10 @@ import { Component } from '@angular/core';
   templateUrl: 'sidebar.html'
 })
 export class SidebarComponent {
-  public menu: Array<any>;
+  get items(): Array<SidebarItem> {
+    return this.plex.sidebarItems;
+  }
 
-  constructor() {
-    // definimos los elementos del menu
-    this.menu = [
-      {
-        'titulo': 'Punto de inicio',
-        'icon': 'mdi mdi-arrow-compress-all',
-        'accion': '/'
-      },
-      {
-        'titulo': 'Buscar',
-        'icon': 'mdi mdi-magnify',
-        'accion': '/'
-      },
-      {
-        'titulo': 'Dashboard',
-        'icon': 'mdi mdi-chart-bar',
-        'accion': '/'
-      }
-    ]
+  constructor(public plex: PlexService) {
   }
 }

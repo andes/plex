@@ -5,12 +5,16 @@ import { PlexAppComponent } from './app/app.component';
 import { SidebarComponent } from './app/sidebar.component';
 import { PlexBoxComponent } from './box/box.component';
 import { PlexTextComponent } from './text/text.component';
+import { PlexIntComponent } from './int/int.component';
+import { PlexFloatComponent } from './float/float.component';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 
 const MODULES = [
     PlexAppComponent,
     PlexBoxComponent,
-    PlexTextComponent
+    PlexTextComponent,
+    PlexIntComponent,
+    PlexFloatComponent
 ];
 
 @NgModule({
