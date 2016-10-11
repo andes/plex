@@ -18,6 +18,11 @@ module.exports = {
             {
                 test: /\.(jpg|png|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
                 loader: 'file-loader'
+            },
+            {
+                test: /\.ts/,
+                loaders: ['ts-loader'],
+                exclude: /node_modules/
             }
         ]
     }
