@@ -40,3 +40,17 @@
         </div>
     </div>
 </plex-box>
+<plex-box title="Reactive Form usando placeholder sin validación">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="form3">
+                <plex-text label="Ingrese el nombre" auto-focus="true" placeholder="ingrese tessto..." formControlName="nombre">
+                </plex-text>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="model2">
+            <label>Modelo</label>
+            <pre>{{model3 | json}}</pre>
+        </div>
+    </div>
+</plex-box>

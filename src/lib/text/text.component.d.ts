@@ -6,6 +6,7 @@ export declare class PlexTextComponent implements OnInit, ControlValueAccessor {
     ref: ElementRef;
     autofocus: boolean;
     label: string;
+    placeholder: string;
     control: any;
     constructor(renderer: Renderer);
     ngOnInit(): void;

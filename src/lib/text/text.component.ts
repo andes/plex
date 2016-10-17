@@ -19,10 +19,12 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     @ViewChild('ref') ref: ElementRef;
     @Input('auto-focus') autofocus: boolean;
     @Input() label: string;
+    @Input() placeholder: string;
     @ContentChild(NgControl) control: any;
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
+        this.placeholder ="";
     }
 
     // Inicialización
@@ -30,6 +32,7 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     ngAfterViewInit() {
         if (this.autofocus)
             this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+            
     }
 
     // Actualización Modelo -> Vista

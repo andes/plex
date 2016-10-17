@@ -8,8 +8,10 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 export class TextDemoComponent {
     private form1: FormGroup;
     private form2: FormGroup;
+    private form3: FormGroup;
     public model1: any;
     public model2: any;
+    public model3: any;
     public tModel: any;
     constructor(private formBuilder: FormBuilder) { }
 
@@ -33,6 +35,15 @@ export class TextDemoComponent {
         });
         this.form2.valueChanges.subscribe((value) => {
             this.model2 = value;
+        })
+
+        // Form3: Con placeholder
+        this.model3 = { nombre: null };
+        this.form3 = this.formBuilder.group({
+            nombre: [''],
+        });
+        this.form3.valueChanges.subscribe((value) => {
+            this.model3 = value;
         })
     }
 }

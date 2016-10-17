@@ -14,6 +14,7 @@ var PlexTextComponent = (function () {
     function PlexTextComponent(renderer) {
         this.onChange = function (_) { };
         this.renderer = renderer;
+        this.placeholder = "";
     }
     // Inicialización
     PlexTextComponent.prototype.ngOnInit = function () { };
@@ -45,6 +46,10 @@ var PlexTextComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', String)
     ], PlexTextComponent.prototype, "label", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], PlexTextComponent.prototype, "placeholder", void 0);
     __decorate([
         core_1.ContentChild(forms_1.NgControl), 
         __metadata('design:type', Object)

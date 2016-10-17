@@ -34,6 +34,14 @@ var TextDemoComponent = (function () {
         this.form2.valueChanges.subscribe(function (value) {
             _this.model2 = value;
         });
+        // Form3: Con placeholder
+        this.model3 = { nombre: null };
+        this.form3 = this.formBuilder.group({
+            nombre: [''],
+        });
+        this.form3.valueChanges.subscribe(function (value) {
+            _this.model3 = value;
+        });
     };
     TextDemoComponent = __decorate([
         core_1.Component({
