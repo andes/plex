@@ -8,18 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var BoxDemoComponent = (function () {
     function BoxDemoComponent() {
     }
-    BoxDemoComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            templateUrl: 'box.html',
-        }), 
-        __metadata('design:paramtypes', [])
-    ], BoxDemoComponent);
     return BoxDemoComponent;
 }());
+BoxDemoComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        templateUrl: 'box.html',
+    }),
+    __metadata("design:paramtypes", [])
+], BoxDemoComponent);
 exports.BoxDemoComponent = BoxDemoComponent;
 //# sourceMappingURL=box.component.js.map

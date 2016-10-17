@@ -9,25 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var PlexBoxComponent = (function () {
-    function PlexBoxComponent() {
+var PlexButtonComponent = (function () {
+    function PlexButtonComponent() {
+        this.type = "default";
     }
-    return PlexBoxComponent;
+    return PlexButtonComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)
-], PlexBoxComponent.prototype, "title", void 0);
+], PlexButtonComponent.prototype, "title", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)
-], PlexBoxComponent.prototype, "type", void 0);
-PlexBoxComponent = __decorate([
+], PlexButtonComponent.prototype, "icon", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], PlexButtonComponent.prototype, "type", void 0);
+PlexButtonComponent = __decorate([
     core_1.Component({
-        selector: 'plex-box',
-        template: "<div class=\"box box-{{type}}\">\n                <div *ngIf=\"title\" class=\"box-header with-border\">\n                  <h3 class=\"box-title\">{{title}}</h3>\n                </div>\n                <div class=\"box-body\">\n                  <ng-content></ng-content>\n                </div>\n            </div>"
+        selector: 'plex-button',
+        template: "<button class=\"btn btn-{{type}}\">\n                <i *ngIf=\"icon\" class=\"mdi mdi-{{icon}}\"></i>\n                <span *ngIf=\"title\">\n                  {{title}}\n                </span>\n            </button>"
     }),
     __metadata("design:paramtypes", [])
-], PlexBoxComponent);
-exports.PlexBoxComponent = PlexBoxComponent;
-//# sourceMappingURL=box.component.js.map
+], PlexButtonComponent);
+exports.PlexButtonComponent = PlexButtonComponent;
+//# sourceMappingURL=button.component.js.map

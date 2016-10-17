@@ -9,19 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 // AngularJS
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var PlexAppComponent = (function () {
     function PlexAppComponent() {
     }
-    PlexAppComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'plex-app',
-            templateUrl: 'app.html',
-        }), 
-        __metadata('design:paramtypes', [])
-    ], PlexAppComponent);
     return PlexAppComponent;
 }());
+PlexAppComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'plex-app',
+        templateUrl: 'app.html',
+    }),
+    __metadata("design:paramtypes", [])
+], PlexAppComponent);
 exports.PlexAppComponent = PlexAppComponent;
 //# sourceMappingURL=app.component.js.map

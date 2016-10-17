@@ -7,6 +7,7 @@ import { PlexBoxComponent } from './box/box.component';
 import { PlexTextComponent } from './text/text.component';
 import { PlexIntComponent } from './int/int.component';
 import { PlexFloatComponent } from './float/float.component';
+import { PlexButtonComponent } from './button/button.component';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 
 const MODULES = [
@@ -14,7 +15,8 @@ const MODULES = [
     PlexBoxComponent,
     PlexTextComponent,
     PlexIntComponent,
-    PlexFloatComponent
+    PlexFloatComponent,
+    PlexButtonComponent
 ];
 
 @NgModule({

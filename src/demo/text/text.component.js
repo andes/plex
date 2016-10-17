@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var forms_1 = require('@angular/forms');
+var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var TextDemoComponent = (function () {
     function TextDemoComponent(formBuilder) {
         this.formBuilder = formBuilder;
@@ -35,14 +35,14 @@ var TextDemoComponent = (function () {
             _this.model2 = value;
         });
     };
-    TextDemoComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            templateUrl: 'text.html',
-        }), 
-        __metadata('design:paramtypes', [forms_1.FormBuilder])
-    ], TextDemoComponent);
     return TextDemoComponent;
 }());
+TextDemoComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        templateUrl: 'text.html',
+    }),
+    __metadata("design:paramtypes", [forms_1.FormBuilder])
+], TextDemoComponent);
 exports.TextDemoComponent = TextDemoComponent;
 //# sourceMappingURL=text.component.js.map

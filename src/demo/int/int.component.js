@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var forms_1 = require('@angular/forms');
-var validator_service_1 = require('../../lib/core/validator.service');
+var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
+var validator_service_1 = require("../../lib/core/validator.service");
 var IntDemoComponent = (function () {
     function IntDemoComponent(formBuilder) {
         this.formBuilder = formBuilder;
@@ -36,14 +36,14 @@ var IntDemoComponent = (function () {
             _this.model2 = value;
         });
     };
-    IntDemoComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            templateUrl: 'int.html',
-        }), 
-        __metadata('design:paramtypes', [forms_1.FormBuilder])
-    ], IntDemoComponent);
     return IntDemoComponent;
 }());
+IntDemoComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        templateUrl: 'int.html',
+    }),
+    __metadata("design:paramtypes", [forms_1.FormBuilder])
+], IntDemoComponent);
 exports.IntDemoComponent = IntDemoComponent;
 //# sourceMappingURL=int.component.js.map

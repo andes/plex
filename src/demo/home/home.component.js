@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var service_1 = require('../../lib/core/service');
-var sidebar_item_class_1 = require('../../lib/app/sidebar-item.class');
+var core_1 = require("@angular/core");
+var service_1 = require("../../lib/core/service");
+var sidebar_item_class_1 = require("../../lib/app/sidebar-item.class");
 var HomeDemoComponent = (function () {
     function HomeDemoComponent(plex) {
         this.plex = plex;
@@ -41,14 +41,14 @@ var HomeDemoComponent = (function () {
         // ]
         this.plex.initView("Hola manola", items);
     };
-    HomeDemoComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            templateUrl: 'home.html',
-        }), 
-        __metadata('design:paramtypes', [service_1.PlexService])
-    ], HomeDemoComponent);
     return HomeDemoComponent;
 }());
+HomeDemoComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        templateUrl: 'home.html',
+    }),
+    __metadata("design:paramtypes", [service_1.PlexService])
+], HomeDemoComponent);
 exports.HomeDemoComponent = HomeDemoComponent;
 //# sourceMappingURL=home.component.js.map

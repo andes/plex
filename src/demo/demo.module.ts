@@ -4,7 +4,9 @@ import { PlexModule } from '../lib/module';
 import { routing, appRoutingProviders }  from './demo.routes';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PlexService } from '../lib/core/service';
+import { MaterialModule } from '@angular/material';
 
+// Routes
 import { DemoComponent } from './demo.component';
 import { HomeDemoComponent } from './home/home.component';
 import { BoxDemoComponent } from './box/box.component';
@@ -18,7 +20,8 @@ import { FloatDemoComponent } from './float/float.component';
         FormsModule,
         ReactiveFormsModule,
         PlexModule,
-        routing
+        routing,
+        MaterialModule.forRoot()
     ],
     providers: [
         PlexService,
