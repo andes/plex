@@ -8,17 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var router_1 = require("@angular/router");
-var app_component_1 = require("./app/app.component");
-var sidebar_component_1 = require("./app/sidebar.component");
-var box_component_1 = require("./box/box.component");
-var text_component_1 = require("./text/text.component");
-var int_component_1 = require("./int/int.component");
-var float_component_1 = require("./float/float.component");
-var button_component_1 = require("./button/button.component");
-var validation_messages_component_1 = require("./validation-messages/validation-messages.component");
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var router_1 = require('@angular/router');
+var app_component_1 = require('./app/app.component');
+var sidebar_component_1 = require('./app/sidebar.component');
+var box_component_1 = require('./box/box.component');
+var text_component_1 = require('./text/text.component');
+var int_component_1 = require('./int/int.component');
+var float_component_1 = require('./float/float.component');
+var button_component_1 = require('./button/button.component');
+var validation_messages_component_1 = require('./validation-messages/validation-messages.component');
 var MODULES = [
     app_component_1.PlexAppComponent,
     box_component_1.PlexBoxComponent,
@@ -30,18 +30,18 @@ var MODULES = [
 var PlexModule = (function () {
     function PlexModule() {
     }
+    PlexModule = __decorate([
+        core_1.NgModule({
+            imports: [common_1.CommonModule, router_1.RouterModule],
+            declarations: MODULES.concat([
+                sidebar_component_1.SidebarComponent,
+                validation_messages_component_1.ValidationMessagesComponent
+            ]),
+            exports: MODULES
+        }), 
+        __metadata('design:paramtypes', [])
+    ], PlexModule);
     return PlexModule;
 }());
-PlexModule = __decorate([
-    core_1.NgModule({
-        imports: [common_1.CommonModule, router_1.RouterModule],
-        declarations: MODULES.concat([
-            sidebar_component_1.SidebarComponent,
-            validation_messages_component_1.ValidationMessagesComponent
-        ]),
-        exports: MODULES
-    }),
-    __metadata("design:paramtypes", [])
-], PlexModule);
 exports.PlexModule = PlexModule;
 //# sourceMappingURL=module.js.map

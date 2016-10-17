@@ -8,20 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var service_1 = require("../lib/core/service");
+var core_1 = require('@angular/core');
+var service_1 = require('../lib/core/service');
 var DemoComponent = (function () {
     // Hace que PlexService sea un singleton para toda la aplicación
     function DemoComponent(plex) {
     }
+    DemoComponent = __decorate([
+        core_1.Component({
+            selector: 'demo',
+            template: '<plex-app></plex-app>',
+        }), 
+        __metadata('design:paramtypes', [service_1.PlexService])
+    ], DemoComponent);
     return DemoComponent;
 }());
-DemoComponent = __decorate([
-    core_1.Component({
-        selector: 'demo',
-        template: '<plex-app></plex-app>',
-    }),
-    __metadata("design:paramtypes", [service_1.PlexService])
-], DemoComponent);
 exports.DemoComponent = DemoComponent;
 //# sourceMappingURL=demo.component.js.map

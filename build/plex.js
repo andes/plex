@@ -785,19 +785,21 @@
 	var core_1 = __webpack_require__(98);
 	var common_1 = __webpack_require__(116);
 	var router_1 = __webpack_require__(117);
-	var app_component_1 = __webpack_require__(147);
-	var sidebar_component_1 = __webpack_require__(148);
-	var box_component_1 = __webpack_require__(151);
-	var text_component_1 = __webpack_require__(152);
-	var int_component_1 = __webpack_require__(155);
-	var float_component_1 = __webpack_require__(156);
-	var validation_messages_component_1 = __webpack_require__(157);
+	var app_component_1 = __webpack_require__(149);
+	var sidebar_component_1 = __webpack_require__(150);
+	var box_component_1 = __webpack_require__(153);
+	var text_component_1 = __webpack_require__(154);
+	var int_component_1 = __webpack_require__(157);
+	var float_component_1 = __webpack_require__(158);
+	var button_component_1 = __webpack_require__(159);
+	var validation_messages_component_1 = __webpack_require__(160);
 	var MODULES = [
 	    app_component_1.PlexAppComponent,
 	    box_component_1.PlexBoxComponent,
 	    text_component_1.PlexTextComponent,
 	    int_component_1.PlexIntComponent,
-	    float_component_1.PlexFloatComponent
+	    float_component_1.PlexFloatComponent,
+	    button_component_1.PlexButtonComponent
 	];
 	var PlexModule = (function () {
 	    function PlexModule() {
@@ -823,7 +825,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
-	 * @license Angular v2.0.1
+	 * @license Angular v2.1.0
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -860,12 +862,8 @@
 	    // exports the original value of the symbol.
 	    var global$1 = globalScope;
 	    function getTypeNameForDebugging(type) {
-	        if (type['name']) {
-	            return type['name'];
-	        }
-	        return typeof type;
+	        return type['name'] || typeof type;
 	    }
-	    var Math = global$1.Math;
 	    // TODO: remove calls to assert in production environment
 	    // Note: Can't just export this and import in in other files
 	    // as `assert` is a reserved keyword in Dart
@@ -902,76 +900,8 @@
 	        }
 	        var res = token.toString();
 	        var newLineIndex = res.indexOf('\n');
-	        return (newLineIndex === -1) ? res : res.substring(0, newLineIndex);
+	        return newLineIndex === -1 ? res : res.substring(0, newLineIndex);
 	    }
-	    var StringWrapper = (function () {
-	        function StringWrapper() {
-	        }
-	        StringWrapper.fromCharCode = function (code) { return String.fromCharCode(code); };
-	        StringWrapper.charCodeAt = function (s, index) { return s.charCodeAt(index); };
-	        StringWrapper.split = function (s, regExp) { return s.split(regExp); };
-	        StringWrapper.equals = function (s, s2) { return s === s2; };
-	        StringWrapper.stripLeft = function (s, charVal) {
-	            if (s && s.length) {
-	                var pos = 0;
-	                for (var i = 0; i < s.length; i++) {
-	                    if (s[i] != charVal)
-	                        break;
-	                    pos++;
-	                }
-	                s = s.substring(pos);
-	            }
-	            return s;
-	        };
-	        StringWrapper.stripRight = function (s, charVal) {
-	            if (s && s.length) {
-	                var pos = s.length;
-	                for (var i = s.length - 1; i >= 0; i--) {
-	                    if (s[i] != charVal)
-	                        break;
-	                    pos--;
-	                }
-	                s = s.substring(0, pos);
-	            }
-	            return s;
-	        };
-	        StringWrapper.replace = function (s, from, replace) {
-	            return s.replace(from, replace);
-	        };
-	        StringWrapper.replaceAll = function (s, from, replace) {
-	            return s.replace(from, replace);
-	        };
-	        StringWrapper.slice = function (s, from, to) {
-	            if (from === void 0) { from = 0; }
-	            if (to === void 0) { to = null; }
-	            return s.slice(from, to === null ? undefined : to);
-	        };
-	        StringWrapper.replaceAllMapped = function (s, from, cb) {
-	            return s.replace(from, function () {
-	                var matches = [];
-	                for (var _i = 0; _i < arguments.length; _i++) {
-	                    matches[_i - 0] = arguments[_i];
-	                }
-	                // Remove offset & string from the result array
-	                matches.splice(-2, 2);
-	                // The callback receives match, p1, ..., pn
-	                return cb(matches);
-	            });
-	        };
-	        StringWrapper.contains = function (s, substr) { return s.indexOf(substr) != -1; };
-	        StringWrapper.compare = function (a, b) {
-	            if (a < b) {
-	                return -1;
-	            }
-	            else if (a > b) {
-	                return 1;
-	            }
-	            else {
-	                return 0;
-	            }
-	        };
-	        return StringWrapper;
-	    }());
 	    var NumberWrapper = (function () {
 	        function NumberWrapper() {
 	        }
@@ -1056,8 +986,9 @@
 	    }
 
 	    var _nextClassId = 0;
+	    var Reflect = global$1.Reflect;
 	    function extractAnnotation(annotation) {
-	        if (isFunction(annotation) && annotation.hasOwnProperty('annotation')) {
+	        if (typeof annotation === 'function' && annotation.hasOwnProperty('annotation')) {
 	            // it is a decorator, extract annotation
 	            annotation = annotation.annotation;
 	        }
@@ -1068,14 +999,14 @@
 	            fnOrArray === Number || fnOrArray === Array) {
 	            throw new Error("Can not use native " + stringify(fnOrArray) + " as constructor");
 	        }
-	        if (isFunction(fnOrArray)) {
+	        if (typeof fnOrArray === 'function') {
 	            return fnOrArray;
 	        }
-	        else if (fnOrArray instanceof Array) {
+	        if (Array.isArray(fnOrArray)) {
 	            var annotations = fnOrArray;
 	            var annoLength = annotations.length - 1;
 	            var fn = fnOrArray[annoLength];
-	            if (!isFunction(fn)) {
+	            if (typeof fn !== 'function') {
 	                throw new Error("Last position of Class method array must be Function in key " + key + " was '" + stringify(fn) + "'");
 	            }
 	            if (annoLength != fn.length) {
@@ -1086,12 +1017,12 @@
 	                var paramAnnotations = [];
 	                paramsAnnotations.push(paramAnnotations);
 	                var annotation = annotations[i];
-	                if (annotation instanceof Array) {
+	                if (Array.isArray(annotation)) {
 	                    for (var j = 0; j < annotation.length; j++) {
 	                        paramAnnotations.push(extractAnnotation(annotation[j]));
 	                    }
 	                }
-	                else if (isFunction(annotation)) {
+	                else if (typeof annotation === 'function') {
 	                    paramAnnotations.push(extractAnnotation(annotation));
 	                }
 	                else {
@@ -1101,9 +1032,7 @@
 	            Reflect.defineMetadata('parameters', paramsAnnotations, fn);
 	            return fn;
 	        }
-	        else {
-	            throw new Error("Only Function or Array is supported in Class definition for key '" + key + "' is '" + stringify(fnOrArray) + "'");
-	        }
+	        throw new Error("Only Function or Array is supported in Class definition for key '" + key + "' is '" + stringify(fnOrArray) + "'");
 	    }
 	    /**
 	     * Provides a way for expressing ES6 classes with parameter annotations in ES5.
@@ -1152,7 +1081,7 @@
 	     *
 	     * ```
 	     * var MyService = ng.Class({
-	     *   constructor: [String, [new Query(), QueryList], function(name, queryList) {
+	     *   constructor: [String, [new Optional(), Service], function(name, myService) {
 	     *     ...
 	     *   }]
 	     * });
@@ -1162,7 +1091,7 @@
 	     *
 	     * ```
 	     * class MyService {
-	     *   constructor(name: string, @Query() queryList: QueryList) {
+	     *   constructor(name: string, @Optional() myService: Service) {
 	     *     ...
 	     *   }
 	     * }
@@ -1191,7 +1120,7 @@
 	        var constructor = applyParams(clsDef.hasOwnProperty('constructor') ? clsDef.constructor : undefined, 'constructor');
 	        var proto = constructor.prototype;
 	        if (clsDef.hasOwnProperty('extends')) {
-	            if (isFunction(clsDef.extends)) {
+	            if (typeof clsDef.extends === 'function') {
 	                constructor.prototype = proto =
 	                    Object.create(clsDef.extends.prototype);
 	            }
@@ -1200,7 +1129,7 @@
 	            }
 	        }
 	        for (var key in clsDef) {
-	            if (key != 'extends' && key != 'prototype' && clsDef.hasOwnProperty(key)) {
+	            if (key !== 'extends' && key !== 'prototype' && clsDef.hasOwnProperty(key)) {
 	                proto[key] = applyParams(clsDef[key], key);
 	            }
 	        }
@@ -1213,7 +1142,6 @@
 	        }
 	        return constructor;
 	    }
-	    var Reflect = global$1.Reflect;
 	    function makeDecorator(name, props, parentClass, chainFn) {
 	        if (chainFn === void 0) { chainFn = null; }
 	        var metaCtor = makeMetadataCtor([props]);
@@ -1225,22 +1153,20 @@
 	                metaCtor.call(this, objOrType);
 	                return this;
 	            }
-	            else {
-	                var annotationInstance_1 = new DecoratorFactory(objOrType);
-	                var chainAnnotation = isFunction(this) && this.annotations instanceof Array ? this.annotations : [];
-	                chainAnnotation.push(annotationInstance_1);
-	                var TypeDecorator = function TypeDecorator(cls) {
-	                    var annotations = Reflect.getOwnMetadata('annotations', cls) || [];
-	                    annotations.push(annotationInstance_1);
-	                    Reflect.defineMetadata('annotations', annotations, cls);
-	                    return cls;
-	                };
-	                TypeDecorator.annotations = chainAnnotation;
-	                TypeDecorator.Class = Class;
-	                if (chainFn)
-	                    chainFn(TypeDecorator);
-	                return TypeDecorator;
-	            }
+	            var annotationInstance = new DecoratorFactory(objOrType);
+	            var chainAnnotation = typeof this === 'function' && Array.isArray(this.annotations) ? this.annotations : [];
+	            chainAnnotation.push(annotationInstance);
+	            var TypeDecorator = function TypeDecorator(cls) {
+	                var annotations = Reflect.getOwnMetadata('annotations', cls) || [];
+	                annotations.push(annotationInstance);
+	                Reflect.defineMetadata('annotations', annotations, cls);
+	                return cls;
+	            };
+	            TypeDecorator.annotations = chainAnnotation;
+	            TypeDecorator.Class = Class;
+	            if (chainFn)
+	                chainFn(TypeDecorator);
+	            return TypeDecorator;
 	        }
 	        if (parentClass) {
 	            DecoratorFactory.prototype = Object.create(parentClass.prototype);
@@ -1260,13 +1186,12 @@
 	                var argVal = args[i];
 	                if (Array.isArray(prop)) {
 	                    // plain parameter
-	                    var val = !argVal || argVal === undefined ? prop[1] : argVal;
-	                    _this[prop[0]] = val;
+	                    _this[prop[0]] = !argVal || argVal === undefined ? prop[1] : argVal;
 	                }
 	                else {
 	                    for (var propName in prop) {
-	                        var val = !argVal || argVal[propName] === undefined ? prop[propName] : argVal[propName];
-	                        _this[propName] = val;
+	                        _this[propName] =
+	                            !argVal || argVal[propName] === undefined ? prop[propName] : argVal[propName];
 	                    }
 	                }
 	            });
@@ -1295,8 +1220,7 @@
 	                    parameters.push(null);
 	                }
 	                parameters[index] = parameters[index] || [];
-	                var annotationsForParam = parameters[index];
-	                annotationsForParam.push(annotationInstance);
+	                parameters[index].push(annotationInstance);
 	                Reflect.defineMetadata('parameters', parameters, cls);
 	                return cls;
 	            }
@@ -1320,15 +1244,13 @@
 	                metaCtor.apply(this, args);
 	                return this;
 	            }
-	            else {
-	                var decoratorInstance = new ((_a = PropDecoratorFactory).bind.apply(_a, [void 0].concat(args)))();
-	                return function PropDecorator(target, name) {
-	                    var meta = Reflect.getOwnMetadata('propMetadata', target.constructor) || {};
-	                    meta[name] = meta[name] || [];
-	                    meta[name].unshift(decoratorInstance);
-	                    Reflect.defineMetadata('propMetadata', meta, target.constructor);
-	                };
-	            }
+	            var decoratorInstance = new ((_a = PropDecoratorFactory).bind.apply(_a, [void 0].concat(args)))();
+	            return function PropDecorator(target, name) {
+	                var meta = Reflect.getOwnMetadata('propMetadata', target.constructor) || {};
+	                meta[name] = meta[name] || [];
+	                meta[name].unshift(decoratorInstance);
+	                Reflect.defineMetadata('propMetadata', meta, target.constructor);
+	            };
 	            var _a;
 	        }
 	        if (parentClass) {
@@ -1630,13 +1552,6 @@
 	         */
 	        ChangeDetectorStatus[ChangeDetectorStatus["Destroyed"] = 5] = "Destroyed";
 	    })(ChangeDetectorStatus || (ChangeDetectorStatus = {}));
-	    /**
-	     * List of possible {@link ChangeDetectionStrategy} values.
-	     */
-	    var CHANGE_DETECTION_STRATEGY_VALUES = [
-	        exports.ChangeDetectionStrategy.OnPush,
-	        exports.ChangeDetectionStrategy.Default,
-	    ];
 	    function isDefaultChangeDetectionStrategy(changeDetectionStrategy) {
 	        return isBlank(changeDetectionStrategy) ||
 	            changeDetectionStrategy === exports.ChangeDetectionStrategy.Default;
@@ -1897,7 +1812,7 @@
 
 	    /**
 	     * Defines a schema that will allow:
-	     * - any non-angular elements with a `-` in their name,
+	     * - any non-Angular elements with a `-` in their name,
 	     * - any properties on elements with a `-` in their name which is the common rule for custom
 	     * elements.
 	     *
@@ -1915,7 +1830,7 @@
 	        name: 'no-errors-schema'
 	    };
 	    /**
-	     * NgModule decorator and metadata
+	     * NgModule decorator and metadata.
 	     *
 	     * @stable
 	     * @Annotation
@@ -1967,7 +1882,6 @@
 	         */
 	        ViewEncapsulation[ViewEncapsulation["None"] = 2] = "None";
 	    })(exports.ViewEncapsulation || (exports.ViewEncapsulation = {}));
-	    var VIEW_ENCAPSULATION_VALUES = [exports.ViewEncapsulation.Emulated, exports.ViewEncapsulation.Native, exports.ViewEncapsulation.None];
 	    /**
 	     * Metadata properties available for configuring Views.
 	     *
@@ -2245,26 +2159,6 @@
 	    var StringMapWrapper = (function () {
 	        function StringMapWrapper() {
 	        }
-	        StringMapWrapper.get = function (map, key) {
-	            return map.hasOwnProperty(key) ? map[key] : undefined;
-	        };
-	        StringMapWrapper.set = function (map, key, value) { map[key] = value; };
-	        StringMapWrapper.keys = function (map) { return Object.keys(map); };
-	        StringMapWrapper.values = function (map) {
-	            return Object.keys(map).map(function (k) { return map[k]; });
-	        };
-	        StringMapWrapper.isEmpty = function (map) {
-	            for (var prop in map) {
-	                return false;
-	            }
-	            return true;
-	        };
-	        StringMapWrapper.forEach = function (map, callback) {
-	            for (var _i = 0, _a = Object.keys(map); _i < _a.length; _i++) {
-	                var k = _a[_i];
-	                callback(map[k], k);
-	            }
-	        };
 	        StringMapWrapper.merge = function (m1, m2) {
 	            var m = {};
 	            for (var _i = 0, _a = Object.keys(m1); _i < _a.length; _i++) {
@@ -2458,33 +2352,6 @@
 	            }
 	        }
 	    }
-	    // Safari and Internet Explorer do not support the iterable parameter to the
-	    // Set constructor.  We work around that by manually adding the items.
-	    var createSetFromList = (function () {
-	        var test = new Set([1, 2, 3]);
-	        if (test.size === 3) {
-	            return function createSetFromList(lst) { return new Set(lst); };
-	        }
-	        else {
-	            return function createSetAndPopulateFromList(lst) {
-	                var res = new Set(lst);
-	                if (res.size !== lst.length) {
-	                    for (var i = 0; i < lst.length; i++) {
-	                        res.add(lst[i]);
-	                    }
-	                }
-	                return res;
-	            };
-	        }
-	    })();
-	    var SetWrapper = (function () {
-	        function SetWrapper() {
-	        }
-	        SetWrapper.createFromList = function (lst) { return createSetFromList(lst); };
-	        SetWrapper.has = function (s, key) { return s.has(key); };
-	        SetWrapper.delete = function (m, k) { m.delete(k); };
-	        return SetWrapper;
-	    }());
 
 	    /**
 	     * @license
@@ -2697,7 +2564,7 @@
 	            var signature = [];
 	            for (var i = 0, ii = params.length; i < ii; i++) {
 	                var parameter = params[i];
-	                if (isBlank(parameter) || parameter.length == 0) {
+	                if (!parameter || parameter.length == 0) {
 	                    signature.push('?');
 	                }
 	                else {
@@ -2777,7 +2644,7 @@
 	        function ReflectiveKey(token, id) {
 	            this.token = token;
 	            this.id = id;
-	            if (isBlank(token)) {
+	            if (!token) {
 	                throw new Error('Token must be defined!');
 	            }
 	        }
@@ -2855,20 +2722,15 @@
 	            this._reflect = reflect || global$1.Reflect;
 	        }
 	        ReflectionCapabilities.prototype.isReflectionEnabled = function () { return true; };
-	        ReflectionCapabilities.prototype.factory = function (t) {
-	            var prototype = t.prototype;
-	            return function () {
-	                var args = [];
-	                for (var _i = 0; _i < arguments.length; _i++) {
-	                    args[_i - 0] = arguments[_i];
-	                }
-	                var instance = Object.create(prototype);
-	                t.apply(instance, args);
-	                return instance;
-	            };
-	        };
+	        ReflectionCapabilities.prototype.factory = function (t) { return function () {
+	            var args = [];
+	            for (var _i = 0; _i < arguments.length; _i++) {
+	                args[_i - 0] = arguments[_i];
+	            }
+	            return new (t.bind.apply(t, [void 0].concat(args)))();
+	        }; };
 	        /** @internal */
-	        ReflectionCapabilities.prototype._zipTypesAndAnnotations = function (paramTypes /** TODO #9100 */, paramAnnotations /** TODO #9100 */) {
+	        ReflectionCapabilities.prototype._zipTypesAndAnnotations = function (paramTypes, paramAnnotations) {
 	            var result;
 	            if (typeof paramTypes === 'undefined') {
 	                result = new Array(paramAnnotations.length);
@@ -2889,42 +2751,40 @@
 	                else {
 	                    result[i] = [];
 	                }
-	                if (isPresent(paramAnnotations) && isPresent(paramAnnotations[i])) {
+	                if (paramAnnotations && isPresent(paramAnnotations[i])) {
 	                    result[i] = result[i].concat(paramAnnotations[i]);
 	                }
 	            }
 	            return result;
 	        };
-	        ReflectionCapabilities.prototype.parameters = function (typeOrFunc) {
+	        ReflectionCapabilities.prototype.parameters = function (type) {
 	            // Prefer the direct API.
-	            if (isPresent(typeOrFunc.parameters)) {
-	                return typeOrFunc.parameters;
+	            if (type.parameters) {
+	                return type.parameters;
 	            }
 	            // API of tsickle for lowering decorators to properties on the class.
-	            if (isPresent(typeOrFunc.ctorParameters)) {
-	                var ctorParameters = typeOrFunc.ctorParameters;
-	                var paramTypes_1 = ctorParameters.map(function (ctorParam /** TODO #9100 */) { return ctorParam && ctorParam.type; });
-	                var paramAnnotations_1 = ctorParameters.map(function (ctorParam /** TODO #9100 */) {
+	            if (type.ctorParameters) {
+	                var ctorParameters = type.ctorParameters;
+	                var paramTypes = ctorParameters.map(function (ctorParam) { return ctorParam && ctorParam.type; });
+	                var paramAnnotations = ctorParameters.map(function (ctorParam) {
 	                    return ctorParam && convertTsickleDecoratorIntoMetadata(ctorParam.decorators);
 	                });
-	                return this._zipTypesAndAnnotations(paramTypes_1, paramAnnotations_1);
+	                return this._zipTypesAndAnnotations(paramTypes, paramAnnotations);
 	            }
 	            // API for metadata created by invoking the decorators.
 	            if (isPresent(this._reflect) && isPresent(this._reflect.getMetadata)) {
-	                var paramAnnotations = this._reflect.getMetadata('parameters', typeOrFunc);
-	                var paramTypes = this._reflect.getMetadata('design:paramtypes', typeOrFunc);
-	                if (isPresent(paramTypes) || isPresent(paramAnnotations)) {
+	                var paramAnnotations = this._reflect.getMetadata('parameters', type);
+	                var paramTypes = this._reflect.getMetadata('design:paramtypes', type);
+	                if (paramTypes || paramAnnotations) {
 	                    return this._zipTypesAndAnnotations(paramTypes, paramAnnotations);
 	                }
 	            }
 	            // The array has to be filled with `undefined` because holes would be skipped by `some`
-	            var parameters = new Array(typeOrFunc.length);
-	            parameters.fill(undefined);
-	            return parameters;
+	            return new Array(type.length).fill(undefined);
 	        };
 	        ReflectionCapabilities.prototype.annotations = function (typeOrFunc) {
 	            // Prefer the direct API.
-	            if (isPresent(typeOrFunc.annotations)) {
+	            if (typeOrFunc.annotations) {
 	                var annotations = typeOrFunc.annotations;
 	                if (isFunction(annotations) && annotations.annotations) {
 	                    annotations = annotations.annotations;
@@ -2932,20 +2792,20 @@
 	                return annotations;
 	            }
 	            // API of tsickle for lowering decorators to properties on the class.
-	            if (isPresent(typeOrFunc.decorators)) {
+	            if (typeOrFunc.decorators) {
 	                return convertTsickleDecoratorIntoMetadata(typeOrFunc.decorators);
 	            }
 	            // API for metadata created by invoking the decorators.
-	            if (isPresent(this._reflect) && isPresent(this._reflect.getMetadata)) {
+	            if (this._reflect && this._reflect.getMetadata) {
 	                var annotations = this._reflect.getMetadata('annotations', typeOrFunc);
-	                if (isPresent(annotations))
+	                if (annotations)
 	                    return annotations;
 	            }
 	            return [];
 	        };
 	        ReflectionCapabilities.prototype.propMetadata = function (typeOrFunc) {
 	            // Prefer the direct API.
-	            if (isPresent(typeOrFunc.propMetadata)) {
+	            if (typeOrFunc.propMetadata) {
 	                var propMetadata = typeOrFunc.propMetadata;
 	                if (isFunction(propMetadata) && propMetadata.propMetadata) {
 	                    propMetadata = propMetadata.propMetadata;
@@ -2953,7 +2813,7 @@
 	                return propMetadata;
 	            }
 	            // API of tsickle for lowering decorators to properties on the class.
-	            if (isPresent(typeOrFunc.propDecorators)) {
+	            if (typeOrFunc.propDecorators) {
 	                var propDecorators_1 = typeOrFunc.propDecorators;
 	                var propMetadata_1 = {};
 	                Object.keys(propDecorators_1).forEach(function (prop) {
@@ -2962,9 +2822,9 @@
 	                return propMetadata_1;
 	            }
 	            // API for metadata created by invoking the decorators.
-	            if (isPresent(this._reflect) && isPresent(this._reflect.getMetadata)) {
+	            if (this._reflect && this._reflect.getMetadata) {
 	                var propMetadata = this._reflect.getMetadata('propMetadata', typeOrFunc);
-	                if (isPresent(propMetadata))
+	                if (propMetadata)
 	                    return propMetadata;
 	            }
 	            return {};
@@ -3075,11 +2935,11 @@
 	         */
 	        Reflector.prototype.listUnusedKeys = function () {
 	            var _this = this;
-	            if (this._usedKeys == null) {
+	            if (!this._usedKeys) {
 	                throw new Error('Usage tracking is disabled');
 	            }
 	            var allTypes = MapWrapper.keys(this._injectableInfo);
-	            return allTypes.filter(function (key) { return !SetWrapper.has(_this._usedKeys, key); });
+	            return allTypes.filter(function (key) { return !_this._usedKeys.has(key); });
 	        };
 	        Reflector.prototype.registerFunction = function (func, funcInfo) {
 	            this._injectableInfo.set(func, funcInfo);
@@ -3092,85 +2952,55 @@
 	        Reflector.prototype.registerMethods = function (methods) { _mergeMaps(this._methods, methods); };
 	        Reflector.prototype.factory = function (type) {
 	            if (this._containsReflectionInfo(type)) {
-	                var res = this._getReflectionInfo(type).factory;
-	                return isPresent(res) ? res : null;
+	                return this._getReflectionInfo(type).factory || null;
 	            }
-	            else {
-	                return this.reflectionCapabilities.factory(type);
-	            }
+	            return this.reflectionCapabilities.factory(type);
 	        };
 	        Reflector.prototype.parameters = function (typeOrFunc) {
 	            if (this._injectableInfo.has(typeOrFunc)) {
-	                var res = this._getReflectionInfo(typeOrFunc).parameters;
-	                return isPresent(res) ? res : [];
+	                return this._getReflectionInfo(typeOrFunc).parameters || [];
 	            }
-	            else {
-	                return this.reflectionCapabilities.parameters(typeOrFunc);
-	            }
+	            return this.reflectionCapabilities.parameters(typeOrFunc);
 	        };
 	        Reflector.prototype.annotations = function (typeOrFunc) {
 	            if (this._injectableInfo.has(typeOrFunc)) {
-	                var res = this._getReflectionInfo(typeOrFunc).annotations;
-	                return isPresent(res) ? res : [];
+	                return this._getReflectionInfo(typeOrFunc).annotations || [];
 	            }
-	            else {
-	                return this.reflectionCapabilities.annotations(typeOrFunc);
-	            }
+	            return this.reflectionCapabilities.annotations(typeOrFunc);
 	        };
 	        Reflector.prototype.propMetadata = function (typeOrFunc) {
 	            if (this._injectableInfo.has(typeOrFunc)) {
-	                var res = this._getReflectionInfo(typeOrFunc).propMetadata;
-	                return isPresent(res) ? res : {};
+	                return this._getReflectionInfo(typeOrFunc).propMetadata || {};
 	            }
-	            else {
-	                return this.reflectionCapabilities.propMetadata(typeOrFunc);
-	            }
+	            return this.reflectionCapabilities.propMetadata(typeOrFunc);
 	        };
 	        Reflector.prototype.interfaces = function (type) {
 	            if (this._injectableInfo.has(type)) {
-	                var res = this._getReflectionInfo(type).interfaces;
-	                return isPresent(res) ? res : [];
+	                return this._getReflectionInfo(type).interfaces || [];
 	            }
-	            else {
-	                return this.reflectionCapabilities.interfaces(type);
-	            }
+	            return this.reflectionCapabilities.interfaces(type);
 	        };
 	        Reflector.prototype.hasLifecycleHook = function (type, lcInterface, lcProperty) {
-	            var interfaces = this.interfaces(type);
-	            if (interfaces.indexOf(lcInterface) !== -1) {
+	            if (this.interfaces(type).indexOf(lcInterface) !== -1) {
 	                return true;
 	            }
-	            else {
-	                return this.reflectionCapabilities.hasLifecycleHook(type, lcInterface, lcProperty);
-	            }
+	            return this.reflectionCapabilities.hasLifecycleHook(type, lcInterface, lcProperty);
 	        };
 	        Reflector.prototype.getter = function (name) {
-	            if (this._getters.has(name)) {
-	                return this._getters.get(name);
-	            }
-	            else {
-	                return this.reflectionCapabilities.getter(name);
-	            }
+	            return this._getters.has(name) ? this._getters.get(name) :
+	                this.reflectionCapabilities.getter(name);
 	        };
 	        Reflector.prototype.setter = function (name) {
-	            if (this._setters.has(name)) {
-	                return this._setters.get(name);
-	            }
-	            else {
-	                return this.reflectionCapabilities.setter(name);
-	            }
+	            return this._setters.has(name) ? this._setters.get(name) :
+	                this.reflectionCapabilities.setter(name);
 	        };
 	        Reflector.prototype.method = function (name) {
-	            if (this._methods.has(name)) {
-	                return this._methods.get(name);
-	            }
-	            else {
-	                return this.reflectionCapabilities.method(name);
-	            }
+	            return this._methods.has(name) ? this._methods.get(name) :
+	                this.reflectionCapabilities.method(name);
 	        };
 	        /** @internal */
 	        Reflector.prototype._getReflectionInfo = function (typeOrFunc) {
-	            if (isPresent(this._usedKeys)) {
+	            if (this._usedKeys) {
 	                this._usedKeys.add(typeOrFunc);
 	            }
 	            return this._injectableInfo.get(typeOrFunc);
@@ -3187,7 +3017,7 @@
 	        return Reflector;
 	    }(ReflectorReader));
 	    function _mergeMaps(target, config) {
-	        StringMapWrapper.forEach(config, function (v, k) { return target.set(k, v); });
+	        Object.keys(config).forEach(function (k) { target.set(k, config[k]); });
 	    }
 
 	    /**
@@ -3342,7 +3172,7 @@
 	        return res;
 	    }
 	    function constructDependencies(typeOrFunc, dependencies) {
-	        if (isBlank(dependencies)) {
+	        if (!dependencies) {
 	            return _dependenciesFor(typeOrFunc);
 	        }
 	        else {
@@ -3352,7 +3182,7 @@
 	    }
 	    function _dependenciesFor(typeOrFunc) {
 	        var params = reflector.parameters(typeOrFunc);
-	        if (isBlank(params))
+	        if (!params)
 	            return [];
 	        if (params.some(isBlank)) {
 	            throw new NoAnnotationError(typeOrFunc, params);
@@ -4212,18 +4042,19 @@
 	     * found in the LICENSE file at https://angular.io/license
 	     */
 	    /**
-	     * Provides a hook for centralized exception handling.
+	     * @whatItDoes Provides a hook for centralized exception handling.
 	     *
-	     * The default implementation of `ErrorHandler` prints error messages to the `Console`. To
-	     * intercept error handling,
-	     * write a custom exception handler that replaces this default as appropriate for your app.
+	     * @description
+	     *
+	     * The default implementation of `ErrorHandler` prints error messages to the `console`. To
+	     * intercept error handling, write a custom exception handler that replaces this default as
+	     * appropriate for your app.
 	     *
 	     * ### Example
 	     *
-	     * ```javascript
-	     *
+	     * ```
 	     * class MyErrorHandler implements ErrorHandler {
-	     *   call(error, stackTrace = null, reason = null) {
+	     *   handleError(error) {
 	     *     // do something with the exception
 	     *   }
 	     * }
@@ -4233,6 +4064,7 @@
 	     * })
 	     * class MyModule {}
 	     * ```
+	     *
 	     * @stable
 	     */
 	    var ErrorHandler = (function () {
@@ -4275,9 +4107,7 @@
 	                return error.context ? error.context :
 	                    this._findContext(error.originalError);
 	            }
-	            else {
-	                return null;
-	            }
+	            return null;
 	        };
 	        /** @internal */
 	        ErrorHandler.prototype._findOriginalError = function (error) {
@@ -4389,7 +4219,7 @@
 	        deps: [],
 	    };
 	    function _randomChar() {
-	        return StringWrapper.fromCharCode(97 + Math.floor(Math.random() * 25));
+	        return String.fromCharCode(97 + Math.floor(Math.random() * 25));
 	    }
 	    /**
 	     * A function that will be executed when a platform is initialized.
@@ -4561,7 +4391,7 @@
 	            // Keeps track of records where custom track by is the same, but item identity has changed
 	            this._identityChangesHead = null;
 	            this._identityChangesTail = null;
-	            this._trackByFn = isPresent(this._trackByFn) ? this._trackByFn : trackByIdentity;
+	            this._trackByFn = this._trackByFn || trackByIdentity;
 	        }
 	        Object.defineProperty(DefaultIterableDiffer.prototype, "collection", {
 	            get: function () { return this._collection; },
@@ -5200,7 +5030,7 @@
 	            if (afterIndex === void 0) { afterIndex = null; }
 	            var key = getMapKey(trackById);
 	            var recordList = this.map.get(key);
-	            return isBlank(recordList) ? null : recordList.get(trackById, afterIndex);
+	            return recordList ? recordList.get(trackById, afterIndex) : null;
 	        };
 	        /**
 	         * Removes a {@link CollectionChangeRecord} from the list of duplicates.
@@ -5499,7 +5329,7 @@
 	                obj.forEach(fn);
 	            }
 	            else {
-	                StringMapWrapper.forEach(obj, fn);
+	                Object.keys(obj).forEach(function (k) { return fn(obj[k], k); });
 	            }
 	        };
 	        return DefaultKeyValueDiffer;
@@ -5575,7 +5405,7 @@
 	            return {
 	                provide: IterableDiffers,
 	                useFactory: function (parent) {
-	                    if (isBlank(parent)) {
+	                    if (!parent) {
 	                        // Typically would occur when calling IterableDiffers.extend inside of dependencies passed
 	                        // to
 	                        // bootstrap(), which would override default pipes instead of extending them.
@@ -5640,7 +5470,7 @@
 	            return {
 	                provide: KeyValueDiffers,
 	                useFactory: function (parent) {
-	                    if (isBlank(parent)) {
+	                    if (!parent) {
 	                        // Typically would occur when calling KeyValueDiffers.extend inside of dependencies passed
 	                        // to
 	                        // bootstrap(), which would override default pipes instead of extending them.
@@ -6105,7 +5935,7 @@
 	            if (injector === void 0) { injector = null; }
 	            if (projectableNodes === void 0) { projectableNodes = null; }
 	            var s = this._createComponentInContainerScope();
-	            var contextInjector = isPresent(injector) ? injector : this._element.parentInjector;
+	            var contextInjector = injector || this._element.parentInjector;
 	            var componentRef = componentFactory.create(contextInjector, projectableNodes);
 	            this.insert(componentRef.hostView, index);
 	            return wtfLeave(s, componentRef);
@@ -6313,13 +6143,10 @@
 	     * ```typescript
 	     * @Component({
 	     *   selector: 'parent',
-	     *   template: `
-	     *     <child [prop]="parentProp"></child>
-	     *   `,
-	     *   directives: [forwardRef(() => Child)]
+	     *   template: '<child [prop]="parentProp"></child>',
 	     * })
 	     * class Parent {
-	     *   parentProp = "init";
+	     *   parentProp = 'init';
 	     * }
 	     *
 	     * @Directive({selector: 'child', inputs: ['prop']})
@@ -6329,7 +6156,7 @@
 	     *   set prop(v) {
 	     *     // this updates the parent property, which is disallowed during change detection
 	     *     // this will result in ExpressionChangedAfterItHasBeenCheckedError
-	     *     this.parent.parentProp = "updated";
+	     *     this.parent.parentProp = 'updated';
 	     *   }
 	     * }
 	     * ```
@@ -6432,7 +6259,7 @@
 	    var EMPTY_ARR = [];
 	    function ensureSlotCount(projectableNodes, expectedSlotCount) {
 	        var res;
-	        if (isBlank(projectableNodes)) {
+	        if (!projectableNodes) {
 	            res = EMPTY_ARR;
 	        }
 	        else if (projectableNodes.length < expectedSlotCount) {
@@ -6823,7 +6650,7 @@
 	            if (projectableNodes === void 0) { projectableNodes = null; }
 	            if (rootSelectorOrNode === void 0) { rootSelectorOrNode = null; }
 	            var vu = injector.get(ViewUtils);
-	            if (isBlank(projectableNodes)) {
+	            if (!projectableNodes) {
 	                projectableNodes = [];
 	            }
 	            // Note: Host views don't need a declarationAppElement!
@@ -6969,9 +6796,9 @@
 	            var errorFn = function (err) { return null; };
 	            var completeFn = function () { return null; };
 	            if (generatorOrNext && typeof generatorOrNext === 'object') {
-	                schedulerFn = this.__isAsync ? function (value /** TODO #9100 */) {
+	                schedulerFn = this.__isAsync ? function (value) {
 	                    setTimeout(function () { return generatorOrNext.next(value); });
-	                } : function (value /** TODO #9100 */) { generatorOrNext.next(value); };
+	                } : function (value) { generatorOrNext.next(value); };
 	                if (generatorOrNext.error) {
 	                    errorFn = this.__isAsync ? function (err) { setTimeout(function () { return generatorOrNext.error(err); }); } :
 	                        function (err) { generatorOrNext.error(err); };
@@ -6982,9 +6809,8 @@
 	                }
 	            }
 	            else {
-	                schedulerFn = this.__isAsync ? function (value /** TODO #9100 */) {
-	                    setTimeout(function () { return generatorOrNext(value); });
-	                } : function (value /** TODO #9100 */) { generatorOrNext(value); };
+	                schedulerFn = this.__isAsync ? function (value) { setTimeout(function () { return generatorOrNext(value); }); } :
+	                    function (value) { generatorOrNext(value); };
 	                if (error) {
 	                    errorFn =
 	                        this.__isAsync ? function (err) { setTimeout(function () { return error(err); }); } : function (err) { error(err); };
@@ -7000,99 +6826,21 @@
 	    }(rxjs_Subject.Subject));
 
 	    /**
-	     * @license
-	     * Copyright Google Inc. All Rights Reserved.
-	     *
-	     * Use of this source code is governed by an MIT-style license that can be
-	     * found in the LICENSE file at https://angular.io/license
-	     */
-	    var NgZoneImpl = (function () {
-	        function NgZoneImpl(_a) {
-	            var _this = this;
-	            var trace = _a.trace, onEnter = _a.onEnter, onLeave = _a.onLeave, setMicrotask = _a.setMicrotask, setMacrotask = _a.setMacrotask, onError = _a.onError;
-	            this.onEnter = onEnter;
-	            this.onLeave = onLeave;
-	            this.setMicrotask = setMicrotask;
-	            this.setMacrotask = setMacrotask;
-	            this.onError = onError;
-	            if (typeof Zone == 'undefined') {
-	                throw new Error('Angular requires Zone.js prolyfill.');
-	            }
-	            Zone.assertZonePatched();
-	            this.outer = this.inner = Zone.current;
-	            if (Zone['wtfZoneSpec']) {
-	                this.inner = this.inner.fork(Zone['wtfZoneSpec']);
-	            }
-	            if (trace && Zone['longStackTraceZoneSpec']) {
-	                this.inner = this.inner.fork(Zone['longStackTraceZoneSpec']);
-	            }
-	            this.inner = this.inner.fork({
-	                name: 'angular',
-	                properties: { 'isAngularZone': true },
-	                onInvokeTask: function (delegate, current, target, task, applyThis, applyArgs) {
-	                    try {
-	                        _this.onEnter();
-	                        return delegate.invokeTask(target, task, applyThis, applyArgs);
-	                    }
-	                    finally {
-	                        _this.onLeave();
-	                    }
-	                },
-	                onInvoke: function (delegate, current, target, callback, applyThis, applyArgs, source) {
-	                    try {
-	                        _this.onEnter();
-	                        return delegate.invoke(target, callback, applyThis, applyArgs, source);
-	                    }
-	                    finally {
-	                        _this.onLeave();
-	                    }
-	                },
-	                onHasTask: function (delegate, current, target, hasTaskState) {
-	                    delegate.hasTask(target, hasTaskState);
-	                    if (current === target) {
-	                        // We are only interested in hasTask events which originate from our zone
-	                        // (A child hasTask event is not interesting to us)
-	                        if (hasTaskState.change == 'microTask') {
-	                            _this.setMicrotask(hasTaskState.microTask);
-	                        }
-	                        else if (hasTaskState.change == 'macroTask') {
-	                            _this.setMacrotask(hasTaskState.macroTask);
-	                        }
-	                    }
-	                },
-	                onHandleError: function (delegate, current, target, error) {
-	                    delegate.handleError(target, error);
-	                    _this.onError(error);
-	                    return false;
-	                }
-	            });
-	        }
-	        NgZoneImpl.isInAngularZone = function () { return Zone.current.get('isAngularZone') === true; };
-	        NgZoneImpl.prototype.runInner = function (fn) { return this.inner.run(fn); };
-	        ;
-	        NgZoneImpl.prototype.runInnerGuarded = function (fn) { return this.inner.runGuarded(fn); };
-	        ;
-	        NgZoneImpl.prototype.runOuter = function (fn) { return this.outer.run(fn); };
-	        ;
-	        return NgZoneImpl;
-	    }());
-
-	    /**
 	     * An injectable service for executing work inside or outside of the Angular zone.
 	     *
 	     * The most common use of this service is to optimize performance when starting a work consisting of
 	     * one or more asynchronous tasks that don't require UI updates or error handling to be handled by
-	     * Angular. Such tasks can be kicked off via {@link #runOutsideAngular} and if needed, these tasks
-	     * can reenter the Angular zone via {@link #run}.
+	     * Angular. Such tasks can be kicked off via {@link runOutsideAngular} and if needed, these tasks
+	     * can reenter the Angular zone via {@link run}.
 	     *
 	     * <!-- TODO: add/fix links to:
 	     *   - docs explaining zones and the use of zones in Angular and change-detection
 	     *   - link to runOutsideAngular/run (throughout this file!)
 	     *   -->
 	     *
-	     * ### Example ([live demo](http://plnkr.co/edit/lY9m8HLy7z06vDoUaSN2?p=preview))
+	     * ### Example
 	     * ```
-	     * import {Component, View, NgZone} from '@angular/core';
+	     * import {Component, NgZone} from '@angular/core';
 	     * import {NgIf} from '@angular/common';
 	     *
 	     * @Component({
@@ -7106,7 +6854,6 @@
 	     *     <button (click)="processWithinAngularZone()">Process within Angular zone</button>
 	     *     <button (click)="processOutsideOfAngularZone()">Process outside of Angular zone</button>
 	     *   `,
-	     *   directives: [NgIf]
 	     * })
 	     * export class NgZoneDemo {
 	     *   progress: number = 0;
@@ -7134,7 +6881,6 @@
 	     *     }}));
 	     *   }
 	     *
-	     *
 	     *   _increaseProgress(doneCallback: () => void) {
 	     *     this.progress += 1;
 	     *     console.log(`Current progress: ${this.progress}%`);
@@ -7151,81 +6897,70 @@
 	     */
 	    var NgZone = (function () {
 	        function NgZone(_a) {
-	            var _this = this;
 	            var _b = _a.enableLongStackTrace, enableLongStackTrace = _b === void 0 ? false : _b;
 	            this._hasPendingMicrotasks = false;
 	            this._hasPendingMacrotasks = false;
-	            /** @internal */
 	            this._isStable = true;
-	            /** @internal */
 	            this._nesting = 0;
-	            /** @internal */
 	            this._onUnstable = new EventEmitter(false);
-	            /** @internal */
 	            this._onMicrotaskEmpty = new EventEmitter(false);
-	            /** @internal */
 	            this._onStable = new EventEmitter(false);
-	            /** @internal */
 	            this._onErrorEvents = new EventEmitter(false);
-	            this._zoneImpl = new NgZoneImpl({
-	                trace: enableLongStackTrace,
-	                onEnter: function () {
-	                    // console.log('ZONE.enter', this._nesting, this._isStable);
-	                    _this._nesting++;
-	                    if (_this._isStable) {
-	                        _this._isStable = false;
-	                        _this._onUnstable.emit(null);
-	                    }
-	                },
-	                onLeave: function () {
-	                    _this._nesting--;
-	                    // console.log('ZONE.leave', this._nesting, this._isStable);
-	                    _this._checkStable();
-	                },
-	                setMicrotask: function (hasMicrotasks) {
-	                    _this._hasPendingMicrotasks = hasMicrotasks;
-	                    _this._checkStable();
-	                },
-	                setMacrotask: function (hasMacrotasks) { _this._hasPendingMacrotasks = hasMacrotasks; },
-	                onError: function (error) { return _this._onErrorEvents.emit(error); }
-	            });
+	            if (typeof Zone == 'undefined') {
+	                throw new Error('Angular requires Zone.js prolyfill.');
+	            }
+	            Zone.assertZonePatched();
+	            this.outer = this.inner = Zone.current;
+	            if (Zone['wtfZoneSpec']) {
+	                this.inner = this.inner.fork(Zone['wtfZoneSpec']);
+	            }
+	            if (enableLongStackTrace && Zone['longStackTraceZoneSpec']) {
+	                this.inner = this.inner.fork(Zone['longStackTraceZoneSpec']);
+	            }
+	            this.forkInnerZoneWithAngularBehavior();
 	        }
-	        NgZone.isInAngularZone = function () { return NgZoneImpl.isInAngularZone(); };
+	        NgZone.isInAngularZone = function () { return Zone.current.get('isAngularZone') === true; };
 	        NgZone.assertInAngularZone = function () {
-	            if (!NgZoneImpl.isInAngularZone()) {
+	            if (!NgZone.isInAngularZone()) {
 	                throw new Error('Expected to be in Angular Zone, but it is not!');
 	            }
 	        };
 	        NgZone.assertNotInAngularZone = function () {
-	            if (NgZoneImpl.isInAngularZone()) {
+	            if (NgZone.isInAngularZone()) {
 	                throw new Error('Expected to not be in Angular Zone, but it is!');
 	            }
 	        };
-	        NgZone.prototype._checkStable = function () {
-	            var _this = this;
-	            if (this._nesting == 0) {
-	                if (!this._hasPendingMicrotasks && !this._isStable) {
-	                    try {
-	                        // console.log('ZONE.microtaskEmpty');
-	                        this._nesting++;
-	                        this._onMicrotaskEmpty.emit(null);
-	                    }
-	                    finally {
-	                        this._nesting--;
-	                        if (!this._hasPendingMicrotasks) {
-	                            try {
-	                                // console.log('ZONE.stable', this._nesting, this._isStable);
-	                                this.runOutsideAngular(function () { return _this._onStable.emit(null); });
-	                            }
-	                            finally {
-	                                this._isStable = true;
-	                            }
-	                        }
-	                    }
-	                }
-	            }
-	        };
-	        ;
+	        /**
+	         * Executes the `fn` function synchronously within the Angular zone and returns value returned by
+	         * the function.
+	         *
+	         * Running functions via `run` allows you to reenter Angular zone from a task that was executed
+	         * outside of the Angular zone (typically started via {@link runOutsideAngular}).
+	         *
+	         * Any future tasks or microtasks scheduled from within this function will continue executing from
+	         * within the Angular zone.
+	         *
+	         * If a synchronous error happens it will be rethrown and not reported via `onError`.
+	         */
+	        NgZone.prototype.run = function (fn) { return this.inner.run(fn); };
+	        /**
+	         * Same as `run`, except that synchronous errors are caught and forwarded via `onError` and not
+	         * rethrown.
+	         */
+	        NgZone.prototype.runGuarded = function (fn) { return this.inner.runGuarded(fn); };
+	        /**
+	         * Executes the `fn` function synchronously in Angular's parent zone and returns value returned by
+	         * the function.
+	         *
+	         * Running functions via `runOutsideAngular` allows you to escape Angular's zone and do work that
+	         * doesn't trigger Angular change-detection or is subject to Angular's error handling.
+	         *
+	         * Any future tasks or microtasks scheduled from within this function will continue executing from
+	         * outside of the Angular zone.
+	         *
+	         * Use {@link run} to reenter the Angular zone and do work that updates the application model.
+	         */
+	        NgZone.prototype.runOutsideAngular = function (fn) { return this.outer.run(fn); };
 	        Object.defineProperty(NgZone.prototype, "onUnstable", {
 	            /**
 	             * Notifies when code enters Angular Zone. This gets fired first on VM Turn.
@@ -7264,59 +6999,102 @@
 	        });
 	        Object.defineProperty(NgZone.prototype, "isStable", {
 	            /**
-	             * Whether there are no outstanding microtasks or microtasks.
+	             * Whether there are no outstanding microtasks or macrotasks.
 	             */
 	            get: function () { return this._isStable; },
 	            enumerable: true,
 	            configurable: true
 	        });
 	        Object.defineProperty(NgZone.prototype, "hasPendingMicrotasks", {
-	            /**
-	             * Whether there are any outstanding microtasks.
-	             */
 	            get: function () { return this._hasPendingMicrotasks; },
 	            enumerable: true,
 	            configurable: true
 	        });
 	        Object.defineProperty(NgZone.prototype, "hasPendingMacrotasks", {
-	            /**
-	             * Whether there are any outstanding microtasks.
-	             */
 	            get: function () { return this._hasPendingMacrotasks; },
 	            enumerable: true,
 	            configurable: true
 	        });
-	        /**
-	         * Executes the `fn` function synchronously within the Angular zone and returns value returned by
-	         * the function.
-	         *
-	         * Running functions via `run` allows you to reenter Angular zone from a task that was executed
-	         * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
-	         *
-	         * Any future tasks or microtasks scheduled from within this function will continue executing from
-	         * within the Angular zone.
-	         *
-	         * If a synchronous error happens it will be rethrown and not reported via `onError`.
-	         */
-	        NgZone.prototype.run = function (fn) { return this._zoneImpl.runInner(fn); };
-	        /**
-	         * Same as #run, except that synchronous errors are caught and forwarded
-	         * via `onError` and not rethrown.
-	         */
-	        NgZone.prototype.runGuarded = function (fn) { return this._zoneImpl.runInnerGuarded(fn); };
-	        /**
-	         * Executes the `fn` function synchronously in Angular's parent zone and returns value returned by
-	         * the function.
-	         *
-	         * Running functions via `runOutsideAngular` allows you to escape Angular's zone and do work that
-	         * doesn't trigger Angular change-detection or is subject to Angular's error handling.
-	         *
-	         * Any future tasks or microtasks scheduled from within this function will continue executing from
-	         * outside of the Angular zone.
-	         *
-	         * Use {@link #run} to reenter the Angular zone and do work that updates the application model.
-	         */
-	        NgZone.prototype.runOutsideAngular = function (fn) { return this._zoneImpl.runOuter(fn); };
+	        NgZone.prototype.checkStable = function () {
+	            var _this = this;
+	            if (this._nesting == 0 && !this._hasPendingMicrotasks && !this._isStable) {
+	                try {
+	                    this._nesting++;
+	                    this._onMicrotaskEmpty.emit(null);
+	                }
+	                finally {
+	                    this._nesting--;
+	                    if (!this._hasPendingMicrotasks) {
+	                        try {
+	                            this.runOutsideAngular(function () { return _this._onStable.emit(null); });
+	                        }
+	                        finally {
+	                            this._isStable = true;
+	                        }
+	                    }
+	                }
+	            }
+	        };
+	        NgZone.prototype.forkInnerZoneWithAngularBehavior = function () {
+	            var _this = this;
+	            this.inner = this.inner.fork({
+	                name: 'angular',
+	                properties: { 'isAngularZone': true },
+	                onInvokeTask: function (delegate, current, target, task, applyThis, applyArgs) {
+	                    try {
+	                        _this.onEnter();
+	                        return delegate.invokeTask(target, task, applyThis, applyArgs);
+	                    }
+	                    finally {
+	                        _this.onLeave();
+	                    }
+	                },
+	                onInvoke: function (delegate, current, target, callback, applyThis, applyArgs, source) {
+	                    try {
+	                        _this.onEnter();
+	                        return delegate.invoke(target, callback, applyThis, applyArgs, source);
+	                    }
+	                    finally {
+	                        _this.onLeave();
+	                    }
+	                },
+	                onHasTask: function (delegate, current, target, hasTaskState) {
+	                    delegate.hasTask(target, hasTaskState);
+	                    if (current === target) {
+	                        // We are only interested in hasTask events which originate from our zone
+	                        // (A child hasTask event is not interesting to us)
+	                        if (hasTaskState.change == 'microTask') {
+	                            _this.setHasMicrotask(hasTaskState.microTask);
+	                        }
+	                        else if (hasTaskState.change == 'macroTask') {
+	                            _this.setHasMacrotask(hasTaskState.macroTask);
+	                        }
+	                    }
+	                },
+	                onHandleError: function (delegate, current, target, error) {
+	                    delegate.handleError(target, error);
+	                    _this.triggerError(error);
+	                    return false;
+	                }
+	            });
+	        };
+	        NgZone.prototype.onEnter = function () {
+	            this._nesting++;
+	            if (this._isStable) {
+	                this._isStable = false;
+	                this._onUnstable.emit(null);
+	            }
+	        };
+	        NgZone.prototype.onLeave = function () {
+	            this._nesting--;
+	            this.checkStable();
+	        };
+	        NgZone.prototype.setHasMicrotask = function (hasMicrotasks) {
+	            this._hasPendingMicrotasks = hasMicrotasks;
+	            this.checkStable();
+	        };
+	        NgZone.prototype.setHasMacrotask = function (hasMacrotasks) { this._hasPendingMacrotasks = hasMacrotasks; };
+	        NgZone.prototype.triggerError = function (error) { this._onErrorEvents.emit(error); };
 	        return NgZone;
 	    }());
 
@@ -8845,22 +8623,6 @@
 	    }());
 
 	    /**
-	     * @license
-	     * Copyright Google Inc. All Rights Reserved.
-	     *
-	     * Use of this source code is governed by an MIT-style license that can be
-	     * found in the LICENSE file at https://angular.io/license
-	     */
-	    var AnimationOutput = (function () {
-	        function AnimationOutput(name, phase, fullPropertyName) {
-	            this.name = name;
-	            this.phase = phase;
-	            this.fullPropertyName = fullPropertyName;
-	        }
-	        return AnimationOutput;
-	    }());
-
-	    /**
 	     * @experimental Animation support is experimental.
 	     */
 	    var AnimationPlayer = (function () {
@@ -9574,6 +9336,22 @@
 	     * ])
 	     * ```
 	     *
+	     * ### Transition Aliases (`:enter` and `:leave`)
+	     *
+	     * Given that enter (insertion) and leave (removal) animations are so common,
+	     * the `transition` function accepts both `:enter` and `:leave` values which
+	     * are aliases for the `void => *` and `* => void` state changes.
+	     *
+	     * ```
+	     * transition(":enter", [
+	     *   style({ opacity: 0 }),
+	     *   animate(500, style({ opacity: 1 }))
+	     * ])
+	     * transition(":leave", [
+	     *   animate(500, style({ opacity: 0 }))
+	     * ])
+	     * ```
+	     *
 	     * ### Example ([live demo](http://plnkr.co/edit/Kez8XGWBxWue7qP7nNvF?p=preview))
 	     *
 	     * {@example core/animation/ts/dsl/animation_example.ts region='Component'}
@@ -9648,10 +9426,11 @@
 	    function prepareFinalAnimationStyles(previousStyles, newStyles, nullValue) {
 	        if (nullValue === void 0) { nullValue = null; }
 	        var finalStyles = {};
-	        StringMapWrapper.forEach(newStyles, function (value, prop) {
+	        Object.keys(newStyles).forEach(function (prop) {
+	            var value = newStyles[prop];
 	            finalStyles[prop] = value == AUTO_STYLE ? nullValue : value.toString();
 	        });
-	        StringMapWrapper.forEach(previousStyles, function (value, prop) {
+	        Object.keys(previousStyles).forEach(function (prop) {
 	            if (!isPresent(finalStyles[prop])) {
 	                finalStyles[prop] = nullValue;
 	            }
@@ -9665,7 +9444,8 @@
 	        var flatenedFirstKeyframeStyles = flattenStyles(firstKeyframe.styles.styles);
 	        var extraFirstKeyframeStyles = {};
 	        var hasExtraFirstStyles = false;
-	        StringMapWrapper.forEach(collectedStyles, function (value, prop) {
+	        Object.keys(collectedStyles).forEach(function (prop) {
+	            var value = collectedStyles[prop];
 	            // if the style is already defined in the first keyframe then
 	            // we do not replace it.
 	            if (!flatenedFirstKeyframeStyles[prop]) {
@@ -9681,7 +9461,7 @@
 	        var flatenedFinalKeyframeStyles = flattenStyles(finalKeyframe.styles.styles);
 	        var extraFinalKeyframeStyles = {};
 	        var hasExtraFinalStyles = false;
-	        StringMapWrapper.forEach(keyframeCollectedStyles, function (value, prop) {
+	        Object.keys(keyframeCollectedStyles).forEach(function (prop) {
 	            if (!isPresent(flatenedFinalKeyframeStyles[prop])) {
 	                extraFinalKeyframeStyles[prop] = AUTO_STYLE;
 	                hasExtraFinalStyles = true;
@@ -9690,7 +9470,7 @@
 	        if (hasExtraFinalStyles) {
 	            finalKeyframe.styles.styles.push(extraFinalKeyframeStyles);
 	        }
-	        StringMapWrapper.forEach(flatenedFinalKeyframeStyles, function (value, prop) {
+	        Object.keys(flatenedFinalKeyframeStyles).forEach(function (prop) {
 	            if (!isPresent(flatenedFirstKeyframeStyles[prop])) {
 	                extraFirstKeyframeStyles[prop] = AUTO_STYLE;
 	                hasExtraFirstStyles = true;
@@ -9703,13 +9483,14 @@
 	    }
 	    function clearStyles(styles) {
 	        var finalStyles = {};
-	        StringMapWrapper.keys(styles).forEach(function (key) { finalStyles[key] = null; });
+	        Object.keys(styles).forEach(function (key) { finalStyles[key] = null; });
 	        return finalStyles;
 	    }
 	    function collectAndResolveStyles(collection, styles) {
 	        return styles.map(function (entry) {
 	            var stylesObj = {};
-	            StringMapWrapper.forEach(entry, function (value, prop) {
+	            Object.keys(entry).forEach(function (prop) {
+	                var value = entry[prop];
 	                if (value == FILL_STYLE_FLAG) {
 	                    value = collection[prop];
 	                    if (!isPresent(value)) {
@@ -9723,12 +9504,12 @@
 	        });
 	    }
 	    function renderStyles(element, renderer, styles) {
-	        StringMapWrapper.forEach(styles, function (value, prop) { renderer.setElementStyle(element, prop, value); });
+	        Object.keys(styles).forEach(function (prop) { renderer.setElementStyle(element, prop, styles[prop]); });
 	    }
 	    function flattenStyles(styles) {
 	        var finalStyles = {};
 	        styles.forEach(function (entry) {
-	            StringMapWrapper.forEach(entry, function (value, prop) { finalStyles[prop] = value; });
+	            Object.keys(entry).forEach(function (prop) { finalStyles[prop] = entry[prop]; });
 	        });
 	        return finalStyles;
 	    }
@@ -9961,7 +9742,8 @@
 	                var staticNodeInfo = this._staticNodeInfo;
 	                if (isPresent(staticNodeInfo)) {
 	                    var refs = staticNodeInfo.refTokens;
-	                    StringMapWrapper.forEach(refs, function (refToken, refName) {
+	                    Object.keys(refs).forEach(function (refName) {
+	                        var refToken = refs[refName];
 	                        var varValue;
 	                        if (isBlank(refToken)) {
 	                            varValue = _this._view.allNodes ? _this._view.allNodes[_this._nodeIndex] : null;
@@ -10046,7 +9828,7 @@
 	        };
 	        ViewAnimationMap.prototype.findAllPlayersByElement = function (element) {
 	            var el = this._map.get(element);
-	            return el ? StringMapWrapper.values(el) : [];
+	            return el ? Object.keys(el).map(function (k) { return el[k]; }) : [];
 	        };
 	        ViewAnimationMap.prototype.set = function (element, animationName, player) {
 	            var playersByAnimation = this._map.get(element);
@@ -10069,7 +9851,7 @@
 	                delete playersByAnimation[animationName];
 	                var index = this._allPlayers.indexOf(player);
 	                this._allPlayers.splice(index, 1);
-	                if (StringMapWrapper.isEmpty(playersByAnimation)) {
+	                if (Object.keys(playersByAnimation).length === 0) {
 	                    this._map.delete(element);
 	                }
 	            }
@@ -10187,20 +9969,19 @@
 	                    var listener = listeners[i];
 	                    // we check for both the name in addition to the phase in the event
 	                    // that there may be more than one @trigger on the same element
-	                    if (listener.output.name == animationName && listener.output.phase == phase) {
+	                    if (listener.eventName === animationName && listener.eventPhase === phase) {
 	                        listener.handler(event);
 	                        break;
 	                    }
 	                }
 	            }
 	        };
-	        AppView.prototype.registerAnimationOutput = function (element, outputEvent, eventHandler) {
-	            var entry = new _AnimationOutputWithHandler(outputEvent, eventHandler);
+	        AppView.prototype.registerAnimationOutput = function (element, eventName, eventPhase, eventHandler) {
 	            var animations = this._animationListeners.get(element);
 	            if (!isPresent(animations)) {
 	                this._animationListeners.set(element, animations = []);
 	            }
-	            animations.push(entry);
+	            animations.push(new _AnimationOutputHandler(eventName, eventPhase, eventHandler));
 	        };
 	        AppView.prototype.create = function (context, givenProjectableNodes, rootSelectorOrNode) {
 	            this.context = context;
@@ -10529,18 +10310,18 @@
 	        }
 	        return lastNode;
 	    }
-	    var _AnimationOutputWithHandler = (function () {
-	        function _AnimationOutputWithHandler(output, handler) {
-	            this.output = output;
+	    var _AnimationOutputHandler = (function () {
+	        function _AnimationOutputHandler(eventName, eventPhase, handler) {
+	            this.eventName = eventName;
+	            this.eventPhase = eventPhase;
 	            this.handler = handler;
 	        }
-	        return _AnimationOutputWithHandler;
+	        return _AnimationOutputHandler;
 	    }());
 
 	    var __core_private__ = {
 	        isDefaultChangeDetectionStrategy: isDefaultChangeDetectionStrategy,
 	        ChangeDetectorStatus: ChangeDetectorStatus,
-	        CHANGE_DETECTION_STRATEGY_VALUES: CHANGE_DETECTION_STRATEGY_VALUES,
 	        constructDependencies: constructDependencies,
 	        LifecycleHooks: LifecycleHooks,
 	        LIFECYCLE_HOOKS_VALUES: LIFECYCLE_HOOKS_VALUES,
@@ -10557,7 +10338,6 @@
 	        flattenNestedViewRenderNodes: flattenNestedViewRenderNodes,
 	        interpolate: interpolate,
 	        ViewUtils: ViewUtils,
-	        VIEW_ENCAPSULATION_VALUES: VIEW_ENCAPSULATION_VALUES,
 	        ViewMetadata: ViewMetadata,
 	        DebugContext: DebugContext,
 	        StaticNodeDebugInfo: StaticNodeDebugInfo,
@@ -10597,7 +10377,6 @@
 	        renderStyles: renderStyles,
 	        collectAndResolveStyles: collectAndResolveStyles,
 	        AnimationStyles: AnimationStyles,
-	        AnimationOutput: AnimationOutput,
 	        ANY_STATE: ANY_STATE,
 	        DEFAULT_STATE: DEFAULT_STATE,
 	        EMPTY_STATE: EMPTY_STATE,
@@ -11732,7 +11511,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
-	 * @license Angular v2.0.1
+	 * @license Angular v2.1.0
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -11867,12 +11646,8 @@
 	    // exports the original value of the symbol.
 	    var _global = globalScope;
 	    function getTypeNameForDebugging(type) {
-	        if (type['name']) {
-	            return type['name'];
-	        }
-	        return typeof type;
+	        return type['name'] || typeof type;
 	    }
-	    var Date$1 = _global.Date;
 	    // TODO: remove calls to assert in production environment
 	    // Note: Can't just export this and import in in other files
 	    // as `assert` is a reserved keyword in Dart
@@ -11892,7 +11667,7 @@
 	        return Array.isArray(obj);
 	    }
 	    function isDate(obj) {
-	        return obj instanceof Date$1 && !isNaN(obj.valueOf());
+	        return obj instanceof Date && !isNaN(obj.valueOf());
 	    }
 	    function stringify(token) {
 	        if (typeof token === 'string') {
@@ -11909,7 +11684,7 @@
 	        }
 	        var res = token.toString();
 	        var newLineIndex = res.indexOf('\n');
-	        return (newLineIndex === -1) ? res : res.substring(0, newLineIndex);
+	        return newLineIndex === -1 ? res : res.substring(0, newLineIndex);
 	    }
 	    var NumberWrapper = (function () {
 	        function NumberWrapper() {
@@ -13789,7 +13564,7 @@
 	        };
 	        NgStyle.prototype._setStyle = function (nameAndUnit, value) {
 	            var _a = nameAndUnit.split('.'), name = _a[0], unit = _a[1];
-	            value = value !== null && value !== void (0) && unit ? "" + value + unit : value;
+	            value = value && unit ? "" + value + unit : value;
 	            this._renderer.setElementStyle(this._ngEl.nativeElement, name, value);
 	        };
 	        NgStyle.decorators = [
@@ -14866,15 +14641,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * @license Angular v3.0.1
+	 * @license Angular v3.1.0
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
 	(function (global, factory) {
-	     true ? factory(exports, __webpack_require__(116), __webpack_require__(98), __webpack_require__(99), __webpack_require__(118), __webpack_require__(131), __webpack_require__(132), __webpack_require__(133), __webpack_require__(134), __webpack_require__(138), __webpack_require__(139), __webpack_require__(100), __webpack_require__(140), __webpack_require__(141), __webpack_require__(142), __webpack_require__(143), __webpack_require__(144), __webpack_require__(145), __webpack_require__(146)) :
-	    typeof define === 'function' && define.amd ? define(['exports', '@angular/common', '@angular/core', 'rxjs/Subject', 'rxjs/observable/from', 'rxjs/observable/of', 'rxjs/operator/every', 'rxjs/operator/map', 'rxjs/operator/mergeAll', 'rxjs/operator/mergeMap', 'rxjs/operator/reduce', 'rxjs/Observable', 'rxjs/operator/catch', 'rxjs/operator/concatAll', 'rxjs/operator/first', 'rxjs/util/EmptyError', 'rxjs/observable/fromPromise', 'rxjs/operator/last', 'rxjs/BehaviorSubject'], factory) :
-	    (factory((global.ng = global.ng || {}, global.ng.router = global.ng.router || {}),global.ng.common,global.ng.core,global.Rx,global.Rx.Observable,global.Rx.Observable,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx,global.Rx.Observable,global.Rx.Observable.prototype,global.Rx));
-	}(this, function (exports,_angular_common,_angular_core,rxjs_Subject,rxjs_observable_from,rxjs_observable_of,rxjs_operator_every,rxjs_operator_map,rxjs_operator_mergeAll,rxjs_operator_mergeMap,rxjs_operator_reduce,rxjs_Observable,rxjs_operator_catch,rxjs_operator_concatAll,rxjs_operator_first,rxjs_util_EmptyError,rxjs_observable_fromPromise,l,rxjs_BehaviorSubject) { 'use strict';
+	     true ? factory(exports, __webpack_require__(116), __webpack_require__(98), __webpack_require__(99), __webpack_require__(118), __webpack_require__(131), __webpack_require__(132), __webpack_require__(137), __webpack_require__(138), __webpack_require__(139), __webpack_require__(133), __webpack_require__(140), __webpack_require__(100), __webpack_require__(141), __webpack_require__(142), __webpack_require__(143), __webpack_require__(144), __webpack_require__(145), __webpack_require__(146), __webpack_require__(147), __webpack_require__(148)) :
+	    typeof define === 'function' && define.amd ? define(['exports', '@angular/common', '@angular/core', 'rxjs/Subject', 'rxjs/observable/from', 'rxjs/observable/of', 'rxjs/operator/concatMap', 'rxjs/operator/every', 'rxjs/operator/map', 'rxjs/operator/mergeAll', 'rxjs/operator/mergeMap', 'rxjs/operator/reduce', 'rxjs/Observable', 'rxjs/operator/catch', 'rxjs/operator/concatAll', 'rxjs/operator/first', 'rxjs/util/EmptyError', 'rxjs/observable/fromPromise', 'rxjs/operator/last', 'rxjs/BehaviorSubject', 'rxjs/operator/filter'], factory) :
+	    (factory((global.ng = global.ng || {}, global.ng.router = global.ng.router || {}),global.ng.common,global.ng.core,global.Rx,global.Rx.Observable,global.Rx.Observable,global.rxjs_operator_concatMap,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx,global.Rx.Observable,global.Rx.Observable.prototype,global.Rx,global.rxjs_operator_filter));
+	}(this, function (exports,_angular_common,_angular_core,rxjs_Subject,rxjs_observable_from,rxjs_observable_of,rxjs_operator_concatMap,rxjs_operator_every,rxjs_operator_map,rxjs_operator_mergeAll,rxjs_operator_mergeMap,rxjs_operator_reduce,rxjs_Observable,rxjs_operator_catch,rxjs_operator_concatAll,rxjs_operator_first,rxjs_util_EmptyError,rxjs_observable_fromPromise,l,rxjs_BehaviorSubject,rxjs_operator_filter) { 'use strict';
 
 	    /**
 	     * @license
@@ -15633,7 +15408,7 @@
 	            });
 	        };
 	        ApplyRedirects.prototype.noMatchError = function (e) {
-	            return new Error("Cannot match any routes: '" + e.segmentGroup + "'");
+	            return new Error("Cannot match any routes. URL Segment: '" + e.segmentGroup + "'");
 	        };
 	        ApplyRedirects.prototype.createUrlTree = function (rootCandidate) {
 	            var root = rootCandidate.segments.length > 0 ?
@@ -15721,7 +15496,15 @@
 	        ApplyRedirects.prototype.matchSegmentAgainstRoute = function (injector, rawSegmentGroup, route, segments) {
 	            var _this = this;
 	            if (route.path === '**') {
-	                return rxjs_observable_of.of(new UrlSegmentGroup(segments, {}));
+	                if (route.loadChildren) {
+	                    return rxjs_operator_map.map.call(this.configLoader.load(injector, route.loadChildren), function (r) {
+	                        route._loadedConfig = r;
+	                        return rxjs_observable_of.of(new UrlSegmentGroup(segments, {}));
+	                    });
+	                }
+	                else {
+	                    return rxjs_observable_of.of(new UrlSegmentGroup(segments, {}));
+	                }
 	            }
 	            else {
 	                var _a = match(rawSegmentGroup, route, segments), matched = _a.matched, consumedSegments_1 = _a.consumedSegments, lastChild = _a.lastChild;
@@ -17249,6 +17032,16 @@
 	            this.currentRouterState = createEmptyState(this.currentUrlTree, this.rootComponentType);
 	        }
 	        /**
+	         * @internal
+	         * TODO: this should be removed once the constructor of the router made internal
+	         */
+	        Router.prototype.resetRootComponentType = function (rootComponentType) {
+	            this.rootComponentType = rootComponentType;
+	            // TODO: vsavkin router 4.0 should make the root component set to null
+	            // this will simplify the lifecycle of the router.
+	            this.currentRouterState.root.component = this.rootComponentType;
+	        };
+	        /**
 	         * Sets up the location change listener and performs the initial navigation.
 	         */
 	        Router.prototype.initialNavigation = function () {
@@ -17602,7 +17395,7 @@
 	            if (this.checks.length === 0)
 	                return rxjs_observable_of.of(null);
 	            var checks$ = rxjs_observable_from.from(this.checks);
-	            var runningChecks$ = rxjs_operator_mergeMap.mergeMap.call(checks$, function (s) {
+	            var runningChecks$ = rxjs_operator_concatMap.concatMap.call(checks$, function (s) {
 	                if (s instanceof CanActivate) {
 	                    return _this.runResolve(s.route);
 	                }
@@ -18205,15 +17998,18 @@
 	            var _this = this;
 	            if (!this.links || !this.linksWithHrefs || !this.router.navigated)
 	                return;
-	            var isActiveLinks = this.reduceList(this.links);
-	            var isActiveLinksWithHrefs = this.reduceList(this.linksWithHrefs);
-	            this.classes.forEach(function (c) { return _this.renderer.setElementClass(_this.element.nativeElement, c, isActiveLinks || isActiveLinksWithHrefs); });
+	            var isActive = this.hasActiveLink();
+	            this.classes.forEach(function (c) { return _this.renderer.setElementClass(_this.element.nativeElement, c, isActive); });
 	        };
-	        RouterLinkActive.prototype.reduceList = function (q) {
+	        RouterLinkActive.prototype.isLinkActive = function (router) {
 	            var _this = this;
-	            return q.reduce(function (res, link) {
-	                return res || _this.router.isActive(link.urlTree, _this.routerLinkActiveOptions.exact);
-	            }, false);
+	            return function (link) {
+	                return router.isActive(link.urlTree, _this.routerLinkActiveOptions.exact);
+	            };
+	        };
+	        RouterLinkActive.prototype.hasActiveLink = function () {
+	            return this.links.some(this.isLinkActive(this.router)) ||
+	                this.linksWithHrefs.some(this.isLinkActive(this.router));
 	        };
 	        RouterLinkActive.decorators = [
 	            { type: _angular_core.Directive, args: [{ selector: '[routerLinkActive]' },] },
@@ -18336,6 +18132,118 @@
 	    }());
 
 	    /**
+	     * @whatItDoes Provides a preloading strategy.
+	     *
+	     * @experimental
+	     */
+	    var PreloadingStrategy = (function () {
+	        function PreloadingStrategy() {
+	        }
+	        return PreloadingStrategy;
+	    }());
+	    /**
+	     * @whatItDoes Provides a preloading strategy that preloads all modules as quicky as possible.
+	     *
+	     * @howToUse
+	     *
+	     * ```
+	     * RouteModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
+	     * ```
+	     *
+	     * @experimental
+	     */
+	    var PreloadAllModules = (function () {
+	        function PreloadAllModules() {
+	        }
+	        PreloadAllModules.prototype.preload = function (route, fn) {
+	            return rxjs_operator_catch._catch.call(fn(), function () { return rxjs_observable_of.of(null); });
+	        };
+	        return PreloadAllModules;
+	    }());
+	    /**
+	     * @whatItDoes Provides a preloading strategy that does not preload any modules.
+	     *
+	     * @description
+	     *
+	     * This strategy is enabled by default.
+	     *
+	     * @experimental
+	     */
+	    var NoPreloading = (function () {
+	        function NoPreloading() {
+	        }
+	        NoPreloading.prototype.preload = function (route, fn) { return rxjs_observable_of.of(null); };
+	        return NoPreloading;
+	    }());
+	    /**
+	     * The preloader optimistically loads all router configurations to
+	     * make navigations into lazily-loaded sections of the application faster.
+	     *
+	     * The preloader runs in the background. When the router bootstraps, the preloader
+	     * starts listening to all navigation events. After every such event, the preloader
+	     * will check if any configurations can be loaded lazily.
+	     *
+	     * If a route is protected by `canLoad` guards, the preloaded will not load it.
+	     */
+	    var RouterPreloader = (function () {
+	        function RouterPreloader(router, moduleLoader, compiler, injector, preloadingStrategy) {
+	            this.router = router;
+	            this.injector = injector;
+	            this.preloadingStrategy = preloadingStrategy;
+	            this.loader = new RouterConfigLoader(moduleLoader, compiler);
+	        }
+	        ;
+	        RouterPreloader.prototype.setUpPreloading = function () {
+	            var _this = this;
+	            var navigations = rxjs_operator_filter.filter.call(this.router.events, function (e) { return e instanceof NavigationEnd; });
+	            this.subscription = rxjs_operator_concatMap.concatMap.call(navigations, function () { return _this.preload(); }).subscribe(function (v) { });
+	        };
+	        RouterPreloader.prototype.preload = function () { return this.processRoutes(this.injector, this.router.config); };
+	        RouterPreloader.prototype.ngOnDestroy = function () { this.subscription.unsubscribe(); };
+	        RouterPreloader.prototype.processRoutes = function (injector, routes) {
+	            var res = [];
+	            for (var _i = 0, routes_1 = routes; _i < routes_1.length; _i++) {
+	                var c = routes_1[_i];
+	                // we already have the config loaded, just recurce
+	                if (c.loadChildren && !c.canLoad && c._loadedConfig) {
+	                    var childConfig = c._loadedConfig;
+	                    res.push(this.processRoutes(childConfig.injector, childConfig.routes));
+	                }
+	                else if (c.loadChildren && !c.canLoad) {
+	                    res.push(this.preloadConfig(injector, c));
+	                }
+	                else if (c.children) {
+	                    res.push(this.processRoutes(injector, c.children));
+	                }
+	            }
+	            return rxjs_operator_mergeAll.mergeAll.call(rxjs_observable_from.from(res));
+	        };
+	        RouterPreloader.prototype.preloadConfig = function (injector, route) {
+	            var _this = this;
+	            return this.preloadingStrategy.preload(route, function () {
+	                var loaded = _this.loader.load(injector, route.loadChildren);
+	                return rxjs_operator_mergeMap.mergeMap.call(loaded, function (config) {
+	                    var c = route;
+	                    c._loadedConfig = config;
+	                    return _this.processRoutes(config.injector, config.routes);
+	                });
+	            });
+	        };
+	        RouterPreloader.decorators = [
+	            { type: _angular_core.Injectable },
+	        ];
+	        /** @nocollapse */
+	        RouterPreloader.ctorParameters = [
+	            { type: Router, },
+	            { type: _angular_core.NgModuleFactoryLoader, },
+	            { type: _angular_core.Compiler, },
+	            { type: _angular_core.Injector, },
+	            { type: PreloadingStrategy, },
+	        ];
+	        return RouterPreloader;
+	    }());
+
+	    /**
 	     * @whatItDoes Contains a list of directives
 	     * @stable
 	     */
@@ -18359,8 +18267,8 @@
 	            ]
 	        },
 	        RouterOutletMap, { provide: ActivatedRoute, useFactory: rootRoute, deps: [Router] },
-	        { provide: _angular_core.NgModuleFactoryLoader, useClass: _angular_core.SystemJsNgModuleLoader },
-	        { provide: ROUTER_CONFIGURATION, useValue: { enableTracing: false } }
+	        { provide: _angular_core.NgModuleFactoryLoader, useClass: _angular_core.SystemJsNgModuleLoader }, RouterPreloader, NoPreloading,
+	        PreloadAllModules, { provide: ROUTER_CONFIGURATION, useValue: { enableTracing: false } }
 	    ];
 	    /**
 	     * @whatItDoes Adds router directives and providers.
@@ -18444,6 +18352,11 @@
 	                            _angular_common.PlatformLocation, [new _angular_core.Inject(_angular_common.APP_BASE_HREF), new _angular_core.Optional()], ROUTER_CONFIGURATION
 	                        ]
 	                    },
+	                    {
+	                        provide: PreloadingStrategy,
+	                        useExisting: config && config.preloadingStrategy ? config.preloadingStrategy :
+	                            NoPreloading
+	                    },
 	                    provideRouterInitializer()
 	                ]
 	            };
@@ -18497,11 +18410,7 @@
 	    }
 	    function setupRouter(ref, urlSerializer, outletMap, location, injector, loader, compiler, config, opts) {
 	        if (opts === void 0) { opts = {}; }
-	        if (ref.componentTypes.length == 0) {
-	            throw new Error('Bootstrap at least one component before injecting Router.');
-	        }
-	        var componentType = ref.componentTypes[0];
-	        var r = new Router(componentType, urlSerializer, outletMap, location, injector, loader, compiler, flatten(config));
+	        var r = new Router(null, urlSerializer, outletMap, location, injector, loader, compiler, flatten(config));
 	        if (opts.errorHandler) {
 	            r.errorHandler = opts.errorHandler;
 	        }
@@ -18518,8 +18427,10 @@
 	    function rootRoute(router) {
 	        return router.routerState.root;
 	    }
-	    function initialRouterNavigation(router, opts) {
+	    function initialRouterNavigation(router, ref, preloader, opts) {
 	        return function () {
+	            router.resetRootComponentType(ref.componentTypes[0]);
+	            preloader.setUpPreloading();
 	            if (opts.initialNavigation === false) {
 	                router.setUpLocationChangeListener();
 	            }
@@ -18533,7 +18444,7 @@
 	            provide: _angular_core.APP_BOOTSTRAP_LISTENER,
 	            multi: true,
 	            useFactory: initialRouterNavigation,
-	            deps: [Router, ROUTER_CONFIGURATION]
+	            deps: [Router, _angular_core.ApplicationRef, RouterPreloader, ROUTER_CONFIGURATION]
 	        };
 	    }
 
@@ -18556,6 +18467,9 @@
 	    exports.RouterModule = RouterModule;
 	    exports.provideRoutes = provideRoutes;
 	    exports.RouterOutletMap = RouterOutletMap;
+	    exports.NoPreloading = NoPreloading;
+	    exports.PreloadAllModules = PreloadAllModules;
+	    exports.PreloadingStrategy = PreloadingStrategy;
 	    exports.ActivatedRoute = ActivatedRoute;
 	    exports.ActivatedRouteSnapshot = ActivatedRouteSnapshot;
 	    exports.RouterState = RouterState;
@@ -19618,73 +19532,68 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var Subscriber_1 = __webpack_require__(103);
+	var mergeMap_1 = __webpack_require__(133);
 	/**
-	 * Returns an Observable that emits whether or not every item of the source satisfies the condition specified.
-	 * @param {function} predicate a function for determining if an item meets a specified condition.
-	 * @param {any} [thisArg] optional object to use for `this` in the callback
-	 * @return {Observable} an Observable of booleans that determines if all items of the source Observable meet the condition specified.
-	 * @method every
+	 * Projects each source value to an Observable which is merged in the output
+	 * Observable, in a serialized fashion waiting for each one to complete before
+	 * merging the next.
+	 *
+	 * <span class="informal">Maps each value to an Observable, then flattens all of
+	 * these inner Observables using {@link concatAll}.</span>
+	 *
+	 * <img src="./img/concatMap.png" width="100%">
+	 *
+	 * Returns an Observable that emits items based on applying a function that you
+	 * supply to each item emitted by the source Observable, where that function
+	 * returns an (so-called "inner") Observable. Each new inner Observable is
+	 * concatenated with the previous inner Observable.
+	 *
+	 * __Warning:__ if source values arrive endlessly and faster than their
+	 * corresponding inner Observables can complete, it will result in memory issues
+	 * as inner Observables amass in an unbounded buffer waiting for their turn to
+	 * be subscribed to.
+	 *
+	 * Note: `concatMap` is equivalent to `mergeMap` with concurrency parameter set
+	 * to `1`.
+	 *
+	 * @example <caption>For each click event, tick every second from 0 to 3, with no concurrency</caption>
+	 * var clicks = Rx.Observable.fromEvent(document, 'click');
+	 * var result = clicks.concatMap(ev => Rx.Observable.interval(1000).take(4));
+	 * result.subscribe(x => console.log(x));
+	 *
+	 * @see {@link concat}
+	 * @see {@link concatAll}
+	 * @see {@link concatMapTo}
+	 * @see {@link exhaustMap}
+	 * @see {@link mergeMap}
+	 * @see {@link switchMap}
+	 *
+	 * @param {function(value: T, ?index: number): Observable} project A function
+	 * that, when applied to an item emitted by the source Observable, returns an
+	 * Observable.
+	 * @param {function(outerValue: T, innerValue: I, outerIndex: number, innerIndex: number): any} [resultSelector]
+	 * A function to produce the value on the output Observable based on the values
+	 * and the indices of the source (outer) emission and the inner Observable
+	 * emission. The arguments passed to this function are:
+	 * - `outerValue`: the value that came from the source
+	 * - `innerValue`: the value that came from the projected Observable
+	 * - `outerIndex`: the "index" of the value that came from the source
+	 * - `innerIndex`: the "index" of the value from the projected Observable
+	 * @return {Observable} an observable of values merged from the projected
+	 * Observables as they were subscribed to, one at a time. Optionally, these
+	 * values may have been projected from a passed `projectResult` argument.
+	 * @return {Observable} An Observable that emits the result of applying the
+	 * projection function (and the optional `resultSelector`) to each item emitted
+	 * by the source Observable and taking values from each projected inner
+	 * Observable sequentially.
+	 * @method concatMap
 	 * @owner Observable
 	 */
-	function every(predicate, thisArg) {
-	    return this.lift(new EveryOperator(predicate, thisArg, this));
+	function concatMap(project, resultSelector) {
+	    return this.lift(new mergeMap_1.MergeMapOperator(project, resultSelector, 1));
 	}
-	exports.every = every;
-	var EveryOperator = (function () {
-	    function EveryOperator(predicate, thisArg, source) {
-	        this.predicate = predicate;
-	        this.thisArg = thisArg;
-	        this.source = source;
-	    }
-	    EveryOperator.prototype.call = function (observer, source) {
-	        return source._subscribe(new EverySubscriber(observer, this.predicate, this.thisArg, this.source));
-	    };
-	    return EveryOperator;
-	}());
-	/**
-	 * We need this JSDoc comment for affecting ESDoc.
-	 * @ignore
-	 * @extends {Ignored}
-	 */
-	var EverySubscriber = (function (_super) {
-	    __extends(EverySubscriber, _super);
-	    function EverySubscriber(destination, predicate, thisArg, source) {
-	        _super.call(this, destination);
-	        this.predicate = predicate;
-	        this.thisArg = thisArg;
-	        this.source = source;
-	        this.index = 0;
-	        this.thisArg = thisArg || this;
-	    }
-	    EverySubscriber.prototype.notifyComplete = function (everyValueMatch) {
-	        this.destination.next(everyValueMatch);
-	        this.destination.complete();
-	    };
-	    EverySubscriber.prototype._next = function (value) {
-	        var result = false;
-	        try {
-	            result = this.predicate.call(this.thisArg, value, this.index++, this.source);
-	        }
-	        catch (err) {
-	            this.destination.error(err);
-	            return;
-	        }
-	        if (!result) {
-	            this.notifyComplete(false);
-	        }
-	    };
-	    EverySubscriber.prototype._complete = function () {
-	        this.notifyComplete(true);
-	    };
-	    return EverySubscriber;
-	}(Subscriber_1.Subscriber));
-	//# sourceMappingURL=every.js.map
+	exports.concatMap = concatMap;
+	//# sourceMappingURL=concatMap.js.map
 
 /***/ },
 /* 133 */
@@ -19696,371 +19605,8 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Subscriber_1 = __webpack_require__(103);
-	/**
-	 * Applies a given `project` function to each value emitted by the source
-	 * Observable, and emits the resulting values as an Observable.
-	 *
-	 * <span class="informal">Like [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map),
-	 * it passes each source value through a transformation function to get
-	 * corresponding output values.</span>
-	 *
-	 * <img src="./img/map.png" width="100%">
-	 *
-	 * Similar to the well known `Array.prototype.map` function, this operator
-	 * applies a projection to each value and emits that projection in the output
-	 * Observable.
-	 *
-	 * @example <caption>Map every every click to the clientX position of that click</caption>
-	 * var clicks = Rx.Observable.fromEvent(document, 'click');
-	 * var positions = clicks.map(ev => ev.clientX);
-	 * positions.subscribe(x => console.log(x));
-	 *
-	 * @see {@link mapTo}
-	 * @see {@link pluck}
-	 *
-	 * @param {function(value: T, index: number): R} project The function to apply
-	 * to each `value` emitted by the source Observable. The `index` parameter is
-	 * the number `i` for the i-th emission that has happened since the
-	 * subscription, starting from the number `0`.
-	 * @param {any} [thisArg] An optional argument to define what `this` is in the
-	 * `project` function.
-	 * @return {Observable<R>} An Observable that emits the values from the source
-	 * Observable transformed by the given `project` function.
-	 * @method map
-	 * @owner Observable
-	 */
-	function map(project, thisArg) {
-	    if (typeof project !== 'function') {
-	        throw new TypeError('argument is not a function. Are you looking for `mapTo()`?');
-	    }
-	    return this.lift(new MapOperator(project, thisArg));
-	}
-	exports.map = map;
-	var MapOperator = (function () {
-	    function MapOperator(project, thisArg) {
-	        this.project = project;
-	        this.thisArg = thisArg;
-	    }
-	    MapOperator.prototype.call = function (subscriber, source) {
-	        return source._subscribe(new MapSubscriber(subscriber, this.project, this.thisArg));
-	    };
-	    return MapOperator;
-	}());
-	exports.MapOperator = MapOperator;
-	/**
-	 * We need this JSDoc comment for affecting ESDoc.
-	 * @ignore
-	 * @extends {Ignored}
-	 */
-	var MapSubscriber = (function (_super) {
-	    __extends(MapSubscriber, _super);
-	    function MapSubscriber(destination, project, thisArg) {
-	        _super.call(this, destination);
-	        this.project = project;
-	        this.count = 0;
-	        this.thisArg = thisArg || this;
-	    }
-	    // NOTE: This looks unoptimized, but it's actually purposefully NOT
-	    // using try/catch optimizations.
-	    MapSubscriber.prototype._next = function (value) {
-	        var result;
-	        try {
-	            result = this.project.call(this.thisArg, value, this.count++);
-	        }
-	        catch (err) {
-	            this.destination.error(err);
-	            return;
-	        }
-	        this.destination.next(result);
-	    };
-	    return MapSubscriber;
-	}(Subscriber_1.Subscriber));
-	//# sourceMappingURL=map.js.map
-
-/***/ },
-/* 134 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var OuterSubscriber_1 = __webpack_require__(135);
-	var subscribeToResult_1 = __webpack_require__(136);
-	/**
-	 * Converts a higher-order Observable into a first-order Observable which
-	 * concurrently delivers all values that are emitted on the inner Observables.
-	 *
-	 * <span class="informal">Flattens an Observable-of-Observables.</span>
-	 *
-	 * <img src="./img/mergeAll.png" width="100%">
-	 *
-	 * `mergeAll` subscribes to an Observable that emits Observables, also known as
-	 * a higher-order Observable. Each time it observes one of these emitted inner
-	 * Observables, it subscribes to that and delivers all the values from the
-	 * inner Observable on the output Observable. The output Observable only
-	 * completes once all inner Observables have completed. Any error delivered by
-	 * a inner Observable will be immediately emitted on the output Observable.
-	 *
-	 * @example <caption>Spawn a new interval Observable for each click event, and blend their outputs as one Observable</caption>
-	 * var clicks = Rx.Observable.fromEvent(document, 'click');
-	 * var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000));
-	 * var firstOrder = higherOrder.mergeAll();
-	 * firstOrder.subscribe(x => console.log(x));
-	 *
-	 * @example <caption>Count from 0 to 9 every second for each click, but only allow 2 concurrent timers</caption>
-	 * var clicks = Rx.Observable.fromEvent(document, 'click');
-	 * var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000).take(10));
-	 * var firstOrder = higherOrder.mergeAll(2);
-	 * firstOrder.subscribe(x => console.log(x));
-	 *
-	 * @see {@link combineAll}
-	 * @see {@link concatAll}
-	 * @see {@link exhaust}
-	 * @see {@link merge}
-	 * @see {@link mergeMap}
-	 * @see {@link mergeMapTo}
-	 * @see {@link mergeScan}
-	 * @see {@link switch}
-	 * @see {@link zipAll}
-	 *
-	 * @param {number} [concurrent=Number.POSITIVE_INFINITY] Maximum number of inner
-	 * Observables being subscribed to concurrently.
-	 * @return {Observable} An Observable that emits values coming from all the
-	 * inner Observables emitted by the source Observable.
-	 * @method mergeAll
-	 * @owner Observable
-	 */
-	function mergeAll(concurrent) {
-	    if (concurrent === void 0) { concurrent = Number.POSITIVE_INFINITY; }
-	    return this.lift(new MergeAllOperator(concurrent));
-	}
-	exports.mergeAll = mergeAll;
-	var MergeAllOperator = (function () {
-	    function MergeAllOperator(concurrent) {
-	        this.concurrent = concurrent;
-	    }
-	    MergeAllOperator.prototype.call = function (observer, source) {
-	        return source._subscribe(new MergeAllSubscriber(observer, this.concurrent));
-	    };
-	    return MergeAllOperator;
-	}());
-	exports.MergeAllOperator = MergeAllOperator;
-	/**
-	 * We need this JSDoc comment for affecting ESDoc.
-	 * @ignore
-	 * @extends {Ignored}
-	 */
-	var MergeAllSubscriber = (function (_super) {
-	    __extends(MergeAllSubscriber, _super);
-	    function MergeAllSubscriber(destination, concurrent) {
-	        _super.call(this, destination);
-	        this.concurrent = concurrent;
-	        this.hasCompleted = false;
-	        this.buffer = [];
-	        this.active = 0;
-	    }
-	    MergeAllSubscriber.prototype._next = function (observable) {
-	        if (this.active < this.concurrent) {
-	            this.active++;
-	            this.add(subscribeToResult_1.subscribeToResult(this, observable));
-	        }
-	        else {
-	            this.buffer.push(observable);
-	        }
-	    };
-	    MergeAllSubscriber.prototype._complete = function () {
-	        this.hasCompleted = true;
-	        if (this.active === 0 && this.buffer.length === 0) {
-	            this.destination.complete();
-	        }
-	    };
-	    MergeAllSubscriber.prototype.notifyComplete = function (innerSub) {
-	        var buffer = this.buffer;
-	        this.remove(innerSub);
-	        this.active--;
-	        if (buffer.length > 0) {
-	            this._next(buffer.shift());
-	        }
-	        else if (this.active === 0 && this.hasCompleted) {
-	            this.destination.complete();
-	        }
-	    };
-	    return MergeAllSubscriber;
-	}(OuterSubscriber_1.OuterSubscriber));
-	exports.MergeAllSubscriber = MergeAllSubscriber;
-	//# sourceMappingURL=mergeAll.js.map
-
-/***/ },
-/* 135 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var Subscriber_1 = __webpack_require__(103);
-	/**
-	 * We need this JSDoc comment for affecting ESDoc.
-	 * @ignore
-	 * @extends {Ignored}
-	 */
-	var OuterSubscriber = (function (_super) {
-	    __extends(OuterSubscriber, _super);
-	    function OuterSubscriber() {
-	        _super.apply(this, arguments);
-	    }
-	    OuterSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
-	        this.destination.next(innerValue);
-	    };
-	    OuterSubscriber.prototype.notifyError = function (error, innerSub) {
-	        this.destination.error(error);
-	    };
-	    OuterSubscriber.prototype.notifyComplete = function (innerSub) {
-	        this.destination.complete();
-	    };
-	    return OuterSubscriber;
-	}(Subscriber_1.Subscriber));
-	exports.OuterSubscriber = OuterSubscriber;
-	//# sourceMappingURL=OuterSubscriber.js.map
-
-/***/ },
-/* 136 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var root_1 = __webpack_require__(101);
-	var isArray_1 = __webpack_require__(106);
-	var isPromise_1 = __webpack_require__(120);
-	var Observable_1 = __webpack_require__(100);
-	var iterator_1 = __webpack_require__(123);
-	var InnerSubscriber_1 = __webpack_require__(137);
-	var observable_1 = __webpack_require__(113);
-	function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
-	    var destination = new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
-	    if (destination.closed) {
-	        return null;
-	    }
-	    if (result instanceof Observable_1.Observable) {
-	        if (result._isScalar) {
-	            destination.next(result.value);
-	            destination.complete();
-	            return null;
-	        }
-	        else {
-	            return result.subscribe(destination);
-	        }
-	    }
-	    if (isArray_1.isArray(result)) {
-	        for (var i = 0, len = result.length; i < len && !destination.closed; i++) {
-	            destination.next(result[i]);
-	        }
-	        if (!destination.closed) {
-	            destination.complete();
-	        }
-	    }
-	    else if (isPromise_1.isPromise(result)) {
-	        result.then(function (value) {
-	            if (!destination.closed) {
-	                destination.next(value);
-	                destination.complete();
-	            }
-	        }, function (err) { return destination.error(err); })
-	            .then(null, function (err) {
-	            // Escaping the Promise trap: globally throw unhandled errors
-	            root_1.root.setTimeout(function () { throw err; });
-	        });
-	        return destination;
-	    }
-	    else if (typeof result[iterator_1.$$iterator] === 'function') {
-	        var iterator = result[iterator_1.$$iterator]();
-	        do {
-	            var item = iterator.next();
-	            if (item.done) {
-	                destination.complete();
-	                break;
-	            }
-	            destination.next(item.value);
-	            if (destination.closed) {
-	                break;
-	            }
-	        } while (true);
-	    }
-	    else if (typeof result[observable_1.$$observable] === 'function') {
-	        var obs = result[observable_1.$$observable]();
-	        if (typeof obs.subscribe !== 'function') {
-	            destination.error(new Error('invalid observable'));
-	        }
-	        else {
-	            return obs.subscribe(new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex));
-	        }
-	    }
-	    else {
-	        destination.error(new TypeError('unknown type returned'));
-	    }
-	    return null;
-	}
-	exports.subscribeToResult = subscribeToResult;
-	//# sourceMappingURL=subscribeToResult.js.map
-
-/***/ },
-/* 137 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var Subscriber_1 = __webpack_require__(103);
-	/**
-	 * We need this JSDoc comment for affecting ESDoc.
-	 * @ignore
-	 * @extends {Ignored}
-	 */
-	var InnerSubscriber = (function (_super) {
-	    __extends(InnerSubscriber, _super);
-	    function InnerSubscriber(parent, outerValue, outerIndex) {
-	        _super.call(this);
-	        this.parent = parent;
-	        this.outerValue = outerValue;
-	        this.outerIndex = outerIndex;
-	        this.index = 0;
-	    }
-	    InnerSubscriber.prototype._next = function (value) {
-	        this.parent.notifyNext(this.outerValue, value, this.outerIndex, this.index++, this);
-	    };
-	    InnerSubscriber.prototype._error = function (error) {
-	        this.parent.notifyError(error, this);
-	        this.unsubscribe();
-	    };
-	    InnerSubscriber.prototype._complete = function () {
-	        this.parent.notifyComplete(this);
-	        this.unsubscribe();
-	    };
-	    return InnerSubscriber;
-	}(Subscriber_1.Subscriber));
-	exports.InnerSubscriber = InnerSubscriber;
-	//# sourceMappingURL=InnerSubscriber.js.map
-
-/***/ },
-/* 138 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var subscribeToResult_1 = __webpack_require__(136);
-	var OuterSubscriber_1 = __webpack_require__(135);
+	var subscribeToResult_1 = __webpack_require__(134);
+	var OuterSubscriber_1 = __webpack_require__(136);
 	/**
 	 * Projects each source value to an Observable which is merged in the output
 	 * Observable.
@@ -20216,7 +19762,443 @@
 	//# sourceMappingURL=mergeMap.js.map
 
 /***/ },
+/* 134 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var root_1 = __webpack_require__(101);
+	var isArray_1 = __webpack_require__(106);
+	var isPromise_1 = __webpack_require__(120);
+	var Observable_1 = __webpack_require__(100);
+	var iterator_1 = __webpack_require__(123);
+	var InnerSubscriber_1 = __webpack_require__(135);
+	var observable_1 = __webpack_require__(113);
+	function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
+	    var destination = new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
+	    if (destination.closed) {
+	        return null;
+	    }
+	    if (result instanceof Observable_1.Observable) {
+	        if (result._isScalar) {
+	            destination.next(result.value);
+	            destination.complete();
+	            return null;
+	        }
+	        else {
+	            return result.subscribe(destination);
+	        }
+	    }
+	    if (isArray_1.isArray(result)) {
+	        for (var i = 0, len = result.length; i < len && !destination.closed; i++) {
+	            destination.next(result[i]);
+	        }
+	        if (!destination.closed) {
+	            destination.complete();
+	        }
+	    }
+	    else if (isPromise_1.isPromise(result)) {
+	        result.then(function (value) {
+	            if (!destination.closed) {
+	                destination.next(value);
+	                destination.complete();
+	            }
+	        }, function (err) { return destination.error(err); })
+	            .then(null, function (err) {
+	            // Escaping the Promise trap: globally throw unhandled errors
+	            root_1.root.setTimeout(function () { throw err; });
+	        });
+	        return destination;
+	    }
+	    else if (typeof result[iterator_1.$$iterator] === 'function') {
+	        var iterator = result[iterator_1.$$iterator]();
+	        do {
+	            var item = iterator.next();
+	            if (item.done) {
+	                destination.complete();
+	                break;
+	            }
+	            destination.next(item.value);
+	            if (destination.closed) {
+	                break;
+	            }
+	        } while (true);
+	    }
+	    else if (typeof result[observable_1.$$observable] === 'function') {
+	        var obs = result[observable_1.$$observable]();
+	        if (typeof obs.subscribe !== 'function') {
+	            destination.error(new Error('invalid observable'));
+	        }
+	        else {
+	            return obs.subscribe(new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex));
+	        }
+	    }
+	    else {
+	        destination.error(new TypeError('unknown type returned'));
+	    }
+	    return null;
+	}
+	exports.subscribeToResult = subscribeToResult;
+	//# sourceMappingURL=subscribeToResult.js.map
+
+/***/ },
+/* 135 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var Subscriber_1 = __webpack_require__(103);
+	/**
+	 * We need this JSDoc comment for affecting ESDoc.
+	 * @ignore
+	 * @extends {Ignored}
+	 */
+	var InnerSubscriber = (function (_super) {
+	    __extends(InnerSubscriber, _super);
+	    function InnerSubscriber(parent, outerValue, outerIndex) {
+	        _super.call(this);
+	        this.parent = parent;
+	        this.outerValue = outerValue;
+	        this.outerIndex = outerIndex;
+	        this.index = 0;
+	    }
+	    InnerSubscriber.prototype._next = function (value) {
+	        this.parent.notifyNext(this.outerValue, value, this.outerIndex, this.index++, this);
+	    };
+	    InnerSubscriber.prototype._error = function (error) {
+	        this.parent.notifyError(error, this);
+	        this.unsubscribe();
+	    };
+	    InnerSubscriber.prototype._complete = function () {
+	        this.parent.notifyComplete(this);
+	        this.unsubscribe();
+	    };
+	    return InnerSubscriber;
+	}(Subscriber_1.Subscriber));
+	exports.InnerSubscriber = InnerSubscriber;
+	//# sourceMappingURL=InnerSubscriber.js.map
+
+/***/ },
+/* 136 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var Subscriber_1 = __webpack_require__(103);
+	/**
+	 * We need this JSDoc comment for affecting ESDoc.
+	 * @ignore
+	 * @extends {Ignored}
+	 */
+	var OuterSubscriber = (function (_super) {
+	    __extends(OuterSubscriber, _super);
+	    function OuterSubscriber() {
+	        _super.apply(this, arguments);
+	    }
+	    OuterSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+	        this.destination.next(innerValue);
+	    };
+	    OuterSubscriber.prototype.notifyError = function (error, innerSub) {
+	        this.destination.error(error);
+	    };
+	    OuterSubscriber.prototype.notifyComplete = function (innerSub) {
+	        this.destination.complete();
+	    };
+	    return OuterSubscriber;
+	}(Subscriber_1.Subscriber));
+	exports.OuterSubscriber = OuterSubscriber;
+	//# sourceMappingURL=OuterSubscriber.js.map
+
+/***/ },
+/* 137 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var Subscriber_1 = __webpack_require__(103);
+	/**
+	 * Returns an Observable that emits whether or not every item of the source satisfies the condition specified.
+	 * @param {function} predicate a function for determining if an item meets a specified condition.
+	 * @param {any} [thisArg] optional object to use for `this` in the callback
+	 * @return {Observable} an Observable of booleans that determines if all items of the source Observable meet the condition specified.
+	 * @method every
+	 * @owner Observable
+	 */
+	function every(predicate, thisArg) {
+	    return this.lift(new EveryOperator(predicate, thisArg, this));
+	}
+	exports.every = every;
+	var EveryOperator = (function () {
+	    function EveryOperator(predicate, thisArg, source) {
+	        this.predicate = predicate;
+	        this.thisArg = thisArg;
+	        this.source = source;
+	    }
+	    EveryOperator.prototype.call = function (observer, source) {
+	        return source._subscribe(new EverySubscriber(observer, this.predicate, this.thisArg, this.source));
+	    };
+	    return EveryOperator;
+	}());
+	/**
+	 * We need this JSDoc comment for affecting ESDoc.
+	 * @ignore
+	 * @extends {Ignored}
+	 */
+	var EverySubscriber = (function (_super) {
+	    __extends(EverySubscriber, _super);
+	    function EverySubscriber(destination, predicate, thisArg, source) {
+	        _super.call(this, destination);
+	        this.predicate = predicate;
+	        this.thisArg = thisArg;
+	        this.source = source;
+	        this.index = 0;
+	        this.thisArg = thisArg || this;
+	    }
+	    EverySubscriber.prototype.notifyComplete = function (everyValueMatch) {
+	        this.destination.next(everyValueMatch);
+	        this.destination.complete();
+	    };
+	    EverySubscriber.prototype._next = function (value) {
+	        var result = false;
+	        try {
+	            result = this.predicate.call(this.thisArg, value, this.index++, this.source);
+	        }
+	        catch (err) {
+	            this.destination.error(err);
+	            return;
+	        }
+	        if (!result) {
+	            this.notifyComplete(false);
+	        }
+	    };
+	    EverySubscriber.prototype._complete = function () {
+	        this.notifyComplete(true);
+	    };
+	    return EverySubscriber;
+	}(Subscriber_1.Subscriber));
+	//# sourceMappingURL=every.js.map
+
+/***/ },
+/* 138 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var Subscriber_1 = __webpack_require__(103);
+	/**
+	 * Applies a given `project` function to each value emitted by the source
+	 * Observable, and emits the resulting values as an Observable.
+	 *
+	 * <span class="informal">Like [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map),
+	 * it passes each source value through a transformation function to get
+	 * corresponding output values.</span>
+	 *
+	 * <img src="./img/map.png" width="100%">
+	 *
+	 * Similar to the well known `Array.prototype.map` function, this operator
+	 * applies a projection to each value and emits that projection in the output
+	 * Observable.
+	 *
+	 * @example <caption>Map every every click to the clientX position of that click</caption>
+	 * var clicks = Rx.Observable.fromEvent(document, 'click');
+	 * var positions = clicks.map(ev => ev.clientX);
+	 * positions.subscribe(x => console.log(x));
+	 *
+	 * @see {@link mapTo}
+	 * @see {@link pluck}
+	 *
+	 * @param {function(value: T, index: number): R} project The function to apply
+	 * to each `value` emitted by the source Observable. The `index` parameter is
+	 * the number `i` for the i-th emission that has happened since the
+	 * subscription, starting from the number `0`.
+	 * @param {any} [thisArg] An optional argument to define what `this` is in the
+	 * `project` function.
+	 * @return {Observable<R>} An Observable that emits the values from the source
+	 * Observable transformed by the given `project` function.
+	 * @method map
+	 * @owner Observable
+	 */
+	function map(project, thisArg) {
+	    if (typeof project !== 'function') {
+	        throw new TypeError('argument is not a function. Are you looking for `mapTo()`?');
+	    }
+	    return this.lift(new MapOperator(project, thisArg));
+	}
+	exports.map = map;
+	var MapOperator = (function () {
+	    function MapOperator(project, thisArg) {
+	        this.project = project;
+	        this.thisArg = thisArg;
+	    }
+	    MapOperator.prototype.call = function (subscriber, source) {
+	        return source._subscribe(new MapSubscriber(subscriber, this.project, this.thisArg));
+	    };
+	    return MapOperator;
+	}());
+	exports.MapOperator = MapOperator;
+	/**
+	 * We need this JSDoc comment for affecting ESDoc.
+	 * @ignore
+	 * @extends {Ignored}
+	 */
+	var MapSubscriber = (function (_super) {
+	    __extends(MapSubscriber, _super);
+	    function MapSubscriber(destination, project, thisArg) {
+	        _super.call(this, destination);
+	        this.project = project;
+	        this.count = 0;
+	        this.thisArg = thisArg || this;
+	    }
+	    // NOTE: This looks unoptimized, but it's actually purposefully NOT
+	    // using try/catch optimizations.
+	    MapSubscriber.prototype._next = function (value) {
+	        var result;
+	        try {
+	            result = this.project.call(this.thisArg, value, this.count++);
+	        }
+	        catch (err) {
+	            this.destination.error(err);
+	            return;
+	        }
+	        this.destination.next(result);
+	    };
+	    return MapSubscriber;
+	}(Subscriber_1.Subscriber));
+	//# sourceMappingURL=map.js.map
+
+/***/ },
 /* 139 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var OuterSubscriber_1 = __webpack_require__(136);
+	var subscribeToResult_1 = __webpack_require__(134);
+	/**
+	 * Converts a higher-order Observable into a first-order Observable which
+	 * concurrently delivers all values that are emitted on the inner Observables.
+	 *
+	 * <span class="informal">Flattens an Observable-of-Observables.</span>
+	 *
+	 * <img src="./img/mergeAll.png" width="100%">
+	 *
+	 * `mergeAll` subscribes to an Observable that emits Observables, also known as
+	 * a higher-order Observable. Each time it observes one of these emitted inner
+	 * Observables, it subscribes to that and delivers all the values from the
+	 * inner Observable on the output Observable. The output Observable only
+	 * completes once all inner Observables have completed. Any error delivered by
+	 * a inner Observable will be immediately emitted on the output Observable.
+	 *
+	 * @example <caption>Spawn a new interval Observable for each click event, and blend their outputs as one Observable</caption>
+	 * var clicks = Rx.Observable.fromEvent(document, 'click');
+	 * var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000));
+	 * var firstOrder = higherOrder.mergeAll();
+	 * firstOrder.subscribe(x => console.log(x));
+	 *
+	 * @example <caption>Count from 0 to 9 every second for each click, but only allow 2 concurrent timers</caption>
+	 * var clicks = Rx.Observable.fromEvent(document, 'click');
+	 * var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000).take(10));
+	 * var firstOrder = higherOrder.mergeAll(2);
+	 * firstOrder.subscribe(x => console.log(x));
+	 *
+	 * @see {@link combineAll}
+	 * @see {@link concatAll}
+	 * @see {@link exhaust}
+	 * @see {@link merge}
+	 * @see {@link mergeMap}
+	 * @see {@link mergeMapTo}
+	 * @see {@link mergeScan}
+	 * @see {@link switch}
+	 * @see {@link zipAll}
+	 *
+	 * @param {number} [concurrent=Number.POSITIVE_INFINITY] Maximum number of inner
+	 * Observables being subscribed to concurrently.
+	 * @return {Observable} An Observable that emits values coming from all the
+	 * inner Observables emitted by the source Observable.
+	 * @method mergeAll
+	 * @owner Observable
+	 */
+	function mergeAll(concurrent) {
+	    if (concurrent === void 0) { concurrent = Number.POSITIVE_INFINITY; }
+	    return this.lift(new MergeAllOperator(concurrent));
+	}
+	exports.mergeAll = mergeAll;
+	var MergeAllOperator = (function () {
+	    function MergeAllOperator(concurrent) {
+	        this.concurrent = concurrent;
+	    }
+	    MergeAllOperator.prototype.call = function (observer, source) {
+	        return source._subscribe(new MergeAllSubscriber(observer, this.concurrent));
+	    };
+	    return MergeAllOperator;
+	}());
+	exports.MergeAllOperator = MergeAllOperator;
+	/**
+	 * We need this JSDoc comment for affecting ESDoc.
+	 * @ignore
+	 * @extends {Ignored}
+	 */
+	var MergeAllSubscriber = (function (_super) {
+	    __extends(MergeAllSubscriber, _super);
+	    function MergeAllSubscriber(destination, concurrent) {
+	        _super.call(this, destination);
+	        this.concurrent = concurrent;
+	        this.hasCompleted = false;
+	        this.buffer = [];
+	        this.active = 0;
+	    }
+	    MergeAllSubscriber.prototype._next = function (observable) {
+	        if (this.active < this.concurrent) {
+	            this.active++;
+	            this.add(subscribeToResult_1.subscribeToResult(this, observable));
+	        }
+	        else {
+	            this.buffer.push(observable);
+	        }
+	    };
+	    MergeAllSubscriber.prototype._complete = function () {
+	        this.hasCompleted = true;
+	        if (this.active === 0 && this.buffer.length === 0) {
+	            this.destination.complete();
+	        }
+	    };
+	    MergeAllSubscriber.prototype.notifyComplete = function (innerSub) {
+	        var buffer = this.buffer;
+	        this.remove(innerSub);
+	        this.active--;
+	        if (buffer.length > 0) {
+	            this._next(buffer.shift());
+	        }
+	        else if (this.active === 0 && this.hasCompleted) {
+	            this.destination.complete();
+	        }
+	    };
+	    return MergeAllSubscriber;
+	}(OuterSubscriber_1.OuterSubscriber));
+	exports.MergeAllSubscriber = MergeAllSubscriber;
+	//# sourceMappingURL=mergeAll.js.map
+
+/***/ },
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20333,7 +20315,7 @@
 	//# sourceMappingURL=reduce.js.map
 
 /***/ },
-/* 140 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20342,8 +20324,8 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var OuterSubscriber_1 = __webpack_require__(135);
-	var subscribeToResult_1 = __webpack_require__(136);
+	var OuterSubscriber_1 = __webpack_require__(136);
+	var subscribeToResult_1 = __webpack_require__(134);
 	/**
 	 * Catches errors on the observable to be handled by returning a new observable or throwing an error.
 	 * @param {function} selector a function that takes as arguments `err`, which is the error, and `caught`, which
@@ -20403,11 +20385,11 @@
 	//# sourceMappingURL=catch.js.map
 
 /***/ },
-/* 141 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var mergeAll_1 = __webpack_require__(134);
+	var mergeAll_1 = __webpack_require__(139);
 	/**
 	 * Converts a higher-order Observable into a first-order Observable by
 	 * concatenating the inner Observables in order.
@@ -20457,7 +20439,7 @@
 	//# sourceMappingURL=concatAll.js.map
 
 /***/ },
-/* 142 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20467,7 +20449,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Subscriber_1 = __webpack_require__(103);
-	var EmptyError_1 = __webpack_require__(143);
+	var EmptyError_1 = __webpack_require__(144);
 	/**
 	 * Emits only the first value (or the first value that meets some condition)
 	 * emitted by the source Observable.
@@ -20610,7 +20592,7 @@
 	//# sourceMappingURL=first.js.map
 
 /***/ },
-/* 143 */
+/* 144 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -20643,7 +20625,7 @@
 	//# sourceMappingURL=EmptyError.js.map
 
 /***/ },
-/* 144 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20652,7 +20634,7 @@
 	//# sourceMappingURL=fromPromise.js.map
 
 /***/ },
-/* 145 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20662,7 +20644,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Subscriber_1 = __webpack_require__(103);
-	var EmptyError_1 = __webpack_require__(143);
+	var EmptyError_1 = __webpack_require__(144);
 	/**
 	 * Returns an Observable that emits only the last item emitted by the source Observable.
 	 * It optionally takes a predicate function as a parameter, in which case, rather than emitting
@@ -20775,7 +20757,7 @@
 	//# sourceMappingURL=last.js.map
 
 /***/ },
-/* 146 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20829,7 +20811,105 @@
 	//# sourceMappingURL=BehaviorSubject.js.map
 
 /***/ },
-/* 147 */
+/* 148 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var Subscriber_1 = __webpack_require__(103);
+	/**
+	 * Filter items emitted by the source Observable by only emitting those that
+	 * satisfy a specified predicate.
+	 *
+	 * <span class="informal">Like
+	 * [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter),
+	 * it only emits a value from the source if it passes a criterion function.</span>
+	 *
+	 * <img src="./img/filter.png" width="100%">
+	 *
+	 * Similar to the well-known `Array.prototype.filter` method, this operator
+	 * takes values from the source Observable, passes them through a `predicate`
+	 * function and only emits those values that yielded `true`.
+	 *
+	 * @example <caption>Emit only click events whose target was a DIV element</caption>
+	 * var clicks = Rx.Observable.fromEvent(document, 'click');
+	 * var clicksOnDivs = clicks.filter(ev => ev.target.tagName === 'DIV');
+	 * clicksOnDivs.subscribe(x => console.log(x));
+	 *
+	 * @see {@link distinct}
+	 * @see {@link distinctKey}
+	 * @see {@link distinctUntilChanged}
+	 * @see {@link distinctUntilKeyChanged}
+	 * @see {@link ignoreElements}
+	 * @see {@link partition}
+	 * @see {@link skip}
+	 *
+	 * @param {function(value: T, index: number): boolean} predicate A function that
+	 * evaluates each value emitted by the source Observable. If it returns `true`,
+	 * the value is emitted, if `false` the value is not passed to the output
+	 * Observable. The `index` parameter is the number `i` for the i-th source
+	 * emission that has happened since the subscription, starting from the number
+	 * `0`.
+	 * @param {any} [thisArg] An optional argument to determine the value of `this`
+	 * in the `predicate` function.
+	 * @return {Observable} An Observable of values from the source that were
+	 * allowed by the `predicate` function.
+	 * @method filter
+	 * @owner Observable
+	 */
+	function filter(predicate, thisArg) {
+	    return this.lift(new FilterOperator(predicate, thisArg));
+	}
+	exports.filter = filter;
+	var FilterOperator = (function () {
+	    function FilterOperator(predicate, thisArg) {
+	        this.predicate = predicate;
+	        this.thisArg = thisArg;
+	    }
+	    FilterOperator.prototype.call = function (subscriber, source) {
+	        return source._subscribe(new FilterSubscriber(subscriber, this.predicate, this.thisArg));
+	    };
+	    return FilterOperator;
+	}());
+	/**
+	 * We need this JSDoc comment for affecting ESDoc.
+	 * @ignore
+	 * @extends {Ignored}
+	 */
+	var FilterSubscriber = (function (_super) {
+	    __extends(FilterSubscriber, _super);
+	    function FilterSubscriber(destination, predicate, thisArg) {
+	        _super.call(this, destination);
+	        this.predicate = predicate;
+	        this.thisArg = thisArg;
+	        this.count = 0;
+	        this.predicate = predicate;
+	    }
+	    // the try catch block below is left specifically for
+	    // optimization and perf reasons. a tryCatcher is not necessary here.
+	    FilterSubscriber.prototype._next = function (value) {
+	        var result;
+	        try {
+	            result = this.predicate.call(this.thisArg, value, this.count++);
+	        }
+	        catch (err) {
+	            this.destination.error(err);
+	            return;
+	        }
+	        if (result) {
+	            this.destination.next(value);
+	        }
+	    };
+	    return FilterSubscriber;
+	}(Subscriber_1.Subscriber));
+	//# sourceMappingURL=filter.js.map
+
+/***/ },
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20847,21 +20927,21 @@
 	var PlexAppComponent = (function () {
 	    function PlexAppComponent() {
 	    }
-	    PlexAppComponent = __decorate([
-	        core_1.Component({
-	            moduleId: module.id,
-	            selector: 'plex-app',
-	            templateUrl: 'app.html',
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], PlexAppComponent);
 	    return PlexAppComponent;
 	}());
+	PlexAppComponent = __decorate([
+	    core_1.Component({
+	        moduleId: module.id,
+	        selector: 'plex-app',
+	        templateUrl: 'app.html',
+	    }),
+	    __metadata("design:paramtypes", [])
+	], PlexAppComponent);
 	exports.PlexAppComponent = PlexAppComponent;
 	//# sourceMappingURL=app.component.js.map
 
 /***/ },
-/* 148 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20875,7 +20955,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(98);
-	var service_1 = __webpack_require__(149);
+	var service_1 = __webpack_require__(151);
 	var SidebarComponent = (function () {
 	    function SidebarComponent(plex) {
 	        this.plex = plex;
@@ -20887,21 +20967,21 @@
 	        enumerable: true,
 	        configurable: true
 	    });
-	    SidebarComponent = __decorate([
-	        core_1.Component({
-	            moduleId: module.id,
-	            selector: 'plex-sidebar',
-	            templateUrl: 'sidebar.html'
-	        }), 
-	        __metadata('design:paramtypes', [service_1.PlexService])
-	    ], SidebarComponent);
 	    return SidebarComponent;
 	}());
+	SidebarComponent = __decorate([
+	    core_1.Component({
+	        moduleId: module.id,
+	        selector: 'plex-sidebar',
+	        templateUrl: 'sidebar.html'
+	    }),
+	    __metadata("design:paramtypes", [service_1.PlexService])
+	], SidebarComponent);
 	exports.SidebarComponent = SidebarComponent;
 	//# sourceMappingURL=sidebar.component.js.map
 
 /***/ },
-/* 149 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20915,7 +20995,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(98);
-	var platform_browser_1 = __webpack_require__(150);
+	var platform_browser_1 = __webpack_require__(152);
 	var PlexService = (function () {
 	    function PlexService(titleService) {
 	        this.titleService = titleService;
@@ -20924,21 +21004,21 @@
 	        this.titleService.setTitle(title);
 	        this.sidebarItems = sidebar;
 	    };
-	    PlexService = __decorate([
-	        core_1.Injectable(), 
-	        __metadata('design:paramtypes', [platform_browser_1.Title])
-	    ], PlexService);
 	    return PlexService;
 	}());
+	PlexService = __decorate([
+	    core_1.Injectable(),
+	    __metadata("design:paramtypes", [platform_browser_1.Title])
+	], PlexService);
 	exports.PlexService = PlexService;
 	//# sourceMappingURL=service.js.map
 
 /***/ },
-/* 150 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
-	 * @license Angular v2.0.1
+	 * @license Angular v2.1.0
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -20992,7 +21072,6 @@
 	    // Need to declare a new variable for global here since TypeScript
 	    // exports the original value of the symbol.
 	    var global$1 = globalScope;
-	    var Date = global$1.Date;
 	    // TODO: remove calls to assert in production environment
 	    // Note: Can't just export this and import in in other files
 	    // as `assert` is a reserved keyword in Dart
@@ -21010,9 +21089,6 @@
 	    }
 	    function isString(obj) {
 	        return typeof obj === 'string';
-	    }
-	    function isFunction(obj) {
-	        return typeof obj === 'function';
 	    }
 	    function isArray(obj) {
 	        return Array.isArray(obj);
@@ -21032,76 +21108,8 @@
 	        }
 	        var res = token.toString();
 	        var newLineIndex = res.indexOf('\n');
-	        return (newLineIndex === -1) ? res : res.substring(0, newLineIndex);
+	        return newLineIndex === -1 ? res : res.substring(0, newLineIndex);
 	    }
-	    var StringWrapper = (function () {
-	        function StringWrapper() {
-	        }
-	        StringWrapper.fromCharCode = function (code) { return String.fromCharCode(code); };
-	        StringWrapper.charCodeAt = function (s, index) { return s.charCodeAt(index); };
-	        StringWrapper.split = function (s, regExp) { return s.split(regExp); };
-	        StringWrapper.equals = function (s, s2) { return s === s2; };
-	        StringWrapper.stripLeft = function (s, charVal) {
-	            if (s && s.length) {
-	                var pos = 0;
-	                for (var i = 0; i < s.length; i++) {
-	                    if (s[i] != charVal)
-	                        break;
-	                    pos++;
-	                }
-	                s = s.substring(pos);
-	            }
-	            return s;
-	        };
-	        StringWrapper.stripRight = function (s, charVal) {
-	            if (s && s.length) {
-	                var pos = s.length;
-	                for (var i = s.length - 1; i >= 0; i--) {
-	                    if (s[i] != charVal)
-	                        break;
-	                    pos--;
-	                }
-	                s = s.substring(0, pos);
-	            }
-	            return s;
-	        };
-	        StringWrapper.replace = function (s, from, replace) {
-	            return s.replace(from, replace);
-	        };
-	        StringWrapper.replaceAll = function (s, from, replace) {
-	            return s.replace(from, replace);
-	        };
-	        StringWrapper.slice = function (s, from, to) {
-	            if (from === void 0) { from = 0; }
-	            if (to === void 0) { to = null; }
-	            return s.slice(from, to === null ? undefined : to);
-	        };
-	        StringWrapper.replaceAllMapped = function (s, from, cb) {
-	            return s.replace(from, function () {
-	                var matches = [];
-	                for (var _i = 0; _i < arguments.length; _i++) {
-	                    matches[_i - 0] = arguments[_i];
-	                }
-	                // Remove offset & string from the result array
-	                matches.splice(-2, 2);
-	                // The callback receives match, p1, ..., pn
-	                return cb(matches);
-	            });
-	        };
-	        StringWrapper.contains = function (s, substr) { return s.indexOf(substr) != -1; };
-	        StringWrapper.compare = function (a, b) {
-	            if (a < b) {
-	                return -1;
-	            }
-	            else if (a > b) {
-	                return 1;
-	            }
-	            else {
-	                return 0;
-	            }
-	        };
-	        return StringWrapper;
-	    }());
 	    var NumberWrapper = (function () {
 	        function NumberWrapper() {
 	        }
@@ -21154,25 +21162,6 @@
 	        };
 	        return Json;
 	    }());
-	    var DateWrapper = (function () {
-	        function DateWrapper() {
-	        }
-	        DateWrapper.create = function (year, month, day, hour, minutes, seconds, milliseconds) {
-	            if (month === void 0) { month = 1; }
-	            if (day === void 0) { day = 1; }
-	            if (hour === void 0) { hour = 0; }
-	            if (minutes === void 0) { minutes = 0; }
-	            if (seconds === void 0) { seconds = 0; }
-	            if (milliseconds === void 0) { milliseconds = 0; }
-	            return new Date(year, month - 1, day, hour, minutes, seconds, milliseconds);
-	        };
-	        DateWrapper.fromISOString = function (str) { return new Date(str); };
-	        DateWrapper.fromMillis = function (ms) { return new Date(ms); };
-	        DateWrapper.toMillis = function (date) { return date.getTime(); };
-	        DateWrapper.now = function () { return new Date(); };
-	        DateWrapper.toJson = function (date) { return date.toJSON(); };
-	        return DateWrapper;
-	    }());
 	    function setValueOnPath(global, path, value) {
 	        var parts = path.split('.');
 	        var obj = global;
@@ -21190,6 +21179,846 @@
 	        }
 	        obj[parts.shift()] = value;
 	    }
+
+	    /**
+	     * @license
+	     * Copyright Google Inc. All Rights Reserved.
+	     *
+	     * Use of this source code is governed by an MIT-style license that can be
+	     * found in the LICENSE file at https://angular.io/license
+	     */
+	    var CAMEL_CASE_REGEXP = /([A-Z])/g;
+	    var DASH_CASE_REGEXP = /-([a-z])/g;
+	    function camelCaseToDashCase(input) {
+	        return input.replace(CAMEL_CASE_REGEXP, function () {
+	            var m = [];
+	            for (var _i = 0; _i < arguments.length; _i++) {
+	                m[_i - 0] = arguments[_i];
+	            }
+	            return '-' + m[1].toLowerCase();
+	        });
+	    }
+	    function dashCaseToCamelCase(input) {
+	        return input.replace(DASH_CASE_REGEXP, function () {
+	            var m = [];
+	            for (var _i = 0; _i < arguments.length; _i++) {
+	                m[_i - 0] = arguments[_i];
+	            }
+	            return m[1].toUpperCase();
+	        });
+	    }
+
+	    /**
+	     * @license
+	     * Copyright Google Inc. All Rights Reserved.
+	     *
+	     * Use of this source code is governed by an MIT-style license that can be
+	     * found in the LICENSE file at https://angular.io/license
+	     */
+	    var _DOM = null;
+	    function getDOM() {
+	        return _DOM;
+	    }
+	    function setRootDomAdapter(adapter) {
+	        if (!_DOM) {
+	            _DOM = adapter;
+	        }
+	    }
+	    /* tslint:disable:requireParameterType */
+	    /**
+	     * Provides DOM operations in an environment-agnostic way.
+	     *
+	     * @security Tread carefully! Interacting with the DOM directly is dangerous and
+	     * can introduce XSS risks.
+	     */
+	    var DomAdapter = (function () {
+	        function DomAdapter() {
+	            this.resourceLoaderType = null;
+	        }
+	        Object.defineProperty(DomAdapter.prototype, "attrToPropMap", {
+	            /**
+	             * Maps attribute names to their corresponding property names for cases
+	             * where attribute name doesn't match property name.
+	             */
+	            get: function () { return this._attrToPropMap; },
+	            set: function (value) { this._attrToPropMap = value; },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        ;
+	        ;
+	        return DomAdapter;
+	    }());
+
+	    var WebAnimationsPlayer = (function () {
+	        function WebAnimationsPlayer(element, keyframes, options) {
+	            this.element = element;
+	            this.keyframes = keyframes;
+	            this.options = options;
+	            this._onDoneFns = [];
+	            this._onStartFns = [];
+	            this._finished = false;
+	            this._initialized = false;
+	            this._started = false;
+	            this.parentPlayer = null;
+	            this._duration = options['duration'];
+	        }
+	        WebAnimationsPlayer.prototype._onFinish = function () {
+	            if (!this._finished) {
+	                this._finished = true;
+	                if (!isPresent(this.parentPlayer)) {
+	                    this.destroy();
+	                }
+	                this._onDoneFns.forEach(function (fn) { return fn(); });
+	                this._onDoneFns = [];
+	            }
+	        };
+	        WebAnimationsPlayer.prototype.init = function () {
+	            var _this = this;
+	            if (this._initialized)
+	                return;
+	            this._initialized = true;
+	            var keyframes = this.keyframes.map(function (styles) {
+	                var formattedKeyframe = {};
+	                Object.keys(styles).forEach(function (prop) {
+	                    var value = styles[prop];
+	                    formattedKeyframe[prop] = value == _angular_core.AUTO_STYLE ? _computeStyle(_this.element, prop) : value;
+	                });
+	                return formattedKeyframe;
+	            });
+	            this._player = this._triggerWebAnimation(this.element, keyframes, this.options);
+	            // this is required so that the player doesn't start to animate right away
+	            this.reset();
+	            this._player.onfinish = function () { return _this._onFinish(); };
+	        };
+	        /** @internal */
+	        WebAnimationsPlayer.prototype._triggerWebAnimation = function (element, keyframes, options) {
+	            return element.animate(keyframes, options);
+	        };
+	        WebAnimationsPlayer.prototype.onStart = function (fn) { this._onStartFns.push(fn); };
+	        WebAnimationsPlayer.prototype.onDone = function (fn) { this._onDoneFns.push(fn); };
+	        WebAnimationsPlayer.prototype.play = function () {
+	            this.init();
+	            if (!this.hasStarted()) {
+	                this._onStartFns.forEach(function (fn) { return fn(); });
+	                this._onStartFns = [];
+	                this._started = true;
+	            }
+	            this._player.play();
+	        };
+	        WebAnimationsPlayer.prototype.pause = function () {
+	            this.init();
+	            this._player.pause();
+	        };
+	        WebAnimationsPlayer.prototype.finish = function () {
+	            this.init();
+	            this._onFinish();
+	            this._player.finish();
+	        };
+	        WebAnimationsPlayer.prototype.reset = function () { this._player.cancel(); };
+	        WebAnimationsPlayer.prototype.restart = function () {
+	            this.reset();
+	            this.play();
+	        };
+	        WebAnimationsPlayer.prototype.hasStarted = function () { return this._started; };
+	        WebAnimationsPlayer.prototype.destroy = function () {
+	            this.reset();
+	            this._onFinish();
+	        };
+	        Object.defineProperty(WebAnimationsPlayer.prototype, "totalTime", {
+	            get: function () { return this._duration; },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        WebAnimationsPlayer.prototype.setPosition = function (p) { this._player.currentTime = p * this.totalTime; };
+	        WebAnimationsPlayer.prototype.getPosition = function () { return this._player.currentTime / this.totalTime; };
+	        return WebAnimationsPlayer;
+	    }());
+	    function _computeStyle(element, prop) {
+	        return getDOM().getComputedStyle(element)[prop];
+	    }
+
+	    var WebAnimationsDriver = (function () {
+	        function WebAnimationsDriver() {
+	        }
+	        WebAnimationsDriver.prototype.animate = function (element, startingStyles, keyframes, duration, delay, easing) {
+	            var formattedSteps = [];
+	            var startingStyleLookup = {};
+	            if (isPresent(startingStyles) && startingStyles.styles.length > 0) {
+	                startingStyleLookup = _populateStyles(element, startingStyles, {});
+	                startingStyleLookup['offset'] = 0;
+	                formattedSteps.push(startingStyleLookup);
+	            }
+	            keyframes.forEach(function (keyframe) {
+	                var data = _populateStyles(element, keyframe.styles, startingStyleLookup);
+	                data['offset'] = keyframe.offset;
+	                formattedSteps.push(data);
+	            });
+	            // this is a special case when only styles are applied as an
+	            // animation. When this occurs we want to animate from start to
+	            // end with the same values. Removing the offset and having only
+	            // start/end values is suitable enough for the web-animations API
+	            if (formattedSteps.length == 1) {
+	                var start = formattedSteps[0];
+	                start['offset'] = null;
+	                formattedSteps = [start, start];
+	            }
+	            var playerOptions = {
+	                'duration': duration,
+	                'delay': delay,
+	                'fill': 'both' // we use `both` because it allows for styling at 0% to work with `delay`
+	            };
+	            // we check for this to avoid having a null|undefined value be present
+	            // for the easing (which results in an error for certain browsers #9752)
+	            if (easing) {
+	                playerOptions['easing'] = easing;
+	            }
+	            return new WebAnimationsPlayer(element, formattedSteps, playerOptions);
+	        };
+	        return WebAnimationsDriver;
+	    }());
+	    function _populateStyles(element, styles, defaultStyles) {
+	        var data = {};
+	        styles.styles.forEach(function (entry) {
+	            Object.keys(entry).forEach(function (prop) {
+	                var val = entry[prop];
+	                var formattedProp = dashCaseToCamelCase(prop);
+	                data[formattedProp] =
+	                    val == _angular_core.AUTO_STYLE ? val : val.toString() + _resolveStyleUnit(val, prop, formattedProp);
+	            });
+	        });
+	        Object.keys(defaultStyles).forEach(function (prop) {
+	            if (!isPresent(data[prop])) {
+	                data[prop] = defaultStyles[prop];
+	            }
+	        });
+	        return data;
+	    }
+	    function _resolveStyleUnit(val, userProvidedProp, formattedProp) {
+	        var unit = '';
+	        if (_isPixelDimensionStyle(formattedProp) && val != 0 && val != '0') {
+	            if (isNumber(val)) {
+	                unit = 'px';
+	            }
+	            else if (_findDimensionalSuffix(val.toString()).length == 0) {
+	                throw new Error('Please provide a CSS unit value for ' + userProvidedProp + ':' + val);
+	            }
+	        }
+	        return unit;
+	    }
+	    var _$0 = 48;
+	    var _$9 = 57;
+	    var _$PERIOD = 46;
+	    function _findDimensionalSuffix(value) {
+	        for (var i = 0; i < value.length; i++) {
+	            var c = value.charCodeAt(i);
+	            if ((c >= _$0 && c <= _$9) || c == _$PERIOD)
+	                continue;
+	            return value.substring(i, value.length);
+	        }
+	        return '';
+	    }
+	    function _isPixelDimensionStyle(prop) {
+	        switch (prop) {
+	            case 'width':
+	            case 'height':
+	            case 'minWidth':
+	            case 'minHeight':
+	            case 'maxWidth':
+	            case 'maxHeight':
+	            case 'left':
+	            case 'top':
+	            case 'bottom':
+	            case 'right':
+	            case 'fontSize':
+	            case 'outlineWidth':
+	            case 'outlineOffset':
+	            case 'paddingTop':
+	            case 'paddingLeft':
+	            case 'paddingBottom':
+	            case 'paddingRight':
+	            case 'marginTop':
+	            case 'marginLeft':
+	            case 'marginBottom':
+	            case 'marginRight':
+	            case 'borderRadius':
+	            case 'borderWidth':
+	            case 'borderTopWidth':
+	            case 'borderLeftWidth':
+	            case 'borderRightWidth':
+	            case 'borderBottomWidth':
+	            case 'textIndent':
+	                return true;
+	            default:
+	                return false;
+	        }
+	    }
+
+	    /**
+	     * @license
+	     * Copyright Google Inc. All Rights Reserved.
+	     *
+	     * Use of this source code is governed by an MIT-style license that can be
+	     * found in the LICENSE file at https://angular.io/license
+	     */
+	    var __extends$1 = (this && this.__extends) || function (d, b) {
+	        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	    /**
+	     * Provides DOM operations in any browser environment.
+	     *
+	     * @security Tread carefully! Interacting with the DOM directly is dangerous and
+	     * can introduce XSS risks.
+	     */
+	    var GenericBrowserDomAdapter = (function (_super) {
+	        __extends$1(GenericBrowserDomAdapter, _super);
+	        function GenericBrowserDomAdapter() {
+	            var _this = this;
+	            _super.call(this);
+	            this._animationPrefix = null;
+	            this._transitionEnd = null;
+	            try {
+	                var element_1 = this.createElement('div', this.defaultDoc());
+	                if (isPresent(this.getStyle(element_1, 'animationName'))) {
+	                    this._animationPrefix = '';
+	                }
+	                else {
+	                    var domPrefixes = ['Webkit', 'Moz', 'O', 'ms'];
+	                    for (var i = 0; i < domPrefixes.length; i++) {
+	                        if (isPresent(this.getStyle(element_1, domPrefixes[i] + 'AnimationName'))) {
+	                            this._animationPrefix = '-' + domPrefixes[i].toLowerCase() + '-';
+	                            break;
+	                        }
+	                    }
+	                }
+	                var transEndEventNames_1 = {
+	                    WebkitTransition: 'webkitTransitionEnd',
+	                    MozTransition: 'transitionend',
+	                    OTransition: 'oTransitionEnd otransitionend',
+	                    transition: 'transitionend'
+	                };
+	                Object.keys(transEndEventNames_1).forEach(function (key) {
+	                    if (isPresent(_this.getStyle(element_1, key))) {
+	                        _this._transitionEnd = transEndEventNames_1[key];
+	                    }
+	                });
+	            }
+	            catch (e) {
+	                this._animationPrefix = null;
+	                this._transitionEnd = null;
+	            }
+	        }
+	        GenericBrowserDomAdapter.prototype.getDistributedNodes = function (el) { return el.getDistributedNodes(); };
+	        GenericBrowserDomAdapter.prototype.resolveAndSetHref = function (el, baseUrl, href) {
+	            el.href = href == null ? baseUrl : baseUrl + '/../' + href;
+	        };
+	        GenericBrowserDomAdapter.prototype.supportsDOMEvents = function () { return true; };
+	        GenericBrowserDomAdapter.prototype.supportsNativeShadowDOM = function () {
+	            return typeof this.defaultDoc().body.createShadowRoot === 'function';
+	        };
+	        GenericBrowserDomAdapter.prototype.getAnimationPrefix = function () { return this._animationPrefix ? this._animationPrefix : ''; };
+	        GenericBrowserDomAdapter.prototype.getTransitionEnd = function () { return this._transitionEnd ? this._transitionEnd : ''; };
+	        GenericBrowserDomAdapter.prototype.supportsAnimation = function () {
+	            return isPresent(this._animationPrefix) && isPresent(this._transitionEnd);
+	        };
+	        return GenericBrowserDomAdapter;
+	    }(DomAdapter));
+
+	    /**
+	     * @license
+	     * Copyright Google Inc. All Rights Reserved.
+	     *
+	     * Use of this source code is governed by an MIT-style license that can be
+	     * found in the LICENSE file at https://angular.io/license
+	     */
+	    var __extends = (this && this.__extends) || function (d, b) {
+	        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	    var _attrToPropMap = {
+	        'class': 'className',
+	        'innerHtml': 'innerHTML',
+	        'readonly': 'readOnly',
+	        'tabindex': 'tabIndex',
+	    };
+	    var DOM_KEY_LOCATION_NUMPAD = 3;
+	    // Map to convert some key or keyIdentifier values to what will be returned by getEventKey
+	    var _keyMap = {
+	        // The following values are here for cross-browser compatibility and to match the W3C standard
+	        // cf http://www.w3.org/TR/DOM-Level-3-Events-key/
+	        '\b': 'Backspace',
+	        '\t': 'Tab',
+	        '\x7F': 'Delete',
+	        '\x1B': 'Escape',
+	        'Del': 'Delete',
+	        'Esc': 'Escape',
+	        'Left': 'ArrowLeft',
+	        'Right': 'ArrowRight',
+	        'Up': 'ArrowUp',
+	        'Down': 'ArrowDown',
+	        'Menu': 'ContextMenu',
+	        'Scroll': 'ScrollLock',
+	        'Win': 'OS'
+	    };
+	    // There is a bug in Chrome for numeric keypad keys:
+	    // https://code.google.com/p/chromium/issues/detail?id=155654
+	    // 1, 2, 3 ... are reported as A, B, C ...
+	    var _chromeNumKeyPadMap = {
+	        'A': '1',
+	        'B': '2',
+	        'C': '3',
+	        'D': '4',
+	        'E': '5',
+	        'F': '6',
+	        'G': '7',
+	        'H': '8',
+	        'I': '9',
+	        'J': '*',
+	        'K': '+',
+	        'M': '-',
+	        'N': '.',
+	        'O': '/',
+	        '\x60': '0',
+	        '\x90': 'NumLock'
+	    };
+	    /**
+	     * A `DomAdapter` powered by full browser DOM APIs.
+	     *
+	     * @security Tread carefully! Interacting with the DOM directly is dangerous and
+	     * can introduce XSS risks.
+	     */
+	    /* tslint:disable:requireParameterType */
+	    var BrowserDomAdapter = (function (_super) {
+	        __extends(BrowserDomAdapter, _super);
+	        function BrowserDomAdapter() {
+	            _super.apply(this, arguments);
+	        }
+	        BrowserDomAdapter.prototype.parse = function (templateHtml) { throw new Error('parse not implemented'); };
+	        BrowserDomAdapter.makeCurrent = function () { setRootDomAdapter(new BrowserDomAdapter()); };
+	        BrowserDomAdapter.prototype.hasProperty = function (element, name) { return name in element; };
+	        BrowserDomAdapter.prototype.setProperty = function (el, name, value) { el[name] = value; };
+	        BrowserDomAdapter.prototype.getProperty = function (el, name) { return el[name]; };
+	        BrowserDomAdapter.prototype.invoke = function (el, methodName, args) { (_a = el)[methodName].apply(_a, args); var _a; };
+	        // TODO(tbosch): move this into a separate environment class once we have it
+	        BrowserDomAdapter.prototype.logError = function (error) { (window.console.error || window.console.log)(error); };
+	        BrowserDomAdapter.prototype.log = function (error) { window.console.log(error); };
+	        BrowserDomAdapter.prototype.logGroup = function (error) {
+	            window.console.group && window.console.group(error);
+	            this.logError(error);
+	        };
+	        BrowserDomAdapter.prototype.logGroupEnd = function () { window.console.groupEnd && window.console.groupEnd(); };
+	        Object.defineProperty(BrowserDomAdapter.prototype, "attrToPropMap", {
+	            get: function () { return _attrToPropMap; },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        BrowserDomAdapter.prototype.query = function (selector) { return document.querySelector(selector); };
+	        BrowserDomAdapter.prototype.querySelector = function (el, selector) {
+	            return el.querySelector(selector);
+	        };
+	        BrowserDomAdapter.prototype.querySelectorAll = function (el, selector) { return el.querySelectorAll(selector); };
+	        BrowserDomAdapter.prototype.on = function (el, evt, listener) { el.addEventListener(evt, listener, false); };
+	        BrowserDomAdapter.prototype.onAndCancel = function (el, evt, listener) {
+	            el.addEventListener(evt, listener, false);
+	            // Needed to follow Dart's subscription semantic, until fix of
+	            // https://code.google.com/p/dart/issues/detail?id=17406
+	            return function () { el.removeEventListener(evt, listener, false); };
+	        };
+	        BrowserDomAdapter.prototype.dispatchEvent = function (el, evt) { el.dispatchEvent(evt); };
+	        BrowserDomAdapter.prototype.createMouseEvent = function (eventType) {
+	            var evt = document.createEvent('MouseEvent');
+	            evt.initEvent(eventType, true, true);
+	            return evt;
+	        };
+	        BrowserDomAdapter.prototype.createEvent = function (eventType) {
+	            var evt = document.createEvent('Event');
+	            evt.initEvent(eventType, true, true);
+	            return evt;
+	        };
+	        BrowserDomAdapter.prototype.preventDefault = function (evt) {
+	            evt.preventDefault();
+	            evt.returnValue = false;
+	        };
+	        BrowserDomAdapter.prototype.isPrevented = function (evt) {
+	            return evt.defaultPrevented || isPresent(evt.returnValue) && !evt.returnValue;
+	        };
+	        BrowserDomAdapter.prototype.getInnerHTML = function (el) { return el.innerHTML; };
+	        BrowserDomAdapter.prototype.getTemplateContent = function (el) {
+	            return 'content' in el && el instanceof HTMLTemplateElement ? el.content : null;
+	        };
+	        BrowserDomAdapter.prototype.getOuterHTML = function (el) { return el.outerHTML; };
+	        BrowserDomAdapter.prototype.nodeName = function (node) { return node.nodeName; };
+	        BrowserDomAdapter.prototype.nodeValue = function (node) { return node.nodeValue; };
+	        BrowserDomAdapter.prototype.type = function (node) { return node.type; };
+	        BrowserDomAdapter.prototype.content = function (node) {
+	            if (this.hasProperty(node, 'content')) {
+	                return node.content;
+	            }
+	            else {
+	                return node;
+	            }
+	        };
+	        BrowserDomAdapter.prototype.firstChild = function (el) { return el.firstChild; };
+	        BrowserDomAdapter.prototype.nextSibling = function (el) { return el.nextSibling; };
+	        BrowserDomAdapter.prototype.parentElement = function (el) { return el.parentNode; };
+	        BrowserDomAdapter.prototype.childNodes = function (el) { return el.childNodes; };
+	        BrowserDomAdapter.prototype.childNodesAsList = function (el) {
+	            var childNodes = el.childNodes;
+	            var res = new Array(childNodes.length);
+	            for (var i = 0; i < childNodes.length; i++) {
+	                res[i] = childNodes[i];
+	            }
+	            return res;
+	        };
+	        BrowserDomAdapter.prototype.clearNodes = function (el) {
+	            while (el.firstChild) {
+	                el.removeChild(el.firstChild);
+	            }
+	        };
+	        BrowserDomAdapter.prototype.appendChild = function (el, node) { el.appendChild(node); };
+	        BrowserDomAdapter.prototype.removeChild = function (el, node) { el.removeChild(node); };
+	        BrowserDomAdapter.prototype.replaceChild = function (el, newChild, oldChild) { el.replaceChild(newChild, oldChild); };
+	        BrowserDomAdapter.prototype.remove = function (node) {
+	            if (node.parentNode) {
+	                node.parentNode.removeChild(node);
+	            }
+	            return node;
+	        };
+	        BrowserDomAdapter.prototype.insertBefore = function (el, node) { el.parentNode.insertBefore(node, el); };
+	        BrowserDomAdapter.prototype.insertAllBefore = function (el, nodes) {
+	            nodes.forEach(function (n) { return el.parentNode.insertBefore(n, el); });
+	        };
+	        BrowserDomAdapter.prototype.insertAfter = function (el, node) { el.parentNode.insertBefore(node, el.nextSibling); };
+	        BrowserDomAdapter.prototype.setInnerHTML = function (el, value) { el.innerHTML = value; };
+	        BrowserDomAdapter.prototype.getText = function (el) { return el.textContent; };
+	        BrowserDomAdapter.prototype.setText = function (el, value) { el.textContent = value; };
+	        BrowserDomAdapter.prototype.getValue = function (el) { return el.value; };
+	        BrowserDomAdapter.prototype.setValue = function (el, value) { el.value = value; };
+	        BrowserDomAdapter.prototype.getChecked = function (el) { return el.checked; };
+	        BrowserDomAdapter.prototype.setChecked = function (el, value) { el.checked = value; };
+	        BrowserDomAdapter.prototype.createComment = function (text) { return document.createComment(text); };
+	        BrowserDomAdapter.prototype.createTemplate = function (html) {
+	            var t = document.createElement('template');
+	            t.innerHTML = html;
+	            return t;
+	        };
+	        BrowserDomAdapter.prototype.createElement = function (tagName, doc) {
+	            if (doc === void 0) { doc = document; }
+	            return doc.createElement(tagName);
+	        };
+	        BrowserDomAdapter.prototype.createElementNS = function (ns, tagName, doc) {
+	            if (doc === void 0) { doc = document; }
+	            return doc.createElementNS(ns, tagName);
+	        };
+	        BrowserDomAdapter.prototype.createTextNode = function (text, doc) {
+	            if (doc === void 0) { doc = document; }
+	            return doc.createTextNode(text);
+	        };
+	        BrowserDomAdapter.prototype.createScriptTag = function (attrName, attrValue, doc) {
+	            if (doc === void 0) { doc = document; }
+	            var el = doc.createElement('SCRIPT');
+	            el.setAttribute(attrName, attrValue);
+	            return el;
+	        };
+	        BrowserDomAdapter.prototype.createStyleElement = function (css, doc) {
+	            if (doc === void 0) { doc = document; }
+	            var style = doc.createElement('style');
+	            this.appendChild(style, this.createTextNode(css));
+	            return style;
+	        };
+	        BrowserDomAdapter.prototype.createShadowRoot = function (el) { return el.createShadowRoot(); };
+	        BrowserDomAdapter.prototype.getShadowRoot = function (el) { return el.shadowRoot; };
+	        BrowserDomAdapter.prototype.getHost = function (el) { return el.host; };
+	        BrowserDomAdapter.prototype.clone = function (node) { return node.cloneNode(true); };
+	        BrowserDomAdapter.prototype.getElementsByClassName = function (element, name) {
+	            return element.getElementsByClassName(name);
+	        };
+	        BrowserDomAdapter.prototype.getElementsByTagName = function (element, name) {
+	            return element.getElementsByTagName(name);
+	        };
+	        BrowserDomAdapter.prototype.classList = function (element) { return Array.prototype.slice.call(element.classList, 0); };
+	        BrowserDomAdapter.prototype.addClass = function (element, className) { element.classList.add(className); };
+	        BrowserDomAdapter.prototype.removeClass = function (element, className) { element.classList.remove(className); };
+	        BrowserDomAdapter.prototype.hasClass = function (element, className) {
+	            return element.classList.contains(className);
+	        };
+	        BrowserDomAdapter.prototype.setStyle = function (element, styleName, styleValue) {
+	            element.style[styleName] = styleValue;
+	        };
+	        BrowserDomAdapter.prototype.removeStyle = function (element, stylename) {
+	            // IE requires '' instead of null
+	            // see https://github.com/angular/angular/issues/7916
+	            element.style[stylename] = '';
+	        };
+	        BrowserDomAdapter.prototype.getStyle = function (element, stylename) { return element.style[stylename]; };
+	        BrowserDomAdapter.prototype.hasStyle = function (element, styleName, styleValue) {
+	            if (styleValue === void 0) { styleValue = null; }
+	            var value = this.getStyle(element, styleName) || '';
+	            return styleValue ? value == styleValue : value.length > 0;
+	        };
+	        BrowserDomAdapter.prototype.tagName = function (element) { return element.tagName; };
+	        BrowserDomAdapter.prototype.attributeMap = function (element) {
+	            var res = new Map();
+	            var elAttrs = element.attributes;
+	            for (var i = 0; i < elAttrs.length; i++) {
+	                var attrib = elAttrs[i];
+	                res.set(attrib.name, attrib.value);
+	            }
+	            return res;
+	        };
+	        BrowserDomAdapter.prototype.hasAttribute = function (element, attribute) {
+	            return element.hasAttribute(attribute);
+	        };
+	        BrowserDomAdapter.prototype.hasAttributeNS = function (element, ns, attribute) {
+	            return element.hasAttributeNS(ns, attribute);
+	        };
+	        BrowserDomAdapter.prototype.getAttribute = function (element, attribute) {
+	            return element.getAttribute(attribute);
+	        };
+	        BrowserDomAdapter.prototype.getAttributeNS = function (element, ns, name) {
+	            return element.getAttributeNS(ns, name);
+	        };
+	        BrowserDomAdapter.prototype.setAttribute = function (element, name, value) { element.setAttribute(name, value); };
+	        BrowserDomAdapter.prototype.setAttributeNS = function (element, ns, name, value) {
+	            element.setAttributeNS(ns, name, value);
+	        };
+	        BrowserDomAdapter.prototype.removeAttribute = function (element, attribute) { element.removeAttribute(attribute); };
+	        BrowserDomAdapter.prototype.removeAttributeNS = function (element, ns, name) {
+	            element.removeAttributeNS(ns, name);
+	        };
+	        BrowserDomAdapter.prototype.templateAwareRoot = function (el) { return this.isTemplateElement(el) ? this.content(el) : el; };
+	        BrowserDomAdapter.prototype.createHtmlDocument = function () {
+	            return document.implementation.createHTMLDocument('fakeTitle');
+	        };
+	        BrowserDomAdapter.prototype.defaultDoc = function () { return document; };
+	        BrowserDomAdapter.prototype.getBoundingClientRect = function (el) {
+	            try {
+	                return el.getBoundingClientRect();
+	            }
+	            catch (e) {
+	                return { top: 0, bottom: 0, left: 0, right: 0, width: 0, height: 0 };
+	            }
+	        };
+	        BrowserDomAdapter.prototype.getTitle = function () { return document.title; };
+	        BrowserDomAdapter.prototype.setTitle = function (newTitle) { document.title = newTitle || ''; };
+	        BrowserDomAdapter.prototype.elementMatches = function (n, selector) {
+	            if (n instanceof HTMLElement) {
+	                return n.matches && n.matches(selector) ||
+	                    n.msMatchesSelector && n.msMatchesSelector(selector) ||
+	                    n.webkitMatchesSelector && n.webkitMatchesSelector(selector);
+	            }
+	            return false;
+	        };
+	        BrowserDomAdapter.prototype.isTemplateElement = function (el) {
+	            return el instanceof HTMLElement && el.nodeName == 'TEMPLATE';
+	        };
+	        BrowserDomAdapter.prototype.isTextNode = function (node) { return node.nodeType === Node.TEXT_NODE; };
+	        BrowserDomAdapter.prototype.isCommentNode = function (node) { return node.nodeType === Node.COMMENT_NODE; };
+	        BrowserDomAdapter.prototype.isElementNode = function (node) { return node.nodeType === Node.ELEMENT_NODE; };
+	        BrowserDomAdapter.prototype.hasShadowRoot = function (node) {
+	            return isPresent(node.shadowRoot) && node instanceof HTMLElement;
+	        };
+	        BrowserDomAdapter.prototype.isShadowRoot = function (node) { return node instanceof DocumentFragment; };
+	        BrowserDomAdapter.prototype.importIntoDoc = function (node) { return document.importNode(this.templateAwareRoot(node), true); };
+	        BrowserDomAdapter.prototype.adoptNode = function (node) { return document.adoptNode(node); };
+	        BrowserDomAdapter.prototype.getHref = function (el) { return el.href; };
+	        BrowserDomAdapter.prototype.getEventKey = function (event) {
+	            var key = event.key;
+	            if (isBlank(key)) {
+	                key = event.keyIdentifier;
+	                // keyIdentifier is defined in the old draft of DOM Level 3 Events implemented by Chrome and
+	                // Safari cf
+	                // http://www.w3.org/TR/2007/WD-DOM-Level-3-Events-20071221/events.html#Events-KeyboardEvents-Interfaces
+	                if (isBlank(key)) {
+	                    return 'Unidentified';
+	                }
+	                if (key.startsWith('U+')) {
+	                    key = String.fromCharCode(parseInt(key.substring(2), 16));
+	                    if (event.location === DOM_KEY_LOCATION_NUMPAD && _chromeNumKeyPadMap.hasOwnProperty(key)) {
+	                        // There is a bug in Chrome for numeric keypad keys:
+	                        // https://code.google.com/p/chromium/issues/detail?id=155654
+	                        // 1, 2, 3 ... are reported as A, B, C ...
+	                        key = _chromeNumKeyPadMap[key];
+	                    }
+	                }
+	            }
+	            return _keyMap[key] || key;
+	        };
+	        BrowserDomAdapter.prototype.getGlobalEventTarget = function (target) {
+	            if (target === 'window') {
+	                return window;
+	            }
+	            if (target === 'document') {
+	                return document;
+	            }
+	            if (target === 'body') {
+	                return document.body;
+	            }
+	        };
+	        BrowserDomAdapter.prototype.getHistory = function () { return window.history; };
+	        BrowserDomAdapter.prototype.getLocation = function () { return window.location; };
+	        BrowserDomAdapter.prototype.getBaseHref = function () {
+	            var href = getBaseElementHref();
+	            return isBlank(href) ? null : relativePath(href);
+	        };
+	        BrowserDomAdapter.prototype.resetBaseElement = function () { baseElement = null; };
+	        BrowserDomAdapter.prototype.getUserAgent = function () { return window.navigator.userAgent; };
+	        BrowserDomAdapter.prototype.setData = function (element, name, value) {
+	            this.setAttribute(element, 'data-' + name, value);
+	        };
+	        BrowserDomAdapter.prototype.getData = function (element, name) {
+	            return this.getAttribute(element, 'data-' + name);
+	        };
+	        BrowserDomAdapter.prototype.getComputedStyle = function (element) { return getComputedStyle(element); };
+	        // TODO(tbosch): move this into a separate environment class once we have it
+	        BrowserDomAdapter.prototype.setGlobalVar = function (path, value) { setValueOnPath(global$1, path, value); };
+	        BrowserDomAdapter.prototype.supportsWebAnimation = function () {
+	            return typeof Element.prototype['animate'] === 'function';
+	        };
+	        BrowserDomAdapter.prototype.performanceNow = function () {
+	            // performance.now() is not available in all browsers, see
+	            // http://caniuse.com/#search=performance.now
+	            return window.performance && window.performance.now ? window.performance.now() :
+	                new Date().getTime();
+	        };
+	        BrowserDomAdapter.prototype.supportsCookies = function () { return true; };
+	        BrowserDomAdapter.prototype.getCookie = function (name) { return parseCookieValue(document.cookie, name); };
+	        BrowserDomAdapter.prototype.setCookie = function (name, value) {
+	            // document.cookie is magical, assigning into it assigns/overrides one cookie value, but does
+	            // not clear other cookies.
+	            document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+	        };
+	        return BrowserDomAdapter;
+	    }(GenericBrowserDomAdapter));
+	    var baseElement = null;
+	    function getBaseElementHref() {
+	        if (!baseElement) {
+	            baseElement = document.querySelector('base');
+	            if (!baseElement) {
+	                return null;
+	            }
+	        }
+	        return baseElement.getAttribute('href');
+	    }
+	    // based on urlUtils.js in AngularJS 1
+	    var urlParsingNode;
+	    function relativePath(url) {
+	        if (!urlParsingNode) {
+	            urlParsingNode = document.createElement('a');
+	        }
+	        urlParsingNode.setAttribute('href', url);
+	        return (urlParsingNode.pathname.charAt(0) === '/') ? urlParsingNode.pathname :
+	            '/' + urlParsingNode.pathname;
+	    }
+	    function parseCookieValue(cookieStr, name) {
+	        name = encodeURIComponent(name);
+	        for (var _i = 0, _a = cookieStr.split(';'); _i < _a.length; _i++) {
+	            var cookie = _a[_i];
+	            var eqIndex = cookie.indexOf('=');
+	            var _b = eqIndex == -1 ? [cookie, ''] : [cookie.slice(0, eqIndex), cookie.slice(eqIndex + 1)], cookieName = _b[0], cookieValue = _b[1];
+	            if (cookieName.trim() === name) {
+	                return decodeURIComponent(cookieValue);
+	            }
+	        }
+	        return null;
+	    }
+
+	    /**
+	     * @license
+	     * Copyright Google Inc. All Rights Reserved.
+	     *
+	     * Use of this source code is governed by an MIT-style license that can be
+	     * found in the LICENSE file at https://angular.io/license
+	     */
+	    function supportsState() {
+	        return !!window.history.pushState;
+	    }
+
+	    /**
+	     * @license
+	     * Copyright Google Inc. All Rights Reserved.
+	     *
+	     * Use of this source code is governed by an MIT-style license that can be
+	     * found in the LICENSE file at https://angular.io/license
+	     */
+	    var __extends$2 = (this && this.__extends) || function (d, b) {
+	        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	    /**
+	     * `PlatformLocation` encapsulates all of the direct calls to platform APIs.
+	     * This class should not be used directly by an application developer. Instead, use
+	     * {@link Location}.
+	     */
+	    var BrowserPlatformLocation = (function (_super) {
+	        __extends$2(BrowserPlatformLocation, _super);
+	        function BrowserPlatformLocation() {
+	            _super.call(this);
+	            this._init();
+	        }
+	        // This is moved to its own method so that `MockPlatformLocationStrategy` can overwrite it
+	        /** @internal */
+	        BrowserPlatformLocation.prototype._init = function () {
+	            this._location = getDOM().getLocation();
+	            this._history = getDOM().getHistory();
+	        };
+	        Object.defineProperty(BrowserPlatformLocation.prototype, "location", {
+	            get: function () { return this._location; },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        BrowserPlatformLocation.prototype.getBaseHrefFromDOM = function () { return getDOM().getBaseHref(); };
+	        BrowserPlatformLocation.prototype.onPopState = function (fn) {
+	            getDOM().getGlobalEventTarget('window').addEventListener('popstate', fn, false);
+	        };
+	        BrowserPlatformLocation.prototype.onHashChange = function (fn) {
+	            getDOM().getGlobalEventTarget('window').addEventListener('hashchange', fn, false);
+	        };
+	        Object.defineProperty(BrowserPlatformLocation.prototype, "pathname", {
+	            get: function () { return this._location.pathname; },
+	            set: function (newPath) { this._location.pathname = newPath; },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        Object.defineProperty(BrowserPlatformLocation.prototype, "search", {
+	            get: function () { return this._location.search; },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        Object.defineProperty(BrowserPlatformLocation.prototype, "hash", {
+	            get: function () { return this._location.hash; },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        BrowserPlatformLocation.prototype.pushState = function (state, title, url) {
+	            if (supportsState()) {
+	                this._history.pushState(state, title, url);
+	            }
+	            else {
+	                this._location.hash = url;
+	            }
+	        };
+	        BrowserPlatformLocation.prototype.replaceState = function (state, title, url) {
+	            if (supportsState()) {
+	                this._history.replaceState(state, title, url);
+	            }
+	            else {
+	                this._location.hash = url;
+	            }
+	        };
+	        BrowserPlatformLocation.prototype.forward = function () { this._history.forward(); };
+	        BrowserPlatformLocation.prototype.back = function () { this._history.back(); };
+	        BrowserPlatformLocation.decorators = [
+	            { type: _angular_core.Injectable },
+	        ];
+	        /** @nocollapse */
+	        BrowserPlatformLocation.ctorParameters = [];
+	        return BrowserPlatformLocation;
+	    }(_angular_common.PlatformLocation));
 
 	    var _clearValues = (function () {
 	        if ((new Map()).keys().next) {
@@ -21234,26 +22063,6 @@
 	    var StringMapWrapper = (function () {
 	        function StringMapWrapper() {
 	        }
-	        StringMapWrapper.get = function (map, key) {
-	            return map.hasOwnProperty(key) ? map[key] : undefined;
-	        };
-	        StringMapWrapper.set = function (map, key, value) { map[key] = value; };
-	        StringMapWrapper.keys = function (map) { return Object.keys(map); };
-	        StringMapWrapper.values = function (map) {
-	            return Object.keys(map).map(function (k) { return map[k]; });
-	        };
-	        StringMapWrapper.isEmpty = function (map) {
-	            for (var prop in map) {
-	                return false;
-	            }
-	            return true;
-	        };
-	        StringMapWrapper.forEach = function (map, callback) {
-	            for (var _i = 0, _a = Object.keys(map); _i < _a.length; _i++) {
-	                var k = _a[_i];
-	                callback(map[k], k);
-	            }
-	        };
 	        StringMapWrapper.merge = function (m1, m2) {
 	            var m = {};
 	            for (var _i = 0, _a = Object.keys(m1); _i < _a.length; _i++) {
@@ -21412,881 +22221,6 @@
 	        }
 	        return target;
 	    }
-
-	    var CAMEL_CASE_REGEXP = /([A-Z])/g;
-	    var DASH_CASE_REGEXP = /-([a-z])/g;
-	    function camelCaseToDashCase(input) {
-	        return StringWrapper.replaceAllMapped(input, CAMEL_CASE_REGEXP, function (m /** TODO #9100 */) { return '-' + m[1].toLowerCase(); });
-	    }
-	    function dashCaseToCamelCase(input) {
-	        return StringWrapper.replaceAllMapped(input, DASH_CASE_REGEXP, function (m /** TODO #9100 */) { return m[1].toUpperCase(); });
-	    }
-
-	    var _DOM = null;
-	    function getDOM() {
-	        return _DOM;
-	    }
-	    function setRootDomAdapter(adapter) {
-	        if (isBlank(_DOM)) {
-	            _DOM = adapter;
-	        }
-	    }
-	    /* tslint:disable:requireParameterType */
-	    /**
-	     * Provides DOM operations in an environment-agnostic way.
-	     *
-	     * @security Tread carefully! Interacting with the DOM directly is dangerous and
-	     * can introduce XSS risks.
-	     */
-	    var DomAdapter = (function () {
-	        function DomAdapter() {
-	            this.resourceLoaderType = null;
-	        }
-	        Object.defineProperty(DomAdapter.prototype, "attrToPropMap", {
-	            /**
-	             * Maps attribute names to their corresponding property names for cases
-	             * where attribute name doesn't match property name.
-	             */
-	            get: function () { return this._attrToPropMap; },
-	            set: function (value) { this._attrToPropMap = value; },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        ;
-	        ;
-	        return DomAdapter;
-	    }());
-
-	    var WebAnimationsPlayer = (function () {
-	        function WebAnimationsPlayer(element, keyframes, options) {
-	            this.element = element;
-	            this.keyframes = keyframes;
-	            this.options = options;
-	            this._onDoneFns = [];
-	            this._onStartFns = [];
-	            this._finished = false;
-	            this._initialized = false;
-	            this._started = false;
-	            this.parentPlayer = null;
-	            this._duration = options['duration'];
-	        }
-	        WebAnimationsPlayer.prototype._onFinish = function () {
-	            if (!this._finished) {
-	                this._finished = true;
-	                if (!isPresent(this.parentPlayer)) {
-	                    this.destroy();
-	                }
-	                this._onDoneFns.forEach(function (fn) { return fn(); });
-	                this._onDoneFns = [];
-	            }
-	        };
-	        WebAnimationsPlayer.prototype.init = function () {
-	            var _this = this;
-	            if (this._initialized)
-	                return;
-	            this._initialized = true;
-	            var keyframes = this.keyframes.map(function (styles) {
-	                var formattedKeyframe = {};
-	                StringMapWrapper.forEach(styles, function (value, prop) {
-	                    formattedKeyframe[prop] = value == _angular_core.AUTO_STYLE ? _computeStyle(_this.element, prop) : value;
-	                });
-	                return formattedKeyframe;
-	            });
-	            this._player = this._triggerWebAnimation(this.element, keyframes, this.options);
-	            // this is required so that the player doesn't start to animate right away
-	            this.reset();
-	            this._player.onfinish = function () { return _this._onFinish(); };
-	        };
-	        /** @internal */
-	        WebAnimationsPlayer.prototype._triggerWebAnimation = function (element, keyframes, options) {
-	            return element.animate(keyframes, options);
-	        };
-	        WebAnimationsPlayer.prototype.onStart = function (fn) { this._onStartFns.push(fn); };
-	        WebAnimationsPlayer.prototype.onDone = function (fn) { this._onDoneFns.push(fn); };
-	        WebAnimationsPlayer.prototype.play = function () {
-	            this.init();
-	            if (!this.hasStarted()) {
-	                this._onStartFns.forEach(function (fn) { return fn(); });
-	                this._onStartFns = [];
-	                this._started = true;
-	            }
-	            this._player.play();
-	        };
-	        WebAnimationsPlayer.prototype.pause = function () {
-	            this.init();
-	            this._player.pause();
-	        };
-	        WebAnimationsPlayer.prototype.finish = function () {
-	            this.init();
-	            this._onFinish();
-	            this._player.finish();
-	        };
-	        WebAnimationsPlayer.prototype.reset = function () { this._player.cancel(); };
-	        WebAnimationsPlayer.prototype.restart = function () {
-	            this.reset();
-	            this.play();
-	        };
-	        WebAnimationsPlayer.prototype.hasStarted = function () { return this._started; };
-	        WebAnimationsPlayer.prototype.destroy = function () {
-	            this.reset();
-	            this._onFinish();
-	        };
-	        Object.defineProperty(WebAnimationsPlayer.prototype, "totalTime", {
-	            get: function () { return this._duration; },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        WebAnimationsPlayer.prototype.setPosition = function (p) { this._player.currentTime = p * this.totalTime; };
-	        WebAnimationsPlayer.prototype.getPosition = function () { return this._player.currentTime / this.totalTime; };
-	        return WebAnimationsPlayer;
-	    }());
-	    function _computeStyle(element, prop) {
-	        return getDOM().getComputedStyle(element)[prop];
-	    }
-
-	    var WebAnimationsDriver = (function () {
-	        function WebAnimationsDriver() {
-	        }
-	        WebAnimationsDriver.prototype.animate = function (element, startingStyles, keyframes, duration, delay, easing) {
-	            var formattedSteps = [];
-	            var startingStyleLookup = {};
-	            if (isPresent(startingStyles) && startingStyles.styles.length > 0) {
-	                startingStyleLookup = _populateStyles(element, startingStyles, {});
-	                startingStyleLookup['offset'] = 0;
-	                formattedSteps.push(startingStyleLookup);
-	            }
-	            keyframes.forEach(function (keyframe) {
-	                var data = _populateStyles(element, keyframe.styles, startingStyleLookup);
-	                data['offset'] = keyframe.offset;
-	                formattedSteps.push(data);
-	            });
-	            // this is a special case when only styles are applied as an
-	            // animation. When this occurs we want to animate from start to
-	            // end with the same values. Removing the offset and having only
-	            // start/end values is suitable enough for the web-animations API
-	            if (formattedSteps.length == 1) {
-	                var start = formattedSteps[0];
-	                start['offset'] = null;
-	                formattedSteps = [start, start];
-	            }
-	            var playerOptions = {
-	                'duration': duration,
-	                'delay': delay,
-	                'fill': 'both' // we use `both` because it allows for styling at 0% to work with `delay`
-	            };
-	            // we check for this to avoid having a null|undefined value be present
-	            // for the easing (which results in an error for certain browsers #9752)
-	            if (easing) {
-	                playerOptions['easing'] = easing;
-	            }
-	            return new WebAnimationsPlayer(element, formattedSteps, playerOptions);
-	        };
-	        return WebAnimationsDriver;
-	    }());
-	    function _populateStyles(element, styles, defaultStyles) {
-	        var data = {};
-	        styles.styles.forEach(function (entry) {
-	            StringMapWrapper.forEach(entry, function (val, prop) {
-	                var formattedProp = dashCaseToCamelCase(prop);
-	                data[formattedProp] =
-	                    val == _angular_core.AUTO_STYLE ? val : val.toString() + _resolveStyleUnit(val, prop, formattedProp);
-	            });
-	        });
-	        StringMapWrapper.forEach(defaultStyles, function (value, prop) {
-	            if (!isPresent(data[prop])) {
-	                data[prop] = value;
-	            }
-	        });
-	        return data;
-	    }
-	    function _resolveStyleUnit(val, userProvidedProp, formattedProp) {
-	        var unit = '';
-	        if (_isPixelDimensionStyle(formattedProp) && val != 0 && val != '0') {
-	            if (isNumber(val)) {
-	                unit = 'px';
-	            }
-	            else if (_findDimensionalSuffix(val.toString()).length == 0) {
-	                throw new Error('Please provide a CSS unit value for ' + userProvidedProp + ':' + val);
-	            }
-	        }
-	        return unit;
-	    }
-	    var _$0 = 48;
-	    var _$9 = 57;
-	    var _$PERIOD = 46;
-	    function _findDimensionalSuffix(value) {
-	        for (var i = 0; i < value.length; i++) {
-	            var c = StringWrapper.charCodeAt(value, i);
-	            if ((c >= _$0 && c <= _$9) || c == _$PERIOD)
-	                continue;
-	            return value.substring(i, value.length);
-	        }
-	        return '';
-	    }
-	    function _isPixelDimensionStyle(prop) {
-	        switch (prop) {
-	            case 'width':
-	            case 'height':
-	            case 'minWidth':
-	            case 'minHeight':
-	            case 'maxWidth':
-	            case 'maxHeight':
-	            case 'left':
-	            case 'top':
-	            case 'bottom':
-	            case 'right':
-	            case 'fontSize':
-	            case 'outlineWidth':
-	            case 'outlineOffset':
-	            case 'paddingTop':
-	            case 'paddingLeft':
-	            case 'paddingBottom':
-	            case 'paddingRight':
-	            case 'marginTop':
-	            case 'marginLeft':
-	            case 'marginBottom':
-	            case 'marginRight':
-	            case 'borderRadius':
-	            case 'borderWidth':
-	            case 'borderTopWidth':
-	            case 'borderLeftWidth':
-	            case 'borderRightWidth':
-	            case 'borderBottomWidth':
-	            case 'textIndent':
-	                return true;
-	            default:
-	                return false;
-	        }
-	    }
-
-	    /**
-	     * @license
-	     * Copyright Google Inc. All Rights Reserved.
-	     *
-	     * Use of this source code is governed by an MIT-style license that can be
-	     * found in the LICENSE file at https://angular.io/license
-	     */
-	    var __extends$1 = (this && this.__extends) || function (d, b) {
-	        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	    /**
-	     * Provides DOM operations in any browser environment.
-	     *
-	     * @security Tread carefully! Interacting with the DOM directly is dangerous and
-	     * can introduce XSS risks.
-	     */
-	    var GenericBrowserDomAdapter = (function (_super) {
-	        __extends$1(GenericBrowserDomAdapter, _super);
-	        function GenericBrowserDomAdapter() {
-	            var _this = this;
-	            _super.call(this);
-	            this._animationPrefix = null;
-	            this._transitionEnd = null;
-	            try {
-	                var element = this.createElement('div', this.defaultDoc());
-	                if (isPresent(this.getStyle(element, 'animationName'))) {
-	                    this._animationPrefix = '';
-	                }
-	                else {
-	                    var domPrefixes = ['Webkit', 'Moz', 'O', 'ms'];
-	                    for (var i = 0; i < domPrefixes.length; i++) {
-	                        if (isPresent(this.getStyle(element, domPrefixes[i] + 'AnimationName'))) {
-	                            this._animationPrefix = '-' + domPrefixes[i].toLowerCase() + '-';
-	                            break;
-	                        }
-	                    }
-	                }
-	                var transEndEventNames = {
-	                    WebkitTransition: 'webkitTransitionEnd',
-	                    MozTransition: 'transitionend',
-	                    OTransition: 'oTransitionEnd otransitionend',
-	                    transition: 'transitionend'
-	                };
-	                StringMapWrapper.forEach(transEndEventNames, function (value, key) {
-	                    if (isPresent(_this.getStyle(element, key))) {
-	                        _this._transitionEnd = value;
-	                    }
-	                });
-	            }
-	            catch (e) {
-	                this._animationPrefix = null;
-	                this._transitionEnd = null;
-	            }
-	        }
-	        GenericBrowserDomAdapter.prototype.getDistributedNodes = function (el) { return el.getDistributedNodes(); };
-	        GenericBrowserDomAdapter.prototype.resolveAndSetHref = function (el, baseUrl, href) {
-	            el.href = href == null ? baseUrl : baseUrl + '/../' + href;
-	        };
-	        GenericBrowserDomAdapter.prototype.supportsDOMEvents = function () { return true; };
-	        GenericBrowserDomAdapter.prototype.supportsNativeShadowDOM = function () {
-	            return isFunction(this.defaultDoc().body.createShadowRoot);
-	        };
-	        GenericBrowserDomAdapter.prototype.getAnimationPrefix = function () {
-	            return isPresent(this._animationPrefix) ? this._animationPrefix : '';
-	        };
-	        GenericBrowserDomAdapter.prototype.getTransitionEnd = function () { return isPresent(this._transitionEnd) ? this._transitionEnd : ''; };
-	        GenericBrowserDomAdapter.prototype.supportsAnimation = function () {
-	            return isPresent(this._animationPrefix) && isPresent(this._transitionEnd);
-	        };
-	        return GenericBrowserDomAdapter;
-	    }(DomAdapter));
-
-	    /**
-	     * @license
-	     * Copyright Google Inc. All Rights Reserved.
-	     *
-	     * Use of this source code is governed by an MIT-style license that can be
-	     * found in the LICENSE file at https://angular.io/license
-	     */
-	    var __extends = (this && this.__extends) || function (d, b) {
-	        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	    var _attrToPropMap = {
-	        'class': 'className',
-	        'innerHtml': 'innerHTML',
-	        'readonly': 'readOnly',
-	        'tabindex': 'tabIndex'
-	    };
-	    var DOM_KEY_LOCATION_NUMPAD = 3;
-	    // Map to convert some key or keyIdentifier values to what will be returned by getEventKey
-	    var _keyMap = {
-	        // The following values are here for cross-browser compatibility and to match the W3C standard
-	        // cf http://www.w3.org/TR/DOM-Level-3-Events-key/
-	        '\b': 'Backspace',
-	        '\t': 'Tab',
-	        '\x7F': 'Delete',
-	        '\x1B': 'Escape',
-	        'Del': 'Delete',
-	        'Esc': 'Escape',
-	        'Left': 'ArrowLeft',
-	        'Right': 'ArrowRight',
-	        'Up': 'ArrowUp',
-	        'Down': 'ArrowDown',
-	        'Menu': 'ContextMenu',
-	        'Scroll': 'ScrollLock',
-	        'Win': 'OS'
-	    };
-	    // There is a bug in Chrome for numeric keypad keys:
-	    // https://code.google.com/p/chromium/issues/detail?id=155654
-	    // 1, 2, 3 ... are reported as A, B, C ...
-	    var _chromeNumKeyPadMap = {
-	        'A': '1',
-	        'B': '2',
-	        'C': '3',
-	        'D': '4',
-	        'E': '5',
-	        'F': '6',
-	        'G': '7',
-	        'H': '8',
-	        'I': '9',
-	        'J': '*',
-	        'K': '+',
-	        'M': '-',
-	        'N': '.',
-	        'O': '/',
-	        '\x60': '0',
-	        '\x90': 'NumLock'
-	    };
-	    /**
-	     * A `DomAdapter` powered by full browser DOM APIs.
-	     *
-	     * @security Tread carefully! Interacting with the DOM directly is dangerous and
-	     * can introduce XSS risks.
-	     */
-	    /* tslint:disable:requireParameterType */
-	    var BrowserDomAdapter = (function (_super) {
-	        __extends(BrowserDomAdapter, _super);
-	        function BrowserDomAdapter() {
-	            _super.apply(this, arguments);
-	        }
-	        BrowserDomAdapter.prototype.parse = function (templateHtml) { throw new Error('parse not implemented'); };
-	        BrowserDomAdapter.makeCurrent = function () { setRootDomAdapter(new BrowserDomAdapter()); };
-	        BrowserDomAdapter.prototype.hasProperty = function (element /** TODO #9100 */, name) { return name in element; };
-	        BrowserDomAdapter.prototype.setProperty = function (el, name, value) { el[name] = value; };
-	        BrowserDomAdapter.prototype.getProperty = function (el, name) { return el[name]; };
-	        BrowserDomAdapter.prototype.invoke = function (el, methodName, args) {
-	            el[methodName].apply(el, args);
-	        };
-	        // TODO(tbosch): move this into a separate environment class once we have it
-	        BrowserDomAdapter.prototype.logError = function (error /** TODO #9100 */) {
-	            if (window.console.error) {
-	                window.console.error(error);
-	            }
-	            else {
-	                window.console.log(error);
-	            }
-	        };
-	        BrowserDomAdapter.prototype.log = function (error /** TODO #9100 */) { window.console.log(error); };
-	        BrowserDomAdapter.prototype.logGroup = function (error /** TODO #9100 */) {
-	            if (window.console.group) {
-	                window.console.group(error);
-	                this.logError(error);
-	            }
-	            else {
-	                window.console.log(error);
-	            }
-	        };
-	        BrowserDomAdapter.prototype.logGroupEnd = function () {
-	            if (window.console.groupEnd) {
-	                window.console.groupEnd();
-	            }
-	        };
-	        Object.defineProperty(BrowserDomAdapter.prototype, "attrToPropMap", {
-	            get: function () { return _attrToPropMap; },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        BrowserDomAdapter.prototype.query = function (selector) { return document.querySelector(selector); };
-	        BrowserDomAdapter.prototype.querySelector = function (el /** TODO #9100 */, selector) {
-	            return el.querySelector(selector);
-	        };
-	        BrowserDomAdapter.prototype.querySelectorAll = function (el /** TODO #9100 */, selector) {
-	            return el.querySelectorAll(selector);
-	        };
-	        BrowserDomAdapter.prototype.on = function (el /** TODO #9100 */, evt /** TODO #9100 */, listener /** TODO #9100 */) {
-	            el.addEventListener(evt, listener, false);
-	        };
-	        BrowserDomAdapter.prototype.onAndCancel = function (el /** TODO #9100 */, evt /** TODO #9100 */, listener /** TODO #9100 */) {
-	            el.addEventListener(evt, listener, false);
-	            // Needed to follow Dart's subscription semantic, until fix of
-	            // https://code.google.com/p/dart/issues/detail?id=17406
-	            return function () { el.removeEventListener(evt, listener, false); };
-	        };
-	        BrowserDomAdapter.prototype.dispatchEvent = function (el /** TODO #9100 */, evt /** TODO #9100 */) { el.dispatchEvent(evt); };
-	        BrowserDomAdapter.prototype.createMouseEvent = function (eventType) {
-	            var evt = document.createEvent('MouseEvent');
-	            evt.initEvent(eventType, true, true);
-	            return evt;
-	        };
-	        BrowserDomAdapter.prototype.createEvent = function (eventType /** TODO #9100 */) {
-	            var evt = document.createEvent('Event');
-	            evt.initEvent(eventType, true, true);
-	            return evt;
-	        };
-	        BrowserDomAdapter.prototype.preventDefault = function (evt) {
-	            evt.preventDefault();
-	            evt.returnValue = false;
-	        };
-	        BrowserDomAdapter.prototype.isPrevented = function (evt) {
-	            return evt.defaultPrevented || isPresent(evt.returnValue) && !evt.returnValue;
-	        };
-	        BrowserDomAdapter.prototype.getInnerHTML = function (el /** TODO #9100 */) { return el.innerHTML; };
-	        BrowserDomAdapter.prototype.getTemplateContent = function (el /** TODO #9100 */) {
-	            return 'content' in el && el instanceof HTMLTemplateElement ? el.content : null;
-	        };
-	        BrowserDomAdapter.prototype.getOuterHTML = function (el /** TODO #9100 */) { return el.outerHTML; };
-	        BrowserDomAdapter.prototype.nodeName = function (node) { return node.nodeName; };
-	        BrowserDomAdapter.prototype.nodeValue = function (node) { return node.nodeValue; };
-	        BrowserDomAdapter.prototype.type = function (node) { return node.type; };
-	        BrowserDomAdapter.prototype.content = function (node) {
-	            if (this.hasProperty(node, 'content')) {
-	                return node.content;
-	            }
-	            else {
-	                return node;
-	            }
-	        };
-	        BrowserDomAdapter.prototype.firstChild = function (el /** TODO #9100 */) { return el.firstChild; };
-	        BrowserDomAdapter.prototype.nextSibling = function (el /** TODO #9100 */) { return el.nextSibling; };
-	        BrowserDomAdapter.prototype.parentElement = function (el /** TODO #9100 */) { return el.parentNode; };
-	        BrowserDomAdapter.prototype.childNodes = function (el /** TODO #9100 */) { return el.childNodes; };
-	        BrowserDomAdapter.prototype.childNodesAsList = function (el /** TODO #9100 */) {
-	            var childNodes = el.childNodes;
-	            var res = new Array(childNodes.length);
-	            for (var i = 0; i < childNodes.length; i++) {
-	                res[i] = childNodes[i];
-	            }
-	            return res;
-	        };
-	        BrowserDomAdapter.prototype.clearNodes = function (el /** TODO #9100 */) {
-	            while (el.firstChild) {
-	                el.removeChild(el.firstChild);
-	            }
-	        };
-	        BrowserDomAdapter.prototype.appendChild = function (el /** TODO #9100 */, node /** TODO #9100 */) { el.appendChild(node); };
-	        BrowserDomAdapter.prototype.removeChild = function (el /** TODO #9100 */, node /** TODO #9100 */) { el.removeChild(node); };
-	        BrowserDomAdapter.prototype.replaceChild = function (el, newChild /** TODO #9100 */, oldChild /** TODO #9100 */) {
-	            el.replaceChild(newChild, oldChild);
-	        };
-	        BrowserDomAdapter.prototype.remove = function (node /** TODO #9100 */) {
-	            if (node.parentNode) {
-	                node.parentNode.removeChild(node);
-	            }
-	            return node;
-	        };
-	        BrowserDomAdapter.prototype.insertBefore = function (el /** TODO #9100 */, node /** TODO #9100 */) {
-	            el.parentNode.insertBefore(node, el);
-	        };
-	        BrowserDomAdapter.prototype.insertAllBefore = function (el /** TODO #9100 */, nodes /** TODO #9100 */) {
-	            nodes.forEach(function (n /** TODO #9100 */) { return el.parentNode.insertBefore(n, el); });
-	        };
-	        BrowserDomAdapter.prototype.insertAfter = function (el /** TODO #9100 */, node /** TODO #9100 */) {
-	            el.parentNode.insertBefore(node, el.nextSibling);
-	        };
-	        BrowserDomAdapter.prototype.setInnerHTML = function (el /** TODO #9100 */, value /** TODO #9100 */) { el.innerHTML = value; };
-	        BrowserDomAdapter.prototype.getText = function (el /** TODO #9100 */) { return el.textContent; };
-	        // TODO(vicb): removed Element type because it does not support StyleElement
-	        BrowserDomAdapter.prototype.setText = function (el /** TODO #9100 */, value) { el.textContent = value; };
-	        BrowserDomAdapter.prototype.getValue = function (el /** TODO #9100 */) { return el.value; };
-	        BrowserDomAdapter.prototype.setValue = function (el /** TODO #9100 */, value) { el.value = value; };
-	        BrowserDomAdapter.prototype.getChecked = function (el /** TODO #9100 */) { return el.checked; };
-	        BrowserDomAdapter.prototype.setChecked = function (el /** TODO #9100 */, value) { el.checked = value; };
-	        BrowserDomAdapter.prototype.createComment = function (text) { return document.createComment(text); };
-	        BrowserDomAdapter.prototype.createTemplate = function (html /** TODO #9100 */) {
-	            var t = document.createElement('template');
-	            t.innerHTML = html;
-	            return t;
-	        };
-	        BrowserDomAdapter.prototype.createElement = function (tagName /* TODO #9100 */, doc) {
-	            if (doc === void 0) { doc = document; }
-	            return doc.createElement(tagName);
-	        };
-	        BrowserDomAdapter.prototype.createElementNS = function (ns /* TODO #9100 */, tagName /* TODO #9100 */, doc) {
-	            if (doc === void 0) { doc = document; }
-	            return doc.createElementNS(ns, tagName);
-	        };
-	        BrowserDomAdapter.prototype.createTextNode = function (text, doc) {
-	            if (doc === void 0) { doc = document; }
-	            return doc.createTextNode(text);
-	        };
-	        BrowserDomAdapter.prototype.createScriptTag = function (attrName, attrValue, doc) {
-	            if (doc === void 0) { doc = document; }
-	            var el = doc.createElement('SCRIPT');
-	            el.setAttribute(attrName, attrValue);
-	            return el;
-	        };
-	        BrowserDomAdapter.prototype.createStyleElement = function (css, doc) {
-	            if (doc === void 0) { doc = document; }
-	            var style = doc.createElement('style');
-	            this.appendChild(style, this.createTextNode(css));
-	            return style;
-	        };
-	        BrowserDomAdapter.prototype.createShadowRoot = function (el) { return el.createShadowRoot(); };
-	        BrowserDomAdapter.prototype.getShadowRoot = function (el) { return el.shadowRoot; };
-	        BrowserDomAdapter.prototype.getHost = function (el) { return el.host; };
-	        BrowserDomAdapter.prototype.clone = function (node) { return node.cloneNode(true); };
-	        BrowserDomAdapter.prototype.getElementsByClassName = function (element /** TODO #9100 */, name) {
-	            return element.getElementsByClassName(name);
-	        };
-	        BrowserDomAdapter.prototype.getElementsByTagName = function (element /** TODO #9100 */, name) {
-	            return element.getElementsByTagName(name);
-	        };
-	        BrowserDomAdapter.prototype.classList = function (element /** TODO #9100 */) {
-	            return Array.prototype.slice.call(element.classList, 0);
-	        };
-	        BrowserDomAdapter.prototype.addClass = function (element /** TODO #9100 */, className) { element.classList.add(className); };
-	        BrowserDomAdapter.prototype.removeClass = function (element /** TODO #9100 */, className) {
-	            element.classList.remove(className);
-	        };
-	        BrowserDomAdapter.prototype.hasClass = function (element /** TODO #9100 */, className) {
-	            return element.classList.contains(className);
-	        };
-	        BrowserDomAdapter.prototype.setStyle = function (element /** TODO #9100 */, styleName, styleValue) {
-	            element.style[styleName] = styleValue;
-	        };
-	        BrowserDomAdapter.prototype.removeStyle = function (element /** TODO #9100 */, stylename) {
-	            element.style[stylename] = null;
-	        };
-	        BrowserDomAdapter.prototype.getStyle = function (element /** TODO #9100 */, stylename) {
-	            return element.style[stylename];
-	        };
-	        BrowserDomAdapter.prototype.hasStyle = function (element /** TODO #9100 */, styleName, styleValue) {
-	            if (styleValue === void 0) { styleValue = null; }
-	            var value = this.getStyle(element, styleName) || '';
-	            return styleValue ? value == styleValue : value.length > 0;
-	        };
-	        BrowserDomAdapter.prototype.tagName = function (element /** TODO #9100 */) { return element.tagName; };
-	        BrowserDomAdapter.prototype.attributeMap = function (element /** TODO #9100 */) {
-	            var res = new Map();
-	            var elAttrs = element.attributes;
-	            for (var i = 0; i < elAttrs.length; i++) {
-	                var attrib = elAttrs[i];
-	                res.set(attrib.name, attrib.value);
-	            }
-	            return res;
-	        };
-	        BrowserDomAdapter.prototype.hasAttribute = function (element /** TODO #9100 */, attribute) {
-	            return element.hasAttribute(attribute);
-	        };
-	        BrowserDomAdapter.prototype.hasAttributeNS = function (element /** TODO #9100 */, ns, attribute) {
-	            return element.hasAttributeNS(ns, attribute);
-	        };
-	        BrowserDomAdapter.prototype.getAttribute = function (element /** TODO #9100 */, attribute) {
-	            return element.getAttribute(attribute);
-	        };
-	        BrowserDomAdapter.prototype.getAttributeNS = function (element /** TODO #9100 */, ns, name) {
-	            return element.getAttributeNS(ns, name);
-	        };
-	        BrowserDomAdapter.prototype.setAttribute = function (element /** TODO #9100 */, name, value) {
-	            element.setAttribute(name, value);
-	        };
-	        BrowserDomAdapter.prototype.setAttributeNS = function (element /** TODO #9100 */, ns, name, value) {
-	            element.setAttributeNS(ns, name, value);
-	        };
-	        BrowserDomAdapter.prototype.removeAttribute = function (element /** TODO #9100 */, attribute) {
-	            element.removeAttribute(attribute);
-	        };
-	        BrowserDomAdapter.prototype.removeAttributeNS = function (element /** TODO #9100 */, ns, name) {
-	            element.removeAttributeNS(ns, name);
-	        };
-	        BrowserDomAdapter.prototype.templateAwareRoot = function (el /** TODO #9100 */) {
-	            return this.isTemplateElement(el) ? this.content(el) : el;
-	        };
-	        BrowserDomAdapter.prototype.createHtmlDocument = function () {
-	            return document.implementation.createHTMLDocument('fakeTitle');
-	        };
-	        BrowserDomAdapter.prototype.defaultDoc = function () { return document; };
-	        BrowserDomAdapter.prototype.getBoundingClientRect = function (el /** TODO #9100 */) {
-	            try {
-	                return el.getBoundingClientRect();
-	            }
-	            catch (e) {
-	                return { top: 0, bottom: 0, left: 0, right: 0, width: 0, height: 0 };
-	            }
-	        };
-	        BrowserDomAdapter.prototype.getTitle = function () { return document.title; };
-	        BrowserDomAdapter.prototype.setTitle = function (newTitle) { document.title = newTitle || ''; };
-	        BrowserDomAdapter.prototype.elementMatches = function (n /** TODO #9100 */, selector) {
-	            var matches = false;
-	            if (n instanceof HTMLElement) {
-	                if (n.matches) {
-	                    matches = n.matches(selector);
-	                }
-	                else if (n.msMatchesSelector) {
-	                    matches = n.msMatchesSelector(selector);
-	                }
-	                else if (n.webkitMatchesSelector) {
-	                    matches = n.webkitMatchesSelector(selector);
-	                }
-	            }
-	            return matches;
-	        };
-	        BrowserDomAdapter.prototype.isTemplateElement = function (el) {
-	            return el instanceof HTMLElement && el.nodeName == 'TEMPLATE';
-	        };
-	        BrowserDomAdapter.prototype.isTextNode = function (node) { return node.nodeType === Node.TEXT_NODE; };
-	        BrowserDomAdapter.prototype.isCommentNode = function (node) { return node.nodeType === Node.COMMENT_NODE; };
-	        BrowserDomAdapter.prototype.isElementNode = function (node) { return node.nodeType === Node.ELEMENT_NODE; };
-	        BrowserDomAdapter.prototype.hasShadowRoot = function (node /** TODO #9100 */) {
-	            return isPresent(node.shadowRoot) && node instanceof HTMLElement;
-	        };
-	        BrowserDomAdapter.prototype.isShadowRoot = function (node /** TODO #9100 */) { return node instanceof DocumentFragment; };
-	        BrowserDomAdapter.prototype.importIntoDoc = function (node) {
-	            var toImport = node;
-	            if (this.isTemplateElement(node)) {
-	                toImport = this.content(node);
-	            }
-	            return document.importNode(toImport, true);
-	        };
-	        BrowserDomAdapter.prototype.adoptNode = function (node) { return document.adoptNode(node); };
-	        BrowserDomAdapter.prototype.getHref = function (el) { return el.href; };
-	        BrowserDomAdapter.prototype.getEventKey = function (event /** TODO #9100 */) {
-	            var key = event.key;
-	            if (isBlank(key)) {
-	                key = event.keyIdentifier;
-	                // keyIdentifier is defined in the old draft of DOM Level 3 Events implemented by Chrome and
-	                // Safari
-	                // cf
-	                // http://www.w3.org/TR/2007/WD-DOM-Level-3-Events-20071221/events.html#Events-KeyboardEvents-Interfaces
-	                if (isBlank(key)) {
-	                    return 'Unidentified';
-	                }
-	                if (key.startsWith('U+')) {
-	                    key = String.fromCharCode(parseInt(key.substring(2), 16));
-	                    if (event.location === DOM_KEY_LOCATION_NUMPAD && _chromeNumKeyPadMap.hasOwnProperty(key)) {
-	                        // There is a bug in Chrome for numeric keypad keys:
-	                        // https://code.google.com/p/chromium/issues/detail?id=155654
-	                        // 1, 2, 3 ... are reported as A, B, C ...
-	                        key = _chromeNumKeyPadMap[key];
-	                    }
-	                }
-	            }
-	            if (_keyMap.hasOwnProperty(key)) {
-	                key = _keyMap[key];
-	            }
-	            return key;
-	        };
-	        BrowserDomAdapter.prototype.getGlobalEventTarget = function (target) {
-	            if (target == 'window') {
-	                return window;
-	            }
-	            else if (target == 'document') {
-	                return document;
-	            }
-	            else if (target == 'body') {
-	                return document.body;
-	            }
-	        };
-	        BrowserDomAdapter.prototype.getHistory = function () { return window.history; };
-	        BrowserDomAdapter.prototype.getLocation = function () { return window.location; };
-	        BrowserDomAdapter.prototype.getBaseHref = function () {
-	            var href = getBaseElementHref();
-	            if (isBlank(href)) {
-	                return null;
-	            }
-	            return relativePath(href);
-	        };
-	        BrowserDomAdapter.prototype.resetBaseElement = function () { baseElement = null; };
-	        BrowserDomAdapter.prototype.getUserAgent = function () { return window.navigator.userAgent; };
-	        BrowserDomAdapter.prototype.setData = function (element /** TODO #9100 */, name, value) {
-	            this.setAttribute(element, 'data-' + name, value);
-	        };
-	        BrowserDomAdapter.prototype.getData = function (element /** TODO #9100 */, name) {
-	            return this.getAttribute(element, 'data-' + name);
-	        };
-	        BrowserDomAdapter.prototype.getComputedStyle = function (element /** TODO #9100 */) { return getComputedStyle(element); };
-	        // TODO(tbosch): move this into a separate environment class once we have it
-	        BrowserDomAdapter.prototype.setGlobalVar = function (path, value) { setValueOnPath(global$1, path, value); };
-	        BrowserDomAdapter.prototype.supportsWebAnimation = function () { return isFunction(Element.prototype['animate']); };
-	        BrowserDomAdapter.prototype.performanceNow = function () {
-	            // performance.now() is not available in all browsers, see
-	            // http://caniuse.com/#search=performance.now
-	            if (isPresent(window.performance) && isPresent(window.performance.now)) {
-	                return window.performance.now();
-	            }
-	            else {
-	                return DateWrapper.toMillis(DateWrapper.now());
-	            }
-	        };
-	        BrowserDomAdapter.prototype.supportsCookies = function () { return true; };
-	        BrowserDomAdapter.prototype.getCookie = function (name) { return parseCookieValue(document.cookie, name); };
-	        BrowserDomAdapter.prototype.setCookie = function (name, value) {
-	            // document.cookie is magical, assigning into it assigns/overrides one cookie value, but does
-	            // not clear other cookies.
-	            document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
-	        };
-	        return BrowserDomAdapter;
-	    }(GenericBrowserDomAdapter));
-	    var baseElement = null;
-	    function getBaseElementHref() {
-	        if (isBlank(baseElement)) {
-	            baseElement = document.querySelector('base');
-	            if (isBlank(baseElement)) {
-	                return null;
-	            }
-	        }
-	        return baseElement.getAttribute('href');
-	    }
-	    // based on urlUtils.js in AngularJS 1
-	    var urlParsingNode = null;
-	    function relativePath(url /** TODO #9100 */) {
-	        if (isBlank(urlParsingNode)) {
-	            urlParsingNode = document.createElement('a');
-	        }
-	        urlParsingNode.setAttribute('href', url);
-	        return (urlParsingNode.pathname.charAt(0) === '/') ? urlParsingNode.pathname :
-	            '/' + urlParsingNode.pathname;
-	    }
-	    function parseCookieValue(cookieStr, name) {
-	        name = encodeURIComponent(name);
-	        for (var _i = 0, _a = cookieStr.split(';'); _i < _a.length; _i++) {
-	            var cookie = _a[_i];
-	            var eqIndex = cookie.indexOf('=');
-	            var _b = eqIndex == -1 ? [cookie, ''] : [cookie.slice(0, eqIndex), cookie.slice(eqIndex + 1)], cookieName = _b[0], cookieValue = _b[1];
-	            if (cookieName.trim() === name) {
-	                return decodeURIComponent(cookieValue);
-	            }
-	        }
-	        return null;
-	    }
-
-	    /**
-	     * @license
-	     * Copyright Google Inc. All Rights Reserved.
-	     *
-	     * Use of this source code is governed by an MIT-style license that can be
-	     * found in the LICENSE file at https://angular.io/license
-	     */
-	    function supportsState() {
-	        return !!window.history.pushState;
-	    }
-
-	    /**
-	     * @license
-	     * Copyright Google Inc. All Rights Reserved.
-	     *
-	     * Use of this source code is governed by an MIT-style license that can be
-	     * found in the LICENSE file at https://angular.io/license
-	     */
-	    var __extends$2 = (this && this.__extends) || function (d, b) {
-	        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	    /**
-	     * `PlatformLocation` encapsulates all of the direct calls to platform APIs.
-	     * This class should not be used directly by an application developer. Instead, use
-	     * {@link Location}.
-	     */
-	    var BrowserPlatformLocation = (function (_super) {
-	        __extends$2(BrowserPlatformLocation, _super);
-	        function BrowserPlatformLocation() {
-	            _super.call(this);
-	            this._init();
-	        }
-	        // This is moved to its own method so that `MockPlatformLocationStrategy` can overwrite it
-	        /** @internal */
-	        BrowserPlatformLocation.prototype._init = function () {
-	            this._location = getDOM().getLocation();
-	            this._history = getDOM().getHistory();
-	        };
-	        Object.defineProperty(BrowserPlatformLocation.prototype, "location", {
-	            get: function () { return this._location; },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        BrowserPlatformLocation.prototype.getBaseHrefFromDOM = function () { return getDOM().getBaseHref(); };
-	        BrowserPlatformLocation.prototype.onPopState = function (fn) {
-	            getDOM().getGlobalEventTarget('window').addEventListener('popstate', fn, false);
-	        };
-	        BrowserPlatformLocation.prototype.onHashChange = function (fn) {
-	            getDOM().getGlobalEventTarget('window').addEventListener('hashchange', fn, false);
-	        };
-	        Object.defineProperty(BrowserPlatformLocation.prototype, "pathname", {
-	            get: function () { return this._location.pathname; },
-	            set: function (newPath) { this._location.pathname = newPath; },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        Object.defineProperty(BrowserPlatformLocation.prototype, "search", {
-	            get: function () { return this._location.search; },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        Object.defineProperty(BrowserPlatformLocation.prototype, "hash", {
-	            get: function () { return this._location.hash; },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        BrowserPlatformLocation.prototype.pushState = function (state, title, url) {
-	            if (supportsState()) {
-	                this._history.pushState(state, title, url);
-	            }
-	            else {
-	                this._location.hash = url;
-	            }
-	        };
-	        BrowserPlatformLocation.prototype.replaceState = function (state, title, url) {
-	            if (supportsState()) {
-	                this._history.replaceState(state, title, url);
-	            }
-	            else {
-	                this._location.hash = url;
-	            }
-	        };
-	        BrowserPlatformLocation.prototype.forward = function () { this._history.forward(); };
-	        BrowserPlatformLocation.prototype.back = function () { this._history.back(); };
-	        BrowserPlatformLocation.decorators = [
-	            { type: _angular_core.Injectable },
-	        ];
-	        /** @nocollapse */
-	        BrowserPlatformLocation.ctorParameters = [];
-	        return BrowserPlatformLocation;
-	    }(_angular_common.PlatformLocation));
 
 	    var BrowserGetTestability = (function () {
 	        function BrowserGetTestability() {
@@ -22538,7 +22472,7 @@
 	        }
 	        DomRootRenderer.prototype.renderComponent = function (componentProto) {
 	            var renderer = this.registeredComponents.get(componentProto.id);
-	            if (isBlank(renderer)) {
+	            if (!renderer) {
 	                renderer = new DomRenderer(this, componentProto, this.animationDriver);
 	                this.registeredComponents.set(componentProto.id, renderer);
 	            }
@@ -22691,11 +22625,10 @@
 	        DomRenderer.prototype.setBindingDebugInfo = function (renderElement, propertyName, propertyValue) {
 	            var dashCasedPropertyName = camelCaseToDashCase(propertyName);
 	            if (getDOM().isCommentNode(renderElement)) {
-	                var existingBindings = StringWrapper.replaceAll(getDOM().getText(renderElement), /\n/g, '')
-	                    .match(TEMPLATE_BINDINGS_EXP);
+	                var existingBindings = getDOM().getText(renderElement).replace(/\n/g, '').match(TEMPLATE_BINDINGS_EXP);
 	                var parsedBindings = Json.parse(existingBindings[1]);
 	                parsedBindings[dashCasedPropertyName] = propertyValue;
-	                getDOM().setText(renderElement, StringWrapper.replace(TEMPLATE_COMMENT_TEXT, '{}', Json.stringify(parsedBindings)));
+	                getDOM().setText(renderElement, TEMPLATE_COMMENT_TEXT.replace('{}', Json.stringify(parsedBindings)));
 	            }
 	            else {
 	                this.setElementAttribute(renderElement, propertyName, propertyValue);
@@ -22761,10 +22694,10 @@
 	    var HOST_ATTR = "_nghost-" + COMPONENT_VARIABLE;
 	    var CONTENT_ATTR = "_ngcontent-" + COMPONENT_VARIABLE;
 	    function _shimContentAttribute(componentShortId) {
-	        return StringWrapper.replaceAll(CONTENT_ATTR, COMPONENT_REGEX, componentShortId);
+	        return CONTENT_ATTR.replace(COMPONENT_REGEX, componentShortId);
 	    }
 	    function _shimHostAttribute(componentShortId) {
-	        return StringWrapper.replaceAll(HOST_ATTR, COMPONENT_REGEX, componentShortId);
+	        return HOST_ATTR.replace(COMPONENT_REGEX, componentShortId);
 	    }
 	    function _flattenStyles(compId, styles, target) {
 	        for (var i = 0; i < styles.length; i++) {
@@ -22773,7 +22706,7 @@
 	                _flattenStyles(compId, style, target);
 	            }
 	            else {
-	                style = StringWrapper.replaceAll(style, COMPONENT_REGEX, compId);
+	                style = style.replace(COMPONENT_REGEX, compId);
 	                target.push(style);
 	            }
 	        }
@@ -23053,17 +22986,15 @@
 	        };
 	        KeyEventsPlugin.prototype.addEventListener = function (element, eventName, handler) {
 	            var parsedEvent = KeyEventsPlugin.parseEventName(eventName);
-	            var outsideHandler = KeyEventsPlugin.eventCallback(element, StringMapWrapper.get(parsedEvent, 'fullKey'), handler, this.manager.getZone());
+	            var outsideHandler = KeyEventsPlugin.eventCallback(element, parsedEvent['fullKey'], handler, this.manager.getZone());
 	            return this.manager.getZone().runOutsideAngular(function () {
-	                return getDOM().onAndCancel(element, StringMapWrapper.get(parsedEvent, 'domEventName'), outsideHandler);
+	                return getDOM().onAndCancel(element, parsedEvent['domEventName'], outsideHandler);
 	            });
 	        };
 	        KeyEventsPlugin.parseEventName = function (eventName) {
 	            var parts = eventName.toLowerCase().split('.');
 	            var domEventName = parts.shift();
-	            if ((parts.length === 0) ||
-	                !(StringWrapper.equals(domEventName, 'keydown') ||
-	                    StringWrapper.equals(domEventName, 'keyup'))) {
+	            if ((parts.length === 0) || !(domEventName === 'keydown' || domEventName === 'keyup')) {
 	                return null;
 	            }
 	            var key = KeyEventsPlugin._normalizeKey(parts.pop());
@@ -23080,23 +23011,23 @@
 	                return null;
 	            }
 	            var result = {};
-	            StringMapWrapper.set(result, 'domEventName', domEventName);
-	            StringMapWrapper.set(result, 'fullKey', fullKey);
+	            result['domEventName'] = domEventName;
+	            result['fullKey'] = fullKey;
 	            return result;
 	        };
 	        KeyEventsPlugin.getEventFullKey = function (event) {
 	            var fullKey = '';
 	            var key = getDOM().getEventKey(event);
 	            key = key.toLowerCase();
-	            if (StringWrapper.equals(key, ' ')) {
+	            if (key === ' ') {
 	                key = 'space'; // for readability
 	            }
-	            else if (StringWrapper.equals(key, '.')) {
+	            else if (key === '.') {
 	                key = 'dot'; // because '.' is used as a separator in event names
 	            }
 	            modifierKeys.forEach(function (modifierName) {
 	                if (modifierName != key) {
-	                    var modifierGetter = StringMapWrapper.get(modifierKeyGetters, modifierName);
+	                    var modifierGetter = modifierKeyGetters[modifierName];
 	                    if (modifierGetter(event)) {
 	                        fullKey += modifierName + '.';
 	                    }
@@ -23107,7 +23038,7 @@
 	        };
 	        KeyEventsPlugin.eventCallback = function (element, fullKey, handler, zone) {
 	            return function (event /** TODO #9100 */) {
-	                if (StringWrapper.equals(KeyEventsPlugin.getEventFullKey(event), fullKey)) {
+	                if (KeyEventsPlugin.getEventFullKey(event) === fullKey) {
 	                    zone.runGuarded(function () { return handler(event); });
 	                }
 	            };
@@ -23936,7 +23867,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 151 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23953,28 +23884,28 @@
 	var PlexBoxComponent = (function () {
 	    function PlexBoxComponent() {
 	    }
-	    __decorate([
-	        core_1.Input(), 
-	        __metadata('design:type', String)
-	    ], PlexBoxComponent.prototype, "title", void 0);
-	    __decorate([
-	        core_1.Input(), 
-	        __metadata('design:type', String)
-	    ], PlexBoxComponent.prototype, "type", void 0);
-	    PlexBoxComponent = __decorate([
-	        core_1.Component({
-	            selector: 'plex-box',
-	            template: "<div class=\"box box-{{type}}\">\n                <div *ngIf=\"title\" class=\"box-header with-border\">\n                  <h3 class=\"box-title\">{{title}}</h3>\n                </div>\n                <div class=\"box-body\">\n                  <ng-content></ng-content>\n                </div>\n            </div>"
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], PlexBoxComponent);
 	    return PlexBoxComponent;
 	}());
+	__decorate([
+	    core_1.Input(),
+	    __metadata("design:type", String)
+	], PlexBoxComponent.prototype, "title", void 0);
+	__decorate([
+	    core_1.Input(),
+	    __metadata("design:type", String)
+	], PlexBoxComponent.prototype, "type", void 0);
+	PlexBoxComponent = __decorate([
+	    core_1.Component({
+	        selector: 'plex-box',
+	        template: "<div class=\"box box-{{type}}\">\n                <div *ngIf=\"title\" class=\"box-header with-border\">\n                  <h3 class=\"box-title\">{{title}}</h3>\n                </div>\n                <div class=\"box-body\">\n                  <ng-content></ng-content>\n                </div>\n            </div>"
+	    }),
+	    __metadata("design:paramtypes", [])
+	], PlexBoxComponent);
 	exports.PlexBoxComponent = PlexBoxComponent;
 	//# sourceMappingURL=box.component.js.map
 
 /***/ },
-/* 152 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23988,7 +23919,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(98);
-	var forms_1 = __webpack_require__(153);
+	var forms_1 = __webpack_require__(155);
 	var PlexTextComponent = (function () {
 	    function PlexTextComponent(renderer) {
 	        this.onChange = function (_) { };
@@ -24012,53 +23943,53 @@
 	            fn(value == '' ? null : value);
 	        };
 	    };
-	    __decorate([
-	        core_1.ViewChild('ref'), 
-	        __metadata('design:type', core_1.ElementRef)
-	    ], PlexTextComponent.prototype, "ref", void 0);
-	    __decorate([
-	        core_1.Input('auto-focus'), 
-	        __metadata('design:type', Boolean)
-	    ], PlexTextComponent.prototype, "autofocus", void 0);
-	    __decorate([
-	        core_1.Input(), 
-	        __metadata('design:type', String)
-	    ], PlexTextComponent.prototype, "label", void 0);
-	    __decorate([
-	        core_1.ContentChild(forms_1.NgControl), 
-	        __metadata('design:type', Object)
-	    ], PlexTextComponent.prototype, "control", void 0);
-	    PlexTextComponent = __decorate([
-	        core_1.Component({
-	            selector: 'plex-text',
-	            template: "<div class=\"form-group\" [ngClass]=\"{'has-error': (control.dirty || control.touched) && !control.valid }\">\n                    <label *ngIf=\"label\">{{label}}</label>\n                    <input #ref type=\"text\" class=\"form-control\" (change)=\"onChange($event.target.value)\" (input)=\"onChange($event.target.value)\" >\n                    <plex-validation-messages *ngIf=\"(control.dirty || control.touched) && !control.valid\" [control]=\"control\"></plex-validation-messages>\n               </div>",
-	            providers: [
-	                // Permite acceder al atributo formControlName/ngModel
-	                {
-	                    provide: forms_1.NG_VALUE_ACCESSOR,
-	                    useExisting: core_1.forwardRef(function () { return PlexTextComponent; }),
-	                    multi: true,
-	                }
-	            ]
-	        }), 
-	        __metadata('design:paramtypes', [core_1.Renderer])
-	    ], PlexTextComponent);
 	    return PlexTextComponent;
 	}());
+	__decorate([
+	    core_1.ViewChild('ref'),
+	    __metadata("design:type", core_1.ElementRef)
+	], PlexTextComponent.prototype, "ref", void 0);
+	__decorate([
+	    core_1.Input('auto-focus'),
+	    __metadata("design:type", Boolean)
+	], PlexTextComponent.prototype, "autofocus", void 0);
+	__decorate([
+	    core_1.Input(),
+	    __metadata("design:type", String)
+	], PlexTextComponent.prototype, "label", void 0);
+	__decorate([
+	    core_1.ContentChild(forms_1.NgControl),
+	    __metadata("design:type", Object)
+	], PlexTextComponent.prototype, "control", void 0);
+	PlexTextComponent = __decorate([
+	    core_1.Component({
+	        selector: 'plex-text',
+	        template: "<div class=\"form-group\" [ngClass]=\"{'has-error': (control.dirty || control.touched) && !control.valid }\">\n                    <label *ngIf=\"label\">{{label}}</label>\n                    <input #ref type=\"text\" class=\"form-control\" (change)=\"onChange($event.target.value)\" (input)=\"onChange($event.target.value)\" >\n                    <plex-validation-messages *ngIf=\"(control.dirty || control.touched) && !control.valid\" [control]=\"control\"></plex-validation-messages>\n               </div>",
+	        providers: [
+	            // Permite acceder al atributo formControlName/ngModel
+	            {
+	                provide: forms_1.NG_VALUE_ACCESSOR,
+	                useExisting: core_1.forwardRef(function () { return PlexTextComponent; }),
+	                multi: true,
+	            }
+	        ]
+	    }),
+	    __metadata("design:paramtypes", [core_1.Renderer])
+	], PlexTextComponent);
 	exports.PlexTextComponent = PlexTextComponent;
 	//# sourceMappingURL=text.component.js.map
 
 /***/ },
-/* 153 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * @license Angular v2.0.1
+	 * @license Angular v2.1.0
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
 	(function (global, factory) {
-	     true ? factory(exports, __webpack_require__(98), __webpack_require__(154), __webpack_require__(99), __webpack_require__(100), __webpack_require__(144)) :
+	     true ? factory(exports, __webpack_require__(98), __webpack_require__(156), __webpack_require__(99), __webpack_require__(100), __webpack_require__(145)) :
 	    typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/operator/toPromise', 'rxjs/Subject', 'rxjs/Observable', 'rxjs/observable/fromPromise'], factory) :
 	    (factory((global.ng = global.ng || {}, global.ng.forms = global.ng.forms || {}),global.ng.core,global.Rx.Observable.prototype,global.Rx,global.Rx,global.Rx.Observable));
 	}(this, function (exports,_angular_core,rxjs_operator_toPromise,rxjs_Subject,rxjs_Observable,rxjs_observable_fromPromise) { 'use strict';
@@ -24078,74 +24009,6 @@
 	    function isArray(obj) {
 	        return Array.isArray(obj);
 	    }
-	    var StringWrapper = (function () {
-	        function StringWrapper() {
-	        }
-	        StringWrapper.fromCharCode = function (code) { return String.fromCharCode(code); };
-	        StringWrapper.charCodeAt = function (s, index) { return s.charCodeAt(index); };
-	        StringWrapper.split = function (s, regExp) { return s.split(regExp); };
-	        StringWrapper.equals = function (s, s2) { return s === s2; };
-	        StringWrapper.stripLeft = function (s, charVal) {
-	            if (s && s.length) {
-	                var pos = 0;
-	                for (var i = 0; i < s.length; i++) {
-	                    if (s[i] != charVal)
-	                        break;
-	                    pos++;
-	                }
-	                s = s.substring(pos);
-	            }
-	            return s;
-	        };
-	        StringWrapper.stripRight = function (s, charVal) {
-	            if (s && s.length) {
-	                var pos = s.length;
-	                for (var i = s.length - 1; i >= 0; i--) {
-	                    if (s[i] != charVal)
-	                        break;
-	                    pos--;
-	                }
-	                s = s.substring(0, pos);
-	            }
-	            return s;
-	        };
-	        StringWrapper.replace = function (s, from, replace) {
-	            return s.replace(from, replace);
-	        };
-	        StringWrapper.replaceAll = function (s, from, replace) {
-	            return s.replace(from, replace);
-	        };
-	        StringWrapper.slice = function (s, from, to) {
-	            if (from === void 0) { from = 0; }
-	            if (to === void 0) { to = null; }
-	            return s.slice(from, to === null ? undefined : to);
-	        };
-	        StringWrapper.replaceAllMapped = function (s, from, cb) {
-	            return s.replace(from, function () {
-	                var matches = [];
-	                for (var _i = 0; _i < arguments.length; _i++) {
-	                    matches[_i - 0] = arguments[_i];
-	                }
-	                // Remove offset & string from the result array
-	                matches.splice(-2, 2);
-	                // The callback receives match, p1, ..., pn
-	                return cb(matches);
-	            });
-	        };
-	        StringWrapper.contains = function (s, substr) { return s.indexOf(substr) != -1; };
-	        StringWrapper.compare = function (a, b) {
-	            if (a < b) {
-	                return -1;
-	            }
-	            else if (a > b) {
-	                return 1;
-	            }
-	            else {
-	                return 0;
-	            }
-	        };
-	        return StringWrapper;
-	    }());
 	    var NumberWrapper = (function () {
 	        function NumberWrapper() {
 	        }
@@ -24429,26 +24292,6 @@
 	    var StringMapWrapper = (function () {
 	        function StringMapWrapper() {
 	        }
-	        StringMapWrapper.get = function (map, key) {
-	            return map.hasOwnProperty(key) ? map[key] : undefined;
-	        };
-	        StringMapWrapper.set = function (map, key, value) { map[key] = value; };
-	        StringMapWrapper.keys = function (map) { return Object.keys(map); };
-	        StringMapWrapper.values = function (map) {
-	            return Object.keys(map).map(function (k) { return map[k]; });
-	        };
-	        StringMapWrapper.isEmpty = function (map) {
-	            for (var prop in map) {
-	                return false;
-	            }
-	            return true;
-	        };
-	        StringMapWrapper.forEach = function (map, callback) {
-	            for (var _i = 0, _a = Object.keys(map); _i < _a.length; _i++) {
-	                var k = _a[_i];
-	                callback(map[k], k);
-	            }
-	        };
 	        StringMapWrapper.merge = function (m1, m2) {
 	            var m = {};
 	            for (var _i = 0, _a = Object.keys(m1); _i < _a.length; _i++) {
@@ -24610,6 +24453,9 @@
 
 	    var isPromise = _angular_core.__core_private__.isPromise;
 
+	    function isEmptyInputValue(value) {
+	        return value == null || typeof value === 'string' && value.length === 0;
+	    }
 	    /**
 	     * Providers for validators to be used for {@link FormControl}s in a form.
 	     *
@@ -24653,20 +24499,19 @@
 	         * Validator that requires controls to have a non-empty value.
 	         */
 	        Validators.required = function (control) {
-	            return isBlank(control.value) || (isString(control.value) && control.value == '') ?
-	                { 'required': true } :
-	                null;
+	            return isEmptyInputValue(control.value) ? { 'required': true } : null;
 	        };
 	        /**
 	         * Validator that requires controls to have a value of a minimum length.
 	         */
 	        Validators.minLength = function (minLength) {
 	            return function (control) {
-	                if (isPresent(Validators.required(control)))
-	                    return null;
-	                var v = control.value;
-	                return v.length < minLength ?
-	                    { 'minlength': { 'requiredLength': minLength, 'actualLength': v.length } } :
+	                if (isEmptyInputValue(control.value)) {
+	                    return null; // don't validate empty values to allow optional controls
+	                }
+	                var length = typeof control.value === 'string' ? control.value.length : 0;
+	                return length < minLength ?
+	                    { 'minlength': { 'requiredLength': minLength, 'actualLength': length } } :
 	                    null;
 	            };
 	        };
@@ -24675,11 +24520,9 @@
 	         */
 	        Validators.maxLength = function (maxLength) {
 	            return function (control) {
-	                if (isPresent(Validators.required(control)))
-	                    return null;
-	                var v = control.value;
-	                return v.length > maxLength ?
-	                    { 'maxlength': { 'requiredLength': maxLength, 'actualLength': v.length } } :
+	                var length = typeof control.value === 'string' ? control.value.length : 0;
+	                return length > maxLength ?
+	                    { 'maxlength': { 'requiredLength': maxLength, 'actualLength': length } } :
 	                    null;
 	            };
 	        };
@@ -24688,12 +24531,14 @@
 	         */
 	        Validators.pattern = function (pattern) {
 	            return function (control) {
-	                if (isPresent(Validators.required(control)))
-	                    return null;
+	                if (isEmptyInputValue(control.value)) {
+	                    return null; // don't validate empty values to allow optional controls
+	                }
 	                var regex = new RegExp("^" + pattern + "$");
-	                var v = control.value;
-	                return regex.test(v) ? null :
-	                    { 'pattern': { 'requiredPattern': "^" + pattern + "$", 'actualValue': v } };
+	                var value = control.value;
+	                return regex.test(value) ?
+	                    null :
+	                    { 'pattern': { 'requiredPattern': "^" + pattern + "$", 'actualValue': value } };
 	            };
 	        };
 	        /**
@@ -24705,7 +24550,7 @@
 	         * of the individual error maps.
 	         */
 	        Validators.compose = function (validators) {
-	            if (isBlank(validators))
+	            if (!validators)
 	                return null;
 	            var presentValidators = validators.filter(isPresent);
 	            if (presentValidators.length == 0)
@@ -24715,7 +24560,7 @@
 	            };
 	        };
 	        Validators.composeAsync = function (validators) {
-	            if (isBlank(validators))
+	            if (!validators)
 	                return null;
 	            var presentValidators = validators.filter(isPresent);
 	            if (presentValidators.length == 0)
@@ -24740,7 +24585,7 @@
 	        var res = arrayOfErrors.reduce(function (res, errors) {
 	            return isPresent(errors) ? StringMapWrapper.merge(res, errors) : res;
 	        }, {});
-	        return StringMapWrapper.isEmpty(res) ? null : res;
+	        return Object.keys(res).length === 0 ? null : res;
 	    }
 
 	    /**
@@ -25119,7 +24964,7 @@
 	            return "" + value;
 	        if (!isPrimitive(value))
 	            value = 'Object';
-	        return StringWrapper.slice(id + ": " + value, 0, 50);
+	        return (id + ": " + value).slice(0, 50);
 	    }
 	    function _extractId(valueString) {
 	        return valueString.split(':')[0];
@@ -25294,7 +25139,7 @@
 	            value = "'" + value + "'";
 	        if (!isPrimitive(value))
 	            value = 'Object';
-	        return StringWrapper.slice(id + ": " + value, 0, 50);
+	        return (id + ": " + value).slice(0, 50);
 	    }
 	    function _extractId$1(valueString) {
 	        return valueString.split(':')[0];
@@ -25469,9 +25314,9 @@
 	        return p;
 	    }
 	    function setUpControl(control, dir) {
-	        if (isBlank(control))
+	        if (!control)
 	            _throwError(dir, 'Cannot find control with');
-	        if (isBlank(dir.valueAccessor))
+	        if (!dir.valueAccessor)
 	            _throwError(dir, 'No value accessor for form control with');
 	        control.validator = Validators.compose([control.validator, dir.validator]);
 	        control.asyncValidator = Validators.composeAsync([control.asyncValidator, dir.asyncValidator]);
@@ -25558,7 +25403,7 @@
 	    }
 	    // TODO: vsavkin remove it once https://github.com/angular/angular/issues/3011 is implemented
 	    function selectValueAccessor(dir, valueAccessors) {
-	        if (isBlank(valueAccessors))
+	        if (!valueAccessors)
 	            return null;
 	        var defaultAccessor;
 	        var builtinAccessor;
@@ -25846,9 +25691,9 @@
 	            var errorFn = function (err) { return null; };
 	            var completeFn = function () { return null; };
 	            if (generatorOrNext && typeof generatorOrNext === 'object') {
-	                schedulerFn = this.__isAsync ? function (value /** TODO #9100 */) {
+	                schedulerFn = this.__isAsync ? function (value) {
 	                    setTimeout(function () { return generatorOrNext.next(value); });
-	                } : function (value /** TODO #9100 */) { generatorOrNext.next(value); };
+	                } : function (value) { generatorOrNext.next(value); };
 	                if (generatorOrNext.error) {
 	                    errorFn = this.__isAsync ? function (err) { setTimeout(function () { return generatorOrNext.error(err); }); } :
 	                        function (err) { generatorOrNext.error(err); };
@@ -25859,9 +25704,8 @@
 	                }
 	            }
 	            else {
-	                schedulerFn = this.__isAsync ? function (value /** TODO #9100 */) {
-	                    setTimeout(function () { return generatorOrNext(value); });
-	                } : function (value /** TODO #9100 */) { generatorOrNext(value); };
+	                schedulerFn = this.__isAsync ? function (value) { setTimeout(function () { return generatorOrNext(value); }); } :
+	                    function (value) { generatorOrNext(value); };
 	                if (error) {
 	                    errorFn =
 	                        this.__isAsync ? function (err) { setTimeout(function () { return error(err); }); } : function (err) { error(err); };
@@ -25916,15 +25760,12 @@
 	            return null;
 	        return path.reduce(function (v, name) {
 	            if (v instanceof FormGroup) {
-	                return isPresent(v.controls[name]) ? v.controls[name] : null;
+	                return v.controls[name] || null;
 	            }
-	            else if (v instanceof FormArray) {
-	                var index = name;
-	                return isPresent(v.at(index)) ? v.at(index) : null;
+	            if (v instanceof FormArray) {
+	                return v.at(name) || null;
 	            }
-	            else {
-	                return null;
-	            }
+	            return null;
 	        }, control);
 	    }
 	    function toObservable(r) {
@@ -26345,7 +26186,7 @@
 	            if (path === void 0) { path = null; }
 	            var control = isPresent(path) && !ListWrapper.isEmpty(path) ? this.get(path) : this;
 	            if (isPresent(control) && isPresent(control._errors)) {
-	                return StringMapWrapper.get(control._errors, errorCode);
+	                return control._errors[errorCode];
 	            }
 	            else {
 	                return null;
@@ -26456,6 +26297,8 @@
 	     *
 	     * You can also initialize the control with a form state object on instantiation,
 	     * which includes both the value and whether or not the control is disabled.
+	     * You can't use the value key without the disabled key; both are required
+	     * to use this way of initialization.
 	     *
 	     * ```ts
 	     * const ctrl = new FormControl({value: 'n/a', disabled: true});
@@ -26755,9 +26598,9 @@
 	            var _this = this;
 	            var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
 	            this._checkAllValuesPresent(value);
-	            StringMapWrapper.forEach(value, function (newValue, name) {
+	            Object.keys(value).forEach(function (name) {
 	                _this._throwIfControlMissing(name);
-	                _this.controls[name].setValue(newValue, { onlySelf: true });
+	                _this.controls[name].setValue(value[name], { onlySelf: true });
 	            });
 	            this.updateValueAndValidity({ onlySelf: onlySelf });
 	        };
@@ -26785,9 +26628,9 @@
 	        FormGroup.prototype.patchValue = function (value, _a) {
 	            var _this = this;
 	            var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
-	            StringMapWrapper.forEach(value, function (newValue, name) {
+	            Object.keys(value).forEach(function (name) {
 	                if (_this.controls[name]) {
-	                    _this.controls[name].patchValue(newValue, { onlySelf: true });
+	                    _this.controls[name].patchValue(value[name], { onlySelf: true });
 	                }
 	            });
 	            this.updateValueAndValidity({ onlySelf: onlySelf });
@@ -26857,7 +26700,8 @@
 	        };
 	        /** @internal */
 	        FormGroup.prototype._forEachChild = function (cb) {
-	            StringMapWrapper.forEach(this.controls, cb);
+	            var _this = this;
+	            Object.keys(this.controls).forEach(function (k) { return cb(_this.controls[k], k); });
 	        };
 	        /** @internal */
 	        FormGroup.prototype._setUpControls = function () {
@@ -27221,7 +27065,8 @@
 	     * sub-groups within the form.
 	     *
 	     * You can listen to the directive's `ngSubmit` event to be notified when the user has
-	     * triggered a form submission.
+	     * triggered a form submission. The `ngSubmit` event will be emitted with the original form
+	     * submission event.
 	     *
 	     * {@example forms/ts/simpleForm/simple_form_example.ts region='Component'}
 	     *
@@ -27312,9 +27157,9 @@
 	            });
 	        };
 	        NgForm.prototype.setValue = function (value) { this.control.setValue(value); };
-	        NgForm.prototype.onSubmit = function () {
+	        NgForm.prototype.onSubmit = function ($event) {
 	            this._submitted = true;
-	            this.ngSubmit.emit(null);
+	            this.ngSubmit.emit($event);
 	            return false;
 	        };
 	        NgForm.prototype.onReset = function () { this.resetForm(); };
@@ -27332,7 +27177,7 @@
 	            { type: _angular_core.Directive, args: [{
 	                        selector: 'form:not([ngNoForm]):not([formGroup]),ngForm,[ngForm]',
 	                        providers: [formDirectiveProvider],
-	                        host: { '(submit)': 'onSubmit()', '(reset)': 'onReset()' },
+	                        host: { '(submit)': 'onSubmit($event)', '(reset)': 'onReset()' },
 	                        outputs: ['ngSubmit'],
 	                        exportAs: 'ngForm'
 	                    },] },
@@ -27849,6 +27694,10 @@
 	     * its {@link AbstractControl.statusChanges} event to be notified when the validation status is
 	     * re-calculated.
 	     *
+	     * Furthermore, you can listen to the directive's `ngSubmit` event to be notified when the user has
+	     * triggered a form submission. The `ngSubmit` event will be emitted with the original form
+	     * submission event.
+	     *
 	     * ### Example
 	     *
 	     * In this example, we create form controls for first name and last name.
@@ -27927,9 +27776,9 @@
 	            var ctrl = this.form.get(dir.path);
 	            ctrl.setValue(value);
 	        };
-	        FormGroupDirective.prototype.onSubmit = function () {
+	        FormGroupDirective.prototype.onSubmit = function ($event) {
 	            this._submitted = true;
-	            this.ngSubmit.emit(null);
+	            this.ngSubmit.emit($event);
 	            return false;
 	        };
 	        FormGroupDirective.prototype.onReset = function () { this.resetForm(); };
@@ -27966,7 +27815,7 @@
 	            this.form.asyncValidator = Validators.composeAsync([this.form.asyncValidator, async]);
 	        };
 	        FormGroupDirective.prototype._checkFormPresent = function () {
-	            if (isBlank(this.form)) {
+	            if (!this.form) {
 	                ReactiveErrors.missingFormException();
 	            }
 	        };
@@ -27974,7 +27823,7 @@
 	            { type: _angular_core.Directive, args: [{
 	                        selector: '[formGroup]',
 	                        providers: [formDirectiveProvider$1],
-	                        host: { '(submit)': 'onSubmit()', '(reset)': 'onReset()' },
+	                        host: { '(submit)': 'onSubmit($event)', '(reset)': 'onReset()' },
 	                        exportAs: 'ngForm'
 	                    },] },
 	        ];
@@ -28588,8 +28437,8 @@
 	        FormBuilder.prototype.group = function (controlsConfig, extra) {
 	            if (extra === void 0) { extra = null; }
 	            var controls = this._reduceControls(controlsConfig);
-	            var validator = isPresent(extra) ? StringMapWrapper.get(extra, 'validator') : null;
-	            var asyncValidator = isPresent(extra) ? StringMapWrapper.get(extra, 'asyncValidator') : null;
+	            var validator = isPresent(extra) ? extra['validator'] : null;
+	            var asyncValidator = isPresent(extra) ? extra['asyncValidator'] : null;
 	            return new FormGroup(controls, validator, asyncValidator);
 	        };
 	        /**
@@ -28620,8 +28469,8 @@
 	        FormBuilder.prototype._reduceControls = function (controlsConfig) {
 	            var _this = this;
 	            var controls = {};
-	            StringMapWrapper.forEach(controlsConfig, function (controlConfig, controlName) {
-	                controls[controlName] = _this._createControl(controlConfig);
+	            Object.keys(controlsConfig).forEach(function (controlName) {
+	                controls[controlName] = _this._createControl(controlsConfig[controlName]);
 	            });
 	            return controls;
 	        };
@@ -28748,7 +28597,7 @@
 
 
 /***/ },
-/* 154 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28781,7 +28630,7 @@
 	//# sourceMappingURL=toPromise.js.map
 
 /***/ },
-/* 155 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28795,7 +28644,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(98);
-	var forms_1 = __webpack_require__(153);
+	var forms_1 = __webpack_require__(155);
 	var REGEX = /^\s*(\-|\+)?(\d+)\s*$/;
 	var PlexIntComponent = (function () {
 	    function PlexIntComponent(renderer) {
@@ -28828,59 +28677,59 @@
 	            fn(((value == null) || (value == "")) ? null : Number.parseInt(value));
 	        };
 	    };
-	    __decorate([
-	        core_1.ViewChild('ref'), 
-	        __metadata('design:type', core_1.ElementRef)
-	    ], PlexIntComponent.prototype, "ref", void 0);
-	    __decorate([
-	        core_1.Input('auto-focus'), 
-	        __metadata('design:type', Boolean)
-	    ], PlexIntComponent.prototype, "autofocus", void 0);
-	    __decorate([
-	        core_1.Input(), 
-	        __metadata('design:type', String)
-	    ], PlexIntComponent.prototype, "label", void 0);
-	    __decorate([
-	        core_1.ContentChild(forms_1.NgControl), 
-	        __metadata('design:type', Object)
-	    ], PlexIntComponent.prototype, "control", void 0);
-	    PlexIntComponent = __decorate([
-	        core_1.Component({
-	            selector: 'plex-int',
-	            template: "<div class=\"form-group\" [ngClass]=\"{'has-error': (control.dirty || control.touched) && !control.valid }\">\n                    <label *ngIf=\"label\">{{label}}</label>\n                    <input #ref type=\"text\" class=\"form-control\" (change)=\"onChange($event.target.value)\" (input)=\"onChange($event.target.value)\" >\n                    <plex-validation-messages *ngIf=\"(control.dirty || control.touched) && !control.valid\" [control]=\"control\"></plex-validation-messages>\n               </div>",
-	            // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
-	            providers: [
-	                {
-	                    provide: forms_1.NG_VALUE_ACCESSOR,
-	                    useExisting: core_1.forwardRef(function () { return PlexIntComponent; }),
-	                    multi: true
-	                },
-	                // Implementa un validador
-	                {
-	                    provide: forms_1.NG_VALIDATORS,
-	                    useValue: function (c) {
-	                        if ((c.value == null) || (c.value == "") || REGEX.test(c.value))
-	                            return null;
-	                        else
-	                            return {
-	                                format: {
-	                                    given: c.value,
-	                                }
-	                            };
-	                    },
-	                    multi: true
-	                }
-	            ]
-	        }), 
-	        __metadata('design:paramtypes', [core_1.Renderer])
-	    ], PlexIntComponent);
 	    return PlexIntComponent;
 	}());
+	__decorate([
+	    core_1.ViewChild('ref'),
+	    __metadata("design:type", core_1.ElementRef)
+	], PlexIntComponent.prototype, "ref", void 0);
+	__decorate([
+	    core_1.Input('auto-focus'),
+	    __metadata("design:type", Boolean)
+	], PlexIntComponent.prototype, "autofocus", void 0);
+	__decorate([
+	    core_1.Input(),
+	    __metadata("design:type", String)
+	], PlexIntComponent.prototype, "label", void 0);
+	__decorate([
+	    core_1.ContentChild(forms_1.NgControl),
+	    __metadata("design:type", Object)
+	], PlexIntComponent.prototype, "control", void 0);
+	PlexIntComponent = __decorate([
+	    core_1.Component({
+	        selector: 'plex-int',
+	        template: "<div class=\"form-group\" [ngClass]=\"{'has-error': (control.dirty || control.touched) && !control.valid }\">\n                    <label *ngIf=\"label\">{{label}}</label>\n                    <input #ref type=\"text\" class=\"form-control\" (change)=\"onChange($event.target.value)\" (input)=\"onChange($event.target.value)\" >\n                    <plex-validation-messages *ngIf=\"(control.dirty || control.touched) && !control.valid\" [control]=\"control\"></plex-validation-messages>\n               </div>",
+	        // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
+	        providers: [
+	            {
+	                provide: forms_1.NG_VALUE_ACCESSOR,
+	                useExisting: core_1.forwardRef(function () { return PlexIntComponent; }),
+	                multi: true
+	            },
+	            // Implementa un validador
+	            {
+	                provide: forms_1.NG_VALIDATORS,
+	                useValue: function (c) {
+	                    if ((c.value == null) || (c.value == "") || REGEX.test(c.value))
+	                        return null;
+	                    else
+	                        return {
+	                            format: {
+	                                given: c.value,
+	                            }
+	                        };
+	                },
+	                multi: true
+	            }
+	        ]
+	    }),
+	    __metadata("design:paramtypes", [core_1.Renderer])
+	], PlexIntComponent);
 	exports.PlexIntComponent = PlexIntComponent;
 	//# sourceMappingURL=int.component.js.map
 
 /***/ },
-/* 156 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28894,7 +28743,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(98);
-	var forms_1 = __webpack_require__(153);
+	var forms_1 = __webpack_require__(155);
 	var REGEX = /^\s*(\-|\+)?(\d+|(\d*(\.\d*)))\s*$/;
 	var PlexFloatComponent = (function () {
 	    function PlexFloatComponent(renderer) {
@@ -28929,62 +28778,62 @@
 	            fn(((value == null) || (value == "")) ? null : Number.parseFloat(value));
 	        };
 	    };
-	    __decorate([
-	        core_1.ViewChild('ref'), 
-	        __metadata('design:type', core_1.ElementRef)
-	    ], PlexFloatComponent.prototype, "ref", void 0);
-	    __decorate([
-	        core_1.Input('auto-focus'), 
-	        __metadata('design:type', Boolean)
-	    ], PlexFloatComponent.prototype, "autofocus", void 0);
-	    __decorate([
-	        core_1.Input(), 
-	        __metadata('design:type', String)
-	    ], PlexFloatComponent.prototype, "label", void 0);
-	    __decorate([
-	        core_1.ContentChild(forms_1.NgControl), 
-	        __metadata('design:type', Object)
-	    ], PlexFloatComponent.prototype, "control", void 0);
-	    PlexFloatComponent = __decorate([
-	        core_1.Component({
-	            selector: 'plex-float',
-	            template: "<div class=\"form-group\" [ngClass]=\"{'has-error': (control.dirty || control.touched) && !control.valid }\">\n                    <label *ngIf=\"label\">{{label}}</label>\n                    <input #ref type=\"text\" class=\"form-control\" (change)=\"onChange($event.target.value)\" (input)=\"onChange($event.target.value)\" >\n                    <plex-validation-messages *ngIf=\"(control.dirty || control.touched) && !control.valid\" [control]=\"control\"></plex-validation-messages>\n               </div>",
-	            // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
-	            providers: [
-	                {
-	                    provide: forms_1.NG_VALUE_ACCESSOR,
-	                    useExisting: core_1.forwardRef(function () { return PlexFloatComponent; }),
-	                    multi: true
-	                },
-	                // Implementa un validador
-	                {
-	                    provide: forms_1.NG_VALIDATORS,
-	                    useValue: function (c) {
-	                        var value = c.value;
-	                        if (value)
-	                            value = ("" + value).replace(",", ".");
-	                        if ((value == null) || (value == "") || REGEX.test(value))
-	                            return null;
-	                        else
-	                            return {
-	                                format: {
-	                                    given: value,
-	                                }
-	                            };
-	                    },
-	                    multi: true
-	                }
-	            ]
-	        }), 
-	        __metadata('design:paramtypes', [core_1.Renderer])
-	    ], PlexFloatComponent);
 	    return PlexFloatComponent;
 	}());
+	__decorate([
+	    core_1.ViewChild('ref'),
+	    __metadata("design:type", core_1.ElementRef)
+	], PlexFloatComponent.prototype, "ref", void 0);
+	__decorate([
+	    core_1.Input('auto-focus'),
+	    __metadata("design:type", Boolean)
+	], PlexFloatComponent.prototype, "autofocus", void 0);
+	__decorate([
+	    core_1.Input(),
+	    __metadata("design:type", String)
+	], PlexFloatComponent.prototype, "label", void 0);
+	__decorate([
+	    core_1.ContentChild(forms_1.NgControl),
+	    __metadata("design:type", Object)
+	], PlexFloatComponent.prototype, "control", void 0);
+	PlexFloatComponent = __decorate([
+	    core_1.Component({
+	        selector: 'plex-float',
+	        template: "<div class=\"form-group\" [ngClass]=\"{'has-error': (control.dirty || control.touched) && !control.valid }\">\n                    <label *ngIf=\"label\">{{label}}</label>\n                    <input #ref type=\"text\" class=\"form-control\" (change)=\"onChange($event.target.value)\" (input)=\"onChange($event.target.value)\" >\n                    <plex-validation-messages *ngIf=\"(control.dirty || control.touched) && !control.valid\" [control]=\"control\"></plex-validation-messages>\n               </div>",
+	        // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
+	        providers: [
+	            {
+	                provide: forms_1.NG_VALUE_ACCESSOR,
+	                useExisting: core_1.forwardRef(function () { return PlexFloatComponent; }),
+	                multi: true
+	            },
+	            // Implementa un validador
+	            {
+	                provide: forms_1.NG_VALIDATORS,
+	                useValue: function (c) {
+	                    var value = c.value;
+	                    if (value)
+	                        value = ("" + value).replace(",", ".");
+	                    if ((value == null) || (value == "") || REGEX.test(value))
+	                        return null;
+	                    else
+	                        return {
+	                            format: {
+	                                given: value,
+	                            }
+	                        };
+	                },
+	                multi: true
+	            }
+	        ]
+	    }),
+	    __metadata("design:paramtypes", [core_1.Renderer])
+	], PlexFloatComponent);
 	exports.PlexFloatComponent = PlexFloatComponent;
 	//# sourceMappingURL=float.component.js.map
 
 /***/ },
-/* 157 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28998,23 +28847,66 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(98);
-	var forms_1 = __webpack_require__(153);
+	var PlexButtonComponent = (function () {
+	    function PlexButtonComponent() {
+	        this.type = "default";
+	    }
+	    return PlexButtonComponent;
+	}());
+	__decorate([
+	    core_1.Input(),
+	    __metadata("design:type", String)
+	], PlexButtonComponent.prototype, "title", void 0);
+	__decorate([
+	    core_1.Input(),
+	    __metadata("design:type", String)
+	], PlexButtonComponent.prototype, "icon", void 0);
+	__decorate([
+	    core_1.Input(),
+	    __metadata("design:type", String)
+	], PlexButtonComponent.prototype, "type", void 0);
+	PlexButtonComponent = __decorate([
+	    core_1.Component({
+	        selector: 'plex-button',
+	        template: "<button class=\"btn btn-{{type}}\">\n                <i *ngIf=\"icon\" class=\"mdi mdi-{{icon}}\"></i>\n                <span *ngIf=\"title\">\n                  {{title}}\n                </span>\n            </button>"
+	    }),
+	    __metadata("design:paramtypes", [])
+	], PlexButtonComponent);
+	exports.PlexButtonComponent = PlexButtonComponent;
+	//# sourceMappingURL=button.component.js.map
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(98);
+	var forms_1 = __webpack_require__(155);
 	var ValidationMessagesComponent = (function () {
 	    function ValidationMessagesComponent() {
 	    }
-	    __decorate([
-	        core_1.Input(), 
-	        __metadata('design:type', forms_1.FormControl)
-	    ], ValidationMessagesComponent.prototype, "control", void 0);
-	    ValidationMessagesComponent = __decorate([
-	        core_1.Component({
-	            selector: 'plex-validation-messages',
-	            template: "<div class=\"help-block\" *ngIf=\"control.errors && control.errors.required\">\n                    <span>Valor requerido</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.min\">\n                    <span>Valor no permitido</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.max\">\n                    <span>Valor no permitido</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.minlength\">\n                    <span>Debe ingresar un m\u00EDnimo de {{control.errors.minlength.requiredLength}} caracteres</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.format\">\n                    <span>Formato incorrecto</span>\n               </div>\n               "
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], ValidationMessagesComponent);
 	    return ValidationMessagesComponent;
 	}());
+	__decorate([
+	    core_1.Input(),
+	    __metadata("design:type", forms_1.FormControl)
+	], ValidationMessagesComponent.prototype, "control", void 0);
+	ValidationMessagesComponent = __decorate([
+	    core_1.Component({
+	        selector: 'plex-validation-messages',
+	        template: "<div class=\"help-block\" *ngIf=\"control.errors && control.errors.required\">\n                    <span>Valor requerido</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.min\">\n                    <span>Valor no permitido</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.max\">\n                    <span>Valor no permitido</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.minlength\">\n                    <span>Debe ingresar un m\u00EDnimo de {{control.errors.minlength.requiredLength}} caracteres</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.format\">\n                    <span>Formato incorrecto</span>\n               </div>\n               "
+	    }),
+	    __metadata("design:paramtypes", [])
+	], ValidationMessagesComponent);
 	exports.ValidationMessagesComponent = ValidationMessagesComponent;
 	//# sourceMappingURL=validation-messages.component.js.map
 

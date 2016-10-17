@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var validator_service_1 = require("../../lib/core/validator.service");
+var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
+var validator_service_1 = require('../../lib/core/validator.service');
 var FloatDemoComponent = (function () {
     function FloatDemoComponent(formBuilder) {
         this.formBuilder = formBuilder;
@@ -36,14 +36,14 @@ var FloatDemoComponent = (function () {
             _this.model2 = value;
         });
     };
+    FloatDemoComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            templateUrl: 'float.html',
+        }), 
+        __metadata('design:paramtypes', [forms_1.FormBuilder])
+    ], FloatDemoComponent);
     return FloatDemoComponent;
 }());
-FloatDemoComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        templateUrl: 'float.html',
-    }),
-    __metadata("design:paramtypes", [forms_1.FormBuilder])
-], FloatDemoComponent);
 exports.FloatDemoComponent = FloatDemoComponent;
 //# sourceMappingURL=float.component.js.map

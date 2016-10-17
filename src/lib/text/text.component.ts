@@ -3,11 +3,7 @@ import {  ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR  } fro
 
 @Component({
     selector: 'plex-text',
-    template: `<div class="form-group" [ngClass]="{'has-error': (control.dirty || control.touched) && !control.valid }">
-                    <label *ngIf="label">{{label}}</label>
-                    <input #ref type="text" class="form-control" (change)="onChange($event.target.value)" (input)="onChange($event.target.value)" >
-                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
-               </div>`,
+    templateUrl: 'lib/text/text.html',
     providers: [
         // Permite acceder al atributo formControlName/ngModel
         {
