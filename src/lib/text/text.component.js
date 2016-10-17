@@ -56,8 +56,9 @@ var PlexTextComponent = (function () {
     ], PlexTextComponent.prototype, "control", void 0);
     PlexTextComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'plex-text',
-            templateUrl: 'lib/text/text.html',
+            templateUrl: 'text.html',
             providers: [
                 // Permite acceder al atributo formControlName/ngModel
                 {

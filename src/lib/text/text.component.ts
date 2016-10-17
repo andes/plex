@@ -2,8 +2,9 @@ import { ViewChild, ContentChild, Component, OnInit, Input, forwardRef, ElementR
 import {  ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR  } from '@angular/forms';
 
 @Component({
+    moduleId: module.id,
     selector: 'plex-text',
-    templateUrl: 'lib/text/text.html',
+    templateUrl: 'text.html',
     providers: [
         // Permite acceder al atributo formControlName/ngModel
         {
