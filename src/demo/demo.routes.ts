@@ -5,6 +5,7 @@ import { BoxDemoComponent } from './box/box.component';
 import { TextDemoComponent } from './text/text.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
+import { ButtonDemoComponent } from './button/button.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -12,6 +13,7 @@ const appRoutes: Routes = [
     { path: 'text', component: TextDemoComponent },
     { path: 'int', component: IntDemoComponent },
     { path: 'float', component: FloatDemoComponent },
+    { path: 'button', component: ButtonDemoComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 

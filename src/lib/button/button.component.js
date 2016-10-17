@@ -9,10 +9,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var PlexButtonComponent = (function () {
-    function PlexButtonComponent() {
+    function PlexButtonComponent(renderer) {
+        this.renderer = renderer;
         this.type = "default";
     }
+    // Inicialización
+    PlexButtonComponent.prototype.ngOnInit = function () { };
+    PlexButtonComponent.prototype.ngAfterViewInit = function () {
+    };
+    // Actualización Modelo -> Vista
+    PlexButtonComponent.prototype.writeValue = function (value) {
+        this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
+    };
+    // Actualización Vista -> Modelo
+    PlexButtonComponent.prototype.registerOnTouched = function () {
+    };
+    PlexButtonComponent.prototype.registerOnChange = function (fn) {
+        // this.onChange = function (value) {
+        //     fn(value == '' ? null : value);
+        // };
+    };
+    __decorate([
+        core_1.ViewChild('ref'), 
+        __metadata('design:type', core_1.ElementRef)
+    ], PlexButtonComponent.prototype, "ref", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
@@ -25,12 +47,25 @@ var PlexButtonComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', String)
     ], PlexButtonComponent.prototype, "type", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], PlexButtonComponent.prototype, "disabled", void 0);
     PlexButtonComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'plex-button',
-            template: "<button class=\"btn btn-{{type}}\">\n                <i *ngIf=\"icon\" class=\"mdi mdi-{{icon}}\"></i>\n                <span *ngIf=\"title\">\n                  {{title}}\n                </span>\n            </button>"
+            templateUrl: 'button.html',
+            providers: [
+                // Permite acceder al atributo formControlName/ngModel
+                {
+                    provide: forms_1.NG_VALUE_ACCESSOR,
+                    useExisting: core_1.forwardRef(function () { return PlexButtonComponent; }),
+                    multi: true,
+                }
+            ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [core_1.Renderer])
     ], PlexButtonComponent);
     return PlexButtonComponent;
 }());

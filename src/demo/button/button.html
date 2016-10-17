@@ -1,0 +1,39 @@
+<plex-box title="Template-form ng-Model button básico">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-button title="Mi boton" icon="account"></plex-button>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="model1">
+            <label>Modelo</label>
+            <pre>{{tModel | json}}</pre>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Template-form button básico con type">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-button title="Mi boton danger" type="danger" icon="account"></plex-button>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="model1">
+            <label>Modelo</label>
+            <pre>{{tModel | json}}</pre>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Template-form button básico deshabilitado">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-button title="Mi boton deshabilitado" icon="account" [disabled]="true"></plex-button>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="model1">
+            <label>Modelo</label>
+            <pre>{{tModel | json}}</pre>
+        </div>
+    </div>
+</plex-box>

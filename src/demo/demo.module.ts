@@ -13,6 +13,7 @@ import { BoxDemoComponent } from './box/box.component';
 import { TextDemoComponent } from './text/text.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
+import { ButtonDemoComponent } from './button/button.component';
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { FloatDemoComponent } from './float/float.component';
         TextDemoComponent,
         HomeDemoComponent,
         IntDemoComponent,
-        FloatDemoComponent
+        FloatDemoComponent,
+        ButtonDemoComponent
     ],
     bootstrap: [DemoComponent]
 })
