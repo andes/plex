@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Componentes
 import { PlexAppComponent } from './app/app.component';
 import { SidebarComponent } from './app/sidebar.component';
 import { PlexBoxComponent } from './box/box.component';
@@ -10,7 +13,12 @@ import { PlexFloatComponent } from './float/float.component';
 import { PlexButtonComponent } from './button/button.component';
 import { PlexTabsComponent } from './tabs/tabs.component';
 import { PlexTabComponent } from './tabs/tab.component';
+import { PlexBoolComponent } from './bool/bool.component';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
+
+// Angular Material
+import { MaterialModule } from '@angular/material';
+import 'hammerjs';
 
 const MODULES = [
     PlexAppComponent,
@@ -20,11 +28,18 @@ const MODULES = [
     PlexFloatComponent,
     PlexButtonComponent,
     PlexTabsComponent,
-    PlexTabComponent
+    PlexTabComponent,
+    PlexBoolComponent
 ];
 
 @NgModule({
-    imports: [CommonModule, RouterModule],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule.forRoot()
+    ],
     declarations: [
         ...MODULES,
         SidebarComponent,

@@ -13,6 +13,7 @@ import { PlexService } from '../../lib/core/service';
 import { HomeDemoComponent } from './home/home.component';
 import { BoxDemoComponent } from './box/box.component';
 import { TextDemoComponent } from './text/text.component';
+import { BoolDemoComponent } from './bool/bool.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
@@ -27,7 +28,8 @@ import { TabsDemoComponent } from './tabs/tabs.component';
     IntDemoComponent,
     FloatDemoComponent,
     ButtonDemoComponent,
-    TabsDemoComponent
+    TabsDemoComponent,
+    BoolDemoComponent
   ],
   imports: [
     BrowserModule,

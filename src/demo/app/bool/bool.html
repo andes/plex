@@ -1,0 +1,26 @@
+<plex-box title="Template-form usando ngModel">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-bool [(ngModel)]="tModel.activo" label="¿Está activo?" name="activo"></plex-bool>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="tModel">
+            <label>Modelo</label>
+            <pre>{{tModel | json}}</pre>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Reactive form">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="form1">
+                <plex-bool formControlName="activo" label="WIFI activado" type="slide"></plex-bool>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="model">
+            <label>Modelo</label>
+            <pre>{{model | json}}</pre>
+        </div>
+    </div>
+</plex-box>

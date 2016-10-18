@@ -1,7 +1,6 @@
-
 <button class="btn btn-{{type}}" [disabled]="disabled" (click)="onChange($event.target.value)">
-                <i *ngIf="icon" class="mdi mdi-{{icon}}"></i>
-                <span *ngIf="title">
-                  {{title}}
-                </span>
+  <i *ngIf="icon" class="mdi mdi-{{icon}}"></i>
+  <span *ngIf="title">
+    {{title}}
+  </span>
 </button>
