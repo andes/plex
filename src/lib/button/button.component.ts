@@ -2,7 +2,6 @@ import { ViewChild, ContentChild, Component, OnInit, Input, forwardRef, ElementR
 import {  ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR  } from '@angular/forms';
 
 @Component({
-  moduleId: module.id,
   selector: 'plex-button',
   templateUrl: 'button.html',
 //   host: {

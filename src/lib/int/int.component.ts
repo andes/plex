@@ -4,7 +4,6 @@ import {  ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VA
 const REGEX = /^\s*(\-|\+)?(\d+)\s*$/;
 
 @Component({
-    moduleId: module.id,
     selector: 'plex-int',
     templateUrl: 'int.html',
     // Las siguientes líneas permiten acceder al atributo formControlName/ngModel

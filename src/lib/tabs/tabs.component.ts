@@ -19,7 +19,6 @@ import {
 } from './tab.component';
 
 @Component({
-    moduleId: module.id,
     selector: 'plex-tabs',
     templateUrl: 'tabs.html'
 })

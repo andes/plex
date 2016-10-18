@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { PlexValidator } from '../../lib/core/validator.service'
+import { PlexValidator } from '../../../lib/core/validator.service'
 
 @Component({
-    moduleId: module.id,
     templateUrl: 'button.html',
 })
 export class ButtonDemoComponent {
