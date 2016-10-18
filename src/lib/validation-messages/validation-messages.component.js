@@ -19,8 +19,9 @@ var ValidationMessagesComponent = (function () {
     ], ValidationMessagesComponent.prototype, "control", void 0);
     ValidationMessagesComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'plex-validation-messages',
-            template: "<div class=\"help-block\" *ngIf=\"control.errors && control.errors.required\">\n                    <span>Valor requerido</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.min\">\n                    <span>Valor no permitido</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.max\">\n                    <span>Valor no permitido</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.minlength\">\n                    <span>Debe ingresar un m\u00EDnimo de {{control.errors.minlength.requiredLength}} caracteres</span>\n               </div>\n               <div class=\"help-block\" *ngIf=\"control.errors && control.errors.format\">\n                    <span>Formato incorrecto</span>\n               </div>\n               "
+            templateUrl: 'validation-messages.html',
         }), 
         __metadata('design:paramtypes', [])
     ], ValidationMessagesComponent);

@@ -9,26 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var PlexBoxComponent = (function () {
-    function PlexBoxComponent() {
+var forms_1 = require('@angular/forms');
+var TabsDemoComponent = (function () {
+    function TabsDemoComponent(formBuilder) {
+        this.formBuilder = formBuilder;
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], PlexBoxComponent.prototype, "title", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], PlexBoxComponent.prototype, "type", void 0);
-    PlexBoxComponent = __decorate([
+    TabsDemoComponent.prototype.ngOnInit = function () {
+    };
+    TabsDemoComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'plex-box',
-            templateUrl: 'box.html'
+            templateUrl: 'tabs.html',
         }), 
-        __metadata('design:paramtypes', [])
-    ], PlexBoxComponent);
-    return PlexBoxComponent;
+        __metadata('design:paramtypes', [forms_1.FormBuilder])
+    ], TabsDemoComponent);
+    return TabsDemoComponent;
 }());
-exports.PlexBoxComponent = PlexBoxComponent;
-//# sourceMappingURL=box.component.js.map
+exports.TabsDemoComponent = TabsDemoComponent;
+//# sourceMappingURL=tabs.component.js.map

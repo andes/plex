@@ -62,8 +62,9 @@ var PlexFloatComponent = (function () {
     ], PlexFloatComponent.prototype, "control", void 0);
     PlexFloatComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'plex-float',
-            template: "<div class=\"form-group\" [ngClass]=\"{'has-error': (control.dirty || control.touched) && !control.valid }\">\n                    <label *ngIf=\"label\">{{label}}</label>\n                    <input #ref type=\"text\" class=\"form-control\" (change)=\"onChange($event.target.value)\" (input)=\"onChange($event.target.value)\" >\n                    <plex-validation-messages *ngIf=\"(control.dirty || control.touched) && !control.valid\" [control]=\"control\"></plex-validation-messages>\n               </div>",
+            templateUrl: 'float.html',
             // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
             providers: [
                 {

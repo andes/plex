@@ -9,26 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var PlexBoxComponent = (function () {
-    function PlexBoxComponent() {
+var tabs_component_1 = require('./tabs.component');
+var PlexTabComponent = (function () {
+    function PlexTabComponent(tabs) {
+        tabs.addTab(this);
     }
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], PlexBoxComponent.prototype, "title", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], PlexBoxComponent.prototype, "type", void 0);
-    PlexBoxComponent = __decorate([
+    ], PlexTabComponent.prototype, "title", void 0);
+    PlexTabComponent = __decorate([
         core_1.Component({
-            moduleId: module.id,
-            selector: 'plex-box',
-            templateUrl: 'box.html'
+            selector: 'plex-tab',
+            template: "\n     <div [hidden]=\"!active\">\n      <ng-content></ng-content>\n    </div>\n  "
         }), 
-        __metadata('design:paramtypes', [])
-    ], PlexBoxComponent);
-    return PlexBoxComponent;
+        __metadata('design:paramtypes', [tabs_component_1.PlexTabsComponent])
+    ], PlexTabComponent);
+    return PlexTabComponent;
 }());
-exports.PlexBoxComponent = PlexBoxComponent;
-//# sourceMappingURL=box.component.js.map
+exports.PlexTabComponent = PlexTabComponent;
+//# sourceMappingURL=tab.component.js.map

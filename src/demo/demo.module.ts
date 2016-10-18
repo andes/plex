@@ -14,6 +14,7 @@ import { TextDemoComponent } from './text/text.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
+import { TabsDemoComponent } from './tabs/tabs.component'; 
 
 @NgModule({
     imports: [
@@ -35,7 +36,8 @@ import { ButtonDemoComponent } from './button/button.component';
         HomeDemoComponent,
         IntDemoComponent,
         FloatDemoComponent,
-        ButtonDemoComponent
+        ButtonDemoComponent,
+        TabsDemoComponent
     ],
     bootstrap: [DemoComponent]
 })

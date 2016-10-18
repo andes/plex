@@ -18,6 +18,8 @@ var text_component_1 = require('./text/text.component');
 var int_component_1 = require('./int/int.component');
 var float_component_1 = require('./float/float.component');
 var button_component_1 = require('./button/button.component');
+var tabs_component_1 = require('./tabs/tabs.component');
+var tab_component_1 = require('./tabs/tab.component');
 var validation_messages_component_1 = require('./validation-messages/validation-messages.component');
 var MODULES = [
     app_component_1.PlexAppComponent,
@@ -25,7 +27,9 @@ var MODULES = [
     text_component_1.PlexTextComponent,
     int_component_1.PlexIntComponent,
     float_component_1.PlexFloatComponent,
-    button_component_1.PlexButtonComponent
+    button_component_1.PlexButtonComponent,
+    tabs_component_1.PlexTabsComponent,
+    tab_component_1.PlexTabComponent
 ];
 var PlexModule = (function () {
     function PlexModule() {

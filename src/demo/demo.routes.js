@@ -6,6 +6,7 @@ var text_component_1 = require('./text/text.component');
 var int_component_1 = require('./int/int.component');
 var float_component_1 = require('./float/float.component');
 var button_component_1 = require('./button/button.component');
+var tabs_component_1 = require('./tabs/tabs.component');
 var appRoutes = [
     { path: 'inicio', component: home_component_1.HomeDemoComponent },
     { path: 'box', component: box_component_1.BoxDemoComponent },
@@ -13,6 +14,7 @@ var appRoutes = [
     { path: 'int', component: int_component_1.IntDemoComponent },
     { path: 'float', component: float_component_1.FloatDemoComponent },
     { path: 'button', component: button_component_1.ButtonDemoComponent },
+    { path: 'tabs', component: tabs_component_1.TabsDemoComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 exports.appRoutingProviders = [];

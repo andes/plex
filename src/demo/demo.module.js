@@ -23,6 +23,7 @@ var text_component_1 = require('./text/text.component');
 var int_component_1 = require('./int/int.component');
 var float_component_1 = require('./float/float.component');
 var button_component_1 = require('./button/button.component');
+var tabs_component_1 = require('./tabs/tabs.component');
 var DemoModule = (function () {
     function DemoModule() {
     }
@@ -46,7 +47,8 @@ var DemoModule = (function () {
                 home_component_1.HomeDemoComponent,
                 int_component_1.IntDemoComponent,
                 float_component_1.FloatDemoComponent,
-                button_component_1.ButtonDemoComponent
+                button_component_1.ButtonDemoComponent,
+                tabs_component_1.TabsDemoComponent
             ],
             bootstrap: [demo_component_1.DemoComponent]
         }), 
