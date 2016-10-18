@@ -1,8 +1,7 @@
-import { ViewChild, ContentChild, Component, OnInit, Input, forwardRef, ElementRef, Renderer }   from '@angular/core';
-import {  ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR  } from '@angular/forms';
+import { ViewChild, ContentChild, Component, OnInit, Input, forwardRef, ElementRef, Renderer } from '@angular/core';
+import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    moduleId: module.id,
     selector: 'plex-text',
     templateUrl: 'text.html',
     providers: [
@@ -18,14 +17,16 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     private renderer: Renderer;
     private onChange = (_: any) => { };
     @ViewChild('ref') ref: ElementRef;
+    @ContentChild(NgControl) control: any;
+
+    // Input properties
     @Input('auto-focus') autofocus: boolean;
     @Input() label: string;
     @Input() placeholder: string;
-    @ContentChild(NgControl) control: any;
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
-        this.placeholder ="";
+        this.placeholder = "";
     }
 
     // Inicialización
@@ -33,7 +34,7 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     ngAfterViewInit() {
         if (this.autofocus)
             this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
-            
+
     }
 
     // Actualización Modelo -> Vista

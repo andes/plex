@@ -3,7 +3,6 @@ import { SidebarItem } from './sidebar-item.class'
 import { PlexService } from '../core/service';
 
 @Component({
-  moduleId: module.id,
   selector: 'plex-sidebar',
   templateUrl: 'sidebar.html'
 })
