@@ -15,14 +15,9 @@ var ButtonDemoComponent = (function () {
         this.formBuilder = formBuilder;
     }
     ButtonDemoComponent.prototype.ngOnInit = function () {
-        // Tepmlate-Form1 model
-        //this.tModel = { valor: null };
-        // Form1: Sin validador
-        //this.model1 = { valor: null };
-        this.form1 = this.formBuilder.group({});
-        this.form1.valueChanges.subscribe(function (value) {
-            // this.model1 = value;
-        });
+    };
+    ButtonDemoComponent.prototype.onClick = function () {
+        alert('Clic ok!');
     };
     ButtonDemoComponent = __decorate([
         core_1.Component({

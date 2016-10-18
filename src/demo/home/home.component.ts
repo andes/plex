@@ -34,6 +34,6 @@ export class HomeDemoComponent implements OnInit {
         //   }
         // ]
 
-        this.plex.initView("Hola manola", items);
+        this.plex.initView("Plex Components", items);
     }
 }

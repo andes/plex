@@ -15,17 +15,10 @@ export class ButtonDemoComponent {
     constructor(private formBuilder: FormBuilder) { }
 
     ngOnInit() {
-        // Tepmlate-Form1 model
-        //this.tModel = { valor: null };
+        
+    }
 
-        // Form1: Sin validador
-        //this.model1 = { valor: null };
-        this.form1 = this.formBuilder.group({
-          //  valor: [''],
-        });
-        this.form1.valueChanges.subscribe((value) => {
-           // this.model1 = value;
-        })
-
+    onClick(){
+        alert('Clic ok!')
     }
 }

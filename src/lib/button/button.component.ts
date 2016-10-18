@@ -4,8 +4,11 @@ import {  ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR  } fro
 @Component({
   moduleId: module.id,
   selector: 'plex-button',
-   templateUrl: 'button.html',
-   providers: [
+  templateUrl: 'button.html',
+//   host: {
+//     '(click)': 'events($event)',
+//   },
+  providers: [
         // Permite acceder al atributo formControlName/ngModel
         {
             provide: NG_VALUE_ACCESSOR,
@@ -14,37 +17,39 @@ import {  ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR  } fro
         }
     ]
 })
-export class PlexButtonComponent {
+export class PlexButtonComponent implements OnInit, ControlValueAccessor {
   private renderer: Renderer;
+  private onChange = (_: any) => { };
+   
   @ViewChild('ref') ref: ElementRef;
-
   @Input() title: string;
   @Input() icon: string;
   @Input() type: string;
-  @Input() disabled: boolean
-
+  @Input() disabled: boolean;
+ 
   constructor(renderer: Renderer) {
       this.renderer = renderer;
       this.type = "default";
+      this.disabled = false;
   }
   // Inicialización
     ngOnInit() { }
-    ngAfterViewInit() {
+
+    ngAfterViewInit() {   
         
     }
-
     // Actualización Modelo -> Vista
     writeValue(value: any) {
         this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
     }
-
     // Actualización Vista -> Modelo
-    registerOnTouched() {
+    registerOnTouched(fn: any){
+    }
+    registerOnChange(fn: any):void {
+    }
 
-    }
-    registerOnChange(fn: any) {
-        // this.onChange = function (value) {
-        //     fn(value == '' ? null : value);
-        // };
-    }
+//     events(event : Event) {
+//        this.disabled = true;
+//   }
+
 }

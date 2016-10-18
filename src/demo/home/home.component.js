@@ -39,7 +39,7 @@ var HomeDemoComponent = (function () {
         //     'accion': '/'
         //   }
         // ]
-        this.plex.initView("Hola manola", items);
+        this.plex.initView("Plex Components", items);
     };
     HomeDemoComponent = __decorate([
         core_1.Component({

@@ -2,25 +2,17 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-button title="Mi boton" icon="account"></plex-button>
+                <plex-button title="Mi boton" icon="account" ></plex-button>
             </form>
-        </div>
-        <div class="col-md-6" *ngIf="model1">
-            <label>Modelo</label>
-            <pre>{{tModel | json}}</pre>
         </div>
     </div>
 </plex-box>
-<plex-box title="Template-form button básico con type">
+<plex-box title="Template-form button básico con type danger">
     <div class="row">
         <div class="col-md-6">
             <form>
                 <plex-button title="Mi boton danger" type="danger" icon="account"></plex-button>
             </form>
-        </div>
-        <div class="col-md-6" *ngIf="model1">
-            <label>Modelo</label>
-            <pre>{{tModel | json}}</pre>
         </div>
     </div>
 </plex-box>
@@ -31,9 +23,14 @@
                 <plex-button title="Mi boton deshabilitado" icon="account" [disabled]="true"></plex-button>
             </form>
         </div>
-        <div class="col-md-6" *ngIf="model1">
-            <label>Modelo</label>
-            <pre>{{tModel | json}}</pre>
+    </div>
+</plex-box>
+<plex-box title="Template-form button básico con función clic">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-button title="Mi boton clic" icon="account" (click)="onClick()" ></plex-button>
+            </form>
         </div>
     </div>
 </plex-box>

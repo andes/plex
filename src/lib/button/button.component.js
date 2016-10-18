@@ -12,8 +12,10 @@ var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var PlexButtonComponent = (function () {
     function PlexButtonComponent(renderer) {
+        this.onChange = function (_) { };
         this.renderer = renderer;
         this.type = "default";
+        this.disabled = false;
     }
     // Inicialización
     PlexButtonComponent.prototype.ngOnInit = function () { };
@@ -24,12 +26,9 @@ var PlexButtonComponent = (function () {
         this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
     };
     // Actualización Vista -> Modelo
-    PlexButtonComponent.prototype.registerOnTouched = function () {
+    PlexButtonComponent.prototype.registerOnTouched = function (fn) {
     };
     PlexButtonComponent.prototype.registerOnChange = function (fn) {
-        // this.onChange = function (value) {
-        //     fn(value == '' ? null : value);
-        // };
     };
     __decorate([
         core_1.ViewChild('ref'), 
@@ -56,6 +55,9 @@ var PlexButtonComponent = (function () {
             moduleId: module.id,
             selector: 'plex-button',
             templateUrl: 'button.html',
+            //   host: {
+            //     '(click)': 'events($event)',
+            //   },
             providers: [
                 // Permite acceder al atributo formControlName/ngModel
                 {

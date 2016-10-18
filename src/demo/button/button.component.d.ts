@@ -8,4 +8,5 @@ export declare class ButtonDemoComponent {
     tModel: any;
     constructor(formBuilder: FormBuilder);
     ngOnInit(): void;
+    onClick(): void;
 }
