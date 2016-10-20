@@ -1,15 +1,30 @@
-<plex-box title="Template-form Select">
+<plex-box title="Template-form usando ngModel">
     <div class="row">
         <div class="col-md-6">
             <form>
-                <label> Componente Select </label>
-                <plex-select [(ngModel)]="miModelo" [data]="selectableItems" [selectedItem]="miModelo" name="combo">       
+                <label> Componente Select ngModel </label>
+                <plex-select [(ngModel)]="tModel" [data]="selectableItems" [selectedItem]="tModel" name="combo">       
                 </plex-select>
             </form>
         </div>
-        <div class="col-md-6" *ngIf="miModelo">
+        <div class="col-md-6" *ngIf="tModel">
             <label>Modelo</label>
-            <pre>{{miModelo | json}}</pre>
+            <pre>{{tModel | json}}</pre>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Template-form usando Reactive Form">
+    <div class="row">
+        <div class="col-md-6">
+             <form [formGroup]="form1">
+                <label> Componente Select Reactivo </label>
+                <plex-select formControlName="modelo" [data]="selectableItems" [selectedItem]="modelo" name="combo">       
+                </plex-select>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="modelo">
+            <label>Modelo</label>
+            <pre>{{modelo | json}}</pre>
         </div>
     </div>
 </plex-box>

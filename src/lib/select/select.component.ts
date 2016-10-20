@@ -60,7 +60,6 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
         }
         // Actualización Modelo -> Vista
     writeValue(value: any ) {
-        debugger;
         if(this.selectedItem){
             value = this.selectedItem;
         }
@@ -69,15 +68,12 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
         
     }
 
-
-
     // Actualización Vista -> Modelo
     registerOnTouched(fn: any) {}
 
     registerOnChange(fn: any): void {
         this.onChange = function (value) {
             //Me lo devuelve en json al modelo
-            alert('hola');
             fn(value == '' ? null : JSON.parse(value));
 
         };

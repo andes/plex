@@ -17,35 +17,28 @@ import {
     templateUrl: 'select.html',
 })
 export class SelectDemoComponent {
-    
+    private form1: FormGroup;
+
     public selectableItems: any[];
-    public miModelo: any;
+    public tModel: any;
+    public modelo: any;
     
     
     constructor(private formBuilder: FormBuilder, private serviceDemoSelect: ServiceDemoSelect) {}
 
     ngOnInit() {
-
-        //Inicializo el modelo en null la primera vez
-        //this.selectedItem = "";
-
-        this.serviceDemoSelect.get().subscribe(resultado => {this.selectableItems = resultado; this.miModelo = resultado[0]});
-
-        //Prueba de datos simples
-        // this.selectableItems = [{
-        //     nombre: 'valor del primer item',
-        //     valor: 1
-        // }, {
-        //     nombre: 'valor del segundo item',
-        //     valor: 2
-        // },
-        // {
-        //     nombre: 'valor del tercer item',
-        //     valor: 3
-        // }];
-
-
         
+        // Template form
+        this.serviceDemoSelect.get().subscribe(resultado => {this.selectableItems = resultado; this.tModel = resultado[0]});
+
+        // Reactive form
+        this.form1 = this.formBuilder.group({
+            modelo : this.serviceDemoSelect.get().subscribe(resultado => {this.selectableItems = resultado; this.modelo = resultado[0]})
+        });
+
+         this.form1.valueChanges.subscribe((value) => {
+            this.serviceDemoSelect.get().subscribe(resultado => {this.modelo = value})
+        })     
             
     }
 
