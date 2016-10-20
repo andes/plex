@@ -33,11 +33,8 @@ import { SelectDemoComponent } from './select/select.component'
     FloatDemoComponent,
     ButtonDemoComponent,
     TabsDemoComponent,
-<<<<<<< HEAD
-    BoolDemoComponent
-=======
+    BoolDemoComponent,
     SelectDemoComponent
->>>>>>> plexSelect
   ],
   imports: [
     BrowserModule,
