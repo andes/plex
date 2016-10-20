@@ -17,6 +17,7 @@ import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
+import { SelectDemoComponent } from './select/select.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TabsDemoComponent } from './tabs/tabs.component';
     IntDemoComponent,
     FloatDemoComponent,
     ButtonDemoComponent,
-    TabsDemoComponent
+    TabsDemoComponent,
+    SelectDemoComponent
   ],
   imports: [
     BrowserModule,

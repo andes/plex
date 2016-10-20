@@ -10,6 +10,7 @@ import { PlexFloatComponent } from './float/float.component';
 import { PlexButtonComponent } from './button/button.component';
 import { PlexTabsComponent } from './tabs/tabs.component';
 import { PlexTabComponent } from './tabs/tab.component';
+import { PlexSelectComponent } from './select/select.component';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 
 const MODULES = [
@@ -20,7 +21,8 @@ const MODULES = [
     PlexFloatComponent,
     PlexButtonComponent,
     PlexTabsComponent,
-    PlexTabComponent
+    PlexTabComponent,
+    PlexSelectComponent
 ];
 
 @NgModule({

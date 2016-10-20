@@ -1,0 +1,3 @@
+<select #ref class="form-control" (change)="onChange($event.target.value)">
+    <option *ngFor="let item of data" [value]="stringify(item)">{{item.nombre}}</option>
+</select>

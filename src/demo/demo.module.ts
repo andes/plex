@@ -37,7 +37,8 @@ import { TabsDemoComponent } from './tabs/tabs.component';
         IntDemoComponent,
         FloatDemoComponent,
         ButtonDemoComponent,
-        TabsDemoComponent
+        TabsDemoComponent,
+        SelectDemoCompoenet
     ],
     bootstrap: [DemoComponent]
 })

@@ -7,6 +7,7 @@ import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
+import { SelectDemoComponent } from './select/select.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
     { path: 'float', component: FloatDemoComponent },
     { path: 'button', component: ButtonDemoComponent },
     { path: 'tabs', component: TabsDemoComponent },
+    { path: 'select', component: SelectDemoComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 
