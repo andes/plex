@@ -11,28 +11,12 @@ export class HomeDemoComponent implements OnInit {
     ngOnInit() {
         let items = [
             new SidebarItem('Punto de inicio', 'mdi mdi-arrow-compress-all', '/inicio'),
-            new SidebarItem('Buscar', 'mdi mdi-magnify', '/text'),
+            new SidebarItem('Buscar', 'mdi mdi-magnify', '/inicio'),
             new SidebarItem('Función', 'mdi mdi-arrow-compress-all', function(){
-                alert(1);
+                alert('Ejecuta una función....');
             })
         ];
-        //   {
-        //     'titulo': 'Punto de inicio',
-        //     'icon': 'mdi mdi-arrow-compress-all',
-        //     'accion': '/'
-        //   },
-        //   {
-        //     'titulo': 'Buscar',
-        //     'icon': 'mdi mdi-magnify',
-        //     'accion': '/'
-        //   },
-        //   {
-        //     'titulo': 'Dashboard',
-        //     'icon': 'mdi mdi-chart-bar',
-        //     'accion': '/'
-        //   }
-        // ]
-
+        
         this.plex.initView("Plex Components", items);
     }
 }

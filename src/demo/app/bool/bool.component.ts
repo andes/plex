@@ -13,6 +13,7 @@ export class BoolDemoComponent {
     constructor(private formBuilder: FormBuilder) { }
 
     ngOnInit() {
+
         // Template form
         this.tModel = { activo: true };
 
@@ -25,4 +26,6 @@ export class BoolDemoComponent {
             this.model = value;
         })       
     }
+
+
 }
