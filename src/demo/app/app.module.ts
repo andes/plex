@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 import { PlexModule } from '../../lib/module';
 import { PlexService } from '../../lib/core/service';
 
+//Other services
+import { ServiceDemoSelect } from './select/serviceDemoSelect';
+
 // Routes
 import { HomeDemoComponent } from './home/home.component';
 import { BoxDemoComponent } from './box/box.component';
@@ -17,7 +20,7 @@ import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
-import { SelectDemoComponent } from './select/select.component';
+import { SelectDemoComponent } from './select/select.component'
 
 @NgModule({
   declarations: [
@@ -42,6 +45,7 @@ import { SelectDemoComponent } from './select/select.component';
   providers: [
     PlexService,
     appRoutingProviders,
+    ServiceDemoSelect,
   ],
   bootstrap: [AppComponent]
 })

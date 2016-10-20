@@ -20,11 +20,6 @@ import {
     SelectItem
 } from './select-item';
 
-// interface objectSelect{
-//     id:string,
-//     name:string
-// }
-
 @Component({
     selector: 'plex-select',
     templateUrl: 'select.html',
@@ -40,20 +35,21 @@ import {
 
 export class PlexSelectComponent implements OnInit, ControlValueAccessor {
     private renderer: Renderer;
-    private onChange = (_: any) => { };
+    private onChange = (_: any) => {};
     @ViewChild('ref') ref: ElementRef;
     @ContentChild(NgControl) control: any;
 
     //El array de datos que recibo desde la demo
     @Input() data: any[];
+    @Input() selectedItem: any;
     //El array de datos que devuelvo a la demo
     @Output() dataChange = new EventEmitter();
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
-        this.dataChange.emit(this.data)
-    }
+        this.dataChange.emit(this.data);
 
+    }
 
     ngOnInit() {
 
@@ -63,22 +59,27 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
 
         }
         // Actualización Modelo -> Vista
-    writeValue(value: any) {
-            
-            this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
+    writeValue(value: any ) {
+        debugger;
+        if(this.selectedItem){
+            value = this.selectedItem;
         }
-    
-
-        // Actualización Vista -> Modelo
-    registerOnTouched(fn: any) {
         
-
+        //this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
+        
     }
+
+
+
+    // Actualización Vista -> Modelo
+    registerOnTouched(fn: any) {}
 
     registerOnChange(fn: any): void {
         this.onChange = function (value) {
             //Me lo devuelve en json al modelo
+            alert('hola');
             fn(value == '' ? null : JSON.parse(value));
+
         };
     }
 
@@ -86,6 +87,6 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
         return JSON.stringify(o);
     }
 
-   
+
 
 }

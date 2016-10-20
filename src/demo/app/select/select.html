@@ -3,15 +3,13 @@
         <div class="col-md-6">
             <form>
                 <label> Componente Select </label>
-                <plex-select [(ngModel)]="selectedItem" [data]="selectableItems" name="combo">       
-                    <!-- tengo que ver como hacer para usar este ngFor en lugar del que tengo definido en el componente-->
-                    <option *ngFor="let item of selectableItems" [ngValue]="item"> {{item.nombre}}</option>
+                <plex-select [(ngModel)]="miModelo" [data]="selectableItems" [selectedItem]="miModelo" name="combo">       
                 </plex-select>
             </form>
         </div>
-        <div class="col-md-6" *ngIf="selectedItem">
+        <div class="col-md-6" *ngIf="miModelo">
             <label>Modelo</label>
-            <pre>{{selectedItem | json}}</pre>
+            <pre>{{miModelo | json}}</pre>
         </div>
     </div>
 </plex-box>
