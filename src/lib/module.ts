@@ -14,6 +14,7 @@ import { PlexButtonComponent } from './button/button.component';
 import { PlexTabsComponent } from './tabs/tabs.component';
 import { PlexTabComponent } from './tabs/tab.component';
 import { PlexBoolComponent } from './bool/bool.component';
+import { PlexSelectComponent } from './select/select.component';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 
 // Angular Material
@@ -29,7 +30,8 @@ const MODULES = [
     PlexButtonComponent,
     PlexTabsComponent,
     PlexTabComponent,
-    PlexBoolComponent
+    PlexBoolComponent,
+    PlexSelectComponent
 ];
 
 @NgModule({
