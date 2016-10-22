@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PlexService } from '../../../lib/core/service';
 import { SidebarItem } from '../../../lib/app/sidebar-item.class';
 
@@ -12,7 +12,7 @@ export class HomeDemoComponent implements OnInit {
         let items = [
             new SidebarItem('Punto de inicio', 'mdi mdi-arrow-compress-all', '/inicio'),
             new SidebarItem('Buscar', 'mdi mdi-magnify', '/text'),
-            new SidebarItem('Función', 'mdi mdi-arrow-compress-all', function(){
+            new SidebarItem('Función', 'mdi mdi-arrow-compress-all', function () {
                 alert(1);
             })
         ];
@@ -35,4 +35,5 @@ export class HomeDemoComponent implements OnInit {
 
         this.plex.initView("Plex Components", items);
     }
+
 }
