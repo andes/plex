@@ -1,6 +1,2 @@
-<select id="select-beast" class="demo-default" multiple placeholder="Select a person...">
-							<option value="">Select a person...</option>
-							<option value="1">Chuck Testa</option>
-							<option value="4">Sage Cattabriga-Alosa</option>
-							<option value="3">Nikola Tesla</option>
-						</select>
+<select *ngIf="!multiple" ></select>
+<select *ngIf="multiple" multiple></select>
