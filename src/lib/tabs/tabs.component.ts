@@ -23,20 +23,24 @@ import {
     templateUrl: 'tabs.html'
 })
 export class PlexTabsComponent {
-
     tabs: PlexTabComponent[] = [];
-
+    ngAfterViewInit() {
+        if (this.tabs.length) {
+            this.tabs[0].active = true;
+        }
+    }
+    
     addTab(tab: PlexTabComponent) {
         if (this.tabs.length === 0) {
             tab.active = true;
         }
         this.tabs.push(tab);
     }
+
     selectTab(tab: PlexTabComponent) {
         this.tabs.forEach((tab) => {
             tab.active = false;
         });
         tab.active = true
     }
-
 }

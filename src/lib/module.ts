@@ -15,6 +15,7 @@ import { PlexTabsComponent } from './tabs/tabs.component';
 import { PlexTabComponent } from './tabs/tab.component';
 import { PlexBoolComponent } from './bool/bool.component';
 import { PlexSelectComponent } from './selectize/select.component';
+import { PlexRipplesDirective } from './ripples/ripples.directive';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 
 // Angular Material
@@ -31,7 +32,8 @@ const MODULES = [
     PlexTabsComponent,
     PlexTabComponent,
     PlexBoolComponent,
-    PlexSelectComponent
+    PlexSelectComponent,
+    PlexRipplesDirective
 ];
 
 @NgModule({

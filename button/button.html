@@ -1,4 +1,4 @@
-<button class="btn btn-{{type}}" [disabled]="disabled" (click)="onChange($event.target.value)">
+<button plex-ripples class="btn btn-{{type}}" [disabled]="disabled">
   <i *ngIf="icon" class="mdi mdi-{{icon}}"></i>
   <span *ngIf="label">
     {{label}}

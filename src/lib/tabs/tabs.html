@@ -1,6 +1,6 @@
-<ul class="nav nav-tabs nav-justified">
-    <li *ngFor="let tab of tabs" (click)="selectTab(tab)">
-        <a href="#" onclick="return false;">{{tab.title}}</a>
+<ul class="nav nav-tabs">
+    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [ngClass]="{active: tab.active}">
+        <a plex-ripples href="#" onclick="return false">{{tab.title}}</a>
     </li>
 </ul>
 <ng-content></ng-content>

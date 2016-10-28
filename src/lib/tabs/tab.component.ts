@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PlexTabsComponent} from './tabs.component';
+import { PlexTabsComponent } from './tabs.component';
 
 @Component({
   selector: 'plex-tab',
@@ -10,8 +10,8 @@ import { PlexTabsComponent} from './tabs.component';
   `
 })
 export class PlexTabComponent {
-  @Input() title : string;
-  active : boolean  
+  @Input() title: string;
+  @Input() active: boolean
 
   constructor(tabs: PlexTabsComponent) {
     tabs.addTab(this)
