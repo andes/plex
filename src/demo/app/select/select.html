@@ -1,30 +1,56 @@
-<plex-box title="Template-form usando ngModel">
+<plex-box title="Template select con datos estáticos">
+	<div class="row">
+		<div class="col-md-6">
+			<form>
+				<plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" label="Seleccione un país">
+				</plex-select>
+			</form>
+		</div>
+		<div class="col-md-6">
+			<label>Modelo</label>
+			<pre>{{modelo1 | json}}</pre>
+		</div>
+	</div>
+</plex-box>
+<plex-box title="Template select múltiple">
     <div class="row">
         <div class="col-md-6">
             <form>
-                <label> Componente Select ngModel </label>
-                <plex-select [(ngModel)]="tModel" [data]="selectableItems" [selectedItem]="tModel" name="combo">       
+                <plex-select [(ngModel)]="modelo3.select" name="select" [data]="opciones" label="Seleccione varios países" [multiple]="true">       
                 </plex-select>
             </form>
         </div>
-        <div class="col-md-6" *ngIf="tModel">
+        <div class="col-md-6">
             <label>Modelo</label>
-            <pre>{{tModel | json}}</pre>
+            <pre>{{modelo3 | json}}</pre>
         </div>
     </div>
 </plex-box>
-<plex-box title="Template-form usando Reactive Form">
+<plex-box title="Reactive Select">
+	<div class="row">
+		<div class="col-md-6">
+			<form [formGroup]="form1">
+				<plex-select formControlName="select" [data]="opciones" label="Seleccione un país">
+				</plex-select>
+			</form>
+		</div>
+		<div class="col-md-6">
+			<label>Modelo</label>
+			<pre>{{rModelo1 | json}}</pre>
+		</div>
+	</div>
+</plex-box>
+<plex-box title="Select con callback">
     <div class="row">
         <div class="col-md-6">
-             <form [formGroup]="form1">
-                <label> Componente Select Reactivo </label>
-                <plex-select formControlName="modelo" [data]="selectableItems" [selectedItem]="modelo" name="combo">       
+            <form>
+                <plex-select [(ngModel)]="modelo2.select" name="select" (get-data)="loadData($event)" placeholder="Seleccione un item">       
                 </plex-select>
             </form>
         </div>
-        <div class="col-md-6" *ngIf="modelo">
+        <div class="col-md-6">
             <label>Modelo</label>
-            <pre>{{modelo | json}}</pre>
+            <pre>{{modelo2 | json}}</pre>
         </div>
     </div>
 </plex-box>
