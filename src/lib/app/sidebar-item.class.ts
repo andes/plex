@@ -5,7 +5,7 @@ export class SidebarItem {
     public handler: Function;
     constructor(title: string, icon: string, public handlerOrRoute: any) {
         this.title = title;
-        this.icon = icon;
+        this.icon = icon && (icon.toLowerCase().startsWith('mdi') ? icon : ("mdi mdi-" + icon));
         if (typeof handlerOrRoute === 'function')
             this.handler = handlerOrRoute;
         else

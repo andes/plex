@@ -10,6 +10,9 @@ export class SidebarComponent {
   get items(): Array<SidebarItem> {
     return this.plex.sidebarItems;
   }
+  get staticItems(): Array<SidebarItem> {
+    return this.plex.sidebarStaticItems;
+  }
 
   constructor(public plex: PlexService) {
   }
