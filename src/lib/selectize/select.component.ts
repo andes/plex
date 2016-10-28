@@ -1,5 +1,9 @@
-import { ViewChild, ContentChild, Component, OnInit, Input, forwardRef, ElementRef, Renderer } from '@angular/core';
+import { ViewChild, ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Observable } from 'rxjs/Rx';
+// Importo las librerías de jQuery
+let jQuery = require('../../../node_modules/jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
+require('../../../node_modules/selectize/dist/js/standalone/selectize');
 
 @Component({
     selector: 'plex-select',
@@ -14,7 +18,9 @@ import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from 
     ]
 })
 export class PlexSelectComponent implements OnInit {
+    private value: any;
     private onChange = (_: any) => { };
+    private selectize: any;
     @ContentChild(NgControl) control: any;
 
     // Input properties
@@ -26,6 +32,7 @@ export class PlexSelectComponent implements OnInit {
     @Input('label-field') labelField: string;
     @Input('group-field') groupField: string;
     @Input() data: any[];
+    @Output('get-data') onGetData = new EventEmitter<any>();
 
     constructor(private element: ElementRef, private renderer: Renderer) {
         this.placeholder = "";
@@ -39,11 +46,36 @@ export class PlexSelectComponent implements OnInit {
     ngOnInit() { }
     ngAfterViewInit() {
         let self = this;
-        $(this.element.nativeElement.children[0]).selectize({
+        let $selectize = jQuery('SELECT', this.element.nativeElement.children[0]).selectize({
+            plugins: ['remove_button'],
             valueField: this.idField,
             labelField: this.labelField,
             placeholder: this.placeholder,
+            searchField: [this.labelField],
             options: this.data,
+            load: function (query: string, callback: Function) {
+                // Esta función se ejecuta cuando el usuario escribe en el elemento
+                self.onGetData.emit({
+                    query: query,
+                    callback: function (data) {
+                        self.data = data;
+                        callback(data || []);
+                    }
+                });
+            },
+            onFocus: function () {
+                //self.selectize.clearOptions();
+                //self.selectize.clearCache();
+                //self.selectize..renderCache = {};
+                self.selectize.load(function (callback: Function) {
+                    self.onGetData.emit({
+                        callback: function (data: any[]) {
+                            self.data = data;
+                            callback(data || []);
+                        }
+                    });
+                });
+            },
             onChange: function (value) {
                 // Busca en la lista de items un valor que coincida con la clave
                 if (self.multiple) {
@@ -66,41 +98,53 @@ export class PlexSelectComponent implements OnInit {
                 }
             }
         });
+
+        // Guarda el componente para futura referencia
+        this.selectize = $selectize[0].selectize;
+        // Setea el valor inicial
+        this.writeValue(this.value);
     }
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
         let self = this;
-        var valueAsString = function (val: any): string {
-            if (val == null)
-                return null;
-            else
-                if (typeof val == "object")
-                    return "" + val[self.idField];
-                else
-                    return "" + val;
-        }
+        self.value = value;
 
-        // Busca el id que corresponde al item
-        let val;
-        if (Array.isArray(value)) {
-            val = [];
-            for (let i = 0; i < value.length; i++) {
-                val = [...val, valueAsString(value[i])];
+        if (self.selectize) {
+            var valueAsString = function (val: any): string {
+                if (val == null)
+                    return null;
+                else
+                    if (typeof val == "object")
+                        return "" + val[self.idField];
+                    else
+                        return "" + val;
             }
-        } else {
-            val = valueAsString(value);
+
+            // Busca el id que corresponde al item
+            let val;
+            if (Array.isArray(value)) {
+                val = [];
+                for (let i = 0; i < value.length; i++) {
+                    val = [...val, valueAsString(value[i])];
+                }
+            } else {
+                val = valueAsString(value);
+            }
+
+            self.selectize.setValue(val, true);
         }
-        
-        this.element.nativeElement.children[0].selectize.setValue(val, true);
     }
 
     // Actualización Vista -> Modelo
     registerOnTouched() {
     }
     registerOnChange(fn: any) {
+        var self = this;
         this.onChange = function (value) {
-            fn(value == '' ? null : value);
+            value = value == '' ? null : value;
+            self.value = value;
+            fn(value);
         };
     }
 }

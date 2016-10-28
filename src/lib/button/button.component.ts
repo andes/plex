@@ -21,7 +21,7 @@ export class PlexButtonComponent implements OnInit, ControlValueAccessor {
   private onChange = (_: any) => { };
    
   @ViewChild('ref') ref: ElementRef;
-  @Input() title: string;
+  @Input() label: string;
   @Input() icon: string;
   @Input() type: string;
   @Input() disabled: boolean;

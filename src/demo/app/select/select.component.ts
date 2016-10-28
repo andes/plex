@@ -1,54 +1,54 @@
-import {
-    Component
-} from '@angular/core';
-import {
-    FormBuilder,
-    FormGroup,
-    FormArray,
-    Validators
-} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/Rx';
 
 //Importo un servicio de prueba
-import {
-    ServiceDemoSelect
-} from './serviceDemoSelect';
+import { ServiceDemoSelect } from './serviceDemoSelect';
 
 @Component({
     templateUrl: 'select.html',
 })
 export class SelectDemoComponent {
+    public opciones: any[];
+    private form1: FormGroup;
+    private form2: FormGroup;
+    private form3: FormGroup;
+    public modelo1 = { select: null };
+    public rModelo1 = { select: null };
+    public modelo2 = { select: null };
+    public modelo3 = { select: null };
 
-    public selectableItems: any[];
-    public modelo: any;
-
-
-    constructor(private formBuilder: FormBuilder, private serviceDemoSelect: ServiceDemoSelect) { }
+    constructor(private formBuilder: FormBuilder, public servicio: ServiceDemoSelect) { }
 
     ngOnInit() {
-
-        //Inicializo el modelo en null la primera vez
-        //this.selectedItem = "";
-
-        // this.serviceDemoSelect.get().subscribe(resultado => {this.selectableItems = resultado; this.miModelo = resultado[0]});
-
-        this.modelo = {
-            select: [{
-                nombre: 'valor del segundo item',
-                id: 2
-            }]
-        }
-
-        // Prueba de datos simples
-        this.selectableItems = [{
-            nombre: 'valor del primer item',
-            id: 1
+        // Opciones
+        this.opciones = [{
+            id: 1,
+            nombre: 'Argentina',
         }, {
-            nombre: 'valor del segundo item',
-            id: 2
+            id: 2,
+            nombre: 'Brasil',
         },
         {
-            nombre: 'valor del tercer item',
-            id: 3
+            id: 3,
+            nombre: 'Chile',
         }];
+
+        // Template form1
+        this.modelo1.select = this.opciones[1];
+
+        // Formularios reactivos
+        this.rModelo1.select = this.opciones[2];
+        this.form1 = this.formBuilder.group({
+            select: [null, Validators.required],
+        });
+        this.form1.patchValue(this.rModelo1);
+        this.form1.valueChanges.subscribe((value) => {
+            this.rModelo1 = value;
+        })
+    }
+
+    loadData(event) {
+        this.servicio.get(event.query).subscribe(event.callback);       
     }
 }
