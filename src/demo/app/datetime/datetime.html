@@ -1,0 +1,61 @@
+<plex-box title="Template-form usando ngModel">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora" name="fechaHora">
+                </plex-datetime>
+                <plex-datetime label="Ingrese la fecha del cumpleaños" type="date" [(ngModel)]="tModel.fecha" name="fecha">
+                </plex-datetime>
+                <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora" name="hora">
+                </plex-datetime>
+                <button (click)="blanquear()">Blanquear</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <label>Modelo</label>
+            <pre>{{tModel | json}}</pre>
+        </div>
+    </div>
+</plex-box>
+<!--<plex-box title="Reactive form utilizando sin validación">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="form1">
+                <plex-text label="Ingrese el nombre" formControlName="nombre">
+                </plex-text>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <label>Modelo</label>
+            <pre>{{model1 | json}}</pre>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Reactive form utilizando doble validación">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="form2">
+                <plex-text label="Ingrese el nombre" formControlName="nombre">
+                </plex-text>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="model2">
+            <label>Modelo</label>
+            <pre>{{model2 | json}}</pre>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Reactive Form usando placeholder y autofocus sin validación">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="form3">
+                <plex-text label="Ingrese el nombre" auto-focus="true" placeholder="ingrese texto..." formControlName="nombre">
+                </plex-text>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="model2">
+            <label>Modelo</label>
+            <pre>{{model3 | json}}</pre>
+        </div>
+    </div>
+</plex-box>-->

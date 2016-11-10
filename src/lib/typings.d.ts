@@ -5,3 +5,4 @@
 declare var require: any;
 declare var $: any;
 declare var jQuery: any;
+declare var moment: any;

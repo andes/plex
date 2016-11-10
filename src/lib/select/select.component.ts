@@ -1,6 +1,5 @@
 import { ViewChild, ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Observable } from 'rxjs/Rx';
 // Importo las librerías de jQuery
 let jQuery = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
 require('selectize/dist/js/standalone/selectize');

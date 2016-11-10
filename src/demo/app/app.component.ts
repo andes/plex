@@ -28,6 +28,7 @@ export class AppComponent {
       new SidebarItem('Bool', 'checkbox-marked-outline', '/bool'),
       new SidebarItem('Box', 'selection', '/box'),
       new SidebarItem('Button', 'solid', '/button'),
+      new SidebarItem('DateTime', 'calendar', '/datetime'),
       new SidebarItem('Float', 'numeric', '/float'),
       new SidebarItem('Int', 'numeric', '/int'),
       new SidebarItem('Select', 'format-list-bulleted', '/select'),

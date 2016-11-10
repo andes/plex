@@ -22,6 +22,7 @@ import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
 import { SelectDemoComponent } from './select/select.component'
+import { DateTimeDemoComponent } from './datetime/datetime.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SelectDemoComponent } from './select/select.component'
     ButtonDemoComponent,
     TabsDemoComponent,
     BoolDemoComponent,
-    SelectDemoComponent
+    SelectDemoComponent,
+    DateTimeDemoComponent
   ],
   imports: [
     BrowserModule,

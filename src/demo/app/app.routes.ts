@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeDemoComponent } from './home/home.component';
 import { BoxDemoComponent } from './box/box.component';
 import { TextDemoComponent } from './text/text.component';
+import { DateTimeDemoComponent } from './datetime/datetime.component';
 import { BoolDemoComponent } from './bool/bool.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
     { path: 'box', component: BoxDemoComponent },
     { path: 'text', component: TextDemoComponent },
+    { path: 'datetime', component: DateTimeDemoComponent },
     { path: 'bool', component: BoolDemoComponent },
     { path: 'int', component: IntDemoComponent },
     { path: 'float', component: FloatDemoComponent },

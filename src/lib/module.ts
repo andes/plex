@@ -15,6 +15,7 @@ import { PlexTabsComponent } from './tabs/tabs.component';
 import { PlexTabComponent } from './tabs/tab.component';
 import { PlexBoolComponent } from './bool/bool.component';
 import { PlexSelectComponent } from './select/select.component';
+import { PlexDateTimeComponent } from './datetime/datetime.component';
 import { PlexRipplesDirective } from './ripples/ripples.directive';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 
@@ -33,6 +34,7 @@ const MODULES = [
     PlexTabComponent,
     PlexBoolComponent,
     PlexSelectComponent,
+    PlexDateTimeComponent,
     PlexRipplesDirective
 ];
 
