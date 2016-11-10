@@ -1,5 +1,5 @@
 import { ViewChild, ContentChild, Directive, OnInit, Input, ElementRef } from '@angular/core';
-let Waves = require('../../../node_modules/node-waves/dist/waves');
+let Waves = require('node-waves/dist/waves');
 Waves.init();
 
 @Directive({

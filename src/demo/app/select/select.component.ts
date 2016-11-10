@@ -45,7 +45,12 @@ export class SelectDemoComponent {
         this.form1.patchValue(this.rModelo1);
         this.form1.valueChanges.subscribe((value) => {
             this.rModelo1 = value;
-        })
+        });
+
+        this.modelo2.select = {
+            id: 2,
+            nombre: 'Brasil',
+        };
     }
 
     loadData(event) {
