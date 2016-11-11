@@ -12,6 +12,7 @@ export class TextDemoComponent {
     public model2: any;
     public model3: any;
     public tModel: any;
+    public count: number = 0;
     constructor(private formBuilder: FormBuilder) { }
 
     ngOnInit() {
@@ -44,5 +45,9 @@ export class TextDemoComponent {
         this.form3.valueChanges.subscribe((value) => {
             this.model3 = value;
         })
+    }
+
+    cambio(){
+        this.count++;
     }
 }

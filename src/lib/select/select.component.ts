@@ -16,7 +16,7 @@ require('selectize/dist/js/standalone/selectize');
         }
     ]
 })
-export class PlexSelectComponent implements OnInit {
+export class PlexSelectComponent implements OnInit, ControlValueAccessor {
     private value: any;
     private onChange = (_: any) => { };
     private selectize: any;
@@ -32,6 +32,7 @@ export class PlexSelectComponent implements OnInit {
     @Input('group-field') groupField: string;
     @Input() data: any[];
     @Output('get-data') onGetData = new EventEmitter<any>();
+    @Output('change') valueChange = new EventEmitter();
 
     constructor(private element: ElementRef, private renderer: Renderer) {
         this.placeholder = "";
@@ -92,7 +93,6 @@ export class PlexSelectComponent implements OnInit {
                             return;
                         }
                     }
-                    self.onChange(null);
                 }
             }
         });
@@ -152,9 +152,10 @@ export class PlexSelectComponent implements OnInit {
     registerOnChange(fn: any) {
         var self = this;
         this.onChange = function (value) {
-            value = value == '' ? null : value;
-            self.value = value;
             fn(value);
+            self.valueChange.emit({
+                value: value
+            })
         };
     }
 }

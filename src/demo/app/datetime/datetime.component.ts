@@ -51,6 +51,6 @@ export class DateTimeDemoComponent {
     }
 
     blanquear(){
-        this.tModel.fechaHora = new Date(2010,5,3);
+        this.tModel.fechaHora = null;
     }
 }

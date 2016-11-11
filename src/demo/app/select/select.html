@@ -2,7 +2,8 @@
 	<div class="row">
 		<div class="col-md-6">
 			<form>
-				<plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" label="Seleccione un país">
+                {{count}}
+				<plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" label="Seleccione un país" (change)="cambio()">
 				</plex-select>
 			</form>
 		</div>

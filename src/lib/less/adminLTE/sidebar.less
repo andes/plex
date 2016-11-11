@@ -7,10 +7,9 @@
 
 .main-sidebar,
 .left-side {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  padding-top: 50px;
   min-height: 100%;
   width: @sidebar-width;
   z-index: 810;
@@ -38,6 +37,29 @@
 
 .sidebar {
   padding-bottom: 10px;
+
+  .logo{
+    color: #bebebe;
+    background: #111111;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    
+    .icon{
+      color: @light-blue;
+      font-size: 4em;
+      margin-bottom: -20px;
+    }
+
+    .title{
+      font-size: 2em;
+    }
+
+    .subtitle{
+      text-transform: uppercase;
+      font-size: .5em;
+    }
+  }
 }
 
 // remove border from form
@@ -101,12 +123,14 @@
         width: 20px;
       }
     }
-    .label,
-    .badge {
-      margin-right: 5px;
+    .label {
+      font-size: 100%;
+      margin-left: 5px;
+      font-weight: 300;
     }
     .badge {
       margin-top: 3px;
+      margin-right: 5px;
     }
   }
   li.header {

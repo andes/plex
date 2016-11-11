@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-text label="Ingrese el nombre" [(ngModel)]="tModel.nombre" name="nombre">
+                {{count}}
+                <plex-text label="Ingrese el nombre" [(ngModel)]="tModel.nombre" name="nombre" (input)="cambio()">
                 </plex-text>
             </form>
         </div>
