@@ -1,0 +1,42 @@
+<plex-box title="Template-form usando ngModel">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-int label="Ingrese el porcentaje" [(ngModel)]="tModel.valor" name="valor" suffix="%">
+                </plex-int>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="model1">
+            <label>Modelo</label>
+            <pre>{{tModel | json}}</pre>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Reactive form utilizando sin validación">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="form1">
+                <plex-int label="Ingrese su edad" formControlName="valor">
+                </plex-int>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="model1">
+            <label>Modelo</label>
+            <pre>{{model1 | json}}</pre>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Reactive form utilizando validación múltiple">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="form2">
+                <plex-int label="Ingrese un número >= 3 y <= 10" formControlName="valor">
+                </plex-int>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="model2">
+            <label>Modelo</label>
+            <pre>{{model2 | json}}</pre>
+        </div>
+    </div>
+</plex-box>

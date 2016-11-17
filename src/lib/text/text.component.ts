@@ -1,19 +1,15 @@
-import { ViewChild, ContentChild, Component, OnInit, Input, forwardRef, ElementRef, Renderer }   from '@angular/core';
-import {  ControlValueAccessor, FormControl, FormControlName, NG_VALUE_ACCESSOR  } from '@angular/forms';
+import { ViewChild, ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter } from '@angular/core';
+import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'plex-text',
-    template: `<div class="form-group" [ngClass]="{'has-error': (control.dirty || control.touched) && !control.valid }">
-                    <label *ngIf="label">{{label}}</label>
-                    <input #ref type="text" class="form-control" (change)="onChange($event.target.value)" (input)="onChange($event.target.value)" >
-                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
-               </div>`,
-    // Las siguientes líneas permiten acceder al atributo formControlName
+    templateUrl: 'text.html',
     providers: [
+        // Permite acceder al atributo formControlName/ngModel
         {
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => PlexTextComponent),
-            multi: true
+            multi: true,
         }
     ]
 })
@@ -21,18 +17,25 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     private renderer: Renderer;
     private onChange = (_: any) => { };
     @ViewChild('ref') ref: ElementRef;
+    @ContentChild(NgControl) control: any;
+
+    // Propiedades
     @Input('auto-focus') autofocus: boolean;
-    @Input() label: string;
-    @ContentChild(FormControlName) control: any;
-     
+    @Input('label') label: string;
+    @Input('placeholder') placeholder: string;
+    @Input('prefix') prefix: string;
+    @Input('suffix') suffix: string;
+    // Eventos
+    @Output('change') valueChange = new EventEmitter();
+
     constructor(renderer: Renderer) {
         this.renderer = renderer;
+        this.placeholder = "";
     }
 
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
-        console.log(this.control);
         if (this.autofocus)
             this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
     }
@@ -43,11 +46,16 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     }
 
     // Actualización Vista -> Modelo
-    registerOnTouched() { }
+    registerOnTouched() {
+    }
     registerOnChange(fn: any) {
-        this.onChange = function (value) {
-            //fn(value == '' ? null : Number.parseInt(value, 10));
-            fn(value == '' ? null : value);
+        this.onChange = (value) => {
+            value = value || null;
+            
+            fn(value);
+            this.valueChange.emit({
+                value: value
+            })
         };
     }
 }

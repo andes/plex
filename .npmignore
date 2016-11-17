@@ -1,0 +1,11 @@
+node_modules
+src/demo
+typings
+.json
+.typingsrc
+bs-config.json
+jsconfig.json
+tsconfig.json
+typings.json
+webpack.config.js
+webpack.entry.js

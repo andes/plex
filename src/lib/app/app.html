@@ -3,12 +3,10 @@
         <!-- Main Header -->
         <header class="main-header">
             <!-- Logo -->
-            <a href="/" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
+            <!--<a href="/" class="logo">
                 <span class="logo-mini">ANDES</span>
-                <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg">ANDES</span>
-            </a>
+            </a>-->
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
@@ -132,7 +130,11 @@
             </section>
             <!-- Main content -->
             <section class="content">
-                 <router-outlet></router-outlet>
+                <div class="row">
+                    <div class="col-md-12">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>                 
             </section>
             <!-- /.content -->
         </div>

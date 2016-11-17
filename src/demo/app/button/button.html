@@ -1,0 +1,36 @@
+<plex-box title="Template-form ng-Model button básico">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-button label="Mi boton" icon="account" ></plex-button>
+            </form>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Template-form button básico con type danger">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-button label="Mi boton danger" type="danger" icon="account"></plex-button>
+            </form>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Template-form button básico deshabilitado">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-button label="Mi boton deshabilitado" icon="account" [disabled]="true"></plex-button>
+            </form>
+        </div>
+    </div>
+</plex-box>
+<plex-box title="Template-form button básico con función clic">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-button label="Mi boton clic" icon="account" (click)="onClick()" ></plex-button>
+            </form>
+        </div>
+    </div>
+</plex-box>

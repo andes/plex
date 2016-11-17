@@ -12,12 +12,24 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
 var app_component_1 = require('./app/app.component');
+var sidebar_component_1 = require('./app/sidebar.component');
 var box_component_1 = require('./box/box.component');
-var box_footer_component_1 = require('./box/box-footer.component');
+var text_component_1 = require('./text/text.component');
+var int_component_1 = require('./int/int.component');
+var float_component_1 = require('./float/float.component');
+var button_component_1 = require('./button/button.component');
+var tabs_component_1 = require('./tabs/tabs.component');
+var tab_component_1 = require('./tabs/tab.component');
+var validation_messages_component_1 = require('./validation-messages/validation-messages.component');
 var MODULES = [
     app_component_1.PlexAppComponent,
     box_component_1.PlexBoxComponent,
-    box_footer_component_1.PlexBoxFooterComponent
+    text_component_1.PlexTextComponent,
+    int_component_1.PlexIntComponent,
+    float_component_1.PlexFloatComponent,
+    button_component_1.PlexButtonComponent,
+    tabs_component_1.PlexTabsComponent,
+    tab_component_1.PlexTabComponent
 ];
 var PlexModule = (function () {
     function PlexModule() {
@@ -25,7 +37,10 @@ var PlexModule = (function () {
     PlexModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, router_1.RouterModule],
-            declarations: MODULES,
+            declarations: MODULES.concat([
+                sidebar_component_1.SidebarComponent,
+                validation_messages_component_1.ValidationMessagesComponent
+            ]),
             exports: MODULES
         }), 
         __metadata('design:paramtypes', [])

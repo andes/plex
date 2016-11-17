@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 // AngularJS
 var core_1 = require('@angular/core');
-var sidebar_component_1 = require('./sidebar.component');
 var PlexAppComponent = (function () {
     function PlexAppComponent() {
     }
@@ -19,7 +18,6 @@ var PlexAppComponent = (function () {
             moduleId: module.id,
             selector: 'plex-app',
             templateUrl: 'app.html',
-            directives: [sidebar_component_1.SidebarComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], PlexAppComponent);

@@ -1,36 +1,120 @@
-Plex: Librería de UI para ANDES
-==========
+# Plex: UI/UX para ANDES
 
-Prerequisitos
------
-* [Node.JS](https://nodejs.org/en/download/)
-* WebPack
- ```bash
-npm install webpack -g
-```
+Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
 
-Cómo compilar
-------
-1. Clonar el repositorio
 
- ```bash
-git clone https://github.com/andes/plex.git
-```
+## Instalación
+1. Crear una nueva aplicación con [angular-cli](https://cli.angular.io/)
 
-3. Instalar dependencias de Node
+    ```
+   ng new my-app
+   cd my-app
+    ```
+ 
+2. Descargar desde npm
 
- ```bash
-npm install
-```
+    ```
+   npm install andes-plex --save
+    ```
+ 
+3. Renombrar el archivo `src/styles.css` a  `src/styles.less` y editarlo para vincular al archivo `.less` de Plex
 
-4. Compilar la librería
+    ```less
+   @import '~andes-plex/src/lib/styles.less';
+    ```
+ 
+4. Crear un nuevo archivo `src/styles.sass` y editarlo para vincular al archivo `.sass` de Plex
 
- ```bash
-webpack
-```
+    ```less
+   @import '~andes-plex/src/lib/styles.sass';
+    ```
 
-5. Iniciar demo
- ```bash
-npm start
-```
+5. Registrar ambos archivos de estilos en `angular-cli.json`, quitando `styles.css`
 
+    ```json
+   ...
+   "styles": [
+       "styles.less",
+       "styles.sass"
+   ],
+   ...
+    ```
+
+6. Modificar `app.component.html` con el siguiente contenido:
+
+    ```html
+   <plex-app>  
+   </plex-app>
+    ```
+
+7. Crear un componente `home.component.ts` con el siguiente contenido:
+
+    ```typescript
+   import { Component } from '@angular/core';
+
+   @Component({
+      template: 'Hello World',
+   })
+   export class HomeComponent {
+   }
+    ```
+
+8. Crear el archivo `app.routing.ts` y registrar el componente:
+
+    ```typescript
+   import { Routes, RouterModule } from '@angular/router';
+   import { ModuleWithProviders } from '@angular/core';
+   import { HomeComponent } from './home.component';
+
+   const appRoutes: Routes = [
+     { path: '**', component: HomeComponent } 
+   ];
+
+   export const appRoutingProviders: any[] = [];
+   export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+    ```
+
+9. En `app.module.ts` importar `PlexModule` y registrar los routings y `PlexService`: 
+
+    ```typescript
+   import { BrowserModule } from '@angular/platform-browser';
+   import { NgModule } from '@angular/core';
+   import { FormsModule } from '@angular/forms';
+   import { HttpModule } from '@angular/http';
+   import { PlexModule } from 'andes-plex/src/lib/module';
+   import { PlexService } from 'andes-plex/src/lib/core/service';
+   import { routing, appRoutingProviders } from './app.routing';
+
+   // Components
+   import { AppComponent } from './app.component';
+   import { HomeComponent } from './home.component';
+
+   @NgModule({
+     declarations: [
+       AppComponent,
+       HomeComponent
+     ],
+     imports: [
+       BrowserModule,
+       FormsModule,
+       HttpModule,
+       PlexModule,
+       routing
+     ],
+     providers: [
+       PlexService,  
+       appRoutingProviders  
+     ],
+     bootstrap: [AppComponent]
+   })
+   export class AppModule { }
+
+    ```
+
+8. Correr la aplicacion `ng serve` 
+
+    ```
+   ng serve
+    ```
+
+9. Navegar hasta `http://localhost:4200` 

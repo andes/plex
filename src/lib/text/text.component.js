@@ -14,11 +14,11 @@ var PlexTextComponent = (function () {
     function PlexTextComponent(renderer) {
         this.onChange = function (_) { };
         this.renderer = renderer;
+        this.placeholder = "";
     }
     // Inicialización
     PlexTextComponent.prototype.ngOnInit = function () { };
     PlexTextComponent.prototype.ngAfterViewInit = function () {
-        console.log(this.control);
         if (this.autofocus)
             this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
     };
@@ -27,10 +27,10 @@ var PlexTextComponent = (function () {
         this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
     };
     // Actualización Vista -> Modelo
-    PlexTextComponent.prototype.registerOnTouched = function () { };
+    PlexTextComponent.prototype.registerOnTouched = function () {
+    };
     PlexTextComponent.prototype.registerOnChange = function (fn) {
         this.onChange = function (value) {
-            //fn(value == '' ? null : Number.parseInt(value, 10));
             fn(value == '' ? null : value);
         };
     };
@@ -47,19 +47,24 @@ var PlexTextComponent = (function () {
         __metadata('design:type', String)
     ], PlexTextComponent.prototype, "label", void 0);
     __decorate([
-        core_1.ContentChild(forms_1.FormControlName), 
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], PlexTextComponent.prototype, "placeholder", void 0);
+    __decorate([
+        core_1.ContentChild(forms_1.NgControl), 
         __metadata('design:type', Object)
     ], PlexTextComponent.prototype, "control", void 0);
     PlexTextComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'plex-text',
-            template: "<div class=\"form-group\" [ngClass]=\"{'has-error': (control.dirty || control.touched) && !control.valid }\">\n                    <label *ngIf=\"label\">{{label}}</label>\n                    <input #ref type=\"text\" class=\"form-control\" (change)=\"onChange($event.target.value)\" (input)=\"onChange($event.target.value)\" >\n                    <plex-validation-messages *ngIf=\"(control.dirty || control.touched) && !control.valid\" [control]=\"control\"></plex-validation-messages>\n               </div>",
-            // Las siguientes líneas permiten acceder al atributo formControlName
+            templateUrl: 'text.html',
             providers: [
+                // Permite acceder al atributo formControlName/ngModel
                 {
                     provide: forms_1.NG_VALUE_ACCESSOR,
                     useExisting: core_1.forwardRef(function () { return PlexTextComponent; }),
-                    multi: true
+                    multi: true,
                 }
             ]
         }), 
