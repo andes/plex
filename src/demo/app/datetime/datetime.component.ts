@@ -49,8 +49,4 @@ export class DateTimeDemoComponent {
             this.model3 = value;
         })
     }
-
-    blanquear(){
-        this.tModel.fechaHora = null;
-    }
 }

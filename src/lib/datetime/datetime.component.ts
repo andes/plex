@@ -27,9 +27,11 @@ export class PlexDateTimeComponent implements OnInit {
 
     // Input properties
     @Input('auto-focus') autofocus: boolean;
-    @Input() type: string;
-    @Input() label: string;
-    @Input() placeholder: string;
+    @Input('type') type: string;
+    @Input('label') label: string;
+    @Input('placeholder') placeholder: string;
+    // Eventos
+    @Output('change') valueChange = new EventEmitter();
 
     constructor(private element: ElementRef, private renderer: Renderer) {
         moment.locale('es');
@@ -72,12 +74,13 @@ export class PlexDateTimeComponent implements OnInit {
     registerOnTouched() {
     }
     registerOnChange(fn: any) {
-        var self = this;
-        this.onChange = function (value) {
-            console.log("On change");
-            value = value == '' ? null : value;
-            self.value = value;
+        this.onChange = (value) => {
+            this.value = value;
+            debugger;
             fn(value);
+            this.valueChange.emit({
+                value: value
+            })
         };
     }
 }

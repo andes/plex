@@ -1,4 +1,4 @@
-import { ViewChild, ContentChild, Component, OnInit, Input, forwardRef, ElementRef, Renderer } from '@angular/core';
+import { ViewChild, ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -19,10 +19,14 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     @ViewChild('ref') ref: ElementRef;
     @ContentChild(NgControl) control: any;
 
-    // Input properties
+    // Propiedades
     @Input('auto-focus') autofocus: boolean;
-    @Input() label: string;
-    @Input() placeholder: string;
+    @Input('label') label: string;
+    @Input('placeholder') placeholder: string;
+    @Input('prefix') prefix: string;
+    @Input('suffix') suffix: string;
+    // Eventos
+    @Output('change') valueChange = new EventEmitter();
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
@@ -43,11 +47,15 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
 
     // Actualización Vista -> Modelo
     registerOnTouched() {
-
     }
     registerOnChange(fn: any) {
-        this.onChange = function (value) {
-            fn(value == '' ? null : value);
+        this.onChange = (value) => {
+            value = value || null;
+            
+            fn(value);
+            this.valueChange.emit({
+                value: value
+            })
         };
     }
 }

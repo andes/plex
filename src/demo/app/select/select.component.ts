@@ -17,7 +17,6 @@ export class SelectDemoComponent {
     public rModelo1 = { select: null };
     public modelo2 = { select: null };
     public modelo3 = { select: null };
-    public count: number = 0;
 
     constructor(private formBuilder: FormBuilder, public servicio: ServiceDemoSelect) { }
 
@@ -56,9 +55,5 @@ export class SelectDemoComponent {
 
     loadData(event) {
         this.servicio.get(event.query).subscribe(event.callback);       
-    }
-
-     cambio(){
-        this.count++;
     }
 }

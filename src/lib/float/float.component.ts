@@ -1,7 +1,7 @@
-import { ViewChild, ContentChild, Component, OnInit, Input, forwardRef, ElementRef, Renderer }   from '@angular/core';
+import { ViewChild, ContentChild, Component, OnInit, Input, Output, EventEmitter, forwardRef, ElementRef, Renderer }   from '@angular/core';
 import {  ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS  } from '@angular/forms';
 
-const REGEX = /^\s*(\-|\+)?(\d+|(\d*(\.\d*)))\s*$/;
+const REGEX = /^\s*(\-)?(\d*|(\d*(\.\d*)))\s*$/;
 
 @Component({
     selector: 'plex-float',
@@ -38,10 +38,16 @@ export class PlexFloatComponent implements OnInit, ControlValueAccessor {
     private lastValue: any = null;
     private renderer: Renderer;
     private onChange = (_: any) => { };
-    @ViewChild('ref') ref: ElementRef;
-    @Input('auto-focus') autofocus: boolean;
-    @Input() label: string;
     @ContentChild(NgControl) control: any;
+    @ViewChild('ref') ref: ElementRef;
+
+    // Propiedades
+    @Input('auto-focus') autofocus: boolean;
+    @Input('label') label: string;
+    @Input('prefix') prefix: string;
+    @Input('suffix') suffix: string;
+    // Eventos
+    @Output('change') valueChange = new EventEmitter();
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
@@ -63,10 +69,8 @@ export class PlexFloatComponent implements OnInit, ControlValueAccessor {
     registerOnTouched() {
     }
     registerOnChange(fn: any) {
-        this.onChange = function (value) {
-            if (value)
-                value = ("" + value).replace(",", ".");
-
+        this.onChange = (value) => {
+            // Estas líneas evitan que se muestren caracteres no permitidos en el input
             if ((value == "") || REGEX.test(value)) {
                 this.lastValue = value;
             }
@@ -74,7 +78,13 @@ export class PlexFloatComponent implements OnInit, ControlValueAccessor {
                 this.writeValue(this.lastValue);
                 value = this.lastValue;
             }
-            fn(((value == null) || (value == "")) ? null : Number.parseFloat(value));
+
+            // Emite los eventos
+            let val = ((value == null) || (value == "")) ? null : Number.parseFloat(value);
+            fn(val);
+            this.valueChange.emit({
+                value: val
+            })
         };
     }
 }

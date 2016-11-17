@@ -1,31 +1,120 @@
-# Plex
+# Plex: UI/UX para ANDES
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.17.
+Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Instalación
+1. Crear una nueva aplicación con [angular-cli](https://cli.angular.io/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
+    ```
+   ng new my-app
+   cd my-app
+    ```
+ 
+2. Descargar desde npm
 
-## Build
+    ```
+   npm install andes-plex --save
+    ```
+ 
+3. Renombrar el archivo `src/styles.css` a  `src/styles.less` y editarlo para vincular al archivo `.less` de Plex
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+    ```less
+   @import '~andes-plex/src/lib/styles.less';
+    ```
+ 
+4. Crear un nuevo archivo `src/styles.sass` y editarlo para vincular al archivo `.sass` de Plex
 
-## Running unit tests
+    ```less
+   @import '~andes-plex/src/lib/styles.sass';
+    ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. Registrar ambos archivos de estilos en `angular-cli.json`, quitando `styles.css`
 
-## Running end-to-end tests
+    ```json
+   ...
+   "styles": [
+       "styles.less",
+       "styles.sass"
+   ],
+   ...
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
-Before running the tests make sure you are serving the app via `ng serve`.
+6. Modificar `app.component.html` con el siguiente contenido:
 
-## Deploying to Github Pages
+    ```html
+   <plex-app>  
+   </plex-app>
+    ```
 
-Run `ng github-pages:deploy` to deploy to Github Pages.
+7. Crear un componente `home.component.ts` con el siguiente contenido:
 
-## Further help
+    ```typescript
+   import { Component } from '@angular/core';
 
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+   @Component({
+      template: 'Hello World',
+   })
+   export class HomeComponent {
+   }
+    ```
+
+8. Crear el archivo `app.routing.ts` y registrar el componente:
+
+    ```typescript
+   import { Routes, RouterModule } from '@angular/router';
+   import { ModuleWithProviders } from '@angular/core';
+   import { HomeComponent } from './home.component';
+
+   const appRoutes: Routes = [
+     { path: '**', component: HomeComponent } 
+   ];
+
+   export const appRoutingProviders: any[] = [];
+   export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+    ```
+
+9. En `app.module.ts` importar `PlexModule` y registrar los routings y `PlexService`: 
+
+    ```typescript
+   import { BrowserModule } from '@angular/platform-browser';
+   import { NgModule } from '@angular/core';
+   import { FormsModule } from '@angular/forms';
+   import { HttpModule } from '@angular/http';
+   import { PlexModule } from 'andes-plex/src/lib/module';
+   import { PlexService } from 'andes-plex/src/lib/core/service';
+   import { routing, appRoutingProviders } from './app.routing';
+
+   // Components
+   import { AppComponent } from './app.component';
+   import { HomeComponent } from './home.component';
+
+   @NgModule({
+     declarations: [
+       AppComponent,
+       HomeComponent
+     ],
+     imports: [
+       BrowserModule,
+       FormsModule,
+       HttpModule,
+       PlexModule,
+       routing
+     ],
+     providers: [
+       PlexService,  
+       appRoutingProviders  
+     ],
+     bootstrap: [AppComponent]
+   })
+   export class AppModule { }
+
+    ```
+
+8. Correr la aplicacion `ng serve` 
+
+    ```
+   ng serve
+    ```
+
+9. Navegar hasta `http://localhost:4200` 
