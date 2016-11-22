@@ -2,7 +2,7 @@ import {
   Component
 } from '@angular/core';
 import {
-  PlexService
+  Plex
 } from '../../lib/core/service';
 import {
   SidebarItem
@@ -15,7 +15,7 @@ import {
 })
 export class AppComponent {
   // Hace que PlexService sea un singleton para toda la aplicación
-  constructor(public plex: PlexService) { }
+  constructor(public plex: Plex) { }
 
   ngOnInit() {
     //Cargo el listado de componentes
@@ -31,6 +31,7 @@ export class AppComponent {
       new SidebarItem('DateTime', 'calendar', '/datetime'),
       new SidebarItem('Float', 'numeric', '/float'),
       new SidebarItem('Int', 'numeric', '/int'),
+      new SidebarItem('Modal', 'application', '/modal'),
       new SidebarItem('Select', 'format-list-bulleted', '/select'),
       new SidebarItem('Tabs', 'folder', '/tabs'),
       new SidebarItem('Text', 'alphabetical', '/text'),

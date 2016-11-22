@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SidebarItem } from './sidebar-item.class'
-import { PlexService } from '../core/service';
+import { Plex } from '../core/service';
 
 @Component({
   selector: 'plex-sidebar',
@@ -14,6 +14,6 @@ export class SidebarComponent {
     return this.plex.sidebarStaticItems;
   }
 
-  constructor(public plex: PlexService) {
+  constructor(public plex: Plex) {
   }
 }

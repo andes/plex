@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 
 // Plex
 import { PlexModule } from '../../lib/module';
-import { PlexService } from '../../lib/core/service';
+import { Plex } from '../../lib/core/service';
 
 //Other services
 import { ServiceDemoSelect } from './select/serviceDemoSelect';
@@ -23,6 +23,7 @@ import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
 import { SelectDemoComponent } from './select/select.component'
 import { DateTimeDemoComponent } from './datetime/datetime.component'
+import { ModalDemoComponent } from './modal/modal.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DateTimeDemoComponent } from './datetime/datetime.component'
     TabsDemoComponent,
     BoolDemoComponent,
     SelectDemoComponent,
-    DateTimeDemoComponent
+    DateTimeDemoComponent,
+    ModalDemoComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ import { DateTimeDemoComponent } from './datetime/datetime.component'
     routing,
   ],
   providers: [
-    PlexService,
+    Plex,
     appRoutingProviders,
     ServiceDemoSelect,
   ],
