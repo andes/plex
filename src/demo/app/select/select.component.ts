@@ -25,13 +25,16 @@ export class SelectDemoComponent {
         this.opciones = [{
             id: 1,
             nombre: 'Argentina',
+            continente: 'Latinoamerica',
         }, {
             id: 2,
-            nombre: 'Brasil',
+            nombre: 'México',
+            continente: 'Norteamérica',
         },
         {
             id: 3,
-            nombre: 'Chile',
+            nombre: 'Francia',
+            continente: 'Europa',
         }];
 
         // Template form1
@@ -49,7 +52,7 @@ export class SelectDemoComponent {
 
         this.modelo2.select = {
             id: 2,
-            nombre: 'Brasil',
+            nombre: 'México',
         };
     }
 

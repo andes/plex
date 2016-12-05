@@ -1,5 +1,10 @@
 <div class="form-group" [ngClass]="{'has-error': (control.dirty || control.touched) && !control.valid }">
     <label *ngIf="label">{{label}}</label>
-    <input type="text" class="form-control" [placeholder]="placeholder" (change)="onChange($event.target.value)" />
+    <div class="input-group">
+        <input type="text" class="form-control" [placeholder]="placeholder" (input)="onChange($event.target.value)" (blur)="onBlur()"/>
+        <span class="input-group-btn">
+            <button class="btn btn-default" tabindex="-1"><i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i></button>
+        </span>
+    </div>
     <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
 </div>

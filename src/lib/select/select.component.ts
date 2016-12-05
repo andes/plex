@@ -20,7 +20,9 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
     private value: any;
     private onChange = (_: any) => { };
     private selectize: any;
-    private empty: boolean = false;
+    private isEmpty: boolean = false;
+    private labelFields: string[]; // Contiene los campos parseados desde labelField
+
     @ContentChild(NgControl) control: any;
 
     // Propiedades
@@ -29,13 +31,14 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
     @Input('placeholder') placeholder: string;
     @Input('multiple') multiple: false;
     @Input('id-field') idField: string;
-    @Input('label-field') labelField: string;
+    @Input('label-field') labelField: string; // Puede ser un solo campo o una expresión tipo ('string' + campo + 'string' + campo + ...)
     @Input('group-field') groupField: string;
     @Input('data') data: any[];
     // Eventos
     @Output('get-data') onGetData = new EventEmitter<any>();
     @Output('change') valueChange = new EventEmitter();
 
+    // Constructor
     constructor(private element: ElementRef, private renderer: Renderer) {
         this.placeholder = "";
         this.multiple = false;
@@ -44,10 +47,28 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
         this.groupField = "grupo";
     }
 
+    // Rendera una opción en base a la expresión indicada en labelField
+    private renderOption(item): string {
+        var result: string = this.labelField;
+        this.labelFields.forEach(field => {
+            result = result.replace(field, item[field]);
+        });
+        return result.replace(/('|"|\+)/g, '');
+    }
+
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
-        this.empty = this.data && this.data.length ? false : true;
+        this.isEmpty = this.data && this.data.length ? false : true;
+
+        // Parsea la expresión indicada en labelField
+        if (this.labelField.indexOf('+') < 0)
+            this.labelFields = [this.labelField];
+        else {
+            // Obtiene sólo los campos que componen la expresión
+            this.labelField = this.labelField.replace(/(\s)*\+/g, '+').replace(/\+(\s)*/g, '+');
+            this.labelFields = this.labelField.split('+').filter(i => (i.indexOf("'") < 0 || i.indexOf("'") < 0));
+        }
 
         // Inicializa el plugin
         let $selectize = jQuery('SELECT', this.element.nativeElement.children[0]).selectize({
@@ -55,8 +76,12 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
             valueField: this.idField,
             labelField: this.labelField,
             placeholder: this.placeholder,
-            searchField: [this.labelField],
+            searchField: this.labelFields,
             options: this.data,
+            render: {
+                option: (item, escape) => '<div class="option">' + escape(this.renderOption(item)) + '</div>',
+                item: (item, escape) => '<div class="item">' + escape(this.renderOption(item)) + '</div>',
+            },
             load: (query: string, callback: Function) => {
                 // Esta función se ejecuta cuando el usuario escribe en el elemento
                 this.onGetData.emit({
@@ -69,16 +94,16 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
             },
             onFocus: () => {
                 // Si está vacío, carga los datos
-                if (this.empty)
-                    this.selectize.load((callback: Function) => {
-                        this.onGetData.emit({
-                            callback: (data: any[]) => {
-                                this.data = data;
-                                this.empty = false;
-                                callback(data || []);
-                            }
-                        });
+                //if (this.isEmpty)
+                this.selectize.load((callback: Function) => {
+                    this.onGetData.emit({
+                        callback: (data: any[]) => {
+                            this.data = data;
+                            this.isEmpty = false;
+                            callback(data || []);
+                        }
                     });
+                });
             },
             onChange: (value) => {
                 // Busca en la lista de items un valor que coincida con la clave
@@ -135,7 +160,7 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
             }
 
             // Si no tiene ninguna opción, carga el objeto como única opción
-            if (value && ((typeof value == "object") || Array.isArray(value)) && this.empty) {
+            if (value && ((typeof value == "object") || Array.isArray(value)) && this.isEmpty) {
                 if (Array.isArray(value))
                     this.data = value;
                 else
