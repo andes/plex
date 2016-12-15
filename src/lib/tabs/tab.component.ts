@@ -10,7 +10,8 @@ import { PlexTabsComponent } from './tabs.component';
   `
 })
 export class PlexTabComponent {
-  @Input() title: string;
+  @Input() label: string;
+  @Input() icon: string;
   @Input() active: boolean
 
   constructor(tabs: PlexTabsComponent) {

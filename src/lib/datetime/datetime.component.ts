@@ -60,6 +60,7 @@ export class PlexDateTimeComponent implements OnInit {
         });
         this.$button.on('change', (event, date) => {
             this.onChange(date.toDate())
+            this.writeValue(this.value); 
         });
     }
 
