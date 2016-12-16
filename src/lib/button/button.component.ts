@@ -1,8 +1,13 @@
-import { ViewChild, ContentChild, Component, Input } from '@angular/core';
+import { ViewChild, ContentChild, Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Component({
     selector: 'plex-button',
     templateUrl: 'button.html',
+    host: {
+        '[attr.disabled]': 'disabled',
+        '(click)': 'haltDisabledEvents($event)',
+        //'(mousedown)': 'haltDisabledEvents($event)',
+    },
 })
 export class PlexButtonComponent {
     @Input() label: string;
@@ -13,5 +18,13 @@ export class PlexButtonComponent {
     constructor() {
         this.type = "default";
         this.disabled = false;
+    }
+
+    haltDisabledEvents($event: Event) {
+        console.log(this.disabled);
+        if (this.disabled) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }
     }
 }
