@@ -4,6 +4,7 @@
 
 // Margin & Padding
 // -------------------------
+
 .margin-left {
     margin-left: 1em;
 }
@@ -43,7 +44,7 @@
 
 // Textos
 // -------------------------
-.text-100 {
+.text-100,  {
     font-size: 1em; // 100 %
 }
 .text-120 {
@@ -64,6 +65,11 @@
 .text-500 {
     font-size: 5em; // 500 %
 }
+[class^="text-"] .btn {
+    color: red;
+    font-size: 1em; // Así no duplica el tamaño
+}
+
 .text-overflow {
     overflow: hidden;
     text-overflow: ellipsis;
