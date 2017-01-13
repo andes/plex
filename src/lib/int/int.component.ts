@@ -42,11 +42,13 @@ export class PlexIntComponent implements OnInit, ControlValueAccessor {
     @Input('label') label: string;
     @Input('prefix') prefix: string;
     @Input('suffix') suffix: string;
+    @Input('placeholder') placeholder: string;
     // Eventos
     @Output('change') valueChange = new EventEmitter();
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
+        this.placeholder = "";
     }
 
     // Inicialización
