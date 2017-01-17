@@ -1,36 +1,42 @@
-<plex-box title="Template-form ng-Model button básico">
+<plex-box title="Buttons">
     <div class="row">
-        <div class="col-md-6">
-            <form>
-                <plex-button label="Mi boton" icon="account" ></plex-button>
-            </form>
+        <div class="col-md-12">
+            <plex-button label="Default" icon="account"></plex-button>
         </div>
     </div>
-</plex-box>
-<plex-box title="Template-form button básico con type danger">
     <div class="row">
-        <div class="col-md-6">
-            <form>
-                <plex-button label="Mi boton danger" type="danger" icon="account"></plex-button>
-            </form>
+        <div class="col-md-12">
+            <plex-button label="Primary" type="primary" icon="account"></plex-button>
         </div>
     </div>
-</plex-box>
-<plex-box title="Template-form button básico deshabilitado">
     <div class="row">
-        <div class="col-md-6">
-            <form>
-                <plex-button label="Mi boton deshabilitado" icon="account" [disabled]="true"></plex-button>
-            </form>
+        <div class="col-md-12">
+            <plex-button label="Danger" type="danger" icon="account"></plex-button>
         </div>
     </div>
-</plex-box>
-<plex-box title="Template-form button básico con función clic">
     <div class="row">
-        <div class="col-md-6">
-            <form>
-                <plex-button label="Mi boton clic" icon="account" (click)="onClick()" ></plex-button>
-            </form>
+        <div class="col-md-12">
+            <plex-button label="Success" type="success" icon="account"></plex-button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <plex-button label="Link" type="link" icon="account"></plex-button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <plex-button type="link" icon="account" class="text-300"></plex-button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <plex-button label="Deshabilitado" icon="account" [disabled]="true" (click)="onClick()"></plex-button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <plex-button label="Con evento (click)" icon="account" (click)="onClick()"></plex-button>
         </div>
     </div>
 </plex-box>

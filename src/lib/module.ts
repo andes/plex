@@ -25,6 +25,11 @@ import { ValidationMessagesComponent } from './validation-messages/validation-me
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
+// Modals
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+//import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+
 const MODULES = [
     PlexAppComponent,
     PlexBoxComponent,
@@ -48,13 +53,19 @@ const MODULES = [
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule.forRoot()
+        MaterialModule.forRoot(),
+        ModalModule.forRoot(),
+        BootstrapModalModule
     ],
     declarations: [
         ...MODULES,
         SidebarComponent,
         ValidationMessagesComponent
     ],
+    // providers: [
+    //     Modal,
+    //     BSModalContext
+    // ],
     exports: MODULES
 })
 export class PlexModule { }
