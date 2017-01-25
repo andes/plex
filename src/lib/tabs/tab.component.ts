@@ -3,20 +3,14 @@ import { PlexTabsComponent } from './tabs.component';
 
 @Component({
   selector: 'plex-tab',
-  template: `
-     <div [hidden]="!active">
-      <ng-content></ng-content>
-    </div>
-  `
+   templateUrl: 'tab.html'
 })
 export class PlexTabComponent {
   @Input() label: string;
   @Input() icon: string;
-  @Input() active: boolean
+  @Input() active: boolean;
 
   constructor(tabs: PlexTabsComponent) {
-    tabs.addTab(this)
+    tabs.addTab(this);
   }
-
 }
-

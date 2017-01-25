@@ -1,8 +1,12 @@
-import { ViewChild, ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+    ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef,
+    Renderer, EventEmitter, AfterViewInit
+} from '@angular/core';
+import { NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 // Importo las librerías de jQuery
-let jQuery = window["jQuery"] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
-let moment = window["moment"] = require('moment/moment.js');
+let jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
+let moment = window['moment'] = require('moment/moment.js');
 require('moment/locale/es.js');
 require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.js');
 
@@ -18,49 +22,51 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.j
         }
     ]
 })
-export class PlexDateTimeComponent implements OnInit {
+export class PlexDateTimeComponent implements OnInit, AfterViewInit {
     private format: string;
     private value: any;
-    private onChange = (_: any) => { };
     private $button: any;
     private $input: any;
     @ContentChild(NgControl) control: any;
 
     // Input properties
-    @Input('auto-focus') autofocus: boolean;
-    @Input('type') type: string;
-    @Input('label') label: string;
-    @Input('placeholder') placeholder: string;
+    @Input() autoFocus: boolean;
+    @Input() type: string;
+    @Input() label: string;
+    @Input() placeholder: string;
     // Eventos
-    @Output('change') valueChange = new EventEmitter();
+    @Output() change = new EventEmitter();
+
+    // Funciones privadas
+    private onChange = (_: any) => { };
 
     constructor(private element: ElementRef, private renderer: Renderer) {
         moment.locale('es');
-        this.placeholder = "";
-        this.type = "datetime";
+        this.placeholder = '';
+        this.type = 'datetime';
     }
 
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
-        this.format = this.type == "date" ? "DD/MM/YYYY" : (this.type == "datetime" ? "DD/MM/YYYY HH:mm" : "HH:mm");
+        this.format = this.type === 'date' ? 'DD/MM/YYYY' : (this.type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm');
         this.$input = jQuery('INPUT', this.element.nativeElement.children[0]);
         this.$button = jQuery('BUTTON', this.element.nativeElement.children[0]);
         this.$button.bootstrapMaterialDatePicker({
             lang: 'es',
             format: this.format,
             currentDate: this.value,
-            okText: "Ok",
-            cancelText: "Cancelar",
+            okText: 'Ok',
+            cancelText: 'Cancelar',
             clearButton: false,
             nowButton: false,
             switchOnClick: true,
-            date: this.type == "date" || this.type == "datetime",
-            time: this.type == "time" || this.type == "datetime"
+            date: this.type === 'date' || this.type === 'datetime',
+            time: this.type === 'time' || this.type === 'datetime'
         });
         this.$button.on('change', (event, date) => {
             this.onChange(date.toDate())
-            this.writeValue(this.value); 
+            this.writeValue(this.value);
         });
     }
 
@@ -69,10 +75,12 @@ export class PlexDateTimeComponent implements OnInit {
         this.value = value;
 
         let temp = this.value ? moment(this.value).format(this.format) : null;
-        if (this.$button)
+        if (this.$button) {
             this.$button.val(temp);
-        if (this.$input)
-            this.$input.val(temp);        
+        }
+        if (this.$input) {
+            this.$input.val(temp);
+        }
     }
 
     // Actualización Vista -> Modelo
@@ -80,23 +88,24 @@ export class PlexDateTimeComponent implements OnInit {
     }
     registerOnChange(fn: any) {
         this.onChange = (value) => {
-            if (typeof value == "string"){
+            if (typeof value === 'string') {
                 let m = moment(value, this.format);
-                if (m.isValid())
+                if (m.isValid()) {
                     value = m.toDate();
-                else
+                } else {
                     value = null;
+                }
             }
 
             this.value = value;
             fn(value);
-            this.valueChange.emit({
+            this.change.emit({
                 value: value
             })
         };
     }
 
-    onBlur(){
-        this.writeValue(this.value);                
+    onBlur() {
+        this.writeValue(this.value);
     }
 }

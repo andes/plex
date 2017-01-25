@@ -26,7 +26,6 @@ import 'hammerjs';
 // Modals
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
-//import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 
 const MODULES = [
     PlexAppComponent,
@@ -58,10 +57,6 @@ const MODULES = [
         SidebarComponent,
         ValidationMessagesComponent
     ],
-    // providers: [
-    //     Modal,
-    //     BSModalContext
-    // ],
     exports: MODULES
 })
 export class PlexModule { }

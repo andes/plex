@@ -1,22 +1,22 @@
 <plex-box title="Template select con datos estáticos">
-	<div class="row">
-		<div class="col-md-6">
-			<form>
-				<plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" label-field="nombre + ' (' + continente + ')'" label="Seleccione un país">
-				</plex-select>
-			</form>
-		</div>
-		<div class="col-md-6">
-			<label>Modelo</label>
-			<pre>{{modelo1 | json}}</pre>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" label-field="nombre + ' (' + continente + ')'" label="Seleccione un país">
+                </plex-select>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <label>Modelo</label>
+            <pre>{{modelo1 | json}}</pre>
+        </div>
+    </div>
 </plex-box>
 <plex-box title="Template select múltiple">
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-select [(ngModel)]="modelo3.select" name="select" [data]="opciones" label="Seleccione varios países" [multiple]="true">       
+                <plex-select [(ngModel)]="modelo3.select" name="select" [data]="opciones" label="Seleccione varios países" [multiple]="true">
                 </plex-select>
             </form>
         </div>
@@ -27,24 +27,24 @@
     </div>
 </plex-box>
 <plex-box title="Reactive Select">
-	<div class="row">
-		<div class="col-md-6">
-			<form [formGroup]="form1">
-				<plex-select formControlName="select" [data]="opciones" label="Seleccione un país">
-				</plex-select>
-			</form>
-		</div>
-		<div class="col-md-6">
-			<label>Modelo</label>
-			<pre>{{rModelo1 | json}}</pre>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="form1">
+                <plex-select formControlName="select" [data]="opciones" label="Seleccione un país">
+                </plex-select>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <label>Modelo</label>
+            <pre>{{rModelo1 | json}}</pre>
+        </div>
+    </div>
 </plex-box>
 <plex-box title="Select con callback">
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-select [(ngModel)]="modelo2.select" name="select" (get-data)="loadData($event)" placeholder="Seleccione un item">       
+                <plex-select [(ngModel)]="modelo2.select" name="select" (get-data)="loadData($event)" placeholder="Seleccione un item">
                 </plex-select>
             </form>
         </div>

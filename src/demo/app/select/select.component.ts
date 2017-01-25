@@ -1,18 +1,15 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Rx';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-//Importo un servicio de prueba
-import { ServiceDemoSelect } from './serviceDemoSelect';
+// Importo un servicio de prueba
+import { ServiceDemoSelect } from './select.service';
 
 @Component({
     templateUrl: 'select.html',
 })
-export class SelectDemoComponent {
+export class SelectDemoComponent implements OnInit {
     public opciones: any[];
-    private form1: FormGroup;
-    private form2: FormGroup;
-    private form3: FormGroup;
+    public form1: FormGroup;
     public modelo1 = { select: null };
     public rModelo1 = { select: null };
     public modelo2 = { select: null };
@@ -57,6 +54,6 @@ export class SelectDemoComponent {
     }
 
     loadData(event) {
-        this.servicio.get(event.query).subscribe(event.callback);       
+        this.servicio.get(event.query).subscribe(event.callback);
     }
 }
