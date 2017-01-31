@@ -21,9 +21,10 @@ import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
-import { SelectDemoComponent } from './select/select.component'
-import { DateTimeDemoComponent } from './datetime/datetime.component'
-import { ModalDemoComponent } from './modal/modal.component'
+import { SelectDemoComponent } from './select/select.component';
+import { DateTimeDemoComponent } from './datetime/datetime.component';
+import { ModalDemoComponent } from './modal/modal.component';
+import { LoaderDemoComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ModalDemoComponent } from './modal/modal.component'
     BoolDemoComponent,
     SelectDemoComponent,
     DateTimeDemoComponent,
-    ModalDemoComponent
+    ModalDemoComponent,
+    LoaderDemoComponent
   ],
   imports: [
     BrowserModule,

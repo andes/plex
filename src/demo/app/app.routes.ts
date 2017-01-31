@@ -11,7 +11,7 @@ import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
 import { SelectDemoComponent } from './select/select.component';
 import { ModalDemoComponent } from './modal/modal.component';
-
+import { LoaderDemoComponent } from './loader/loader.component';
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
     { path: 'box', component: BoxDemoComponent },
@@ -24,6 +24,7 @@ const appRoutes: Routes = [
     { path: 'tabs', component: TabsDemoComponent },
     { path: 'modal', component: ModalDemoComponent },
     { path: 'select', component: SelectDemoComponent },
+    { path: 'loader', component: LoaderDemoComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 
