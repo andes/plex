@@ -1,2 +1,35 @@
+<<<<<<< HEAD
 <div class="loader">
+=======
+<div *ngIf="type == 'ball-pulse'" class="loader">
+    <div class="{{type}}">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div *ngIf="type == 'ball-pulse-sync'" class="loader">
+    <div  class="{{type}}">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div *ngIf="type == 'ball-spin-fade-loader'" class="loader">
+    <div  class="col-md-offset-2 {{type}}">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div  *ngIf="type == 'ball-rotate'" class=" loader">
+    <div class=" col-md-offset-1 {{type}}">
+        <div></div>     
+    </div>
+>>>>>>> loader
 </div>
