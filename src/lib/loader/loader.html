@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-<div class="loader">
-=======
+<div style="display: block">
 <div *ngIf="type == 'ball-pulse'" class="loader">
     <div class="{{type}}">
         <div></div>
@@ -9,14 +7,14 @@
     </div>
 </div>
 <div *ngIf="type == 'ball-pulse-sync'" class="loader">
-    <div  class="{{type}}">
+    <div class="{{type}}">
         <div></div>
         <div></div>
         <div></div>
     </div>
 </div>
-<div *ngIf="type == 'ball-spin-fade-loader'" class="loader">
-    <div  class="col-md-offset-2 {{type}}">
+<!--<div *ngIf="type == 'ball-spin-fade-loader'" class="loader">
+    <div class="{{type}}">
         <div></div>
         <div></div>
         <div></div>
@@ -26,10 +24,20 @@
         <div></div>
         <div></div>
     </div>
-</div>
-<div  *ngIf="type == 'ball-rotate'" class=" loader">
+</div>-->
+
+<!--<div *ngIf="type == 'ball-rotate'" class=" loader">
     <div class=" col-md-offset-1 {{type}}">
-        <div></div>     
+        <div></div>
     </div>
->>>>>>> loader
+</div>-->
+
+<div *ngIf="type == ''" class="cubeLoader">
+</div>
+<!-- corregir
+<div *ngIf="type == 'ball-clip-rotate-multiple'" class="loader">
+    <div></div>
+    <div></div>
+</div>-->
+
 </div>
