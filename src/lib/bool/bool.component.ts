@@ -1,5 +1,5 @@
-import { ViewChild, ContentChild, Component, OnInit, Input, forwardRef, ElementRef, Renderer } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit, AfterViewInit, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'plex-bool',
@@ -13,16 +13,19 @@ import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from 
         }
     ]
 })
-export class PlexBoolComponent implements OnInit, ControlValueAccessor {
-    private onChange = (_: any) => { };
+export class PlexBoolComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+    // Propiedades privadas
     private value: boolean;
 
-    // Propiedad
+    // Propiedad públicas
     @Input() label: string;
     @Input() type: string;
 
+    // Funciones privadas
+    private onChange = (_: any) => { };
+
     constructor() {
-        this.type = "checkbox";
+        this.type = 'checkbox';
     }
 
     // Inicialización

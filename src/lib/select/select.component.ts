@@ -1,5 +1,6 @@
-import { ViewChild, ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit } from '@angular/core';
+import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 // Importo las librerías de jQuery
 let jQuery = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
 require('selectize/dist/js/standalone/selectize');
@@ -16,44 +17,45 @@ require('selectize/dist/js/standalone/selectize');
         }
     ]
 })
-export class PlexSelectComponent implements OnInit, ControlValueAccessor {
+export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     private value: any;
-    private onChange = (_: any) => { };
     private selectize: any;
     private isEmpty: boolean = false;
     private labelFields: string[]; // Contiene los campos parseados desde labelField
-
-    @ContentChild(NgControl) control: any;
+    @ContentChild(NgControl) public control: any;
 
     // Propiedades
-    @Input('auto-focus') autofocus: boolean;
-    @Input('label') label: string;
-    @Input('placeholder') placeholder: string;
-    @Input('multiple') multiple: false;
-    @Input('id-field') idField: string;
-    @Input('label-field') labelField: string; // Puede ser un solo campo o una expresión tipo ('string' + campo + 'string' + campo + ...)
-    @Input('group-field') groupField: string;
-    @Input('data') data: any[];
+    @Input() autoFocus: boolean;
+    @Input() label: string;
+    @Input() placeholder: string;
+    @Input() multiple: false;
+    @Input() idField: string;
+    @Input() labelField: string; // Puede ser un solo campo o una expresión tipo ('string' + campo + 'string' + campo + ...)
+    @Input() groupField: string;
+    @Input() data: any[];
     // Eventos
-    @Output('get-data') onGetData = new EventEmitter<any>();
-    @Output('change') valueChange = new EventEmitter();
+    @Output() getData = new EventEmitter<any>();
+    @Output() change = new EventEmitter();
+
+    // Funciones privadas
+    private onChange = (_: any) => { };
 
     // Constructor
-    constructor(private element: ElementRef, private renderer: Renderer) {
-        this.placeholder = "";
+    constructor(private element: ElementRef) {
+        this.placeholder = '';
         this.multiple = false;
-        this.idField = "id";
-        this.labelField = "nombre";
-        this.groupField = "grupo";
+        this.idField = 'id';
+        this.labelField = 'nombre';
+        this.groupField = 'grupo';
     }
 
     // Rendera una opción en base a la expresión indicada en labelField
     private renderOption(item): string {
-        var result: string = this.labelField;
+        let result: string = this.labelField;
         this.labelFields.forEach(field => {
             result = result.replace(field, item[field]);
         });
-        return result.replace(/('|"|\+)/g, '');
+        return result.replace(/('|'|\+)/g, '');
     }
 
     // Inicialización
@@ -62,12 +64,12 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
         this.isEmpty = this.data && this.data.length ? false : true;
 
         // Parsea la expresión indicada en labelField
-        if (this.labelField.indexOf('+') < 0)
+        if (this.labelField.indexOf('+') < 0) {
             this.labelFields = [this.labelField];
-        else {
+        } else {
             // Obtiene sólo los campos que componen la expresión
             this.labelField = this.labelField.replace(/(\s)*\+/g, '+').replace(/\+(\s)*/g, '+');
-            this.labelFields = this.labelField.split('+').filter(i => (i.indexOf("'") < 0 || i.indexOf("'") < 0));
+            this.labelFields = this.labelField.split('+').filter(i => (i.indexOf('\'') < 0 || i.indexOf('\'') < 0));
         }
 
         // Inicializa el plugin
@@ -79,12 +81,12 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
             searchField: this.labelFields,
             options: this.data,
             render: {
-                option: (item, escape) => '<div class="option">' + escape(this.renderOption(item)) + '</div>',
-                item: (item, escape) => '<div class="item">' + escape(this.renderOption(item)) + '</div>',
+                option: (item, escape) => '<div class=\'option\'>' + escape(this.renderOption(item)) + '</div>',
+                item: (item, escape) => '<div class=\'item\'>' + escape(this.renderOption(item)) + '</div>',
             },
             load: (query: string, callback: Function) => {
                 // Esta función se ejecuta cuando el usuario escribe en el elemento
-                this.onGetData.emit({
+                this.getData.emit({
                     query: query,
                     callback: (data) => {
                         this.data = data;
@@ -96,7 +98,7 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
                 // Si está vacío, carga los datos
                 //if (this.isEmpty)
                 this.selectize.load((callback: Function) => {
-                    this.onGetData.emit({
+                    this.getData.emit({
                         callback: (data: any[]) => {
                             this.data = data;
                             this.isEmpty = false;
@@ -110,15 +112,16 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
                 if (this.multiple) {
                     let result = [];
                     for (let i = 0; i < this.data.length; i++) {
-                        if (value.indexOf("" + this.data[i][this.idField]) >= 0) { // value es siempre un string, por eso es necesario convertir el id
+                        // value es siempre un string, por eso es necesario convertir el id
+                        if (value.indexOf('' + this.data[i][this.idField]) >= 0) {
                             result = [...result, this.data[i]];
                         }
                     }
                     this.onChange(result.length ? result : null);
-                }
-                else {
+                } else {
                     for (let i = 0; i < this.data.length; i++) {
-                        if ("" + this.data[i][this.idField] == value) { // value es siempre un string, por eso es necesario convertir el id
+                        // value es siempre un string, por eso es necesario convertir el id F
+                        if ('' + this.data[i][this.idField] === value) {
                             this.onChange(this.data[i]);
                             return;
                         }
@@ -138,15 +141,16 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
         this.value = value;
         if (this.selectize) {
             // Convierte un objeto cualquiera a un string compatible con selectize
-            var valueAsString = (val: any): string => {
-                if (val == null)
+            let valueAsString = (val: any): string => {
+                if (val === null) {
                     return null;
-                else
-                    if (typeof val == "object")
-                        return "" + val[this.idField];
-                    else
-                        return "" + val;
-            }
+                } else
+                    if (typeof val === 'object') {
+                        return '' + val[this.idField];
+                    } else {
+                        return '' + val;
+                    }
+            };
 
             // Busca el id que corresponde al item
             let val;
@@ -160,11 +164,12 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
             }
 
             // Si no tiene ninguna opción, carga el objeto como única opción
-            if (value && ((typeof value == "object") || Array.isArray(value)) && this.isEmpty) {
-                if (Array.isArray(value))
+            if (value && ((typeof value === 'object') || Array.isArray(value)) && this.isEmpty) {
+                if (Array.isArray(value)) {
                     this.data = value;
-                else
+                } else {
                     this.data = [value];
+                }
                 this.selectize.addOption(value);
             }
 
@@ -179,9 +184,9 @@ export class PlexSelectComponent implements OnInit, ControlValueAccessor {
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             fn(value);
-            this.valueChange.emit({
+            this.change.emit({
                 value: value
-            })
+            });
         };
     }
 }

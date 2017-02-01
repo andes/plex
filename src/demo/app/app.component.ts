@@ -1,24 +1,17 @@
-import {
-  Component
-} from '@angular/core';
-import {
-  Plex
-} from '../../lib/core/service';
-import {
-  SidebarItem
-} from '../../lib/app/sidebar-item.class';
+import { Component, OnInit } from '@angular/core';
+import { Plex } from '../../lib/core/service';
+import { SidebarItem } from '../../lib/app/sidebar-item.class';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   // Hace que PlexService sea un singleton para toda la aplicación
   constructor(public plex: Plex) { }
 
   ngOnInit() {
-    //Cargo el listado de componentes
     this.loadSideBar();
   }
 
@@ -40,5 +33,4 @@ export class AppComponent {
     ];
     this.plex.initStaticItems(items);
   }
-
 }

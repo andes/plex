@@ -1,4 +1,4 @@
-import { ViewChild, ContentChild, Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'plex-button',
@@ -6,7 +6,6 @@ import { ViewChild, ContentChild, Component, Input, Output, EventEmitter, HostLi
     host: {
         '[attr.disabled]': 'disabled',
         '(click)': 'haltDisabledEvents($event)',
-        //'(mousedown)': 'haltDisabledEvents($event)',
     },
 })
 export class PlexButtonComponent {
@@ -16,7 +15,7 @@ export class PlexButtonComponent {
     @Input() disabled: boolean;
 
     constructor() {
-        this.type = "default";
+        this.type = 'default';
         this.disabled = false;
     }
 

@@ -1,5 +1,5 @@
-import { ViewChild, ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, ContentChild } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 
 @Component({
     selector: 'plex-text',
@@ -13,31 +13,34 @@ import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from 
         }
     ]
 })
-export class PlexTextComponent implements OnInit, ControlValueAccessor {
+export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     private renderer: Renderer;
-    private onChange = (_: any) => { };
-    @ViewChild('ref') ref: ElementRef;
-    @ContentChild(NgControl) control: any;
+    @ViewChild('ref') private ref: ElementRef;
+    @ContentChild(NgControl) public control: any;
 
     // Propiedades
-    @Input('auto-focus') autofocus: boolean;
-    @Input('label') label: string;
-    @Input('placeholder') placeholder: string;
-    @Input('prefix') prefix: string;
-    @Input('suffix') suffix: string;
+    @Input() autoFocus: boolean;
+    @Input() label: string;
+    @Input() placeholder: string;
+    @Input() prefix: string;
+    @Input() suffix: string;
     // Eventos
-    @Output('change') valueChange = new EventEmitter();
+    @Output() change = new EventEmitter();
+
+    // Funciones privadas
+    private onChange = (_: any) => { };
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
-        this.placeholder = "";
+        this.placeholder = '';
     }
 
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
-        if (this.autofocus)
+        if (this.autoFocus) {
             this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+        }
     }
 
     // Actualización Modelo -> Vista
@@ -48,14 +51,14 @@ export class PlexTextComponent implements OnInit, ControlValueAccessor {
     // Actualización Vista -> Modelo
     registerOnTouched() {
     }
-    registerOnChange(fn: any) {
+    registerOnChange(fn: any) {;
         this.onChange = (value) => {
             value = value || null;
-            
+
             fn(value);
-            this.valueChange.emit({
+            this.change.emit({
                 value: value
-            })
+            });
         };
     }
 }

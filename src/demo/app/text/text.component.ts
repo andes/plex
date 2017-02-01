@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     templateUrl: 'text.html',
 })
-export class TextDemoComponent {
-    private form1: FormGroup;
-    private form2: FormGroup;
-    private form3: FormGroup;
+export class TextDemoComponent implements OnInit {
+    public form1: FormGroup;
+    public form2: FormGroup;
+    public form3: FormGroup;
     public model1: any;
     public model2: any;
     public model3: any;
@@ -25,7 +25,7 @@ export class TextDemoComponent {
         });
         this.form1.valueChanges.subscribe((value) => {
             this.model1 = value;
-        })
+        });
 
         // Form2: Doble validación
         this.model2 = { nombre: null };
@@ -34,7 +34,7 @@ export class TextDemoComponent {
         });
         this.form2.valueChanges.subscribe((value) => {
             this.model2 = value;
-        })
+        });
 
         // Form3: Con placeholder
         this.model3 = { nombre: null };
@@ -43,6 +43,6 @@ export class TextDemoComponent {
         });
         this.form3.valueChanges.subscribe((value) => {
             this.model3 = value;
-        })
+        });
     }
 }

@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, Eve
 })
 export class PlexLoaderComponent {
     // Propiedades
-    @Input('type') type: string;
+    @Input() type: string;
 
     constructor(renderer: Renderer) {
         this.type = "";

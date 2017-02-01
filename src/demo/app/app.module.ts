@@ -9,8 +9,8 @@ import { AppComponent } from './app.component';
 import { PlexModule } from '../../lib/module';
 import { Plex } from '../../lib/core/service';
 
-//Other services
-import { ServiceDemoSelect } from './select/serviceDemoSelect';
+// Services
+import { ServiceDemoSelect } from './select/select.service';
 
 // Routes
 import { HomeDemoComponent } from './home/home.component';

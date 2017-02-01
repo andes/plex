@@ -1,13 +1,11 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
     templateUrl: 'bool.html',
 })
-export class BoolDemoComponent {
-    private form1: FormGroup;
-    private form2: FormGroup;
-    private form3: FormGroup;
+export class BoolDemoComponent implements OnInit {
+    public form1: FormGroup;
     public model: any;
     public tModel: any;
     constructor(private formBuilder: FormBuilder) { }
@@ -24,8 +22,6 @@ export class BoolDemoComponent {
         });
         this.form1.valueChanges.subscribe((value) => {
             this.model = value;
-        })       
+        });
     }
-
-
 }
