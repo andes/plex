@@ -1,5 +1,5 @@
-import { ViewChild, ContentChild, Component, OnInit, AfterViewInit, Input, forwardRef, ElementRef, Renderer } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit, AfterViewInit, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'plex-bool',

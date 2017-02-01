@@ -1,4 +1,4 @@
-import { ViewChild, ContentChild, Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'plex-button',

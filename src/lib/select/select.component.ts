@@ -22,8 +22,7 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
     private selectize: any;
     private isEmpty: boolean = false;
     private labelFields: string[]; // Contiene los campos parseados desde labelField
-
-    @ContentChild(NgControl) control: any;
+    @ContentChild(NgControl) public control: any;
 
     // Propiedades
     @Input() autoFocus: boolean;
