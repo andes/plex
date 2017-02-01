@@ -9,8 +9,8 @@ import { AppComponent } from './app.component';
 import { PlexModule } from '../../lib/module';
 import { Plex } from '../../lib/core/service';
 
-//Other services
-import { ServiceDemoSelect } from './select/serviceDemoSelect';
+// Services
+import { ServiceDemoSelect } from './select/select.service';
 
 // Routes
 import { HomeDemoComponent } from './home/home.component';
@@ -21,9 +21,9 @@ import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
-import { SelectDemoComponent } from './select/select.component'
-import { DateTimeDemoComponent } from './datetime/datetime.component'
-import { ModalDemoComponent } from './modal/modal.component'
+import { SelectDemoComponent } from './select/select.component';
+import { DateTimeDemoComponent } from './datetime/datetime.component';
+import { ModalDemoComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [

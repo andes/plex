@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     templateUrl: 'datetime.html',
 })
-export class DateTimeDemoComponent {
+export class DateTimeDemoComponent implements OnInit {
     private form1: FormGroup;
     private form2: FormGroup;
     private form3: FormGroup;
@@ -16,10 +16,10 @@ export class DateTimeDemoComponent {
 
     ngOnInit() {
         // Tepmlate-Form1 model
-        this.tModel = { 
+        this.tModel = {
             fechaHora: null,
             fecha: null,
-            hora: null, 
+            hora: null,
         };
 
         // Form1: Sin validador
@@ -29,7 +29,7 @@ export class DateTimeDemoComponent {
         });
         this.form1.valueChanges.subscribe((value) => {
             this.model1 = value;
-        })
+        });
 
         // Form2: Doble validación
         this.model2 = { fechaHora: null };
@@ -38,7 +38,7 @@ export class DateTimeDemoComponent {
         });
         this.form2.valueChanges.subscribe((value) => {
             this.model2 = value;
-        })
+        });
 
         // Form3: Con placeholder
         this.model3 = { fechaHora: null };
@@ -47,6 +47,6 @@ export class DateTimeDemoComponent {
         });
         this.form3.valueChanges.subscribe((value) => {
             this.model3 = value;
-        })
+        });
     }
 }

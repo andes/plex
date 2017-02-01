@@ -61,10 +61,6 @@ const MODULES = [
         SidebarComponent,
         ValidationMessagesComponent
     ],
-    // providers: [
-    //     Modal,
-    //     BSModalContext
-    // ],
     exports: MODULES
 })
 export class PlexModule { }
