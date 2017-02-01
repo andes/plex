@@ -20,7 +20,6 @@ import { PlexLoaderComponent } from './loader/loader.component';
 import { PlexScrollComponent } from './scroll/scroll.component';
 import { PlexRipplesDirective } from './ripples/ripples.directive';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
-
 // Angular Material
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
@@ -28,6 +27,7 @@ import 'hammerjs';
 // Modals
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+//import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 
 const MODULES = [
     PlexAppComponent,
@@ -54,7 +54,7 @@ const MODULES = [
         ReactiveFormsModule,
         MaterialModule.forRoot(),
         ModalModule.forRoot(),
-        BootstrapModalModule
+        BootstrapModalModule,
     ],
     declarations: [
         ...MODULES,

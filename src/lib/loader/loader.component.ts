@@ -6,7 +6,7 @@ import { Component, Input, Renderer } from '@angular/core';
 })
 export class PlexLoaderComponent {
     // Propiedades
-    @Input('type') type: string;
+    @Input() type: string;
 
     constructor(renderer: Renderer) {
         this.type = '';
