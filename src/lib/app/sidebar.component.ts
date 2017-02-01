@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SidebarItem } from './sidebar-item.class'
+import { SidebarItem } from './sidebar-item.class';
 import { Plex } from '../core/service';
 
 @Component({

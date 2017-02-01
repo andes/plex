@@ -96,7 +96,7 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
             },
             onFocus: () => {
                 // Si está vacío, carga los datos
-                //if (this.isEmpty)
+                // if (this.isEmpty)
                 this.selectize.load((callback: Function) => {
                     this.getData.emit({
                         callback: (data: any[]) => {

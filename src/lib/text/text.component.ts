@@ -1,5 +1,11 @@
-import { ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, ContentChild } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import {
+    ViewChild, Component, OnInit, Input,
+    Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, ContentChild
+} from '@angular/core';
+import {
+    ControlValueAccessor,
+    NG_VALUE_ACCESSOR, NgControl
+} from '@angular/forms';
 
 @Component({
     selector: 'plex-text',
@@ -51,7 +57,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Actualización Vista -> Modelo
     registerOnTouched() {
     }
-    registerOnChange(fn: any) {;
+    registerOnChange(fn: any) {
+        ;
         this.onChange = (value) => {
             value = value || null;
 

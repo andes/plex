@@ -65,7 +65,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit {
             time: this.type === 'time' || this.type === 'datetime'
         });
         this.$button.on('change', (event, date) => {
-            this.onChange(date.toDate())
+            this.onChange(date.toDate());
             this.writeValue(this.value);
         });
     }
@@ -101,7 +101,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit {
             fn(value);
             this.change.emit({
                 value: value
-            })
+            });
         };
     }
 
