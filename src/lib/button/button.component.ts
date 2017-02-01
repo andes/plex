@@ -17,7 +17,6 @@ export class PlexButtonComponent {
 
     @HostListener('click')
     haltDisabledEvents($event: Event) {
-        console.log(this.disabled);
         if (this.disabled) {
             event.preventDefault();
             event.stopImmediatePropagation();

@@ -8,7 +8,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 export class PlexScrollComponent {
     public _count: number;
     @Input() distancia: number;
-    @Output() scroll = new EventEmitter<any>();
+    @Output() change = new EventEmitter<any>();
 
     constructor( @Inject(DOCUMENT) private document: Document) {
         if (!this.distancia) {
@@ -20,10 +20,10 @@ export class PlexScrollComponent {
     onScroll() {
         this._count++;
         if (this.document.body.scrollTop + this.document.body.clientHeight >= this.document.body.scrollHeight) {
-            this.scroll.emit(null);
+            this.change.emit(null);
         } else {
             if (this._count % this.distancia === 0) {
-                this.scroll.emit(null);
+                this.change.emit(null);
             }
         }
     }
