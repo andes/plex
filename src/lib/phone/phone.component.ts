@@ -3,12 +3,7 @@ import {
     Output, EventEmitter, forwardRef, ElementRef, Renderer
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
-
-let libPhoneNumber = require('google-libphonenumber');
-let phoneUtil = libPhoneNumber.PhoneNumberUtil.getInstance();
-let AsYouTypeFormatter = libPhoneNumber.AsYouTypeFormatter;
-let formatter = new AsYouTypeFormatter('AR');
-let PNF = libPhoneNumber.PhoneNumberFormat;
+let awesome = require( 'awesome-phonenumber' );
 const REGEX = /^\s*(\d*)\s*$/;
 
 @Component({
@@ -26,15 +21,15 @@ const REGEX = /^\s*(\d*)\s*$/;
             provide: NG_VALIDATORS,
             useValue: (c: FormControl) => {
                 if (((c.value == null) || (c.value === '') || REGEX.test(c.value)) && (c.value) > 10) {
-                    let phoneNumber = phoneUtil.parse((c.value).toString(), 'AR');
-                    if (phoneUtil.isValidNumber(phoneNumber, 'AR')) {
+                    let phoneNumber = new awesome((c.value).toString(), 'AR');
+                    if (phoneNumber.isValid()) {
                         return null;
                     } else {
                         return {
                             format: {
                                 given: c.value,
                             }
-                        }
+                        };
                     }
 
                 } else {
@@ -42,7 +37,7 @@ const REGEX = /^\s*(\d*)\s*$/;
                         format: {
                             given: c.value,
                         }
-                    }
+                    };
                 }
             },
             multi: true
@@ -86,14 +81,14 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             // Estas líneas evitan que se muestren caracteres no permitidos en el input
-            if ((value == "") || REGEX.test(value)) {
+            if ((value === '') || REGEX.test(value)) {
                 this.lastValue = value;
             } else {
                 this.writeValue(this.lastValue);
                 value = this.lastValue;
             }
             // Emite los eventos
-            let val = ((value === null) || (value === "")) ? null : Number.parseInt(value);
+            let val = ((value === null) || (value === '')) ? null : Number.parseInt(value);
             fn(val);
             this.valueChange.emit({ value: val });
         };
