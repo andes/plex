@@ -20,6 +20,7 @@ import { PlexLoaderComponent } from './loader/loader.component';
 import { PlexScrollComponent } from './scroll/scroll.component';
 import { PlexRipplesDirective } from './ripples/ripples.directive';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
+import { PlexPhoneComponent } from './phone/phone.component';
 // Angular Material
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
@@ -43,7 +44,8 @@ const MODULES = [
     PlexDateTimeComponent,
     PlexLoaderComponent,
     PlexScrollComponent,
-    PlexRipplesDirective
+    PlexRipplesDirective,
+    PlexPhoneComponent
 ];
 
 @NgModule({

@@ -4,5 +4,5 @@ import { Component } from '@angular/core';
    /* selector: 'plex-loader',*/
     templateUrl: './loader.html'
 })
-export class LoaderDemoComponent { 
+export class LoaderDemoComponent {
 }

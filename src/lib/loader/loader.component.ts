@@ -9,6 +9,6 @@ export class PlexLoaderComponent {
     @Input() type: string;
 
     constructor(renderer: Renderer) {
-        this.type = "";
+        this.type = '';
     }
 }

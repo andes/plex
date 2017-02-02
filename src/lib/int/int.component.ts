@@ -23,6 +23,7 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
         {
             provide: NG_VALIDATORS,
             useValue: (c: FormControl) => {
+                //debugger;
                 if ((c.value === null) || (c.value === '') || REGEX.test(c.value)) {
                     return null;
                 } else {
@@ -78,6 +79,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             // Estas líneas evitan que se muestren caracteres no permitidos en el input
+            debugger;
             if ((value === '') || REGEX.test(value)) {
                 this.lastValue = value;
             } else {
@@ -87,6 +89,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
 
             // Emite los eventos
             let val = ((value == null) || (value === '')) ? null : Number.parseInt(value);
+
             fn(val);
             this.change.emit({
                 value: val

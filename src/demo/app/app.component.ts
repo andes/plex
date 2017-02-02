@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     let items = [
       new SidebarItem('Inicio', 'creation', '/inicio'),
       new SidebarItem('Loader', 'solid', '/loader'),
+      new SidebarItem('Phone', 'solid', '/phone'),
       new SidebarItem('Bool', 'checkbox-marked-outline', '/bool'),
       new SidebarItem('Box', 'selection', '/box'),
       new SidebarItem('Button', 'solid', '/button'),
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit {
       new SidebarItem('Select', 'format-list-bulleted', '/select'),
       new SidebarItem('Tabs', 'folder', '/tabs'),
       new SidebarItem('Text', 'alphabetical', '/text'),
-      
+
     ];
     this.plex.initStaticItems(items);
   }
