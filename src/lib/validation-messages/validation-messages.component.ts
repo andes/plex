@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'plex-validation-messages',
-    templateUrl: 'validation-messages.html', 
+    templateUrl: 'validation-messages.html'
 })
 export class ValidationMessagesComponent {
     @Input() control: FormControl;

@@ -1,5 +1,11 @@
-import { ViewChild, ContentChild, Component, OnInit, AfterViewInit, Input, Output, EventEmitter, forwardRef, ElementRef, Renderer } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
+import {
+    ViewChild, ContentChild, Component, OnInit,
+    AfterViewInit, Input, Output, EventEmitter, forwardRef, ElementRef, Renderer
+} from '@angular/core';
+import {
+    ControlValueAccessor, FormControl,
+    NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS
+} from '@angular/forms';
 
 const REGEX = /^\s*(\-)?(\d*|(\d*(\.\d*)))\s*$/;
 
@@ -21,14 +27,14 @@ const REGEX = /^\s*(\-)?(\d*|(\d*(\.\d*)))\s*$/;
                 if (value) {
                     value = ('' + value).replace(',', '.');
                 }
-                if ((value == null) || (value == '') || REGEX.test(value)) {
+                if ((value == null) || (value === '') || REGEX.test(value)) {
                     return null;
                 } else {
                     return {
                         format: {
                             given: value,
                         }
-                    }
+                    };
                 }
             },
             multi: true
