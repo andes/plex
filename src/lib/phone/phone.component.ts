@@ -1,31 +1,37 @@
 import {
-    ViewChild, Component, OnInit, Input, AfterViewInit, Output, EventEmitter,
-    forwardRef, ElementRef, Renderer, ContentChild
+    ViewChild, ContentChild, Component, OnInit, Input, AfterViewInit,
+    Output, EventEmitter, forwardRef, ElementRef, Renderer
 } from '@angular/core';
-import {
-    ControlValueAccessor, FormControl,
-    NG_VALUE_ACCESSOR, NG_VALIDATORS, NgControl
-} from '@angular/forms';
-
-const REGEX = /^\s*(\-)?(\d*)\s*$/;
+import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
+let awesome = require( 'awesome-phonenumber' );
+const REGEX = /^\s*(\d*)\s*$/;
 
 @Component({
-    selector: 'plex-int',
-    templateUrl: 'int.html',
+    selector: 'plex-phone',
+    templateUrl: 'phone.html',
     // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexIntComponent),
+            useExisting: forwardRef(() => PlexPhoneComponent),
             multi: true
         },
         // Implementa un validador
         {
             provide: NG_VALIDATORS,
             useValue: (c: FormControl) => {
-                //debugger;
-                if ((c.value === null) || (c.value === '') || REGEX.test(c.value)) {
-                    return null;
+                if (((c.value == null) || (c.value === '') || REGEX.test(c.value)) && (c.value) > 10) {
+                    let phoneNumber = new awesome((c.value).toString(), 'AR');
+                    if (phoneNumber.isValid()) {
+                        return null;
+                    } else {
+                        return {
+                            format: {
+                                given: c.value,
+                            }
+                        };
+                    }
+
                 } else {
                     return {
                         format: {
@@ -38,26 +44,21 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
         }
     ]
 })
-export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAccessor {
-    private lastValue: any = null;
-    private renderer: Renderer;
-    @ViewChild('ref') private ref: ElementRef;
-    @ContentChild(NgControl) public control: any;
-
+export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+    @ContentChild(NgControl) control: any;
+    @ViewChild('ref') ref: ElementRef;
     // Propiedades
     @Input() autoFocus: boolean;
     @Input() label: string;
     @Input() prefix: string;
     @Input() suffix: string;
-    @Input() placeholder: string;
-    @Output() change = new EventEmitter();
-
-    // Funciones privadas
+    // Eventos
+    @Output() valueChange = new EventEmitter();
+    private lastValue: any = null;
+    private renderer: Renderer;
     private onChange = (_: any) => { };
-
     constructor(renderer: Renderer) {
         this.renderer = renderer;
-        this.placeholder = '';
     }
 
     // Inicialización
@@ -76,24 +77,20 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     // Actualización Vista -> Modelo
     registerOnTouched() {
     }
+
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             // Estas líneas evitan que se muestren caracteres no permitidos en el input
-            debugger;
             if ((value === '') || REGEX.test(value)) {
                 this.lastValue = value;
             } else {
                 this.writeValue(this.lastValue);
                 value = this.lastValue;
             }
-
             // Emite los eventos
-            let val = ((value == null) || (value === '')) ? null : Number.parseInt(value);
-
+            let val = ((value === null) || (value === '')) ? null : Number.parseInt(value);
             fn(val);
-            this.change.emit({
-                value: val
-            });
+            this.valueChange.emit({ value: val });
         };
     }
 }

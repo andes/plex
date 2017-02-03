@@ -25,6 +25,7 @@ import { SelectDemoComponent } from './select/select.component';
 import { DateTimeDemoComponent } from './datetime/datetime.component';
 import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
+import { PhoneDemoComponent } from './phone/phone.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LoaderDemoComponent } from './loader/loader.component';
     SelectDemoComponent,
     DateTimeDemoComponent,
     ModalDemoComponent,
-    LoaderDemoComponent
+    LoaderDemoComponent,
+    PhoneDemoComponent
   ],
   imports: [
     BrowserModule,

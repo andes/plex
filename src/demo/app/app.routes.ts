@@ -12,6 +12,7 @@ import { TabsDemoComponent } from './tabs/tabs.component';
 import { SelectDemoComponent } from './select/select.component';
 import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
+import { PhoneDemoComponent } from './phone/phone.component';
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
     { path: 'box', component: BoxDemoComponent },
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
     { path: 'modal', component: ModalDemoComponent },
     { path: 'select', component: SelectDemoComponent },
     { path: 'loader', component: LoaderDemoComponent },
+    { path: 'phone', component: PhoneDemoComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 
