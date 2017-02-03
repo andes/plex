@@ -18,8 +18,8 @@ export class AppComponent implements OnInit {
   loadSideBar() {
     let items = [
       new SidebarItem('Inicio', 'creation', '/inicio'),
-      new SidebarItem('Loader', 'solid', '/loader'),
-      new SidebarItem('Phone', 'solid', '/phone'),
+      new SidebarItem('Loader', 'dots-horizontal', '/loader'),
+      new SidebarItem('Phone', 'phone', '/phone'),
       new SidebarItem('Bool', 'checkbox-marked-outline', '/bool'),
       new SidebarItem('Box', 'selection', '/box'),
       new SidebarItem('Button', 'solid', '/button'),
