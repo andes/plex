@@ -3,7 +3,7 @@ import { Plex } from '../../lib/core/service';
 import { SidebarItem } from '../../lib/app/sidebar-item.class';
 
 @Component({
-  selector: 'app-root',
+  selector: 'plex-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -28,8 +28,7 @@ export class AppComponent implements OnInit {
       new SidebarItem('Modal', 'application', '/modal'),
       new SidebarItem('Select', 'format-list-bulleted', '/select'),
       new SidebarItem('Tabs', 'folder', '/tabs'),
-      new SidebarItem('Text', 'alphabetical', '/text'),
-      
+      new SidebarItem('Text', 'alphabetical', '/text')
     ];
     this.plex.initStaticItems(items);
   }
