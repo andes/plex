@@ -13,6 +13,8 @@ import { PlexFloatComponent } from './float/float.component';
 import { PlexButtonComponent } from './button/button.component';
 import { PlexTabsComponent } from './tabs/tabs.component';
 import { PlexTabComponent } from './tabs/tab.component';
+import { PlexAccordionComponent } from './accordion/accordion.component';
+import { PlexPanelComponent } from './accordion/panel.component';
 import { PlexBoolComponent } from './bool/bool.component';
 import { PlexSelectComponent } from './select/select.component';
 import { PlexDateTimeComponent } from './datetime/datetime.component';
@@ -38,6 +40,8 @@ const MODULES = [
     PlexFloatComponent,
     PlexButtonComponent,
     PlexTabsComponent,
+    PlexAccordionComponent,
+    PlexPanelComponent,
     PlexTabComponent,
     PlexBoolComponent,
     PlexSelectComponent,

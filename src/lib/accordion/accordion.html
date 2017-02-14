@@ -1,0 +1,16 @@
+<div class="panel-group" role="tablist" aria-multiselectable="true" id="accordion">
+  <div *ngFor="let panel of accordion" class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne" (click)="selectPanel(panel)">
+          <i *ngIf="panel.icon" class="mdi mdi-{{panel.icon}}"></i>
+          <span *ngIf="panel.label">{{panel.label}}</span>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" [ngClass]="{active: panel.active}">
+      <div class="panel-body" [innerHTML]="panel.content">
+      </div>
+    </div>
+  </div>
+</div>

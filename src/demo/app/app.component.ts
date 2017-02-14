@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
       new SidebarItem('Modal', 'application', '/modal'),
       new SidebarItem('Select', 'format-list-bulleted', '/select'),
       new SidebarItem('Tabs', 'folder', '/tabs'),
+      new SidebarItem('Accordion', 'view-day', '/accordion'),
       new SidebarItem('Text', 'alphabetical', '/text')
     ];
     this.plex.initStaticItems(items);

@@ -21,6 +21,7 @@ import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
+import { AccordionDemoComponent } from './accordion/accordion.component';
 import { SelectDemoComponent } from './select/select.component';
 import { DateTimeDemoComponent } from './datetime/datetime.component';
 import { ModalDemoComponent } from './modal/modal.component';
@@ -37,6 +38,7 @@ import { PhoneDemoComponent } from './phone/phone.component';
     FloatDemoComponent,
     ButtonDemoComponent,
     TabsDemoComponent,
+    AccordionDemoComponent,
     BoolDemoComponent,
     SelectDemoComponent,
     DateTimeDemoComponent,

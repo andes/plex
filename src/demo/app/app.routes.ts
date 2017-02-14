@@ -9,6 +9,7 @@ import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
+import { AccordionDemoComponent } from './accordion/accordion.component';
 import { SelectDemoComponent } from './select/select.component';
 import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
     { path: 'float', component: FloatDemoComponent },
     { path: 'button', component: ButtonDemoComponent },
     { path: 'tabs', component: TabsDemoComponent },
+    { path: 'accordion', component: AccordionDemoComponent },
     { path: 'modal', component: ModalDemoComponent },
     { path: 'select', component: SelectDemoComponent },
     { path: 'loader', component: LoaderDemoComponent },

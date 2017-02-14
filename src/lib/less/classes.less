@@ -83,3 +83,17 @@
 .hover {
     cursor: pointer;
 }
+
+// Accordion / Collapsable
+.panel {
+    .panel-collapse {
+        height: 0px;
+        display: transparent;
+        overflow: hidden;
+        transition: all .2s ease-out;
+    }
+    .active {
+        height: 200px;
+        color: black;
+    }
+}
