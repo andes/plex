@@ -1,3 +1,16 @@
-<div [hidden]='!active'>
-    <ng-content></ng-content>
-</div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title box-title-principal">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne" (click)="selectPanel()">
+          <h3 *ngIf="tituloPrincipal"><i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i> {{tituloPrincipal}}</h3>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" [ngClass]="{active: active}">
+      <div class="panel-body">
+          <h4 *ngIf="tituloSecundario">{{tituloSecundario}}</h4>
+        <ng-content class="box-title-element"></ng-content>
+      </div>
+    </div>
+  </div>

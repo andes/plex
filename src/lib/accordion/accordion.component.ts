@@ -21,7 +21,5 @@ export class PlexAccordionComponent implements AfterViewInit {
         this.accordion.push(panel);
     }
 
-    selectPanel(panel: PlexPanelComponent) {
-        panel.active = !panel.active;
-    }
+    
 }
