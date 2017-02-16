@@ -21,8 +21,8 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
     private value: any;
     private selectize: any;
     private isEmpty: boolean = false;
-    private labelFields: string[]; // Contiene los campos parseados desde labelField
-    @ContentChild(NgControl) public control: any;
+
+    @ContentChild(NgControl) control: any;
 
     // Propiedades
     @Input() autoFocus: boolean;
@@ -49,28 +49,42 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
         this.groupField = 'grupo';
     }
 
+    private splitLabelField(labelField: string, filterLiterals: boolean): string[] {
+        let values = labelField.split('+');
+        return filterLiterals ? values.filter(i => (i.indexOf('\'') < 0 || i.indexOf('\'') < 0)) : values;
+    }
+
     // Rendera una opción en base a la expresión indicada en labelField
-    private renderOption(item): string {
-        let result: string = this.labelField;
-        this.labelFields.forEach(field => {
-            result = result.replace(field, item[field]);
+    private renderOption(item: any, labelField: string): string {
+        if (!item) {
+            return '';
+        }
+
+        let result = '';
+        let labelFields = this.splitLabelField(labelField, false);
+        labelFields.forEach(field => {
+            if (field.startsWith('\'')) {
+                result += field.slice(1, field.length - 1) + ' ';
+            } else {
+                if (field.indexOf('.') < 0) {
+                    result += item[field] + ' ';
+                } else {
+                    let prefix = field.substr(0, field.indexOf('.'));
+                    let suffix = field.slice(field.indexOf('.') + 1);
+                    result += this.renderOption(item[prefix], suffix) + ' ';
+                }
+            }
         });
-        return result.replace(/('|'|\+)/g, '');
+        // Reemplaza comillas por vacío
+        return result.trim();
     }
 
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
         this.isEmpty = this.data && this.data.length ? false : true;
-
-        // Parsea la expresión indicada en labelField
-        if (this.labelField.indexOf('+') < 0) {
-            this.labelFields = [this.labelField];
-        } else {
-            // Obtiene sólo los campos que componen la expresión
-            this.labelField = this.labelField.replace(/(\s)*\+/g, '+').replace(/\+(\s)*/g, '+');
-            this.labelFields = this.labelField.split('+').filter(i => (i.indexOf('\'') < 0 || i.indexOf('\'') < 0));
-        }
+        // Eliminar los espacios alrededor del +
+        this.labelField = this.labelField.replace(/(\s)*\+/g, '+').replace(/\+(\s)*/g, '+');
 
         // Inicializa el plugin
         let $selectize = jQuery('SELECT', this.element.nativeElement.children[0]).selectize({
@@ -78,11 +92,11 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
             valueField: this.idField,
             labelField: this.labelField,
             placeholder: this.placeholder,
-            searchField: this.labelFields,
+            searchField: this.splitLabelField(this.labelField, true),
             options: this.data,
             render: {
-                option: (item, escape) => '<div class=\'option\'>' + escape(this.renderOption(item)) + '</div>',
-                item: (item, escape) => '<div class=\'item\'>' + escape(this.renderOption(item)) + '</div>',
+                option: (item, escape) => '<div class=\'option\'>' + escape(this.renderOption(item, this.labelField)) + '</div>',
+                item: (item, escape) => '<div class=\'item\'>' + escape(this.renderOption(item, this.labelField)) + '</div>',
             },
             load: (query: string, callback: Function) => {
                 // Esta función se ejecuta cuando el usuario escribe en el elemento

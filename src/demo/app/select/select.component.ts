@@ -47,10 +47,7 @@ export class SelectDemoComponent implements OnInit {
             this.rModelo1 = value;
         });
 
-        this.modelo2.select = {
-            id: 2,
-            nombre: 'México',
-        };
+        this.modelo2.select = {};
     }
 
     loadData(event) {

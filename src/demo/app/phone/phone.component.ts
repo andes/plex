@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PlexValidator } from '../../../lib/core/validator.service'
+import { PlexValidator } from '../../../lib/core/validator.service';
 
 @Component({
     templateUrl: 'phone.html',
 })
-export class PhoneDemoComponent {
+export class PhoneDemoComponent implements OnInit {
     private form1: FormGroup;
     private form2: FormGroup;
     public model1: any;
@@ -24,7 +24,7 @@ export class PhoneDemoComponent {
         });
         this.form1.valueChanges.subscribe((value) => {
             this.model1 = value;
-        })
+        });
 
         // Form2: Validación múltiple
         this.model2 = { valor: null };
@@ -33,6 +33,6 @@ export class PhoneDemoComponent {
         });
         this.form2.valueChanges.subscribe((value) => {
             this.model2 = value;
-        })
+        });
     }
 }
