@@ -1,0 +1,16 @@
+<div class="dropdown" [ngClass]="{open: open}">
+  <button plex-ripples class="btn btn-{{type}} dropdown-toggle" type="button" [disabled]="disabled" (click)="dropDown()">
+    <i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i>{{label}}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">  
+    <li *ngFor="let item of list">
+      <template [ngIf]="!item.options.divider">
+        <a href="#" [routerLink]="item.options.route" routerLinkActive="active" (click)="item.options.handler && item.options.handler($event)"><span *ngIf="item.options.icon" class="mdi mdi-{{item.options.icon}} mdi-md"></span>{{item.options.label}}</a>
+      </template>
+      <template [ngIf]="item.options.divider">
+        <div role="separator" class="divider"></div>
+      </template>
+    </li>
+  </ul>
+</div>
