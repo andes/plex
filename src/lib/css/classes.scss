@@ -44,27 +44,6 @@
 
 // Textos
 // -------------------------
-.text-100,  {
-    font-size: 1em; // 100 %
-}
-.text-120 {
-    font-size: 1.2em; // 120 %
-}
-.text-150 {
-    font-size: 1.5em; // 150 %
-}
-.text-200 {
-    font-size: 2em; // 200 %
-}
-.text-300 {
-    font-size: 3em; // 300 %
-}
-.text-400 {
-    font-size: 4em; // 400 %
-}
-.text-500 {
-    font-size: 5em; // 500 %
-}
 [class^="text-"] .btn {
     font-size: 1em; // Así no duplica el tamaño
 }

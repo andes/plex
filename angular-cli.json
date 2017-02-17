@@ -15,7 +15,7 @@
         "mobile": false,
         "styles": [
             "styles.less",
-            "styles.sass"
+            "styles.scss"
         ],
         "scripts": [],
         "environments": {
