@@ -14,11 +14,13 @@ import { SelectDemoComponent } from './select/select.component';
 import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { PhoneDemoComponent } from './phone/phone.component';
+import { FontsDemoComponent } from './fonts/fonts.component';
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
     { path: 'box', component: BoxDemoComponent },
     { path: 'text', component: TextDemoComponent },
     { path: 'datetime', component: DateTimeDemoComponent },
+    { path: 'fonts', component: FontsDemoComponent },
     { path: 'bool', component: BoolDemoComponent },
     { path: 'int', component: IntDemoComponent },
     { path: 'float', component: FloatDemoComponent },

@@ -19,6 +19,7 @@ import { TextDemoComponent } from './text/text.component';
 import { BoolDemoComponent } from './bool/bool.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
+import { FontsDemoComponent } from './fonts/fonts.component';
 import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
 import { AccordionDemoComponent } from './accordion/accordion.component';
@@ -38,6 +39,7 @@ import { PhoneDemoComponent } from './phone/phone.component';
     FloatDemoComponent,
     ButtonDemoComponent,
     TabsDemoComponent,
+    FontsDemoComponent,
     AccordionDemoComponent,
     BoolDemoComponent,
     SelectDemoComponent,
