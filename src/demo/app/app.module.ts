@@ -27,6 +27,7 @@ import { DateTimeDemoComponent } from './datetime/datetime.component';
 import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { PhoneDemoComponent } from './phone/phone.component';
+import { DropdownDemoComponent } from './dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PhoneDemoComponent } from './phone/phone.component';
     DateTimeDemoComponent,
     ModalDemoComponent,
     LoaderDemoComponent,
-    PhoneDemoComponent
+    PhoneDemoComponent,
+    DropdownDemoComponent
   ],
   imports: [
     BrowserModule,

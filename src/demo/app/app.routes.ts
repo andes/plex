@@ -14,6 +14,8 @@ import { SelectDemoComponent } from './select/select.component';
 import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { PhoneDemoComponent } from './phone/phone.component';
+import { DropdownDemoComponent } from './dropdown/dropdown.component';
+
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
     { path: 'box', component: BoxDemoComponent },
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
     { path: 'select', component: SelectDemoComponent },
     { path: 'loader', component: LoaderDemoComponent },
     { path: 'phone', component: PhoneDemoComponent },
+    { path: 'dropdown', component: DropdownDemoComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 

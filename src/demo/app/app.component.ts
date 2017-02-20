@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Plex } from '../../lib/core/service';
-import { SidebarItem } from '../../lib/app/sidebar-item.class';
+import { MenuItem } from '../../lib/app/menu-item.class';
 
 @Component({
   selector: 'plex-app-root',
@@ -17,20 +17,21 @@ export class AppComponent implements OnInit {
 
   loadSideBar() {
     let items = [
-      new SidebarItem('Inicio', 'creation', '/inicio'),
-      new SidebarItem('Loader', 'dots-horizontal', '/loader'),
-      new SidebarItem('Phone', 'phone', '/phone'),
-      new SidebarItem('Bool', 'checkbox-marked-outline', '/bool'),
-      new SidebarItem('Box', 'selection', '/box'),
-      new SidebarItem('Button', 'solid', '/button'),
-      new SidebarItem('DateTime', 'calendar', '/datetime'),
-      new SidebarItem('Float', 'numeric', '/float'),
-      new SidebarItem('Int', 'numeric', '/int'),
-      new SidebarItem('Modal', 'application', '/modal'),
-      new SidebarItem('Select', 'format-list-bulleted', '/select'),
-      new SidebarItem('Tabs', 'folder', '/tabs'),
-      new SidebarItem('Accordion', 'view-day', '/accordion'),
-      new SidebarItem('Text', 'alphabetical', '/text')
+      new MenuItem({label: 'Inicio', icon: 'creation', route: '/inicio'}),
+      new MenuItem({label: 'Loader', icon: 'dots-horizontal', route: '/loader'}),
+      new MenuItem({label: 'Phone', icon: 'phone', route: '/phone'}),
+      new MenuItem({label: 'Bool', icon: 'checkbox-marked-outline', route: '/bool'}),
+      new MenuItem({label: 'Box', icon: 'selection', route: '/box'}),
+      new MenuItem({label: 'Button', icon: 'solid', route: '/button'}),
+      new MenuItem({label: 'DateTime', icon: 'calendar', route: '/datetime'}),
+      new MenuItem({label: 'Float', icon: 'numeric', route: '/float'}),
+      new MenuItem({label: 'Int', icon: 'numeric', route: '/int'}),
+      new MenuItem({label: 'Modal', icon: 'application', route: '/modal'}),
+      new MenuItem({label: 'Select', icon: 'format-list-bulleted', route: '/select'}),
+      new MenuItem({label: 'Tabs', icon: 'folder', route: '/tabs'}),
+      new MenuItem({label: 'Accordion', icon: 'view-day', route: '/accordion'}),
+      new MenuItem({label: 'Text', icon: 'alphabetical', route: '/text'}),
+      new MenuItem({label: 'Dropdown', icon: 'alphabetical', route: '/dropdown'}),
     ];
     this.plex.initStaticItems(items);
   }

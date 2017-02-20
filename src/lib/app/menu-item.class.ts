@@ -1,4 +1,4 @@
-export class SidebarItem {
+export class MenuItem {
     public options: any = {
         label: '',
         icon: '',
@@ -8,15 +8,16 @@ export class SidebarItem {
     }
     constructor(options) {
 
-        this.options = options;
+        this.options = options || {};
 
         this.options.icon = options.icon && (options.icon.toLowerCase().startsWith('mdi') ? options.icon : ('mdi mdi-' + options.icon));
         
         if (typeof options.handler === 'function') {
-            this.options.handler = options.handlerOrRoute;
+            this.options.handler = options.handler;
+        } else if (options.route !== '') {
+            this.options.route = options.route;
+        } else {
+            throw 'El parámetro debe ser una string o una función';
         }
-        if (typeof options.route === 'string' && options.route !== '') {
-            this.options.route = options.handlerOrRoute;
-        } 
     }
 }
