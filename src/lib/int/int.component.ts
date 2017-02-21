@@ -46,11 +46,13 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
 
     // Propiedades
     @Input() autoFocus: boolean;
-    @Input() disabled: boolean;
     @Input() label: string;
     @Input() prefix: string;
     @Input() suffix: string;
     @Input() placeholder: string;
+    @Input() disabled: boolean = false;
+
+    // Eventos
     @Output() change = new EventEmitter();
 
     // Funciones privadas
