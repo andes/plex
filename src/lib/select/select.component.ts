@@ -33,8 +33,8 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
     @Input() labelField: string; // Puede ser un solo campo o una expresión tipo ('string' + campo + 'string' + campo + ...)
     @Input() groupField: string;
     @Input() data: any[];
-    @Input() disabled: boolean;
-    
+    @Input() disabled: boolean = false;
+
     // Eventos
     @Output() getData = new EventEmitter<any>();
     @Output() change = new EventEmitter();
