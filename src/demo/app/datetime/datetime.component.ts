@@ -8,9 +8,11 @@ export class DateTimeDemoComponent implements OnInit {
     private form1: FormGroup;
     private form2: FormGroup;
     private form3: FormGroup;
+    private form4: FormGroup;
     public model1: any;
     public model2: any;
     public model3: any;
+    public model4: any;
     public tModel: any;
     constructor(private formBuilder: FormBuilder) { }
 
@@ -20,6 +22,7 @@ export class DateTimeDemoComponent implements OnInit {
             fechaHora: null,
             fecha: null,
             hora: null,
+            disabled: false
         };
 
         // Form1: Sin validador
@@ -47,6 +50,18 @@ export class DateTimeDemoComponent implements OnInit {
         });
         this.form3.valueChanges.subscribe((value) => {
             this.model3 = value;
+        });
+
+        // Form4: Disabled
+        this.model4 = { 
+            fechaHora: null,
+            disabled: true 
+        };
+        this.form4 = this.formBuilder.group({
+            fechaHora: [''],
+        });
+        this.form4.valueChanges.subscribe((value) => {
+            this.model4 = value;
         });
     }
 }

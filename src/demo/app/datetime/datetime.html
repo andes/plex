@@ -8,6 +8,8 @@
                 </plex-datetime>
                 <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora" name="hora">
                 </plex-datetime>
+                <plex-datetime label="Ingrese la hora de nacimiento (not)" type="time" [(ngModel)]="tModel.hora" name="hora" [disabled]="model4.disabled">
+                </plex-datetime>
             </form>
         </div>
         <div class="col-md-6">
