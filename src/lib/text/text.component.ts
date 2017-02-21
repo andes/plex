@@ -60,12 +60,11 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     // Actualización Vista -> Modelo
     registerOnTouched() {
+
     }
     registerOnChange(fn: any) {
-        ;
         this.onChange = (value) => {
             value = value || null;
-
             fn(value);
             this.change.emit({
                 value: value

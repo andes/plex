@@ -27,13 +27,13 @@ export class TextDemoComponent implements OnInit {
             this.model1 = value;
         });
 
-        // Form2: Doble validación
+        // Form2: Doble validación con min y max
         this.model2 = { nombre: null, min: 10, max: 15 };
         this.form2 = this.formBuilder.group({
             nombre: ['', [Validators.required, Validators.minLength(this.model2.min), Validators.maxLength(this.model2.max)]],
         });
         this.form2.valueChanges.subscribe((value) => {
-            this.model2 = value;
+            this.model2.nombre = value.nombre;
         });
 
         // Form3: Con placeholder
