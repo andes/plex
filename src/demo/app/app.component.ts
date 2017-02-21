@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
       new MenuItem({label: 'Tabs', icon: 'folder', route: '/tabs'}),
       new MenuItem({label: 'Accordion', icon: 'view-day', route: '/accordion'}),
       new MenuItem({label: 'Text', icon: 'alphabetical', route: '/text'}),
-      new MenuItem({label: 'Dropdown', icon: 'alphabetical', route: '/dropdown'}),
+      new MenuItem({label: 'Dropdown', icon: 'menu-right', route: '/dropdown'}),
     ];
     this.plex.initStaticItems(items);
   }
