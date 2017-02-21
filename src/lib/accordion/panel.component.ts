@@ -12,8 +12,8 @@ export class PlexPanelComponent {
   @Input() content: string;
   @Input() active: boolean;
 
-  constructor(panels: PlexAccordionComponent) {
-    panels.addPanel(this);
+  constructor(accordion: PlexAccordionComponent) {
+    accordion.addPanel(this);
   }
 
   selectPanel(panel: PlexPanelComponent) {
