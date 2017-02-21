@@ -6,7 +6,8 @@
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">  
     <li *ngFor="let item of list">
       <template [ngIf]="!item.options.divider">
-        <a href="#" [routerLink]="item.options.route" routerLinkActive="active" (click)="item.options.handler && item.options.handler($event)"><span *ngIf="item.options.icon" class="mdi mdi-{{item.options.icon}} mdi-md"></span>{{item.options.label}}</a>
+        <a href="#" [routerLink]="item.options.route" routerLinkActive="active" (click)="item.options.handler && item.options.handler($event)">
+          <span *ngIf="item.options.icon" class="mdi mdi-{{item.options.icon}} mdi-md"></span> {{item.options.label}}</a>
       </template>
       <template [ngIf]="item.options.divider">
         <div role="separator" class="divider"></div>
