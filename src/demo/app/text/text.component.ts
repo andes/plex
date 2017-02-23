@@ -11,12 +11,16 @@ export class TextDemoComponent implements OnInit {
     public model1: any;
     public model2: any;
     public model3: any;
-    public tModel: any;
+    public templateModel1: any;
+    public templateModel2: any;
     constructor(private formBuilder: FormBuilder) { }
 
     ngOnInit() {
         // Tepmlate-Form1 model
-        this.tModel = { nombre: null };
+        this.templateModel1 = { nombre: null };
+
+        // Tepmlate-Form2 model
+        this.templateModel2 = { nombre: null, min: 10, max: 15 };
 
         // Form1: Sin validador
         this.model1 = { nombre: null };

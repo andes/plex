@@ -1,20 +1,20 @@
 <plex-box title="Template-form usando ngModel">
-    <div class="row">
-        <div class="col-md-6">
-            <form>
-                <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
-                </plex-datetime>
-                <plex-datetime label="Ingrese la fecha del cumpleaños" type="date" [(ngModel)]="tModel.fecha" name="fecha">
-                </plex-datetime>
-                <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora" name="hora">
-                </plex-datetime>
-                <plex-datetime label="Ingrese la hora de nacimiento (not)" type="time" [(ngModel)]="tModel.hora" name="hora" [disabled]="model4.disabled">
-                </plex-datetime>
-            </form>
-        </div>
-        <div class="col-md-6">
-            <label>Modelo</label>
-            <pre>{{tModel | json}}</pre>
-        </div>
+  <div class="row">
+    <div class="col-md-6">
+      <form>
+        <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
+        </plex-datetime>
+        <plex-datetime label="Ingrese la fecha del cumpleaños" type="date" [(ngModel)]="tModel.fecha" name="fecha">
+        </plex-datetime>
+        <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora" name="hora">
+        </plex-datetime>
+        <plex-datetime label="Ingrese la hora de nacimiento (disabled)" type="time" [(ngModel)]="tModel.hora" name="hora" [disabled]="model4.disabled">
+        </plex-datetime>
+      </form>
     </div>
+    <div class="col-md-6">
+      <label>Modelo</label>
+      <pre>{{tModel | json}}</pre>
+    </div>
+  </div>
 </plex-box>

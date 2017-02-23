@@ -138,3 +138,24 @@ h4.box-title-secundario {
     color: #333;
     white-space: nowrap;
 }
+
+
+// Tooltip
+.plextooltipcontainer {
+    .plex-tooltip {
+        position: absolute;
+        display: inline-block;
+        font-size: 0.75em;
+        width: auto;
+        color: white;
+        background: black;
+        border: 1px solid white;
+        border-radius: 4px;
+        padding: 4px 6px;
+    }
+    &:hover {
+        .plex-tooltip {
+            color: red;
+        }
+    }
+}

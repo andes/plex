@@ -43,10 +43,14 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     constructor(renderer: Renderer) {
         this.renderer = renderer;
         this.placeholder = '';
+        this.min = 0;
+        this.max = 0;
     }
 
     // Inicialización
-    ngOnInit() { }
+    ngOnInit() {
+    }
+
     ngAfterViewInit() {
         if (this.autoFocus) {
             this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
@@ -60,9 +64,10 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     // Actualización Vista -> Modelo
     registerOnTouched() {
-
+        debugger;
     }
     registerOnChange(fn: any) {
+
         this.onChange = (value) => {
             value = value || null;
             fn(value);
