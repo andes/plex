@@ -1,32 +1,40 @@
-<plex-box title="Tooltip">
+<plex-box title="Tooltip top">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <plex-tooltip text="Este es un tooltip TOP" position="top">
         <plex-button label="Tooltip arriba">
         </plex-button>
       </plex-tooltip>
     </div>
-    <hr>
+    <div class="col-md-6">
+    </div>
   </div>
+</plex-box>
+<plex-box title="Tooltip right">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <plex-tooltip text="Este es un tooltip RIGHT" position="right">
         <plex-button label="Tooltip derecha">
         </plex-button>
       </plex-tooltip>
     </div>
-    <hr>
+    <div class="col-md-6">
+    </div>
   </div>
+</plex-box>
+<plex-box title="Tooltip bottom">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <plex-tooltip text="Este es un tooltip BOTTOM" position="bottom">
         <plex-button label="Tooltip abajo">
         </plex-button>
       </plex-tooltip>
     </div>
-    <hr>
+    <div class="col-md-6">
+    </div>
   </div>
-  <!--<div class="row">
+</plex-box>
+<!--<div class="row">
     <div class="col-md-12">
       <plex-tooltip text="Este es un tooltip LEFT" position="left">
         <plex-button label="Tooltip izquierda">
@@ -35,7 +43,7 @@
     </div>
     <hr>
   </div>-->
-  <!--<div class="row">
+<!--<div class="row">
     <div class="col-md-12">
       <plex-tooltip text="Este es un tooltip LEFT" position="left">
         <plex-text label="Tooltip izquierda" name="tooltip" [(ngModel)]="tooltip.nombre">
@@ -44,13 +52,33 @@
     </div>
     <hr>
   </div>-->
+<plex-box title="Tooltip bottom con Model">
   <div class="row">
-    <div class="col-md-12">
-      <plex-tooltip text="Este es un tooltip BOTTOM" position="bottom">
-        <plex-text label="Tooltip abajo" name="tooltip" [(ngModel)]="tooltip.nombre">
+    <div class="col-md-6">
+      <plex-tooltip text="{{tooltipModel.text}}" position="{{tooltipModel.position}}">
+        <form>
+          <plex-button label="Tooltip abajo">
+          </plex-button>
+        </form>
+      </plex-tooltip>
+    </div>
+    <div class="col-md-6">
+      <label>Modelo</label>
+      <pre>{{tooltipModel | json}}</pre>
+    </div>
+  </div>
+</plex-box>
+<plex-box title="Tooltip bottom en plex-text">
+  <div class="row">
+    <div class="col-md-6">
+      <plex-tooltip text="Recuerde que este campo se refiere al nombre del paciente" position="bottom">
+        <plex-text label="Tooltip abajo" name="tooltipFormModel" [(ngModel)]="tooltipFormModel.nombre">
         </plex-text>
       </plex-tooltip>
     </div>
-    <hr>
+    <div class="col-md-6">
+      <label>Modelo</label>
+      <pre>{{tooltipFormModel | json}}</pre>
+    </div>
   </div>
 </plex-box>

@@ -4,10 +4,18 @@ import { Component } from '@angular/core';
     templateUrl: 'tooltip.html',
 })
 export class TooltipDemoComponent {
-    public tooltip: any;
+    public tooltipModel: any;
+    public tooltipFormModel: any;
 
     constructor() {
-        this.tooltip = { nombre: 'input con tooltip' }
+        this.tooltipModel = {
+            text: 'Este es un tooltip BOTTOM',
+            position: 'bottom',
+        };
+
+        this.tooltipFormModel = {
+            nombre: 'input con tooltip'
+        }
     }
 
 }
