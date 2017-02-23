@@ -15,6 +15,7 @@ import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
+import { TooltipDemoComponent } from './tooltip/tooltip.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
     { path: 'loader', component: LoaderDemoComponent },
     { path: 'phone', component: PhoneDemoComponent },
     { path: 'dropdown', component: DropdownDemoComponent },
+    { path: 'tooltip', component: TooltipDemoComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 

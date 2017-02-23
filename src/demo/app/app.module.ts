@@ -28,6 +28,7 @@ import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
+import { TooltipDemoComponent } from './tooltip/tooltip.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
     ModalDemoComponent,
     LoaderDemoComponent,
     PhoneDemoComponent,
-    DropdownDemoComponent
+    DropdownDemoComponent,
+    TooltipDemoComponent
   ],
   imports: [
     BrowserModule,
