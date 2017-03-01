@@ -70,6 +70,19 @@ small {
   background-color: #f3f3f3;
 }
 
+/* Conjunto de botones */
+.input-group {
+  border-radius: 0px;
+}
+
+.input-group-addon {
+  border-radius: 0px;
+}
+
+.input-group-btn {
+  border-radius: 0px;
+}
+
 /*Bootstrap*/
 
 /* a. Tipografía */
@@ -196,7 +209,7 @@ a9. <p> (evoluciones, campos de texto libre)*/
 .box-secundario {
   border: dotted 1px #111111;
   display: inline-block;
-  margin: 20px 0px 20px 0px;
+  margin: 10px 0px 20px 0px;
   position: relative;
   width: 100%;
   max-height: 300px;
@@ -250,6 +263,7 @@ aside {
     }
 
 /* c. Botones */
+/* c. Botones */
 .btn {
   font-size: 0.75em;
   font-weight: 200;
@@ -258,6 +272,10 @@ aside {
   border: 1px solid transparent;
   border-radius: 0px;
   text-transform: uppercase;
+}
+
+.flat {
+  border-radius: 0px;
 }
 
 .btn-success {
@@ -284,11 +302,24 @@ aside {
  background-color: #891620;
 }
 
-
 .btn-info {
   background-color: #00A8E0;
   color: #FFFFFF;
 }
+
+.btn-info:hover,
+.btn-info:active {
+  background-color: #1670bf;
+}
+.btn-info.hover {
+ background-color: #58ccf6;
+}
+
+.btn-inactivo {
+  background-color: #e3e3e3;
+  color: #FFFFFF;
+}
+
   /*c1. Botones con iconos
 
   c2. Acción Global
@@ -336,6 +367,16 @@ f. Etiquetas
     font-weight: 500;
 }
 
+.alert {
+  border: 1.5px solid #dd4b39;
+  border-radius: 0px;
+  background: transparent;
+  color: #dd4b39;
+  margin-top: 10px;
+  padding: 3px;
+  width: 100%;
+}
+
 .outline-danger {
   border: 1.5px solid #dd4b39;
   border-radius: 0px;
@@ -360,12 +401,15 @@ f. Etiquetas
   margin: 0px 10px 10px 0px;
 }
 
-.footer>.center {
-  margin-left: 30%;
+.centrado {
+  margin-left: 40%;
+  margin-right: 25%;
   font-size: 0.75em;
   font-weight: 500;
   padding: 8px;
+  position: absolute;
 }
+
 /*g. Elemento
 
 h. Cromaticidad
@@ -417,7 +461,7 @@ h3.nombre-paciente {
 }
 
 h4.subtitulo-paciente {
-  color: #e3e3e3;
+  color: #AAAAAA;
   font-weight: normal;
 }
 
