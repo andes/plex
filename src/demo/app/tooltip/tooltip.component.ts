@@ -15,7 +15,6 @@ export class TooltipDemoComponent {
 
         this.tooltipFormModel = {
             nombre: 'input con tooltip'
-        }
+        };
     }
-
 }

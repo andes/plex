@@ -12,7 +12,7 @@ export class PlexDropdownComponent implements OnInit, OnChanges {
     @Input() open: boolean;
     @Input() items: Object[];
     @Input() @HostBinding('attr.disabled') disabled: boolean;
-    
+
     public list = [];
 
     constructor(public plex: Plex) {

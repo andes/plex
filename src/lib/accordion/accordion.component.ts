@@ -20,6 +20,4 @@ export class PlexAccordionComponent implements AfterViewInit {
         }
         this.panels.push(panel);
     }
-
-    
 }

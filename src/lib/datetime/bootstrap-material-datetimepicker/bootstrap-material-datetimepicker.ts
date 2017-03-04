@@ -5,6 +5,7 @@ Modificado a partir de https://github.com/T00rk/bootstrap-material-datetimepicke
 
 */
 
+/* tslint:disable */
 (function ($, moment) {
       var pluginName = "bootstrapMaterialDatePicker";
       var pluginDataName = "plugin_" + pluginName;

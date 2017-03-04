@@ -14,10 +14,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     ]
 })
 export class PlexBoolComponent implements OnInit, AfterViewInit, ControlValueAccessor {
-    // Propiedades privadas
-    private value: boolean;
-
     // Propiedad públicas
+    public value: boolean;
     @Input() label: string;
     @Input() type: string;
 

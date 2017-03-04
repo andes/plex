@@ -41,5 +41,11 @@
     "defaults": {
         "styleExt": "css",
         "prefixInterfaces": false
-    }
+    },
+    "lint": [
+        {
+            "files": "src/**/*.ts",
+            "project": "src/tsconfig.json"
+        }
+    ]
 }

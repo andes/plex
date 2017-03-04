@@ -20,7 +20,7 @@ require('selectize/dist/js/standalone/selectize');
 export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     private value: any;
     private selectize: any;
-    private isEmpty: boolean = false;
+    private isEmpty = false;
 
     @ContentChild(NgControl) control: any;
 
@@ -33,15 +33,15 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
     @Input() labelField: string; // Puede ser un solo campo o una expresión tipo ('string' + campo + 'string' + campo + ...)
     @Input() groupField: string;
     @Input() data: any[];
-    @Input() disabled: boolean = false;
-    @Input() closeAfterSelect: boolean = false;
+    @Input() disabled = false;
+    @Input() closeAfterSelect = false;
 
     // Eventos
     @Output() getData = new EventEmitter<any>();
     @Output() change = new EventEmitter();
 
-    // Funciones privadas
-    private onChange = (_: any) => { };
+    // Funciones públicas
+    public onChange = (_: any) => { };
 
     // Constructor
     constructor(private element: ElementRef) {
@@ -147,7 +147,6 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
             },
             closeAfterSelect: () => {
                return this.closeAfterSelect;
-                
             }
         });
 

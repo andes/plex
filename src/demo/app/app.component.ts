@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   }
 
   loadSideBar() {
-    let items = [
+    const items = [
       new MenuItem({ label: 'Inicio', icon: 'creation', route: '/inicio' }),
       new MenuItem({ label: 'Loader', icon: 'dots-horizontal', route: '/loader' }),
       new MenuItem({ label: 'Phone', icon: 'phone', route: '/phone' }),

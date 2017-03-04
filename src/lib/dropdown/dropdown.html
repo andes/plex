@@ -1,5 +1,5 @@
 <div class="dropdown" [ngClass]="{open: open}">
-  <button plex-ripples class="btn btn-{{type}} dropdown-toggle" type="button" [disabled]="disabled" (click)="dropDown()">
+  <button plexRipples class="btn btn-default dropdown-toggle" type="button" [disabled]="disabled" (click)="dropDown()">
     <i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i>{{label}}
     <span class="caret"></span>
   </button>

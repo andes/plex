@@ -8,7 +8,7 @@ import { NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 let jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
 let moment = window['moment'] = require('moment/moment.js');
 require('moment/locale/es.js');
-require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.js');
+require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.ts');
 
 @Component({
     selector: 'plex-datetime',
@@ -34,13 +34,13 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit {
     @Input() type: string;
     @Input() label: string;
     @Input() placeholder: string;
-    @Input() disabled: boolean = false;
+    @Input() disabled = false;
 
     // Eventos
     @Output() change = new EventEmitter();
 
-    // Funciones privadas
-    private onChange = (_: any) => { };
+    // Funciones públicas
+    public onChange = (_: any) => { };
 
     constructor(private element: ElementRef, private renderer: Renderer) {
         moment.locale('es');

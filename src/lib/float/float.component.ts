@@ -53,13 +53,13 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
     @Input() prefix: string;
     @Input() suffix: string;
     @Input() placeholder: string;
-    @Input() disabled: boolean = false;
+    @Input() disabled = false;
 
     // Eventos
     @Output() change = new EventEmitter();
 
-    // Funciones privadas
-    private onChange = (_: any) => { };
+    // Funciones públicas
+    public onChange = (_: any) => { };
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;

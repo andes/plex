@@ -30,15 +30,15 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() placeholder: string;
     @Input() prefix: string;
     @Input() suffix: string;
-    @Input() disabled: boolean = false;
+    @Input() disabled = false;
     @Input() min: number;
     @Input() max: number;
 
     // Eventos
     @Output() change = new EventEmitter();
 
-    // Funciones privadas
-    private onChange = (_: any) => { };
+    // Funciones públicas
+    public onChange = (_: any) => { };
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
@@ -64,7 +64,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     // Actualización Vista -> Modelo
     registerOnTouched() {
-        debugger;
     }
     registerOnChange(fn: any) {
 

@@ -53,9 +53,9 @@ export class DateTimeDemoComponent implements OnInit {
         });
 
         // Form4: Disabled
-        this.model4 = { 
+        this.model4 = {
             fechaHora: null,
-            disabled: true 
+            disabled: true
         };
         this.form4 = this.formBuilder.group({
             fechaHora: [''],

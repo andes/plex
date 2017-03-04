@@ -23,7 +23,6 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
         {
             provide: NG_VALIDATORS,
             useValue: (c: FormControl) => {
-                //debugger;
                 if ((c.value === null) || (c.value === '') || REGEX.test(c.value)) {
                     return null;
                 } else {
@@ -50,13 +49,13 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     @Input() prefix: string;
     @Input() suffix: string;
     @Input() placeholder: string;
-    @Input() disabled: boolean = false;
+    @Input() disabled = false;
 
     // Eventos
     @Output() change = new EventEmitter();
 
-    // Funciones privadas
-    private onChange = (_: any) => { };
+    // Funciones públicas
+    public onChange = (_: any) => { };
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;

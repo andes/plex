@@ -6,8 +6,8 @@ import { PlexValidator } from '../../../lib/core/validator.service';
     templateUrl: 'int.html',
 })
 export class IntDemoComponent implements OnInit {
-    private form1: FormGroup;
-    private form2: FormGroup;
+    public form1: FormGroup;
+    public form2: FormGroup;
     public model1: any;
     public model2: any;
     public tModel: any;

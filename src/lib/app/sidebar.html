@@ -7,7 +7,7 @@
 	<ul class="sidebar-menu">
 		<!--Items estáticos-->
 		<li *ngFor="let item of staticItems" [routerLink]="item.options.route" routerLinkActive="active" (click)="item.options.handler && item.options.handler($event)">
-			<a class="hover" plex-ripples>
+			<a class="hover" plexRipples>
 				<i class="{{item.options.icon}}" *ngIf="item.options.icon"></i>
 				<span class="label">{{item.options.label}}</span>
 			</a>
@@ -18,7 +18,7 @@
 		</li>
 		<!--Items dinámicos en base a cada vista-->
 		<li *ngFor="let item of items" [routerLink]="item.options.route" routerLinkActive="active" (click)="item.options.handler && item.options.handler($event)">
-			<a class="hover" plex-ripples>
+			<a class="hover" plexRipples>
 				<i class="{{item.options.icon}}" *ngIf="item.options.icon"></i>
 				<span class="label">{{item.options.label}}</span>
 			</a>
