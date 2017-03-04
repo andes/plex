@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-select [(ngModel)]="modelo3.select" name="select" [data]="opciones" label="Seleccione varios países" [multiple]="true">
+                <plex-select [(ngModel)]="modelo3.select" [closeAfterSelect]=true name="select" [data]="opciones" label="Seleccione varios países" [multiple]="true">
                 </plex-select>
             </form>
         </div>

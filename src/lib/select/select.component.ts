@@ -34,6 +34,7 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
     @Input() groupField: string;
     @Input() data: any[];
     @Input() disabled: boolean = false;
+    @Input() closeAfterSelect: boolean = false;
 
     // Eventos
     @Output() getData = new EventEmitter<any>();
@@ -143,6 +144,10 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
                         }
                     }
                 }
+            },
+            closeAfterSelect: () => {
+               return this.closeAfterSelect;
+                
             }
         });
 
