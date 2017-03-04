@@ -30,6 +30,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() placeholder: string;
     @Input() prefix: string;
     @Input() suffix: string;
+    @Input() disabled: boolean;
     // Eventos
     @Output() change = new EventEmitter();
 

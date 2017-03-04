@@ -2,7 +2,7 @@
     <label *ngIf="label">{{label}}</label>
     <div [ngClass]="{'input-group': prefix || suffix}">
         <span *ngIf="prefix" class="input-group-addon">{{prefix}}</span>
-        <input #ref type="text" class="form-control" [placeholder]="placeholder" (input)="onChange($event.target.value)">
+        <input #ref type="text" class="form-control" [disabled]="disabled" [placeholder]="placeholder" (input)="onChange($event.target.value)">
         <span *ngIf="suffix" class="input-group-addon">{{suffix}}</span>
     </div>
     <!--<plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>-->

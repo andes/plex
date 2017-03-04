@@ -49,6 +49,7 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
 
     // Propiedades
     @Input() autoFocus: boolean;
+    @Input() disabled: boolean;
     @Input() label: string;
     @Input() prefix: string;
     @Input() suffix: string;
