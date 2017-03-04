@@ -3,27 +3,6 @@
         "version": "1.0.0-beta.17",
         "name": "plex"
     },
-<<<<<<< HEAD
-    "apps": [{
-        "root": "src/demo",
-        "outDir": "dist",
-        "assets": "assets",
-        "index": "index.html",
-        "main": "main.ts",
-        "test": "test.ts",
-        "tsconfig": "tsconfig.json",
-        "prefix": "app",
-        "mobile": false,
-        "styles": [
-            "styles.less",
-            "styles.scss"
-        ],
-        "scripts": [],
-        "environments": {
-            "source": "environments/environment.ts",
-            "dev": "environments/environment.ts",
-            "prod": "environments/environment.prod.ts"
-=======
     "apps": [
         {
             "root": "src/demo",
@@ -37,7 +16,7 @@
             "mobile": false,
             "styles": [
                 "styles.less",
-                "styles.sass"
+                "styles.scss"
             ],
             "scripts": [],
             "environmentSource": "environments/environment.ts",
@@ -45,7 +24,6 @@
                 "dev": "environments/environment.ts",
                 "prod": "environments/environment.prod.ts"
             }
->>>>>>> master
         }
     ],
     "addons": [],

@@ -14,12 +14,9 @@ import { SelectDemoComponent } from './select/select.component';
 import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { PhoneDemoComponent } from './phone/phone.component';
-<<<<<<< HEAD
 import { FontsDemoComponent } from './fonts/fonts.component';
-=======
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 
->>>>>>> master
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
     { path: 'box', component: BoxDemoComponent },
