@@ -63,24 +63,22 @@ small {
 }
 
 .list-group-item:hover {
-  border: solid 1px #00c0ef;
+  border: solid 1.5px #00c0ef;
 }
 
 .list-group-item:active {
-  background-color: #f3f3f3;
+  background-color: #f7f7f7;
+  border: solid 1.5px #00c0ef;
 }
 
 /* Conjunto de botones */
-.input-group {
+.input {
   border-radius: 0px;
 }
 
-.input-group-addon {
+.input-group .form-control:not(:last-child) {
   border-radius: 0px;
-}
-
-.input-group-btn {
-  border-radius: 0px;
+  margin: 0px;
 }
 
 /*Bootstrap*/
@@ -225,8 +223,8 @@ a9. <p> (evoluciones, campos de texto libre)*/
       padding: 10px;
       position: relative;
       width: 100%;
-      min-height: 400px;
-      max-height: 400px;
+      min-height: 250px;
+      max-height: 250px;
       overflow: scroll;
       }
     }
@@ -271,7 +269,22 @@ aside {
   box-shadow: none;
   border: 1px solid transparent;
   border-radius: 0px;
+  // margin: 10px 0px 10px 0px; 
   text-transform: uppercase;
+}
+
+.btn-contextual {
+  font-size: 1.5em;
+  color: #AAAAAA;
+  background-color: white;
+  border-color: none;
+  box-shadow: none;
+  border: none;
+}
+
+.input-group .form-control:not(:last-child) {
+  border-radius: 0px;
+  margin: 0px;
 }
 
 .flat {
@@ -342,6 +355,41 @@ d. Menues
   color: #dd4b39;
   }
 
+/*d4. Pestañas*/
+.nav-tabs {
+  border-bottom: solid 1px #e3e3e3;
+}
+
+.nav-tabs .nav-link {
+  border-radius: 0px;
+  display: block;
+  line-height: 18px;
+  padding: 15px 10px 15px 10px;
+  margin-bottom: 0px; 
+  text-align: center;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #f7f7f7;
+  border-bottom: solid 1px #e3e3e3;
+  color: #00c0ef;
+}
+
+h5.nav-link {
+  display: block;
+  color: #e3e3e3;
+
+}
+
+h5.nav-link:hover {
+  color: #00c0ef;
+}
+
+h5.nav-link:visited {
+  background-color: #00c0ef;
+}
+
+
 /*e. Vínculos <a></a>
   e1. Positivo: :hover, :after
   /* General Links */
@@ -401,6 +449,14 @@ f. Etiquetas
   margin: 0px 10px 10px 0px;
 }
 
+.outline-info {
+  border: 1.5px solid #00A8E0;
+  border-radius: 0px;
+  background: transparent;
+  color: #00A8E0;
+  margin: 0px 10px 10px 0px;
+}
+
 .centrado {
   margin-left: 40%;
   margin-right: 25%;
@@ -452,7 +508,7 @@ h. Cromaticidad
    /* 03. Estilos friso del paciente*/
 
 .friso {
- padding-top: 20px;
+ padding: 20px;
 }
 
 h3.nombre-paciente {

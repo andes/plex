@@ -1,3 +1,11 @@
+<!-- js pestañas -->
+<script type="javascript">
+$('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+</script>
+
 <div class="wrapper">
     <!-- Cablezal -->
     <header class="main-header">
@@ -76,7 +84,7 @@
             <div class="box">
               <div class="row">
                 <div class="col-md-12">
-                    <h3 class="box-title-principal">Inputs: Variaciones</h3>
+                    <h3 class="box-title-principal">Inputs:<span class="text-muted"> Variaciones</span></h3>
                     <!-- Input con botón icónico -->
                     <div class="row">
                     <div class="col-md-4">
@@ -150,14 +158,14 @@
                         <div class="row">
                             <div class="col-md-12">
                                   <ul class="list-group">
-                                    <li class="list-group-item justify-content-between list-group-item-action">
+                                    <li class="list-group-item justify-content-between">
                                       <h4 class="box-title-elemento">Hiperuricemia
                                       <br>
                                       <small>Descripción del problema</small>
                                       </h4>
                                   <!-- Menu Elemento -->
-                                      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle-split" data-widget="" data-toggle="tooltip" title="Eliminar problema" data-original-title="">
-                                        <i ng-reflect-class-name="mdi mdi-menu" class="mdi mdi-dots-menu"></i>
+                                      <button type="button" class="btn-contextual" data-widget="" data-toggle="tooltip" title="Eliminar problema" data-original-title="">
+                                        <i ng-reflect-class-name="mdi mdi-dots-horizontal" class="mdi mdi-dots-horizontal"></i>
                                       </button>
 
                                   </li>
@@ -170,8 +178,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                   <ul class="list-group">
-                                    <li class="list-group-item justify-content-between list-group-item-action">
+                                    <li class="list-group-item justify-content-between">
                                       <h4>
+                                      <span class="badge btn-md badge outline-info" data-dismiss="">Resuelto</span>
                                       <span class="badge btn-md badge outline-danger" data-dismiss="">Crónico</span>
                                       <br>
                                       Hipertensión esencial
@@ -180,9 +189,8 @@
                                       </h4>
                                   <!-- Menu Elemento -->
                                   <span class="dropdown">
-                                      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <i ng-reflect-class-name="mdi mdi-menu" class="mdi mdi-menu"></i>
-                                      </button>
+                                      <button type="button" class="btn-contextual" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i ng-reflect-class-name="mdi mdi-dots-horizontal" class="mdi mdi-dots-horizontal"></i></button>
                                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                         <button class="dropdown-item" type="button">Evolucionar</button>
 
@@ -208,7 +216,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                   <ul class="list-group">
-                                    <li class="list-group-item justify-content-between list-group-item-action">
+                                    <li class="list-group-item justify-content-between">
                                       <h4>
                                       <span class="badge btn-md badge outline-danger" data-dismiss="">Crónico</span>
                                       <br>
@@ -218,8 +226,8 @@
                                       </h4>
                                   <!-- Menu Elemento -->
                                   <span class="dropdown">
-                                      <button type="button" class="btn btn-lg btn-secondary dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <i ng-reflect-class-name="mdi mdi-menu" class="mdi mdi-menu"></i>
+                                      <button type="button" class="btn-contextual" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <i ng-reflect-class-name="mdi mdi-dots-horizontal" class="mdi mdi-dots-horizontal"></i>
                                       </button>
                                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                         <button class="dropdown-item" type="button">Evolucionar</button>
@@ -239,6 +247,124 @@
                     </div>
                 <!-- /.Listado scrolleable -->
                     </div>
+                <!-- Sistema de pestañas -->
+                    <div class="col-md-4">
+                                <!-- Modal fondo blanco lateral derecho-->
+                                    <div class="box-lateral">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                        <h5 class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-expanded="false">Lista de problemas</h5>
+                                        </li>
+                                        <li class="nav-item">
+                                        <h5 class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-expanded="true">Prestaciones futuras</h5>
+                                        </li>
+                                        <li class="nav-item">
+                                        <h5 class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-expanded="true">Antecedentes clínicos</h5>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content" id="myTabContent">
+                                        <div role="tabpanel" class="tab-pane fade" id="home" aria-labelledby="home-tab" aria-expanded="false">
+
+                                        <!-- Lista de problemas -->
+                                            <div class="box-secundario">
+                                            <ul class="list-group">
+                                                <li class="list-group-item justify-content-between">
+                                                <h4 class="box-title-elemento">Hipertensión
+                                                    <br>
+                                                    <small>Descripción expandible del problema</small>
+                                                </h4>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                <h4 class="box-title-elemento">Mamografía
+                                                    <br>
+                                                    <small>Descripción expandible del problema</small>
+                                                </h4>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                <h4>
+                                                    <span class="badge btn-md outline-success" data-dismiss="">Resultados disponibles</span>
+                                                    <br>
+                                                    Laboratorio
+                                                    <br>
+                                                    <small>Descripción expandible de la prestación</small>
+                                                </h4>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                <h4 class="box-title-elemento">Actividad física
+                                                    <br>
+                                                    <small>Descripción expandible del problema</small>
+                                                </h4>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                <h4 class="box-title-elemento">Plan de hidratación
+                                                    <br>
+                                                    <small>Descripción expandible del problema</small>
+                                                </h4>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                <h4 class="box-title-elemento">Hidroclortizid
+                                                    <br>
+                                                    <small>Descripción expandible del problema</small>
+                                                </h4>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    <!-- /.Problemas asociados -->
+                                </div>
+                                        <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab" aria-expanded="true">
+                                        <!-- Prestaciones futuras -->
+                                            <div class="box-secundario">
+                                            <ul class="list-group">
+                                                <li class="list-group-item justify-content-between">
+                                                <h4 class="box-title-elemento">Dieta
+                                                    <br>
+                                                    <small>Descripción expandible del problema</small>
+                                                </h4>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                <h4 class="box-title-elemento">Mamografía
+                                                    <br>
+                                                    <small>Descripción expandible del problema</small>
+                                                </h4>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                <h4>
+                                                    <span class="badge btn-md outline-success" data-dismiss="">Resultados disponibles</span>
+                                                    <br>
+                                                    Laboratorio
+                                                    <br>
+                                                    <small>Descripción expandible de la prestación</small>
+                                                </h4>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                <h4 class="box-title-elemento">Actividad física
+                                                    <br>
+                                                    <small>Descripción expandible del problema</small>
+                                                </h4>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                <h4 class="box-title-elemento">Plan de hidratación
+                                                    <br>
+                                                    <small>Descripción expandible del problema</small>
+                                                </h4>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                <h4 class="box-title-elemento">Hidroclortizid
+                                                    <br>
+                                                    <small>Descripción expandible del problema</small>
+                                                </h4>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    <!-- /.Prestaciones futuras -->
+                                    </div>
+                                    </div>
+                                    <!-- /.Lista de problemas -->
+                                <!-- /.Modal fondo blanco lateral derecho-->
+                                </div>
+                            </div>
+                <!-- /. Sistema de pestañas-->
                           </div>
                         </div>
                     </div>
