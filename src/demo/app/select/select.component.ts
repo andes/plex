@@ -14,6 +14,7 @@ export class SelectDemoComponent implements OnInit {
     public rModelo1 = { select: null };
     public modelo2 = { select: null };
     public modelo3 = { select: null };
+    public modelo4 = { select: null };
 
     constructor(private formBuilder: FormBuilder, public servicio: ServiceDemoSelect) { }
 
@@ -34,7 +35,6 @@ export class SelectDemoComponent implements OnInit {
             continente: 'Europa',
         }];
 
-        // Template form1
         this.modelo1.select = this.opciones[1];
 
         // Formularios reactivos
@@ -46,11 +46,19 @@ export class SelectDemoComponent implements OnInit {
         this.form1.valueChanges.subscribe((value) => {
             this.rModelo1 = value;
         });
-
-        this.modelo2.select = {};
     }
 
     loadData(event) {
+        // Event tiene una propiedad 'query' que contiene el texto que el usuario ha escrito en el input.
+        // Esto permite enviar a las APIs un parámetro para hacer las búsquedas más eficientes
         this.servicio.get(event.query).subscribe(event.callback);
+    }
+
+    agregarPais() {
+        this.opciones.push({
+            id: 999,
+            nombre: 'Etiopa',
+            continente: 'Africa',
+        });
     }
 }

@@ -1,8 +1,8 @@
-<plex-box title="Template select con datos estáticos">
+<plex-box title="Select con opicones estáticas">
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" label-field="nombre + ' (' + continente + ')'" label="Seleccione un país">
+                <plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" labelField="nombre + ' (' + continente + ')'" label="Seleccione un país">
                 </plex-select>
             </form>
         </div>
@@ -12,11 +12,29 @@
         </div>
     </div>
 </plex-box>
+<plex-box title="Select con opciones dinámicas">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-select [(ngModel)]="modelo4.select" name="select" (getData)="$event.callback(opciones)" label="Seleccione un país">
+                </plex-select>
+                <plex-button label="Agregar Etiopia a la lista de opciones" (click)="agregarPais()"></plex-button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <label>Modelo</label>
+            <pre>{{modelo4 | json}}</pre>
+            <label>Opciones disponibles</label>
+            <pre>{{opciones | json}}</pre>
+        </div>
+    </div>
+</plex-box>
+
 <plex-box title="Template select múltiple">
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-select [(ngModel)]="modelo3.select" [closeAfterSelect]=true name="select" [data]="opciones" label="Seleccione varios países" [multiple]="true">
+                <plex-select [(ngModel)]="modelo3.select" name="select" [data]="opciones" label="Seleccione varios países" [multiple]="true">
                 </plex-select>
             </form>
         </div>
@@ -36,7 +54,7 @@
         </div>
     </div>
 </plex-box>
-<plex-box title="Select con callback">
+<plex-box title="Select con una llamada a la API de países">
     <div class="row">
         <div class="col-md-6">
             <form>
