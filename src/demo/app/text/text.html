@@ -1,8 +1,10 @@
-<plex-box title="Template-form usando ngModel">
+<plex-box title="Simple">
   <div class="row">
     <div class="col-md-6">
       <form>
-        <plex-text label="Ingrese el nombre" [(ngModel)]="templateModel1.nombre" name="nombre" [required]="true">
+        <plex-text label="Ingrese su usuario" [(ngModel)]="templateModel1.usuario" name="usuario" [required]="true">
+        </plex-text>
+        <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password" name="password" [required]="true">
         </plex-text>
       </form>
     </div>
@@ -12,11 +14,11 @@
     </div>
   </div>
 </plex-box>
-<plex-box title="Template-form usando ngModel, validación min 10 y max 15">
+<plex-box title="Validación">
   <div class="row">
     <div class="col-md-6">
       <form>
-        <plex-text label="Ingrese el nombre" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="10" maxlength="15">
+        <plex-text label="Ingrese un texto con un mínimo de 10 caracteres" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="10" maxlength="15">
         </plex-text>
       </form>
     </div>

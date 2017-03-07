@@ -13,3 +13,6 @@
 <div class="help-block" *ngIf="control.errors && control.errors.minlength">
     <span>Debe ingresar un mínimo de {{control.errors.minlength.requiredLength}} caracteres</span>
 </div>
+<div class="help-block" *ngIf="control.errors && control.errors.maxlength">
+    <span>Puede ingresar un máximo de {{control.errors.maxlength.requiredLength}} caracteres</span>
+</div>

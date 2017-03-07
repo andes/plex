@@ -31,7 +31,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() prefix: string;
     @Input() suffix: string;
     @Input() disabled = false;
-    @Input() min: number;
+    @Input() password: boolean;
     @Input() max: number;
 
     // Eventos
@@ -43,8 +43,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     constructor(renderer: Renderer) {
         this.renderer = renderer;
         this.placeholder = '';
-        this.min = 0;
-        this.max = 0;
+        this.password = false;
     }
 
     // Inicialización
