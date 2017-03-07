@@ -59,7 +59,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
+        this.renderer.setElementProperty(this.ref.nativeElement, 'value', typeof value === 'undefined' ? '' : value);
     }
 
     // Actualización Vista -> Modelo

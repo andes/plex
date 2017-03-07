@@ -1,11 +1,12 @@
 import {
     ViewChild, Component, OnInit, Input, AfterViewInit, Output, EventEmitter,
-    forwardRef, ElementRef, Renderer, ContentChild
+    forwardRef, ElementRef, Renderer, ContentChild, HostBinding, OnChanges
 } from '@angular/core';
 import {
     ControlValueAccessor, FormControl,
     NG_VALUE_ACCESSOR, NG_VALIDATORS, NgControl
 } from '@angular/forms';
+import { numberValidator } from '../core/validator.functions';
 
 const REGEX = /^\s*(\-)?(\d*)\s*$/;
 
@@ -19,25 +20,14 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
             useExisting: forwardRef(() => PlexIntComponent),
             multi: true
         },
-        // Implementa un validador
         {
             provide: NG_VALIDATORS,
-            useValue: (c: FormControl) => {
-                if ((c.value === null) || (c.value === '') || REGEX.test(c.value)) {
-                    return null;
-                } else {
-                    return {
-                        format: {
-                            given: c.value,
-                        }
-                    };
-                }
-            },
+            useExisting: forwardRef(() => PlexIntComponent),
             multi: true
-        }
+        },
     ]
 })
-export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
     private lastValue: any = null;
     private renderer: Renderer;
     @ViewChild('ref') private ref: ElementRef;
@@ -50,12 +40,26 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     @Input() suffix: string;
     @Input() placeholder: string;
     @Input() disabled = false;
+    @Input() min: number;
+    @Input() max: number;
 
     // Eventos
     @Output() change = new EventEmitter();
 
     // Funciones públicas
     public onChange = (_: any) => { };
+
+    // Validación
+    validateFn = (c: FormControl) => { };
+    validate(c: FormControl) {
+        return this.validateFn(c);
+    }
+    ngOnChanges(changes) {
+        // Cuando cambias las cotas, devuelve una nueva función de validación
+        if (changes.min || changes.max) {
+            this.validateFn = numberValidator(REGEX, this.min, this.max);
+        }
+    }
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
@@ -72,7 +76,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
+        this.renderer.setElementProperty(this.ref.nativeElement, 'value', typeof value === 'undefined' ? '' : value);
     }
 
     // Actualización Vista -> Modelo
