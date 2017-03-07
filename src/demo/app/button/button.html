@@ -2,20 +2,8 @@
     <div class="row">
         <div class="col-md-12">
             <plex-button label="Default" icon="account"></plex-button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
             <plex-button label="Primary" type="primary" icon="account"></plex-button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
             <plex-button label="Danger" type="danger" icon="account"></plex-button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
             <plex-button label="Success" type="success" icon="account"></plex-button>
         </div>
     </div>
@@ -39,4 +27,16 @@
             <plex-button label="Con evento (click)" icon="account" (click)="onClick()"></plex-button>
         </div>
     </div>
+</plex-box>
+
+<plex-box title="Validación de formularios">
+    <p>El siguiente ejemplo muestra el uso de la propiedad <strong>validateForm</strong>
+        <div class="row">
+            <div class="col-md-12">
+                <form>
+                    <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="modelo.campo1" [required]="true"></plex-text>
+                    <plex-button label="Guardar formulario" icon="content-save" validateForm="true" (click)="guardar($event)"></plex-button>
+                </form>
+            </div>
+        </div>
 </plex-box>

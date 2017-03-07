@@ -2,7 +2,7 @@ import {
     ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef,
     Renderer, EventEmitter, AfterViewInit
 } from '@angular/core';
-import { NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgControl, NG_VALUE_ACCESSOR, NgForm } from '@angular/forms';
 
 // Importo las librerías de jQuery
 let jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
@@ -27,7 +27,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit {
     private value: any;
     private $button: any;
     private $input: any;
-    @ContentChild(NgControl) control: any;
+    @ContentChild(NgControl) control: NgControl;
 
     // Input properties
     @Input() autoFocus: boolean;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Form } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
     templateUrl: 'datetime.html',
@@ -10,7 +10,6 @@ export class DateTimeDemoComponent implements OnInit {
     public model3: any;
     public model4: any;
     public tModel: any;
-    public form: any;
 
     ngOnInit() {
         // Tepmlate-Form1 model
@@ -26,9 +25,5 @@ export class DateTimeDemoComponent implements OnInit {
             fechaHora: null,
             disabled: true
         };
-    }
-
-    validarForm(form) {
-        debugger;
     }
 }
