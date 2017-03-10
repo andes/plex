@@ -17,7 +17,7 @@ let Selectize = require('selectize/dist/js/standalone/selectize');
         }
     ]
 })
-export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor {
     private value: any;
     private selectize: any;
     private hasStaticData = false;
@@ -141,8 +141,14 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
         return result.trim();
     }
 
+    removeOptions() {
+        for (let value in this.selectize.options) {
+            this.selectize.removeOption(value, true);
+        }
+    }
+
+
     // Inicialización
-    ngOnInit() { }
     ngAfterViewInit() {
         this.hasStaticData = this.data && this.data.length ? true : false;
 
@@ -173,15 +179,18 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
                 this.getData.emit({
                     query: query,
                     callback: (data) => {
+                        this.removeOptions();
                         this.data = data;
                         callback(data || []);
                     }
                 });
             },
             onFocus: this.hasStaticData ? null : () => {
+                // this.selectize.clearOptions();
                 this.selectize.load((callback: Function) => {
                     this.getData.emit({
                         callback: (data: any[]) => {
+                            this.removeOptions();
                             this.data = data;
                             callback(data || []);
                         }
