@@ -1,24 +1,19 @@
 import { Injectable } from '@angular/core';
-import { SidebarItem } from '../app/sidebar-item.class';
 import { Title } from '@angular/platform-browser';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 import { Options } from '../modal/options';
+import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 
 @Injectable()
 export class Plex {
-    public sidebarItems: Array<SidebarItem>;
-    public sidebarStaticItems: Array<SidebarItem>;
+    public menu: DropdownItem[];
 
     constructor(private titleService: Title, private modalService: Modal) {
     }
 
-    initView(title: string, sidebar?: Array<SidebarItem>) {
+    initView(title: string, menu: DropdownItem[]) {
         this.titleService.setTitle(title);
-        this.sidebarItems = sidebar;
-    }
-
-    initStaticItems(sidebar: Array<SidebarItem>) {
-        this.sidebarStaticItems = sidebar;
+        this.menu = menu;
     }
 
     modal(options: Options): Promise<any> {

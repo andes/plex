@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 
 // Componentes
 import { PlexAppComponent } from './app/app.component';
-import { SidebarComponent } from './app/sidebar.component';
 import { PlexBoxComponent } from './box/box.component';
 import { PlexTextComponent } from './text/text.component';
 import { PlexIntComponent } from './int/int.component';
@@ -68,7 +67,6 @@ const MODULES = [
     ],
     declarations: [
         ...MODULES,
-        SidebarComponent,
         ValidationMessagesComponent
     ],
     exports: MODULES

@@ -3,15 +3,15 @@
     <i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i> {{label}}
   </button>
   <ul class="dropdown-menu">
-    <li *ngFor="let item of list">
+    <li *ngFor="let item of items">
       <!--Item con router asociado-->
       <template [ngIf]="!item.options.divider && item.options.route">
-        <a class="dropdown-item" href="#" [routerLink]="item.options.route" routerLinkActive="active" (click)="open=false">
+        <a plexRipples class="dropdown-item" href="#" [routerLink]="item.options.route" routerLinkActive="active" (click)="open=false">
           <span *ngIf="item.options.icon" class="mdi mdi-{{item.options.icon}} mdi-md"></span> {{item.options.label}}</a>
       </template>
       <!--Item con handler asociado-->
       <template [ngIf]="!item.options.divider && item.options.handler">
-        <a class="dropdown-item" href="#" (click)="open=false; item.options.handler($event)">
+        <a plexRipples class="dropdown-item" href="#" (click)="open=false; item.options.handler($event)">
           <span *ngIf="item.options.icon" class="mdi mdi-{{item.options.icon}} mdi-md"></span> {{item.options.label}}</a>
       </template>
       <!--Divider-->
