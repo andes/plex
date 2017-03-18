@@ -5,8 +5,8 @@ import { Plex } from '../../../lib/core/service';
     templateUrl: 'modal.html',
 })
 export class ModalDemoComponent {
-    public alertText: string = 'Se ha detectado un error en la base de datos';
-    public confirmText: string = '¿Desea eliminar el archivo?';
+    public alertText = 'Se ha detectado un error en la base de datos';
+    public confirmText = '¿Desea eliminar el archivo?';
     constructor(private plex: Plex) { }
 
     alert() {

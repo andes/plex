@@ -30,20 +30,26 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() placeholder: string;
     @Input() prefix: string;
     @Input() suffix: string;
-    @Input() disabled: boolean;
+    @Input() disabled = false;
+    @Input() password: boolean;
+    @Input() max: number;
+
     // Eventos
     @Output() change = new EventEmitter();
 
-    // Funciones privadas
-    private onChange = (_: any) => { };
+    // Funciones públicas
+    public onChange = (_: any) => { };
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
         this.placeholder = '';
+        this.password = false;
     }
 
     // Inicialización
-    ngOnInit() { }
+    ngOnInit() {
+    }
+
     ngAfterViewInit() {
         if (this.autoFocus) {
             this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
@@ -52,17 +58,16 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
+        this.renderer.setElementProperty(this.ref.nativeElement, 'value', typeof value === 'undefined' ? '' : value);
     }
 
     // Actualización Vista -> Modelo
     registerOnTouched() {
     }
     registerOnChange(fn: any) {
-        ;
+
         this.onChange = (value) => {
             value = value || null;
-
             fn(value);
             this.change.emit({
                 value: value

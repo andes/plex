@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 // Componentes
 import { PlexAppComponent } from './app/app.component';
@@ -24,6 +24,8 @@ import { PlexRipplesDirective } from './ripples/ripples.directive';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 import { PlexPhoneComponent } from './phone/phone.component';
 import { PlexDropdownComponent } from './dropdown/dropdown.component';
+import { PlexTooltipComponent } from './tooltip/tooltip.component';
+
 // Angular Material
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
@@ -51,7 +53,8 @@ const MODULES = [
     PlexScrollComponent,
     PlexRipplesDirective,
     PlexPhoneComponent,
-    PlexDropdownComponent
+    PlexDropdownComponent,
+    PlexTooltipComponent
 ];
 
 @NgModule({
@@ -59,7 +62,6 @@ const MODULES = [
         CommonModule,
         RouterModule,
         FormsModule,
-        ReactiveFormsModule,
         MaterialModule.forRoot(),
         ModalModule.forRoot(),
         BootstrapModalModule,

@@ -1,11 +1,12 @@
 import {
     ViewChild, ContentChild, Component, OnInit,
-    AfterViewInit, Input, Output, EventEmitter, forwardRef, ElementRef, Renderer
+    AfterViewInit, Input, Output, EventEmitter, forwardRef, ElementRef, Renderer, OnChanges
 } from '@angular/core';
 import {
     ControlValueAccessor, FormControl,
     NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS
 } from '@angular/forms';
+import { numberValidator } from '../core/validator.functions';
 
 const REGEX = /^\s*(\-)?(\d*|(\d*(\.\d*)))\s*$/;
 
@@ -19,29 +20,14 @@ const REGEX = /^\s*(\-)?(\d*|(\d*(\.\d*)))\s*$/;
             useExisting: forwardRef(() => PlexFloatComponent),
             multi: true
         },
-        // Implementa un validador
         {
             provide: NG_VALIDATORS,
-            useValue: (c: FormControl) => {
-                let value = c.value;
-                if (value) {
-                    value = ('' + value).replace(',', '.');
-                }
-                if ((value == null) || (value === '') || REGEX.test(value)) {
-                    return null;
-                } else {
-                    return {
-                        format: {
-                            given: value,
-                        }
-                    };
-                }
-            },
+            useExisting: forwardRef(() => PlexFloatComponent),
             multi: true
         }
     ]
 })
-export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
     private lastValue: any = null;
     private renderer: Renderer;
     @ViewChild('ref') private ref: ElementRef;
@@ -49,15 +35,31 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
 
     // Propiedades
     @Input() autoFocus: boolean;
-    @Input() disabled: boolean;
     @Input() label: string;
     @Input() prefix: string;
     @Input() suffix: string;
     @Input() placeholder: string;
+    @Input() disabled = false;
+    @Input() min: number;
+    @Input() max: number;
+
+    // Eventos
     @Output() change = new EventEmitter();
 
-    // Funciones privadas
-    private onChange = (_: any) => { };
+    // Funciones públicas
+    public onChange = (_: any) => { };
+
+    // Validación
+    validateFn = (c: FormControl) => { };
+    validate(c: FormControl) {
+        return this.validateFn(c);
+    }
+    ngOnChanges(changes) {
+        // Cuando cambias las cotas, devuelve una nueva función de validación
+        if (changes.min || changes.max) {
+            this.validateFn = numberValidator(REGEX, this.min, this.max);
+        }
+    }
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
@@ -74,7 +76,7 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
+        this.renderer.setElementProperty(this.ref.nativeElement, 'value', typeof value === 'undefined' ? '' : value);
     }
 
     // Actualización Vista -> Modelo

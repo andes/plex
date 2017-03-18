@@ -1,0 +1,215 @@
+//
+// Clases globales disponibles para las aplicaciones
+// -------------------------
+
+// Margin & Padding
+// -------------------------
+
+.margin-left {
+    margin-left: 1em;
+}
+.margin-right {
+    margin-right: 1em;
+}
+.margin-top {
+    margin-top: 1em;
+}
+.margin-bottom {
+    margin-bottom: 1em;
+}
+.padding-left {
+    padding-left: 1em;
+}
+.padding-right {
+    padding-right: 1em;
+}
+.padding-top {
+    padding-top: 1em;
+}
+.padding-bottom {
+    padding-bottom: 1em;
+}
+
+// Display
+// -------------------------
+.block {
+    display: block;
+}
+.inline {
+    display: inline;
+}
+.inline-block {
+    display: inline-block;
+}
+
+// Textos
+// -------------------------
+.text-100,  {
+    font-size: 1em; // 100 %
+}
+.text-120 {
+    font-size: 1.2em; // 120 %
+}
+.text-150 {
+    font-size: 1.5em; // 150 %
+}
+.text-200 {
+    font-size: 2em; // 200 %
+}
+.text-300 {
+    font-size: 3em; // 300 %
+}
+.text-400 {
+    font-size: 4em; // 400 %
+}
+.text-500 {
+    font-size: 5em; // 500 %
+}
+[class^="text-"] .btn {
+    font-size: 1em; // Así no duplica el tamaño
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.no-wrap {
+    white-space: nowrap;
+}
+
+// Varios
+// -------------------------
+.hover {
+    cursor: pointer;
+}
+
+// Accordion / Collapsable
+
+.panel-title {
+    font-size: 14px;
+}
+
+/* título contenedor central */
+h3.box-title-principal {
+    border-bottom: solid grey 1px;
+    color: #00A8E0;
+    font-size: 1.25em;
+    font-weight: 400;
+}
+
+/* subtítulos contenido central */
+h4.box-title-secundario {
+    border-bottom: solid grey 1px;
+    color: #111111;
+    font-size: 1.2em;
+}
+
+/*título elemento, item barra lateral*/
+.box-title-elemento {
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 1;
+    margin-left: 0px;
+}
+
+.panel {
+    .panel-collapse {
+        max-height: 0px;
+        display: transparent;
+        overflow: hidden;
+        transition: all .2s ease-out;
+    }
+    .active {
+        max-height: 500px;
+        color: black;
+        overflow: auto;
+    }
+}
+
+// Dropdown fix
+.dropdown-menu li a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+
+// Tooltip
+.plex-tooltip-container {
+
+    display: inline-block;
+    
+    .plex-tooltip {
+        position: absolute;
+        display: none;
+        font-size: 0.75em;
+        width: auto;
+        color: white;
+        background: black;
+        border: 1px solid #333;
+        border-radius: 4px;
+        padding: 4px 6px 4px 0px;
+        z-index: 999;
+
+        .tip {
+            background: black;
+            width: 5px;
+            height: 5px;
+            transform: rotate(-45deg) scale(2);
+            position: relative;
+            z-index: -1;
+        }
+        .top {
+            float: left;
+            top: 15px;
+            left: 10px;
+        }
+        .right {
+            float: left;
+            left: 0px;
+            top: 5px;
+        }
+        .bottom {
+            float: left;
+            bottom: 5px;
+            left: 10px;
+        }
+        .left {
+            float: right;
+            top: 5px;
+            left: 4px;
+        }
+
+    }
+    &:hover {
+        .plex-tooltip {
+            display: inline-block;
+        }
+    }
+
+    .tooltip-top {
+        top: -30px;
+    }
+    .tooltip-right {
+        float: right;
+        position: relative;
+        left: 4px;
+        top: 5px;
+    }
+    .tooltip-bottom {
+        bottom: -30px;
+    }
+    .tooltip-left {
+        float: left;
+        top: 2px;
+        // bottom: 0;
+        left: -120px;
+        padding: 4px 2px 5px 6px;
+    }
+}

@@ -6,12 +6,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServiceDemoSelect {
 
-    private paisUrl = 'http://localhost:3002/api/modules/turnos/agenda';  // URL to web api
+    private paisUrl = 'http://localhost:3002/api/core/tm/paises';  // URL to web api
 
     constructor(private http: Http) { }
 
     get(query: string): Observable<any[]> {
-        return this.http.get(this.paisUrl)
+        return this.http.get(this.paisUrl, { search: 'nombre=' + (query || '') })
             .map((res: Response) => res.json());
     }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, HostListener } from '@angular/core';
+import { Component, Input, HostBinding, HostListener, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 import { Plex } from '../../lib/core/service';
 import { MenuItem } from '../../lib/app/menu-item.class';
 
@@ -6,28 +6,28 @@ import { MenuItem } from '../../lib/app/menu-item.class';
     selector: 'plex-dropdown',
     templateUrl: 'dropdown.html'
 })
-export class PlexDropdownComponent {
+export class PlexDropdownComponent implements OnInit, OnChanges {
     @Input() label: string;
     @Input() icon: string;
     @Input() open: boolean;
-    @Input() menuItems: Object[];
+    @Input() items: Object[];
     @Input() @HostBinding('attr.disabled') disabled: boolean;
-    
-    public list = [
-        new MenuItem({ label: 'Opcion 1', icon: 'dna', route: '/incio' }),
-        new MenuItem({ label: 'Opcion 2', icon: 'flag', route: '/opcion-2' }),
-        new MenuItem({ label: 'Opcion 3', icon: 'flask-empty-outline', route: '/opcion-3' }),
-        new MenuItem({ divider: true }),
-        new MenuItem({ label: 'Opcion 4', icon: 'wrench', handler: (() => { alert('andó'); return false; }) })
-    ];
 
+    public list = [];
 
     constructor(public plex: Plex) {
         this.open = false;
         this.disabled = false;
+        this.list = this.items;
     }
 
-    dropDown(menu: PlexDropdownComponent, type) {
+    ngOnInit() {}
+
+     ngOnChanges()  {
+        this.list = this.items;
+    }
+
+    dropDown() {
       this.open = !this.open;
     }
 

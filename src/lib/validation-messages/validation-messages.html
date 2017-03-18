@@ -1,8 +1,11 @@
 <div class="help-block" *ngIf="control.errors && control.errors.required">
     <span>Valor requerido</span>
 </div>
-<div class="help-block" *ngIf="control.errors && control.errors.min">
-    <span>Valor no permitido</span>
+<div class="help-block" *ngIf="control.errors && control.errors.format">
+    <span>Formato incorrecto</span>
+</div>
+<div class="help-block" *ngIf="control.errors && control.errors.minMax">
+    <span>El valor debe estar entre {{control.errors.minMax.min}} y {{control.errors.minMax.max}}</span>
 </div>
 <div class="help-block" *ngIf="control.errors && control.errors.max">
     <span>Valor no permitido</span>
@@ -10,6 +13,6 @@
 <div class="help-block" *ngIf="control.errors && control.errors.minlength">
     <span>Debe ingresar un mínimo de {{control.errors.minlength.requiredLength}} caracteres</span>
 </div>
-<div class="help-block" *ngIf="control.errors && control.errors.format">
-    <span>Formato incorrecto</span>
+<div class="help-block" *ngIf="control.errors && control.errors.maxlength">
+    <span>Puede ingresar un máximo de {{control.errors.maxlength.requiredLength}} caracteres</span>
 </div>

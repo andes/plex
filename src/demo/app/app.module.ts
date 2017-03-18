@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './app.routes';
 import { AppComponent } from './app.component';
@@ -29,6 +29,7 @@ import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
+import { TooltipDemoComponent } from './tooltip/tooltip.component';
 
 @NgModule({
   declarations: [
@@ -48,13 +49,13 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
     ModalDemoComponent,
     LoaderDemoComponent,
     PhoneDemoComponent,
-    DropdownDemoComponent
+    DropdownDemoComponent,
+    TooltipDemoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule,
     PlexModule,
     routing,
   ],

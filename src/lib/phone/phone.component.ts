@@ -3,7 +3,7 @@ import {
     Output, EventEmitter, forwardRef, ElementRef, Renderer
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
-let awesome = require( 'awesome-phonenumber' );
+let awesome = require('awesome-phonenumber');
 const REGEX = /^\s*(\d*)\s*$/;
 
 @Component({
@@ -45,18 +45,23 @@ const REGEX = /^\s*(\d*)\s*$/;
     ]
 })
 export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+    private lastValue: any = null;
+    private renderer: Renderer;
     @ContentChild(NgControl) control: any;
     @ViewChild('ref') ref: ElementRef;
+
     // Propiedades
     @Input() autoFocus: boolean;
     @Input() label: string;
     @Input() prefix: string;
     @Input() suffix: string;
+
     // Eventos
     @Output() valueChange = new EventEmitter();
-    private lastValue: any = null;
-    private renderer: Renderer;
-    private onChange = (_: any) => { };
+
+    // Funciones públicas
+    public onChange = (_: any) => { };
+
     constructor(renderer: Renderer) {
         this.renderer = renderer;
     }

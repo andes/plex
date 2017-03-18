@@ -1,42 +1,28 @@
-<plex-box title="Template-form usando ngModel">
+<plex-box label="Simple">
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-float label="Ingrese su edad" [(ngModel)]="tModel.valor" name="valor" suffix="años">
+                <plex-float label="Ingrese el peso del paciente" [(ngModel)]="tModel.peso" name="valor">
                 </plex-float>
             </form>
         </div>
-        <div class="col-md-6" *ngIf="model1">
+        <div class="col-md-6" *ngIf="tModel">
             <label>Modelo</label>
             <pre>{{tModel | json}}</pre>
         </div>
     </div>
 </plex-box>
-<plex-box title="Reactive form utilizando sin validación">
+<plex-box label="Con validación">
     <div class="row">
         <div class="col-md-6">
-            <form [formGroup]="form1">
-                <plex-float label="Ingrese su edad" formControlName="valor">
+            <form>
+                <plex-float label="Ingrese el porcentaje mayor a 10.5 y menor a 90.4" [(ngModel)]="tModel.valor" name="valor" [min]="10.5" [max]="90.4" suffix="%">
                 </plex-float>
             </form>
         </div>
-        <div class="col-md-6" *ngIf="model1">
+        <div class="col-md-6" *ngIf="tModel">
             <label>Modelo</label>
-            <pre>{{model1 | json}}</pre>
-        </div>
-    </div>
-</plex-box>
-<plex-box title="Reactive form utilizando validación múltiple">
-    <div class="row">
-        <div class="col-md-6">
-            <form [formGroup]="form2">
-                <plex-float label="Ingrese un número >= 2.5 y <= 9.5" formControlName="valor">
-                </plex-float>
-            </form>
-        </div>
-        <div class="col-md-6" *ngIf="model2">
-            <label>Modelo</label>
-            <pre>{{model2 | json}}</pre>
+            <pre>{{tModel | json}}</pre>
         </div>
     </div>
 </plex-box>

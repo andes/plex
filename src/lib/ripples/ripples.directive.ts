@@ -3,7 +3,7 @@ let Waves = require('node-waves/dist/waves');
 Waves.init();
 
 @Directive({
-    selector: '[plex-ripples]',
+    selector: '[plexRipples]',
 })
 export class PlexRipplesDirective implements OnInit, AfterViewInit {
     constructor(private element: ElementRef ) {

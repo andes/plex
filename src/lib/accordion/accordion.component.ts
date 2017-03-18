@@ -6,20 +6,18 @@ import { PlexPanelComponent } from './panel.component';
     templateUrl: 'accordion.html'
 })
 export class PlexAccordionComponent implements AfterViewInit {
-    public accordion: PlexPanelComponent[] = [];
+    public panels: PlexPanelComponent[] = [];
 
     ngAfterViewInit() {
-        if (this.accordion.length) {
-            this.accordion[0].active = true;
+        if (this.panels.length) {
+            this.panels[0].active = true;
         }
     }
 
     addPanel(panel: PlexPanelComponent) {
-        if (this.accordion.length === 0) {
+        if (this.panels.length === 0) {
             panel.active = true;
         }
-        this.accordion.push(panel);
+        this.panels.push(panel);
     }
-
-    
 }

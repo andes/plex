@@ -3,7 +3,7 @@ import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/for
 
 // Importo las librerías de jQuery
 let jQuery = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
-require('selectize/dist/js/standalone/selectize');
+let Selectize = require('selectize/dist/js/standalone/selectize');
 
 @Component({
     selector: 'plex-select',
@@ -17,12 +17,14 @@ require('selectize/dist/js/standalone/selectize');
         }
     ]
 })
-export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor {
     private value: any;
     private selectize: any;
-    private isEmpty: boolean = false;
+    private hasStaticData = false;
+    private _data: any[];
 
     @ContentChild(NgControl) control: any;
+    public uniqueId = new Date().valueOf().toString();
 
     // Propiedades
     @Input() autoFocus: boolean;
@@ -32,21 +34,81 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
     @Input() idField: string;
     @Input() labelField: string; // Puede ser un solo campo o una expresión tipo ('string' + campo + 'string' + campo + ...)
     @Input() groupField: string;
+    @Input() disabled = false;
+    @Input() closeAfterSelect = false;
     @Input() data: any[];
+
     // Eventos
     @Output() getData = new EventEmitter<any>();
     @Output() change = new EventEmitter();
 
-    // Funciones privadas
-    private onChange = (_: any) => { };
+    // Funciones públicas
+    public onChange = (_: any) => { };
 
     // Constructor
     constructor(private element: ElementRef) {
+        this.initRemoveButtonPlugin();
         this.placeholder = '';
         this.multiple = false;
         this.idField = 'id';
         this.labelField = 'nombre';
         this.groupField = 'grupo';
+    }
+
+    private initRemoveButtonPlugin() {
+        // Basado en remove_button de selectize/dist/js/standalone/selectize
+        Selectize.define('remove_button_plex', function (options) {
+            options = {
+                label: '&nbsp;&times;',
+                title: 'Quitar esta opción',
+                className: 'remove',
+                append: true
+            };
+
+            let self = this;
+            let html = '<a href="javascript:void(0)" class="' + options.className + '" tabindex="-1" title="' + options.title + '">' + options.label + '</a>';
+
+            let append = function (html_container, html_element) {
+                let pos = html_container.search(/(<\/[^>]+>\s*)$/);
+                return html_container.substring(0, pos) + html_element + html_container.substring(pos);
+            };
+
+            self.setup = (function () {
+                let original = self.setup;
+                return function () {
+                    // override the item rendering method to add the button to each
+                    if (options.append) {
+                        let render_item = self.settings.render.item;
+                        self.settings.render.item = function (data) {
+                            return append(render_item.apply(self, arguments), html);
+                        };
+                    }
+
+                    original.apply(self, arguments);
+
+                    // add event listener
+                    self.$control.on('click', '.' + options.className, function (e) {
+                        e.preventDefault();
+                        if (self.isLocked) {
+                            return;
+                        }
+
+                        if (self.settings.mode === 'single') {
+                            self.clear();
+                        } else {
+                            let $item = jQuery(e.currentTarget).parent();
+                            self.setActiveItem($item);
+                            if (self.deleteSelection()) {
+                                self.setCaret(self.items.length);
+                            }
+                        }
+
+                        // Cierra el combo que por un bug se vuelve a abrir. Igual tiene un flicker raro (abre y cierra)
+                        self.close();
+                    });
+                };
+            })();
+        });
     }
 
     private splitLabelField(labelField: string, filterLiterals: boolean): string[] {
@@ -79,43 +141,57 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
         return result.trim();
     }
 
+    removeOptions() {
+        for (let value in this.selectize.options) {
+            this.selectize.removeOption(value, true);
+        }
+    }
+
+
     // Inicialización
-    ngOnInit() { }
     ngAfterViewInit() {
-        this.isEmpty = this.data && this.data.length ? false : true;
+        this.hasStaticData = this.data && this.data.length ? true : false;
+
         // Eliminar los espacios alrededor del +
         this.labelField = this.labelField.replace(/(\s)*\+/g, '+').replace(/\+(\s)*/g, '+');
 
         // Inicializa el plugin
         let $selectize = jQuery('SELECT', this.element.nativeElement.children[0]).selectize({
-            plugins: ['remove_button'],
+            plugins: ['remove_button_plex'],
             valueField: this.idField,
             labelField: this.labelField,
             placeholder: this.placeholder,
             searchField: this.splitLabelField(this.labelField, true),
             options: this.data,
+            closeAfterSelect: this.closeAfterSelect,
             render: {
                 option: (item, escape) => '<div class=\'option\'>' + escape(this.renderOption(item, this.labelField)) + '</div>',
-                item: (item, escape) => '<div class=\'item\'>' + escape(this.renderOption(item, this.labelField)) + '</div>',
+                item: (item, escape) => {
+                    if (this.multiple) {
+                        return '<div class=\'item\'>' + escape(this.renderOption(item, this.labelField)) + '</div>';
+                    } else {
+                        return '<div class=\'item\'>' + escape(this.renderOption(item, this.labelField)) + '</div>';
+                    }
+                },
             },
-            load: (query: string, callback: Function) => {
+            load: this.hasStaticData ? null : (query: string, callback: Function) => {
                 // Esta función se ejecuta cuando el usuario escribe en el elemento
                 this.getData.emit({
                     query: query,
                     callback: (data) => {
+                        this.removeOptions();
                         this.data = data;
                         callback(data || []);
                     }
                 });
             },
-            onFocus: () => {
-                // Si está vacío, carga los datos
-                // if (this.isEmpty)
+            onFocus: this.hasStaticData ? null : () => {
+                // this.selectize.clearOptions();
                 this.selectize.load((callback: Function) => {
                     this.getData.emit({
                         callback: (data: any[]) => {
+                            this.removeOptions();
                             this.data = data;
-                            this.isEmpty = false;
                             callback(data || []);
                         }
                     });
@@ -133,11 +209,15 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
                     }
                     this.onChange(result.length ? result : null);
                 } else {
-                    for (let i = 0; i < this.data.length; i++) {
-                        // value es siempre un string, por eso es necesario convertir el id F
-                        if ('' + this.data[i][this.idField] === value) {
-                            this.onChange(this.data[i]);
-                            return;
+                    if (!value) {
+                        this.onChange(null);
+                    } else {
+                        for (let i = 0; i < this.data.length; i++) {
+                            // value es siempre un string, por eso es necesario convertir el id
+                            if ('' + this.data[i][this.idField] === value) {
+                                this.onChange(this.data[i]);
+                                return;
+                            }
                         }
                     }
                 }
@@ -178,7 +258,7 @@ export class PlexSelectComponent implements OnInit, AfterViewInit, ControlValueA
             }
 
             // Si no tiene ninguna opción, carga el objeto como única opción
-            if (value && ((typeof value === 'object') || Array.isArray(value)) && this.isEmpty) {
+            if (value && ((typeof value === 'object') || Array.isArray(value)) && (!this.data || this.data.length === 0)) {
                 if (Array.isArray(value)) {
                     this.data = value;
                 } else {
