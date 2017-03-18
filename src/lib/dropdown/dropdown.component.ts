@@ -11,6 +11,7 @@ export class PlexDropdownComponent implements OnInit, OnChanges {
     @Input() icon: string;
     @Input() open: boolean;
     @Input() items: Object[];
+    @Input() type: string;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
 
     public list = [];
@@ -18,17 +19,18 @@ export class PlexDropdownComponent implements OnInit, OnChanges {
     constructor(public plex: Plex) {
         this.open = false;
         this.disabled = false;
+        this.type = 'secondary';
         this.list = this.items;
     }
 
-    ngOnInit() {}
+    ngOnInit() { }
 
-     ngOnChanges()  {
+    ngOnChanges() {
         this.list = this.items;
     }
 
     dropDown() {
-      this.open = !this.open;
+        this.open = !this.open;
     }
 
 }

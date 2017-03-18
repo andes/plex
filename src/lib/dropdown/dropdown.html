@@ -1,16 +1,22 @@
-<div class="dropdown" [ngClass]="{open: open}">
-  <button plexRipples class="btn btn-default dropdown-toggle" type="button" [disabled]="disabled" (click)="dropDown()">
-    <i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i>{{label}}
-    <span class="caret"></span>
+<div class="dropdown" [ngClass]="{show: open}">
+  <button plexRipples data-toggle="dropdown" class="btn btn-{{type}}" [ngClass]="{'dropdown-toggle': label}" type="button" [disabled]="disabled" (click)="open = !open">
+    <i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i> {{label}}
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">  
+  <ul class="dropdown-menu">
     <li *ngFor="let item of list">
-      <template [ngIf]="!item.options.divider">
-        <a href="#" [routerLink]="item.options.route" routerLinkActive="active" (click)="item.options.handler && item.options.handler($event)">
+      <!--Item con router asociado-->
+      <template [ngIf]="!item.options.divider && item.options.route">
+        <a class="dropdown-item" href="#" [routerLink]="item.options.route" routerLinkActive="active" (click)="open=false">
           <span *ngIf="item.options.icon" class="mdi mdi-{{item.options.icon}} mdi-md"></span> {{item.options.label}}</a>
       </template>
+      <!--Item con handler asociado-->
+      <template [ngIf]="!item.options.divider && item.options.handler">
+        <a class="dropdown-item" href="#" (click)="open=false; item.options.handler($event)">
+          <span *ngIf="item.options.icon" class="mdi mdi-{{item.options.icon}} mdi-md"></span> {{item.options.label}}</a>
+      </template>
+      <!--Divider-->
       <template [ngIf]="item.options.divider">
-        <div role="separator" class="divider"></div>
+        <div role="separator" class="dropdown-divider"></div>
       </template>
     </li>
   </ul>
