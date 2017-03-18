@@ -1,8 +1,6 @@
-<div class="box box-{{type}}">
-    <div *ngIf="title" class="box-header with-border">
-        <h3 class="box-title">{{title}}</h3>
-    </div>
-    <div class="box-body">
+<div class="plex-box" [ngClass]="{'plex-box-primary': type == 'primary', 'plex-box-footer': type == 'footer'}">
+    <div *ngIf="title" class="plex-box-title">{{title}}</div>
+    <div class="plex-box-content" [ngClass]="{'plex-box-content-notitle': !title}">
         <ng-content></ng-content>
     </div>
 </div>

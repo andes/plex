@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
 
 @Component({
-    templateUrl: 'home.html',
+    templateUrl: 'home.html'
 })
 export class HomeDemoComponent implements OnInit {
     constructor(public plex: Plex) { }

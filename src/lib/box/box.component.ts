@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
 })
 export class PlexBoxComponent {
   @Input() title: string;
-  @Input() type: string;
+  @Input() type = '';
 
   constructor() {
   }

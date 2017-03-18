@@ -65,44 +65,44 @@
 
 // Accordion / Collapsable
 
-.panel-title {
-    font-size: 14px;
-}
+// .panel-title {
+//     font-size: 14px;
+// }
 
-/* título contenedor central */
-h3.box-title-principal {
-    border-bottom: solid grey 1px;
-    color: #00A8E0;
-    font-size: 1.25em;
-    font-weight: 400;
-}
+// /* título contenedor central */
+// h3.box-title-principal {
+//     border-bottom: solid grey 1px;
+//     color: #00A8E0;
+//     font-size: 1.25em;
+//     font-weight: 400;
+// }
 
-/* subtítulos contenido central */
-h4.box-title-secundario {
-    border-bottom: solid grey 1px;
-    color: #111111;
-    font-size: 1.2em;
-}
+// /* subtítulos contenido central */
+// h4.box-title-secundario {
+//     border-bottom: solid grey 1px;
+//     color: #111111;
+//     font-size: 1.2em;
+// }
 
-/*título elemento, item barra lateral*/
-.box-title-elemento {
-    display: inline-block;
-    font-size: 1em;
-    font-weight: 700;
-    line-height: 1;
-    margin-left: 0px;
-}
+// /*título elemento, item barra lateral*/
+// .box-title-elemento {
+//     display: inline-block;
+//     font-size: 1em;
+//     font-weight: 700;
+//     line-height: 1;
+//     margin-left: 0px;
+// }
 
-.panel {
-    .panel-collapse {
-        max-height: 0px;
-        display: transparent;
-        overflow: hidden;
-        transition: all .2s ease-out;
-    }
-    .active {
-        max-height: 500px;
-        color: black;
-        overflow: auto;
-    }
-}
+// .panel {
+//     .panel-collapse {
+//         max-height: 0px;
+//         display: transparent;
+//         overflow: hidden;
+//         transition: all .2s ease-out;
+//     }
+//     .active {
+//         max-height: 500px;
+//         color: black;
+//         overflow: auto;
+//     }
+// }
