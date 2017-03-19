@@ -13,7 +13,7 @@ export class DropdownDemoComponent implements OnInit {
             { label: 'Ir a inicio', icon: 'dna', route: '/incio' },
             { label: 'Ir a ruta inexistente', icon: 'flag', route: '/ruta-rota' },
             { divider: true },
-            { label: 'Item con handler', icon: 'wrench', handler: (() => { alert('Funciona!'); return false; }) }
+            { label: 'Item con handler', icon: 'wrench', handler: (() => { alert('Este es un handler'); }) }
         ];
     }
 }

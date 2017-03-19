@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Plex } from '../../lib/core/service';
+import { DropdownItem } from './../../lib/dropdown/dropdown-item.inteface';
 
 @Component({
   selector: 'plex-app-root',
@@ -10,7 +11,7 @@ export class AppComponent implements OnInit {
   constructor(public plex: Plex) { }
 
   ngOnInit() {
-    const menu = [
+    const menu: DropdownItem[] = [
       { label: 'Inicio', icon: 'creation', route: '/inicio' },
       { label: 'Loader', icon: 'dots-horizontal', route: '/loader' },
       { label: 'Phone', icon: 'phone', route: '/phone' },

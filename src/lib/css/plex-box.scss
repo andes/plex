@@ -5,7 +5,7 @@ $plex-box-primary-title-height: 40px;
 .plex-box {
     background: white;
 
-    & > .plex-box-title {
+    & > .plex-box-header {
         margin-bottom: 15px;
         border-bottom: solid grey 1px;
     }
@@ -15,10 +15,13 @@ $plex-box-primary-title-height: 40px;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
         padding: 20px;
 
-        & > .plex-box-title {
-            font-size: 1.15em;
-            color: #00c0ef;
-            height: $plex-box-primary-title-height;
+        & > .plex-box-header {
+             height: $plex-box-primary-title-height;
+
+            & > .plex-box-title {
+                font-size: 1.15em;
+                color: #00c0ef;
+            }
         }
 
         & > .plex-box-content {

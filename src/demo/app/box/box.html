@@ -1,6 +1,14 @@
 <div class="row">
     <div class="col-6">
-        <plex-box type="primary" title="Este es el título" item="[xxx]">
+        <plex-box type="primary" title="Titulo del principal">
+            <header class="btn-group float-left">
+                <plex-button type="link" icon="clock"></plex-button>
+                <!--<button plexRipples class="btn btn-link"><i class="mdi mdi-clock"></i></button>
+                    <button plexRipples class="btn btn-link"><i class="mdi mdi-clock"></i></button>-->
+                <plex-dropdown *ngIf="items" icon="dots-horizontal" type="link" right="true" [items]="items">
+                </plex-dropdown>
+            </header>
+
             <div class="row">
                 <div class="col-12">
                     Contenido
@@ -9,7 +17,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <plex-box title="Titulo de acciones">
-                        Acciones
+                        BODYDESDEACA Acciones
                         <br>...
                         <br>...
                         <br>...Acciones
@@ -42,7 +50,7 @@
         </plex-box>
     </div>
     <div class="col-6">
-        <plex-box type="primary" title="Este es el título">
+        <plex-box type="primary" title="Este es un panel con acciones">
             Contenido
             <br>...
             <br>...

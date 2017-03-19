@@ -12,11 +12,13 @@ export class PlexDropdownComponent {
     @Input() open: boolean;
     @Input() items: DropdownItem[];
     @Input() type: string;
+    @Input() right: boolean;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
 
     constructor(public plex: Plex) {
         this.open = false;
         this.disabled = false;
         this.type = 'secondary';
+        this.right = false;
     }
 }

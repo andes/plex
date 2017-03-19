@@ -11,7 +11,7 @@ export class Plex {
     constructor(private titleService: Title, private modalService: Modal) {
     }
 
-    initView(title: string, menu: DropdownItem[]) {
+    initView(title: string, menu: DropdownItem[] = null) {
         this.titleService.setTitle(title);
         this.menu = menu;
     }
