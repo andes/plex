@@ -7,6 +7,7 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 @Injectable()
 export class Plex {
     public menu: DropdownItem[];
+    public loaderCount = 0;
 
     constructor(private titleService: Title, private modalService: Modal) {
     }
@@ -29,9 +30,9 @@ export class Plex {
             .body(options.content)
             .open()
             .then(
-                (resultPromise) => resultPromise.result.then((resultado) => resolve(resultado), () => resolve(false)),
-                () => resolve(false)
-             );
+            (resultPromise) => resultPromise.result.then((resultado) => resolve(resultado), () => resolve(false)),
+            () => resolve(false)
+            );
         return promise;
     }
 
@@ -41,5 +42,13 @@ export class Plex {
 
     confirm(content: string, title = 'Confirmación'): Promise<any> {
         return this.modal({ title: title, content: content, showCancel: true });
+    }
+
+    showLoader() {
+        this.loaderCount++;
+    }
+
+    hideLoader() {
+        this.loaderCount++;
     }
 }

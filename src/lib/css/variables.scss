@@ -8,9 +8,10 @@ $blue:   #00A8E0;
 $body-bg: #e6e6e6;
 
 // Font
-$font-family: 'Source Sans Pro';
-$font-family-sans-serif: 'Source Sans Pro';
-
+$font-family:            'TypoPRO Source Sans Pro';
+$font-family-sans-serif: 'TypoPRO Source Sans Pro';
+$font-family-serif:      'TypoPRO Source Sans Pro';
+$font-family-base:       'TypoPRO Source Sans Pro';
 // Links
 $link-color: $blue;
 
@@ -30,3 +31,8 @@ $btn-box-shadow: 0;
 $border-radius: 0;
 $border-radius-lg: 0;
 $border-radius-sm: 0;
+
+// Form
+$input-border-radius: 0;
+$input-border-radius-lg: 0;
+$input-border-radius-sm: 0;

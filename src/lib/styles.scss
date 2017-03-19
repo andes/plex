@@ -47,19 +47,14 @@
 @import "node_modules/bootstrap/scss/utilities";
 
 // Plex core
-@import 'css/layout.scss';
-@import 'css/classes.scss';
-@import 'css/fonts.scss';
-@import 'css/labels.scss';
+@import 'css/layout';
+@import 'css/classes';
+@import 'css/fonts';
+@import 'css/labels';
 // Plex Components
-@import 'css/plex-box.scss';
-@import 'css/plex-dropdown.scss';
+@import 'css/plex-bool';
+@import 'css/plex-box';
+@import 'css/plex-dropdown';
+@import 'css/plex-loader';
+@import 'css/plex-select';
 // @import 'css/home.scss';
-
-// @import 'node_modules@angular/material/core/theming/all-theme';
-// @include mat-core();
-// $primary: mat-palette($mat-blue);
-// $accent:  mat-palette($mat-blue, A200, A100, A400);
-// $warn:    mat-palette($mat-red);
-// $theme: mat-light-theme($primary, $accent, $warn);
-// @include angular-material-theme($theme);

@@ -1,7 +1,5 @@
 <div class="loader-container">
-    <div *ngIf="type == ''" class="default-loader">
-    </div>
-    <div *ngIf="type == 'ball-pulse'" class="loader">
+    <div *ngIf="type == '' || type == 'ball-pulse'" class="loader">
         <div class="{{type}}">
             <div></div>
             <div></div>
@@ -15,28 +13,14 @@
             <div></div>
         </div>
     </div>
-    <!--<div *ngIf="type == 'ball-spin-fade-loader'" class="loader">
-    <div class="{{type}}">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div *ngIf="type == 'ball-beat'" class="loader">
+        <div class="ball-beat">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
-</div>-->
-
-    <!--<div *ngIf="type == 'ball-rotate'" class=" loader">
-    <div class=" col-md-offset-1 {{type}}">
-        <div></div>
+    <div *ngIf="type == 'linear'" class="line-loader">
     </div>
-</div>-->
-
-    <!-- corregir
-<div *ngIf="type == 'ball-clip-rotate-multiple'" class="loader">
-    <div></div>
-    <div></div>
-</div>-->
 </div>
+

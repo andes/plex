@@ -1,7 +1,8 @@
-<plex-box label="Default / Checkbox">
+<plex-box title="plex-bool" type="primary">
     <div class="row">
         <div class="col-md-6">
             <form>
+                <h1>Checkbox</h1>
                 <plex-bool [(ngModel)]="modelo.checkbox" label="¿Está activo?" name="activo"></plex-bool>
             </form>
         </div>
@@ -10,11 +11,10 @@
             <pre>{{modelo | json}}</pre>
         </div>
     </div>
-</plex-box>
-<plex-box label="Slide">
     <div class="row">
         <div class="col-md-6">
             <form>
+                <h1>Slider</h1>
                 <plex-bool [(ngModel)]="modelo.slide" type="slide" label="¿Está activo?" name="activo"></plex-bool>
             </form>
         </div>

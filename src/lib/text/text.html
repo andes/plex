@@ -1,5 +1,5 @@
-<div class="form-group" [ngClass]="{'has-error': (control.dirty || control.touched) && !control.valid }">
-  <label *ngIf="label">{{label}}</label>
+<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+  <label *ngIf="label" class="form-control-label">{{label}}</label>
   <div [ngClass]="{'input-group': prefix || suffix}">
     <span *ngIf="prefix" class="input-group-addon">{{prefix}}</span>
     <input #ref type="{{password ? 'password' : 'text'}}" class="form-control" [disabled]="disabled" [placeholder]="placeholder" (input)="onChange($event.target.value)">
