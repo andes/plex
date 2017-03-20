@@ -6,5 +6,5 @@ import { Plex } from './../core/service';
     templateUrl: 'app.html',
 })
 export class PlexAppComponent {
-    constructor(private plex: Plex) { };
+    constructor(public plex: Plex) { };
 }

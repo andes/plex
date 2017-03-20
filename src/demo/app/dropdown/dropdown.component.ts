@@ -6,7 +6,7 @@ import { PlexDropdownComponent } from '../../../lib/dropdown/dropdown.component'
     templateUrl: 'dropdown.html',
 })
 export class DropdownDemoComponent implements OnInit {
-    private items: DropdownItem[];
+    public items: DropdownItem[];
 
     ngOnInit() {
         this.items = [
