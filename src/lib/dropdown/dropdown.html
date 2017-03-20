@@ -11,7 +11,7 @@
       </template>
       <!--Item con handler asociado-->
       <template [ngIf]="!item.divider && item.handler">
-        <a plexRipples class="dropdown-item" href="#" (click)="open=false; item.handler($event)">
+        <a plexRipples class="dropdown-item" href="#" (click)="open=false; item.handler($event); false;">
           <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
       </template>
       <!--Divider-->

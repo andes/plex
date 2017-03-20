@@ -44,5 +44,9 @@ $plex-box-primary-title-height: 40px;
         bottom: 0;
         width: 100%;
         height: 60px;
+
+        .plex-box-header {
+            display: none;
+        }
     }
 }
