@@ -35,7 +35,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit {
     @Input() label: string;
     @Input() placeholder: string;
     @Input() disabled = false;
-
+    @Input() min: String;
+    @Input() max: String;
     // Eventos
     @Output() change = new EventEmitter();
 
@@ -64,7 +65,9 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit {
             nowButton: false,
             switchOnClick: true,
             date: this.type === 'date' || this.type === 'datetime',
-            time: this.type === 'time' || this.type === 'datetime'
+            time: this.type === 'time' || this.type === 'datetime',
+            minDate : this.min,
+            maxDate: this.max
         });
         this.$button.on('change', (event, date) => {
             this.onChange(date.toDate());
