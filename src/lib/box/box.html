@@ -1,9 +1,8 @@
 <div class="plex-box" [ngClass]="{'plex-box-primary': type == 'primary', 'plex-box-footer': type == 'footer'}">
     <div class="plex-box-header">
-        <span *ngIf="title" class="plex-box-title">{{title}}</span>
         <ng-content select="header"></ng-content>
     </div>
-    <div class="plex-box-content" [ngClass]="{'plex-box-content-notitle': !title}">
+    <div class="plex-box-content">
         <ng-content></ng-content>
     </div>
 </div>

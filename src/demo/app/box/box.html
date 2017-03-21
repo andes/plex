@@ -1,12 +1,22 @@
 <div class="row">
     <div class="col-6">
-        <plex-box type="primary" title="Titulo del principal">
-            <header class="btn-group float-right">
-                <plex-button type="link" icon="clock"></plex-button>
-                <!--<button plexRipples class="btn btn-link"><i class="mdi mdi-clock"></i></button>
-                    <button plexRipples class="btn btn-link"><i class="mdi mdi-clock"></i></button>-->
-                <plex-dropdown *ngIf="items" icon="dots-horizontal" type="link" right="true" [items]="items">
-                </plex-dropdown>
+        <plex-box type="primary">
+            <header>
+                <!--<plex-dropdown *ngIf="items" icon="dots-horizontal" type="link" right="true" [items]="items">
+                </plex-dropdown>-->
+
+                <div class="row">
+                    <div class="col">
+                        <plex-text [(ngModel)]="propiedad1"></plex-text>
+                    </div>
+                    <div class="col">
+                        <div class="btn-group">
+                            <plex-button label="xxx" type="primary" icon="clock"></plex-button>
+                            <plex-button type="success" icon="clock"></plex-button>
+                            <plex-button type="danger" icon="clock"></plex-button>
+                        </div>
+                    </div>
+                </div>
             </header>
 
             <div class="row">
@@ -16,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <plex-box title="Titulo de acciones">
+                    <plex-box>
                         BODYDESDEACA Acciones
                         <br>...
                         <br>...
@@ -50,7 +60,10 @@
         </plex-box>
     </div>
     <div class="col-6">
-        <plex-box type="primary" title="Este es un panel con acciones">
+        <plex-box type="primary">
+            <header>
+                <h1>Este es un panel con acciones</h1>
+            </header>
             Contenido
             <br>...
             <br>...
@@ -61,5 +74,6 @@
 
 
 <plex-box type="footer">
-    FOOTER
+    <plex-button type="warning" icon="clock" label="Guardar"></plex-button>
+    <plex-button type="danger" icon="clock" label="Guardar"></plex-button>
 </plex-box>
