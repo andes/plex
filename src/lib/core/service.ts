@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
-import { SidebarItem } from '../app/sidebar-item.class';
 import { Title } from '@angular/platform-browser';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 import { Options } from '../modal/options';
+import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 
 @Injectable()
 export class Plex {
-    public sidebarItems: Array<SidebarItem>;
-    public sidebarStaticItems: Array<SidebarItem>;
+    public menu: DropdownItem[];
+    public loaderCount = 0;
 
     constructor(private titleService: Title, private modalService: Modal) {
     }
 
-    initView(title: string, sidebar?: Array<SidebarItem>) {
+    initView(title: string, menu: DropdownItem[] = null) {
         this.titleService.setTitle(title);
-        this.sidebarItems = sidebar;
-    }
-
-    initStaticItems(sidebar: Array<SidebarItem>) {
-        this.sidebarStaticItems = sidebar;
+        this.menu = menu;
     }
 
     modal(options: Options): Promise<any> {
@@ -34,9 +30,9 @@ export class Plex {
             .body(options.content)
             .open()
             .then(
-                (resultPromise) => resultPromise.result.then((resultado) => resolve(resultado), () => resolve(false)),
-                () => resolve(false)
-             );
+            (resultPromise) => resultPromise.result.then((resultado) => resolve(resultado), () => resolve(false)),
+            () => resolve(false)
+            );
         return promise;
     }
 
@@ -46,5 +42,13 @@ export class Plex {
 
     confirm(content: string, title = 'Confirmación'): Promise<any> {
         return this.modal({ title: title, content: content, showCancel: true });
+    }
+
+    showLoader() {
+        this.loaderCount++;
+    }
+
+    hideLoader() {
+        this.loaderCount++;
     }
 }

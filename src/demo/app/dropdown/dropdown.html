@@ -1,7 +1,27 @@
-<plex-box title="Dropdown menu">
+<plex-box title="Dropdowns" type="primary">
     <div class="row">
-        <div class="col-md-12">
-            <plex-dropdown label="Opciones de usuario" icon="account" [items]="items">
+        <div class="col-4">
+            <plex-dropdown label="Dropdown con título" [items]="items">
+            </plex-dropdown>
+        </div>
+        <div class="col-4">
+            <plex-dropdown label="Dropdown con ícono" icon="account" [items]="items">
+            </plex-dropdown>
+        </div>
+        <div class="col-4">
+            <plex-dropdown label="Dropdown con tipo primary" type="primary" [items]="items">
+            </plex-dropdown>
+        </div>
+    </div>
+    <div class="row margin-top">
+        <div class="col-4">
+             <label>Dropdown sólo con ícono</label>
+            <plex-dropdown icon="dots-horizontal" [items]="items">
+            </plex-dropdown>
+        </div>
+        <div class="col-4">
+            <label>Dropdown sólo con ícono y tipo link</label>
+            <plex-dropdown icon="dots-horizontal" type="link" [items]="items">
             </plex-dropdown>
         </div>
     </div>

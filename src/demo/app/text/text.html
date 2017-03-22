@@ -1,30 +1,31 @@
 <plex-box title="Simple">
-  <div class="row">
-    <div class="col-md-6">
-      <form>
-        <plex-text label="Ingrese su usuario" [(ngModel)]="templateModel1.usuario" name="usuario" [required]="true">
-        </plex-text>
-        <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password" name="password" [required]="true">
-        </plex-text>
-      </form>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-text label="Ingrese su usuario" [(ngModel)]="templateModel1.usuario" name="usuario" [required]="true">
+                </plex-text>
+                <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password" name="password" [required]="true">
+                </plex-text>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <label>Modelo</label>
+            <pre>{{templateModel1 | json}}</pre>
+        </div>
     </div>
-    <div class="col-md-6">
-      <label>Modelo</label>
-      <pre>{{templateModel1 | json}}</pre>
-    </div>
-  </div>
 </plex-box>
 <plex-box title="Validación">
-  <div class="row">
-    <div class="col-md-6">
-      <form>
-        <plex-text label="Ingrese un texto con un mínimo de 10 caracteres" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="10" maxlength="15">
-        </plex-text>
-      </form>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-text label="Ingrese un texto con un mínimo de 10 caracteres" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="10"
+                    maxlength="15">
+                </plex-text>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <label>Modelo</label>
+            <pre>{{templateModel2 | json}}</pre>
+        </div>
     </div>
-    <div class="col-md-6">
-      <label>Modelo</label>
-      <pre>{{templateModel2 | json}}</pre>
-    </div>
-  </div>
 </plex-box>

@@ -1,0 +1,72 @@
+.plex-tooltip-container {
+
+    display: inline-block;
+    
+    .plex-tooltip {
+        position: absolute;
+        display: none;
+        font-size: 0.75em;
+        width: auto;
+        color: white;
+        background: black;
+        border: 1px solid #333;
+        border-radius: 4px;
+        padding: 4px 6px 4px 0px;
+        z-index: 999;
+
+        .tip {
+            background: black;
+            width: 5px;
+            height: 5px;
+            transform: rotate(-45deg) scale(2);
+            position: relative;
+            z-index: -1;
+        }
+        .top {
+            float: left;
+            top: 15px;
+            left: 10px;
+        }
+        .right {
+            float: left;
+            left: 0px;
+            top: 5px;
+        }
+        .bottom {
+            float: left;
+            bottom: 5px;
+            left: 10px;
+        }
+        .left {
+            float: right;
+            top: 5px;
+            left: 4px;
+        }
+
+    }
+    &:hover {
+        .plex-tooltip {
+            display: inline-block;
+        }
+    }
+
+    .tooltip-top {
+        top: -30px;
+    }
+    .tooltip-right {
+        float: right;
+        position: relative;
+        left: 4px;
+        top: 5px;
+    }
+    .tooltip-bottom {
+        bottom: -30px;
+    }
+    .tooltip-left {
+        float: left;
+        top: 2px;
+        // bottom: 0;
+        left: -120px;
+        padding: 4px 2px 5px 6px;
+    }
+}

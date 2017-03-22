@@ -1,21 +1,19 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
-import { MenuItem } from '../../../lib/app/menu-item.class';
+import { DropdownItem } from '../../../lib/dropdown/dropdown-item.inteface';
 import { PlexDropdownComponent } from '../../../lib/dropdown/dropdown.component';
 
 @Component({
     templateUrl: 'dropdown.html',
 })
 export class DropdownDemoComponent implements OnInit {
+    public items: DropdownItem[];
 
-    @Input() items = [
-        new MenuItem({ label: 'Ir a inicio', icon: 'dna', route: '/incio' }),
-        new MenuItem({ label: 'Ir a ruta inexistente', icon: 'flag', route: '/ruta-rota' }),
-        new MenuItem({ divider: true }),
-        new MenuItem({ label: 'Item con handler', icon: 'wrench', handler: (() => { alert('Funciona!'); return false; }) })
-    ];
-
-
-    ngOnInit() {}
-
-
+    ngOnInit() {
+        this.items = [
+            { label: 'Ir a inicio', icon: 'dna', route: '/incio' },
+            { label: 'Ir a ruta inexistente', icon: 'flag', route: '/ruta-rota' },
+            { divider: true },
+            { label: 'Item con handler', icon: 'wrench', handler: (() => { alert('Este es un handler'); }) }
+        ];
+    }
 }

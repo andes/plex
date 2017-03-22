@@ -1,5 +1,5 @@
-<div class="form-group" [ngClass]="{'has-error': (control.dirty || control.touched) && !control.valid }">
-    <label *ngIf="label">{{label}}</label>
+<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+    <label *ngIf="label" class="form-control-label">{{label}}</label>
     <select *ngIf="!multiple" id="{{uniqueId}}" (change)="onChange($event.target.value)" [disabled]="disabled"></select>
     <select *ngIf="multiple" id="{{uniqueId}}" multiple (change)="onChange($event.target.value)" [disabled]="disabled"></select>
     <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>

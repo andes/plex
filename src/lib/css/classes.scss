@@ -1,0 +1,108 @@
+//
+// Clases globales disponibles para las aplicaciones
+// -------------------------
+
+// Margin & Padding
+// -------------------------
+
+.margin-left {
+    margin-left: 1em;
+}
+.margin-right {
+    margin-right: 1em;
+}
+.margin-top {
+    margin-top: 1em;
+}
+.margin-bottom {
+    margin-bottom: 1em;
+}
+.padding-left {
+    padding-left: 1em;
+}
+.padding-right {
+    padding-right: 1em;
+}
+.padding-top {
+    padding-top: 1em;
+}
+.padding-bottom {
+    padding-bottom: 1em;
+}
+
+// Display
+// -------------------------
+.block {
+    display: block;
+}
+.inline {
+    display: inline;
+}
+.inline-block {
+    display: inline-block;
+}
+
+// Textos
+// -------------------------
+[class^="text-"] .btn {
+    font-size: 1em; // Así no duplica el tamaño
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.no-wrap {
+    white-space: nowrap;
+}
+
+// Varios
+// -------------------------
+.hover {
+    cursor: pointer;
+}
+
+// Accordion / Collapsable
+
+// .panel-title {
+//     font-size: 14px;
+// }
+
+// /* título contenedor central */
+// h3.box-title-principal {
+//     border-bottom: solid grey 1px;
+//     color: #00A8E0;
+//     font-size: 1.25em;
+//     font-weight: 400;
+// }
+
+// /* subtítulos contenido central */
+// h4.box-title-secundario {
+//     border-bottom: solid grey 1px;
+//     color: #111111;
+//     font-size: 1.2em;
+// }
+
+// /*título elemento, item barra lateral*/
+// .box-title-elemento {
+//     display: inline-block;
+//     font-size: 1em;
+//     font-weight: 700;
+//     line-height: 1;
+//     margin-left: 0px;
+// }
+
+// .panel {
+//     .panel-collapse {
+//         max-height: 0px;
+//         display: transparent;
+//         overflow: hidden;
+//         transition: all .2s ease-out;
+//     }
+//     .active {
+//         max-height: 500px;
+//         color: black;
+//         overflow: auto;
+//     }
+// }

@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs">
-    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [ngClass]="{active: tab.active}">
-        <a plexRipples href="#" onclick="return false">
+    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item">
+        <a class="nav-link" [ngClass]="{active: tab.active}" plexRipples href="#" onclick="return false">
             <i *ngIf="tab.icon" class="mdi mdi-{{tab.icon}}"></i>
             <span *ngIf="tab.label">
                 {{tab.label}}
