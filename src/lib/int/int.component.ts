@@ -40,6 +40,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     @Input() suffix: string;
     @Input() placeholder: string;
     @Input() disabled = false;
+    @Input() readonly = false;
     @Input() min: number;
     @Input() max: number;
 

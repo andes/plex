@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
     templateUrl: 'button.html',
 })
 export class ButtonDemoComponent {
-    public modelo = {};
+    public modelo = {
+        campo1: 'XXX'
+    };
     constructor(private plex: Plex) { }
 
     onClick() {

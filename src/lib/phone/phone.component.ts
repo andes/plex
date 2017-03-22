@@ -55,6 +55,9 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     @Input() label: string;
     @Input() prefix: string;
     @Input() suffix: string;
+    @Input() readonly = false;
+    @Input() disabled = false;
+    @Input() placeholder: string;
 
     // Eventos
     @Output() valueChange = new EventEmitter();
@@ -64,6 +67,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
+        this.placeholder = '';
     }
 
     // Inicialización

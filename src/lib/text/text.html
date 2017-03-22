@@ -1,8 +1,11 @@
 <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
   <label *ngIf="label" class="form-control-label">{{label}}</label>
+  <div class="alert alert-danger">
+    <i class="mdi mdi-account-alert"></i> Hola
+  </div>
   <div [ngClass]="{'input-group': prefix || suffix}">
     <span *ngIf="prefix" class="input-group-addon">{{prefix}}</span>
-    <input #ref type="{{password ? 'password' : 'text'}}" class="form-control" [disabled]="disabled" [placeholder]="placeholder" (input)="onChange($event.target.value)">
+    <input #ref type="{{password ? 'password' : 'text'}}" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)">
     <span *ngIf="suffix" class="input-group-addon">{{suffix}}</span>
   </div>
   <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>

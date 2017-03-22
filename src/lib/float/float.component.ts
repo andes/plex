@@ -40,6 +40,7 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
     @Input() suffix: string;
     @Input() placeholder: string;
     @Input() disabled = false;
+    @Input() readonly = false;
     @Input() min: number;
     @Input() max: number;
 

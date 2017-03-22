@@ -35,6 +35,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit {
     @Input() label: string;
     @Input() placeholder: string;
     @Input() disabled = false;
+    @Input() readonly = false;
 
     // Eventos
     @Output() change = new EventEmitter();

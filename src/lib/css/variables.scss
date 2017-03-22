@@ -36,3 +36,40 @@ $border-radius-sm: 0;
 $input-border-radius: 0;
 $input-border-radius-lg: 0;
 $input-border-radius-sm: 0;
+
+// Validation states
+$state-success-text:             $green;
+$state-success-bg:               $green;
+$state-success-border:           $green;
+
+$state-info-text:                $blue;
+$state-info-bg:                  $blue;
+$state-info-border:              $blue;
+
+$state-warning-text:             $orange;
+$state-warning-bg:               $orange;
+$state-warning-border:           $orange;
+
+$state-danger-text:              $red;
+$state-danger-bg:                $red;
+$state-danger-border:            $red;
+
+// Alerts
+$alert-border-radius:         0;
+$alert-border-width:          0;
+
+$alert-success-bg:            $state-success-bg;
+$alert-success-text:          white;
+$alert-success-border:        $state-success-border;
+
+$alert-info-bg:               $state-info-bg;
+$alert-info-text:             white;
+$alert-info-border:           $state-info-border;
+
+$alert-warning-bg:            $state-warning-bg;
+$alert-warning-text:          white;
+$alert-warning-border:        $state-warning-border;
+
+$alert-danger-bg:             $state-danger-bg;
+$alert-danger-text:           white;
+$alert-danger-border:         $state-danger-border;

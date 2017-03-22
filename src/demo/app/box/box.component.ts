@@ -5,7 +5,9 @@ import { DropdownItem } from './../../../lib/dropdown/dropdown-item.inteface';
     templateUrl: 'box.html',
 })
 export class BoxDemoComponent implements OnInit {
+    public propiedad1: string;
     public items: DropdownItem[];
+
     ngOnInit() {
         this.items = [
             { label: 'Inicio', icon: 'creation', route: '/inicio' },
