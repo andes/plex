@@ -4,7 +4,7 @@
       <form #form="ngForm">
         <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
         </plex-datetime>
-        <plex-datetime label="Ingrese la fecha del cumpleaños" type="date" [(ngModel)]="tModel.fecha" name="fecha" [required]="true">
+        <plex-datetime label="Ingrese la fecha del cumpleaños" type="date" [(ngModel)]="tModel.fecha" name="fecha" [required]="true" max="10/10/2017" min="10/10/2016">
         </plex-datetime>
         <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora" name="hora">
         </plex-datetime>

@@ -1,8 +1,9 @@
 import {
     ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef,
-    Renderer, EventEmitter, AfterViewInit
+    Renderer, EventEmitter, AfterViewInit, OnChanges
 } from '@angular/core';
-import { NgControl, NG_VALUE_ACCESSOR, NgForm } from '@angular/forms';
+import { NgControl, NG_VALUE_ACCESSOR, NgForm, NG_VALIDATORS, FormControl } from '@angular/forms';
+import { dateValidator } from '../core/validator.functions';
 
 // Importo las librerías de jQuery
 let jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
@@ -19,10 +20,15 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.t
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => PlexDateTimeComponent),
             multi: true,
-        }
+        },
+        {
+            provide: NG_VALIDATORS,
+            useExisting: forwardRef(() => PlexDateTimeComponent),
+            multi: true
+        },
     ]
 })
-export class PlexDateTimeComponent implements OnInit, AfterViewInit {
+export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private format: string;
     private value: any;
     private $button: any;
@@ -36,12 +42,26 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit {
     @Input() placeholder: string;
     @Input() disabled = false;
     @Input() readonly = false;
+    @Input() min: Date;
+    @Input() max: Date;
 
     // Eventos
     @Output() change = new EventEmitter();
 
     // Funciones públicas
     public onChange = (_: any) => { };
+
+    // Validación
+    validateFn = (c: FormControl) => { };
+    validate(c: FormControl) {
+        return this.validateFn(c);
+    }
+    ngOnChanges(changes) {
+        // Cuando cambias las cotas, devuelve una nueva función de validación
+        if (changes.min || changes.max) {
+            this.validateFn = dateValidator(this.min, this.max);
+        }
+    }
 
     constructor(private element: ElementRef, private renderer: Renderer) {
         moment.locale('es');
@@ -65,7 +85,9 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit {
             nowButton: false,
             switchOnClick: true,
             date: this.type === 'date' || this.type === 'datetime',
-            time: this.type === 'time' || this.type === 'datetime'
+            time: this.type === 'time' || this.type === 'datetime',
+            minDate: this.min,
+            maxDate: this.max
         });
         this.$button.on('change', (event, date) => {
             this.onChange(date.toDate());
