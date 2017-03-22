@@ -4,11 +4,11 @@
       <form #form="ngForm">
         <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
         </plex-datetime>
-        <plex-datetime label="Ingrese la fecha del cumpleaños" type="date" [(ngModel)]="tModel.fecha" name="fecha" [required]="true" max="10/10/2017" min="10/10/2016">
+        <plex-datetime label="Ingrese la fecha del cumpleaños mayor a 1/1/1970" type="date" [(ngModel)]="tModel.fecha" name="fecha" [required]="true" [min]="tModel.min" [max]="tModel.max">
         </plex-datetime>
         <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora" name="hora">
         </plex-datetime>
-        <plex-datetime label="Este campo está deshabilitado" type="time" [(ngModel)]="tModel.hora2" name="hora2" [disabled]="model4.disabled">
+        <plex-datetime label="Este campo es readonly" type="time" [(ngModel)]="tModel.hora2" name="hora2" [readonly]="model4.disabled">
         </plex-datetime>
       </form>
     </div>

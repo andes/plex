@@ -17,7 +17,8 @@ export class DateTimeDemoComponent implements OnInit {
             fechaHora: null,
             fecha: null,
             hora: null,
-            disabled: false
+            disabled: false,
+            min: new Date(1970, 0, 1),
         };
 
         // Form4: Disabled
