@@ -4,11 +4,11 @@
 <div class="form-control-feedback" *ngIf="control.errors && control.errors.format">
     <span>Formato incorrecto</span>
 </div>
-<div class="form-control-feedback" *ngIf="control.errors && control.errors.minMax">
-    <span>El valor debe estar entre {{control.errors.minMax.min}} y {{control.errors.minMax.max}}</span>
+<div class="form-control-feedback" *ngIf="control.errors && control.errors.min">
+    <span>El valor debe ser mayor a {{control.errors.min.limit}}</span>
 </div>
-<div class="form-control-feedback" *ngIf="control.errors && control.errors.minMaxDate">
-    <span>El valor debe estar entre {{control.errors.minMaxDate.min | date:'dd-MM-yyyy'}} y {{control.errors.minMaxDate.max | date:'dd-MM-yyyy'}}</span>
+<div class="form-control-feedback" *ngIf="control.errors && control.errors.max">
+    <span>El valor debe ser menor a {{control.errors.max.limit}}</span>
 </div>
 <div class="form-control-feedback" *ngIf="control.errors && control.errors.minlength">
     <span>Debe ingresar un mínimo de {{control.errors.minlength.requiredLength}} caracteres</span>

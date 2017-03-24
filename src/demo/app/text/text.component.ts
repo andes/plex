@@ -9,6 +9,7 @@ export class TextDemoComponent implements OnInit {
     public model3: any;
     public templateModel1: any;
     public templateModel2: any;
+    public prueba = '';
 
     ngOnInit() {
         // Tepmlate-Form1 model
@@ -22,5 +23,12 @@ export class TextDemoComponent implements OnInit {
 
         // Form2: Doble validación con min y max
         this.model2 = { nombre: null, min: 10, max: 15 };
+    }
+
+    cambio() {
+        if (this.prueba === 'xxx') {
+            this.prueba = '';
+        }
+        console.log(this.prueba);
     }
 }

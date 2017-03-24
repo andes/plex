@@ -59,7 +59,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     ngOnChanges(changes) {
         // Cuando cambias las cotas, devuelve una nueva función de validación
         if (changes.min || changes.max) {
-            this.validateFn = dateValidator(this.min, this.max);
+            this.validateFn = dateValidator(this.type, this.min, this.max);
         }
     }
 

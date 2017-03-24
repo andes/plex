@@ -20,7 +20,6 @@ import {
     ]
 })
 export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
-    private renderer: Renderer;
     @ViewChild('ref') private ref: ElementRef;
     @ContentChild(NgControl) public control: any;
 
@@ -40,8 +39,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Funciones públicas
     public onChange = (_: any) => { };
 
-    constructor(renderer: Renderer) {
-        this.renderer = renderer;
+    constructor(private renderer: Renderer) {
         this.placeholder = '';
         this.password = false;
     }
@@ -65,12 +63,17 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     registerOnTouched() {
     }
     registerOnChange(fn: any) {
-
         this.onChange = (value) => {
             value = value || null;
             fn(value);
-            this.change.emit({
-                value: value
+            // jgabriel | 24/03/2017 | Esto es un por bug de Angular2 que a veces no actualiza la vista cuando cambia el modelo
+            // this.change.emit({
+            //   value: value
+            // });
+            setTimeout(() => {
+                this.change.emit({
+                    value: value
+                });
             });
         };
     }
