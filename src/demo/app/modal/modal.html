@@ -1,8 +1,9 @@
-<plex-box title="Alert">
-    <plex-text label="Ingrese el texto" [(ngModel)]="alertText" ></plex-text>
-    <plex-button label="Mostrar" icon="account" (click)="alert()"></plex-button>
-</plex-box>
-<plex-box title="Confirm">
-    <plex-text label="Ingrese el texto" [(ngModel)]="confirmText" ></plex-text>
-    <plex-button label="Mostrar" icon="account" (click)="confirm()"></plex-button>
+<plex-box type="primary">
+    <h4>Alert</h4>
+    <plex-text label="Ingrese el texto" [(ngModel)]="alertText"></plex-text>
+    <plex-button label="Mostrar" type="success" icon="account" (click)="alert()"></plex-button>
+    <h4 class="margin-top">Confirm</h4>
+    <plex-text label="Ingrese el texto" [(ngModel)]="confirmText"></plex-text>
+    <plex-button label="Mostrar" type="warning" icon="account" (click)="confirm()"></plex-button>
+    <pre *ngIf="resultado !== undefined">Resultado de la confirmación: <strong>{{ resultado }}</strong></pre>
 </plex-box>

@@ -7,17 +7,16 @@ import { Plex } from '../../../lib/core/service';
 export class ModalDemoComponent {
     public alertText = 'Se ha detectado un error en la base de datos';
     public confirmText = '¿Desea eliminar el archivo?';
+    public resultado: boolean;
     constructor(private plex: Plex) { }
 
     alert() {
-        this.plex.alert(this.alertText).then(function (result) {
-            alert('El modal se cerró. Resultado: ' + result);
-        });
+        this.plex.alert(this.alertText);
     }
 
     confirm() {
-        this.plex.confirm(this.confirmText).then(function (result) {
-            alert('El modal se cerró. Resultado: "' + result);
+        this.plex.confirm(this.confirmText).then((resultado) => {
+            this.resultado = resultado;
         });
     }
 }

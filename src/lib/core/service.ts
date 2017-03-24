@@ -29,10 +29,7 @@ export class Plex {
             .title(options.title)
             .body(options.content)
             .open()
-            .then(
-            (resultPromise) => resultPromise.result.then((resultado) => resolve(resultado), () => resolve(false)),
-            () => resolve(false)
-            );
+            .then((resultPromise) => resultPromise.result.then((resultado) => resolve(resultado), () => resolve(false)), () => resolve(false));
         return promise;
     }
 
