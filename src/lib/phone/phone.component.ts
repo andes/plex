@@ -3,8 +3,11 @@ import {
     Output, EventEmitter, forwardRef, ElementRef, Renderer
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
-let awesome = require('awesome-phonenumber');
-const REGEX = /^\s*(\d*)\s*$/;
+// jgabriel | 24/03/2017 | Deshabilito esta librería porque no la soporta ng build
+// let awesome = require('awesome-phonenumber');
+
+const RegEx_Mobile = /^[1-3][0-9]{9}$/;
+const RegEx_Numero = /^(\d)+$/;
 
 @Component({
     selector: 'plex-phone',
@@ -20,24 +23,14 @@ const REGEX = /^\s*(\d*)\s*$/;
         {
             provide: NG_VALIDATORS,
             useValue: (c: FormControl) => {
-                if (((c.value == null) || (c.value === '') || REGEX.test(c.value)) && (c.value) > 10) {
-                    let phoneNumber = new awesome((c.value).toString(), 'AR');
-                    if (phoneNumber.isValid()) {
-                        return null;
-                    } else {
-                        return {
-                            format: {
-                                given: c.value,
-                            }
-                        };
-                    }
-
-                } else {
+                if (c.value && !RegEx_Mobile.test(c.value)) {
                     return {
                         format: {
                             given: c.value,
                         }
                     };
+                } else {
+                    return null;
                 }
             },
             multi: true
@@ -90,14 +83,14 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             // Estas líneas evitan que se muestren caracteres no permitidos en el input
-            if ((value === '') || REGEX.test(value)) {
+            if ((value === '') || RegEx_Numero.test(value)) {
                 this.lastValue = value;
             } else {
                 this.writeValue(this.lastValue);
                 value = this.lastValue;
             }
             // Emite los eventos
-            let val = ((value === null) || (value === '')) ? null : Number.parseInt(value);
+            let val = ((value === null) || (value === '')) ? null : parseInt(value, 10);
             fn(val);
             this.valueChange.emit({ value: val });
         };

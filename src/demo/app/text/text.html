@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-text label="Ingrese su usuario" [(ngModel)]="templateModel1.usuario" name="usuario" [required]="true">
+                <plex-text label="Ingrese su usuario" prefix="<i class='mdi mdi-account'></i>" [(ngModel)]="templateModel1.usuario" name="usuario" [required]="true">
                 </plex-text>
                 <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password" name="password" [required]="true">
                 </plex-text>

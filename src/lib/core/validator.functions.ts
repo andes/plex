@@ -55,9 +55,8 @@ export function dateValidator(type: string, min: any, max: any) {
     return function (c: FormControl): any {
         if (c.value && moment(c.value).isValid) {
             // Controla rango
-            debugger;
             let value = moment(c.value).toDate();
-this.format = this.type === 'date' ? 'DD/MM/YYYY' : (this.type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm');
+            this.format = this.type === 'date' ? 'DD/MM/YYYY' : (this.type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm');
             // Controla min
             if (min !== undefined && min !== null && min !== '') {
                 min = moment(min).toDate();
