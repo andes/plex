@@ -1,4 +1,4 @@
-import { Inject, Input, Output, EventEmitter, Component, HostListener } from '@angular/core';
+import { Inject, Input, Output, EventEmitter, Component, HostListener, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
@@ -6,14 +6,13 @@ import { DOCUMENT } from '@angular/platform-browser';
     template: '',
 })
 export class PlexScrollComponent {
+    private document: any;
     public _count: number;
-    @Input() distancia: number;
+    @Input() distancia = 1;
     @Output() change = new EventEmitter<any>();
 
-    constructor( @Inject(DOCUMENT) private document: Document) {
-        if (!this.distancia) {
-            this.distancia = 1;
-        }
+    constructor(elementRef: ElementRef) {
+        this.document = elementRef.nativeElement.ownerDocument;
     }
 
     @HostListener('window:scroll', [])

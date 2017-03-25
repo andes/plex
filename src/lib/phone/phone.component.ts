@@ -3,7 +3,6 @@ import {
     Output, EventEmitter, forwardRef, ElementRef, Renderer, OnChanges
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
-import { phoneValidator } from '../core/validator.functions';
 
 const RegEx_Mobile = /^[1-3][0-9]{9}$/;
 const RegEx_Numero = /^(\d)+$/;
