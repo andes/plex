@@ -1,10 +1,9 @@
 import {
     ViewChild, ContentChild, Component, OnInit, Input, AfterViewInit,
-    Output, EventEmitter, forwardRef, ElementRef, Renderer
+    Output, EventEmitter, forwardRef, ElementRef, Renderer, OnChanges
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
-// jgabriel | 24/03/2017 | Deshabilito esta librería porque no la soporta ng build
-// let awesome = require('awesome-phonenumber');
+import { phoneValidator } from '../core/validator.functions';
 
 const RegEx_Mobile = /^[1-3][0-9]{9}$/;
 const RegEx_Numero = /^(\d)+$/;
@@ -19,22 +18,11 @@ const RegEx_Numero = /^(\d)+$/;
             useExisting: forwardRef(() => PlexPhoneComponent),
             multi: true
         },
-        // Implementa un validador
         {
             provide: NG_VALIDATORS,
-            useValue: (c: FormControl) => {
-                if (c.value && !RegEx_Mobile.test(c.value)) {
-                    return {
-                        format: {
-                            given: c.value,
-                        }
-                    };
-                } else {
-                    return null;
-                }
-            },
+            useExisting: forwardRef(() => PlexPhoneComponent),
             multi: true
-        }
+        },
     ]
 })
 export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
@@ -57,6 +45,19 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
 
     // Funciones públicas
     public onChange = (_: any) => { };
+
+    // Validación
+    validate(c: FormControl) {
+        if (c.value && !RegEx_Mobile.test(c.value)) {
+            return {
+                format: {
+                    given: c.value,
+                }
+            };
+        } else {
+            return null;
+        }
+    }
 
     constructor(renderer: Renderer) {
         this.renderer = renderer;
