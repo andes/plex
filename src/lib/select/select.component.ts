@@ -24,6 +24,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     private hasStaticData = false;
     private isPreloading = true;
     private _data: any[];
+    private _readonly: boolean;
 
     @ContentChild(NgControl) control: any;
     public uniqueId = new Date().valueOf().toString();
@@ -39,6 +40,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     @Input() data: any[];
     @Input()
     set readonly(value: boolean) {
+        this._readonly = value;
         if (this.selectize) {
             if (value) {
                 this.selectize.disable();
