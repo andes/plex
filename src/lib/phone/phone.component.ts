@@ -31,13 +31,19 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     @ViewChild('ref') ref: ElementRef;
 
     // Propiedades
-    @Input() autoFocus: boolean;
     @Input() label: string;
     @Input() prefix: string;
     @Input() suffix: string;
     @Input() readonly = false;
     @Input() disabled = false;
     @Input() placeholder: string;
+    @Input()
+    set autoFocus(value: any) {
+        // Cada vez que cambia el valor vuelve a setear el foco
+        if (this.renderer) {
+            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+        }
+    }
 
     // Eventos
     @Output() valueChange = new EventEmitter();

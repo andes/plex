@@ -34,7 +34,6 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     @ContentChild(NgControl) public control: any;
 
     // Propiedades
-    @Input() autoFocus: boolean;
     @Input() label: string;
     @Input() prefix: string;
     @Input() suffix: string;
@@ -43,6 +42,13 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     @Input() readonly = false;
     @Input() min: number;
     @Input() max: number;
+    @Input()
+    set autoFocus(value: any) {
+        // Cada vez que cambia el valor vuelve a setear el foco
+        if (this.renderer) {
+            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+        }
+    }
 
     // Eventos
     @Output() change = new EventEmitter();

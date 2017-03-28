@@ -24,7 +24,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @ContentChild(NgControl) public control: any;
 
     // Propiedades
-    @Input() autoFocus: boolean;
     @Input() label: string;
     @Input() placeholder: string;
     @Input() prefix: string;
@@ -32,6 +31,13 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() disabled = false;
     @Input() readonly = false;
     @Input() password: boolean;
+    @Input()
+    set autoFocus(value: any) {
+        // Cada vez que cambia el valor vuelve a setear el foco
+        if (this.renderer) {
+            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+        }
+    }
 
     // Eventos
     @Output() change = new EventEmitter();
