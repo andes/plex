@@ -22,6 +22,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     private value: any;
     private selectize: any;
     private hasStaticData = false;
+    private isPreloading = true;
     private _data: any[];
     private _readonly: boolean;
 
@@ -195,7 +196,17 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 this.getData.emit({
                     query: query,
                     callback: (data) => {
-                        this.removeOptions();
+                        // Sólo elimina las opciones si vienen data contiene nuevas opciones
+                        if (data !== null) {
+                            let currentValue = this.value;
+                            this.removeOptions();
+
+                            // Si es la primera vez, conversa el valor original
+                            if (this.isPreloading) {
+                                this.isPreloading = false;
+                                this.writeValue(currentValue);
+                            }
+                        }
                         this.data = data;
                         callback(data || []);
                     }
@@ -269,16 +280,20 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 val = valueAsString(value);
             }
 
-            // Si no tiene ninguna opción, carga el objeto como única opción
-            if (value && ((typeof value === 'object') || Array.isArray(value)) && (!this.data || this.data.length === 0)) {
-                if (Array.isArray(value)) {
-                    this.data = value;
-                } else {
-                    this.data = [value];
+            // Si la opción no está, la carga
+            if (value) {
+                if (!this.data) {
+                    this.data = []
+                };
+                if (typeof value === 'object') {
+
                 }
-                this.selectize.addOption(value);
             }
 
+            // Agrega el valor por si no existía
+            if (value) {
+                this.selectize.addOption(value);
+            }
             // Setea el valor
             this.selectize.setValue(val, true);
         }
