@@ -276,16 +276,6 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 val = valueAsString(value);
             }
 
-            // Si la opción no está, la carga
-            if (value) {
-                if (!this.data) {
-                    this.data = []
-                };
-                if (typeof value === 'object') {
-
-                }
-            }
-
             // Agrega el valor por si no existía
             if (value) {
                 this.selectize.addOption(value);
