@@ -12,6 +12,14 @@ $font-family:            'TypoPRO Source Sans Pro';
 $font-family-sans-serif: 'TypoPRO Source Sans Pro';
 $font-family-serif:      'TypoPRO Source Sans Pro';
 $font-family-base:       'TypoPRO Source Sans Pro';
+button, 
+input, 
+optgroup, 
+select, 
+textarea {
+    font-family: $font-family;
+}
+
 // Links
 $link-color: $blue;
 
@@ -36,6 +44,7 @@ $border-radius-sm: 0;
 $input-border-radius: 0;
 $input-border-radius-lg: 0;
 $input-border-radius-sm: 0;
+$input-color-placeholder: #eee;
 
 // Validation states
 $state-success-text:             $green;

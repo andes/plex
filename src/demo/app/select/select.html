@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-6">
                 <form>
-                    <plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" labelField="nombre + ' (' + continente + ')'" label="Seleccione un país">
+                    <plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" [required]="true" labelField="nombre + ' (' + continente + ')'" label="Seleccione un país">
                     </plex-select>
                 </form>
             </div>
@@ -63,7 +63,7 @@
         <div class="row">
             <div class="col-md-6">
                 <form>
-                    <plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" [disabled]="true" label-field="nombre + ' (' + continente + ')'"
+                    <plex-select [(ngModel)]="modelo1.select" name="select" [data]="opciones" [readonly]="true" label-field="nombre + ' (' + continente + ')'"
                         label="Seleccione un país">
                     </plex-select>
                 </form>

@@ -1,5 +1,6 @@
 import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit } from '@angular/core';
 import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SelectEvent } from './select-event.interface';
 
 // Importo las librerías de jQuery
 let jQuery = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
@@ -22,6 +23,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     private selectize: any;
     private hasStaticData = false;
     private _data: any[];
+    private _readonly: boolean;
 
     @ContentChild(NgControl) control: any;
     public uniqueId = new Date().valueOf().toString();
@@ -34,12 +36,25 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     @Input() idField: string;
     @Input() labelField: string; // Puede ser un solo campo o una expresión tipo ('string' + campo + 'string' + campo + ...)
     @Input() groupField: string;
-    @Input() disabled = false;
     @Input() closeAfterSelect = false;
     @Input() data: any[];
+    @Input()
+    set readonly(value: boolean) {
+        this._readonly = value;
+        if (this.selectize) {
+            if (value) {
+                this.selectize.disable();
+            } else {
+                this.selectize.enable();
+            }
+        }
+    }
+    get readonly(): boolean {
+        return this._readonly;
+    }
 
     // Eventos
-    @Output() getData = new EventEmitter<any>();
+    @Output() getData = new EventEmitter<SelectEvent>();
     @Output() change = new EventEmitter();
 
     // Funciones públicas
@@ -164,6 +179,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             searchField: this.splitLabelField(this.labelField, true),
             options: this.data,
             closeAfterSelect: this.closeAfterSelect,
+            preload: true,
             render: {
                 option: (item, escape) => '<div class=\'option\'>' + escape(this.renderOption(item, this.labelField)) + '</div>',
                 item: (item, escape) => {
@@ -174,8 +190,8 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                     }
                 },
             },
-            load: this.hasStaticData ? null : (query: string, callback: Function) => {
-                // Esta función se ejecuta cuando el usuario escribe en el elemento
+            load: this.hasStaticData ? null : (query: string, callback: any) => {
+                // Esta función se ejecuta si preload = true o cuando el usuario tipea
                 this.getData.emit({
                     query: query,
                     callback: (data) => {
@@ -183,18 +199,6 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                         this.data = data;
                         callback(data || []);
                     }
-                });
-            },
-            onFocus: this.hasStaticData ? null : () => {
-                // this.selectize.clearOptions();
-                this.selectize.load((callback: Function) => {
-                    this.getData.emit({
-                        callback: (data: any[]) => {
-                            this.removeOptions();
-                            this.data = data;
-                            callback(data || []);
-                        }
-                    });
                 });
             },
             onChange: (value) => {
@@ -226,6 +230,14 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
 
         // Guarda el componente para futura referencia
         this.selectize = $selectize[0].selectize;
+
+        // Setea el estado inicial
+        if (this._readonly) {
+            this.selectize.disable();
+        } else {
+            this.selectize.enable();
+        }
+
         // Setea el valor inicial
         this.writeValue(this.value);
     }

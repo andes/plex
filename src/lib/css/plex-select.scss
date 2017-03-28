@@ -5,7 +5,7 @@
 
 $selectize-font-family: inherit !default;
 $selectize-font-smoothing: inherit !default;
-$selectize-font-size: 13px !default;
+$selectize-font-size: 1em !default;
 $selectize-line-height: 18px !default;
 
 $selectize-color-text: #303030 !default;
@@ -187,6 +187,11 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
         -webkit-user-select: auto !important;
         @include selectize-box-shadow (none !important);
         &:focus { outline: none !important; }
+
+        &::placeholder {
+            color: $input-color-placeholder;
+            opacity: 1;
+        }
     }
 }
 
@@ -489,4 +494,46 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
     background: none;
     @include selectize-box-shadow (none);
     @include selectize-border-radius (0);
+}
+
+// Loading
+// @jgabriel
+
+.selectize-control.loading:before {
+    position: absolute;
+    right: 33px;
+    top: 2px;
+    z-index: 10;
+
+    font-family: "Material Design Icons";
+    content: "\F06A";
+    font-size: 1.4em;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: selectize-spin 2s infinite linear;
+}
+
+@-webkit-keyframes selectize-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes selectize-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
 }

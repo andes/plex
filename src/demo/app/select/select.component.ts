@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectEvent } from './../../../lib/select/select-event.interface';
 
 // Importo un servicio de prueba
 import { ServiceDemoSelect } from './select.service';
@@ -37,10 +38,16 @@ export class SelectDemoComponent implements OnInit {
         this.rModelo1.select = this.opciones[2];
     }
 
-    loadData(event) {
+    loadData(event: SelectEvent) {
         // Event tiene una propiedad 'query' que contiene el texto que el usuario ha escrito en el input.
         // Esto permite enviar a las APIs un parámetro para hacer las búsquedas más eficientes
-        this.servicio.get(event.query).subscribe(event.callback);
+        if (event.query) {
+            console.log('Buscando países que empiecen con ', event.query);
+            this.servicio.get(event.query).subscribe(event.callback);
+        } else {
+            console.log('No quiero devolver todos los paises. Esperado algun string');
+            event.callback(null);
+        }
     }
 
     agregarPais() {
