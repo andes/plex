@@ -3,15 +3,12 @@
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>-->
-    <!--<a class="navbar-brand" href="#">ANDES</a>-->
+    <div class="navbar-brand"></div>
+
     <div *ngIf="plex.loaderCount > 0" class="float-left">
         <plex-loader type="linear"></plex-loader>
     </div>
 </nav>
 <div class="content" defaultOverlayTarget>
-    <div class="row">
-        <div class="col-12">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
+    <router-outlet></router-outlet>
 </div>

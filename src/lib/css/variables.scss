@@ -1,8 +1,9 @@
-$red:    #dd4b39;
-$orange: #ff8d22;
-$yellow: #ffd500;
-$green:  #8CC63F;
-$blue:   #00A8E0;
+$red:       #dd4b39;
+$orange:    #ff8d22;
+$yellow:    #ffd500;
+$green:     #8CC63F;
+$blue:      #00A8E0;
+$dark-blue: #002738;
 
 // Body
 $body-bg: #e6e6e6;
@@ -25,6 +26,13 @@ $link-color: $blue;
 
 // Nav Bar
 $brand-inverse: $blue;
+$navbar-padding-x: 0;
+$navbar-padding-y: 0;
+$navbar-brand-padding-x: 0;
+$navbar-brand-padding-y: 0;
+$navbar-height:      80px;  // Variable custom de layout.scss
+$navbar-brand-width: 120px; // Variable custom de layout.scss
+
 
 // Buttons
 $btn-primary-border: $blue;

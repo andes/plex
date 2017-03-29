@@ -1,7 +1,5 @@
-<div class="plex-box" [ngClass]="{'plex-box-primary': type == 'primary', 'plex-box-footer': type == 'footer'}">
-    <div class="plex-box-header">
-        <ng-content select="header"></ng-content>
-    </div>
+<div class="plex-box" [ngClass]="{'plex-box-invert': type == 'invert'}">
+    <ng-content select="header"></ng-content>
     <div class="plex-box-content">
         <ng-content></ng-content>
     </div>

@@ -1,49 +1,20 @@
-// VARIABLES
-$plex-box-header-height: 55px;
-$plex-box-footer-height: 70px;
-
-// MAIN
-.plex-box {
+plex-box > DIV {
+    height: 100%;
     background: white;
+    display: flex;
+    flex-flow: column;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    padding: ($grid-gutter-width-base / 2);
 
-    & > .plex-box-header {
+    & > header {
         margin-bottom: 15px;
         border-bottom: solid grey 1px;
     }
 
-    // PRIMARY
-    &.plex-box-primary {
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-
-        & > .plex-box-header {
-             height: $plex-box-header-height;
-
-            & H1 {
-                font-size: 1.15em !important;
-                color: #00c0ef;
-            }
-        }
-
-        & > .plex-box-content {
-            height: calc(100vh - 150px - #{$plex-box-footer-height} - #{$plex-box-header-height});
-            clear: both;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-    }
-
-    // FOOTER
-    &.plex-box-footer {
-        padding: 20px;
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: $plex-box-footer-height;
-
-        .plex-box-header {
-            display: none;
-        }
+    & > .plex-box-content {
+        clear: both;
+        overflow-y: auto;
+        overflow-x: hidden;
+        flex: 1 // expandir a todo el alto del contenedor
     }
 }
