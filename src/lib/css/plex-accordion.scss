@@ -1,0 +1,66 @@
+// ACCORDION / COLLAPSABLE
+
+// TITULO ACCORDION
+.panel-heading {
+    align-items: center;
+    padding: .75rem 1.25rem;
+}
+
+h5.item-title {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1;
+}
+
+h6.item-description {
+    color: $dark-grey;
+}
+
+.item-title:hover {
+    color: $blue;
+}
+
+// PANEL COLAPSADO
+
+.panel-default {
+    background-color: #fff;
+    border: solid 1px $dark-grey;
+}
+
+.panel-default:hover {
+  background-color: $light-grey;
+  border: solid 1px $blue;
+}
+
+.panel-heading {
+    border-radius: 0px;
+}
+
+.panel-heading:hover {
+    color: $blue;
+}
+
+.panel-heading:active {
+    color: $dark-blue;
+}
+
+// PANEL EXPANDIDO
+.panel {
+    .panel-collapse {
+        max-height: 0px;
+        display: transparent;
+        overflow: hidden;
+        transition: all .10s ease-out;
+    }
+    .active {
+        max-height: 500px;
+        color: black;
+        overflow: auto;
+    }
+}
+.panel-body {
+    background-color: white;
+    border-top: solid 1px $dark-grey;
+    border-radius: 0px;
+    padding: 20px;
+}
