@@ -1,4 +1,5 @@
-[class^="badge-"] {
+[class^="badge-"],
+[class^="label-"] {
     background: transparent;
     border: 1.5px solid;
     font-size: 0.75em;
@@ -7,26 +8,32 @@
     margin: 20px;
 }
     
-.badge-danger {
+.badge-danger,
+.label-danger {
     border-color: $red;
     color: $red;
 }
 
-.badge-success {
+.badge-success,
+.label-success {
     border-color: $green;
     color: $green;
 }
 
-.badge-warning {
+.badge-warning,
+.label-warning {
     border-color: $orange;
     color: $orange;
 }
 
-.badge-info {
+.badge-info,
+.label-info {
     color: $blue;
     border-color:$blue;
 }
 
-[class^="badge-"] > i {
+// Espaciado del ícono
+[class^="badge-"] > i,
+[class^="label-"] > i {
     margin-right: 5px;
 }

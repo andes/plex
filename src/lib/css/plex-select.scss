@@ -448,7 +448,7 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
 }
 
 .selectize-input {
-    // min-height: $input-height-base;
+    min-height: $input-height;
 
     &.dropdown-active {
         @include selectize-border-radius ($selectize-border-radius);

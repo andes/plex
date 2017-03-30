@@ -32,7 +32,7 @@ nav {
     margin-right: ($grid-gutter-width-base / 2);
     height: 100%;
     
-    > ng-component {
+    > *:not(router-outlet) {
         display: flex;
         flex-flow: column;
         height: 100%;

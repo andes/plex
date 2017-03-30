@@ -23,15 +23,6 @@ export class SelectDemoComponent implements OnInit {
             id: 1,
             nombre: 'Argentina',
             continente: 'Latinoamerica',
-        }, {
-            id: 2,
-            nombre: 'México',
-            continente: 'Norteamérica',
-        },
-        {
-            id: 3,
-            nombre: 'Francia',
-            continente: 'Europa',
         }];
 
         this.modelo1.select = this.opciones[1];
@@ -50,11 +41,17 @@ export class SelectDemoComponent implements OnInit {
         }
     }
 
-    agregarPais() {
-        this.opciones.push({
-            id: 999,
-            nombre: 'Etiopa',
-            continente: 'Africa',
-        });
+    cambiarOpciones() {
+        // this.modelo1.select = null;
+        this.opciones = [{
+            id: 2,
+            nombre: 'México',
+            continente: 'Norteamérica',
+        },
+        {
+            id: 3,
+            nombre: 'Francia',
+            continente: 'Europa',
+        }];
     }
 }
