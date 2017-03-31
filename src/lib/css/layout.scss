@@ -55,8 +55,13 @@ nav {
 
             > .row:first-child {
                 height: 100%;
-                > .col:first-child {
+                > .col:first-child,
+                > [class^="col-"]:first-child {
                     padding-right: 0px;
+                }
+                > .col:only-child,
+                > [class^="col-"]:only-child {
+                    padding-right: ($grid-gutter-width-base / 2);
                 }
             }
         }
