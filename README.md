@@ -1,3 +1,5 @@
+![ANDES](https://github.com/andes/andes.github.io/raw/master/images/logo.png)
+
 # Plex: UI/UX para ANDES
 
 Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
