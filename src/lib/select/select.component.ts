@@ -231,7 +231,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                         }
                     }
                     this.value = result.length ? result : null;
-                    this.onChange(value);
+                    this.onChange(this.value);
                 } else {
                     if (!value) {
                         this.onChange(null);
