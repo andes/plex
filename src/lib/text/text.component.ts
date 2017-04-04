@@ -45,6 +45,11 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Funciones públicas
     public onChange = (_: any) => { };
 
+    public disabledEvent(event: Event) {
+        event.stopImmediatePropagation();
+        return false;
+    }
+
     constructor(private renderer: Renderer) {
         this.placeholder = '';
         this.password = false;
@@ -55,6 +60,14 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
 
     ngAfterViewInit() {
+        // let jQuery = window['jQuery'];
+        // let $selector = jQuery(this.ref.nativeElement);
+        // $selector.change(function (e) {
+        //     //e.stopImmediatePropagation();
+        //     //$selector.off('blur');
+        // });
+
+
         if (this.autoFocus) {
             this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
         }

@@ -1,14 +1,10 @@
-import {
-    ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef,
-    Renderer, EventEmitter, AfterViewInit, OnChanges
-} from '@angular/core';
+import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, OnChanges } from '@angular/core';
 import { NgControl, NG_VALUE_ACCESSOR, NgForm, NG_VALIDATORS, FormControl } from '@angular/forms';
+import * as moment from 'moment';
 import { dateValidator } from '../core/validator.functions';
 
 // Importo las librerías de jQuery
 let jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
-let moment = window['moment'] = require('moment/moment.js');
-require('moment/locale/es.js');
 require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.ts');
 
 @Component({
@@ -64,7 +60,6 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     constructor(private element: ElementRef, private renderer: Renderer) {
-        moment.locale('es');
         this.placeholder = '';
         this.type = 'datetime';
     }

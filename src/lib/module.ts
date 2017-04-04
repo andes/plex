@@ -25,14 +25,14 @@ import { PlexPhoneComponent } from './phone/phone.component';
 import { PlexDropdownComponent } from './dropdown/dropdown.component';
 import { PlexTooltipComponent } from './tooltip/tooltip.component';
 
-// Angular Material
+// Third party
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
+import * as configMoment from './core/configMoment.function';
 
 // Modals
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
-// import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 
 const MODULES = [
     PlexAppComponent,
@@ -71,4 +71,10 @@ const MODULES = [
     ],
     exports: MODULES
 })
-export class PlexModule { }
+export class PlexModule {
+    constructor() {
+        // Inicializa moment
+        console.log('moment locale: Español');
+        configMoment.configureLocale();
+    }
+}

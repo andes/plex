@@ -56,6 +56,11 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
     // Funciones públicas
     public onChange = (_: any) => { };
 
+    public disabledEvent(event: Event) {
+        event.stopImmediatePropagation();
+        return false;
+    }
+
     // Validación
     validateFn = (c: FormControl) => { };
     validate(c: FormControl) {

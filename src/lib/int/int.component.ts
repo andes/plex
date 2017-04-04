@@ -56,6 +56,11 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     // Funciones públicas
     public onChange = (_: any) => { };
 
+    public disabledEvent(event: Event) {
+        event.stopImmediatePropagation();
+        return false;
+    }
+
     // Validación
     validateFn = (c: FormControl) => { };
     validate(c: FormControl) {
