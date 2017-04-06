@@ -40,6 +40,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     @Input()
     set data(value: any[]) {
         if (this._data !== value) {
+            this.hasStaticData = true;
             this._data = value;
             if (this.selectize) {
                 let currentValue = this.value;
@@ -179,8 +180,6 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
 
     // Inicialización
     ngAfterViewInit() {
-        this.hasStaticData = this.data && this.data.length ? true : false;
-
         // Eliminar los espacios alrededor del +
         this.labelField = this.labelField.replace(/(\s)*\+/g, '+').replace(/\+(\s)*/g, '+');
 
