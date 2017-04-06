@@ -1,25 +1,51 @@
-<div class="row">
-    <div class="col-6">
-        <plex-box title="Buscar paciente" type="primary">
-            <header class="btn-group float-right">
-                <plex-button type="primary" label="Accion 1"></plex-button>
-            </header>
-            CONTENIDO DEL PANEL PRINCIPAL
-        </plex-box>
-    </div>
-    <div class="col-6">
-        <plex-box title="Lateral" type="primary">
-            Este es el contenido de un panel Lateral
-            <br>
-            <br>
-            <plex-box title="Este otro plex-box secundario">
-                Con su contenido
+<!--<header>
+    Este es contenido del header
+</header>-->
+<section>
+    <div class="row">
+        <div class="col-8">
+            <plex-box>
+                <header>
+                    <div class="row">
+                        <div class="col">
+                            Este es el header de plex-box. Siempre queda fijo
+                        </div>
+                        <div class="col">
+                            <div class="btn-group float-right">
+                                <plex-button type="success" icon="account"></plex-button>
+                                <plex-button type="danger" icon="clock"></plex-button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <fieldset>
+                    <legend>Esta es una leyenda</legend>
+                    CONTENIDO<br>CONTENIDO<br>CONTENIDO<br>CONTENIDO<br>CONTENIDO<br>
+                </fieldset>
+                <fieldset>
+                    <legend>Este es otro fieldset</legend>
+                    CONTENIDO<br>CONTENIDO<br>CONTENIDO
+                    <label>Nombre</label> Pedro
+                    <label>Apellido</label> Gutierrez
+                </fieldset>
             </plex-box>
-        </plex-box>
+        </div>
+        <div class="col">
+            <plex-box>
+                <header>
+                    <div class="row">
+                        <div class="col">
+                            Este es el header de plex-box. Siempre queda fijo
+                        </div>
+                        <div class="col">
+                            <div class="btn-group float-right">
+                                <plex-button type="success" icon="account"></plex-button>
+                                <plex-button type="danger" icon="clock"></plex-button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </plex-box>
+        </div>
     </div>
-</div>
-<plex-box type="footer">
-    <plex-button type="primary" label="Accion 1"></plex-button>
-    <plex-button type="success" label="Accion 2"></plex-button>
-    <plex-button type="danger" label="Accion 3"></plex-button>
-</plex-box>
+</section>
