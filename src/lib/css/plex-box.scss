@@ -31,7 +31,7 @@ plex-box > DIV {
 
   ::-webkit-scrollbar-thumb {
     background: #e1e1e1;
-    border: 0 none #ffffff;
+    border: 0;
     border-radius: 0;
   }
 
@@ -43,18 +43,41 @@ plex-box > DIV {
     background: $dark-blue;
   }
 
-  ::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track:active,
+  ::-webkit-scrollbar-track:hover {
     background: $light-grey;
-    border: 0 none #ffffff;
+    border: 0;
     border-radius: 0;
-  }
-
-  ::-webkit-scrollbar-track:hover,
-  ::-webkit-scrollbar-track:active {
-    background: $light-grey;
   }
 
   ::-webkit-scrollbar-corner {
     background: transparent;
   }
+}
+
+.plex-box-invert {
+  background: $dark-blue;
+  color: white;
+
+  ::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border: 0;
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: white;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: $blue;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track:active,
+  ::-webkit-scrollbar-track:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
 }
