@@ -23,9 +23,19 @@ export class SelectDemoComponent implements OnInit {
             id: 1,
             nombre: 'Argentina',
             continente: 'Latinoamerica',
+        },
+        {
+            id: 2,
+            nombre: 'Brasil',
+            continente: 'Latinoamerica',
+        },
+        {
+            id: 3,
+            nombre: 'Chile',
+            continente: 'Latinoamerica',
         }];
 
-        this.modelo1.select = this.opciones[1];
+        this.modelo1.select = this.modelo2.select = this.opciones[1];
         this.rModelo1.select = this.opciones[2];
     }
 
