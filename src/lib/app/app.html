@@ -1,14 +1,79 @@
-<nav class="navbar navbar-inverse bg-inverse fixed-top">
-    <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>-->
+<!--Navigation Bar-->
+<nav class="navbar-inverse bg-inverse fixed-top">
     <div class="navbar-brand"></div>
+    <div class="actions">
+        <!--Status: OK-->
+        <div *ngIf="plex.appStatus && plex.appStatus.API == 'OK'">
+            <i class="mdi mdi-cloud"></i>
+            <div class="popover popover-bottom">
+                <h3 class="popover-title bg-success text-white text-center">Conectividad OK</h3>
 
-    <div *ngIf="plex.loaderCount > 0" class="float-left">
-        <plex-loader type="linear"></plex-loader>
+                <div class="popover-content">
+                    <p>La conectividad a la nube de ANDES no presenta inconvenientes</p>
+                </div>
+            </div>
+        </div>
+        <!--Status: Error-->
+        <div *ngIf="plex.appStatus && plex.appStatus.API != 'OK'">
+            <i class="mdi mdi-cloud-off-outline text-danger"></i>
+            <div class="popover popover-bottom">
+                <h3 class="popover-title bg-danger text-white text-center">Problemas con la conectividad</h3>
+
+                <div class="popover-content">
+                    <p>La conectividad a la nube de ANDES presenta inconvenientes</p>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown" [ngClass]="{show: loginOpen}" (click)="loginOpen = !loginOpen">
+            <span>Juan Pedro Simón</span>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li *ngFor="let item of loginItems">
+                    <!--Item con router asociado-->
+                    <template [ngIf]="!item.divider && item.route">
+                        <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active" (click)="open=false">
+                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
+                    </template>
+                    <!--Item con handler asociado-->
+                    <template [ngIf]="!item.divider && item.handler">
+                        <a plexRipples class="dropdown-item" href="#" (click)="open=false; item.handler($event); false;">
+                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
+                    </template>
+                    <!--Divider-->
+                    <template [ngIf]="item.divider">
+                        <div role="separator" class="dropdown-divider"></div>
+                    </template>
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="plex.menu && plex.menu.length" class="dropdown" [ngClass]="{show: menuOpen}" (click)="menuOpen = !menuOpen">
+            <i class="mdi mdi-menu"></i> {{label}}
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li *ngFor="let item of plex.menu">
+                    <!--Item con router asociado-->
+                    <template [ngIf]="!item.divider && item.route">
+                        <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active" (click)="open=false">
+                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
+                    </template>
+                    <!--Item con handler asociado-->
+                    <template [ngIf]="!item.divider && item.handler">
+                        <a plexRipples class="dropdown-item" href="#" (click)="open=false; item.handler($event); false;">
+                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
+                    </template>
+                    <!--Divider-->
+                    <template [ngIf]="item.divider">
+                        <div role="separator" class="dropdown-divider"></div>
+                    </template>
+                </li>
+            </ul>
+        </div>
     </div>
+    <plex-loader *ngIf="plex.loaderCount > 0" class="loader" type="linear"></plex-loader>
 </nav>
+
+<!--Componente de notificaciones Toast-->
+<simple-notifications></simple-notifications>
+
+<!--Contenedor principal-->
 <div class="content" defaultOverlayTarget>
     <router-outlet></router-outlet>
 </div>

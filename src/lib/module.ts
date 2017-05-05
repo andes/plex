@@ -29,8 +29,7 @@ import { PlexTooltipComponent } from './tooltip/tooltip.component';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
-
-// Modals
+import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
@@ -63,6 +62,7 @@ const MODULES = [
         FormsModule,
         MaterialModule.forRoot(),
         ModalModule.forRoot(),
+        SimpleNotificationsModule.forRoot(),
         BootstrapModalModule,
     ],
     declarations: [

@@ -35,8 +35,8 @@ $navbar-padding-x: 0;
 $navbar-padding-y: 0;
 $navbar-brand-padding-x: 0;
 $navbar-brand-padding-y: 0;
-$navbar-height:      80px;  // Variable custom de layout.scss
-$navbar-brand-width: 120px; // Variable custom de layout.scss
+$navbar-height:      50px;  // Variable custom de layout.scss
+$navbar-brand-width: 100px; // Variable custom de layout.scss
 
 
 // Buttons
@@ -100,3 +100,7 @@ $alert-danger-border:         $state-danger-border;
 $list-group-border-radius:       0;
 $list-group-active-bg:           $blue;
 $list-group-active-border:       $blue;
+
+// Dropdown
+$dropdown-padding-y: 0;
+$dropdown-margin-top: 0;
