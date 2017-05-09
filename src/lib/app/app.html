@@ -37,7 +37,7 @@
         </div>
         <!--Menu-->
         <div *ngIf="plex.menu && plex.menu.length" class="dropdown" [ngClass]="{show: menuOpen}" (click)="menuOpen = !menuOpen">
-            <i class="mdi mdi-menu"></i> {{label}}
+            <i class="mdi mdi-menu"></i>
             <ul class="dropdown-menu dropdown-menu-right">
                 <li *ngFor="let item of plex.menu">
                     <!--Item con router asociado-->
@@ -65,6 +65,6 @@
 <simple-notifications></simple-notifications>
 
 <!--Contenedor principal-->
-<div class="content" defaultOverlayTarget>
+<div class="content">
     <router-outlet></router-outlet>
 </div>

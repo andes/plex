@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Modal } from 'angular2-modal/plugins/bootstrap';
-import { Options } from '../modal/options';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
+import { default as swal } from 'sweetalert2';
 
 @Injectable()
 export class Plex {
@@ -12,23 +11,7 @@ export class Plex {
     public appStatus: any;
     public userInfo: any;
 
-    private modal(options: Options): Promise<any> {
-        let resolve: any;
-        let promise = new Promise((res, rej) => {
-            resolve = res;
-        });
-
-        let modal = options.showCancel ? this.modalService.confirm() : this.modalService.alert();
-        modal
-            .size('lg')
-            .title(options.title)
-            .body(options.content)
-            .open()
-            .then((resultPromise) => resultPromise.result.then((resultado) => resolve(resultado), () => resolve(false)), () => resolve(false));
-        return promise;
-    }
-
-    constructor(private titleService: Title, private modalService: Modal, private noficationService: NotificationsService) {
+    constructor(private titleService: Title, private noficationService: NotificationsService) {
     }
 
     /**
@@ -92,9 +75,15 @@ export class Plex {
      * @returns {Promise<any>} Devuelve una promise se que resuelve cuando la alerta se cierra
      *
      * @memberof Plex
+     * @deprecated Utilizar el método info()
      */
     alert(content: string, title = 'Información'): Promise<any> {
-        return this.modal({ title: title, content: content, showCancel: false });
+        return swal({
+            title: title,
+            text: content,
+            type: 'warning',
+            confirmButtonText: 'Ok'
+        });
     }
 
     /**
@@ -107,9 +96,57 @@ export class Plex {
      * @memberof Plex
      */
     confirm(content: string, title = 'Confirmación'): Promise<any> {
-        return this.modal({ title: title, content: content, showCancel: true });
+        let resolve: any;
+        let promise = new Promise((res, rej) => {
+            resolve = res;
+        });
+
+        swal({
+            title: title,
+            text: content,
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Confirmar',
+            cancelButtonText: 'Cancelar'
+        })
+            .then(() => resolve(true))
+            .catch(() => resolve(false));
+        return promise;
     }
 
+    /**
+     * Muestra un mensaje invasivo al usuario
+     *
+     * @param {string} type success, danger, warning, info
+     * @param {string} content Texto del mensaje
+     * @param {string} [title='Información'] Título
+     * @param {number} [timeOut=0] Tiempo en ms cuando se oculta el mensaje. Por default no se oculta.
+     *
+     * @memberof Plex
+     */
+    info(type: string, content: string, title = 'Información', timeOut = 0) {
+        if (type === 'danger') {
+            type = 'error';
+        }
+        return swal({
+            title: title,
+            text: content,
+            type: type as any,
+            confirmButtonText: 'Ok',
+            timer: timeOut || null,
+        }).catch(swal.noop);
+    }
+
+    /**
+     * Muestra un mensaje no invasivo al usuario
+     *
+     * @param {string} type success, danger, warning, info
+     * @param {string} content Texto del mensaje
+     * @param {string} [title='Información'] Título
+     * @param {number} [timeOut=5000] Tiempo en ms cuando se oculta el mensaje
+     *
+     * @memberof Plex
+     */
     toast(type: string, content: string, title = 'Información', timeOut = 5000) {
         let options = {
             theClass: 'toast',
@@ -118,6 +155,9 @@ export class Plex {
         switch (type) {
             case 'success':
                 this.noficationService.success(title, content, options);
+                break;
+            case 'info':
+                this.noficationService.info(title, content, options);
                 break;
             case 'danger':
                 this.noficationService.error(title, content, options);

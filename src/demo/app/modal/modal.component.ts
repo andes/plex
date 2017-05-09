@@ -6,12 +6,19 @@ import { Plex } from '../../../lib/core/service';
 })
 export class ModalDemoComponent {
     public alertText = 'Se ha detectado un error en la base de datos';
+    public alertTimeout = 0;
+    public toastText = 'Esta es una rica tostada';
+    public toastTimeout = 3000;
     public confirmText = '¿Desea eliminar el archivo?';
     public resultado: boolean;
     constructor(private plex: Plex) { }
 
-    alert() {
-        this.plex.alert(this.alertText);
+    info(type) {
+        this.plex.info(type, this.alertText, 'Información', this.alertTimeout);
+    }
+
+    toast(type) {
+        this.plex.toast(type, this.toastText, 'Información', this.toastTimeout);
     }
 
     confirm() {

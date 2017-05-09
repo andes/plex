@@ -7,7 +7,7 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
     templateUrl: 'app.html',
 })
 export class PlexAppComponent {
-    // Menú de Aplicación
+    public loginOpen = false;
     public menuOpen = false;
 
     constructor(public plex: Plex) { };
