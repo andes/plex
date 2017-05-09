@@ -1,5 +1,5 @@
 <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
-    <label *ngIf="label" class="form-control-label">{{label}}</label>
+    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
     <div class="input-group">
         <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()"/>
         <span class="input-group-btn">

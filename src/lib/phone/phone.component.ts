@@ -3,6 +3,7 @@ import {
     Output, EventEmitter, forwardRef, ElementRef, Renderer, OnChanges
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
+import { hasRequiredValidator } from '../core/validator.functions';
 
 const RegEx_Mobile = /^[1-3][0-9]{9}$/;
 const RegEx_Numero = /^(\d)+$/;
@@ -29,6 +30,9 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     private renderer: Renderer;
     @ContentChild(NgControl) control: any;
     @ViewChild('ref') ref: ElementRef;
+    public get esOpcional(): boolean {
+        return hasRequiredValidator(this.control);
+    }
 
     // Propiedades
     @Input() label: string;

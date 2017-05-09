@@ -6,6 +6,7 @@ import {
     ControlValueAccessor,
     NG_VALUE_ACCESSOR, NgControl
 } from '@angular/forms';
+import { hasRequiredValidator } from '../core/validator.functions';
 
 @Component({
     selector: 'plex-text',
@@ -22,6 +23,9 @@ import {
 export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     @ViewChild('ref') private ref: ElementRef;
     @ContentChild(NgControl) public control: any;
+    public get esOpcional(): boolean {
+        return hasRequiredValidator(this.control);
+    }
 
     // Propiedades
     @Input() label: string;

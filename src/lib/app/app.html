@@ -24,40 +24,31 @@
                 </div>
             </div>
         </div>
-        <div class="dropdown" [ngClass]="{show: loginOpen}" (click)="loginOpen = !loginOpen">
-            <span>Juan Pedro Simón</span>
+        <!--User Info-->
+        <div *ngIf="plex.userInfo" class="userinfo dropdown" [ngClass]="{show: loginOpen}" (click)="loginOpen = !loginOpen">
+            <div>
+                <span>{{plex.userInfo.usuario.nombreCompleto}}</span><br><span>{{plex.userInfo.organizacion.nombre}}</span>
+            </div>
             <ul class="dropdown-menu dropdown-menu-right">
-                <li *ngFor="let item of loginItems">
-                    <!--Item con router asociado-->
-                    <template [ngIf]="!item.divider && item.route">
-                        <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active" (click)="open=false">
-                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
-                    </template>
-                    <!--Item con handler asociado-->
-                    <template [ngIf]="!item.divider && item.handler">
-                        <a plexRipples class="dropdown-item" href="#" (click)="open=false; item.handler($event); false;">
-                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
-                    </template>
-                    <!--Divider-->
-                    <template [ngIf]="item.divider">
-                        <div role="separator" class="dropdown-divider"></div>
-                    </template>
+                <li>
+                    <a plexRipples class="dropdown-item" href="#" [routerLink]="'logout'"><span class="mdi mdi-logout"></span> Cerrar sesión</a>
                 </li>
             </ul>
         </div>
+        <!--Menu-->
         <div *ngIf="plex.menu && plex.menu.length" class="dropdown" [ngClass]="{show: menuOpen}" (click)="menuOpen = !menuOpen">
             <i class="mdi mdi-menu"></i> {{label}}
             <ul class="dropdown-menu dropdown-menu-right">
                 <li *ngFor="let item of plex.menu">
                     <!--Item con router asociado-->
                     <template [ngIf]="!item.divider && item.route">
-                        <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active" (click)="open=false">
-                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
+                        <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active">
+                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}}"></span> {{item.label}}</a>
                     </template>
                     <!--Item con handler asociado-->
                     <template [ngIf]="!item.divider && item.handler">
-                        <a plexRipples class="dropdown-item" href="#" (click)="open=false; item.handler($event); false;">
-                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
+                        <a plexRipples class="dropdown-item" href="#" (click)="item.handler($event); false;">
+                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}}"></span> {{item.label}}</a>
                     </template>
                     <!--Divider-->
                     <template [ngIf]="item.divider">

@@ -7,12 +7,6 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
     templateUrl: 'app.html',
 })
 export class PlexAppComponent {
-    // Menú de Login
-    public loginOpen = false;
-    public loginItems: DropdownItem[] = [
-        { label: 'Cerrar sesión', icon: 'logout', route: '/logout' },
-    ];
-
     // Menú de Aplicación
     public menuOpen = false;
 

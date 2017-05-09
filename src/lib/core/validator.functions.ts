@@ -1,8 +1,17 @@
-import { FormControl } from '@angular/forms';
+import { FormControl, AbstractControl } from '@angular/forms';
 // ESTO ES UN HORRIBLE!
 let moment = window['moment'] = require('moment/moment.js');
 require('moment/locale/es.js');
 
+/**
+ * Devuelve un validator de números
+ *
+ * @export
+ * @param {RegExp} regEx Expresión regular a chequear (int, float, etc.)
+ * @param {*} min Cota mínima
+ * @param {*} max Cota máxima
+ * @returns Objeto de validación
+ */
 export function numberValidator(regEx: RegExp, min: any, max: any) {
     return function (c: FormControl): any {
         if ((c.value === null) || (('' + c.value).trim() === '')) {
@@ -51,6 +60,15 @@ export function numberValidator(regEx: RegExp, min: any, max: any) {
     };
 }
 
+/**
+ * Devuelve un validator de fechas
+ *
+ * @export
+ * @param {string} type 'date', 'time' o 'datetime'
+ * @param {*} min Cota mínima
+ * @param {*} max ota máxima
+ * @returns Objeto de validación
+ */
 export function dateValidator(type: string, min: any, max: any) {
     return function (c: FormControl): any {
         if (c.value && moment(c.value).isValid) {
@@ -85,4 +103,15 @@ export function dateValidator(type: string, min: any, max: any) {
         }
         return null;
     };
+}
+
+/**
+ * Devuelve si el control tiene un validador de valor requerido
+ *
+ * @export
+ * @param {AbstractControl} control Control
+ */
+export function hasRequiredValidator(control: AbstractControl) {
+    let validator: any = control.validator && control.validator({ value: null } as AbstractControl);
+    return !(validator && validator.required);
 }

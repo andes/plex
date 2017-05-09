@@ -2,40 +2,44 @@ $primary-color: $blue;
 @import 'node_modules/loaders.css/src/loaders';
 
 .preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #fff;
-    z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 99;
 }
 
 .preloader > DIV {
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
 
-.loader-container
-{
-    display: block;
+.loader-container {
+  display: block;
 }
 
 .default-loader {
-    width: 100%;
-    height: 70px;
-    background-color: white;
-    // background-image: url(assets/images/status.gif);
-    background-repeat: no-repeat;
-    background-position: center;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  // background-image: url(assets/images/status.gif);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 // Loaders.css hacks
-[class^="ball-"]  {
-    text-align: center;
+[class^="ball-"] {
+  text-align: center;
+}
+
+.ball-pulse-sync {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .line-loader {
@@ -44,7 +48,8 @@ $primary-color: $blue;
   position: relative;
   overflow: hidden;
 }
-.line-loader:before{
+
+.line-loader:before {
   display: block;
   position: absolute;
   content: "";
@@ -54,12 +59,29 @@ $primary-color: $blue;
   background-color: $teal;
   animation: lineLoading 2s linear infinite;
 }
-
 @keyframes lineLoading {
-    from {left: -200px; width: 30%;}
-    50% {width: 30%;}
-    70% {width: 70%;}
-    80% { left: 50%;}
-    95% {left: 120%;}
-    to {left: 100%;}
+  from {
+    left: -200px;
+    width: 30%;
+  }
+
+  50% {
+    width: 30%;
+  }
+
+  70% {
+    width: 70%;
+  }
+
+  80% {
+    left: 50%;
+  }
+
+  95% {
+    left: 120%;
+  }
+
+  to {
+    left: 100%;
+  }
 }

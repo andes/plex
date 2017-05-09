@@ -1,7 +1,7 @@
 import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, OnChanges } from '@angular/core';
-import { NgControl, NG_VALUE_ACCESSOR, NgForm, NG_VALIDATORS, FormControl } from '@angular/forms';
+import { NgControl, NG_VALUE_ACCESSOR, NgForm, NG_VALIDATORS, FormControl, AbstractControl } from '@angular/forms';
 import * as moment from 'moment';
-import { dateValidator } from '../core/validator.functions';
+import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
 
 // Importo las librerías de jQuery
 let jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
@@ -29,7 +29,10 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private value: any;
     private $button: any;
     private $input: any;
-    @ContentChild(NgControl) control: NgControl;
+    @ContentChild(NgControl) control: AbstractControl;
+    public get esOpcional(): boolean {
+        return hasRequiredValidator(this.control);
+    }
 
     // Input properties
     @Input() autoFocus: boolean;

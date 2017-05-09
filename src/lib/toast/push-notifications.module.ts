@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {PushNotificationsService} from './push-notifications/services/push-notifications.service';
+import { NgModule } from '@angular/core';
+import { PushNotificationsService } from './push-notifications/services/push-notifications.service';
 
 export * from './push-notifications/interfaces/push-notification.type';
 export * from './push-notifications/services/push-notifications.service';
@@ -7,4 +7,4 @@ export * from './push-notifications/services/push-notifications.service';
 @NgModule({
     providers: [PushNotificationsService]
 })
-export class PushNotificationsModule {}
+export class PushNotificationsModule { }

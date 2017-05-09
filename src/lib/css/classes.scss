@@ -6,61 +6,77 @@
 // -------------------------
 
 .margin-left {
-    margin-left: 1em;
+  margin-left: 1em;
 }
+
 .margin-right {
-    margin-right: 1em;
+  margin-right: 1em;
 }
+
 .margin-top {
-    margin-top: 1em;
+  margin-top: 1em;
 }
+
 .margin-bottom {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
+
 .padding-left {
-    padding-left: 1em;
+  padding-left: 1em;
 }
+
 .padding-right {
-    padding-right: 1em;
+  padding-right: 1em;
 }
+
 .padding-top {
-    padding-top: 1em;
+  padding-top: 1em;
 }
+
 .padding-bottom {
-    padding-bottom: 1em;
+  padding-bottom: 1em;
 }
 
 // Display
 // -------------------------
 .block {
-    display: block;
+  display: block;
 }
+
 .inline {
-    display: inline;
+  display: inline;
 }
+
 .inline-block {
-    display: inline-block;
+  display: inline-block;
 }
 
 // Textos
 // -------------------------
 [class^="text-"] .btn {
-    font-size: 1em; // Así no duplica el tamaño
+  font-size: 1em; // Así no duplica el tamaño
 }
 
 .text-overflow {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
 .no-wrap {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 // Varios
 // -------------------------
 .hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
+// Page Title
+.page-title {
+  font-size: 1.8em;
+  color: $dark-grey;
+  font-weight: 100;
+  text-transform: uppercase;
+}

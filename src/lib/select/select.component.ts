@@ -1,6 +1,7 @@
 import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit } from '@angular/core';
-import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR, Validators, AbstractControl } from '@angular/forms';
 import { SelectEvent } from './select-event.interface';
+import { hasRequiredValidator } from '../core/validator.functions';
 
 // Importo las librerías de jQuery
 let jQuery = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
@@ -25,8 +26,11 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     private _data: any[];
     private _readonly: boolean;
 
-    @ContentChild(NgControl) control: any;
+    @ContentChild(NgControl) control: AbstractControl;
     public uniqueId = new Date().valueOf().toString();
+    public get esOpcional(): boolean {
+        return hasRequiredValidator(this.control);
+    }
 
     // Propiedades
     @Input() label: string;

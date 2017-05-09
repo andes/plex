@@ -6,7 +6,7 @@ import {
     ControlValueAccessor, FormControl,
     NG_VALUE_ACCESSOR, NG_VALIDATORS, NgControl
 } from '@angular/forms';
-import { numberValidator } from '../core/validator.functions';
+import { numberValidator, hasRequiredValidator } from '../core/validator.functions';
 
 const REGEX = /^\s*(\-)?(\d*)\s*$/;
 
@@ -32,6 +32,9 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     private renderer: Renderer;
     @ViewChild('ref') private ref: ElementRef;
     @ContentChild(NgControl) public control: any;
+    public get esOpcional(): boolean {
+        return hasRequiredValidator(this.control);
+    }
 
     // Propiedades
     @Input() label: string;

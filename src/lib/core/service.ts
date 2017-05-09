@@ -10,6 +10,7 @@ export class Plex {
     public menu: DropdownItem[];
     public loaderCount = 0;
     public appStatus: any;
+    public userInfo: any;
 
     private modal(options: Options): Promise<any> {
         let resolve: any;
@@ -70,6 +71,17 @@ export class Plex {
      */
     updateStatus(status: any) {
         this.appStatus = status;
+    }
+
+    /**
+     * Actualiza la información del usuario actual
+     *
+     * @param {*} user Objeto con datos de usuario
+     *
+     * @memberof Plex
+     */
+    updateUserInfo(user: any) {
+        this.userInfo = user;
     }
 
     /**
