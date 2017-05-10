@@ -80,7 +80,7 @@ export class Plex {
     alert(content: string, title = 'Información'): Promise<any> {
         return swal({
             title: title,
-            text: content,
+            html: content,
             type: 'warning',
             confirmButtonText: 'Ok'
         });
@@ -103,7 +103,7 @@ export class Plex {
 
         swal({
             title: title,
-            text: content,
+            html: content,
             type: 'question',
             showCancelButton: true,
             confirmButtonText: 'Confirmar',
@@ -130,7 +130,7 @@ export class Plex {
         }
         return swal({
             title: title,
-            text: content,
+            html: content,
             type: type as any,
             confirmButtonText: 'Ok',
             timer: timeOut || null,
