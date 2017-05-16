@@ -147,7 +147,7 @@ export class Plex {
      *
      * @memberof Plex
      */
-    toast(type: string, content: string, title = 'Información', timeOut = 5000) {
+    toast(type: string, content: string, title = 'Información', timeOut = 2500) {
         let options = {
             theClass: 'toast',
             timeOut: timeOut
@@ -183,6 +183,8 @@ export class Plex {
      * @memberof Plex
      */
     hideLoader() {
-        this.loaderCount++;
+        if (this.loaderCount > 0) {
+            this.loaderCount--;
+        }
     }
 }

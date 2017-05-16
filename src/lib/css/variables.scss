@@ -1,29 +1,31 @@
-$red:        #dd4b39;
-$orange:     #ff8d22;
-$yellow:     #ffd500;
-$green:      #8CC63F;
-$blue:       #00A8E0;
-$dark-blue:  #002738;
+$red: #dd4b39;
+$orange: #ff8d22;
+$yellow: #ffd500;
+$green: #8CC63F;
+$blue: #00A8E0;
+$dark-blue: #002738;
 $light-grey: #f9f9f9;
-$dark-grey:  #AAAAAA;
+$dark-grey: #AAAAAA;
 
 // Brand
 $brand-primary: $blue;
+$brand-inverse: $dark-blue;
 
 // Body
 $body-bg: #e6e6e6;
 
 // Font
-$font-family:            'TypoPRO Source Sans Pro';
+$font-family: 'TypoPRO Source Sans Pro';
 $font-family-sans-serif: 'TypoPRO Source Sans Pro';
-$font-family-serif:      'TypoPRO Source Sans Pro';
-$font-family-base:       'TypoPRO Source Sans Pro';
-button, 
-input, 
-optgroup, 
-select, 
+$font-family-serif: 'TypoPRO Source Sans Pro';
+$font-family-base: 'TypoPRO Source Sans Pro';
+
+button,
+input,
+optgroup,
+select,
 textarea {
-    font-family: $font-family;
+  font-family: $font-family;
 }
 
 // Links
@@ -35,9 +37,9 @@ $navbar-padding-x: 0;
 $navbar-padding-y: 0;
 $navbar-brand-padding-x: 0;
 $navbar-brand-padding-y: 0;
-$navbar-height:      50px;  // Variable custom de layout.scss
+$navbar-height: 50px;
+// Variable custom de layout.scss
 $navbar-brand-width: 100px; // Variable custom de layout.scss
-
 
 // Buttons
 $btn-primary-border: $blue;
@@ -61,47 +63,54 @@ $input-color-placeholder: #eee;
 $form-group-margin-bottom: 0;
 
 // Validation states
-$state-success-text:             $green;
-$state-success-bg:               $green;
-$state-success-border:           $green;
+$state-success-text: $green;
+$state-success-bg: $green;
+$state-success-border: $green;
 
-$state-info-text:                $blue;
-$state-info-bg:                  $blue;
-$state-info-border:              $blue;
+$state-info-text: $blue;
+$state-info-bg: $blue;
+$state-info-border: $blue;
 
-$state-warning-text:             $orange;
-$state-warning-bg:               $orange;
-$state-warning-border:           $orange;
+$state-warning-text: $orange;
+$state-warning-bg: $orange;
+$state-warning-border: $orange;
 
-$state-danger-text:              $red;
-$state-danger-bg:                $red;
-$state-danger-border:            $red;
+$state-danger-text: $red;
+$state-danger-bg: $red;
+$state-danger-border: $red;
 
 // Alerts
-$alert-border-radius:         0;
-$alert-border-width:          0;
+$alert-border-radius: 0;
+$alert-border-width: 0;
 
-$alert-success-bg:            $state-success-bg;
-$alert-success-text:          white;
-$alert-success-border:        $state-success-border;
+$alert-success-bg: $state-success-bg;
+$alert-success-text: white;
+$alert-success-border: $state-success-border;
 
-$alert-info-bg:               $state-info-bg;
-$alert-info-text:             white;
-$alert-info-border:           $state-info-border;
+$alert-info-bg: $state-info-bg;
+$alert-info-text: white;
+$alert-info-border: $state-info-border;
 
-$alert-warning-bg:            $state-warning-bg;
-$alert-warning-text:          white;
-$alert-warning-border:        $state-warning-border;
+$alert-warning-bg: $state-warning-bg;
+$alert-warning-text: white;
+$alert-warning-border: $state-warning-border;
 
-$alert-danger-bg:             $state-danger-bg;
-$alert-danger-text:           white;
-$alert-danger-border:         $state-danger-border;
+$alert-danger-bg: $state-danger-bg;
+$alert-danger-text: white;
+$alert-danger-border: $state-danger-border;
 
 // List Group
-$list-group-border-radius:       0;
-$list-group-active-bg:           $blue;
-$list-group-active-border:       $blue;
+$list-group-border-radius: 0;
+$list-group-active-bg: $blue;
+$list-group-active-border: $blue;
 
 // Dropdown
 $dropdown-padding-y: 0;
 $dropdown-margin-top: 0;
+
+// Table
+$table-inverse-bg: $dark-blue;
+
+.table .bg-inverse {
+    background-color: $dark-blue !important;
+}

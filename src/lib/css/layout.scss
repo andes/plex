@@ -28,17 +28,6 @@ body {
   flex-flow: column;
   height: 100%;
 
-  // // Header (se ubica fijo sobre el nav-bar)
-  // > header {
-  //   position: fixed;
-  //   left: $navbar-brand-width;
-  //   top: 0;
-  //   z-index: $zindex-fixed + 10;
-  //   background: rgba(255, 255, 255, 0.7);
-  //   height: $navbar-height;
-  //   width: 60%;
-  // }
-
   // Footer (se ubica fijo abajo de la pantalla)
   > footer {
     margin-bottom: ($grid-gutter-width-base / 2);
@@ -71,4 +60,13 @@ body {
       }
     }
   }
+}
+
+
+// Page Title
+.page-title {
+  font-size: 1.8em;
+  color: $dark-grey;
+  font-weight: 100;
+  text-transform: uppercase;
 }

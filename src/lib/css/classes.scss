@@ -2,41 +2,6 @@
 // Clases globales disponibles para las aplicaciones
 // -------------------------
 
-// Margin & Padding
-// -------------------------
-
-.margin-left {
-  margin-left: 1em;
-}
-
-.margin-right {
-  margin-right: 1em;
-}
-
-.margin-top {
-  margin-top: 1em;
-}
-
-.margin-bottom {
-  margin-bottom: 1em;
-}
-
-.padding-left {
-  padding-left: 1em;
-}
-
-.padding-right {
-  padding-right: 1em;
-}
-
-.padding-top {
-  padding-top: 1em;
-}
-
-.padding-bottom {
-  padding-bottom: 1em;
-}
-
 // Display
 // -------------------------
 .block {
@@ -49,6 +14,12 @@
 
 .inline-block {
   display: inline-block;
+}
+
+// Cursors
+// -------------------------
+.hover {
+  cursor: pointer;
 }
 
 // Textos
@@ -65,18 +36,4 @@
 
 .no-wrap {
   white-space: nowrap;
-}
-
-// Varios
-// -------------------------
-.hover {
-  cursor: pointer;
-}
-
-// Page Title
-.page-title {
-  font-size: 1.8em;
-  color: $dark-grey;
-  font-weight: 100;
-  text-transform: uppercase;
 }
