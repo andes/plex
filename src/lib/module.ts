@@ -23,13 +23,13 @@ import { PlexRipplesDirective } from './ripples/ripples.directive';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 import { PlexPhoneComponent } from './phone/phone.component';
 import { PlexDropdownComponent } from './dropdown/dropdown.component';
-import { PlexTooltipComponent } from './tooltip/tooltip.component';
 
 // Third party
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
+import { TooltipModule } from 'ngx-tooltip';
 
 const MODULES = [
     PlexAppComponent,
@@ -49,8 +49,7 @@ const MODULES = [
     PlexScrollComponent,
     PlexRipplesDirective,
     PlexPhoneComponent,
-    PlexDropdownComponent,
-    PlexTooltipComponent
+    PlexDropdownComponent
 ];
 
 @NgModule({
@@ -60,6 +59,7 @@ const MODULES = [
         FormsModule,
         MaterialModule.forRoot(),
         SimpleNotificationsModule.forRoot(),
+        TooltipModule,
     ],
     declarations: [
         ...MODULES,
@@ -70,7 +70,6 @@ const MODULES = [
 export class PlexModule {
     constructor() {
         // Inicializa moment
-        console.log('moment locale: Español');
         configMoment.configureLocale();
     }
 }
