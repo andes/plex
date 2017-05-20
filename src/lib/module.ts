@@ -23,13 +23,14 @@ import { PlexRipplesDirective } from './ripples/ripples.directive';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 import { PlexPhoneComponent } from './phone/phone.component';
 import { PlexDropdownComponent } from './dropdown/dropdown.component';
+import { TooltipComponent } from './tooltip/tooltip.component';
+import { TooltipContentComponent } from './tooltip/tooltip-content.component';
 
 // Third party
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
-import { TooltipModule } from 'ngx-tooltip';
 
 const MODULES = [
     PlexAppComponent,
@@ -49,7 +50,8 @@ const MODULES = [
     PlexScrollComponent,
     PlexRipplesDirective,
     PlexPhoneComponent,
-    PlexDropdownComponent
+    PlexDropdownComponent,
+    TooltipComponent
 ];
 
 @NgModule({
@@ -58,12 +60,15 @@ const MODULES = [
         RouterModule,
         FormsModule,
         MaterialModule.forRoot(),
-        SimpleNotificationsModule.forRoot(),
-        TooltipModule,
+        SimpleNotificationsModule.forRoot()
     ],
     declarations: [
         ...MODULES,
-        ValidationMessagesComponent
+        ValidationMessagesComponent,
+        TooltipContentComponent
+    ],
+    entryComponents: [
+        TooltipContentComponent
     ],
     exports: MODULES
 })

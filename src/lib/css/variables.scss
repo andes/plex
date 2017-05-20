@@ -114,3 +114,10 @@ $table-inverse-bg: $dark-blue;
 .table .bg-inverse {
     background-color: $dark-blue !important;
 }
+
+// Tooltips: ;
+$tooltip-opacity: .8;
+$tooltip-padding-y: 10px;
+$tooltip-padding-x: 10px;
+$tooltip-bg: #333;
+$tooltip-arrow-color: $tooltip-bg;
