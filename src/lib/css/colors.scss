@@ -1,0 +1,34 @@
+[class^="outline-"] {
+  border-width: 1px;
+  border-style: solid;
+  background: transparent;
+  padding: ($grid-gutter-width-base / 2);
+}
+
+[class^="outline-dashed-"] {
+  border-style: dashed;
+}
+
+[class^="outline-"][class$="-default"] {
+  border-color: $dark-grey;
+}
+
+[class^="outline-"][class$="-primary"] {
+  border-color: $brand-primary;
+}
+
+[class^="outline-"][class$="-success"] {
+  border-color: $brand-success;
+}
+
+[class^="outline-"][class$="-info"] {
+  border-color: $brand-info;
+}
+
+[class^="outline-"][class$="-warning"] {
+  border-color: $brand-warning;
+}
+
+[class^="outline-"][class$="-danger"] {
+  border-color: $brand-danger;
+}
