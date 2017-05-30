@@ -21,12 +21,9 @@ export class TooltipComponent {
 
     // tslint:disable-next-line:no-input-rename
     @Input('title') content: string | TooltipContentComponent;
-
+    @Input() titlePosition: 'top' | 'bottom' | 'left' | 'right' = 'top';
     @Input() tooltipDisabled: boolean;
-
     @Input() tooltipAnimation = false;
-
-    @Input() tooltipPlacement: 'top' | 'bottom' | 'left' | 'right' = 'top';
 
     // -------------------------------------------------------------------------
     // Constructor
@@ -55,12 +52,12 @@ export class TooltipComponent {
             this.tooltip = this.viewContainerRef.createComponent(factory);
             this.tooltip.instance.hostElement = this.viewContainerRef.element.nativeElement;
             this.tooltip.instance.content = this.content as string;
-            this.tooltip.instance.placement = this.tooltipPlacement;
+            this.tooltip.instance.placement = this.titlePosition;
             this.tooltip.instance.animation = this.tooltipAnimation;
         } else {
             const tooltip = this.content as TooltipContentComponent;
             tooltip.hostElement = this.viewContainerRef.element.nativeElement;
-            tooltip.placement = this.tooltipPlacement;
+            tooltip.placement = this.titlePosition;
             tooltip.animation = this.tooltipAnimation;
             tooltip.show();
         }

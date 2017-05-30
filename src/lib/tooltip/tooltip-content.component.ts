@@ -3,7 +3,7 @@ import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef } from '
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'tooltip-content',
-    template: `<div class="tooltip show tooltip-{{ placement }}"
+    template: `<div class="tooltip show tooltip-{{ placement }} no-wrap"
                 [style.top]="top + 'px'"
                 [style.left]="left + 'px'"
                 role="tooltip">
