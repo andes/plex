@@ -174,7 +174,10 @@ export class Plex {
      * @memberof Plex
      */
     showLoader() {
-        this.loaderCount++;
+        // Debe ir dentro de setTimeout por un bug de Angular2
+        setTimeout(() => {
+            this.loaderCount++;
+        });
     }
 
     /**
@@ -183,8 +186,11 @@ export class Plex {
      * @memberof Plex
      */
     hideLoader() {
-        if (this.loaderCount > 0) {
-            this.loaderCount--;
-        }
+        // Debe ir dentro de setTimeout por un bug de Angular2
+        setTimeout(() => {
+            if (this.loaderCount > 0) {
+                this.loaderCount--;
+            }
+        });
     }
 }

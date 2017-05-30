@@ -3,6 +3,7 @@
 fieldset {
   > legend {
     margin-bottom: ($grid-gutter-width-base / 2);
+    padding-bottom: ($grid-gutter-width-base / 2);
     font-size: 1.4em;
     color: $dark-grey;
     font-weight: 100;
