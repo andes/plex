@@ -1,34 +1,57 @@
-[class^="outline-"] {
-  border-width: 1px;
-  border-style: solid;
-  background: transparent;
-  padding: ($grid-gutter-width-base / 2);
+.outline-default,
+.outline-primary,
+.outline-success,
+.outline-info,
+.outline-warning,
+.outline-danger {
+    border-width: 1px;
+    border-style: solid;
+    background: transparent;
+    padding: ($grid-gutter-width-base / 2);
 }
 
-[class^="outline-dashed-"] {
-  border-style: dashed;
+.outline-dashed-default,
+.outline-dashed-primary,
+.outline-dashed-success,
+.outline-dashed-info,
+.outline-dashed-warning,
+.outline-dashed-danger {
+    border-width: 1px;
+    border-style: dashed;
+    background: transparent;
+    padding: ($grid-gutter-width-base / 2);
 }
 
-[class^="outline-"][class$="-default"] {
-  border-color: $dark-grey;
+.outline-default,
+.outline-default,
+{
+    border-color: $dark-grey;
 }
 
-[class^="outline-"][class$="-primary"] {
-  border-color: $brand-primary;
+.outline-primary,
+.outline-dashed-primary,
+{
+    border-color: $brand-primary;
 }
 
-[class^="outline-"][class$="-success"] {
-  border-color: $brand-success;
+.outline-success,
+.outline-dashed-success,
+{
+    border-color: $brand-success;
 }
 
-[class^="outline-"][class$="-info"] {
-  border-color: $brand-info;
+.outline-info,
+.outline-dashed-info {
+    border-color: $brand-info;
 }
 
-[class^="outline-"][class$="-warning"] {
-  border-color: $brand-warning;
+.outline-warning,
+.outline-dashed-warning {
+    border-color: $brand-warning;
 }
 
-[class^="outline-"][class$="-danger"] {
-  border-color: $brand-danger;
+.outline-danger,
+.outline-dashed-danger,
+{
+    border-color: $brand-danger;
 }

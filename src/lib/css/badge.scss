@@ -1,38 +1,47 @@
-[class^="badge-"],
-[class^="label-"] {
+.badge-default,
+.badge-danger,
+.badge-success,
+.badge-warning,
+.badge-info,
+{
     background: transparent;
     border: 1.5px solid;
     font-size: 0.75em;
     padding: 5px;
     text-transform: uppercase;
+    // Espaciado del ícono
+    >i {
+        margin-right: 5px;
+    }
 }
-    
-.badge-danger,
-.label-danger {
+
+.badge-default {
+    border-color: $dark-grey;
+    color: $dark-grey;
+}
+
+.badge-danger {
     border-color: $red;
     color: $red;
 }
 
-.badge-success,
-.label-success {
+.badge-success {
     border-color: $green;
     color: $green;
 }
 
-.badge-warning,
-.label-warning {
+.badge-warning {
     border-color: $orange;
     color: $orange;
 }
 
-.badge-info,
-.label-info {
+.badge-info {
     color: $blue;
-    border-color:$blue;
+    border-color: $blue;
 }
 
 // Espaciado del ícono
-[class^="badge-"] > i,
-[class^="label-"] > i {
+[class^="badge-"]>i,
+[class^="label-"]>i {
     margin-right: 5px;
 }
