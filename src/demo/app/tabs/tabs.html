@@ -1,26 +1,19 @@
-<plex-tabs>
+<plex-tabs [activeIndex]="activo" (change)="cambio($event)">
 	<plex-tab label="Tab 1">
-		<plex-box title="Este es el contenido de un tab">
-			<div class="row">
-				<div class="col-md-12">
-					<form>
-					</form>
-				</div>
-			</div>
-		</plex-box>
+		<div class="alert alert-info">
+			Contenido 1
+		</div>
 	</plex-tab>
 	<plex-tab label="Tab 2" icon="account">
-		<plex-box title="Este es el contenido del otro tab">
-			<div class="row">
-				<div class="col-md-12">
-					<form>
-					</form>
-				</div>
-			</div>
-		</plex-box>
+		<div class="alert alert-warning">
+			Contenido 2
+		</div>
 	</plex-tab>
 	<plex-tab icon="history">
-		<plex-box title="Este tab tiene sólo un ícono">
-		</plex-box>
+		<div class="alert alert-danger">
+			Contenido 3
+		</div>
 	</plex-tab>
 </plex-tabs>
+<pre>Tab activo: {{activo}}</pre>
+<plex-button (click)="next()" label="Siguiente tab"></plex-button>
