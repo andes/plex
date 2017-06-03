@@ -1,13 +1,14 @@
-import { Component, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, AfterViewInit, Input, Output, EventEmitter, ContentChild, ContentChildren, ViewChildren, forwardRef, QueryList, ElementRef, AfterContentInit } from '@angular/core';
 import { PlexTabComponent } from './tab.component';
 
 @Component({
     selector: 'plex-tabs',
-    templateUrl: 'tabs.html'
+    templateUrl: 'tabs.html',
 })
-export class PlexTabsComponent implements AfterViewInit {
+export class PlexTabsComponent implements AfterContentInit {
     private _activeIndex = 0;
     public tabs: PlexTabComponent[] = [];
+    @ContentChildren(PlexTabComponent) children: QueryList<PlexTabComponent>;
 
     @Input()
     get activeIndex(): number {
@@ -31,17 +32,11 @@ export class PlexTabsComponent implements AfterViewInit {
     // Eventos
     @Output() change = new EventEmitter();
 
-    ngAfterViewInit() {
+    ngAfterContentInit() {
+        this.tabs = this.children.toArray();
         if (this.tabs.length) {
             this.tabs[0].active = true;
         }
-    }
-
-    addTab(tab: PlexTabComponent) {
-        if (this.tabs.length === 0) {
-            tab.active = true;
-        }
-        this.tabs.push(tab);
     }
 
     selectTab(tab: PlexTabComponent) {
