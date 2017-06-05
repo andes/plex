@@ -1,57 +1,25 @@
-.outline-default,
-.outline-primary,
-.outline-success,
-.outline-info,
-.outline-warning,
-.outline-danger {
-    border-width: 1px;
-    border-style: solid;
-    background: transparent;
-    padding: ($grid-gutter-width-base / 2);
-}
+$states: default primary success info warning danger;
+$colors: (
+  default: $dark-grey,
+  primary: $brand-primary,
+  success: $brand-success,
+  info: $brand-info,
+  warning: $brand-warning,
+  danger: $brand-danger  
+);
 
-.outline-dashed-default,
-.outline-dashed-primary,
-.outline-dashed-success,
-.outline-dashed-info,
-.outline-dashed-warning,
-.outline-dashed-danger {
-    border-width: 1px;
-    border-style: dashed;
-    background: transparent;
-    padding: ($grid-gutter-width-base / 2);
-}
+@each $state in $states {
+    .outline-#{$state} {
+        border-width: 1px;
+        border-style: solid;
+        border-color: map-get($colors, $state);
+        padding: ($grid-gutter-width-base / 2);
+    }
 
-.outline-default,
-.outline-dashed-default,
-{
-    border-color: $dark-grey;
-}
-
-.outline-primary,
-.outline-dashed-primary,
-{
-    border-color: $brand-primary;
-}
-
-.outline-success,
-.outline-dashed-success,
-{
-    border-color: $brand-success;
-}
-
-.outline-info,
-.outline-dashed-info {
-    border-color: $brand-info;
-}
-
-.outline-warning,
-.outline-dashed-warning {
-    border-color: $brand-warning;
-}
-
-.outline-danger,
-.outline-dashed-danger,
-{
-    border-color: $brand-danger;
+    .outline-dashed-#{$state} {
+        border-width: 1px;
+        border-style: dashed;
+        border-color: map-get($colors, $state);
+        padding: ($grid-gutter-width-base / 2);
+    }
 }
