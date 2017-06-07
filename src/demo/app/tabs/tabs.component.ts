@@ -6,8 +6,14 @@ import { Component } from '@angular/core';
 })
 export class TabsDemoComponent {
     public activo = 0;
+    public mostrar = false;
 
-    constructor(private plex: Plex) { }
+    constructor(private plex: Plex) {
+        setInterval(() => {
+            this.mostrar = !this.mostrar;
+            this.plex.toast('info', 'Cambió el tab');
+        }, 2000);
+    }
 
     public next() {
         this.activo++;

@@ -32,11 +32,16 @@ export class PlexTabsComponent implements AfterContentInit {
     // Eventos
     @Output() change = new EventEmitter();
 
-    ngAfterContentInit() {
+    private renderTabs() {
         this.tabs = this.children.toArray();
-        if (this.tabs.length) {
+        if (!this.tabs.some((tab) => tab.active) && this.tabs.length) {
             this.tabs[0].active = true;
         }
+    }
+
+    ngAfterContentInit() {
+        this.renderTabs();
+        this.children.changes.subscribe(() => { this.renderTabs(); });
     }
 
     selectTab(tab: PlexTabComponent) {
