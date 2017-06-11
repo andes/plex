@@ -1,18 +1,23 @@
 import { Plex } from './../../../lib/core/service';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
     templateUrl: 'tabs.html',
 })
-export class TabsDemoComponent {
+export class TabsDemoComponent implements OnDestroy {
+    private intervalId;
     public activo = 0;
     public mostrar = false;
 
     constructor(private plex: Plex) {
-        setInterval(() => {
+        this.intervalId = setInterval(() => {
             this.mostrar = !this.mostrar;
             this.plex.toast('info', 'Cambió el tab');
         }, 2000);
+    }
+
+    public ngOnDestroy() {
+        clearInterval(this.intervalId);
     }
 
     public next() {

@@ -59,7 +59,7 @@ const MODULES = [
         CommonModule,
         RouterModule,
         FormsModule,
-        MaterialModule.forRoot(),
+        MaterialModule,
         SimpleNotificationsModule.forRoot()
     ],
     declarations: [

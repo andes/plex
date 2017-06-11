@@ -41,19 +41,19 @@
             <ul class="dropdown-menu dropdown-menu-right">
                 <li *ngFor="let item of plex.menu">
                     <!--Item con router asociado-->
-                    <template [ngIf]="!item.divider && item.route">
+                    <ng-template [ngIf]="!item.divider && item.route">
                         <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active">
                             <span *ngIf="item.icon" class="mdi mdi-{{item.icon}}"></span> {{item.label}}</a>
-                    </template>
+                    </ng-template>
                     <!--Item con handler asociado-->
-                    <template [ngIf]="!item.divider && item.handler">
+                    <ng-template [ngIf]="!item.divider && item.handler">
                         <a plexRipples class="dropdown-item" href="#" (click)="item.handler($event); false;">
                             <span *ngIf="item.icon" class="mdi mdi-{{item.icon}}"></span> {{item.label}}</a>
-                    </template>
+                    </ng-template>
                     <!--Divider-->
-                    <template [ngIf]="item.divider">
+                    <ng-template [ngIf]="item.divider">
                         <div role="separator" class="dropdown-divider"></div>
-                    </template>
+                    </ng-template>
                 </li>
             </ul>
         </div>
