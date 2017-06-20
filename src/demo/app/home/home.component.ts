@@ -4,12 +4,9 @@ import { Plex } from '../../../lib/core/service';
 @Component({
     templateUrl: 'home.html'
 })
-export class HomeDemoComponent implements OnInit {
+export class HomeDemoComponent {
     // Permite el uso de flex-box en el componente
     @HostBinding('class.plex-layout') layout = true;
 
-    constructor(public plex: Plex) { }
-
-    ngOnInit() {
-    }
+    constructor(public plex: Plex) {}
 }

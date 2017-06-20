@@ -31,6 +31,7 @@ import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
+import { ChartsModule } from 'ng2-charts';
 
 const MODULES = [
     PlexAppComponent,
@@ -60,6 +61,7 @@ const MODULES = [
         RouterModule,
         FormsModule,
         MaterialModule,
+        ChartsModule,
         SimpleNotificationsModule.forRoot()
     ],
     declarations: [

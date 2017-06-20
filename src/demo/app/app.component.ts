@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
       { label: 'Tooltip', icon: 'tooltip', route: '/tooltip' },
     ];
     this.plex.updateMenu(menu);
-    this.plex.updateStatus({ API: 'OK' });
+    this.plex.updateAppStatus({ API: 'OK' });
     this.plex.updateUserInfo({
       'usuario': {
         'nombreCompleto': 'Haruki Morakami',

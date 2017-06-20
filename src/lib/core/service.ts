@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
@@ -8,7 +10,7 @@ import { default as swal } from 'sweetalert2';
 export class Plex {
     public menu: DropdownItem[];
     public loaderCount = 0;
-    public appStatus: any;
+    public appStatus: Subject<any> = new Subject();
     public userInfo: any;
 
     constructor(private titleService: Title, private noficationService: NotificationsService) {
@@ -52,8 +54,8 @@ export class Plex {
      *
      * @memberof Plex
      */
-    updateStatus(status: any) {
-        this.appStatus = status;
+    updateAppStatus(status: any) {
+        this.appStatus.next(status);
     }
 
     /**
