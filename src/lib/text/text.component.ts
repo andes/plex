@@ -100,4 +100,12 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             });
         };
     }
+
+    // Borra el valor
+    clear() {
+        if (!this.disabled) {
+            this.writeValue(null);
+            this.onChange(null);
+        }
+    }
 }

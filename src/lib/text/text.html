@@ -4,7 +4,8 @@
     <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
     <input #ref type="{{password ? 'password' : 'text'}}" class="form-control" [placeholder]="placeholder" [disabled]="disabled"
       [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
-    <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
+
   </div>
+  <i class="clear-icon mdi mdi-close-circle" (click)="clear()"></i>
   <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
 </div>
