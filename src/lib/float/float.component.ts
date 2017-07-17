@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { numberValidator, hasRequiredValidator } from '../core/validator.functions';
 
-const REGEX = /^\s*(\-)?(\d*|(\d*(\.\d*)))\s*$/;
+const REGEX = /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
 
 @Component({
     selector: 'plex-float',
@@ -101,14 +101,14 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
         this.onChange = (value) => {
             // Estas líneas evitan que se muestren caracteres no permitidos en el input
             if ((value === '') || REGEX.test(value)) {
-                this.lastValue = value;
+                this.lastValue = value.toString().replace('.', ',');
             } else {
                 this.writeValue(this.lastValue);
                 value = this.lastValue;
             }
 
             // Emite los eventos
-            let val = ((value == null) || (value === '')) ? null : Number.parseFloat(value);
+            let val = ((value == null) || (value === '')) ? null : Number.parseFloat(value.toString().replace(',', '.'));
             fn(val);
             this.change.emit({
                 value: val

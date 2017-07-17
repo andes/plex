@@ -28,7 +28,7 @@ export function numberValidator(regEx: RegExp, min: any, max: any) {
         }
 
         // Convierte a número
-        let value = parseInt(c.value, 10);
+        let value = parseInt(c.value.toString().replace(',', '.'), 10);
 
         // Controla min
         if (min !== undefined && min !== null && min !== '') {
