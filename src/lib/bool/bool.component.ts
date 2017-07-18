@@ -18,6 +18,7 @@ export class PlexBoolComponent implements OnInit, AfterViewInit, ControlValueAcc
     public value: boolean;
     @Input() label: string;
     @Input() type: string;
+    @Input() readonly = false;
     @Output() change = new EventEmitter();
 
     // Funciones privadas

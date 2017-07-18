@@ -23,4 +23,16 @@
             <pre>{{modelo | json}}</pre>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <h1>Slider readonly</h1>
+                <plex-bool [(ngModel)]="modelo.slideReadonly" [readonly]="true" type="slide" label="¿Está activo?" name="activo"></plex-bool>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="modelo">
+            <label>Modelo</label>
+            <pre>{{modelo | json}}</pre>
+        </div>
+    </div>
 </plex-box>
