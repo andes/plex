@@ -121,24 +121,28 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                     original.apply(self, arguments);
 
                     // add event listener
-                    self.$control.on('click', '.' + options.className, function (e) {
+                    self.$control.on('mousedown', '.' + options.className, function (e) {
                         e.preventDefault();
-                        if (self.isLocked) {
-                            return;
-                        }
+                        e.stopImmediatePropagation();
+                        return false;
+                    });
 
-                        if (self.settings.mode === 'single') {
-                            self.clear();
-                        } else {
-                            let $item = jQuery(e.currentTarget).parent();
-                            self.setActiveItem($item);
-                            if (self.deleteSelection()) {
-                                self.setCaret(self.items.length);
+                    self.$control.on('click', '.' + options.className, function (e) {
+                        if (!self.isLocked) {
+                            if (self.settings.mode === 'single') {
+                                self.clear();
+                            } else {
+                                let $item = jQuery(e.currentTarget).parent();
+                                self.setActiveItem($item);
+                                if (self.deleteSelection()) {
+                                    self.setCaret(self.items.length);
+                                }
                             }
                         }
 
-                        // Cierra el combo que por un bug se vuelve a abrir. Igual tiene un flicker raro (abre y cierra)
-                        self.close();
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        return false;
                     });
                 };
             })();
@@ -197,6 +201,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             options: this.data,
             closeAfterSelect: this.closeAfterSelect,
             preload: !this.hasStaticData,
+            // dropdownParent: 'body',
             render: {
                 option: (item, escape) => '<div class=\'option\'>' + escape(this.renderOption(item, this.labelField)) + '</div>',
                 item: (item, escape) => {

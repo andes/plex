@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { SelectEvent } from './../../../lib/select/select-event.interface';
 
 // Importo un servicio de prueba
@@ -8,6 +8,9 @@ import { ServiceDemoSelect } from './select.service';
     templateUrl: 'select.html',
 })
 export class SelectDemoComponent implements OnInit {
+    // Permite el uso de flex-box en el componente
+    @HostBinding('class.plex-layout') layout = true;
+
     public opciones: any[];
     public modelo1 = { select: null };
     public rModelo1 = { select: null };
