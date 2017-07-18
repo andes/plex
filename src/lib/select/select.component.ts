@@ -120,13 +120,12 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
 
                     original.apply(self, arguments);
 
-                    // add event listener
+                    // Mouse Events
                     self.$control.on('mousedown', '.' + options.className, function (e) {
                         e.preventDefault();
                         e.stopImmediatePropagation();
                         return false;
                     });
-
                     self.$control.on('click', '.' + options.className, function (e) {
                         if (!self.isLocked) {
                             if (self.settings.mode === 'single') {
@@ -254,6 +253,10 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                         }
                     }
                 }
+            },
+            onDropdownOpen: (value) => {
+                // Se asegura que los items queden siempre visibles
+                value[0].scrollIntoView();
             }
         });
 
