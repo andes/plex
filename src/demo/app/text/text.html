@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-text label="Ingrese su usuario" prefix="<i class='mdi mdi-account'></i>" [(ngModel)]="templateModel1.usuario" name="usuario" [required]="true">
+                <plex-text label="Ingrese su usuario" prefix="<i class='mdi mdi-account'></i>" [(ngModel)]="templateModel1.usuario" name="usuario"
+                    [required]="true">
                 </plex-text>
                 <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password" name="password" [required]="true">
                 </plex-text>
@@ -13,8 +14,6 @@
             <pre>{{templateModel1 | json}}</pre>
         </div>
     </div>
-</plex-box>
-<plex-box >
     <div class="row">
         <div class="col-md-6">
             <form>
@@ -28,7 +27,9 @@
             <pre>{{templateModel2 | json}}</pre>
         </div>
     </div>
-</plex-box>
 
-<plex-text label="Ingrese su usuario" [(ngModel)]="prueba" (change)="cambio()">
-</plex-text>
+    <h3>Multiline</h3>
+    <plex-text label="Escriba la biografía de su vida" multiline=true [(ngModel)]="prueba" (change)="cambio()">
+    </plex-text>
+    <pre>{{prueba | json}}</pre>
+</plex-box>

@@ -17,4 +17,9 @@ plex-text {
   &:hover .clear-icon {
     display: block;
   }
+
+  TEXTAREA {
+    resize: none;
+    min-height: $input-height;
+  }
 }

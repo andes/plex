@@ -21,7 +21,8 @@ import { hasRequiredValidator } from '../core/validator.functions';
     ]
 })
 export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
-    @ViewChild('ref') private ref: ElementRef;
+    @ViewChild('input') private input: ElementRef;
+    @ViewChild('textarea') private textarea: ElementRef;
     @ContentChild(NgControl) public control: any;
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
@@ -34,12 +35,14 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() suffix: string;
     @Input() disabled = false;
     @Input() readonly = false;
-    @Input() password: boolean;
+    @Input() password = false;
+    @Input() multiline = false;
     @Input()
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
         if (this.renderer) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+            let element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
+            this.renderer.invokeElementMethod(element, 'focus');
         }
     }
 
@@ -64,22 +67,19 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
 
     ngAfterViewInit() {
-        // let jQuery = window['jQuery'];
-        // let $selector = jQuery(this.ref.nativeElement);
-        // $selector.change(function (e) {
-        //     //e.stopImmediatePropagation();
-        //     //$selector.off('blur');
-        // });
-
-
         if (this.autoFocus) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+            let element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
+            this.renderer.invokeElementMethod(element, 'focus');
         }
     }
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        this.renderer.setElementProperty(this.ref.nativeElement, 'value', typeof value === 'undefined' ? '' : value);
+        let element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
+        this.renderer.setElementProperty(element, 'value', typeof value === 'undefined' ? '' : value);
+        if (this.multiline) {
+            this.adjustTextArea()
+        }
     }
 
     // Actualización Vista -> Modelo
@@ -89,6 +89,10 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.onChange = (value) => {
             value = value || null;
             fn(value);
+
+            if (this.multiline) {
+                this.adjustTextArea()
+            }
             // jgabriel | 24/03/2017 | Esto es un por bug de Angular2 que a veces no actualiza la vista cuando cambia el modelo
             // this.change.emit({
             //   value: value
@@ -101,11 +105,27 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         };
     }
 
-    // Borra el valor
-    clear() {
+    /**
+     * Borra el contenido del input
+     *
+     * @memberof PlexTextComponent
+     */
+    clearInput() {
         if (!this.disabled) {
             this.writeValue(null);
             this.onChange(null);
+            this.renderer.invokeElementMethod(this.input.nativeElement, 'focus');
         }
+    }
+
+    /**
+     * Ajusta el alto del textarea al contenido
+     *
+     * @memberof PlexTextComponent
+     */
+    adjustTextArea() {
+        this.textarea.nativeElement.style.overflow = 'hidden';
+        this.textarea.nativeElement.style.height = 'auto';
+        this.textarea.nativeElement.style.height = this.textarea.nativeElement.scrollHeight + 'px';
     }
 }
