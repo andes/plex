@@ -332,6 +332,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
 // PLUGINS/REMOVE_BUTTON.SCSS
 .selectize-control {
   .remove-button {
+    opacity: .5;
     font-size: .9em;
     color: $dark-grey;
     text-decoration: none;
@@ -342,10 +343,26 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
     }
   }
 
-  &.single .remove-button {
-    position: absolute;
-    right: 32px;
-    top: 8px;
+  &.single {
+    .remove-button {
+      position: absolute;
+      right: 32px;
+      top: 8px;
+    }
+
+    &:hover {
+      .remove-button {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.multi {
+    .item:hover {
+      .remove-button {
+        opacity: 1;
+      }
+    }
   }
 }
 

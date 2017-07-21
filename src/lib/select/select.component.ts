@@ -256,7 +256,11 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             },
             onDropdownOpen: (value) => {
                 // Se asegura que los items queden siempre visibles
-                value[0].scrollIntoView();
+                if (value[0].scrollIntoViewIfNeeded) {
+                    value[0].scrollIntoViewIfNeeded(); // Chrome only
+                } else {
+                    value[0].scrollIntoView();
+                }
             }
         });
 
