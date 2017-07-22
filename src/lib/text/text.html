@@ -7,7 +7,7 @@
     <input #input type="{{password ? 'password' : 'text'}}" class="form-control" [placeholder]="placeholder" [disabled]="disabled"
       [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
   </div>
-  <i [hidden]="multiline" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
+  <i *ngIf="!readonly && !multiline && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
   <!-- Multiline -->
   <textarea [hidden]="!multiline" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
     (input)="onChange($event.target.value)" (change)="disabledEvent($event)"></textarea>

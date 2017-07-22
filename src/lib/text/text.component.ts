@@ -21,6 +21,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
     ]
 })
 export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+    public isEmpty = true;
     @ViewChild('input') private input: ElementRef;
     @ViewChild('textarea') private textarea: ElementRef;
     @ContentChild(NgControl) public control: any;
@@ -80,6 +81,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         if (this.multiline) {
             this.adjustTextArea()
         }
+        // Check empty
+        this.isEmpty = !(value && value.toString().trim());
     }
 
     // Actualización Vista -> Modelo
@@ -89,6 +92,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.onChange = (value) => {
             value = value || null;
             fn(value);
+            // Check empty
+            this.isEmpty = !(value && value.toString().trim());
 
             if (this.multiline) {
                 this.adjustTextArea()
@@ -111,7 +116,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
      * @memberof PlexTextComponent
      */
     clearInput() {
-        if (!this.disabled) {
+        debugger;
+        if (!this.disabled && !this.isEmpty) {
             this.writeValue(null);
             this.onChange(null);
             this.renderer.invokeElementMethod(this.input.nativeElement, 'focus');
