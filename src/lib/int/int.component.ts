@@ -100,7 +100,6 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             // Estas líneas evitan que se muestren caracteres no permitidos en el input
-            // debugger;
             if ((value === '') || REGEX.test(value)) {
                 this.lastValue = value;
             } else {

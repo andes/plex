@@ -26,9 +26,6 @@ export class TextDemoComponent implements OnInit {
     }
 
     cambio() {
-        if (this.prueba === 'xxx') {
-            this.prueba = '';
-        }
         console.log(this.prueba);
     }
 }

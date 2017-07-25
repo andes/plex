@@ -27,7 +27,7 @@ label {
     &::before {
       content: "(opcional)";
       color: $dark-grey;
-      font-size: 0.7em;
+      font-size: .7em;
       font-weight: normal;
       margin-left: .5em;
     }
@@ -36,4 +36,9 @@ label {
 
 .form-group > label {
   margin-bottom: 5px;
+}
+
+// Placeholder
+.form-control::placeholder {
+  font-weight: 100;
 }

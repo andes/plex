@@ -17,8 +17,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <form>
-                            <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmulti" (getData)="loadData($event)" placeholder="Múltilple con llamada a la API">
+                            <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmulti" (getData)="loadData($event)" placeholder="Múltilple con llamada a la API" [readonly]="modelo2.soloLectura">
                             </plex-select>
+                            <plex-bool [(ngModel)]="modelo2.soloLectura" name="soloLectura" label="Sólo lectura"> </plex-bool>
                         </form>
                     </div>
                     <div class="col-md-6">

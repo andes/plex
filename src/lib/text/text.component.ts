@@ -116,7 +116,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
      * @memberof PlexTextComponent
      */
     clearInput() {
-        debugger;
         if (!this.disabled && !this.isEmpty) {
             this.writeValue(null);
             this.onChange(null);
