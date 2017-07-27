@@ -1,9 +1,12 @@
 <!--Navigation Bar-->
 <nav class="navbar-inverse bg-inverse fixed-top">
-    <div class="navbar-brand"></div>
+    <div class="navbar-brand hover" [routerLink]="'/'" tabindex="-1">
+        <div class="logo"></div>
+        <div class="text"></div>
+    </div>
     <div class="actions">
         <!--App Status-->
-        <div>
+        <div class="action">
             <i *ngIf="online" class="mdi mdi-cloud"></i>
             <i *ngIf="!online" class="mdi mdi-cloud-off-outline text-danger"></i>
             <div class="popover popover-bottom">
@@ -19,19 +22,13 @@
                 </div>
             </div>
         </div>
-        <!--User Info-->
-        <div *ngIf="plex.userInfo" class="userinfo dropdown" [ngClass]="{show: loginOpen}" (click)="loginOpen = !loginOpen">
+        <div *ngIf="plex.userInfo" class="userinfo">
             <div>
                 <span>{{plex.userInfo.usuario.nombreCompleto}}</span><br><span>{{plex.userInfo.organizacion.nombre}}</span>
             </div>
-            <ul class="dropdown-menu dropdown-menu-right">
-                <li>
-                    <a plexRipples class="dropdown-item" href="#" [routerLink]="'logout'"><span class="mdi mdi-logout"></span> Cerrar sesión</a>
-                </li>
-            </ul>
         </div>
         <!--Menu-->
-        <div *ngIf="plex.menu && plex.menu.length" class="dropdown" [ngClass]="{show: menuOpen}" (click)="menuOpen = !menuOpen">
+        <div *ngIf="plex.menu && plex.menu.length" class="action dropdown" [ngClass]="{show: menuOpen}" (click)="menuOpen = !menuOpen">
             <i class="mdi mdi-menu"></i>
             <ul class="dropdown-menu dropdown-menu-right">
                 <li *ngFor="let item of plex.menu">
