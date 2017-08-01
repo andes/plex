@@ -16,7 +16,7 @@ export class PlexPanelComponent {
         accordion.addPanel(this);
     }
 
-    selectPanel(panel: PlexPanelComponent) {
+    selectPanel() {
         this.active = !this.active;
     }
 
