@@ -1,6 +1,6 @@
 {
   "name": "@andes/plex",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andes/plex.git"
@@ -47,7 +47,7 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "^1.2.4",
+    "@angular/cli": "^1.2.6",
     "@angular/compiler-cli": "^4.3.1",
     "@angular/language-service": "^4.0.0",
     "@types/jasmine": "2.5.45",

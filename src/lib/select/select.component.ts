@@ -313,11 +313,30 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         }
     }
 
+    /**
+     * Elimina la propiedad $order que inyecta selectize
+     */
+    private remove$order(value: any) {
+        if (value) {
+            if (Array.isArray(value)) {
+                value.forEach((i, index) => {
+                    value[index] = this.remove$order(value[index]);
+                })
+            } else {
+                if (typeof value === 'object') {
+                    delete value.$order;
+                }
+            }
+        };
+        return value;
+    }
+
     // Actualización Vista -> Modelo
     registerOnTouched() {
     }
     registerOnChange(fn: any) {
         this.onChange = (value) => {
+            value = this.remove$order(value);
             fn(value);
             this.change.emit({
                 value: value
