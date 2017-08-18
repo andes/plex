@@ -51,6 +51,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 this.removeOptions();
                 if (value) {
                     this.selectize.addOption(value);
+                    value = this.remove$order(value);
                 }
                 this.writeValue(currentValue);
             }
@@ -224,6 +225,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                         }
                         this.data = data;
                         callback(data || []);
+                        this.data = this.remove$order(data);
                     }
                 });
             },
