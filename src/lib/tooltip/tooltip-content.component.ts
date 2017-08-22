@@ -10,7 +10,7 @@ import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef } from '
                 <div class="tooltip-inner">
                     <ng-content></ng-content>
                     {{ content }}
-                </div> 
+                </div>
             </div>`
 })
 export class TooltipContentComponent implements AfterViewInit {
@@ -35,8 +35,8 @@ export class TooltipContentComponent implements AfterViewInit {
     // Properties
     // -------------------------------------------------------------------------
 
-    top: number = -100000;
-    left: number = -100000;
+    top = -100000;
+    left = -100000;
     isIn = false;
     isFade = false;
 
@@ -88,7 +88,7 @@ export class TooltipContentComponent implements AfterViewInit {
     // Private Methods
     // -------------------------------------------------------------------------
 
-    private positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody: boolean = false): { top: number, left: number } {
+    private positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody = false): { top: number, left: number } {
         let positionStrParts = positionStr.split('-');
         let pos0 = positionStrParts[0];
         let pos1 = positionStrParts[1] || 'center';

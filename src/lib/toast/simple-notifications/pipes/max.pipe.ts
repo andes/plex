@@ -1,9 +1,11 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({name: 'max'})
+@Pipe({ name: 'max' })
 export class MaxPipe implements PipeTransform {
   transform(value: string, ...args: any[]): any {
-    if (!value) return value;
+    if (!value) {
+      return value;
+    }
 
     let allowed = args[0];
     let received = value.length;
