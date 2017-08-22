@@ -288,14 +288,14 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         this.value = value;
         if (this.selectize) {
             // Convierte un objeto cualquiera a un string compatible con selectize
-            let valueAsString = (val: any): string => {
-                if (val === null) {
+            let valueAsString = (v: any): string => {
+                if (v === null) {
                     return null;
                 } else
-                    if (typeof val === 'object') {
-                        return '' + val[this.idField];
+                    if (typeof v === 'object') {
+                        return '' + v[this.idField];
                     } else {
-                        return '' + val;
+                        return '' + v;
                     }
             };
 
