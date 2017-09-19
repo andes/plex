@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {PushNotification, Permission} from '../interfaces/push-notification.type';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { PushNotification, Permission } from '../interfaces/push-notification.type';
 
 declare const Notification: any;
 
@@ -10,12 +10,13 @@ export class PushNotificationsService {
     permission: Permission;
 
     constructor() {
-        this.permission  = this.isSupported() ? Notification.permission : 'denied';
+        this.permission = this.isSupported() ? Notification.permission : 'denied';
     }
 
     requestPermission() {
-        if ('Notification' in window)
+        if ('Notification' in window) {
             Notification.requestPermission((status: any) => this.permission = status);
+        }
     }
 
     isSupported() {
@@ -38,9 +39,9 @@ export class PushNotificationsService {
 
             const n = new Notification(title, options);
 
-            n.onshow = (e: any) => obs.next({notification: n, event: e});
-            n.onclick = (e: any) => obs.next({notification: n, event: e});
-            n.onerror = (e: any) => obs.error({notification: n, event: e});
+            n.onshow = (e: any) => obs.next({ notification: n, event: e });
+            n.onclick = (e: any) => obs.next({ notification: n, event: e });
+            n.onerror = (e: any) => obs.error({ notification: n, event: e });
             n.onclose = () => obs.complete();
         });
     }

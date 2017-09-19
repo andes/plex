@@ -1,10 +1,11 @@
-import {Component, EventEmitter, OnInit, OnDestroy, ViewEncapsulation, Input, Output} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {Options} from '../interfaces/options.type';
-import {Notification} from '../interfaces/notification.type';
-import {NotificationsService} from '../services/notifications.service';
+import { Component, EventEmitter, OnInit, OnDestroy, ViewEncapsulation, Input, Output } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { Options } from '../interfaces/options.type';
+import { Notification } from '../interfaces/notification.type';
+import { NotificationsService } from '../services/notifications.service';
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'simple-notifications',
     encapsulation: ViewEncapsulation.None,
     template: `
@@ -31,12 +32,12 @@ import {NotificationsService} from '../services/notifications.service';
             width: 300px;
             z-index: 1000;
         }
-        
+
         .simple-notification-wrapper.left { left: 20px; }
         .simple-notification-wrapper.top { top: 20px; }
         .simple-notification-wrapper.right { right: 20px; }
         .simple-notification-wrapper.bottom { bottom: 20px; }
-        
+
         @media (max-width: 340px) {
             .simple-notification-wrapper {
                 width: auto;
@@ -78,7 +79,7 @@ export class SimpleNotificationsComponent implements OnInit, OnDestroy {
     public rtl = false;
     public animate: 'fromRight' | 'fromLeft' | 'rotate' | 'scale' = 'fromRight';
 
-    constructor(private _service: NotificationsService) {}
+    constructor(private _service: NotificationsService) { }
 
     ngOnInit(): void {
         // Listen for changes in the service
@@ -94,8 +95,11 @@ export class SimpleNotificationsComponent implements OnInit, OnDestroy {
                         break;
 
                     case 'set':
-                        if (item.add) this.add(item.notification!);
-                        else this.defaultBehavior(item);
+                        if (item.add) {
+                            this.add(item.notification!);
+                        } else {
+                            this.defaultBehavior(item);
+                        }
                         break;
 
                     default:
@@ -124,10 +128,14 @@ export class SimpleNotificationsComponent implements OnInit, OnDestroy {
         if (!toBlock) {
             // Check if the notification should be added at the start or the end of the array
             if (this.lastOnBottom) {
-                if (this.notifications.length >= this.maxStack) this.notifications.splice(0, 1);
+                if (this.notifications.length >= this.maxStack) {
+                    this.notifications.splice(0, 1);
+                }
                 this.notifications.push(item);
             } else {
-                if (this.notifications.length >= this.maxStack) this.notifications.splice(this.notifications.length - 1, 1);
+                if (this.notifications.length >= this.maxStack) {
+                    this.notifications.splice(this.notifications.length - 1, 1);
+                }
                 this.notifications.splice(0, 0, item);
             }
 
