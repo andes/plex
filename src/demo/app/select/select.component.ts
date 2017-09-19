@@ -46,10 +46,8 @@ export class SelectDemoComponent implements OnInit {
         // Event tiene una propiedad 'query' que contiene el texto que el usuario ha escrito en el input.
         // Esto permite enviar a las APIs un parámetro para hacer las búsquedas más eficientes
         if (event.query) {
-            console.log('Buscando países que empiecen con ', event.query);
             this.servicio.get(event.query).subscribe(event.callback);
         } else {
-            console.log('No quiero devolver todos los paises. Esperado algun string');
             event.callback(null);
         }
     }

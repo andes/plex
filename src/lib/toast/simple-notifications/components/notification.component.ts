@@ -1,9 +1,10 @@
-import {Component, OnInit, OnDestroy, Input, ViewEncapsulation, NgZone} from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {Notification} from '../interfaces/notification.type';
-import {NotificationsService} from '../services/notifications.service';
+import { Component, OnInit, OnDestroy, Input, ViewEncapsulation, NgZone } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Notification } from '../interfaces/notification.type';
+import { NotificationsService } from '../services/notifications.service';
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'simple-notification',
     encapsulation: ViewEncapsulation.None,
     template: `
@@ -161,7 +162,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
         private notificationService: NotificationsService,
         private domSanitizer: DomSanitizer,
         private zone: NgZone
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         if (this.animate) {
@@ -226,11 +227,16 @@ export class NotificationComponent implements OnInit, OnDestroy {
         this.zone.runOutsideAngular(() => {
             this.zone.run(() => this.diff = (new Date().getTime() - this.start) - (this.count * this.speed));
 
-            if (this.count++ === this.steps) this.zone.run(() => this.remove());
-            else if (!this.stopTime) {
-                if (this.showProgressBar) this.zone.run(() => this.progressWidth += 100 / this.steps);
+            if (this.count++ === this.steps) {
+                this.zone.run(() => this.remove());
+            } else {
+                if (!this.stopTime) {
+                    if (this.showProgressBar) {
+                        this.zone.run(() => this.progressWidth += 100 / this.steps);
+                    }
 
-                this.timer = setTimeout(this.instance, (this.speed - this.diff));
+                    this.timer = setTimeout(this.instance, (this.speed - this.diff));
+                }
             }
         })
     };
