@@ -1,12 +1,12 @@
 <!-- Slide -->
-<md-slide-toggle *ngIf="type == 'slide'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly">
+<md-slide-toggle *ngIf="type == 'slide'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
 	<span *ngIf="label">
     {{label}}
   </span>
 </md-slide-toggle>
 
 <!-- Checbox -->
-<md-checkbox *ngIf="type == 'checkbox'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly">
+<md-checkbox *ngIf="type == 'checkbox'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
 	<span *ngIf="label">
     {{label}}
   </span>
