@@ -1,5 +1,11 @@
 <plex-accordion>
-  <plex-panel tituloPrincipal="Título simple">
+  <plex-panel (toggle)="toggle($event)" >
+
+    <div plex-accordion-title>
+      Título con elementos html
+      <plex-bool [(ngModel)]="test" [type]="'slide'" label="¿Está activo?" name="activo" (change)="bool($event)"></plex-bool>
+    </div>
+
     Contenido <i>HTML</i>
     <p>Párrafo
       <u>importante</u>

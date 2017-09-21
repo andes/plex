@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { PlexAccordionComponent } from './accordion.component';
 
 @Component({
@@ -11,6 +11,7 @@ export class PlexPanelComponent {
     @Input() icon: string;
     @Input() content: string;
     @Input() active: boolean;
+    @Output() toggle = new EventEmitter();
 
     constructor(accordion: PlexAccordionComponent) {
         accordion.addPanel(this);
@@ -18,6 +19,7 @@ export class PlexPanelComponent {
 
     selectPanel() {
         this.active = !this.active;
+        this.toggle.emit(this.active);
     }
 
 }
