@@ -4,7 +4,7 @@ import { TooltipContentComponent } from './tooltip-content.component';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
-    selector: '[title]'
+    selector: '[tooltip]'
 })
 // tslint:disable-next-line:directive-class-suffix
 export class TooltipComponent {
@@ -20,7 +20,7 @@ export class TooltipComponent {
     // -------------------------------------------------------------------------
 
     // tslint:disable-next-line:no-input-rename
-    @Input('title') content: string | TooltipContentComponent;
+    @Input('tooltip') content: string | TooltipContentComponent;
     @Input() titlePosition: 'top' | 'bottom' | 'left' | 'right' = 'top';
     @Input() tooltipDisabled: boolean;
     @Input() tooltipAnimation = false;
