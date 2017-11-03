@@ -5,6 +5,9 @@ Modificado a partir de https://github.com/T00rk/bootstrap-material-datetimepicke
 
 */
 
+declare var jQuery;
+declare var  moment;
+
 /* tslint:disable */
 (function ($, moment) {
       var pluginName = "bootstrapMaterialDatePicker";
@@ -43,7 +46,8 @@ Modificado a partir de https://github.com/T00rk/bootstrap-material-datetimepicke
                               $.data(this, pluginDataName)[options](p);
                         }
                         if (options === 'destroy') {
-                              delete $.data(this, pluginDataName);
+                              debugger;
+                              // delete $.data(this, pluginDataName);
                         }
                   }
             });
@@ -573,7 +577,7 @@ Modificado a partir de https://github.com/T00rk/bootstrap-material-datetimepicke
                         }
                   },
                   generateCalendar: function (date) {
-                        var _calendar = {};
+                        var _calendar: any = {};
 
                         if (date !== null) {
                               var startOfMonth = moment(date).locale(this.params.lang).startOf('month');

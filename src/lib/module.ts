@@ -27,7 +27,7 @@ import { TooltipComponent } from './tooltip/tooltip.component';
 import { TooltipContentComponent } from './tooltip/tooltip-content.component';
 
 // Third party
-import { MaterialModule } from '@angular/material';
+import { MatSlideToggleModule, MatCheckboxModule } from '@angular/material';
 import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
@@ -60,7 +60,8 @@ const MODULES = [
         CommonModule,
         RouterModule,
         FormsModule,
-        MaterialModule,
+        MatSlideToggleModule,
+        MatCheckboxModule,
         ChartsModule,
         SimpleNotificationsModule.forRoot()
     ],

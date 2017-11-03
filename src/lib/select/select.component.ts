@@ -154,7 +154,9 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         return filterLiterals ? values.filter(i => (i.indexOf('\'') < 0 || i.indexOf('\'') < 0)) : values;
     }
 
-    // Rendera una opción en base a la expresión indicada en labelField
+    /**
+     * Rendera una opción en base a la expresión indicada en labelField
+     */
     private renderOption(item: any, labelField: string): string {
         if (!item) {
             return '';
@@ -179,9 +181,31 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         return result.trim();
     }
 
+    /**
+     * Elimina todas las opciones del combo
+     */
     removeOptions() {
         for (let value in this.selectize.options) {
             this.selectize.removeOption(value, true);
+        }
+    }
+    /**
+     * Concatena las nuevas opciones con las existentes
+     */
+    joinOptions(data: any[]) {
+        if (data) {
+            if (!this.data) {
+                this.data = data || [];
+            } else {
+                // Verifica que el item no exista
+                data.forEach(i => {
+                    if (!this.data.some(j => j[this.idField] === i[this.idField])) {
+                        this.data.push(i);
+                    }
+                })
+                // Ordena
+                // this.data.sort((a, b) => a[this.idField].localeCompare(b[this.idField]));
+            }
         }
     }
 
@@ -199,6 +223,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             placeholder: this.placeholder,
             searchField: this.splitLabelField(this.labelField, true),
             options: this.data,
+            openOnFocus: this.hasStaticData,
             closeAfterSelect: this.closeAfterSelect,
             preload: !this.hasStaticData,
             // dropdownParent: 'body',
@@ -213,19 +238,13 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 },
             },
             load: this.hasStaticData ? null : (query: string, callback: any) => {
-                // Esta función se ejecuta si preload = true o cuando el usuario tipea
+                // Esta función se ejecuta si preload = true o cuando el usuario escribe en el combo
                 this.getData.emit({
                     query: query,
                     callback: (data) => {
-                        // Sólo elimina las opciones si vienen data contiene nuevas opciones
-                        if (data !== null) {
-                            let currentValue = this.value;
-                            this.removeOptions();
-                            this.writeValue(currentValue);
-                        }
-                        this.data = data;
-                        callback(data || []);
-                        this.data = this.remove$order(data);
+                        this.joinOptions(data);
+                        callback(this.data);
+                        this.data = this.remove$order(this.data);
                     }
                 });
             },

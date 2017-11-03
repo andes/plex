@@ -10,10 +10,10 @@ export class TabsDemoComponent implements OnDestroy {
     public mostrar = false;
 
     constructor(private plex: Plex) {
-        this.intervalId = setInterval(() => {
-            this.mostrar = !this.mostrar;
-            this.plex.toast('info', 'Cambió el tab');
-        }, 2000);
+        // this.intervalId = setInterval(() => {
+        //     this.mostrar = !this.mostrar;
+        //     this.plex.toast('info', 'Cambió el tab');
+        // }, 2000);
     }
 
     public ngOnDestroy() {
