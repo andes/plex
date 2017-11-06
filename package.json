@@ -1,6 +1,6 @@
 {
   "name": "@andes/plex",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andes/plex.git"
@@ -13,8 +13,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prepublishOnly": "tsc -p ./ --outDir dist/"
   },
+  "main": "./dist/index.js",
   "dependencies": {
     "@angular/animations": "^5.0.0",
     "@angular/cdk": "2.0.0-beta.12",

@@ -5,7 +5,7 @@ import { dateValidator, hasRequiredValidator } from '../core/validator.functions
 
 // Importo las librerías de jQuery
 let jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
-require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.ts');
+require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker');
 
 @Component({
     selector: 'plex-datetime',
