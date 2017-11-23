@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   templateUrl: 'accordion.html',
 })
 export class AccordionDemoComponent {
-  private test = false;
+  public test = false;
 
   toggle(showed) {
   }

@@ -14,7 +14,7 @@ export class SelectDemoComponent implements OnInit {
     public opciones: any[];
     public modelo1 = { select: null };
     public rModelo1 = { select: null };
-    public modelo2 = { select: null };
+    public modelo2 = { select: null, soloLectura: false, selectMultiple: null };
     public modelo3 = { select: null };
     public modelo4 = { select: null };
 
