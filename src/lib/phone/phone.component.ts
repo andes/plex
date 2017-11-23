@@ -10,7 +10,6 @@ const RegEx_Numero = /^(\d)+$/;
 
 @Component({
     selector: 'plex-phone',
-    templateUrl: 'phone.html',
     // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
     providers: [
         {
@@ -23,7 +22,16 @@ const RegEx_Numero = /^(\d)+$/;
             useExisting: forwardRef(() => PlexPhoneComponent),
             multi: true
         },
-    ]
+    ],
+    template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
+                    <div [ngClass]="{'input-group': prefix || suffix}">
+                        <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
+                        <input #ref type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)">
+                        <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
+                    </div>
+                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+                </div>`,
 })
 export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     private lastValue: any = null;

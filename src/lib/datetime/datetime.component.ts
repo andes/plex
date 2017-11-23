@@ -9,7 +9,6 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
 
 @Component({
     selector: 'plex-datetime',
-    templateUrl: 'datetime.html',
     providers: [
         // Permite acceder al atributo formControlName/ngModel
         {
@@ -22,7 +21,17 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
             useExisting: forwardRef(() => PlexDateTimeComponent),
             multi: true
         },
-    ]
+    ],
+    template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" tabindex="-1" [disabled]="disabled || readonly"><i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i></button>
+                        </span>
+                    </div>
+                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+                </div>`,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private format: string;

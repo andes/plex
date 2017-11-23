@@ -9,7 +9,6 @@ let Selectize = require('selectize/dist/js/standalone/selectize');
 
 @Component({
     selector: 'plex-select',
-    templateUrl: 'select.html',
     providers: [
         // Permite acceder al atributo formControlName/ngModel
         {
@@ -17,7 +16,13 @@ let Selectize = require('selectize/dist/js/standalone/selectize');
             useExisting: forwardRef(() => PlexSelectComponent),
             multi: true,
         }
-    ]
+    ],
+    template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
+                    <select *ngIf="!multiple" id="{{uniqueId}}" (change)="onChange($event.target.value)"></select>
+                    <select *ngIf="multiple" id="{{uniqueId}}" multiple (change)="onChange($event.target.value)"></select>
+                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+                </div>`,
 })
 export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor {
     private value: any;

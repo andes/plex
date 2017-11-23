@@ -12,7 +12,6 @@ const REGEX = /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
 
 @Component({
     selector: 'plex-float',
-    templateUrl: 'float.html',
     // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
     providers: [
         {
@@ -25,7 +24,16 @@ const REGEX = /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
             useExisting: forwardRef(() => PlexFloatComponent),
             multi: true
         }
-    ]
+    ],
+    template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
+                    <div [ngClass]="{'input-group': prefix || suffix}">
+                        <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
+                        <input #ref type="text" class="form-control" [disabled]="disabled" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
+                        <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
+                    </div>
+                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+                </div>`,
 })
 export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
     private lastValue: any = null;

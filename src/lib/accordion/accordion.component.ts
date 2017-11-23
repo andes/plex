@@ -3,7 +3,10 @@ import { PlexPanelComponent } from './panel.component';
 
 @Component({
     selector: 'plex-accordion',
-    templateUrl: 'accordion.html'
+    template: ` <div id="accordion" role="tablist" aria-multiselectable="true">
+                    <ng-content></ng-content>
+                </div>
+                `,
 })
 export class PlexAccordionComponent {
     public panels: PlexPanelComponent[] = [];

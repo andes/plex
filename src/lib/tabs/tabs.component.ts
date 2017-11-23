@@ -3,7 +3,17 @@ import { PlexTabComponent } from './tab.component';
 
 @Component({
     selector: 'plex-tabs',
-    templateUrl: 'tabs.html',
+    template: ` <ul class="nav nav-tabs">
+                    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item">
+                        <a class="nav-link" [ngClass]="{active: tab.active}" plexRipples href="#" onclick="return false">
+                            <i *ngIf="tab.icon" class="mdi mdi-{{tab.icon}}"></i>
+                            <span *ngIf="tab.label">
+                                {{tab.label}}
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <ng-content></ng-content>`,
 })
 export class PlexTabsComponent implements AfterContentInit {
     private _activeIndex = 0;

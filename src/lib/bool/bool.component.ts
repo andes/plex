@@ -3,7 +3,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'plex-bool',
-    templateUrl: 'bool.html',
     providers: [
         // Permite acceder al atributo formControlName/ngModel
         {
@@ -11,7 +10,21 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
             useExisting: forwardRef(() => PlexBoolComponent),
             multi: true,
         }
-    ]
+    ],
+    template: ` <!-- Slide -->
+                <mat-slide-toggle *ngIf="type == 'slide'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
+                    <span *ngIf="label">
+                    {{label}}
+                </span>
+                </mat-slide-toggle>
+
+                <!-- Checbox -->
+                <mat-checkbox *ngIf="type == 'checkbox'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
+                    <span *ngIf="label">
+                    {{label}}
+                </span>
+                </mat-checkbox>
+                `,
 })
 export class PlexBoolComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     // Propiedad públicas
