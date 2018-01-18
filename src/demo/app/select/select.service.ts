@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServiceDemoSelect {
 
-    private paisUrl = 'http://localhost:3002/api/core/tm/paises';  // URL to web api
+    private paisUrl = 'http://d-testing.hospitalneuquen.org.ar/api/core/tm/paises';  // URL to web api
 
     constructor(private http: Http) { }
 
