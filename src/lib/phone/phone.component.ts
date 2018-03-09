@@ -52,6 +52,17 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     // Eventos
     @Output() valueChange = new EventEmitter();
 
+    @Output() focus = new EventEmitter();
+    @Output() focusout = new EventEmitter();
+
+    public onFocus () {
+      this.focus.emit();
+    }
+
+    public onFocusout () {
+      this.focusout.emit();
+    }
+
     // Funciones públicas
     public onChange = (_: any) => { };
 

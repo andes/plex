@@ -10,7 +10,7 @@
   <i *ngIf="!readonly && !multiline && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
   <!-- Multiline -->
   <textarea [hidden]="!multiline" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
-    (input)="onChange($event.target.value)" (change)="disabledEvent($event)"></textarea>
+    (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()"></textarea>
   <!-- Validation -->
   <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
 </div>
