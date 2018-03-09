@@ -11,6 +11,14 @@ export class TextDemoComponent implements OnInit {
     public templateModel2: any;
     public prueba = '';
 
+    onFocus () {
+      this.templateModel1.usuario = 'FOCUSED';
+    }
+
+    onFocusout () {
+      this.templateModel1.usuario = '';
+    }
+
     ngOnInit() {
         // Tepmlate-Form1 model
         this.templateModel1 = { nombre: null };
