@@ -49,6 +49,16 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     // Eventos
     @Output() change = new EventEmitter();
+    @Output() focus = new EventEmitter();
+    @Output() focusout = new EventEmitter();
+
+    public onFocus () {
+      this.focus.emit();
+    }
+
+    public onFocusout () {
+      this.focusout.emit();
+    }
 
     // Funciones públicas
     public onChange = (_: any) => { };
