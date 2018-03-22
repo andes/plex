@@ -16,7 +16,7 @@ Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
 2. Descargar desde npm
 
     ```
-   npm install andes-plex --save
+   npm install @andes/plex --save
     ```
  
 3. Renombrar el archivo `src/styles.css` a  `src/styles.less` y editarlo para vincular al archivo `.less` de Plex
@@ -31,13 +31,17 @@ Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
    @import '~andes-plex/src/lib/styles.sass';
     ```
 
-5. Registrar ambos archivos de estilos en `angular-cli.json`, quitando `styles.css`
+5. Registrar ambos archivos de estilos en `angular-cli.json`, quitando `styles.css` y agregar los siguientes archivos globales de diseño:
 
     ```json
    ...
    "styles": [
        "styles.less",
-       "styles.sass"
+       "styles.sass",
+       "../node_modules/mdi/css/materialdesignicons.css",
+        "../node_modules/node-waves/dist/waves.css",
+        "../node_modules/sweetalert2/dist/sweetalert2.css",
+        "../node_modules/animate.css/animate.css"
    ],
    ...
     ```
