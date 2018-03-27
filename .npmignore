@@ -10,3 +10,5 @@ typings.json
 webpack.config.js
 webpack.entry.js
 .sass-cache
+e2e
+karma-cli
