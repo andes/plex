@@ -17,12 +17,12 @@ import { hasRequiredValidator } from '../core/validator.functions';
                     <div [hidden]="multiline" [ngClass]="{'input-group': prefix || suffix}">
                     <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
                     <input #input type="{{password ? 'password' : 'text'}}" class="form-control" [placeholder]="placeholder" [disabled]="disabled"
-                        [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
+                        [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
                     </div>
                     <i *ngIf="!readonly && !multiline && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
                     <!-- Multiline -->
                     <textarea [hidden]="!multiline" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
-                    (input)="onChange($event.target.value)" (change)="disabledEvent($event)"></textarea>
+                    (input)="onChange($event.target.value)" (change)="disabledEvent($event)" ></textarea>
                     <!-- Validation -->
                     <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
                 </div>`,
@@ -64,6 +64,16 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     // Eventos
     @Output() change = new EventEmitter();
+    @Output() focus = new EventEmitter();
+    @Output() focusout = new EventEmitter();
+
+    public onFocus () {
+      this.focus.emit();
+    }
+
+    public onFocusout () {
+      this.focusout.emit();
+    }
 
     // Funciones públicas
     public onChange = (_: any) => { };
