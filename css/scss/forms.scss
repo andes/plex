@@ -1,0 +1,44 @@
+// Fieldset
+
+fieldset {
+  > legend {
+    margin-bottom: ($grid-gutter-width-base / 2);
+    padding-bottom: ($grid-gutter-width-base / 2);
+    font-size: 1.4em;
+    color: $dark-grey;
+    font-weight: 100;
+    text-transform: uppercase;
+    border-bottom: solid $dark-grey 1px;
+  }
+}
+
+fieldset+fieldset {
+  margin-top: $grid-gutter-width-base;
+}
+
+// Labels
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 10px;
+
+  > span.opcional {
+    &::before {
+      content: "(opcional)";
+      color: $dark-grey;
+      font-size: .7em;
+      font-weight: normal;
+      margin-left: .5em;
+    }
+  }
+}
+
+.form-group > label {
+  margin-bottom: 5px;
+}
+
+// Placeholder
+.form-control::placeholder {
+  font-weight: 100;
+}

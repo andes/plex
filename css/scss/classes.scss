@@ -1,0 +1,25 @@
+//
+// Clases globales disponibles para las aplicaciones
+// -------------------------
+
+// Cursors
+// -------------------------
+.hover {
+  cursor: pointer;
+}
+
+// Textos
+// -------------------------
+[class^="text-"] .btn {
+  font-size: 1em; // Así no duplica el tamaño
+}
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}

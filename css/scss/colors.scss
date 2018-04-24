@@ -1,0 +1,25 @@
+$states: default primary success info warning danger;
+$colors: (
+  default: $dark-grey,
+  primary: $brand-primary,
+  success: $brand-success,
+  info: $brand-info,
+  warning: $brand-warning,
+  danger: $brand-danger  
+);
+
+@each $state in $states {
+    .outline-#{$state} {
+        border-width: 1px;
+        border-style: solid;
+        border-color: map-get($colors, $state);
+        padding: ($grid-gutter-width-base / 2);
+    }
+
+    .outline-dashed-#{$state} {
+        border-width: 1px;
+        border-style: dashed;
+        border-color: map-get($colors, $state);
+        padding: ($grid-gutter-width-base / 2);
+    }
+}

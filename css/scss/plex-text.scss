@@ -1,0 +1,29 @@
+plex-text {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  .clear-icon {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    margin-top: -30px;
+    right: 1em;
+    color: $dark-grey;
+    z-index: 100;
+    font-size: .9em;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  &:hover .clear-icon {
+    display: block;
+  }
+
+  TEXTAREA {
+    resize: none;
+    min-height: $input-height;
+  }
+}
