@@ -1,6 +1,0 @@
-// Resuelve el bug(?) de Bootstrap 4 con grids dentro de list-groups
-.list-group-item {
-  > .row {
-    width: 100%;
-  }
-}

@@ -32,6 +32,7 @@ import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 import { ChartsModule } from 'ng2-charts';
+import { QuillModule } from 'ngx-quill'
 
 const MODULES = [
     PlexAppComponent,
@@ -63,6 +64,7 @@ const MODULES = [
         MatSlideToggleModule,
         MatCheckboxModule,
         ChartsModule,
+        QuillModule,
         SimpleNotificationsModule.forRoot()
     ],
     declarations: [

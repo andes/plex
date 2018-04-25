@@ -55,7 +55,7 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
     FormsModule,
     HttpModule,
     PlexModule,
-    routing,
+    routing
   ],
   providers: [
     Plex,
