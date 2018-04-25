@@ -2,21 +2,8 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-text label="Ingrese su usuario" [(ngModel)]="richText.contenido" name="contenido" [rich]="true" [readonly]="false">
-                </plex-text>
-            </form>
-        </div>
-        <div class="col-md-6">
-            <label>Modelo</label>
-            <pre>{{richText | json}}</pre>
-        </div>
-    </div>
-
-    <!-- <div class="row">
-        <div class="col-md-6">
-            <form>
-                <plex-text label="Ingrese su usuario" placeholder="Esta es una ayuda" prefix="<i class='mdi mdi-barcode'></i>" [(ngModel)]="templateModel1.usuario" name="usuario"
-                    [required]="true" (focus)="onFocus()" (focusout)="onFocusout()">
+                <plex-text label="Ingrese su usuario" placeholder="Esta es una ayuda" prefix="<i class='mdi mdi-barcode'></i>" [(ngModel)]="templateModel1.usuario"
+                    name="usuario" [required]="true" (focus)="onFocus()" (focusout)="onFocusout()">
                 </plex-text>
                 <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password" name="password" [required]="true">
                 </plex-text>
@@ -47,5 +34,19 @@
     <h3>Multiline</h3>
     <plex-text label="Escriba la biografía de su vida" multiline=true [(ngModel)]="prueba" (change)="cambio()">
     </plex-text>
-    <pre>{{prueba | json}}</pre> -->
+    <pre>{{prueba | json}}</pre>
+
+    <h3>RichText Editor</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido" [rich]="true" [readonly]="false">
+                </plex-text>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <label>Modelo</label>
+            <pre>{{richText | json}}</pre>
+        </div>
+    </div>
 </plex-box>
