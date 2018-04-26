@@ -19,19 +19,19 @@ import { hasRequiredValidator } from '../core/validator.functions';
     </label>
 
     <!-- Simple text field -->
-    <div [hidden]="multiline || rich" [ngClass]="{'input-group': prefix || suffix}">
+    <div [hidden]="multiline || html" [ngClass]="{'input-group': prefix || suffix}">
       <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
       <input #input type="{{password ? 'password' : 'text'}}" class="form-control" [placeholder]="placeholder" [disabled]="disabled"
         [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
     </div>
-    <i *ngIf="!readonly && !multiline && !rich && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
+    <i *ngIf="!readonly && !multiline && !html && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
 
     <!-- Multiline -->
-    <textarea [hidden]="!multiline || rich" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+    <textarea [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
       (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()"></textarea>
 
-    <!-- Rich Editor -->
-    <quill-editor #quillEditor [hidden]="multiline || !rich" [modules]="quill" [style]="{height: '300px'}" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
+    <!-- HTML Editor -->
+    <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="{height: '300px'}" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
 
     <!-- Validation -->
     <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
@@ -74,7 +74,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() readonly = false;
     @Input() password = false;
     @Input() multiline = false;
-    @Input() rich = false;
+    @Input() html = false;
     @Input()
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
@@ -128,7 +128,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         if (this.multiline) {
             this.adjustTextArea()
         } else {
-            if (this.rich) {
+            if (this.html) {
                 let component = (this.quillEditor as any);
                 component.quillEditor.setContents(component.valueSetter(component.quillEditor, typeof value === 'undefined' ? '' : value));
             }

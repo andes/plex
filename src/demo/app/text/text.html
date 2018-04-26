@@ -32,15 +32,21 @@
     </div>
 
     <h3>Multiline</h3>
-    <plex-text label="Escriba la biografía de su vida" multiline=true [(ngModel)]="prueba" (change)="cambio()">
-    </plex-text>
-    <pre>{{prueba | json}}</pre>
+    <div class="row">
+        <div class="col-md-6">
+            <plex-text label="Escriba la biografía de su vida" multiline=true [(ngModel)]="prueba" (change)="cambio()">
+            </plex-text>
+        </div>
+        <div class="col-md-6">
+            <pre>{{prueba | json}}</pre>
+        </div>
+    </div>
 
-    <h3>RichText Editor</h3>
+    <h3>HTML Editor</h3>
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido" [rich]="true" [readonly]="false">
+                <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido" [html]="true" [readonly]="false">
                 </plex-text>
             </form>
         </div>
