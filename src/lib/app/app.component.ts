@@ -62,6 +62,8 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                 <!--Componente de notificaciones Toast-->
                 <simple-notifications></simple-notifications>
 
+                <plex-ribbon *ngIf="environment !== 'prod'"></plex-ribbon>
+
                 <!--Contenedor principal-->
                 <div class="content">
                     <router-outlet></router-outlet>
