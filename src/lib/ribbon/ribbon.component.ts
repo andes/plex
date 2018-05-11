@@ -5,7 +5,7 @@ import { Component, Input, Renderer, OnInit } from '@angular/core';
     template: `<div id="ribbon-container" class="text-center p-1 {{position}}" [ngClass]="getClasses()">
     <div class="ribbon">
         <div class="texto text-white p-1">
-            {{ type }}
+            {{ text }}
         </div>
     </div>
 </div>`})
