@@ -59,9 +59,10 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                     <plex-loader *ngIf="plex.loaderCount > 0" class="loader" type="linear"></plex-loader>
                 </nav>
 
-                <!--Componente de notificaciones Toast-->
+                <!-- Componente de notificaciones Toast -->
                 <simple-notifications></simple-notifications>
-                ENV: {{production | json }}
+
+                <!-- Componente que muestra un ribbon indicando si se está en un entorno de desarrollo/demo -->
                 <plex-ribbon *ngIf="!production"></plex-ribbon>
 
                 <!--Contenedor principal-->
