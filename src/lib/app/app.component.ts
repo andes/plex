@@ -61,8 +61,8 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 
                 <!--Componente de notificaciones Toast-->
                 <simple-notifications></simple-notifications>
-
-                <plex-ribbon *ngIf="environment !== 'prod'"></plex-ribbon>
+                ENV: {{production | json }}
+                <plex-ribbon *ngIf="!production"></plex-ribbon>
 
                 <!--Contenedor principal-->
                 <div class="content">
@@ -70,6 +70,7 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                 </div>`,
 })
 export class PlexAppComponent implements OnInit {
+    public production = true;
     public loginOpen = false;
     public menuOpen = false;
     public online = true;
@@ -112,6 +113,9 @@ export class PlexAppComponent implements OnInit {
     };
 
     ngOnInit() {
+
+        this.production = this.plex.getAppEnv();
+
         // Genera N labels vacíos
         this.chart.labels = [];
         for (let i = 0; i < this.chart.maxPoints; i++) {

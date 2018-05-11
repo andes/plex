@@ -8,6 +8,7 @@ import { default as swal } from 'sweetalert2';
 
 @Injectable()
 export class Plex {
+    public production: boolean;
     public menu: DropdownItem[];
     public loaderCount = 0;
     public appStatus: Subject<any> = new Subject();
@@ -23,6 +24,28 @@ export class Plex {
     initView(title: string, menu: DropdownItem[] = null) {
         this.titleService.setTitle(title);
         this.menu = menu;
+    }
+
+    /**
+     * Inicializa el environment de la App
+     *
+     * @param {boolean} env
+     *
+     * @memberof Plex
+     */
+    setAppEnv(env: boolean) {
+        this.production = env;
+    }
+
+    /**
+     * Inicializa el environment de la App
+     *
+     * @param {boolean} env
+     *
+     * @memberof Plex
+     */
+    getAppEnv() {
+        return this.production;
     }
 
     /**
