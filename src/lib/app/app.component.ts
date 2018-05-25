@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Plex } from './../core/service';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 
 @Component({
     selector: 'plex-app',
     template: ` <!--Navigation Bar-->
-                <nav class="navbar-inverse bg-inverse fixed-top">
+                <nav class="navbar-inverse fixed-top"  [ngClass]="'bg-' + type">
                     <div class="navbar-brand hover" [routerLink]="'/'" tabindex="-1">
                         <div class="logo"></div>
                         <div class="text"></div>
@@ -68,6 +68,8 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                 </div>`,
 })
 export class PlexAppComponent implements OnInit {
+    @Input() type: String = 'inverse';
+
     public loginOpen = false;
     public menuOpen = false;
     public online = true;
