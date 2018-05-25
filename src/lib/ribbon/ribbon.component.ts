@@ -2,13 +2,15 @@ import { Component, Input, Renderer, OnInit } from '@angular/core';
 
 @Component({
     selector: 'plex-ribbon',
-    template: `<div id="ribbon-container" class="text-center p-1 {{position}}" [ngClass]="getClasses()">
-    <div class="ribbon">
-        <div class="texto text-white p-1">
-            {{ text }}
+    template: `
+    <div id="ribbon-container" class="text-center p-1 {{position}}" [ngClass]="getClasses()">
+        <div class="ribbon">
+            <div class="texto text-white p-1">
+                {{ text }}
+            </div>
         </div>
-    </div>
-</div>`})
+    </div>`
+})
 
 export class PlexRibbonComponent implements OnInit {
     // Propiedades

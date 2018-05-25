@@ -63,7 +63,7 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                 <simple-notifications></simple-notifications>
 
                 <!-- Componente que muestra un ribbon indicando si se está en un entorno de desarrollo/demo -->
-                <plex-ribbon *ngIf="!production"></plex-ribbon>
+                <ng-content selector="plex-ribbon"></ng-content>
 
                 <!--Contenedor principal-->
                 <div class="content">
@@ -115,8 +115,6 @@ export class PlexAppComponent implements OnInit {
     };
 
     ngOnInit() {
-
-        this.production = this.plex.getAppEnv();
         // Genera N labels vacíos
         this.chart.labels = [];
         for (let i = 0; i < this.chart.maxPoints; i++) {
