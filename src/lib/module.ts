@@ -26,6 +26,7 @@ import { PlexDropdownComponent } from './dropdown/dropdown.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TooltipContentComponent } from './tooltip/tooltip-content.component';
 import { PlexIconComponent } from './icon/icon.component';
+import { PlexBadgeComponent } from './badge/badge.component';
 
 // Third party
 import { MatSlideToggleModule, MatCheckboxModule } from '@angular/material';
@@ -54,6 +55,7 @@ const MODULES = [
     PlexPhoneComponent,
     PlexDropdownComponent,
     PlexIconComponent,
+    PlexBadgeComponent,
     TooltipComponent
 ];
 
