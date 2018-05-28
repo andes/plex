@@ -31,7 +31,7 @@ export class PlexRibbonComponent implements OnInit {
 
     getClasses() {
         return {
-            'bg-primary': this.type === 'info' ? true : false,
+            'bg-primary': this.type === 'primary' ? true : false,
             'bg-info': this.type === 'info' ? true : false,
             'bg-success': this.type === 'success' ? true : false,
             'bg-danger': this.type === 'danger' ? true : false,
