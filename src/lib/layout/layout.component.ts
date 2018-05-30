@@ -5,10 +5,10 @@ import { Component, Input } from '@angular/core';
   template: `
     <section>
         <div class="row">
-            <div class="col-{{ width }}">
+            <div class="col-{{ main }}">
                 <ng-content select="plex-box[main]"></ng-content>
             </div>
-            <div class="col-{{ 12 - width }}" *ngIf="width < 12">
+            <div class="col-{{ 12 - main }}" *ngIf="main < 12">
                 <ng-content select="plex-box[sidebar]"></ng-content>
             </div>
         </div>
@@ -17,12 +17,8 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class PlexLayoutComponent {
-  @Input() width = 12;
+  @Input() main = 12;
 
   constructor() {
-  }
-
-  private mainWidth() {
-
   }
 }
