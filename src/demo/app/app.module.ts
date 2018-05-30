@@ -29,6 +29,7 @@ import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
+import { LayoutDemoComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
     ModalDemoComponent,
     LoaderDemoComponent,
     PhoneDemoComponent,
-    DropdownDemoComponent
+    DropdownDemoComponent,
+    LayoutDemoComponent
   ],
   imports: [
     BrowserModule,

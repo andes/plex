@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -32,6 +32,8 @@ import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 import { ChartsModule } from 'ng2-charts';
+import { PlexLayoutComponent } from './layout/layout.component';
+import { PlexFooterComponent } from './layout/footer.component';
 
 const MODULES = [
     PlexAppComponent,
@@ -52,6 +54,8 @@ const MODULES = [
     PlexRipplesDirective,
     PlexPhoneComponent,
     PlexDropdownComponent,
+    PlexLayoutComponent,
+    PlexFooterComponent,
     TooltipComponent
 ];
 
