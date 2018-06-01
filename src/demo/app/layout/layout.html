@@ -1,5 +1,5 @@
 <plex-layout main="8">
-    <plex-box main>
+    <plex-layout-main>
         <header>
             <div class="page-title" title="Esta es la clase page-title" titlePosition="right">Gestor de agendas</div>
         </header>
@@ -31,8 +31,8 @@
             <label>Nombre</label> Pedro
             <label>Apellido</label> Gutierrez
         </fieldset>
-    </plex-box>
-    <plex-box sidebar>
+    </plex-layout-main>
+    <plex-layout-sidebar>
         <header>
             <div class="row">
                 <div class="col">
@@ -51,9 +51,9 @@
             <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false" [required]="true"></plex-text>
             <plex-button label="Guardar formulario" icon="content-save" validateForm="true" (click)="guardar($event)"></plex-button>
         </form>
-    </plex-box>
-    <plex-footer>
-            <plex-button label="Cancelar" type="danger" left ></plex-button>
-            <plex-button label="Guardar formulario" type="success" right ></plex-button>
-    </plex-footer>
+    </plex-layout-sidebar>
+    <plex-layout-footer>
+            <plex-button label="Cancelar" type="danger" left></plex-button>
+            <plex-button label="Guardar formulario" type="success" right></plex-button>
+    </plex-layout-footer>
 </plex-layout>

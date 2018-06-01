@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'plex-footer',
+  selector: 'plex-layout-footer',
   template: `
     <div class="row">
         <div class="col">

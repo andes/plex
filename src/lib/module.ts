@@ -25,6 +25,10 @@ import { PlexPhoneComponent } from './phone/phone.component';
 import { PlexDropdownComponent } from './dropdown/dropdown.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TooltipContentComponent } from './tooltip/tooltip-content.component';
+import { PlexLayoutComponent } from './layout/layout.component';
+import { PlexFooterComponent } from './layout/footer.component';
+import { PlexLayoutMainComponent } from './layout/main.component';
+import { PlexLayoutSidebarComponent } from './layout/sidebar.component';
 
 // Third party
 import { MatSlideToggleModule, MatCheckboxModule } from '@angular/material';
@@ -32,8 +36,6 @@ import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 import { ChartsModule } from 'ng2-charts';
-import { PlexLayoutComponent } from './layout/layout.component';
-import { PlexFooterComponent } from './layout/footer.component';
 
 const MODULES = [
     PlexAppComponent,
@@ -56,6 +58,8 @@ const MODULES = [
     PlexDropdownComponent,
     PlexLayoutComponent,
     PlexFooterComponent,
+    PlexLayoutMainComponent,
+    PlexLayoutSidebarComponent,
     TooltipComponent
 ];
 

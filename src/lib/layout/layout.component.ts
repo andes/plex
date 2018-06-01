@@ -6,14 +6,14 @@ import { Component, Input } from '@angular/core';
     <section>
         <div class="row">
             <div class="col-{{ main }}">
-                <ng-content select="plex-box[main]"></ng-content>
+                <ng-content select="plex-layout-main"></ng-content>
             </div>
             <div class="col-{{ maxcolumns - main }}" *ngIf="main < maxcolumns">
-                <ng-content select="plex-box[sidebar]"></ng-content>
+                <ng-content select="plex-layout-sidebar"></ng-content>
             </div>
         </div>
     </section>
-    <ng-content select="plex-footer"></ng-content>
+    <ng-content select="plex-layout-footer"></ng-content>
   `,
 })
 export class PlexLayoutComponent {

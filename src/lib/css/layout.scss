@@ -30,7 +30,7 @@ plex-layout,
     height: 100%;
 
   // Footer (se ubica fijo abajo de la pantalla)
-    > footer, > plex-footer {
+    > footer, > plex-layout-footer {
         margin-bottom: ($grid-gutter-width-base / 2);
         padding: ($grid-gutter-width-base / 2);
         background: white;
