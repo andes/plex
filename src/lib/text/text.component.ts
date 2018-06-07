@@ -10,7 +10,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
 
 @Component({
     selector: 'plex-text',
-    template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+    template: `<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
                     <!-- Label -->
                     <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
                     <!-- Simple text field -->
