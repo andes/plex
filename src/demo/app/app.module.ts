@@ -59,7 +59,7 @@ import { LayoutDemoComponent } from './layout/layout.component';
     FormsModule,
     HttpModule,
     PlexModule,
-    routing,
+    routing
   ],
   providers: [
     Plex,

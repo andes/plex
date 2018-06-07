@@ -9,21 +9,24 @@ export class TextDemoComponent implements OnInit {
     public model3: any;
     public templateModel1: any;
     public templateModel2: any;
+    public richText = {
+        contenido: '<p>Hello <strong>World</strong></p>'
+    };
     public prueba = '';
 
-    onFocus () {
-      this.templateModel1.usuario = 'FOCUSED';
+    onFocus() {
+        this.templateModel1.usuario = 'FOCUSED';
     }
 
-    onFocusout () {
-      this.templateModel1.usuario = '';
+    onFocusout() {
+        this.templateModel1.usuario = '';
     }
 
     ngOnInit() {
-        // Tepmlate-Form1 model
+        // Template-Form1 model
         this.templateModel1 = { nombre: null };
 
-        // Tepmlate-Form2 model
+        // Template-Form2 model
         this.templateModel2 = { nombre: null, min: 10, max: 15 };
 
         // Form1: Sin validador
