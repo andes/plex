@@ -56,36 +56,45 @@ body {
 }
 
 // Plex Layout
+plex-layout, 
 .plex-layout {
-  display: flex;
-  flex-flow: column;
-  height: 100%; // Footer (se ubica fijo abajo de la pantalla)
-  >footer {
-    margin-bottom: ($grid-gutter-width-base / 2);
-    padding: ($grid-gutter-width-base / 2);
-    background: white;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  }
-  >footer[type='invert'] {
-    background: $dark-blue;
-    color: white;
-  }
-  >section {
-    height: 1%; // Es un hack para que los hijos tengan altura máxima
-    flex: 1; // Expande a todo el alto del contenedor
-    margin-bottom: ($grid-gutter-width-base / 2);
-    >.row:first-child {
-      height: 100%;
-      >.col:first-child,
-      >[class^="col-"]:first-child {
-        padding-right: 0;
-      }
-      >.col:only-child,
-      >[class^="col-"]:only-child {
-        padding-right: ($grid-gutter-width-base / 2);
-      }
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+
+  // Footer (se ubica fijo abajo de la pantalla)
+    > footer, > plex-layout-footer {
+        margin-bottom: ($grid-gutter-width-base / 2);
+        padding: ($grid-gutter-width-base / 2);
+        background: white;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     }
-  }
+    
+    > footer[type='invert'] {
+        background: $dark-blue;
+        color: white;
+    }
+
+    > plex-layout, 
+    > section  {
+        height: 1%; // Es un hack para que los hijos tengan altura máxima
+        flex: 1; // Expande a todo el alto del contenedor
+        margin-bottom: ($grid-gutter-width-base / 2);
+
+        > .row:first-child {
+            height: 100%;
+
+            > .col:first-child,
+            > [class^="col-"]:first-child {
+                padding-right: 0;
+            }
+
+            > .col:only-child,
+            > [class^="col-"]:only-child {
+                padding-right: ($grid-gutter-width-base / 2);
+            }
+        }
+    }
 }
 
 // Page Title

@@ -30,6 +30,7 @@ import { LoaderDemoComponent } from './loader/loader.component';
 import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
+import { LayoutDemoComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
     LoaderDemoComponent,
     RibbonDemoComponent,
     PhoneDemoComponent,
-    DropdownDemoComponent
+    DropdownDemoComponent,
+    LayoutDemoComponent
   ],
   imports: [
     BrowserModule,

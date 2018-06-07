@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -26,6 +26,10 @@ import { PlexPhoneComponent } from './phone/phone.component';
 import { PlexDropdownComponent } from './dropdown/dropdown.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TooltipContentComponent } from './tooltip/tooltip-content.component';
+import { PlexLayoutComponent } from './layout/layout.component';
+import { PlexFooterComponent } from './layout/footer.component';
+import { PlexLayoutMainComponent } from './layout/main.component';
+import { PlexLayoutSidebarComponent } from './layout/sidebar.component';
 
 // Third party
 import { MatSlideToggleModule, MatCheckboxModule } from '@angular/material';
@@ -55,6 +59,10 @@ const MODULES = [
     PlexRipplesDirective,
     PlexPhoneComponent,
     PlexDropdownComponent,
+    PlexLayoutComponent,
+    PlexFooterComponent,
+    PlexLayoutMainComponent,
+    PlexLayoutSidebarComponent,
     TooltipComponent
 ];
 
