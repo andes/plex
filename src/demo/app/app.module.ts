@@ -27,6 +27,7 @@ import { SelectDemoComponent } from './select/select.component';
 import { DateTimeDemoComponent } from './datetime/datetime.component';
 import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
+import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { LayoutDemoComponent } from './layout/layout.component';
@@ -48,6 +49,7 @@ import { LayoutDemoComponent } from './layout/layout.component';
     DateTimeDemoComponent,
     ModalDemoComponent,
     LoaderDemoComponent,
+    RibbonDemoComponent,
     PhoneDemoComponent,
     DropdownDemoComponent,
     LayoutDemoComponent

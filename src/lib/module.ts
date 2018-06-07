@@ -18,6 +18,7 @@ import { PlexBoolComponent } from './bool/bool.component';
 import { PlexSelectComponent } from './select/select.component';
 import { PlexDateTimeComponent } from './datetime/datetime.component';
 import { PlexLoaderComponent } from './loader/loader.component';
+import { PlexRibbonComponent } from './ribbon/ribbon.component';
 import { PlexScrollComponent } from './scroll/scroll.component';
 import { PlexRipplesDirective } from './ripples/ripples.directive';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
@@ -50,6 +51,7 @@ const MODULES = [
     PlexSelectComponent,
     PlexDateTimeComponent,
     PlexLoaderComponent,
+    PlexRibbonComponent,
     PlexScrollComponent,
     PlexRipplesDirective,
     PlexPhoneComponent,
