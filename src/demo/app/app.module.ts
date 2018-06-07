@@ -27,8 +27,10 @@ import { SelectDemoComponent } from './select/select.component';
 import { DateTimeDemoComponent } from './datetime/datetime.component';
 import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
+import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
+import { LayoutDemoComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -47,15 +49,17 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
     DateTimeDemoComponent,
     ModalDemoComponent,
     LoaderDemoComponent,
+    RibbonDemoComponent,
     PhoneDemoComponent,
-    DropdownDemoComponent
+    DropdownDemoComponent,
+    LayoutDemoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     PlexModule,
-    routing,
+    routing
   ],
   providers: [
     Plex,

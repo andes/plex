@@ -1,5 +1,4 @@
 // Html
-
 html {
   height: 100% !important;
 }
@@ -9,13 +8,47 @@ body {
   padding-top: $navbar-height + ($grid-gutter-width-base / 2);
 }
 
+#ribbon-container {
+  width: 350px;
+  position: absolute;
+  box-shadow: 0px 3px 24px #577f8c;
+  opacity: 0.9;
+  z-index: 9999; // I know
+  .ribbon {
+    .texto {
+      border: 2px dashed white;
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+  }
+  &.top-left {
+    top: 30px;
+    left: -110px;
+    transform: rotateZ(-45deg);
+  }
+  &.top-right {
+    top: 30px;
+    right: -110px;
+    transform: rotateZ(45deg);
+  }
+  &.bottom-left {
+    bottom: 30px;
+    left: -110px;
+    transform: rotateZ(45deg);
+  }
+  &.bottom-right {
+    bottom: 30px;
+    right: -110px;
+    transform: rotateZ(-45deg);
+  }
+}
+
 // Main container
 .content {
   margin-left: ($grid-gutter-width-base / 2);
   margin-right: ($grid-gutter-width-base / 2);
   height: 100%;
-
-  > *:not(router-outlet) {
+  >*:not(router-outlet) {
     display: flex;
     flex-flow: column;
     height: 100%;
@@ -23,45 +56,46 @@ body {
 }
 
 // Plex Layout
+plex-layout, 
 .plex-layout {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
 
   // Footer (se ubica fijo abajo de la pantalla)
-  > footer {
-    margin-bottom: ($grid-gutter-width-base / 2);
-    padding: ($grid-gutter-width-base / 2);
-    background: white;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  }
-
-  > footer[type='invert'] {
-    background: $dark-blue;
-    color: white;
-  }
-
-  > section {
-    height: 1%; // Es un hack para que los hijos tengan altura máxima
-    flex: 1; // Expande a todo el alto del contenedor
-    margin-bottom: ($grid-gutter-width-base / 2);
-
-    > .row:first-child {
-      height: 100%;
-
-       > .col:first-child,
-      > [class^="col-"]:first-child {
-        padding-right: 0;
-      }
-
-       > .col:only-child,
-      > [class^="col-"]:only-child {
-        padding-right: ($grid-gutter-width-base / 2);
-      }
+    > footer, > plex-layout-footer {
+        margin-bottom: ($grid-gutter-width-base / 2);
+        padding: ($grid-gutter-width-base / 2);
+        background: white;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     }
-  }
-}
+    
+    > footer[type='invert'] {
+        background: $dark-blue;
+        color: white;
+    }
 
+    > plex-layout, 
+    > section  {
+        height: 1%; // Es un hack para que los hijos tengan altura máxima
+        flex: 1; // Expande a todo el alto del contenedor
+        margin-bottom: ($grid-gutter-width-base / 2);
+
+        > .row:first-child {
+            height: 100%;
+
+            > .col:first-child,
+            > [class^="col-"]:first-child {
+                padding-right: 0;
+            }
+
+            > .col:only-child,
+            > [class^="col-"]:only-child {
+                padding-right: ($grid-gutter-width-base / 2);
+            }
+        }
+    }
+}
 
 // Page Title
 .page-title {

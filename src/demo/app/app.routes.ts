@@ -13,9 +13,11 @@ import { AccordionDemoComponent } from './accordion/accordion.component';
 import { SelectDemoComponent } from './select/select.component';
 import { ModalDemoComponent } from './modal/modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
+import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { FontsDemoComponent } from './fonts/fonts.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
+import { LayoutDemoComponent } from './layout/layout.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -32,8 +34,10 @@ const appRoutes: Routes = [
     { path: 'modal', component: ModalDemoComponent },
     { path: 'select', component: SelectDemoComponent },
     { path: 'loader', component: LoaderDemoComponent },
+    { path: 'ribbon', component: RibbonDemoComponent },
     { path: 'phone', component: PhoneDemoComponent },
     { path: 'dropdown', component: DropdownDemoComponent },
+    { path: 'layout', component: LayoutDemoComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 

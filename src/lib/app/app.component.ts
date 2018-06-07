@@ -59,8 +59,11 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                     <plex-loader *ngIf="plex.loaderCount > 0" class="loader" type="linear"></plex-loader>
                 </nav>
 
-                <!--Componente de notificaciones Toast-->
+                <!-- Componente de notificaciones Toast -->
                 <simple-notifications></simple-notifications>
+
+                <!-- Componente que muestra un ribbon indicando si se está en un entorno de desarrollo/demo -->
+                <ng-content selector="plex-ribbon"></ng-content>
 
                 <!--Contenedor principal-->
                 <div class="content">
@@ -80,17 +83,17 @@ export class PlexAppComponent implements OnInit {
         options: {
             // responsive: true,
             scales:
-            {
-                yAxes: [{
-                    display: false,
-                    gridLines: {
-                        display: false
-                    },
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            },
+                {
+                    yAxes: [{
+                        display: false,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
             tooltips: {
                 enabled: false,
             }

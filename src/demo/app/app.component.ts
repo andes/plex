@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 
     const menu: DropdownItem[] = [
       { label: 'Inicio', icon: 'creation', route: '/inicio' },
+      { label: 'Layout', icon: 'creation', route: '/layout' },
       { label: 'Loader', icon: 'dots-horizontal', route: '/loader' },
       { label: 'Phone', icon: 'phone', route: '/phone' },
       { label: 'Bool', icon: 'checkbox-marked-outline', route: '/bool' },
@@ -30,14 +31,15 @@ export class AppComponent implements OnInit {
       { label: 'Text', icon: 'alphabetical', route: '/text' },
       { label: 'Dropdown', icon: 'menu-right', route: '/dropdown' },
       { label: 'Tooltip', icon: 'tooltip', route: '/tooltip' },
+      { label: 'Ribbon', icon: 'tooltip', route: '/ribbon' },
     ];
     this.plex.updateMenu(menu);
     this.plex.updateAppStatus({ API: 'OK' });
     this.plex.updateUserInfo({
       'usuario': {
-        'nombreCompleto': 'Haruki Morakami',
+        'nombreCompleto': 'Haruki Murakami',
         'nombre': 'Haruki',
-        'apellido': 'Morakami',
+        'apellido': 'Murakami',
         'username': 26108063,
         'documento': 26108063
       },
