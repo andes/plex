@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
 
     const menu: DropdownItem[] = [
       { label: 'Inicio', icon: 'creation', route: '/inicio' },
-      { label: 'Layout', icon: 'creation', route: '/layout' },
       { label: 'Loader', icon: 'dots-horizontal', route: '/loader' },
       { label: 'Phone', icon: 'phone', route: '/phone' },
       { label: 'Bool', icon: 'checkbox-marked-outline', route: '/bool' },

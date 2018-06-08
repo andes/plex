@@ -19,8 +19,13 @@ import { hasRequiredValidator } from '../core/validator.functions';
     </label>
 
     <!-- Simple text field -->
-    <div [hidden]="multiline || html" [ngClass]="{'input-group': prefix || suffix}">
+    <div [hidden]="multiline || html" [ngClass]="{'input-group': prefix || suffix || prefixParent?.children.length > 0}">
+
       <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
+      <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
+        <ng-content selector="[prefix]"></ng-content>
+      </span>
+
       <input #input type="{{password ? 'password' : 'text'}}" class="form-control" [placeholder]="placeholder" [disabled]="disabled"
         [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
     </div>

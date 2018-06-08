@@ -26,6 +26,8 @@ import { PlexPhoneComponent } from './phone/phone.component';
 import { PlexDropdownComponent } from './dropdown/dropdown.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TooltipContentComponent } from './tooltip/tooltip-content.component';
+import { PlexIconComponent } from './icon/icon.component';
+import { PlexBadgeComponent } from './badge/badge.component';
 import { PlexLayoutComponent } from './layout/layout.component';
 import { PlexFooterComponent } from './layout/footer.component';
 import { PlexLayoutMainComponent } from './layout/main.component';
@@ -59,6 +61,8 @@ const MODULES = [
     PlexRipplesDirective,
     PlexPhoneComponent,
     PlexDropdownComponent,
+    PlexIconComponent,
+    PlexBadgeComponent,
     PlexLayoutComponent,
     PlexFooterComponent,
     PlexLayoutMainComponent,
