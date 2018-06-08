@@ -80,15 +80,14 @@ Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
    export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     ```
 
-9. En `app.module.ts` importar `PlexModule` y registrar los routings y `PlexService`: 
+9. En `app.module.ts` importar `PlexModule` y registrar los routings y el servicio `Plex`: 
 
     ```typescript
    import { BrowserModule } from '@angular/platform-browser';
    import { NgModule } from '@angular/core';
    import { FormsModule } from '@angular/forms';
    import { HttpModule } from '@angular/http';
-   import { PlexModule } from 'andes-plex/src/lib/module';
-   import { PlexService } from 'andes-plex/src/lib/core/service';
+   import { Plex, PlexModule } from '@andes/plex';
    import { routing, appRoutingProviders } from './app.routing';
 
    // Components
@@ -108,7 +107,7 @@ Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
        routing
      ],
      providers: [
-       PlexService,  
+       Plex,  
        appRoutingProviders  
      ],
      bootstrap: [AppComponent]
