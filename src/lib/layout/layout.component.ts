@@ -17,7 +17,7 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class PlexLayoutComponent {
-    private maxcolumns = 12;
+    public maxcolumns = 12;
     @Input() main = 12;
 
     constructor() {
