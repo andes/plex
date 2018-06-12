@@ -131,7 +131,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         let element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
         this.renderer.setElementProperty(element, 'value', typeof value === 'undefined' ? '' : value);
         if (this.multiline) {
-            this.adjustTextArea()
+            this.adjustTextArea();
         } else {
             if (this.html) {
                 let component = (this.quillEditor as any);
@@ -153,7 +153,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             this.isEmpty = !(value && value.toString().trim());
 
             if (this.multiline) {
-                this.adjustTextArea()
+                this.adjustTextArea();
             }
             // jgabriel | 24/03/2017 | Esto es un por bug de Angular2 que a veces no actualiza la vista cuando cambia el modelo
             // this.change.emit({

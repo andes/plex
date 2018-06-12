@@ -207,7 +207,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                     if (!this.data.some(j => j[this.idField] === i[this.idField])) {
                         this.data.push(i);
                     }
-                })
+                });
                 // Ordena
                 // this.data.sort((a, b) => a[this.idField].localeCompare(b[this.idField]));
             }
@@ -348,13 +348,13 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             if (Array.isArray(value)) {
                 value.forEach((i, index) => {
                     value[index] = this.remove$order(value[index]);
-                })
+                });
             } else {
                 if (typeof value === 'object') {
                     delete value.$order;
                 }
             }
-        };
+        }
         return value;
     }
 
