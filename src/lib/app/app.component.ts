@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Plex } from './../core/service';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 
 @Component({
     selector: 'plex-app',
     template: ` <!--Navigation Bar-->
-                <nav class="navbar-inverse bg-inverse fixed-top">
+                <nav class="navbar-inverse fixed-top"  [ngClass]="'bg-' + type">
                     <div class="navbar-brand hover" [routerLink]="'/'" tabindex="-1">
                         <div class="logo"></div>
                         <div class="text"></div>
@@ -59,8 +59,11 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                     <plex-loader *ngIf="plex.loaderCount > 0" class="loader" type="linear"></plex-loader>
                 </nav>
 
-                <!--Componente de notificaciones Toast-->
+                <!-- Componente de notificaciones Toast -->
                 <simple-notifications></simple-notifications>
+
+                <!-- Componente que muestra un ribbon indicando si se está en un entorno de desarrollo/demo -->
+                <ng-content selector="plex-ribbon"></ng-content>
 
                 <!--Contenedor principal-->
                 <div class="content">
@@ -68,6 +71,8 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                 </div>`,
 })
 export class PlexAppComponent implements OnInit {
+    @Input() type: String = 'inverse';
+
     public loginOpen = false;
     public menuOpen = false;
     public online = true;
@@ -78,17 +83,17 @@ export class PlexAppComponent implements OnInit {
         options: {
             // responsive: true,
             scales:
-            {
-                yAxes: [{
-                    display: false,
-                    gridLines: {
-                        display: false
-                    },
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            },
+                {
+                    yAxes: [{
+                        display: false,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
             tooltips: {
                 enabled: false,
             }

@@ -10,22 +10,38 @@ import { hasRequiredValidator } from '../core/validator.functions';
 
 @Component({
     selector: 'plex-text',
-    template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
-                    <!-- Label -->
-                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
-                    <!-- Simple text field -->
-                    <div [hidden]="multiline" [ngClass]="{'input-group': prefix || suffix}">
-                    <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
-                    <input #input type="{{password ? 'password' : 'text'}}" class="form-control" [placeholder]="placeholder" [disabled]="disabled"
-                        [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
-                    </div>
-                    <i *ngIf="!readonly && !multiline && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
-                    <!-- Multiline -->
-                    <textarea [hidden]="!multiline" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
-                    (input)="onChange($event.target.value)" (change)="disabledEvent($event)" ></textarea>
-                    <!-- Validation -->
-                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
-                </div>`,
+    template: `
+    <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+
+    <!-- Label -->
+    <label *ngIf="label" class="form-control-label">{{label}}
+      <span *ngIf="esOpcional" class="opcional"></span>
+    </label>
+
+    <!-- Simple text field -->
+    <div [hidden]="multiline || html" [ngClass]="{'input-group': prefix || suffix || prefixParent?.children.length > 0}">
+
+      <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
+      <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
+        <ng-content selector="[prefix]"></ng-content>
+      </span>
+
+      <input #input type="{{password ? 'password' : 'text'}}" class="form-control" [placeholder]="placeholder" [disabled]="disabled"
+        [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
+    </div>
+    <i *ngIf="!readonly && !multiline && !html && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
+
+    <!-- Multiline -->
+    <textarea [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+      (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()"></textarea>
+
+    <!-- HTML Editor -->
+    <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="{height: '300px'}" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
+
+    <!-- Validation -->
+    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+  </div>
+    `,
     providers: [
         // Permite acceder al atributo formControlName/ngModel
         {
@@ -37,8 +53,18 @@ import { hasRequiredValidator } from '../core/validator.functions';
 })
 export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     public isEmpty = true;
+    public quill = {
+        toolbar: [
+            ['bold', 'italic', 'underline'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'size': ['small', false, 'large', 'huge'] }],
+            [{ 'align': [] }],
+            ['clean'],
+        ]
+    };
     @ViewChild('input') private input: ElementRef;
     @ViewChild('textarea') private textarea: ElementRef;
+    @ViewChild('quillEditor') private quillEditor: ElementRef;
     @ContentChild(NgControl) public control: any;
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
@@ -53,6 +79,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() readonly = false;
     @Input() password = false;
     @Input() multiline = false;
+    @Input() html = false;
     @Input()
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
@@ -67,12 +94,12 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Output() focus = new EventEmitter();
     @Output() focusout = new EventEmitter();
 
-    public onFocus () {
-      this.focus.emit();
+    public onFocus() {
+        this.focus.emit();
     }
 
-    public onFocusout () {
-      this.focusout.emit();
+    public onFocusout() {
+        this.focusout.emit();
     }
 
     // Funciones públicas
@@ -105,6 +132,11 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.renderer.setElementProperty(element, 'value', typeof value === 'undefined' ? '' : value);
         if (this.multiline) {
             this.adjustTextArea()
+        } else {
+            if (this.html) {
+                let component = (this.quillEditor as any);
+                component.quillEditor.setContents(component.valueSetter(component.quillEditor, typeof value === 'undefined' ? '' : value));
+            }
         }
         // Check empty
         this.isEmpty = !(value && value.toString().trim());

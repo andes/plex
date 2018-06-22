@@ -6,7 +6,9 @@ import { Plex } from '../../../lib/core/service';
 })
 export class HomeDemoComponent {
     // Permite el uso de flex-box en el componente
-    @HostBinding('class.plex-layout') layout = true;
-
+    public field = '';
     constructor(public plex: Plex) {}
+    guardar($event) {
+
+    }
 }

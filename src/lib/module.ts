@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +18,7 @@ import { PlexBoolComponent } from './bool/bool.component';
 import { PlexSelectComponent } from './select/select.component';
 import { PlexDateTimeComponent } from './datetime/datetime.component';
 import { PlexLoaderComponent } from './loader/loader.component';
+import { PlexRibbonComponent } from './ribbon/ribbon.component';
 import { PlexScrollComponent } from './scroll/scroll.component';
 import { PlexRipplesDirective } from './ripples/ripples.directive';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
@@ -25,6 +26,12 @@ import { PlexPhoneComponent } from './phone/phone.component';
 import { PlexDropdownComponent } from './dropdown/dropdown.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TooltipContentComponent } from './tooltip/tooltip-content.component';
+import { PlexIconComponent } from './icon/icon.component';
+import { PlexBadgeComponent } from './badge/badge.component';
+import { PlexLayoutComponent } from './layout/layout.component';
+import { PlexFooterComponent } from './layout/footer.component';
+import { PlexLayoutMainComponent } from './layout/main.component';
+import { PlexLayoutSidebarComponent } from './layout/sidebar.component';
 
 // Third party
 import { MatSlideToggleModule, MatCheckboxModule } from '@angular/material';
@@ -32,6 +39,7 @@ import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 import { ChartsModule } from 'ng2-charts';
+import { QuillModule } from 'ngx-quill'
 
 const MODULES = [
     PlexAppComponent,
@@ -48,10 +56,17 @@ const MODULES = [
     PlexSelectComponent,
     PlexDateTimeComponent,
     PlexLoaderComponent,
+    PlexRibbonComponent,
     PlexScrollComponent,
     PlexRipplesDirective,
     PlexPhoneComponent,
     PlexDropdownComponent,
+    PlexIconComponent,
+    PlexBadgeComponent,
+    PlexLayoutComponent,
+    PlexFooterComponent,
+    PlexLayoutMainComponent,
+    PlexLayoutSidebarComponent,
     TooltipComponent
 ];
 
@@ -63,6 +78,7 @@ const MODULES = [
         MatSlideToggleModule,
         MatCheckboxModule,
         ChartsModule,
+        QuillModule,
         SimpleNotificationsModule.forRoot()
     ],
     declarations: [

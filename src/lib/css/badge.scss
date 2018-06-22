@@ -1,9 +1,5 @@
-.badge-default,
-.badge-danger,
-.badge-success,
-.badge-warning,
-.badge-info,
-{
+
+@mixin badge-factory($color) {
     background: transparent;
     border: 1.5px solid;
     font-size: 0.75em;
@@ -11,34 +7,33 @@
     padding: 5px;
     text-transform: uppercase;
     // Espaciado del ícono
-    >i {
+    > i {
         margin-right: 5px;
     }
+    
+    border-color: $color;
+    color: $color;
 }
 
+
 .badge-default {
-    border-color: $dark-grey;
-    color: $dark-grey;
+    @include badge-factory($dark-grey);
 }
 
 .badge-danger {
-    border-color: $red;
-    color: $red;
+    @include badge-factory($red);
 }
 
 .badge-success {
-    border-color: $green;
-    color: $green;
+    @include badge-factory($green);
 }
 
 .badge-warning {
-    border-color: $orange;
-    color: $orange;
+    @include badge-factory($orange);
 }
 
 .badge-info {
-    color: $blue;
-    border-color: $blue;
+    @include badge-factory($blue);
 }
 
 // Espaciado del ícono
@@ -46,3 +41,14 @@
 [class^="label-"]>i {
     margin-right: 5px;
 }
+
+/** BADGE EXTENSIBLE DESDE AFUERA DE PLEX */
+$badge-extend: () !default;
+
+@each $name, $color in $badge-extend {
+    .badge-#{$name} {
+        @include badge-factory($color);
+    }
+}
+
+
