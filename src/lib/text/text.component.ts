@@ -135,7 +135,10 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         } else {
             if (this.html) {
                 let component = (this.quillEditor as any);
-                component.quillEditor.setContents(component.valueSetter(component.quillEditor, typeof value === 'undefined' ? '' : value));
+                // Por el dinamismo de RUP hay una primera instancia que quillEditor es undefined
+                if (component.quillEditor) {
+                    component.quillEditor.setContents(component.valueSetter(component.quillEditor, typeof value === 'undefined' ? '' : value));
+                }
             }
         }
         // Check empty
