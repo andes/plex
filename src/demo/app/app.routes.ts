@@ -5,6 +5,7 @@ import { BoxDemoComponent } from './box/box.component';
 import { TextDemoComponent } from './text/text.component';
 import { DateTimeDemoComponent } from './datetime/datetime.component';
 import { BoolDemoComponent } from './bool/bool.component';
+import { RadioDemoComponent } from './radio/radio.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
     { path: 'datetime', component: DateTimeDemoComponent },
     { path: 'fonts', component: FontsDemoComponent },
     { path: 'bool', component: BoolDemoComponent },
+    { path: 'radio', component: RadioDemoComponent },
     { path: 'int', component: IntDemoComponent },
     { path: 'float', component: FloatDemoComponent },
     { path: 'button', component: ButtonDemoComponent },
