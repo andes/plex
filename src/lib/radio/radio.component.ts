@@ -1,27 +1,59 @@
-import { PlexRadioGroupComponent } from './radio-group.component';
 import { Component, OnInit, AfterViewInit, Input, forwardRef, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'plex-radio',
-    template: ` <mat-radio-button [disabled]="readonly" (change)="radioChange($event)" [value]="value" [name]="name">
-                <span *ngIf="label">
-                    {{label}}
-                </span>
-                </mat-radio-button>
-                `,
+    providers: [
+        // Permite acceder al atributo formControlName/ngModel
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => PlexRadioComponent),
+            multi: true,
+        }
+    ],
+    template: `<mat-radio-group [(ngModel)]="value">
+                    <mat-radio-button *ngFor="let item of data" [value]="item.id" [disabled]="readonly" (change)="radioChange($event)" [ngClass]="{'d-block': type == 'vertical'}">
+                        {{item.label || item.text}}
+                     </mat-radio-button>
+                </mat-radio-group>
+              `
 })
-export class PlexRadioComponent {
-    // Propiedad públicas
-    @Input() label: string;
-    @Input() value: any;
-    @Input() name: string;
-    @Input() disabled: boolean;
+export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+    public value: any;
 
-    constructor(private radioGroup: PlexRadioGroupComponent) {
+    // Propiedad públicas
+    @Input() data: any[]
+    @Input() label: string;
+    @Input() readonly: boolean;
+    @Input() type: 'vertical' | 'horizontal' = 'vertical';
+    @Output() change = new EventEmitter();
+
+    // Funciones privadas
+    private onChange = (_: any) => { };
+
+    // Inicialización
+    ngOnInit() {
+    }
+
+    ngAfterViewInit() { }
+
+    // Actualización Modelo -> Vista
+    writeValue(value: any) {
+        this.value = value;
+    }
+
+    // Actualización Vista -> Modelo
+    registerOnTouched(fn: any) { }
+    registerOnChange(fn: any): void {
+        this.onChange = (value) => {
+            fn(value);
+            this.change.emit({
+                value: value
+            });
+        };
     }
 
     radioChange(event) {
-        this.radioGroup.childChange(event);
+        this.onChange(event.value);
     }
 }

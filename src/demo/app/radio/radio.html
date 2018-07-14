@@ -1,12 +1,23 @@
-<plex-box title="plex-bool" type="primary">
+<plex-box>
     <div class="row">
         <div class="col-md-6">
             <form>
-                <h1>Radio</h1>
-                <plex-radio-group [(ngModel)]="modelo.radio" name="colores">
-                    <plex-radio label="Valor 1" [value]="1234" name="colores"></plex-radio>
-                    <plex-radio label="Valor 2" [value]="'Verde'" name="colores"></plex-radio>
-                </plex-radio-group>
+                <h1>Radio vertical</h1>
+                <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores">
+                </plex-radio>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="modelo">
+            <label>Modelo</label>
+            <pre>{{modelo | json}}</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <h1>Radio horizontal</h1>
+                <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores" type="horizontal">
+                </plex-radio>
             </form>
         </div>
         <div class="col-md-6" *ngIf="modelo">

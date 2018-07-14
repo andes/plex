@@ -16,7 +16,6 @@ import { PlexAccordionComponent } from './accordion/accordion.component';
 import { PlexPanelComponent } from './accordion/panel.component';
 import { PlexBoolComponent } from './bool/bool.component';
 import { PlexRadioComponent } from './radio/radio.component';
-import { PlexRadioGroupComponent } from './radio/radio-group.component';
 import { PlexSelectComponent } from './select/select.component';
 import { PlexDateTimeComponent } from './datetime/datetime.component';
 import { PlexLoaderComponent } from './loader/loader.component';
@@ -49,7 +48,6 @@ const MODULES = [
     PlexTabComponent,
     PlexBoolComponent,
     PlexRadioComponent,
-    PlexRadioGroupComponent,
     PlexSelectComponent,
     PlexDateTimeComponent,
     PlexLoaderComponent,
