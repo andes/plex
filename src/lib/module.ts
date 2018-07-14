@@ -15,6 +15,7 @@ import { PlexTabComponent } from './tabs/tab.component';
 import { PlexAccordionComponent } from './accordion/accordion.component';
 import { PlexPanelComponent } from './accordion/panel.component';
 import { PlexBoolComponent } from './bool/bool.component';
+import { PlexRadioComponent } from './radio/radio.component';
 import { PlexSelectComponent } from './select/select.component';
 import { PlexDateTimeComponent } from './datetime/datetime.component';
 import { PlexLoaderComponent } from './loader/loader.component';
@@ -34,7 +35,7 @@ import { PlexLayoutMainComponent } from './layout/main.component';
 import { PlexLayoutSidebarComponent } from './layout/sidebar.component';
 
 // Third party
-import { MatSlideToggleModule, MatCheckboxModule } from '@angular/material';
+import { MatSlideToggleModule, MatCheckboxModule, MatRadioModule, MatRadioButton } from '@angular/material';
 import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
@@ -53,6 +54,7 @@ const MODULES = [
     PlexPanelComponent,
     PlexTabComponent,
     PlexBoolComponent,
+    PlexRadioComponent,
     PlexSelectComponent,
     PlexDateTimeComponent,
     PlexLoaderComponent,
@@ -77,6 +79,7 @@ const MODULES = [
         FormsModule,
         MatSlideToggleModule,
         MatCheckboxModule,
+        MatRadioModule,
         ChartsModule,
         QuillModule,
         SimpleNotificationsModule.forRoot()
@@ -87,7 +90,8 @@ const MODULES = [
         TooltipContentComponent
     ],
     entryComponents: [
-        TooltipContentComponent
+        TooltipContentComponent,
+        MatRadioButton
     ],
     exports: MODULES
 })

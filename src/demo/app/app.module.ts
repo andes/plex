@@ -17,6 +17,7 @@ import { HomeDemoComponent } from './home/home.component';
 import { BoxDemoComponent } from './box/box.component';
 import { TextDemoComponent } from './text/text.component';
 import { BoolDemoComponent } from './bool/bool.component';
+import { RadioDemoComponent } from './radio/radio.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { FontsDemoComponent } from './fonts/fonts.component';
@@ -44,6 +45,7 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
     FontsDemoComponent,
     AccordionDemoComponent,
     BoolDemoComponent,
+    RadioDemoComponent,
     SelectDemoComponent,
     DateTimeDemoComponent,
     ModalDemoComponent,
