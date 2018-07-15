@@ -16,7 +16,7 @@
         <div class="col-md-6">
             <form>
                 <h1>Radio horizontal</h1>
-                <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores" type="horizontal">
+                <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores" type="horizontal" [required]="true">
                 </plex-radio>
             </form>
         </div>
@@ -25,4 +25,5 @@
             <pre>{{modelo | json}}</pre>
         </div>
     </div>
+    <plex-button label="Borrar" (click)="borrar()"></plex-button>
 </plex-box>

@@ -1,5 +1,5 @@
-import { Component, OnInit, AfterViewInit, Input, forwardRef, Output, EventEmitter } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit, AfterViewInit, Input, forwardRef, Output, EventEmitter, ContentChild } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 
 @Component({
     selector: 'plex-radio',
@@ -11,15 +11,20 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
             multi: true,
         }
     ],
-    template: `<mat-radio-group [(ngModel)]="value">
+    template: `<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+                 <mat-radio-group [(ngModel)]="value">
                     <mat-radio-button *ngFor="let item of data" [value]="item.id" [disabled]="readonly" (change)="radioChange($event)" [ngClass]="{'d-block': type == 'vertical'}">
                         {{item.label || item.text}}
                      </mat-radio-button>
-                </mat-radio-group>
+                 </mat-radio-group>
+                 <!-- Validation -->
+                 <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+               </div>
               `
 })
 export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     public value: any;
+    @ContentChild(NgControl) public control: any;
 
     // Propiedad públicas
     @Input() data: any[]
@@ -54,6 +59,7 @@ export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAc
     }
 
     radioChange(event) {
+        this.control.control.markAsTouched()
         this.onChange(event.value);
     }
 }
