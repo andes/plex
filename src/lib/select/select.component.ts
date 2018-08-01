@@ -3,8 +3,7 @@ import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR, Validators, Abstrac
 import { SelectEvent } from './select-event.interface';
 import { hasRequiredValidator } from '../core/validator.functions';
 
-// Importo las librerías de jQuery
-let jQuery = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
+// Importo las librería
 let Selectize = require('selectize/dist/js/standalone/selectize');
 
 @Component({
@@ -221,7 +220,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         this.labelField = this.labelField.replace(/(\s)*\+/g, '+').replace(/\+(\s)*/g, '+');
 
         // Inicializa el plugin
-        let $selectize = jQuery('SELECT', this.element.nativeElement.children[0]).selectize({
+        let $selectize = (jQuery('SELECT', this.element.nativeElement.children[0]) as any).selectize({
             plugins: ['remove_button_plex'],
             valueField: this.idField,
             labelField: this.labelField,
