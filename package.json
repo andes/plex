@@ -1,6 +1,6 @@
 {
   "name": "@andes/plex",
-  "version": "3.2.7",
+  "version": "3.2.8",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andes/plex.git"
@@ -31,6 +31,7 @@
     "@angular/platform-server": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@mdi/font": "^2.5.94",
+    "@types/jquery": "^3.3.5",
     "animate.css": "^3.5.2",
     "awesome-phonenumber": "^1.2.0",
     "bootstrap": "4.0.0-alpha.6",
@@ -54,7 +55,6 @@
     "@angular/compiler-cli": "^5.0.0",
     "@angular/language-service": "^4.0.0",
     "@types/jasmine": "2.5.45",
-    "@types/jquery": "^3.3.5",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.0.1",
     "jasmine-core": "~2.6.2",
