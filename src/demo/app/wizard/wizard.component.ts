@@ -8,6 +8,7 @@ import { Plex } from '../../../lib/core/service';
 export class WizardDemoComponent {
     private config: WizardConfig = {
         id: 'demo',
+        updatedOn: moment('2018-08-01').toDate(),
         steps: [
             { title: 'Uno', content: 'Contenido uno' }, // Imagen automática
             { title: 'Dos', content: 'Contenido dos', imageClass: 'manual' }, // Imagen manual

@@ -206,7 +206,7 @@ export class Plex {
      */
     wizard(config: WizardConfig): Promise<any> {
         // Cheque si el usuario no desea verlo más
-        if (!config.forceShow && localStorage[`wizard-${config.id}-hide`]) {
+        if (!config.forceShow && localStorage[`wizard-${config.id}-${config.updatedOn.toISOString()}-hide`]) {
             return null;
         }
 
@@ -257,7 +257,7 @@ export class Plex {
         });
         modal.then((reason) => {
             // Oculta para siempre este wizard
-            localStorage[`wizard-${config.id}-hide`] = true;
+            localStorage[`wizard-${config.id}-${config.updatedOn.toISOString()}-hide`] = true;
             resolve(true);
         }).catch((reason) => {
             if (reason === 'cancel') {
