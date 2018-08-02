@@ -14,23 +14,23 @@ export class AppComponent implements OnInit {
     this.plex.updateTitle('Plex: UI/UX para ANDES');
 
     const menu: DropdownItem[] = [
-      { label: 'Inicio', icon: 'creation', route: '/inicio' },
-      { label: 'Loader', icon: 'dots-horizontal', route: '/loader' },
-      { label: 'Phone', icon: 'phone', route: '/phone' },
+      { label: 'Accordion', icon: 'view-day', route: '/accordion' },
       { label: 'Bool', icon: 'checkbox-marked-outline', route: '/bool' },
       { label: 'Box', icon: 'selection', route: '/box' },
       { label: 'Button', icon: 'solid', route: '/button' },
       { label: 'DateTime', icon: 'calendar', route: '/datetime' },
+      { label: 'Dropdown', icon: 'menu-right', route: '/dropdown' },
       { label: 'Float', icon: 'numeric', route: '/float' },
       { label: 'Int', icon: 'numeric', route: '/int' },
+      { label: 'Loader', icon: 'dots-horizontal', route: '/loader' },
       { label: 'Modal', icon: 'application', route: '/modal' },
+      { label: 'Phone', icon: 'phone', route: '/phone' },
+      { label: 'Ribbon', icon: 'ribbon', route: '/ribbon' },
       { label: 'Select', icon: 'format-list-bulleted', route: '/select' },
       { label: 'Tabs', icon: 'folder', route: '/tabs' },
-      { label: 'Accordion', icon: 'view-day', route: '/accordion' },
       { label: 'Text', icon: 'alphabetical', route: '/text' },
-      { label: 'Dropdown', icon: 'menu-right', route: '/dropdown' },
       { label: 'Tooltip', icon: 'tooltip', route: '/tooltip' },
-      { label: 'Ribbon', icon: 'tooltip', route: '/ribbon' },
+      { label: 'Wizard', icon: 'auto-fix', route: '/wizard' },
     ];
     this.plex.updateMenu(menu);
     this.plex.updateAppStatus({ API: 'OK' });

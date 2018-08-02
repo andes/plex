@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
 import { default as swal } from 'sweetalert2';
+import { WizardConfig } from './wizard-config.interface';
 
 @Injectable()
 export class Plex {
@@ -194,5 +195,78 @@ export class Plex {
                 this.loaderCount--;
             }
         });
+    }
+
+    /**
+     * Muestra al usuario una secuencia de imágenes y textos organizados en pasos
+     *
+     * @param {WizardConfig} config
+     * @returns {Promise<any>}
+     * @memberof Plex
+     */
+    wizard(config: WizardConfig): Promise<any> {
+        // Cheque si el usuario no desea verlo más
+        if (!config.forceShow && localStorage[`wizard-${config.id}-hide`]) {
+            return null;
+        }
+
+        // Configura SweetAlert
+        let steps = [];
+        for (let i in config.steps) {
+            steps.push({
+                title: config.steps[i].title,
+                html: config.steps[i].content,
+                // Empty gif
+                imageUrl: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+                imageClass: 'plex-wizard-step ' + (config.steps[i].imageClass ? config.steps[i].imageClass : `plex-wizard-${config.id}-${steps.length + 1}`),
+                imageWidth: 500,
+                imageHeight: 250,
+                confirmButtonText: 'Continuar',
+                // animation: false,
+                // customClass: 'animated fadeInLeft'
+            });
+        }
+
+        // Corrije los textos
+        steps[0].confirmButtonText = 'Comenzar';
+        let last = steps[steps.length - 1];
+        last.confirmButtonText = 'Cerrar y no volver a mostrar';
+        last.showCancelButton = true;
+        last.cancelButtonText = 'Cerrar';
+
+        // Crea el modal
+        let modal: Promise<any>;
+        if (steps.length === 1) {
+            modal = swal(steps[0]);
+        } else {
+            // Computa el array progressSteps
+            let progressSteps: number[] = [];
+            steps.forEach((element, index) => progressSteps.push(index + 1));
+
+            // Lo injecta en cada paso
+            steps.forEach((element, value, index) => element.progressSteps = progressSteps);
+
+            // Renderea con SweetAlert
+            modal = swal.queue(steps);
+        }
+
+        // Crea la promise
+        let resolve: any;
+        let promise = new Promise((res, rej) => {
+            resolve = res;
+        });
+        modal.then((reason) => {
+            // Oculta para siempre este wizard
+            localStorage[`wizard-${config.id}-hide`] = true;
+            resolve(true);
+        }).catch((reason) => {
+            if (reason === 'cancel') {
+                resolve(true);
+            } else {
+                resolve(false);
+            }
+        });
+
+        return promise;
     }
 }

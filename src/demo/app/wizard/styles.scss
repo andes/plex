@@ -1,0 +1,13 @@
+.plex-wizard {
+  // Wizard: demo
+  &-demo {
+    // Steps
+    &-1 {
+      background-image: url('demo1.svg');
+    }
+  }
+}
+
+.manual {
+  background-image: url('demo2.svg');
+}
