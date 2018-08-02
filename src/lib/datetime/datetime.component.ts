@@ -34,6 +34,8 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                 </div>`,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
+    private _min: Date;
+    private _max: Date;
     private format: string;
     private value: any;
     private $button: any;
@@ -50,8 +52,26 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() placeholder: string;
     @Input() disabled = false;
     @Input() readonly = false;
-    @Input() min: Date;
-    @Input() max: Date;
+    @Input()
+    get min(): Date | moment.Moment {
+        return this._min;
+    }
+    set min(value: Date | moment.Moment) {
+        this._min = (value) ? moment(value).toDate() : null;
+        if (this.$button) {
+            this.$button.bootstrapMaterialDatePicker('setMinDate', value);
+        }
+    }
+    @Input()
+    get max(): Date | moment.Moment {
+        return this._max;
+    }
+    set max(value: Date | moment.Moment) {
+        this._max = (value) ? moment(value).toDate() : null;
+        if (this.$button) {
+            this.$button.bootstrapMaterialDatePicker('setMaxDate', value);
+        }
+    }
 
     // Eventos
     @Output() change = new EventEmitter();
