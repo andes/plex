@@ -16,7 +16,7 @@ export class RadioDemoComponent implements OnInit {
     ngOnInit() {
     }
 
-    borrar(){
+    borrar() {
         this.modelo = {};
     }
 }
