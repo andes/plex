@@ -19,17 +19,13 @@ export interface WizardConfig {
     /**
      * Imágenes y textos a mostrar en el wizard
      *
-     * @type {{
-     *         title: string,
-     *         content: string,
-     *         imageClass?: string,
-     *     }[]}
      * @memberof WizardConfig
      */
     steps: {
         title: string,
         content: string,
         imageClass?: string,
+        position?: 'left' | 'top' | 'bottom' | 'right'
     }[],
 
     /**
@@ -39,4 +35,20 @@ export interface WizardConfig {
      * @memberof WizardConfig
      */
     forceShow?: boolean,
+
+    /**
+     * Si es true, muestra el wizard en pantalla completa
+     *
+     * @type {boolean}
+     * @memberof WizardConfig
+     */
+    fullScreen: boolean,
+
+    /**
+     * Si es true, muestra el número de paso
+     *
+     * @type {boolean}
+     * @memberof WizardConfig
+     */
+    showNumbers: boolean,
 }

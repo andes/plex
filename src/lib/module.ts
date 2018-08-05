@@ -34,6 +34,9 @@ import { PlexFooterComponent } from './layout/footer.component';
 import { PlexLayoutMainComponent } from './layout/main.component';
 import { PlexLayoutSidebarComponent } from './layout/sidebar.component';
 
+// Directivas
+import { PlexWizardDirective } from './wizard/wizard.directive';
+
 // Third party
 import { MatSlideToggleModule, MatCheckboxModule, MatRadioModule, MatRadioButton } from '@angular/material';
 import 'hammerjs';
@@ -69,6 +72,7 @@ const MODULES = [
     PlexFooterComponent,
     PlexLayoutMainComponent,
     PlexLayoutSidebarComponent,
+    PlexWizardDirective,
     TooltipComponent
 ];
 
