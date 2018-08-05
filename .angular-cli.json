@@ -23,7 +23,6 @@
         "app/wizard/styles.scss"
       ],
       "scripts": [
-        "../../node_modules/popper.js/dist/umd/popper.js",
         "../../node_modules/intro.js/intro.js"
       ],
       "environmentSource": "environments/environment.ts",

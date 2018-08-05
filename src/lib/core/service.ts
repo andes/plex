@@ -6,8 +6,6 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
 import { default as swal } from 'sweetalert2';
 import { WizardConfig } from './wizard-config.interface';
-// declare var Shepherd;
-import 'intro.js';
 
 @Injectable()
 export class Plex {

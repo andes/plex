@@ -1,6 +1,6 @@
 {
   "name": "@andes/plex",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andes/plex.git"
@@ -47,10 +47,8 @@
     "ng2-charts": "^1.6.0",
     "ngx-quill": "^2.2.0",
     "node-waves": "^0.7.5",
-    "popper.js": "^1.14.4",
     "rxjs": "^5.4.2",
     "selectize": "0.12.4",
-    "shepherd.js": "^2.0.0-beta.2",
     "sweetalert2": "^6.6.2",
     "tether-shepherd": "^1.8.1",
     "url-parse": "^1.1.9",
