@@ -1,7 +1,15 @@
 <plex-layout main="8">
   <plex-layout-main>
     <header>
-      <div class="page-title" title="Esta es la clase page-title" titlePosition="right">Gestor de agendas</div>
+      <div class="page-title">Plex Wizard
+        <span class="float-right">
+          <plex-button title="Mostrar Wizard fullscreen" type="warning" icon="auto-fix" (click)="mostrar(true)"></plex-button>
+          <plex-button title="Mostrar Wizard por elementos" type="success" icon="auto-fix" (click)="mostrar(false)" position="right"></plex-button>
+        </span>
+      </div>
+      <form>
+          <plex-bool [(ngModel)]="config.forceShow" label="Forzar a mostrar el wizard aún cuando el usuario optó por ocultarlo" (change)="changeForce()" name="forceShow"></plex-bool>
+      </form>
     </header>
     <ul class="list-group" [plexWizard]="0">
       <li class="list-group-item active">Cras justo odio</li>
@@ -61,8 +69,4 @@
       <plex-button label="Guardar formulario" icon="content-save" validateForm="true" (click)="guardar($event)"></plex-button>
     </form>
   </plex-layout-sidebar>
-  <plex-layout-footer>
-    <plex-button label="Mostrar Wizard fullscreen" type="primary" icon="auto-fix" (click)="mostrar(true)" position="left"></plex-button>
-    <plex-button label="Mostrar Wizard por elementos" type="success" icon="auto-fix" (click)="mostrar(false)" position="right"></plex-button>
-  </plex-layout-footer>
 </plex-layout>

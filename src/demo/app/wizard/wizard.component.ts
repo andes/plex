@@ -15,7 +15,7 @@ export class WizardDemoComponent {
             { title: 'Tres', content: 'Contenido tres' },
             { title: 'Cuatro', content: 'Contenido cuatro' },
         ],
-        forceShow: true,
+        forceShow: false,
         fullScreen: false,
         showNumbers: false
     }
@@ -27,7 +27,7 @@ export class WizardDemoComponent {
             { title: 'Dos', content: 'Contenido dos', imageClass: 'plex-wizard-demo-2' },
             { title: 'Tres', content: 'Contenido tres', imageClass: 'plex-wizard-demo-1' },
         ],
-        forceShow: true,
+        forceShow: false,
         fullScreen: true,
         showNumbers: false
     }
@@ -40,5 +40,9 @@ export class WizardDemoComponent {
         } else {
             this.plex.wizard(this.config);
         }
+    }
+
+    changeForce() {
+        this.configFullScreen.forceShow = this.config.forceShow;
     }
 }
