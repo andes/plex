@@ -5,6 +5,7 @@ import { BoxDemoComponent } from './box/box.component';
 import { TextDemoComponent } from './text/text.component';
 import { DateTimeDemoComponent } from './datetime/datetime.component';
 import { BoolDemoComponent } from './bool/bool.component';
+import { RadioDemoComponent } from './radio/radio.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
@@ -17,6 +18,7 @@ import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { FontsDemoComponent } from './fonts/fonts.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
+import { WizardDemoComponent } from './wizard/wizard.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -25,6 +27,7 @@ const appRoutes: Routes = [
     { path: 'datetime', component: DateTimeDemoComponent },
     { path: 'fonts', component: FontsDemoComponent },
     { path: 'bool', component: BoolDemoComponent },
+    { path: 'radio', component: RadioDemoComponent },
     { path: 'int', component: IntDemoComponent },
     { path: 'float', component: FloatDemoComponent },
     { path: 'button', component: ButtonDemoComponent },
@@ -36,6 +39,7 @@ const appRoutes: Routes = [
     { path: 'ribbon', component: RibbonDemoComponent },
     { path: 'phone', component: PhoneDemoComponent },
     { path: 'dropdown', component: DropdownDemoComponent },
+    { path: 'wizard', component: WizardDemoComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 

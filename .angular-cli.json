@@ -19,14 +19,12 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.less",
         "styles.scss",
-        "../../node_modules/mdi/css/materialdesignicons.css",
-        "../../node_modules/node-waves/dist/waves.css",
-        "../../node_modules/sweetalert2/dist/sweetalert2.css",
-        "../../node_modules/animate.css/animate.css"
+        "app/wizard/styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../../node_modules/intro.js/intro.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -34,11 +32,6 @@
       }
     }
   ],
-  "e2e": {
-    "protractor": {
-      "config": "./protractor.conf.js"
-    }
-  },
   "lint": [
     {
       "project": "src/tsconfig.app.json"

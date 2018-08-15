@@ -34,6 +34,8 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                 </div>`,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
+    private _min: Date;
+    private _max: Date;
     private format: string;
     private value: any;
     private $button: any;
@@ -50,8 +52,32 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() placeholder: string;
     @Input() disabled = false;
     @Input() readonly = false;
-    @Input() min: Date;
-    @Input() max: Date;
+    @Input()
+    get min(): Date | moment.Moment {
+        return this._min;
+    }
+    set min(value: Date | moment.Moment) {
+        let temp: Date = (value) ? moment(value).toDate() : null;
+        if (this.fechaCambio(this._min, temp)) {
+            this._min = temp;
+            if (this.$button) {
+                this.$button.bootstrapMaterialDatePicker('setMinDate', this._min);
+            }
+        }
+    }
+    @Input()
+    get max(): Date | moment.Moment {
+        return this._max;
+    }
+    set max(value: Date | moment.Moment) {
+        let temp: Date = (value) ? moment(value).toDate() : null;
+        if (this.fechaCambio(this._max, temp)) {
+            this._max = temp;
+            if (this.$button) {
+                this.$button.bootstrapMaterialDatePicker('setMaxDate', this._max);
+            }
+        }
+    }
 
     // Eventos
     @Output() change = new EventEmitter();
@@ -139,5 +165,17 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
 
     onBlur() {
         this.writeValue(this.value);
+    }
+
+    private fechaCambio(fecha1: Date, fecha2: Date): boolean {
+        if (fecha1 && !fecha2) {
+            return true;
+        } else {
+            if ((!fecha1 && fecha2)) {
+                return true;
+            } else {
+                return (fecha1 && fecha2 && fecha1.getTime() !== fecha2.getTime());
+            }
+        }
     }
 }

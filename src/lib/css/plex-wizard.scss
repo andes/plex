@@ -1,0 +1,80 @@
+// Intro.JS CSS
+@import "node_modules/intro.js/introjs";
+
+.introjs-button {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  text-align: center;
+  text-shadow: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: $input-btn-border-width solid transparent;
+  background: $dark-grey;
+  color: white !important;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+  @include transition($btn-transition);
+
+  // Share hover and focus styles
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  &.focus,
+  &:focus {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    cursor: $cursor-disabled;
+    opacity: .65;
+    @include box-shadow(none);
+  }
+
+  &.active,
+  &:active {
+    background-image: none;
+    @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+  }
+
+  &.hover,
+  &:hover {
+    color: white !important;
+  }
+}
+
+.introjs-disabled {
+  display: none;
+}
+
+.introjs-nextbutton {
+  background: $blue !important;
+}
+
+.introjs-donebutton {
+  background: $green !important;
+  float: right;
+}
+
+.introjs-prevbutton {
+  background: white;
+  color: $dark-grey !important;
+
+  &.hover,
+  &:hover {
+    background: white;
+    color: $dark-grey !important;
+  }
+}
+
+// SweetAlert2 Full-screen Wizard
+.plex-wizard-step {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: solid 1px silver;
+}

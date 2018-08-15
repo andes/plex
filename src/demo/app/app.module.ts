@@ -17,6 +17,7 @@ import { HomeDemoComponent } from './home/home.component';
 import { BoxDemoComponent } from './box/box.component';
 import { TextDemoComponent } from './text/text.component';
 import { BoolDemoComponent } from './bool/bool.component';
+import { RadioDemoComponent } from './radio/radio.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { FontsDemoComponent } from './fonts/fonts.component';
@@ -30,6 +31,7 @@ import { LoaderDemoComponent } from './loader/loader.component';
 import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
+import { WizardDemoComponent } from './wizard/wizard.component';
 
 @NgModule({
   declarations: [
@@ -44,13 +46,15 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
     FontsDemoComponent,
     AccordionDemoComponent,
     BoolDemoComponent,
+    RadioDemoComponent,
     SelectDemoComponent,
     DateTimeDemoComponent,
     ModalDemoComponent,
     LoaderDemoComponent,
     RibbonDemoComponent,
     PhoneDemoComponent,
-    DropdownDemoComponent
+    DropdownDemoComponent,
+    WizardDemoComponent
   ],
   imports: [
     BrowserModule,
