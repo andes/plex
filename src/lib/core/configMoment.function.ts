@@ -1,13 +1,13 @@
 import * as moment from 'moment';
 
-let monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_');
-let monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
+const monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_');
+const monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
 
 export function configureLocale() {
     moment.locale('es');
     (moment as any).updateLocale('es', {
         months: 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split('_'),
-        monthsShort: function (m, format) {
+        monthsShort (m, format) {
             if (/-MMM-/.test(format)) {
                 return monthsShort[m.month()];
             } else {
@@ -28,19 +28,19 @@ export function configureLocale() {
             LLLL: 'dddd, D [de] MMMM [de] YYYY H:mm'
         },
         calendar: {
-            sameDay: function () {
+            sameDay () {
                 return '[hoy a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
-            nextDay: function () {
+            nextDay () {
                 return '[mañana a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
-            nextWeek: function () {
+            nextWeek () {
                 return 'dddd [a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
-            lastDay: function () {
+            lastDay () {
                 return '[ayer a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
-            lastWeek: function () {
+            lastWeek () {
                 return '[el] dddd [pasado a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
             sameElse: 'L'

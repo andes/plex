@@ -6,7 +6,7 @@ export interface WizardConfig {
      * @type {string}
      * @memberof WizardConfig
      */
-    id: string,
+    id: string;
 
     /**
      * Indica la última de actualización del wizard. Si cambia la fecha, el wizard se mostrará con el nuevo contenido
@@ -14,7 +14,7 @@ export interface WizardConfig {
      * @type {Date}
      * @memberof WizardConfig
      */
-    updatedOn: Date,
+    updatedOn: Date;
 
     /**
      * Imágenes y textos a mostrar en el wizard
@@ -26,7 +26,7 @@ export interface WizardConfig {
         content: string,
         imageClass?: string,
         position?: 'left' | 'top' | 'bottom' | 'right'
-    }[],
+    }[];
 
     /**
      * Si es true, fuerza la visualización del wizard independiente que el usuario haya optado por no volver a mostrarlo
@@ -34,7 +34,7 @@ export interface WizardConfig {
      * @type {boolean}
      * @memberof WizardConfig
      */
-    forceShow?: boolean,
+    forceShow?: boolean;
 
     /**
      * Si es true, muestra el wizard en pantalla completa
@@ -42,7 +42,7 @@ export interface WizardConfig {
      * @type {boolean}
      * @memberof WizardConfig
      */
-    fullScreen: boolean,
+    fullScreen: boolean;
 
     /**
      * Si es true, muestra el número de paso
@@ -50,5 +50,5 @@ export interface WizardConfig {
      * @type {boolean}
      * @memberof WizardConfig
      */
-    showNumbers: boolean,
+    showNumbers: boolean;
 }

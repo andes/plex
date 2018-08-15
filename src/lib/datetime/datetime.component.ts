@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
 
 // Importo las librerías de jQuery
-let jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
+const jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
 require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker');
 
 @Component({
@@ -57,7 +57,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         return this._min;
     }
     set min(value: Date | moment.Moment) {
-        let temp: Date = (value) ? moment(value).toDate() : null;
+        const temp: Date = (value) ? moment(value).toDate() : null;
         if (this.fechaCambio(this._min, temp)) {
             this._min = temp;
             if (this.$button) {
@@ -70,7 +70,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         return this._max;
     }
     set max(value: Date | moment.Moment) {
-        let temp: Date = (value) ? moment(value).toDate() : null;
+        const temp: Date = (value) ? moment(value).toDate() : null;
         if (this.fechaCambio(this._max, temp)) {
             this._max = temp;
             if (this.$button) {
@@ -132,7 +132,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     writeValue(value: any) {
         this.value = value;
 
-        let temp = this.value ? moment(this.value).format(this.format) : null;
+        const temp = this.value ? moment(this.value).format(this.format) : null;
         if (this.$button) {
             this.$button.val(temp);
         }
@@ -147,7 +147,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             if (typeof value === 'string') {
-                let m = moment(value, this.format);
+                const m = moment(value, this.format);
                 if (m.isValid()) {
                     value = m.toDate();
                 } else {
@@ -158,7 +158,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
             this.value = value;
             fn(value);
             this.change.emit({
-                value: value
+                value
             });
         };
     }

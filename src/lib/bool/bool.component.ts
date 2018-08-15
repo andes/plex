@@ -57,7 +57,7 @@ export class PlexBoolComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.onChange = (value) => {
             fn(value);
             this.change.emit({
-                value: value
+                value
             });
         };
     }

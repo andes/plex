@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'plex-layout-sidebar',
-  template: `
+    selector: 'plex-layout-sidebar',
+    template: `
         <plex-box>
             <header>
                 <ng-content select="header"></ng-content>
@@ -12,6 +12,6 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class PlexLayoutSidebarComponent {
-  constructor() {
-  }
+    constructor() {
+    }
 }

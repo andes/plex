@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'plex-layout-main',
-  template: `
+    selector: 'plex-layout-main',
+    template: `
         <plex-box>
             <header>
                 <ng-content select="header"></ng-content>
@@ -12,6 +12,6 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class PlexLayoutMainComponent {
-  constructor() {
-  }
+    constructor() {
+    }
 }

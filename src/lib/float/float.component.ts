@@ -116,7 +116,7 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
             }
 
             // Emite los eventos
-            let val = ((value == null) || (value === '')) ? null : Number.parseFloat(value.toString().replace(',', '.'));
+            const val = ((value == null) || (value === '')) ? null : Number.parseFloat(value.toString().replace(',', '.'));
             fn(val);
             this.change.emit({
                 value: val

@@ -82,18 +82,17 @@ export class PlexAppComponent implements OnInit {
         labels: [],
         options: {
             // responsive: true,
-            scales:
-                {
-                    yAxes: [{
-                        display: false,
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
+            scales: {
+                yAxes: [{
+                    display: false,
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
             tooltips: {
                 enabled: false,
             }

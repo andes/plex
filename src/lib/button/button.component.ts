@@ -33,7 +33,7 @@ export class PlexButtonComponent {
         } else {
             // Si está asociado a un formulario, fuerza la validación de los controles
             if (this.validateForm && this.form) {
-                for (let key in this.form.controls) {
+                for (const key in this.form.controls) {
                     this.form.controls[key].markAsDirty();
                 }
                 // Inyecta la propiedad para que sea fácilmente accesible desde los controladores

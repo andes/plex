@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'plex-layout-footer',
-  template: `
+    selector: 'plex-layout-footer',
+    template: `
     <div class="row">
         <div class="col">
             <ng-content select="plex-button[position=left]"></ng-content>
@@ -14,6 +14,6 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class PlexFooterComponent {
-  constructor() {
-  }
+    constructor() {
+    }
 }

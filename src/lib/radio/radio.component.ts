@@ -27,7 +27,7 @@ export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAc
     @ContentChild(NgControl) public control: any;
 
     // Propiedad públicas
-    @Input() data: any[]
+    @Input() data: any[];
     @Input() label: string;
     @Input() readonly: boolean;
     @Input() type: 'vertical' | 'horizontal' = 'vertical';
@@ -53,13 +53,13 @@ export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAc
         this.onChange = (value) => {
             fn(value);
             this.change.emit({
-                value: value
+                value
             });
         };
     }
 
     radioChange(event) {
-        this.control.control.markAsTouched()
+        this.control.control.markAsTouched();
         this.onChange(event.value);
     }
 }
