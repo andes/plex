@@ -5,8 +5,7 @@ Modificado a partir de https://github.com/T00rk/bootstrap-material-datetimepicke
 
 */
 
-declare var jQuery;
-declare var  moment;
+declare var moment;
 
 /* tslint:disable */
 (function ($, moment) {
@@ -27,7 +26,7 @@ declare var  moment;
             this.$element = $(element);
 
             this.params = { date: true, time: true, format: 'YYYY-MM-DD', minDate: null, maxDate: null, currentDate: null, lang: 'en', weekStart: 0, shortTime: false, clearButton: false, nowButton: false, cancelText: 'Cancel', okText: 'OK', clearText: 'Clear', nowText: 'Now', switchOnClick: false, triggerEvent: 'focus' };
-            this.params = $.fn.extend(this.params, options);
+            this.params = ($ as any).fn.extend(this.params, options);
 
             this.name = "dtp_" + this.setName();
             this.$element.attr("data-dtp", this.name);
@@ -652,7 +651,7 @@ declare var  moment;
                   },
                   setElementValue: function () {
                         this.$element.trigger('beforeChange', this.currentDate);
-                        if (typeof ($.material) !== 'undefined') {
+                        if (typeof (($ as any).material) !== 'undefined') {
                               this.$element.removeClass('empty');
                         }
                         this.$element.val(moment(this.currentDate).locale(this.params.lang).format(this.params.format));
@@ -755,7 +754,7 @@ declare var  moment;
                         this.currentDate = null;
                         this.$element.trigger('beforeChange', this.currentDate);
                         this.hide();
-                        if (typeof ($.material) !== 'undefined') {
+                        if (typeof (($ as any).material) !== 'undefined') {
                               this.$element.addClass('empty');
                         }
                         this.$element.val('');
@@ -970,7 +969,7 @@ declare var  moment;
                         this._centerBox();
                   },
                   hide: function () {
-                        $(window).off('keydown', null, null, this._onKeydown.bind(this));
+                        ($ as any)(window).off('keydown', null, null, this._onKeydown.bind(this));
                         this.$dtpElement.addClass('hidden');
                   },
                   _centerBox: function () {

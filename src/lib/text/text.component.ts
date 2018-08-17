@@ -36,7 +36,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
       (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()"></textarea>
 
     <!-- HTML Editor -->
-    <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="{height: '300px'}" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
+    <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
 
     <!-- Validation -->
     <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
@@ -52,6 +52,12 @@ import { hasRequiredValidator } from '../core/validator.functions';
     ]
 })
 export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+    // private
+    public quillStyle = {
+        height: '200px'
+    };
+
+    // Public
     public isEmpty = true;
     public quill = {
         toolbar: [
@@ -62,6 +68,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             ['clean'],
         ]
     };
+
     @ViewChild('input') private input: ElementRef;
     @ViewChild('textarea') private textarea: ElementRef;
     @ViewChild('quillEditor') private quillEditor: ElementRef;
@@ -80,6 +87,10 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() password = false;
     @Input() multiline = false;
     @Input() html = false;
+    @Input()
+    set height(value: number) {
+        this.quillStyle.height = value + 'px';
+    };
     @Input()
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
@@ -131,11 +142,14 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         let element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
         this.renderer.setElementProperty(element, 'value', typeof value === 'undefined' ? '' : value);
         if (this.multiline) {
-            this.adjustTextArea()
+            this.adjustTextArea();
         } else {
             if (this.html) {
                 let component = (this.quillEditor as any);
-                component.quillEditor.setContents(component.valueSetter(component.quillEditor, typeof value === 'undefined' ? '' : value));
+                // Por el dinamismo de RUP hay una primera instancia que quillEditor es undefined
+                if (component.quillEditor) {
+                    component.quillEditor.setContents(component.valueSetter(component.quillEditor, typeof value === 'undefined' ? '' : value));
+                }
             }
         }
         // Check empty
@@ -153,7 +167,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             this.isEmpty = !(value && value.toString().trim());
 
             if (this.multiline) {
-                this.adjustTextArea()
+                this.adjustTextArea();
             }
             // jgabriel | 24/03/2017 | Esto es un por bug de Angular2 que a veces no actualiza la vista cuando cambia el modelo
             // this.change.emit({

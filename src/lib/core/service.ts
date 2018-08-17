@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
 import { default as swal } from 'sweetalert2';
+import { WizardConfig } from './wizard-config.interface';
 
 @Injectable()
 export class Plex {
@@ -194,5 +195,110 @@ export class Plex {
                 this.loaderCount--;
             }
         });
+    }
+
+    /**
+     * Muestra al usuario una secuencia de imágenes y textos organizados en pasos
+     *
+     * @param {WizardConfig} config
+     * @returns {Promise<any>}
+     * @memberof Plex
+     */
+    wizard(config: WizardConfig): Promise<any> {
+        // Cheque si el usuario no desea verlo más
+        if (!config.forceShow && localStorage[`wizard-${config.id}-${config.updatedOn.toISOString()}-hide`]) {
+            return null;
+        }
+
+        // Promise que devolverá la función
+        let resolve: any;
+        let promise = new Promise((res, rej) => {
+            resolve = res;
+        });
+
+        if (config.fullScreen) {
+            // Utiliza SweetAlert2
+            // Configura SweetAlert
+            let steps = [];
+            for (let i in config.steps) {
+                steps.push({
+                    title: config.steps[i].title,
+                    html: config.steps[i].content,
+                    // Empty gif
+                    imageUrl: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+                    imageClass: config.steps[i].imageClass,
+                    imageWidth: 500,
+                    imageHeight: 250,
+                    confirmButtonText: 'Siguiente',
+                    cancelButtonText: 'Cancelar',
+                    showCancelButton: true,
+                    // animation: false,
+                    // customClass: 'animated fadeInLeft'
+                });
+            }
+
+            // Corrije los textos
+            steps[0].confirmButtonText = 'Comenzar';
+            let last = steps[steps.length - 1];
+            last.confirmButtonText = 'Finalizar';
+            last.showCancelButton = false;
+
+            // Crea el modal
+            let modal: Promise<any>;
+            if (steps.length === 1) {
+                modal = swal(steps[0]);
+            } else {
+                let progressSteps: number[] = [];
+                steps.forEach((element, index) => progressSteps.push(index + 1));
+                steps.forEach((element, value, index) => element.progressSteps = progressSteps);
+                modal = swal.queue(steps);
+                if (config.showNumbers) {
+                    swal.showProgressSteps();
+                } else {
+                    swal.hideProgressSteps();
+                }
+            }
+
+            // Crea la promise
+            modal.then((reason) => {
+                // No volver a mostrar
+                localStorage[`wizard-${config.id}-${config.updatedOn.toISOString()}-hide`] = true;
+                resolve(true);
+            }).catch((reason) => {
+                resolve(false);
+            });
+        } else {
+            // Utiliza Intro.js
+            let steps: IntroJs.Step[] = [];
+            for (let i in config.steps) {
+                steps.push({
+                    // title: config.steps[i].title,
+                    intro: (config.steps[i].title ? `<h3>${config.steps[i].title}</h3>` : '') + config.steps[i].content,
+                    element: document.querySelector(`[plex-wizard-ref="${i}"]`),
+                    position: 'right'
+                });
+            }
+
+            let intro = introJs();
+            intro.setOptions({
+                nextLabel: 'Siguiente',
+                prevLabel: 'Volver',
+                skipLabel: 'Cerrar',
+                doneLabel: 'Finalizar',
+                showProgress: true,
+                showBullets: false,
+                showStepNumbers: config.showNumbers,
+                steps: steps
+            });
+            intro.start()
+                .oncomplete(() => {
+                    // No volver a mostrar
+                    localStorage[`wizard-${config.id}-${config.updatedOn.toISOString()}-hide`] = true;
+                    resolve(true)
+                })
+                .onexit(() => resolve(false))
+        }
+
+        return promise;
     }
 }

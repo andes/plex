@@ -21,14 +21,12 @@
               "src/demo/favicon.ico"
             ],
             "styles": [
-              "src/demo/styles.less",
               "src/demo/styles.scss",
-              "node_modules/mdi/css/materialdesignicons.css",
-              "node_modules/node-waves/dist/waves.css",
-              "node_modules/sweetalert2/dist/sweetalert2.css",
-              "node_modules/animate.css/animate.css"
+              "src/demo/app/wizard/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/intro.js/intro.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -74,14 +72,11 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/demo/polyfills.ts",
             "tsConfig": "src/demo/tsconfig.spec.json",
-            "scripts": [],
+            "scripts": [
+              "./node_modules/intro.js/intro.js"
+            ],
             "styles": [
-              "src/demo/styles.less",
-              "src/demo/styles.scss",
-              "node_modules/mdi/css/materialdesignicons.css",
-              "node_modules/node-waves/dist/waves.css",
-              "node_modules/sweetalert2/dist/sweetalert2.css",
-              "node_modules/animate.css/animate.css"
+              "src/demo/styles.scss"
             ],
             "assets": [
               "src/demo/assets",

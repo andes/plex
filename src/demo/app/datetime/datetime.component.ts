@@ -19,6 +19,8 @@ export class DateTimeDemoComponent implements OnInit {
             hora: null,
             disabled: false,
             min: new Date(1970, 0, 1),
+            minHora: moment().add(30, 'minutes'),
+            maxHora: moment().add(180, 'minutes')
         };
 
         // Form4: Disabled
@@ -26,5 +28,9 @@ export class DateTimeDemoComponent implements OnInit {
             fechaHora: null,
             disabled: true
         };
+    }
+
+    updateMaxHora() {
+        this.tModel.maxHora = moment().add(180, 'minutes');
     }
 }

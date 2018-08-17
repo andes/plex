@@ -1,0 +1,29 @@
+<plex-box>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <h1>Radio vertical</h1>
+                <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores">
+                </plex-radio>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="modelo">
+            <label>Modelo</label>
+            <pre>{{modelo | json}}</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <h1>Radio horizontal</h1>
+                <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores" type="horizontal" [required]="true">
+                </plex-radio>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="modelo">
+            <label>Modelo</label>
+            <pre>{{modelo | json}}</pre>
+        </div>
+    </div>
+    <plex-button label="Borrar" (click)="borrar()"></plex-button>
+</plex-box>
