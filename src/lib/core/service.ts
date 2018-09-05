@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
-import { default as swal, SweetAlertType } from 'sweetalert2';
+import { default as swal } from 'sweetalert2';
 import { WizardConfig } from './wizard-config.interface';
 
 @Injectable()
