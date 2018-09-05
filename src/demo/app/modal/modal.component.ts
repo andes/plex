@@ -2,13 +2,7 @@ import { Component } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
 
 @Component({
-    templateUrl: 'modal.html',
-    styles: [`
-        .swal2-confirm {
-            background-color: #449d44 !important;
-            border-color: #419641 !important;
-        }
-    `]
+    templateUrl: 'modal.html'
 })
 export class ModalDemoComponent {
     public alertText = 'Se ha detectado un error en la base de datos';
