@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
-import { default as swal } from 'sweetalert2';
+import { default as swal, SweetAlertType } from 'sweetalert2';
 import { WizardConfig } from './wizard-config.interface';
 
 @Injectable()
@@ -90,6 +90,7 @@ export class Plex {
     }
 
     /**
+     * TODO: Migrar para usar 1 sólo objeto con su type como param
      * Muestra un diálogo de confirmación
      *
      * @param {string} content Texto
@@ -98,7 +99,20 @@ export class Plex {
      *
      * @memberof Plex
      */
-    confirm(content: string, title = 'Confirmación'): Promise<any> {
+    confirm(content: any | { title: 'Confirmación', content: '', confirmButtonText: 'Confirmar', cancelButtonText: 'Cancelar' }, title = 'Confirmación', confirmButtonText = 'Confirmar', cancelButtonText = 'Cancelar'): Promise<any> {
+
+        let htmlContent;
+
+        // Para compatibilidad
+        if (typeof content === 'object') {
+            title = content.title;
+            htmlContent = content.content;
+            confirmButtonText = content.confirmButtonText;
+            cancelButtonText = content.cancelButtonText;
+        } else {
+            htmlContent = content;
+        }
+
         let resolve: any;
         let promise = new Promise((res, rej) => {
             resolve = res;
@@ -106,11 +120,15 @@ export class Plex {
 
         swal({
             title: title,
-            html: content,
+            html: htmlContent,
             type: 'question',
             showCancelButton: true,
-            confirmButtonText: 'Confirmar',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: confirmButtonText.toLocaleUpperCase(),
+            cancelButtonText: cancelButtonText.toLocaleUpperCase(),
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+
         })
             .then(() => resolve(true))
             .catch(() => resolve(false));
@@ -118,24 +136,43 @@ export class Plex {
     }
 
     /**
+     * TODO: Migrar para usar 1 sólo objeto con su type como param
      * Muestra un mensaje invasivo al usuario
      *
-     * @param {string} type success, danger, warning, info
+     * @param {string} type success, danger (error), warning, info
      * @param {string} content Texto del mensaje
      * @param {string} [title='Información'] Título
      * @param {number} [timeOut=0] Tiempo en ms cuando se oculta el mensaje. Por default no se oculta.
      *
      * @memberof Plex
      */
-    info(type: string, content: string, title = 'Información', timeOut = 0) {
-        if (type === 'danger') {
-            type = 'error';
+    info(type: any | { type: '', content: '', title: 'Información', confirmButtonText: 'Aceptar', timeOut: 0 }, content = '', title = 'Información', confirmButtonText = 'Aceptar', timeOut = 0) {
+
+        let modalType;
+
+        // Para compatibilidad
+        if (typeof type === 'object') {
+            // TODO: Usar el tipo SweetAlertType
+            modalType = type.type === 'danger' ? 'error' : type.type;
+            content = type.content;
+            title = type.title;
+            confirmButtonText = type.confirmButtonText.toLocaleUpperCase();
+            timeOut = type.timeOut;
+        } else {
+            // TODO: Usar el tipo SweetAlertType
+            if (type === 'danger') {
+                type = modalType = 'error';
+            }
+            modalType = type;
         }
+
         return swal({
             title: title,
             html: content,
-            type: type as any,
-            confirmButtonText: 'Ok',
+            type: modalType,
+            confirmButtonText: confirmButtonText,
+            buttonsStyling: false,
+            confirmButtonClass: `btn btn-${modalType === 'error' ? 'danger' : modalType}`,
             timer: timeOut || null,
         }).catch(swal.noop);
     }

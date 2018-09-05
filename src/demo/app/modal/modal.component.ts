@@ -3,6 +3,12 @@ import { Plex } from '../../../lib/core/service';
 
 @Component({
     templateUrl: 'modal.html',
+    styles: [`
+        .swal2-confirm {
+            background-color: #449d44 !important;
+            border-color: #419641 !important;
+        }
+    `]
 })
 export class ModalDemoComponent {
     public alertText = 'Se ha detectado un error en la base de datos';
@@ -14,7 +20,15 @@ export class ModalDemoComponent {
     constructor(private plex: Plex) { }
 
     info(type) {
-        this.plex.info(type, this.alertText, 'Información', this.alertTimeout);
+        let params = {
+            type: type,
+            content: this.alertText,
+            title: 'Información',
+            confirmButtonText: 'Aceptar',
+            timeOut: this.alertTimeout
+        };
+
+        this.plex.info(params);
     }
 
     toast(type) {
@@ -22,7 +36,15 @@ export class ModalDemoComponent {
     }
 
     confirm() {
-        this.plex.confirm(this.confirmText).then((resultado) => {
+
+        let params = {
+            content: this.confirmText,
+            title: 'Operación con archivo',
+            confirmButtonText: 'Eliminar archivo',
+            cancelButtonText: 'Cancelar'
+        };
+
+        this.plex.confirm(params).then((resultado) => {
             this.resultado = resultado;
         });
     }
