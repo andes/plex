@@ -1,9 +1,12 @@
 .swal2-container * {
-  font-family: "TypoPRO Source Sans Pro";
+    font-family: "TypoPRO Source Sans Pro";
 }
 
 .swal2-buttonswrapper {
-  display: flex !important;
-  flex-direction: row-reverse !important;
-  justify-content: space-evenly !important;
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    justify-content: space-evenly !important;
+    .btn {
+        width: 40%;
+    }
 }

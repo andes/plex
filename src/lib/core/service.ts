@@ -99,26 +99,25 @@ export class Plex {
      *
      * @memberof Plex
      */
-    confirm(content: any | { title: 'Confirmación', content: '', confirmButtonText: 'Confirmar', cancelButtonText: 'Cancelar' }, title = 'Confirmación', confirmButtonText = 'Confirmar', cancelButtonText = 'Cancelar'): Promise<any> {
+    confirm(params: { content: string, title: string, confirmButtonText: string, cancelButtonText: string } );
+
+    confirm(content: string, title: string, confirmButtonText: string, cancelButtonText: string);
+
+    confirm(content, title = 'Confirmación', confirmButtonText = 'Confirmar', cancelButtonText = 'Cancelar'): Promise<any> {
 
         let htmlContent;
 
         // Para compatibilidad
         if (typeof content === 'object') {
-            title = content.title;
+            title = content.title || 'Confirmación';
             htmlContent = content.content;
-            confirmButtonText = content.confirmButtonText;
-            cancelButtonText = content.cancelButtonText;
+            confirmButtonText = content.confirmButtonText || 'Confirmar';
+            cancelButtonText = content.cancelButtonText || 'Cancelar';
         } else {
             htmlContent = content;
         }
 
-        let resolve: any;
-        let promise = new Promise((res, rej) => {
-            resolve = res;
-        });
-
-        swal({
+        return swal({
             title: title,
             html: htmlContent,
             type: 'question',
@@ -129,10 +128,7 @@ export class Plex {
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
 
-        })
-            .then(() => resolve(true))
-            .catch(() => resolve(false));
-        return promise;
+        });
     }
 
     /**
@@ -146,7 +142,11 @@ export class Plex {
      *
      * @memberof Plex
      */
-    info(type: any | { type: '', content: '', title: 'Información', confirmButtonText: 'Aceptar', timeOut: 0 }, content = '', title = 'Información', confirmButtonText = 'Aceptar', timeOut = 0) {
+    info(type: String, content: String, title?: String,  timeOut?: Number, confirmButtonText?: String);
+
+    info(params: { type: String, content: String, title: String, confirmButtonText: String, timeOut?: Number } );
+
+    info(type, content = '', title = 'Información', timeOut = 0, confirmButtonText = 'ACEPTAR') {
 
         let modalType;
 
@@ -154,10 +154,10 @@ export class Plex {
         if (typeof type === 'object') {
             // TODO: Usar el tipo SweetAlertType
             modalType = type.type === 'danger' ? 'error' : type.type;
-            content = type.content;
-            title = type.title;
-            confirmButtonText = type.confirmButtonText.toLocaleUpperCase();
-            timeOut = type.timeOut;
+            content = type.content || '';
+            title = type.title || 'Información';
+            confirmButtonText = type.confirmButtonText ? type.confirmButtonText.toLocaleUpperCase() : 'ACEPTAR';
+            timeOut = type.timeOut || 0;
         } else {
             // TODO: Usar el tipo SweetAlertType
             if (type === 'danger') {
