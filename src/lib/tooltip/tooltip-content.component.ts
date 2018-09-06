@@ -9,7 +9,7 @@ import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef } from '
                 role="tooltip">
                 <div class="tooltip-inner">
                     <ng-content></ng-content>
-                    {{ content }}
+                    <div [innerHTML]="content"></div>
                 </div>
             </div>`
 })
