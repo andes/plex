@@ -80,12 +80,14 @@ export class Plex {
      * @memberof Plex
      * @deprecated Utilizar el método info()
      */
-    alert(content: string, title = 'Información'): Promise<any> {
+    alert(content: string, title = 'Información', confirmButtonText = 'ACEPTAR'): Promise<any> {
         return swal({
             title: title,
             html: content,
             type: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: confirmButtonText.toLocaleUpperCase(),
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-warning',
         });
     }
 
@@ -99,9 +101,9 @@ export class Plex {
      *
      * @memberof Plex
      */
-    confirm(params: { content: string, title: string, confirmButtonText: string, cancelButtonText: string } );
+    confirm(params: { content: string, title: string, confirmButtonText: string, cancelButtonText: string });
 
-    confirm(content: string, title: string, confirmButtonText: string, cancelButtonText: string);
+    confirm(content: string, title?: string, confirmButtonText?: string, cancelButtonText?: string);
 
     confirm(content, title = 'Confirmación', confirmButtonText = 'Confirmar', cancelButtonText = 'Cancelar'): Promise<any> {
 
@@ -127,7 +129,6 @@ export class Plex {
             buttonsStyling: false,
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
-
         });
     }
 
@@ -142,9 +143,9 @@ export class Plex {
      *
      * @memberof Plex
      */
-    info(type: String, content: String, title?: String,  timeOut?: Number, confirmButtonText?: String);
+    info(type: String, content: String, title?: String, timeOut?: Number, confirmButtonText?: String);
 
-    info(params: { type: String, content: String, title: String, confirmButtonText: String, timeOut?: Number } );
+    info(params: { type: String, content: String, title: String, confirmButtonText: String, timeOut?: Number })
 
     info(type, content = '', title = 'Información', timeOut = 0, confirmButtonText = 'ACEPTAR') {
 
@@ -152,14 +153,14 @@ export class Plex {
 
         // Para compatibilidad
         if (typeof type === 'object') {
-            // TODO: Usar el tipo SweetAlertType
+            // TODO: Usar el tipo SweetAlertType?
             modalType = type.type === 'danger' ? 'error' : type.type;
             content = type.content || '';
             title = type.title || 'Información';
             confirmButtonText = type.confirmButtonText ? type.confirmButtonText.toLocaleUpperCase() : 'ACEPTAR';
             timeOut = type.timeOut || 0;
         } else {
-            // TODO: Usar el tipo SweetAlertType
+            // TODO: Usar el tipo SweetAlertType?
             if (type === 'danger') {
                 type = modalType = 'error';
             }
@@ -274,8 +275,15 @@ export class Plex {
                 });
             }
 
-            // Corrije los textos
+            // En el primer paso el botón principal dice "Comenzar"
             steps[0].confirmButtonText = 'Comenzar';
+
+            // En los pasos intermedios los botones dicen "Siguiente" y "Cancelar"
+            steps = steps.map(s => {
+                return { ...s, buttonsStyling: false, confirmButtonClass: 'btn btn-info', cancelButtonClass: 'btn btn-danger' }
+            });
+
+            // En el último paso el botón principal dice "Finalizar" y el botón "Cancelar" se oculta
             let last = steps[steps.length - 1];
             last.confirmButtonText = 'Finalizar';
             last.showCancelButton = false;
