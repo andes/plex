@@ -1,17 +1,19 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'plex-layout-sidebar',
-  template: `
-        <plex-box>
-            <header>
-                <ng-content select="header"></ng-content>
-            </header>
+    selector: 'plex-layout-sidebar',
+    template: `
+    <div class="plex-box" [ngClass]="{'plex-box-invert': type == 'invert'}">
+        <ng-content select="header"></ng-content>
+        <div class="plex-box-content">
             <ng-content></ng-content>
-        </plex-box>
-  `,
+        </div>
+    </div>
+    `,
 })
 export class PlexLayoutSidebarComponent {
-  constructor() {
-  }
+    @Input() type = '';
+    constructor() {
+
+    }
 }
