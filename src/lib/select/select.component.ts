@@ -16,11 +16,11 @@ let Selectize = require('selectize/dist/js/standalone/selectize');
             multi: true,
         }
     ],
-    template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
-                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
+    template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
+                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esOpcional" class="opcional"></span></label>
                     <select *ngIf="!multiple" id="{{uniqueId}}" (change)="onChange($event.target.value)"></select>
                     <select *ngIf="multiple" id="{{uniqueId}}" multiple (change)="onChange($event.target.value)"></select>
-                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+                    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
                 </div>`,
 })
 export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor {
@@ -34,6 +34,10 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     public uniqueId = new Date().valueOf().toString();
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
+    }
+
+    public hasDanger() {
+        return (this.control as any).name && (this.control.dirty || this.control.touched) && !this.control.valid;
     }
 
     // Propiedades
