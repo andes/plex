@@ -1,0 +1,72 @@
+<plex-layout main="8">
+  <plex-layout-main>
+    <header>
+      <div class="page-title">Plex Wizard
+        <span class="float-right">
+          <plex-button title="Mostrar Wizard fullscreen" type="warning" icon="auto-fix" (click)="mostrar(true)"></plex-button>
+          <plex-button title="Mostrar Wizard por elementos" type="success" icon="auto-fix" (click)="mostrar(false)" position="right"></plex-button>
+        </span>
+      </div>
+      <form>
+          <plex-bool [(ngModel)]="config.forceShow" label="Forzar a mostrar el wizard aún cuando el usuario optó por ocultarlo" (change)="changeForce()" name="forceShow"></plex-bool>
+      </form>
+    </header>
+    <ul class="list-group" [plexWizard]="0">
+      <li class="list-group-item active">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Morbi leo risus</li>
+      <li class="list-group-item">Porta ac consectetur ac</li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-6">
+            Columna
+          </div>
+          <div class="col-6">
+            Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+          </div>
+        </div>
+      </li>
+    </ul>
+    <fieldset>
+      <legend>Esta es una leyenda</legend>
+      <div class="outline-dashed-default" [plexWizard]="3">
+        CONTENIDO
+        <br>CONTENIDO
+        <br>CONTENIDO
+        <br>CONTENIDO
+        <br>CONTENIDO
+        <br>
+      </div>
+    </fieldset>
+    <fieldset [plexWizard]="2">
+      <legend>Este es otro fieldset</legend>
+      CONTENIDO
+      <br>CONTENIDO
+      <br>CONTENIDO
+      <label>Nombre</label> Pedro
+      <label>Apellido</label> Gutierrez
+    </fieldset>
+  </plex-layout-main>
+  <plex-layout-sidebar>
+    <header>
+      <div class="row">
+        <div class="col">
+          Este es el header de plex-box. Siempre queda fijo
+        </div>
+        <div class="col">
+          <div class="btn-group float-right">
+            <plex-button type="success" title="Restaurar usuario" titlePosition="left" icon="account"></plex-button>
+            <plex-button type="danger" icon="clock"></plex-button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <form>
+      <p [plexWizard]="1">El siguiente ejemplo muestra el uso de la propiedad
+        <strong>validateForm</strong>
+      </p>
+      <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false" [required]="true"></plex-text>
+      <plex-button label="Guardar formulario" icon="content-save" validateForm="true" (click)="guardar($event)"></plex-button>
+    </form>
+  </plex-layout-sidebar>
+</plex-layout>

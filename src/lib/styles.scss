@@ -1,14 +1,11 @@
 // Core variables and mixins
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
-
 // Reset and dependencies
 @import "node_modules/bootstrap/scss/normalize";
 @import "node_modules/bootstrap/scss/print";
-
 // Plex colors & variables
 @import "css/variables";
-
 // Core CSS
 @import "node_modules/bootstrap/scss/reboot";
 @import "node_modules/bootstrap/scss/type";
@@ -18,7 +15,6 @@
 @import "node_modules/bootstrap/scss/tables";
 @import "node_modules/bootstrap/scss/forms";
 @import "node_modules/bootstrap/scss/buttons";
-
 // Components
 @import "node_modules/bootstrap/scss/transitions";
 @import "node_modules/bootstrap/scss/dropdown";
@@ -38,16 +34,21 @@
 @import "node_modules/bootstrap/scss/list-group";
 @import "node_modules/bootstrap/scss/responsive-embed";
 @import "node_modules/bootstrap/scss/close";
-
 // Components w/ JavaScript
-// @import "node_modules/bootstrap/scss/modal";
 @import "node_modules/bootstrap/scss/tooltip";
 @import "node_modules/bootstrap/scss/popover";
-// @import "node_modules/bootstrap/scss/carousel";
-
 // Utility classes
 @import "node_modules/bootstrap/scss/utilities";
-
+// Fonts
+$typoPRO-font-path: '~@andes/plex/src/lib/css/fonts/' !default;
+@import 'css/fonts/TypoPRO-SourceSansPro';
+// Icons
+$mdi-font-path: '~@mdi/font/fonts/';
+@import '~@mdi/font/scss/materialdesignicons';
+// Misc
+@import '~node-waves/src/scss/waves';
+@import '~sweetalert2/src/sweetalert2';
+@import '~animate.css/animate'; // DEPRECATION WARNING https://github.com/sass/node-sass/issues/2362
 // Plex core
 @import 'css/layout';
 @import 'css/alert';
@@ -58,11 +59,9 @@
 @import 'css/badge';
 @import 'css/forms';
 @import 'css/list-group';
-
 // Third party
 @import 'css/toast';
 @import 'css/modals';
-
 // Plex Components
 @import 'css/plex-bool';
 @import 'css/plex-box';
@@ -70,7 +69,9 @@
 @import 'css/plex-datetime';
 @import 'css/plex-dropdown';
 @import 'css/plex-loader';
+@import 'css/plex-radio';
 @import 'css/plex-select';
 @import 'css/plex-text';
 @import 'css/plex-text-rich';
 @import 'css/plex-accordion';
+@import 'css/plex-wizard';

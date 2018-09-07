@@ -5,10 +5,11 @@ import { Plex } from '../../../lib/core/service';
     templateUrl: 'home.html'
 })
 export class HomeDemoComponent {
-    // Permite el uso de flex-box en el componente
     public field = '';
-    constructor(public plex: Plex) {}
-    guardar($event) {
+    public tooltip = 'Este es un tooltip<br>multilinea que ocupa mucho espacio';
 
+    constructor(public plex: Plex) { }
+
+    guardar($event) {
     }
 }
