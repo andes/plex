@@ -119,16 +119,19 @@ export class Plex {
             htmlContent = content;
         }
 
-        return swal({
-            title: title,
-            html: htmlContent,
-            type: 'question',
-            showCancelButton: true,
-            confirmButtonText: confirmButtonText.toLocaleUpperCase(),
-            cancelButtonText: cancelButtonText.toLocaleUpperCase(),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-success',
-            cancelButtonClass: 'btn btn-danger',
+        return new Promise((resolve, reject) => {
+            swal({
+                title: title,
+                html: htmlContent,
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonText: confirmButtonText.toLocaleUpperCase(),
+                cancelButtonText: cancelButtonText.toLocaleUpperCase(),
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+            }).then(() => resolve(true))
+                .catch(() => resolve(false));
         });
     }
 
