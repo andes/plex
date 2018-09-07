@@ -33,7 +33,7 @@ export class ModalDemoComponent {
 
         let params = {
             content: this.confirmText,
-            title: 'Operación con archivo muy importante para el usuario',
+            title: 'El archivo se generó correctamente',
             confirmButtonText: 'Descargar archivo',
             cancelButtonText: 'Cancelar'
         };
