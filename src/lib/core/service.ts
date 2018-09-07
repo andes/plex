@@ -80,16 +80,19 @@ export class Plex {
      * @memberof Plex
      * @deprecated Utilizar el método info()
      */
-    alert(content: string, title = 'Información'): Promise<any> {
+    alert(content: string, title = 'Información', confirmButtonText = 'ACEPTAR'): Promise<any> {
         return swal({
             title: title,
             html: content,
             type: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: confirmButtonText.toLocaleUpperCase(),
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-warning',
         });
     }
 
     /**
+     * TODO: Migrar para usar 1 sólo objeto con su type como param
      * Muestra un diálogo de confirmación
      *
      * @param {string} content Texto
@@ -98,44 +101,82 @@ export class Plex {
      *
      * @memberof Plex
      */
-    confirm(content: string, title = 'Confirmación'): Promise<any> {
-        let resolve: any;
-        let promise = new Promise((res, rej) => {
-            resolve = res;
-        });
+    confirm(params: { content: string, title: string, confirmButtonText: string, cancelButtonText: string });
 
-        swal({
-            title: title,
-            html: content,
-            type: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Confirmar',
-            cancelButtonText: 'Cancelar'
-        })
-            .then(() => resolve(true))
-            .catch(() => resolve(false));
-        return promise;
+    confirm(content: string, title?: string, confirmButtonText?: string, cancelButtonText?: string);
+
+    confirm(content, title = 'Confirmación', confirmButtonText = 'Confirmar', cancelButtonText = 'Cancelar'): Promise<any> {
+
+        let htmlContent;
+
+        // Para compatibilidad
+        if (typeof content === 'object') {
+            title = content.title || 'Confirmación';
+            htmlContent = content.content;
+            confirmButtonText = content.confirmButtonText || 'Confirmar';
+            cancelButtonText = content.cancelButtonText || 'Cancelar';
+        } else {
+            htmlContent = content;
+        }
+
+        return new Promise((resolve, reject) => {
+            swal({
+                title: title,
+                html: htmlContent,
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonText: confirmButtonText.toLocaleUpperCase(),
+                cancelButtonText: cancelButtonText.toLocaleUpperCase(),
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+            }).then(() => resolve(true))
+                .catch(() => resolve(false));
+        });
     }
 
     /**
+     * TODO: Migrar para usar 1 sólo objeto con su type como param
      * Muestra un mensaje invasivo al usuario
      *
-     * @param {string} type success, danger, warning, info
+     * @param {string} type success, danger (error), warning, info
      * @param {string} content Texto del mensaje
      * @param {string} [title='Información'] Título
      * @param {number} [timeOut=0] Tiempo en ms cuando se oculta el mensaje. Por default no se oculta.
      *
      * @memberof Plex
      */
-    info(type: string, content: string, title = 'Información', timeOut = 0) {
-        if (type === 'danger') {
-            type = 'error';
+    info(type: String, content: String, title?: String, timeOut?: Number, confirmButtonText?: String);
+
+    info(params: { type: String, content: String, title: String, confirmButtonText: String, timeOut?: Number })
+
+    info(type, content = '', title = 'Información', timeOut = 0, confirmButtonText = 'ACEPTAR') {
+
+        let modalType;
+
+        // Para compatibilidad
+        if (typeof type === 'object') {
+            // TODO: Usar el tipo SweetAlertType?
+            modalType = type.type === 'danger' ? 'error' : type.type;
+            content = type.content || '';
+            title = type.title || 'Información';
+            confirmButtonText = type.confirmButtonText ? type.confirmButtonText.toLocaleUpperCase() : 'ACEPTAR';
+            timeOut = type.timeOut || 0;
+        } else {
+            // TODO: Usar el tipo SweetAlertType?
+            if (type === 'danger') {
+                type = modalType = 'error';
+            }
+            modalType = type;
         }
+
         return swal({
             title: title,
             html: content,
-            type: type as any,
-            confirmButtonText: 'Ok',
+            type: modalType,
+            confirmButtonText: confirmButtonText,
+            buttonsStyling: false,
+            confirmButtonClass: `btn btn-${modalType === 'error' ? 'danger' : modalType}`,
             timer: timeOut || null,
         }).catch(swal.noop);
     }
@@ -237,8 +278,15 @@ export class Plex {
                 });
             }
 
-            // Corrije los textos
+            // En el primer paso el botón principal dice "Comenzar"
             steps[0].confirmButtonText = 'Comenzar';
+
+            // En los pasos intermedios los botones dicen "Siguiente" y "Cancelar"
+            steps = steps.map(s => {
+                return { ...s, buttonsStyling: false, confirmButtonClass: 'btn btn-info', cancelButtonClass: 'btn btn-danger' }
+            });
+
+            // En el último paso el botón principal dice "Finalizar" y el botón "Cancelar" se oculta
             let last = steps[steps.length - 1];
             last.confirmButtonText = 'Finalizar';
             last.showCancelButton = false;

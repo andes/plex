@@ -18,42 +18,34 @@ Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
     ```
    npm install @andes/plex --save
     ```
- 
-3. Renombrar el archivo `src/styles.css` a  `src/styles.less` y editarlo para vincular al archivo `.less` de Plex
 
-    ```less
-   @import '~andes-plex/src/lib/styles.less';
-    ```
- 
-4. Crear un nuevo archivo `src/styles.sass` y editarlo para vincular al archivo `.sass` de Plex
+3. Crear un nuevo archivo `src/styles.sass` y editarlo para vincular al archivo `.sass` de Plex
 
     ```less
    @import '~andes-plex/src/lib/styles.sass';
     ```
 
-5. Registrar ambos archivos de estilos en `angular-cli.json`, quitando `styles.css` y agregar los siguientes archivos globales de diseño:
+4. Registrar en `angular-cli.json` los siguiente archivos:
 
     ```json
    ...
    "styles": [
-       "styles.less",
        "styles.sass",
-       "../node_modules/mdi/css/materialdesignicons.css",
-        "../node_modules/node-waves/dist/waves.css",
-        "../node_modules/sweetalert2/dist/sweetalert2.css",
-        "../node_modules/animate.css/animate.css"
    ],
+   "scripts": [
+        "../node_modules/intro.js/intro.js"
+    ],
    ...
     ```
 
-6. Modificar `app.component.html` con el siguiente contenido:
+5. Modificar `app.component.html` con el siguiente contenido:
 
     ```html
    <plex-app>  
    </plex-app>
     ```
 
-7. Crear un componente `home.component.ts` con el siguiente contenido:
+6. Crear un componente `home.component.ts` con el siguiente contenido:
 
     ```typescript
    import { Component } from '@angular/core';
@@ -65,7 +57,7 @@ Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
    }
     ```
 
-8. Crear el archivo `app.routing.ts` y registrar el componente:
+7. Crear el archivo `app.routing.ts` y registrar el componente:
 
     ```typescript
    import { Routes, RouterModule } from '@angular/router';
@@ -80,7 +72,7 @@ Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
    export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     ```
 
-9. En `app.module.ts` importar `PlexModule` y registrar los routings y el servicio `Plex`: 
+8. En `app.module.ts` importar `PlexModule` y registrar los routings y el servicio `Plex`: 
 
     ```typescript
    import { BrowserModule } from '@angular/platform-browser';
@@ -116,10 +108,10 @@ Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
 
     ```
 
-8. Correr la aplicacion `ng serve` 
+9. Correr la aplicacion `ng serve` 
 
     ```
    ng serve
     ```
 
-9. Navegar hasta `http://localhost:4200` 
+10. Navegar hasta `http://localhost:4200` 

@@ -25,14 +25,14 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
             multi: true
         },
     ],
-    template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
-                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
+    template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
+                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esOpcional" class="opcional"></span></label>
                     <div [ngClass]="{'input-group': prefix || suffix}">
                         <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
                         <input #ref type="text" class="form-control" [disabled]="disabled" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
                         <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
                     </div>
-                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+                    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
                 </div>`,
 })
 export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
@@ -102,9 +102,15 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
         this.renderer.setElementProperty(this.ref.nativeElement, 'value', typeof value === 'undefined' ? '' : value);
     }
 
+    hasDanger() {
+        return (this.control as any).name && (this.control.dirty || this.control.touched) && !this.control.valid;
+    }
+
     // Actualización Vista -> Modelo
     registerOnTouched() {
+
     }
+
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             // Estas líneas evitan que se muestren caracteres no permitidos en el input
