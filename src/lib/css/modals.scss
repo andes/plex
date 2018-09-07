@@ -1,12 +1,51 @@
 .swal2-container * {
-    font-family: "TypoPRO Source Sans Pro";
+  font-family: "TypoPRO Source Sans Pro";
 }
 
-.swal2-buttonswrapper {
+.swal2-modal {
+  display: flex !important;
+
+  div.swal2-icon {
+    margin: 0;
+  }
+
+  :not(.swal2-content, .swal2-buttonswrapper, button) {
+    flex-flow: wrap;
+  }
+
+  div.swal2-question {
+    display: flex !important;
+    justify-content: center;
+    align-self: center;
+  }
+
+  h2.swal2-title {
+    margin: 0;
+    margin-left: 10px;
+    text-align: left;
+    align-self: center;
+    width: 360px;
+  }
+
+  div:not(.swal2-buttonswrapper) {
+    flex-flow: wrap;
+  }
+
+  div.swal2-content {
+    width: 100%;
+    font-weight: normal;
+    font-size: 20px;
+    margin: 20px 0;
+  }
+
+  .swal2-buttonswrapper {
+    width: 100%;
     display: flex !important;
     flex-direction: row-reverse !important;
     justify-content: space-evenly !important;
+
     .btn {
-        width: 40%;
+      width: 40%;
     }
+  }
 }

@@ -9,7 +9,7 @@ export class ModalDemoComponent {
     public alertTimeout = 0;
     public toastText = 'Esta es una rica tostada';
     public toastTimeout = 3000;
-    public confirmText = '¿Desea eliminar el archivo?';
+    public confirmText = '¿Desea descargar el archivo?';
     public resultado: boolean;
     constructor(private plex: Plex) { }
 
@@ -33,7 +33,7 @@ export class ModalDemoComponent {
 
         let params = {
             content: this.confirmText,
-            title: 'Operación con archivo',
+            title: 'Operación con archivo muy importante para el usuario',
             confirmButtonText: 'Descargar archivo',
             cancelButtonText: 'Cancelar'
         };
