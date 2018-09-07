@@ -1,39 +1,39 @@
 <plex-box>
-    <!--Info-->
-    <h4>Plex.info()</h4>
-    <div class="row margin-bottom">
-        <div class="col-8">
-            <plex-text label="Ingrese el texto" [(ngModel)]="alertText"></plex-text>
-            <plex-button label="Info" type="info" (click)="info('info')"></plex-button>
-            <plex-button label="Warning" type="warning" (click)="info('warning')"></plex-button>
-            <plex-button label="Danger" type="danger" (click)="info('danger')"></plex-button>
-            <plex-button label="Success" type="success" (click)="info('success')"></plex-button>
-        </div>
-        <div class="col-4">
-            <plex-int label="Cerrar después de" suffix="ms" [(ngModel)]="alertTimeout"></plex-int>
-        </div>
+  <!--Info-->
+  <h4>Plex.info()</h4>
+  <div class="row margin-bottom">
+    <div class="col-8">
+      <plex-text label="Ingrese el texto" [(ngModel)]="alertText"></plex-text>
+      <plex-button label="INFO" type="info" (click)="info('info')"></plex-button>
+      <plex-button label="WARNING" type="warning" (click)="info('warning')"></plex-button>
+      <plex-button label="DANGER" type="danger" (click)="info('danger')"></plex-button>
+      <plex-button label="SUCCESS" type="success" (click)="info('success')"></plex-button>
     </div>
-    <!--Toast-->
-    <h4 class="pt-4">Plex.toast()</h4>
-    <div class="row margin-bottom">
-        <div class="col-8">
-            <plex-text label="Ingrese el texto" [(ngModel)]="toastText"></plex-text>
-            <plex-button label="Info" type="info" (click)="toast('info')"></plex-button>
-            <plex-button label="Warning" type="warning" (click)="toast('warning')"></plex-button>
-            <plex-button label="Danger" type="danger" (click)="toast('danger')"></plex-button>
-            <plex-button label="Success" type="success" (click)="toast('success')"></plex-button>
-        </div>
-        <div class="col-4">
-            <plex-int label="Cerrar después de" suffix="ms" [(ngModel)]="toastTimeout"></plex-int>
-        </div>
+    <div class="col-4">
+      <plex-int label="Cerrar después de" suffix="ms" [(ngModel)]="alertTimeout"></plex-int>
     </div>
-    <!--Confirm-->
-    <h4 class="pt-4">Plex.confirm()</h4>
-    <div class="row margin-bottom">
-        <div class="col-12">
-            <plex-text label="Ingrese el texto" [(ngModel)]="confirmText"></plex-text>
-            <plex-button label="Mostrar" type="primary" (click)="confirm()"></plex-button>
-            <pre *ngIf="resultado !== undefined">Resultado de la confirmación: <strong>{{ resultado }}</strong></pre>
-        </div>
+  </div>
+  <!--Toast-->
+  <h4 class="pt-4">Plex.toast()</h4>
+  <div class="row margin-bottom">
+    <div class="col-8">
+      <plex-text label="Ingrese el texto" [(ngModel)]="toastText"></plex-text>
+      <plex-button label="INFO" type="info" (click)="toast('info')"></plex-button>
+      <plex-button label="WARNING" type="warning" (click)="toast('warning')"></plex-button>
+      <plex-button label="DANGER" type="danger" (click)="toast('danger')"></plex-button>
+      <plex-button label="SUCCESS" type="success" (click)="toast('success')"></plex-button>
     </div>
+    <div class="col-4">
+      <plex-int label="Cerrar después de" suffix="ms" [(ngModel)]="toastTimeout"></plex-int>
+    </div>
+  </div>
+  <!--Confirm-->
+  <h4 class="pt-4">Plex.confirm()</h4>
+  <div class="row margin-bottom">
+    <div class="col-12 rtl">
+      <plex-text label="Ingrese el texto" [(ngModel)]="confirmText"></plex-text>
+      <plex-button label="MOSTRAR" type="primary" (click)="confirm()"></plex-button>
+      <pre *ngIf="resultado !== undefined">Resultado de la confirmación: <strong>{{ resultado }}</strong></pre>
+    </div>
+  </div>
 </plex-box>
