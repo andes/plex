@@ -78,6 +78,12 @@ export function dateValidator(type: string, min: any, max: any) {
             // Controla min
             if (min !== undefined && min !== null && min !== '') {
                 min = moment(min).toDate();
+                // Igualamos las fechas para solor comparar hora y minutos
+                if (this.type === 'time') {
+                    min.setFullYear(value.getFullYear());
+                    min.setMonth(value.getMonth());
+                    min.setDate(value.getDate());
+                }
                 if (value < min) {
                     return {
                         min: {
@@ -87,10 +93,15 @@ export function dateValidator(type: string, min: any, max: any) {
                     };
                 }
             }
-
             // Controla max
             if (max !== undefined && max !== null && max !== '') {
                 max = moment(max).toDate();
+                // Igualamos las fechas para solor comparar hora y minutos
+                if (this.type === 'time') {
+                    max.setFullYear(value.getFullYear());
+                    max.setMonth(value.getMonth());
+                    max.setDate(value.getDate());
+                }
                 if (value > max) {
                     return {
                         max: {
