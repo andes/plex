@@ -11,11 +11,11 @@ import { hasRequiredValidator } from '../core/validator.functions';
 @Component({
     selector: 'plex-text',
     template: `
-    <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+    <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
 
     <!-- Label -->
     <label *ngIf="label" class="form-control-label">{{label}}
-      <span *ngIf="esOpcional" class="opcional"></span>
+      <span *ngIf="control.name && esOpcional" class="opcional"></span>
     </label>
 
     <!-- Simple text field -->
@@ -39,7 +39,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
     <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
 
     <!-- Validation -->
-    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
   </div>
     `,
     providers: [
@@ -142,7 +142,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         let element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
         this.renderer.setElementProperty(element, 'value', typeof value === 'undefined' ? '' : value);
         if (this.multiline) {
-            this.adjustTextArea()
+            this.adjustTextArea();
         } else {
             if (this.html) {
                 let component = (this.quillEditor as any);
@@ -156,9 +156,14 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.isEmpty = !(value && value.toString().trim());
     }
 
+    public hasDanger() {
+        return (this.control as any).name && (this.control.dirty || this.control.touched) && !this.control.valid;
+    }
+
     // Actualización Vista -> Modelo
     registerOnTouched() {
     }
+
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             value = value || null;
@@ -167,7 +172,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             this.isEmpty = !(value && value.toString().trim());
 
             if (this.multiline) {
-                this.adjustTextArea()
+                this.adjustTextArea();
             }
             // jgabriel | 24/03/2017 | Esto es un por bug de Angular2 que a veces no actualiza la vista cuando cambia el modelo
             // this.change.emit({
