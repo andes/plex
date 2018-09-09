@@ -18,15 +18,6 @@ export class Plex {
     }
 
     /**
-     * Inicializa la vista de la aplicación
-     * @deprecated Utilizar los métodos updateTitle() y updateMenu()
-     */
-    initView(title: string, menu: DropdownItem[] = null) {
-        this.titleService.setTitle(title);
-        this.menu = menu;
-    }
-
-    /**
      * Actualiza el ménu de la aplicación
      *
      * @param {DropdownItem[]} menu Items del menú
@@ -68,27 +59,6 @@ export class Plex {
      */
     updateUserInfo(user: any) {
         this.userInfo = user;
-    }
-
-    /**
-     * Muestra un mensaje de alerta
-     *
-     * @param {string} content Texto
-     * @param {string} [title='Información'] Título
-     * @returns {Promise<any>} Devuelve una promise se que resuelve cuando la alerta se cierra
-     *
-     * @memberof Plex
-     * @deprecated Utilizar el método info()
-     */
-    alert(content: string, title = 'Información', confirmButtonText = 'ACEPTAR'): Promise<any> {
-        return swal({
-            title: title,
-            html: content,
-            type: 'warning',
-            confirmButtonText: confirmButtonText.toLocaleUpperCase(),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-warning',
-        });
     }
 
     /**
@@ -147,11 +117,8 @@ export class Plex {
      * @memberof Plex
      */
     info(type: String, content: String, title?: String, timeOut?: Number, confirmButtonText?: String);
-
-    info(params: { type: String, content: String, title: String, confirmButtonText: String, timeOut?: Number })
-
-    info(type, content = '', title = 'Información', timeOut = 0, confirmButtonText = 'ACEPTAR') {
-
+    info(params: { type: String, content: String, title: String, confirmButtonText: String, timeOut?: Number });
+    info(type, content = '', title = 'Información', timeOut = 0, confirmButtonText = 'Aceptar') {
         let modalType;
 
         // Para compatibilidad
@@ -160,7 +127,7 @@ export class Plex {
             modalType = type.type === 'danger' ? 'error' : type.type;
             content = type.content || '';
             title = type.title || 'Información';
-            confirmButtonText = type.confirmButtonText ? type.confirmButtonText.toLocaleUpperCase() : 'ACEPTAR';
+            confirmButtonText = type.confirmButtonText ? type.confirmButtonText.toLocaleUpperCase() : 'Aceptar';
             timeOut = type.timeOut || 0;
         } else {
             // TODO: Usar el tipo SweetAlertType?
@@ -191,7 +158,7 @@ export class Plex {
      *
      * @memberof Plex
      */
-    toast(type: string, content: string, title = 'Información', timeOut = 2500) {
+    toast(type: string, content: string, title: string = 'Información', timeOut: number = 2500) {
         let options = {
             theClass: 'toast',
             timeOut: timeOut
