@@ -10,7 +10,8 @@ export class RadioDemoComponent implements OnInit {
     public opciones = [
         { id: 1, label: 'Rojo' },
         { id: 2, label: 'Verde' }
-    ]
+    ];
+
     constructor() { }
 
     ngOnInit() {

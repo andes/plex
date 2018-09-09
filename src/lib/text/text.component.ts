@@ -90,7 +90,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input()
     set height(value: number) {
         this.quillStyle.height = value + 'px';
-    };
+    }
     @Input()
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco

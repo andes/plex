@@ -18,7 +18,7 @@ export class WizardDemoComponent {
         forceShow: false,
         fullScreen: false,
         showNumbers: false
-    }
+    };
     private configFullScreen: WizardConfig = {
         id: 'demo-fullscreen',
         updatedOn: moment('2018-08-01').toDate(),
@@ -30,7 +30,7 @@ export class WizardDemoComponent {
         forceShow: false,
         fullScreen: true,
         showNumbers: false
-    }
+    };
 
     constructor(private plex: Plex) { }
 

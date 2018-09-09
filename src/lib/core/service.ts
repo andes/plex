@@ -250,7 +250,7 @@ export class Plex {
 
             // En los pasos intermedios los botones dicen "Siguiente" y "Cancelar"
             steps = steps.map(s => {
-                return { ...s, buttonsStyling: false, confirmButtonClass: 'btn btn-info', cancelButtonClass: 'btn btn-danger' }
+                return { ...s, buttonsStyling: false, confirmButtonClass: 'btn btn-info', cancelButtonClass: 'btn btn-danger' };
             });
 
             // En el último paso el botón principal dice "Finalizar" y el botón "Cancelar" se oculta
@@ -309,9 +309,11 @@ export class Plex {
                 .oncomplete(() => {
                     // No volver a mostrar
                     localStorage[`wizard-${config.id}-${config.updatedOn.toISOString()}-hide`] = true;
-                    resolve(true)
+                    resolve(true);
                 })
-                .onexit(() => resolve(false))
+                .onexit(
+                    () => resolve(false)
+                );
         }
 
         return promise;

@@ -37,11 +37,6 @@
       "project": "src/tsconfig.app.json"
     }
   ],
-  "test": {
-    "karma": {
-      "config": "./karma.conf.js"
-    }
-  },
   "defaults": {
     "styleExt": "css",
     "component": {
