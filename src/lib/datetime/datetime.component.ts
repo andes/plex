@@ -4,7 +4,9 @@ import * as moment from 'moment';
 import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
 
 // Importo las librerías de jQuery
-let jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
+// @jgabriel: No encontré una forma más elegante de incluir jQuery
+// @andrrr: qué mal
+let jQuery = window['jQuery'] = require('jquery/dist/jquery');
 require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker');
 
 @Component({
@@ -23,12 +25,14 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
         },
     ],
     template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
-                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
-                    <div class="input-group">
+                    <label *ngIf="label" class="form-control-label">{{ label }}</label>
+                    <div class="input-group d-flex align-items-center">
+                        <a *ngIf="skipByOn && value" (click)="prev()" class="btn btn-primary hover" [title]="makeTooltip('anterior')"><i class="mdi mdi-chevron-left"></i></a>
                         <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()"/>
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" tabindex="-1" [disabled]="disabled || readonly"><i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i></button>
+                        <button class="btn btn-primary" tabindex="-1" [disabled]="disabled || readonly"><i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i></button>
                         </span>
+                        <a *ngIf="skipByOn && value" (click)="next()" class="btn btn-primary hover" [title]="makeTooltip('siguiente')"><i class="mdi mdi-chevron-right"></i></a>
                     </div>
                     <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
                 </div>`,
@@ -40,6 +44,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private value: any;
     private $button: any;
     private $input: any;
+    private skipByOn = false;
     @ContentChild(NgControl) control: AbstractControl;
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
@@ -52,6 +57,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() placeholder: string;
     @Input() disabled = false;
     @Input() readonly = false;
+    @Input() skipBy: 'hour' | 'day' | 'month' | 'year' = null;
+    @Input() title: string;
     @Input()
     get min(): Date | moment.Moment {
         return this._min;
@@ -94,6 +101,11 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         // Cuando cambias las cotas, devuelve una nueva función de validación
         if (changes.min || changes.max) {
             this.validateFn = dateValidator(this.type, this.min, this.max);
+        }
+        if (this.skipBy) {
+            this.skipByOn = true;
+        } else {
+            this.skipByOn = false;
         }
     }
 
@@ -177,5 +189,34 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
                 return (fecha1 && fecha2 && fecha1.getTime() !== fecha2.getTime());
             }
         }
+    }
+
+    prev() {
+        let temp = this.value ? moment(this.value, 'DD-MM-YYYY HH:mm').subtract(1, this.skipBy).format(this.format) : null;
+        if (this.$button) {
+            this.$button.val(temp);
+        }
+        if (this.$input) {
+            this.$input.val(temp);
+        }
+        this.value = temp;
+    }
+    next() {
+        let temp = this.value ? moment(this.value, 'DD-MM-YYYY HH:mm').add(1, this.skipBy).format(this.format) : null;
+        if (this.$button) {
+            this.$button.val(temp);
+        }
+        if (this.$input) {
+            this.$input.val(temp);
+        }
+        this.value = temp;
+
+    }
+
+    makeTooltip(dir) {
+        switch (this.skipBy) {
+
+        }
+        return this.skipBy === 'hour' ? `hora ${dir}` : this.skipBy === 'day' ? `día ${dir}` : this.skipBy === 'month' ? `mes ${dir}` : `año ${dir}`;
     }
 }
