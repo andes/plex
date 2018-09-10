@@ -23,14 +23,14 @@ const RegEx_Numero = /^(\d)+$/;
             multi: true
         },
     ],
-    template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
-                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="esOpcional" class="opcional"></span></label>
+    template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
+                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esOpcional" class="opcional"></span></label>
                     <div [ngClass]="{'input-group': prefix || suffix}">
                         <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
                         <input #ref type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (focus)="onFocus()" (focusout)="onFocusout()">
                         <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
                     </div>
-                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+                    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
                 </div>`,
 })
 export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
@@ -38,6 +38,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     private renderer: Renderer;
     @ContentChild(NgControl) control: any;
     @ViewChild('ref') ref: ElementRef;
+
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
     }
@@ -103,6 +104,10 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     // Actualización Modelo -> Vista
     writeValue(value: any) {
         this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
+    }
+
+    public hasDanger() {
+        return (this.control as any).name && (this.control.dirty || this.control.touched) && !this.control.valid;
     }
 
     // Actualización Vista -> Modelo

@@ -25,6 +25,9 @@
             140
         ],
         "member-access": false,
+        "member-ordering": [
+            true
+        ],
         "no-arg": true,
         "no-bitwise": true,
         "no-console": [
@@ -36,12 +39,13 @@
         "no-empty": false,
         "no-empty-interface": true,
         "no-eval": true,
-        "no-inferrable-types": [true],
+        "no-inferrable-types": [true, "ignore-params"],
         "no-shadowed-variable": true,
         "no-string-literal": false,
         "no-string-throw": true,
         "no-switch-case-fall-through": true,
         "no-trailing-whitespace": true,
+        "no-unused-expression": true,
         "no-var-keyword": true,
         "object-literal-sort-keys": false,
         "one-line": [
@@ -58,7 +62,7 @@
         ],
         "radix": true,
         "semicolon": [
-            "always"
+            true, "always"
         ],
         "triple-equals": [
             true,

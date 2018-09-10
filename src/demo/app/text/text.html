@@ -11,6 +11,8 @@
                     [readonly]="true">
                     <i prefix class='mdi mdi-account' ></i>
                 </plex-text>
+                <plex-text label="Ingrese un nombre con formato correcto" [(ngModel)]="templateModel1.patron" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ ']+" name="patron" >
+                </plex-text>
             </form>
         </div>
         <div class="col-md-6">

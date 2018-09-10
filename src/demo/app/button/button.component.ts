@@ -16,9 +16,9 @@ export class ButtonDemoComponent {
 
     guardar($event) {
         if ($event.formValid) {
-            this.plex.alert('Formulario OK');
+            this.plex.info('success', 'Formulario OK');
         } else {
-            this.plex.alert('Completar datos requeridos');
+            this.plex.info('warning', 'Completar datos requeridos');
         }
     }
 }

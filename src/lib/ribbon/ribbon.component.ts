@@ -36,6 +36,6 @@ export class PlexRibbonComponent implements OnInit {
             'bg-success': this.type === 'success' ? true : false,
             'bg-danger': this.type === 'danger' ? true : false,
             'bg-warning': this.type === 'warning' ? true : false,
-        }
+        };
     }
 }

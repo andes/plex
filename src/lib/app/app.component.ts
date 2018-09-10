@@ -99,7 +99,7 @@ export class PlexAppComponent implements OnInit {
             }
         },
         colors: [{ pointBackgroundColor: 'grey' }]
-    }
+    };
 
     private initAppStatusCheck() {
         this.plex.appStatus.subscribe((value) => {
@@ -112,7 +112,7 @@ export class PlexAppComponent implements OnInit {
 
     constructor(public plex: Plex) {
         this.initAppStatusCheck();
-    };
+    }
 
     ngOnInit() {
         // Genera N labels vacíos

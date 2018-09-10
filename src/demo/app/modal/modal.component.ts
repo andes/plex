@@ -2,20 +2,14 @@ import { Component } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
 
 @Component({
-    templateUrl: 'modal.html',
-    styles: [`
-        .swal2-confirm {
-            background-color: #449d44 !important;
-            border-color: #419641 !important;
-        }
-    `]
+    templateUrl: 'modal.html'
 })
 export class ModalDemoComponent {
     public alertText = 'Se ha detectado un error en la base de datos';
     public alertTimeout = 0;
     public toastText = 'Esta es una rica tostada';
     public toastTimeout = 3000;
-    public confirmText = '¿Desea eliminar el archivo?';
+    public confirmText = '¿Desea descargar el archivo?';
     public resultado: boolean;
     constructor(private plex: Plex) { }
 
@@ -39,8 +33,8 @@ export class ModalDemoComponent {
 
         let params = {
             content: this.confirmText,
-            title: 'Operación con archivo',
-            confirmButtonText: 'Eliminar archivo',
+            title: 'El archivo se generó correctamente',
+            confirmButtonText: 'Descargar archivo',
             cancelButtonText: 'Cancelar'
         };
 

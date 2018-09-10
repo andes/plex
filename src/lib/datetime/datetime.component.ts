@@ -34,7 +34,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                         </span>
                         <a *ngIf="skipByOn && value" (click)="next()" class="btn btn-primary hover" [title]="makeTooltip('siguiente')"><i class="mdi mdi-chevron-right"></i></a>
                     </div>
-                    <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+                    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
                 </div>`,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
@@ -124,8 +124,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
             lang: 'es',
             format: this.format,
             currentDate: this.value,
-            okText: 'Ok',
-            cancelText: 'Cancelar',
+            okText: 'ACEPTAR',
+            cancelText: 'CANCELAR',
             clearButton: false,
             nowButton: false,
             switchOnClick: true,
@@ -151,6 +151,10 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         if (this.$input) {
             this.$input.val(temp);
         }
+    }
+
+    hasDanger() {
+        return (this.control as any).name && (this.control.dirty || this.control.touched) && !this.control.valid;
     }
 
     // Actualización Vista -> Modelo

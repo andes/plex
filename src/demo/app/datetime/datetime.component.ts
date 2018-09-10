@@ -31,6 +31,6 @@ export class DateTimeDemoComponent implements OnInit {
     }
 
     updateMaxHora() {
-        this.tModel.maxHora = moment().add(180, 'minutes');
+        this.tModel.minHora = moment().add(30, 'minutes').add(1, 'days');
     }
 }
