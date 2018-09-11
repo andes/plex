@@ -145,12 +145,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         this.value = value;
 
         let temp = this.value ? moment(this.value).format(this.format) : null;
-        if (this.$button) {
-            this.$button.val(temp);
-        }
-        if (this.$input) {
-            this.$input.val(temp);
-        }
+        this.setElements(temp);
     }
 
     hasDanger() {
@@ -197,16 +192,15 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
 
     prev() {
         let temp = this.value ? moment(this.value, 'DD-MM-YYYY HH:mm').subtract(1, this.skipBy).format(this.format) : null;
-        if (this.$button) {
-            this.$button.val(temp);
-        }
-        if (this.$input) {
-            this.$input.val(temp);
-        }
-        this.value = temp;
+        this.setElements(temp);
     }
     next() {
         let temp = this.value ? moment(this.value, 'DD-MM-YYYY HH:mm').add(1, this.skipBy).format(this.format) : null;
+        this.setElements(temp);
+
+    }
+
+    private setElements(temp: string) {
         if (this.$button) {
             this.$button.val(temp);
         }
@@ -214,13 +208,9 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
             this.$input.val(temp);
         }
         this.value = temp;
-
     }
 
     makeTooltip(dir) {
-        switch (this.skipBy) {
-
-        }
         return this.skipBy === 'hour' ? `hora ${dir}` : this.skipBy === 'day' ? `día ${dir}` : this.skipBy === 'month' ? `mes ${dir}` : `año ${dir}`;
     }
 }
