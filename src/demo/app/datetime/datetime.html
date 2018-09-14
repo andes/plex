@@ -14,8 +14,11 @@
         <plex-datetime label="Este campo es readonly" type="time" [(ngModel)]="tModel.hora2" name="hora2" [readonly]="model4.disabled">
         </plex-datetime>
         <plex-button label="Actualizar maxHora" (click)="updateMaxHora()"></plex-button>
-        <plex-datetime label="Fecha con navegación inline (por hora)" [skipBy]="'hour'" [(ngModel)]="tModel.fechaHora"
-          name="fechaHora" required>
+        <plex-datetime label="Fecha con navegación inline (por dia)" [skipBy]="'day'" [(ngModel)]="tModel.fecha" name="fechaSkip"
+          required>
+        </plex-datetime>
+        <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'" [(ngModel)]="tModel.fechaHora"
+          name="horaSkip" required>
         </plex-datetime>
       </form>
     </div>
