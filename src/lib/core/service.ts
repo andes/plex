@@ -71,12 +71,14 @@ export class Plex {
      * @memberof Plex
      * @deprecated Utilizar el método info()
      */
-    alert(content: string, title = 'Información'): Promise<any> {
+    alert(content: string, title = 'Información', confirmButtonText = 'ACEPTAR'): Promise<any> {
         return swal({
             title: title,
             html: content,
             type: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: confirmButtonText.toLocaleUpperCase(),
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-warning',
         });
     }
 
