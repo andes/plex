@@ -27,12 +27,12 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
     template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
                     <label *ngIf="label" class="form-control-label">{{ label }}</label>
                     <div class="input-group d-flex align-items-center">
-                        <a *ngIf="skipByOn && value" (click)="prev()" class="btn btn-primary hover" [title]="makeTooltip('anterior')"><i class="mdi mdi-chevron-left"></i></a>
+                        <a *ngIf="skipBy && value" (click)="prev()" class="btn btn-info text-white pl-1 pr-1 hover" [title]="makeTooltip('anterior')"><i class="mdi mdi-chevron-left"></i></a>
                         <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()"/>
                         <span class="input-group-btn">
                         <button class="btn btn-primary" tabindex="-1" [disabled]="disabled || readonly"><i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i></button>
                         </span>
-                        <a *ngIf="skipByOn && value" (click)="next()" class="btn btn-primary hover" [title]="makeTooltip('siguiente')"><i class="mdi mdi-chevron-right"></i></a>
+                        <a *ngIf="skipBy && value" (click)="next()" class="btn btn-info text-white pl-1 pr-1 hover" [title]="makeTooltip('siguiente')"><i class="mdi mdi-chevron-right"></i></a>
                     </div>
                     <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
                 </div>`,
@@ -102,11 +102,6 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         if (changes.min || changes.max) {
             this.validateFn = dateValidator(this.type, this.min, this.max);
         }
-        if (this.skipBy) {
-            this.skipByOn = true;
-        } else {
-            this.skipByOn = false;
-        }
     }
 
     constructor(private element: ElementRef, private renderer: Renderer) {
@@ -117,7 +112,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
-        this.format = this.type === 'date' ? 'DD/MM/YYYY' : (this.type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm');
+        this.format = this.dateOrTime();
         this.$input = jQuery('INPUT', this.element.nativeElement.children[0]);
         this.$button = jQuery('BUTTON', this.element.nativeElement.children[0]);
         this.$button.bootstrapMaterialDatePicker({
@@ -140,10 +135,13 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         });
     }
 
+    private dateOrTime(): string {
+        return this.type === 'date' ? 'DD/MM/YYYY' : (this.type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm');
+    }
+
     // Actualización Modelo -> Vista
     writeValue(value: any) {
         this.value = value;
-
         let temp = this.value ? moment(this.value).format(this.format) : null;
         this.setElements(temp);
     }
@@ -155,6 +153,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     // Actualización Vista -> Modelo
     registerOnTouched() {
     }
+
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             if (typeof value === 'string') {
@@ -191,13 +190,13 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     prev() {
-        let temp = this.value ? moment(this.value, 'DD-MM-YYYY HH:mm').subtract(1, this.skipBy).format(this.format) : null;
+        let temp = this.value ? moment(this.value, this.dateOrTime()).subtract(1, this.skipBy).format(this.format) : null;
         this.setElements(temp);
     }
-    next() {
-        let temp = this.value ? moment(this.value, 'DD-MM-YYYY HH:mm').add(1, this.skipBy).format(this.format) : null;
-        this.setElements(temp);
 
+    next() {
+        let temp = this.value ? moment(this.value, this.dateOrTime()).add(1, this.skipBy).format(this.format) : null;
+        this.setElements(temp);
     }
 
     private setElements(temp: string) {
