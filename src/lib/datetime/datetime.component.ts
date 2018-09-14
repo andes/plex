@@ -27,12 +27,12 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
     template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
                     <label *ngIf="label" class="form-control-label">{{ label }}</label>
                     <div class="input-group d-flex align-items-center">
-                        <a *ngIf="skipBy && value" (click)="prev()" class="btn btn-info text-white pl-1 pr-1 hover" [title]="makeTooltip('anterior')"><i class="mdi mdi-chevron-left"></i></a>
+                        <a *ngIf="skipBy && value" (click)="prev()" class="btn btn-info text-white pl-1 pr-1 hover" [title]="makeTooltip('anterior')"><i class="mdi mdi-menu-left"></i></a>
                         <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()"/>
                         <span class="input-group-btn">
                         <button class="btn btn-primary" tabindex="-1" [disabled]="disabled || readonly"><i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i></button>
                         </span>
-                        <a *ngIf="skipBy && value" (click)="next()" class="btn btn-info text-white pl-1 pr-1 hover" [title]="makeTooltip('siguiente')"><i class="mdi mdi-chevron-right"></i></a>
+                        <a *ngIf="skipBy && value" (click)="next()" class="btn btn-info text-white pl-1 pr-1 hover" [title]="makeTooltip('siguiente')"><i class="mdi mdi-menu-right"></i></a>
                     </div>
                     <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
                 </div>`,
