@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.6.1] - 2018-09-19
+
+#### Added
+
+* plex.alert again.
+
 ## [3.6.0] - 2018-09-19
 
 #### Added
