@@ -6,7 +6,7 @@ import { Plex } from '../../../lib/core/service';
     templateUrl: 'wizard.html',
 })
 export class WizardDemoComponent {
-    private config: WizardConfig = {
+    public config: WizardConfig = {
         id: 'demo',
         updatedOn: moment('2018-08-01').toDate(),
         steps: [
@@ -31,7 +31,7 @@ export class WizardDemoComponent {
         fullScreen: true,
         showNumbers: false
     };
-
+    public field = '';
     constructor(private plex: Plex) { }
 
     mostrar(fullscreen: boolean) {
@@ -44,5 +44,9 @@ export class WizardDemoComponent {
 
     changeForce() {
         this.configFullScreen.forceShow = this.config.forceShow;
+    }
+
+    guardar($event) {
+
     }
 }
