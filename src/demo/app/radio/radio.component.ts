@@ -4,13 +4,14 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'radio.html',
 })
 export class RadioDemoComponent implements OnInit {
-    public modelo = {
+    public modelo: any = {
         // radio: 2
     };
     public opciones = [
         { id: 1, label: 'Rojo' },
         { id: 2, label: 'Verde' }
-    ]
+    ];
+
     constructor() { }
 
     ngOnInit() {

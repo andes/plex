@@ -1,7 +1,7 @@
 <plex-layout main="8">
   <plex-layout-main>
       <header>
-          <div class="page-title" title="Esta es la clase page-title" titlePosition="right">Gestor de agendas</div>
+          <div class="page-title" [title]="tooltip" titlePosition="right">Gestor de agendas</div>
       </header>
       <ul class="list-group">
           <li class="list-group-item active">Cras justo odio</li>
@@ -48,7 +48,7 @@
       </header>
       <form>
           <p>El siguiente ejemplo muestra el uso de la propiedad <strong>validateForm</strong></p>
-          <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false" [required]="true"></plex-text>
+          <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false"></plex-text>
           <plex-button label="Guardar formulario" icon="content-save" validateForm="true" (click)="guardar($event)"></plex-button>
       </form>
   </plex-layout-sidebar>
