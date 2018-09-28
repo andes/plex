@@ -14,8 +14,8 @@ export class ModalDemoComponent {
     constructor(private plex: Plex) { }
 
     info(type) {
-        let params = {
-            type: type,
+        const params = {
+            type,
             content: this.alertText,
             title: 'Información',
             confirmButtonText: 'Aceptar',
@@ -31,7 +31,7 @@ export class ModalDemoComponent {
 
     confirm() {
 
-        let params = {
+        const params = {
             content: this.confirmText,
             title: 'El archivo se generó correctamente',
             confirmButtonText: 'Descargar archivo',

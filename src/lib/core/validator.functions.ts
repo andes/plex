@@ -1,6 +1,6 @@
 import { FormControl, AbstractControl } from '@angular/forms';
 // ESTO ES UN HORRIBLE!
-let moment = window['moment'] = require('moment/moment.js');
+const moment = window['moment'] = require('moment/moment.js');
 require('moment/locale/es.js');
 
 /**
@@ -13,7 +13,7 @@ require('moment/locale/es.js');
  * @returns Objeto de validación
  */
 export function numberValidator(regEx: RegExp, min: any, max: any) {
-    return function (c: FormControl): any {
+    return (c: FormControl): any => {
         if ((c.value === null) || (('' + c.value).trim() === '')) {
             return null;
         }
@@ -28,7 +28,7 @@ export function numberValidator(regEx: RegExp, min: any, max: any) {
         }
 
         // Convierte a número
-        let value = parseInt(c.value.toString().replace(',', '.'), 10);
+        const value = parseInt(c.value.toString().replace(',', '.'), 10);
 
         // Controla min
         if (min !== undefined && min !== null && min !== '') {
@@ -73,7 +73,7 @@ export function dateValidator(type: string, min: any, max: any) {
     return function (c: FormControl): any {
         if (c.value && moment(c.value).isValid) {
             // Controla rango
-            let value = moment(c.value).toDate();
+            const value = moment(c.value).toDate();
             this.format = this.type === 'date' ? 'DD/MM/YYYY' : (this.type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm');
             // Controla min
             if (min !== undefined && min !== null && min !== '') {
@@ -123,6 +123,6 @@ export function dateValidator(type: string, min: any, max: any) {
  * @param {AbstractControl} control Control
  */
 export function hasRequiredValidator(control: AbstractControl) {
-    let validator: any = control.validator && control.validator({ value: null } as AbstractControl);
+    const validator: any = control.validator && control.validator({ value: null } as AbstractControl);
     return !(validator && validator.required);
 }

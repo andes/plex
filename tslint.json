@@ -1,4 +1,7 @@
 {
+    "extends": [
+        "tslint-eslint-rules"
+    ],
     "rulesDirectory": [
         "node_modules/codelyzer"
     ],
@@ -25,9 +28,6 @@
             140
         ],
         "member-access": false,
-        "member-ordering": [
-            true
-        ],
         "no-arg": true,
         "no-bitwise": true,
         "no-console": [
@@ -55,7 +55,6 @@
             "check-else",
             "check-whitespace"
         ],
-        "prefer-const": false,
         "quotemark": [
             true,
             "single"
@@ -78,7 +77,6 @@
                 "variable-declaration": "nospace"
             }
         ],
-        "typeof-compare": true,
         "unified-signatures": true,
         "variable-name": false,
         "whitespace": [
@@ -87,7 +85,8 @@
             "check-decl",
             "check-operator",
             "check-separator",
-            "check-type"
+            "check-type",
+            "check-preblock"
         ],
 
         "directive-selector": [true, "attribute", "plex", "camelCase"],
@@ -101,8 +100,60 @@
         "use-pipe-transform-interface": true,
         "component-class-suffix": true,
         "directive-class-suffix": true,
-        "no-access-missing-member": true,
-        "templates-use-public": true,
-        "invoke-injectable": true
+        "object-literal-key-quotes": [
+            true,
+            "as-needed"
+        ],
+        "no-unnecessary-callback-wrapper": true,
+        "no-consecutive-blank-lines": [
+            true,
+            2
+        ],
+        "align": [
+            true,
+            "parameters",
+            "statements",
+            "members"
+        ],
+        "space-before-function-paren": [
+            true,
+            {
+                "anonymous": "always",
+                "named": "never",
+                "asyncArrow": "always"
+            }
+        ],
+        "no-implicit-dependencies": [
+            true, "dev", ["moment", "sweetalert2", "shiro-trie"]
+        ],
+        "prefer-object-spread": true,
+        "object-literal-shorthand": true,
+        "ter-indent": [
+            true,
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "array-bracket-spacing": [
+            true,
+            {
+                "singleValue": false,
+                "objectsInArrays": false,
+                "arraysInArrays": false
+            }
+        ],
+        "no-constant-condition": [
+            true,
+            {
+                "checkLoops": false
+            }
+        ],
+        "prefer-const": true,
+        "only-arrow-functions": [
+            true,
+            "allow-declarations",
+            "allow-named-functions"
+        ]
     }
 }

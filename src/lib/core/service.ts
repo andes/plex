@@ -73,7 +73,7 @@ export class Plex {
      */
     alert(content: string, title = 'Información', confirmButtonText = 'ACEPTAR'): Promise<any> {
         return swal({
-            title: title,
+            title,
             html: content,
             type: 'warning',
             confirmButtonText: confirmButtonText.toLocaleUpperCase(),
@@ -112,7 +112,7 @@ export class Plex {
 
         return new Promise((resolve, reject) => {
             swal({
-                title: title,
+                title,
                 html: htmlContent,
                 type: 'question',
                 showCancelButton: true,
@@ -159,10 +159,10 @@ export class Plex {
         }
 
         return swal({
-            title: title,
+            title,
             html: content,
             type: modalType,
-            confirmButtonText: confirmButtonText,
+            confirmButtonText,
             buttonsStyling: false,
             confirmButtonClass: `btn btn-${modalType === 'error' ? 'danger' : modalType}`,
             timer: timeOut || null,
@@ -180,9 +180,9 @@ export class Plex {
      * @memberof Plex
      */
     toast(type: string, content: string, title: string = 'Información', timeOut: number = 2500) {
-        let options = {
+        const options = {
             theClass: 'toast',
-            timeOut: timeOut
+            timeOut
         };
         switch (type) {
             case 'success':
@@ -241,7 +241,7 @@ export class Plex {
 
         // Promise que devolverá la función
         let resolve: any;
-        let promise = new Promise((res, rej) => {
+        const promise = new Promise((res, rej) => {
             resolve = res;
         });
 
@@ -249,7 +249,7 @@ export class Plex {
             // Utiliza SweetAlert2
             // Configura SweetAlert
             let steps = [];
-            for (let i in config.steps) {
+            for (const i in config.steps) {
                 steps.push({
                     title: config.steps[i].title,
                     html: config.steps[i].content,
@@ -275,7 +275,7 @@ export class Plex {
             });
 
             // En el último paso el botón principal dice "Finalizar" y el botón "Cancelar" se oculta
-            let last = steps[steps.length - 1];
+            const last = steps[steps.length - 1];
             last.confirmButtonText = 'Finalizar';
             last.showCancelButton = false;
 
@@ -284,7 +284,7 @@ export class Plex {
             if (steps.length === 1) {
                 modal = swal(steps[0]);
             } else {
-                let progressSteps: number[] = [];
+                const progressSteps: number[] = [];
                 steps.forEach((element, index) => progressSteps.push(index + 1));
                 steps.forEach((element, value, index) => element.progressSteps = progressSteps);
                 modal = swal.queue(steps);
@@ -305,8 +305,8 @@ export class Plex {
             });
         } else {
             // Utiliza Intro.js
-            let steps: IntroJs.Step[] = [];
-            for (let i in config.steps) {
+            const steps: IntroJs.Step[] = [];
+            for (const i in config.steps) {
                 steps.push({
                     // title: config.steps[i].title,
                     intro: (config.steps[i].title ? `<h3>${config.steps[i].title}</h3>` : '') + config.steps[i].content,
@@ -315,7 +315,7 @@ export class Plex {
                 });
             }
 
-            let intro = introJs();
+            const intro = introJs();
             intro.setOptions({
                 nextLabel: 'Siguiente',
                 prevLabel: 'Volver',
@@ -324,7 +324,7 @@ export class Plex {
                 showProgress: true,
                 showBullets: false,
                 showStepNumbers: config.showNumbers,
-                steps: steps
+                steps
             });
             intro.start()
                 .oncomplete(() => {
@@ -332,9 +332,7 @@ export class Plex {
                     localStorage[`wizard-${config.id}-${config.updatedOn.toISOString()}-hide`] = true;
                     resolve(true);
                 })
-                .onexit(
-                    () => resolve(false)
-                );
+                .onexit(() => resolve(false));
         }
 
         return promise;
