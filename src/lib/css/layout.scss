@@ -97,9 +97,16 @@ plex-layout,
     }
 }
 
-// Page Title
+// Page Title & Subtitle
 .page-title {
   font-size: 1.8em;
+  color: $dark-grey;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.page-subtitle {
+  font-size: 1.5em;
   color: $dark-grey;
   font-weight: 100;
   text-transform: uppercase;
