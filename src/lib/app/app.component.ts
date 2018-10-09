@@ -10,6 +10,13 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                         <div class="logo"></div>
                         <div class="text"></div>
                     </div>
+                    <div class="title hidden-md-down">
+                        <ng-container *ngFor="let item of plex.title; let last = last">
+                            <a *ngIf="item.route" [routerLink]="item.route">{{item.name}}</a>
+                            <span *ngIf="!item.route">{{item.name}}</span>
+                            <span *ngIf="!last"> / </span>
+                        </ng-container>
+                    </div>
                     <div class="actions">
                         <!--App Status-->
                         <div class="action">

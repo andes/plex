@@ -1,11 +1,11 @@
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
-import { default as swal, SweetAlertType } from 'sweetalert2';
+import { default as swal } from 'sweetalert2';
 import { WizardConfig } from './wizard-config.interface';
+import { PlexTitle } from './plex-title.interface';
 
 @Injectable()
 export class Plex {
@@ -13,6 +13,10 @@ export class Plex {
     public loaderCount = 0;
     public appStatus: Subject<any> = new Subject();
     public userInfo: any;
+    /**
+     * Contiene el título y breadcrumb que se muestran en el navbar
+     */
+    public title: PlexTitle[];
 
     constructor(private titleService: Title, private noficationService: NotificationsService) {
     }
@@ -29,14 +33,24 @@ export class Plex {
     }
 
     /**
-     * Actualiza el título del navegador
+     * Actualiza el título del navegador y breadcrumb
      *
      * @param {string} title Título
      *
      * @memberof Plex
      */
-    updateTitle(title: string) {
-        this.titleService.setTitle(title);
+    updateTitle(title: string | PlexTitle[]) {
+        if (title) {
+            if (typeof title === 'string') {
+                this.title = [{ name: title }];
+            } else {
+                this.title = title as PlexTitle[];
+            }
+            this.titleService.setTitle(this.title[this.title.length - 1].name);
+        } else {
+            this.titleService.setTitle('');
+            this.title = null;
+        }
     }
 
     /**
