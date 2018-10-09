@@ -1,14 +1,16 @@
 import { Plex } from './../../../lib/core/service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     templateUrl: 'button.html',
 })
-export class ButtonDemoComponent {
+export class ButtonDemoComponent implements OnInit {
     public modelo = {
         campo1: null
     };
-    constructor(private plex: Plex) {
+    constructor(private plex: Plex) { }
+
+    ngOnInit(): void {
         this.plex.updateTitle([{ name: 'Plex', route: '/' }, { name: 'Button' }]);
     }
 

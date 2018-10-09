@@ -40,17 +40,19 @@ export class Plex {
      * @memberof Plex
      */
     updateTitle(title: string | PlexTitle[]) {
-        if (title) {
-            if (typeof title === 'string') {
-                this.title = [{ name: title }];
+        setTimeout(() => {
+            if (title) {
+                if (typeof title === 'string') {
+                    this.title = [{ name: title }];
+                } else {
+                    this.title = title as PlexTitle[];
+                }
+                this.titleService.setTitle(this.title[this.title.length - 1].name);
             } else {
-                this.title = title as PlexTitle[];
+                this.titleService.setTitle('');
+                this.title = null;
             }
-            this.titleService.setTitle(this.title[this.title.length - 1].name);
-        } else {
-            this.titleService.setTitle('');
-            this.title = null;
-        }
+        });
     }
 
     /**
