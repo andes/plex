@@ -9,7 +9,7 @@ export class HomeDemoComponent {
     public tooltip = 'Este es un tooltip<br>multilinea que ocupa mucho espacio';
 
     constructor(public plex: Plex) {
-        this.plex.updateTitle([{ name: 'Internación', route: '/' }, { name: 'Punto de inicio' }]);
+        this.plex.updateTitle('Bienvenido a Plex');
     }
 
     guardar($event) {

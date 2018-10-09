@@ -6,12 +6,18 @@ import { Component } from '@angular/core';
 })
 export class ButtonDemoComponent {
     public modelo = {
-        campo1: 'XXX'
+        campo1: null
     };
-    constructor(private plex: Plex) { }
+    constructor(private plex: Plex) {
+        this.plex.updateTitle([{ name: 'Plex', route: '/' }, { name: 'Button' }]);
+    }
 
     onClick() {
         alert('Click handler was fired');
+    }
+
+    onDisabledClick() {
+        alert('ESTE HANDLER NO DEBERÍA EJECUTARSE. SI SE EJECUTA ES UN POR UN BUG DE ANGULAR/PLEX');
     }
 
     guardar($event) {
