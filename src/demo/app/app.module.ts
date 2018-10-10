@@ -32,6 +32,7 @@ import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
+import { TemplateFormComponent } from './templates/template.form.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { WizardDemoComponent } from './wizard/wizard.component';
     RibbonDemoComponent,
     PhoneDemoComponent,
     DropdownDemoComponent,
-    WizardDemoComponent
+    WizardDemoComponent,
+    TemplateFormComponent
   ],
   imports: [
     BrowserModule,

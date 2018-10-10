@@ -19,6 +19,7 @@ import { PhoneDemoComponent } from './phone/phone.component';
 import { FontsDemoComponent } from './fonts/fonts.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
+import { TemplateFormComponent } from './templates/template.form.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
     { path: 'phone', component: PhoneDemoComponent },
     { path: 'dropdown', component: DropdownDemoComponent },
     { path: 'wizard', component: WizardDemoComponent },
+    { path: 'templates/form', component: TemplateFormComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 
