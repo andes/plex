@@ -3,14 +3,21 @@
         <div class="col-md-6">
             <form>
                 <h1>Radio vertical</h1>
-                <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores">
+                <plex-radio [(ngModel)]="modelo.radio" label="Selecciona un color" [data]="opciones" name="colores">
                 </plex-radio>
             </form>
         </div>
-        <div class="col-md-6" *ngIf="modelo">
+        <div class="col-md-6">
+                <form>
+                    <h1>Radio vertical</h1>
+                    <plex-text [(ngModel)]="modelo.texto" label="Selecciona un color" name="tewtewrw">
+                    </plex-text>
+                </form>
+            </div>
+        <!-- <div class="col-md-6" *ngIf="modelo">
             <label>Modelo</label>
             <pre>{{modelo | json}}</pre>
-        </div>
+        </div> -->
     </div>
     <div class="row">
         <div class="col-md-6">
