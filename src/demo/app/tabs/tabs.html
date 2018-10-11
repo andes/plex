@@ -1,19 +1,39 @@
-<plex-tabs [activeIndex]="activo" (change)="cambio($event)">
-	<plex-tab label="Tab 1">
-		<div class="alert alert-info">
-			Contenido 1
-		</div>
-	</plex-tab>
-	<plex-tab *ngIf="mostrar" label="Tab 2" icon="account">
-		<div class="alert alert-warning">
-			Contenido 2
-		</div>
-	</plex-tab>
-	<plex-tab icon="history">
-		<div class="alert alert-danger">
-			Contenido 3
-		</div>
-	</plex-tab>
-</plex-tabs>
-<pre>Tab activo: {{activo}}</pre>
-<plex-button (click)="next()" label="Siguiente tab"></plex-button>
+<plex-layout main="8">
+	<plex-layout-main>
+		<fieldset>
+			<legend>Tabs estático</legend>
+			<plex-tabs [activeIndex]="activo" (change)="cambio($event)">
+				<plex-tab label="Tab 1">
+					<div class="alert alert-info">
+						Contenido 1
+					</div>
+				</plex-tab>
+				<plex-tab *ngIf="mostrar" label="Tab 2" icon="account">
+					<div class="alert alert-warning">
+						Contenido 2
+					</div>
+				</plex-tab>
+				<plex-tab icon="history">
+					<div class="alert alert-danger">
+						Contenido 3
+					</div>
+				</plex-tab>
+			</plex-tabs>
+			<pre>Tab activo: {{activo}}</pre>
+			<plex-button (click)="next()" label="Siguiente tab"></plex-button>
+		</fieldset>
+		<fieldset>
+			<legend>Tabs dinámico</legend>
+			<plex-tabs [activeIndex]="activoDinamico" (close)="close($event)">
+				<plex-tab *ngFor="let item of tabs" [label]="item.label" [icon]="item.icon" [allowClose]="true">
+					<div class="alert alert-warning">
+						Este es el contenido de <strong>{{item.label}}</strong>
+					</div>
+				</plex-tab>
+			</plex-tabs>
+			<plex-button (click)="add()" label="Agregar" type="success"></plex-button>
+		</fieldset>
+	</plex-layout-main>
+	<plex-layout-sidebar>
+	</plex-layout-sidebar>
+</plex-layout>

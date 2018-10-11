@@ -63,6 +63,7 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import 'css/toast';
 @import 'css/modals';
 // Plex Components
+@import 'css/plex-accordion';
 @import 'css/plex-bool';
 @import 'css/plex-box';
 @import 'css/plex-button';
@@ -71,7 +72,7 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import 'css/plex-loader';
 @import 'css/plex-radio';
 @import 'css/plex-select';
+@import 'css/plex-tabs';
 @import 'css/plex-text';
 @import 'css/plex-text-rich';
-@import 'css/plex-accordion';
 @import 'css/plex-wizard';
