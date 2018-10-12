@@ -16,10 +16,10 @@ export class PlexButtonComponent {
     @Input() icon: string;
     @Input() type: string;
     @Input() size: 'lg' | 'sm' | 'block';
-    @Input() validateForm: boolean;
+    @Input() validateForm: boolean | NgForm;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
 
-    constructor( @Optional() private form?: NgForm) {
+    constructor(@Optional() private parentForm?: NgForm) {
         this.type = 'default';
         this.disabled = false;
         this.size = null;
@@ -37,13 +37,18 @@ export class PlexButtonComponent {
             // return false;
         } else {
             // Si está asociado a un formulario, fuerza la validación de los controles
-            if (this.validateForm && this.form) {
-                for (let key in this.form.controls) {
-                    this.form.controls[key].markAsDirty();
+            if (this.validateForm) {
+                let form: NgForm = (this.validateForm instanceof NgForm) ? (this.validateForm as NgForm) : this.parentForm;
+                if (!form) {
+                    throw new Error('plex-button no pudo vincularse a ningún NgForm');
+                }
+
+                for (let key in form.controls) {
+                    form.controls[key].markAsDirty();
                 }
                 // Inyecta la propiedad para que sea fácilmente accesible desde los controladores
                 if (event) {
-                    (event as any).formValid = this.form.valid;
+                    (event as any).formValid = form.valid;
                 }
             }
         }
