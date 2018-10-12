@@ -6,17 +6,15 @@ import { TemplateData } from './template-data.interface';
     templateUrl: 'template.form.html'
 })
 export class TemplateFormComponent implements OnInit {
-
-    @HostBinding('class.plex-layout') layout = true;
-
     // Propiedades privadas
 
     // Propiedades públicas
     public modelo: TemplateData;
 
-    //
+    // Opciones que se consultan desde la base de datos
     public opcionesLugarNacimiento: any[] = [{ id: '1', nombre: 'Neuquén' }, { id: '2', nombre: 'Centenario' }, { id: '3', nombre: '' }, { id: '4', nombre: 'Plottier' }];
     public opcionesSexo: any[] = [{ id: 'femenino', label: 'femenino' }, { id: 'masculino', label: 'masculino' }, { id: 'otro', label: 'otro' }];
+
     // Eventos
     @Output() save: EventEmitter<TemplateData> = new EventEmitter<TemplateData>();
 
@@ -48,7 +46,7 @@ export class TemplateFormComponent implements OnInit {
             // base de datos los guardemos como un string
             this.modelo.sexo = ((typeof this.modelo.sexo === 'string')) ? this.modelo.sexo : (Object(this.modelo.sexo).id);
             this.plex.info('success', 'Los datos están correctos');
-            // cuando desea retorna el
+            // cuando desea retornar el modelo a otro componente
             this.save.emit(this.modelo);
         } else {
             this.plex.info('warning', 'Completar datos requeridos');
