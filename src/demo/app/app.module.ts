@@ -34,6 +34,8 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
 import { TemplateFormComponent } from './templates/template.form.component';
 import { TemplateVisualizacionComponent } from './templates/template.visualizacion.component';
+import { TemplateBusquedaComponent } from './templates/template.busqueda.component';
+import { FechaPipe } from './templates/fecha.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { TemplateVisualizacionComponent } from './templates/template.visualizaci
     DropdownDemoComponent,
     WizardDemoComponent,
     TemplateFormComponent,
-    TemplateVisualizacionComponent
+    TemplateVisualizacionComponent,
+    TemplateBusquedaComponent,
+    FechaPipe
   ],
   imports: [
     BrowserModule,
