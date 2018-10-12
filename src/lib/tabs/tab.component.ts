@@ -8,4 +8,5 @@ export class PlexTabComponent {
   @Input() label: string;
   @Input() icon: string;
   @Input() active: boolean;
+  @Input() allowClose: boolean;
 }

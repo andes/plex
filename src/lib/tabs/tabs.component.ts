@@ -1,15 +1,16 @@
-import { Component, AfterViewInit, Input, Output, EventEmitter, ContentChild, ContentChildren, ViewChildren, forwardRef, QueryList, ElementRef, AfterContentInit } from '@angular/core';
+import { Component, AfterViewInit, Input, Output, EventEmitter, ContentChild, ContentChildren, ViewChildren, forwardRef, QueryList, ElementRef, AfterContentInit, ViewChild } from '@angular/core';
 import { PlexTabComponent } from './tab.component';
 
 @Component({
     selector: 'plex-tabs',
-    template: ` <ul class="nav nav-tabs">
+    template: ` <ul #container class="nav nav-tabs">
                     <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item">
-                        <a class="nav-link" [ngClass]="{active: tab.active}" plexRipples href="#" onclick="return false">
+                        <a class="nav-link" [ngClass]="{active: tab.active}" plexRipples onclick="return false">
                             <i *ngIf="tab.icon" class="mdi mdi-{{tab.icon}}"></i>
                             <span *ngIf="tab.label">
                                 {{tab.label}}
                             </span>
+                            <button *ngIf="tab.allowClose" type="button" class="close" (click)="closeTab(tab)"><i class="mdi mdi-close"></i></button>
                         </a>
                     </li>
                 </ul>
@@ -19,47 +20,57 @@ export class PlexTabsComponent implements AfterContentInit {
     private _activeIndex = 0;
     public tabs: PlexTabComponent[] = [];
     @ContentChildren(PlexTabComponent) children: QueryList<PlexTabComponent>;
+    @ViewChild('container') container: ElementRef;
 
     @Input()
     get activeIndex(): number {
         return this._activeIndex;
     }
     set activeIndex(value: number) {
+        this._activeIndex = value;
         this.tabs.forEach((t) => {
             t.active = false;
         });
-        if (this.tabs.length > value) {
-            this.tabs[value].active = true;
-            this._activeIndex = value;
-        } else {
-            if (this.tabs.length) {
-                this.tabs[0].active = true;
-                this._activeIndex = 0;
-            }
+
+        if (this.tabs.length) {
+            this.tabs[Math.min(this.tabs.length - 1, this._activeIndex)].active = true;
         }
     }
 
     // Eventos
     @Output() change = new EventEmitter();
+    @Output() close = new EventEmitter();
 
     private renderTabs() {
         this.tabs = this.children.toArray();
-        if (!this.tabs.some((tab) => tab.active) && this.tabs.length) {
-            this.tabs[0].active = true;
+        if (this.tabs.length) {
+            this.selectTab(this.tabs[Math.min(this.tabs.length - 1, this._activeIndex)]);
         }
     }
 
     ngAfterContentInit() {
-        this.renderTabs();
-        this.children.changes.subscribe(() => { this.renderTabs(); });
+        setTimeout(() => {
+            this.renderTabs();
+            this.children.changes.subscribe(() => { this.renderTabs(); });
+        });
     }
 
     selectTab(tab: PlexTabComponent) {
-        this.tabs.forEach((t) => {
-            t.active = false;
+        setTimeout(() => {
+            this.tabs.forEach((t) => {
+                t.active = false;
+            });
+            tab.active = true;
+            this._activeIndex = this.tabs.indexOf(tab);
+            this.change.emit(this._activeIndex);
+
+            // Focus tab header
+            let tabHeader = this.container.nativeElement.children[this._activeIndex];
+            tabHeader.scrollIntoViewIfNeeded ? tabHeader.scrollIntoViewIfNeeded() : tabHeader.scrollIntoView();
         });
-        tab.active = true;
-        this._activeIndex = this.tabs.indexOf(tab);
-        this.change.emit(this._activeIndex);
+    }
+
+    closeTab(tab: PlexTabComponent) {
+        this.close.emit(this.tabs.indexOf(tab));
     }
 }
