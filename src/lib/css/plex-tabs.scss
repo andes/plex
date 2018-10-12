@@ -1,0 +1,26 @@
+// Tab fix
+
+.nav-tabs {
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: none;
+  white-space: nowrap;
+
+  .nav-item {
+    margin-bottom: -7px;
+
+    .close {
+      margin-left: 1em;
+      float: none;
+
+      i {
+        font-size: .7em;
+      }
+
+      &:focus,
+      &:hover {
+        outline: none;
+      }
+    }
+  }
+}

@@ -8,6 +8,10 @@ $warn: mat-palette($mat-red);
 $theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
 
+plex-radio {
+  display: inline-block;
+}
+
 // Material design patches
 .mat-radio-label-content {
   font-family: 'TypoPRO Source Sans Pro';
@@ -17,4 +21,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 .mat-radio-button {
   margin-right: 1em;
+
+  > label {
+    margin-top: 0;
+  }
 }
