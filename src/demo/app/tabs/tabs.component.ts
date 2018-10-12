@@ -25,15 +25,17 @@ export class TabsDemoComponent {
         }
     }
 
-    public cambio(value) {
+    public cambio(value: number) {
         this.plex.toast('info', 'Tab seleccionado: ' + value);
         this.activo = value;
     }
 
-    public close(value) {
+    public close(value: number) {
         this.plex.toast('danger', 'Tab cerrado: ' + value);
         this.tabs.splice(value, 1);
-        // this.tabs = [...this.tabs.splice(value, 1)];
+        if (value < this.activoDinamico) {
+            this.activoDinamico--;
+        }
     }
 
     public add() {
