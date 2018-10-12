@@ -33,17 +33,17 @@
         </fieldset>
         <fieldset>
             <legend>Validación de formularios</legend>
-            <form>
+            <form #formulario1="ngForm">
                 <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="modelo.campo1" [disabled]="false" [required]="true"></plex-text>
-                <plex-button type="success" label="Guardar formulario" icon="content-save" validateForm="true" (click)="guardar($event)"></plex-button>
+                <plex-button type="success" label="Guardar formulario" icon="content-save" [validateForm]="formulario1" (click)="guardar($event)"></plex-button>
             </form>
         </fieldset>
         <fieldset>
             <legend>Formulario inline</legend>
-            <form>
+            <form #formulario2="ngForm">
                 <div class="btn-group">
                     <plex-text name="campo1" [(ngModel)]="modelo.campo1" [disabled]="false" [required]="true"></plex-text>
-                    <plex-button type="success" icon="content-save" validateForm="true" (click)="guardar($event)"></plex-button>
+                    <plex-button type="success" icon="content-save" [validateForm]="formulario2" (click)="guardar($event)"></plex-button>
                 </div>
             </form>
         </fieldset>
