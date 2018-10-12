@@ -1,11 +1,11 @@
 <plex-layout main="8">
     <plex-layout-main>
+        <!-- Menu principal -->
     </plex-layout-main>
     <plex-layout-sidebar>
+        <!-- Menu lateral -->
         <fieldset>
             <legend>Datos principales</legend>
-            <!-- Row sólo puede tener hijos de tipo col-*/col-*-* -->
-            <!-- Todos los col deben sumar 12 o usar 'col' para un ancho automático -->
             <div class="row">
                 <div class="col-md">
                     <plex-text label="Apellido" [(ngModel)]="modelo.apellido" name="apellido" [required]="true">
@@ -16,8 +16,15 @@
                     </plex-text>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md">
+                    <label>Sexo</label>
+                    <plex-radio [(ngModel)]="modelo.sexo" label="Sexo" [data]="opcionesSexo" name="sexo" type="horizontal"
+                        [required]="true">
+                    </plex-radio>
+                </div>
+            </div>
         </fieldset>
-
         <fieldset>
             <legend>Datos de nacimiento</legend>
             <div class="row">
@@ -27,12 +34,23 @@
                     </plex-datetime>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md">
+                    <plex-select [(ngModel)]="modelo.lugarNacimiento" name="lugarNacimiento" [data]="opcionesLugarNacimiento"
+                        labelField="nombre" label="Lugar de nacimiento">
+                    </plex-select>
+                </div>
+            </div>
         </fieldset>
-
-        <ng-container>
-            <plex-button label="Cancelar" type="danger" position="left"></plex-button>
-            <plex-button label="Guardar" type="success" position="right" validateForm="true" (click)="guardar($event)"></plex-button>
-        </ng-container>
+        <div class="row">
+            <!-- Botonera-->
+            <div class="col-md text-left">
+                <plex-button label="Cancelar" type="danger"></plex-button>
+            </div>
+            <div class="col-md text-right">
+                <plex-button label="Guardar" type="success" validateForm="true" (click)="guardar($event)"></plex-button>
+            </div>
+        </div>
     </plex-layout-sidebar>
 
     <plex-layout-footer>

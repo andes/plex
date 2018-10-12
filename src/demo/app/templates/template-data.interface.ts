@@ -2,7 +2,7 @@ export interface TemplateData {
     nombre: string;
     apellido: string;
     sexo: string;
-    tieneHijos: boolean;
+    tieneHijos?: boolean;
     fechaNacimiento: Date;
     lugarNacimiento?: {
         id: String,
