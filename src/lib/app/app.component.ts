@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Renderer2 } from '@angular/core';
 import { Plex } from './../core/service';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 
@@ -9,6 +9,13 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                     <div class="navbar-brand hover" [routerLink]="'/'" tabindex="-1">
                         <div class="logo"></div>
                         <div class="text"></div>
+                    </div>
+                    <div class="title hidden-md-down">
+                        <ng-container *ngFor="let item of plex.title; let last = last">
+                            <a *ngIf="item.route" [routerLink]="item.route">{{item.name}}</a>
+                            <span *ngIf="!item.route">{{item.name}}</span>
+                            <span *ngIf="!last"> / </span>
+                        </ng-container>
                     </div>
                     <div class="actions">
                         <!--App Status-->
@@ -34,7 +41,7 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                             </div>
                         </div>
                         <!--Menu-->
-                        <div *ngIf="plex.menu && plex.menu.length" class="action dropdown" [ngClass]="{show: menuOpen}" (click)="menuOpen = !menuOpen">
+                        <div *ngIf="plex.menu && plex.menu.length" class="action dropdown" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();">
                             <i class="mdi mdi-menu"></i>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li *ngFor="let item of plex.menu">
@@ -71,8 +78,9 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                 </div>`,
 })
 export class PlexAppComponent implements OnInit {
-    @Input() type: String = 'inverse';
+    private unlisten: Function;
 
+    @Input() type: String = 'inverse';
     public loginOpen = false;
     public menuOpen = false;
     public online = true;
@@ -83,17 +91,17 @@ export class PlexAppComponent implements OnInit {
         options: {
             // responsive: true,
             scales:
-                {
-                    yAxes: [{
-                        display: false,
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
+            {
+                yAxes: [{
+                    display: false,
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
             tooltips: {
                 enabled: false,
             }
@@ -110,7 +118,7 @@ export class PlexAppComponent implements OnInit {
         });
     }
 
-    constructor(public plex: Plex) {
+    constructor(public plex: Plex, private renderer: Renderer2) {
         this.initAppStatusCheck();
     }
 
@@ -123,6 +131,20 @@ export class PlexAppComponent implements OnInit {
         // Inicializa todo el dataset en 1 (= 'Ok')
         for (let i = 0; i < this.chart.maxPoints; i++) {
             this.chart.dataset[0].data.push(1);
+        }
+    }
+
+    public toggleMenu() {
+        this.menuOpen = !this.menuOpen;
+        if (this.menuOpen) {
+            this.unlisten = this.renderer.listen('document', 'click', (event) => {
+                this.toggleMenu();
+                this.unlisten();
+            });
+        } else {
+            if (this.unlisten) {
+                this.unlisten();
+            }
         }
     }
 }
