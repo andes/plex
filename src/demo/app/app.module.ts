@@ -33,6 +33,7 @@ import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
 import { TemplateFormComponent } from './templates/template.form.component';
+import { FechaPipe } from './templates/fecha.pipe';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { TemplateFormComponent } from './templates/template.form.component';
     PhoneDemoComponent,
     DropdownDemoComponent,
     WizardDemoComponent,
-    TemplateFormComponent
+    TemplateFormComponent,
+    FechaPipe
   ],
   imports: [
     BrowserModule,
