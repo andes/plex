@@ -12,7 +12,7 @@ export class TemplateFormComponent implements OnInit {
     public modelo: TemplateData;
 
     // Opciones que se consultan desde la base de datos
-    public opcionesLugarNacimiento: any[] = [{ id: '1', nombre: 'Neuquén' }, { id: '2', nombre: 'Centenario' }, { id: '3', nombre: '' }, { id: '4', nombre: 'Plottier' }];
+    public opcionesLugarNacimiento: any[] = [{ id: '1', nombre: 'Neuquén' }, { id: '2', nombre: 'Centenario' }, { id: '3', nombre: 'Zapala City' }, { id: '4', nombre: 'Plottier' }];
     public opcionesSexo: any[] = [{ id: 'femenino', label: 'femenino' }, { id: 'masculino', label: 'masculino' }, { id: 'otro', label: 'otro' }];
 
     // Eventos
@@ -24,6 +24,13 @@ export class TemplateFormComponent implements OnInit {
     // Métodos (privados y públicos)
 
     ngOnInit() {
+        this.plex.updateTitle([{
+            route: '/',
+            name: 'MÓDULO'
+        }, {
+            name: 'Carga'
+        }]);
+
         // Dummy load
         this.modelo = {
             apellido: 'García',

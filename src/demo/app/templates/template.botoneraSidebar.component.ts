@@ -8,8 +8,6 @@ import { TemplateData } from './template-data.interface';
     templateUrl: 'template.botoneraSidebar.html'
 })
 export class TemplateBotoneraSidebarComponent implements OnInit {
-    @HostBinding('class.plex-layout') layout = true;
-
     // Propiedades privadas
 
     // Propiedades públicas

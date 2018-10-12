@@ -11,17 +11,17 @@ export class TemplateVisualizacionComponent implements OnInit {
     // Propiedades públicas
     public modelo: TemplateData;
 
-    //
-    public opcionesLugarNacimiento: any[] = [{ id: '1', nombre: 'Neuquén' }, { id: '2', nombre: 'Centenario' }, { id: '3', nombre: '' }, { id: '4', nombre: 'Plottier' }];
-    public opcionesSexo: any[] = [{ id: 'femenino', label: 'femenino' }, { id: 'masculino', label: 'masculino' }, { id: 'otro', label: 'otro' }];
-    // Eventos
-    @Output() save: EventEmitter<TemplateData> = new EventEmitter<TemplateData>();
-
     // Constructor
-    constructor(private plex: Plex) { }
+    constructor(private plex: Plex) {
+        this.plex.updateTitle([{
+            route: '/',
+            name: 'MÓDULO'
+        }, {
+            name: 'Visualización'
+        }]);
+    }
 
     // Métodos (privados y públicos)
-
     ngOnInit() {
         // Dummy load
         this.modelo = {
