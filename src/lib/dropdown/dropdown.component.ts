@@ -1,11 +1,11 @@
-import { Component, Input, HostBinding, HostListener, Output } from '@angular/core';
+import { Component, Input, HostBinding, Renderer2 } from '@angular/core';
 import { Plex } from '../../lib/core/service';
 import { DropdownItem } from './dropdown-item.inteface';
 
 @Component({
     selector: 'plex-dropdown',
     template: ` <div class="dropdown" [ngClass]="{show: open}">
-                    <button plexRipples data-toggle="dropdown" class="btn btn-{{type}}" [ngClass]="{'dropdown-toggle': label}" type="button" [disabled]="disabled" (click)="open = !open">
+                    <button plexRipples data-toggle="dropdown" class="btn btn-{{type}}" [ngClass]="{'dropdown-toggle': label}" type="button" [disabled]="disabled" (click)="toggleMenu(); $event.stopImmediatePropagation();">
                     <i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i> {{label}}
                     </button>
                     <ul class="dropdown-menu" [ngClass]="{'dropdown-menu-right': right}">
@@ -17,7 +17,7 @@ import { DropdownItem } from './dropdown-item.inteface';
                         </ng-template>
                         <!--Item con handler asociado-->
                         <ng-template [ngIf]="!item.divider && item.handler">
-                        <a plexRipples class="dropdown-item" href="#" (click)="open=false; item.handler($event); false;">
+                        <a plexRipples class="dropdown-item" href="#" (click)="toggleMenu(); item.handler($event); false;">
                             <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
                         </ng-template>
                         <!--Divider-->
@@ -37,10 +37,27 @@ export class PlexDropdownComponent {
     @Input() right: boolean;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
 
-    constructor(public plex: Plex) {
+    private unlisten: Function;
+
+    constructor(public plex: Plex, private renderer: Renderer2) {
         this.open = false;
         this.disabled = false;
         this.type = 'secondary';
         this.right = false;
     }
+
+    public toggleMenu() {
+        this.open = !this.open;
+        if (this.open) {
+            this.unlisten = this.renderer.listen('document', 'click', (event) => {
+                this.toggleMenu();
+                this.unlisten();
+            });
+        } else {
+            if (this.unlisten) {
+                this.unlisten();
+            }
+        }
+    }
+
 }

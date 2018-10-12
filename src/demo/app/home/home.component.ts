@@ -8,7 +8,9 @@ export class HomeDemoComponent {
     public field = '';
     public tooltip = 'Este es un tooltip<br>multilinea que ocupa mucho espacio';
 
-    constructor(public plex: Plex) { }
+    constructor(public plex: Plex) {
+        this.plex.updateTitle('Bienvenido a Plex');
+    }
 
     guardar($event) {
     }
