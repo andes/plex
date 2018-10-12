@@ -1,6 +1,6 @@
-<form>
-  <plex-layout>
-    <plex-layout-main>
+<plex-layout>
+  <plex-layout-main>
+    <form>
       <!-- <form #formulario> -->
       <fieldset>
         <legend>Datos principales</legend>
@@ -33,7 +33,7 @@
         <div class="row">
           <div class="col-md-4">
             <label>Fecha de nacimiento</label>
-            <span>{{modelo.fechaNacimiento}}</span>
+            <span>{{modelo.fechaNacimiento | fecha}}</span>
           </div>
           <div class="col-md">
             <label>Lugar de nacimiento</label>
@@ -42,9 +42,10 @@
           </div>
         </div>
       </fieldset>
-    </plex-layout-main>
-    <plex-layout-footer>
-      <plex-button label="Cancelar" type="danger" position="left"></plex-button>
-    </plex-layout-footer>
-  </plex-layout>
-</form>
+    </form>
+
+  </plex-layout-main>
+  <plex-layout-footer>
+    <plex-button label="Cancelar" type="danger" position="left"></plex-button>
+  </plex-layout-footer>
+</plex-layout>

@@ -1,8 +1,9 @@
-<plex-layout>
-  <!-- <form #formulario>  Usar #formulario si es necesario acceder a -->
+<form class="plex-layout">
+  <plex-layout>
+    <!-- <form #formulario>  Usar #formulario si es necesario acceder a -->
 
-  <plex-layout-main>
-    <form class="plex-layout">
+
+    <plex-layout-main>
       <fieldset>
         <legend>Datos principales</legend>
         <!-- Row sólo puede tener hijos de tipo col-*/col-*-* -->
@@ -46,11 +47,12 @@
           </div>
         </div>
       </fieldset>
-    </form>
-  </plex-layout-main>
-  <plex-layout-footer>
-    <plex-button label="Cancelar" type="danger" position="left"></plex-button>
-    <plex-button label="Guardar" type="success" position="right" validateForm="true" (click)="guardar($event)"></plex-button>
-  </plex-layout-footer>
 
-</plex-layout>
+    </plex-layout-main>
+    <plex-layout-footer>
+      <plex-button label="Cancelar" type="danger" position="left"></plex-button>
+      <plex-button label="Guardar" type="success" position="right" validateForm="true" (click)="guardar($event)"></plex-button>
+    </plex-layout-footer>
+
+  </plex-layout>
+</form>
