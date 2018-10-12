@@ -33,6 +33,7 @@ import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
 import { TemplateFormComponent } from './templates/template.form.component';
+import { TemplateVisualizacionComponent } from './templates/template.visualizacion.component';
 import { TemplateBusquedaComponent } from './templates/template.busqueda.component';
 import { TemplateBotoneraSidebarComponent } from './templates/template.botoneraSidebar.component';
 import { FechaPipe } from './templates/fecha.pipe';
@@ -60,6 +61,7 @@ import { FechaPipe } from './templates/fecha.pipe';
     DropdownDemoComponent,
     WizardDemoComponent,
     TemplateFormComponent,
+    TemplateVisualizacionComponent,
     TemplateBusquedaComponent,
     TemplateBotoneraSidebarComponent,
     FechaPipe

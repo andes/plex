@@ -20,6 +20,7 @@ import { FontsDemoComponent } from './fonts/fonts.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
 import { TemplateFormComponent } from './templates/template.form.component';
+import { TemplateVisualizacionComponent } from './templates/template.visualizacion.component';
 import { TemplateBusquedaComponent } from './templates/template.busqueda.component';
 import { TemplateBotoneraSidebarComponent } from './templates/template.botoneraSidebar.component';
 
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     { path: 'dropdown', component: DropdownDemoComponent },
     { path: 'wizard', component: WizardDemoComponent },
     { path: 'templates/form', component: TemplateFormComponent },
+    { path: 'templates/visualizacion', component: TemplateVisualizacionComponent },
     { path: 'templates/busqueda', component: TemplateBusquedaComponent },
     { path: 'templates/botoneraSidebar', component: TemplateBotoneraSidebarComponent },
     { path: '**', redirectTo: 'inicio' }

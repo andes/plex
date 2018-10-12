@@ -3,12 +3,9 @@ import { Plex } from '../../../lib/core/service';
 import { TemplateData } from './template-data.interface';
 
 @Component({
-    templateUrl: 'template.form.html'
+    templateUrl: 'template.visualizacion.html'
 })
-export class TemplateFormComponent implements OnInit {
-
-    @HostBinding('class.plex-layout') layout = true;
-
+export class TemplateVisualizacionComponent implements OnInit {
     // Propiedades privadas
 
     // Propiedades públicas
@@ -34,24 +31,5 @@ export class TemplateFormComponent implements OnInit {
             fechaNacimiento: new Date(),
             tieneHijos: false
         };
-    }
-
-    /**
-     * Guardar los datos del formulario y emitir el dato guardado
-     *
-     * @param {any} $event formulario a validar
-     * @memberof TemplateFormComponent
-     */
-    guardar($event) {
-        if ($event.formValid) {
-            // El dato sexo, como se está mostrando en un radio, tiene formato de objeto. Los correcto es que en la
-            // base de datos los guardemos como un string
-            this.modelo.sexo = ((typeof this.modelo.sexo === 'string')) ? this.modelo.sexo : (Object(this.modelo.sexo).id);
-            this.plex.info('success', 'Los datos están correctos');
-            // cuando desea retorna el
-            this.save.emit(this.modelo);
-        } else {
-            this.plex.info('warning', 'Completar datos requeridos');
-        }
     }
 }
