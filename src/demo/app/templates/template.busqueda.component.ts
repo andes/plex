@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
 import { SelectEvent } from './../../../lib/select/select-event.interface';
 import { ServiceDemoSelect } from './../select/select.service';

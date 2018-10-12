@@ -21,6 +21,7 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
 import { TemplateFormComponent } from './templates/template.form.component';
 import { TemplateBusquedaComponent } from './templates/template.busqueda.component';
+import { TemplateBotoneraSidebarComponent } from './templates/template.botoneraSidebar.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     { path: 'wizard', component: WizardDemoComponent },
     { path: 'templates/form', component: TemplateFormComponent },
     { path: 'templates/busqueda', component: TemplateBusquedaComponent },
+    { path: 'templates/botoneraSidebar', component: TemplateBotoneraSidebarComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 
