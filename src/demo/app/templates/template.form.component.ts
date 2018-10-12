@@ -19,7 +19,14 @@ export class TemplateFormComponent implements OnInit {
     @Output() save: EventEmitter<TemplateData> = new EventEmitter<TemplateData>();
 
     // Constructor
-    constructor(private plex: Plex) { }
+    constructor(private plex: Plex) {
+        this.plex.updateTitle([{
+            route: '/',
+            name: 'MÓDULO'
+        }, {
+            name: 'CARGA'
+        }]);
+    }
 
     // Métodos (privados y públicos)
 

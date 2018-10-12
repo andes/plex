@@ -25,6 +25,12 @@ export class TemplateBusquedaComponent implements OnInit {
 
     // Constructor
     constructor(private plex: Plex, public servicio: ServiceDemoSelect) {
+        this.plex.updateTitle([{
+            route: '/',
+            name: 'MÓDULO'
+        }, {
+            name: 'BUSQUEDA'
+        }]);
         this.listados = [
             {
                 id: 1,
