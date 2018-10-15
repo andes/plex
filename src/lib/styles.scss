@@ -51,6 +51,7 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import '~animate.css/animate'; // DEPRECATION WARNING https://github.com/sass/node-sass/issues/2362
 // Plex core
 @import 'css/layout';
+@import 'css/preloader';
 @import 'css/alert';
 @import 'css/colors';
 @import 'css/nav';
