@@ -3,42 +3,52 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef } fro
 
 @Component({
     selector: 'plex-button',
-    template: ` <ng-container *ngIf="type"  >
-                    <button plexRipples class="btn btn-{{type}} {{ (size ? 'btn-' + size : '') }}" [disabled]="disabled" (click)="clickHandler($event)">
+    template: `<ng-container *ngIf="type">
+                    <button plexRipples class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
                         <i *ngIf="icon" class="mdi mdi-{{icon}}"></i>
                         <span *ngIf="label"> {{label}} </span>
                         <ng-content *ngIf="!icon && !label"></ng-content>
                     </button>
-                </ng-container>`,
+               </ng-container>`,
 })
 export class PlexButtonComponent {
     @Input() label: string;
     @Input() icon: string;
     @Input() type: string;
-    @Input() size: string;
-    @Input() validateForm: boolean;
+    @Input() size: 'lg' | 'sm' | 'block';
+    @Input() validateForm: boolean | NgForm;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
 
-    constructor( @Optional() private form?: NgForm) {
+    constructor(@Optional() private parentForm?: NgForm) {
         this.type = 'default';
         this.disabled = false;
         this.size = null;
     }
 
-    @HostListener('click')
-    clickHandler($event: Event) {
+    @HostListener('click', ['event'])
+    clickHandler() {
         if (this.disabled) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
+            // @jfgabriel | TODO URGENTE: Cuando se actualice a Angular 6 eliminar este código que previe el bubbling
+            throw new Error('plex-button disabled');
+
+            // Este es el código que debería funcionar perfecto
+            // event.preventDefault();
+            // event.stopImmediatePropagation();
+            // return false;
         } else {
             // Si está asociado a un formulario, fuerza la validación de los controles
-            if (this.validateForm && this.form) {
-                for (const key in this.form.controls) {
-                    this.form.controls[key].markAsDirty();
+            if (this.validateForm) {
+                let form: NgForm = (this.validateForm instanceof NgForm) ? (this.validateForm as NgForm) : this.parentForm;
+                if (!form) {
+                    throw new Error('plex-button no pudo vincularse a ningún NgForm');
+                }
+
+                for (let key in form.controls) {
+                    form.controls[key].markAsDirty();
                 }
                 // Inyecta la propiedad para que sea fácilmente accesible desde los controladores
-                if ($event) {
-                    ($event as any).formValid = this.form.valid;
+                if (event) {
+                    (event as any).formValid = form.valid;
                 }
             }
         }

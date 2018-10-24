@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, Input, forwardRef, Output, EventEmitter, ContentChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { hasRequiredValidator } from '../core/validator.functions';
 
 @Component({
     selector: 'plex-radio',
@@ -12,7 +13,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/for
         }
     ],
     template: `<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
-                 <mat-radio-group [(ngModel)]="value">
+                <label *ngIf="label" class="form-control-label">{{label}}
+                    <span *ngIf="control.name && esOpcional" class="opcional"></span>
+                </label>
+                <mat-radio-group [(ngModel)]="value">
                     <mat-radio-button *ngFor="let item of data" [value]="item.id" [disabled]="readonly" (change)="radioChange($event)" [ngClass]="{'d-block': type == 'vertical'}">
                         {{item.label || item.text}}
                      </mat-radio-button>
@@ -25,6 +29,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/for
 export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     public value: any;
     @ContentChild(NgControl) public control: any;
+    public get esOpcional(): boolean {
+        return hasRequiredValidator(this.control);
+    }
 
     // Propiedad públicas
     @Input() data: any[];
