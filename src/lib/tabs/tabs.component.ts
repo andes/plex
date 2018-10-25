@@ -65,8 +65,10 @@ export class PlexTabsComponent implements AfterContentInit {
             this.change.emit(this._activeIndex);
 
             // Focus tab header
-            let tabHeader = this.container.nativeElement.children[this._activeIndex];
-            tabHeader.scrollIntoViewIfNeeded ? tabHeader.scrollIntoViewIfNeeded() : tabHeader.scrollIntoView();
+            const tabHeader = this.container.nativeElement.children[this._activeIndex];
+            if (tabHeader) {
+                tabHeader.scrollIntoViewIfNeeded ? tabHeader.scrollIntoViewIfNeeded() : tabHeader.scrollIntoView();
+            }
         });
     }
 
