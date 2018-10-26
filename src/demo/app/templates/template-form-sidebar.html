@@ -1,10 +1,10 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <!-- Menu principal -->
+        <!-- Contenedor principal -->
     </plex-layout-main>
     <plex-layout-sidebar>
+        <!-- Contenedor lateral -->
         <form #formulario="ngForm">
-            <!-- Menu lateral -->
             <fieldset>
                 <legend>Datos principales</legend>
                 <div class="row">
@@ -19,7 +19,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md">
-                        <plex-radio [(ngModel)]="modelo.sexo" label="Sexo" [data]="opcionesSexo" name="sexo" type="horizontal" [required]="true">
+                        <plex-radio [(ngModel)]="modelo.sexo" label="Sexo" [data]="opcionesSexo" name="sexo" type="horizontal"
+                            [required]="true">
                         </plex-radio>
                     </div>
                 </div>
@@ -28,14 +29,15 @@
                 <legend>Datos de nacimiento</legend>
                 <div class="row">
                     <div class="col-md">
-                        <plex-datetime type="date" label="Fecha de nacimiento" [(ngModel)]="modelo.fechaNacimiento" name="fechaNacimiento" [required]="true">
+                        <plex-datetime type="date" label="Fecha de nacimiento" [(ngModel)]="modelo.fechaNacimiento"
+                            name="fechaNacimiento" [required]="true">
                         </plex-datetime>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md">
-                        <plex-select [(ngModel)]="modelo.lugarNacimiento" name="lugarNacimiento" [data]="opcionesLugarNacimiento" labelField="nombre"
-                            label="Lugar de nacimiento">
+                        <plex-select [(ngModel)]="modelo.lugarNacimiento" name="lugarNacimiento" [data]="opcionesLugarNacimiento"
+                            labelField="nombre" label="Lugar de nacimiento">
                         </plex-select>
                     </div>
                 </div>
@@ -51,6 +53,4 @@
             </div>
         </form>
     </plex-layout-sidebar>
-    <plex-layout-footer>
-    </plex-layout-footer>
 </plex-layout>

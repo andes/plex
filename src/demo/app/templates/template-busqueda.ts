@@ -1,27 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
 import { SelectEvent } from './../../../lib/select/select-event.interface';
 import { ServiceDemoSelect } from './../select/select.service';
+import { TemplateData } from '@angular/core/src/view';
 
 @Component({
-    templateUrl: 'template.busqueda.html'
+    templateUrl: 'template-busqueda.html'
 })
 export class TemplateBusquedaComponent implements OnInit {
-
     // Propiedades privadas
 
     // Propiedades públicas
-    public listados = [];
-    public fechaDesde: any;
-    public fechaHasta: any;
-    public seleccion: any = [];
-    public sexoArray: any = [];
-    public paises: any;
-    public mostrarMasOpciones = false;
-    public loader = true;
-
+    listados = [];
+    fechaDesde: any;
+    fechaHasta: any;
+    seleccion: any = [];
+    sexoArray: any = [];
+    paises: any;
+    mostrarMasOpciones = false;
+    loader = true;
 
     // Eventos
+    @Output() selected: EventEmitter<TemplateData> = new EventEmitter<TemplateData>();
 
     // Constructor
     constructor(private plex: Plex, public servicio: ServiceDemoSelect) {
@@ -29,7 +29,7 @@ export class TemplateBusquedaComponent implements OnInit {
             route: '/',
             name: 'MÓDULO'
         }, {
-            name: 'BUSQUEDA'
+            name: 'Buscar'
         }]);
         this.listados = [
             {
@@ -81,7 +81,6 @@ export class TemplateBusquedaComponent implements OnInit {
 
     }
 
-
     refreshSelection() {
         this.seleccion = [];
         this.cargarListado();
@@ -106,8 +105,11 @@ export class TemplateBusquedaComponent implements OnInit {
             for (let i = 0; i < len; i++) {
                 this.seleccion.push(this.listados[i]);
             }
-
         }, 3000);
     }
 
+    seleccionar(item: TemplateData) {
+        this.plex.info('success', 'Se seleccionó un item');
+        this.selected.emit(item);
+    }
 }

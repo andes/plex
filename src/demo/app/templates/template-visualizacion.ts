@@ -3,13 +3,14 @@ import { Plex } from '../../../lib/core/service';
 import { TemplateData } from './template-data.interface';
 
 @Component({
-    templateUrl: 'template.visualizacion.html'
+    templateUrl: 'template-visualizacion.html'
 })
 export class TemplateVisualizacionComponent implements OnInit {
     // Propiedades privadas
+    // ...
 
     // Propiedades públicas
-    public modelo: TemplateData;
+    modelo: TemplateData;
 
     // Constructor
     constructor(private plex: Plex) {
@@ -21,9 +22,8 @@ export class TemplateVisualizacionComponent implements OnInit {
         }]);
     }
 
-    // Métodos (privados y públicos)
+    // Métodos
     ngOnInit() {
-        // Dummy load
         this.modelo = {
             apellido: 'García',
             nombre: 'Josefina',
