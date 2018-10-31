@@ -156,18 +156,21 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     registerOnTouched() {
     }
 
+    parseDate(value) {
+        if (typeof value === 'string') {
+            const m = moment(value, this.format);
+            if (m.isValid()) {
+                value = m.toDate();
+            } else {
+                value = null;
+            }
+        }
+        return value;
+    }
+
     registerOnChange(fn: any) {
         this.onChange = (value) => {
-            if (typeof value === 'string') {
-                const m = moment(value, this.format);
-                if (m.isValid()) {
-                    value = m.toDate();
-                } else {
-                    value = null;
-                }
-            }
-
-            this.value = value;
+            this.value = this.parseDate(value);
             fn(value);
             this.change.emit({
                 value
@@ -176,6 +179,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     onBlur() {
+        this.value = this.parseDate(this.value);
         this.writeValue(this.value);
     }
 
