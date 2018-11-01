@@ -180,6 +180,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
 
     onBlur() {
         this.value = this.parseDate(this.value);
+        this.onChange(this.value);
         this.writeValue(this.value);
     }
 
