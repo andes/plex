@@ -1,6 +1,5 @@
 import {
-    ViewChild, Component, OnInit, Input,
-    Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, ContentChild
+    ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, ContentChild
 } from '@angular/core';
 import {
     ControlValueAccessor,
@@ -87,6 +86,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() password = false;
     @Input() multiline = false;
     @Input() html = false;
+    @Input() debounce = 0;
+
     @Input()
     set height(value: number) {
         this.quillStyle.height = value + 'px';
@@ -120,6 +121,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         event.stopImmediatePropagation();
         return false;
     }
+
+    private changeTimeout = null;
 
     constructor(private renderer: Renderer) {
         this.placeholder = '';
@@ -178,11 +181,14 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             // this.change.emit({
             //   value: value
             // });
-            setTimeout(() => {
+            if (this.changeTimeout) {
+                clearTimeout(this.changeTimeout);
+            }
+            this.changeTimeout = setTimeout(() => {
                 this.change.emit({
                     value
                 });
-            });
+            }, this.debounce);
         };
     }
 

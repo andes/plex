@@ -23,8 +23,14 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-text label="Ingrese un texto con un mínimo de 10 caracteres" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="10"
-                    maxlength="15">
+                <plex-text 
+                    label="Ingrese un texto con un mínimo de 10 caracteres (debounce=1s)" 
+                    [(ngModel)]="templateModel2.nombre" 
+                    name="nombre" 
+                    minlength="10"
+                    maxlength="15"
+                    [debounce]="1000"
+                    (change)="onChange()">
                 </plex-text>
             </form>
         </div>
