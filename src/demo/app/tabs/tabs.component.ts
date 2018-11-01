@@ -39,7 +39,7 @@ export class TabsDemoComponent {
     }
 
     public add() {
-        let icons = [
+        const icons = [
             'folder-outline',
             'folder-search-outline',
             'minus-circle',
@@ -51,7 +51,7 @@ export class TabsDemoComponent {
             'food-off',
             'checkbox-intermediate'];
 
-        let random = Math.round(Math.random() * icons.length);
+        const random = Math.round(Math.random() * icons.length);
         this.tabs.push({ label: icons[random], icon: icons[random] });
         this.activoDinamico = this.tabs.length - 1;
     }

@@ -33,12 +33,12 @@ export class PlexButtonComponent {
     clickHandler() {
         // Si está asociado a un formulario, fuerza la validación de los controles
         if (this.validateForm) {
-            let form: NgForm = (this.validateForm instanceof NgForm) ? (this.validateForm as NgForm) : this.parentForm;
+            const form: NgForm = (this.validateForm instanceof NgForm) ? (this.validateForm as NgForm) : this.parentForm;
             if (!form) {
                 throw new Error('plex-button no pudo vincularse a ningún NgForm');
             }
 
-            for (let key in form.controls) {
+            for (const key in form.controls) {
                 form.controls[key].markAsDirty();
             }
             // Inyecta la propiedad para que sea fácilmente accesible desde los controladores
