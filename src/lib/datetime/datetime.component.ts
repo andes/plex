@@ -4,7 +4,9 @@ import * as moment from 'moment';
 import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
 
 // Importo las librerías de jQuery
-const jQuery = window['jQuery'] = require('jquery/dist/jquery'); // @jgabriel: No encontré una forma más elegante de incluir jQuery
+// @jgabriel: No encontré una forma más elegante de incluir jQuery
+// @andrrr: qué mal
+let jQuery = window['jQuery'] = require('jquery/dist/jquery');
 require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker');
 
 @Component({
@@ -144,7 +146,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     // Actualización Modelo -> Vista
     writeValue(value: any) {
         this.value = value;
-        const temp = this.value ? moment(this.value).format(this.format) : null;
+        let temp = this.value ? moment(this.value).format(this.format) : null;
         this.setElements(temp);
     }
 
@@ -156,31 +158,26 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     registerOnTouched() {
     }
 
-    parseDate(value) {
-        if (typeof value === 'string') {
-            const m = moment(value, this.format);
-            if (m.isValid()) {
-                value = m.toDate();
-            } else {
-                value = null;
-            }
-        }
-        return value;
-    }
-
     registerOnChange(fn: any) {
         this.onChange = (value) => {
-            this.value = this.parseDate(value);
+            if (typeof value === 'string') {
+                let m = moment(value, this.format);
+                if (m.isValid()) {
+                    value = m.toDate();
+                } else {
+                    value = null;
+                }
+            }
+
+            this.value = value;
             fn(value);
             this.change.emit({
-                value
+                value: value
             });
         };
     }
 
     onBlur() {
-        this.value = this.parseDate(this.value);
-        this.onChange(this.value);
         this.writeValue(this.value);
     }
 
@@ -215,7 +212,6 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         if (this.$input) {
             this.$input.val(temp);
         }
-        this.value = temp;
     }
 
     makeTooltip(dir) {
