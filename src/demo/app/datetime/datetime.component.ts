@@ -33,4 +33,12 @@ export class DateTimeDemoComponent implements OnInit {
     updateMaxHora() {
         this.tModel.minHora = moment().add(30, 'minutes').add(1, 'days');
     }
+
+    horaPlus() {
+        return moment(this.tModel.hora).add(30, 'minutes');
+    }
+
+    onBlur() {
+        console.log('onBlur');
+    }
 }
