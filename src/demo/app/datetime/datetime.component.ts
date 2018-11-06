@@ -38,4 +38,8 @@ export class DateTimeDemoComponent implements OnInit {
     horaPlus() {
         return moment(this.tModel.hora).add(30, 'minutes');
     }
+
+    onBlur() {
+        console.log('onBlur');
+    }
 }

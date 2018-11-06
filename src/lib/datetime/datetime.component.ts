@@ -28,7 +28,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                     <label *ngIf="label" class="form-control-label">{{ label }}</label>
                     <div class="input-group d-flex align-items-center">
                         <a *ngIf="showArraws" (click)="prev()" class="btn btn-info text-white pl-1 pr-1 hover" [title]="makeTooltip('anterior')"><i class="mdi mdi-menu-left"></i></a>
-                        <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()"/>
+                        <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"/>
                         <span class="input-group-btn">
                         <button class="btn btn-primary" tabindex="-1" [disabled]="disabled || readonly"><i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i></button>
                         </span>
@@ -92,6 +92,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
 
     // Eventos
     @Output() change = new EventEmitter();
+    @Output() blur = new EventEmitter();
+    @Output() focus = new EventEmitter();
 
     // Funciones públicas
     public onChange = (_: any) => { };
@@ -179,6 +181,11 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
 
     onBlur() {
         this.writeValue(this.value);
+        this.blur.emit();
+    }
+
+    onFocus() {
+        this.focus.emit();
     }
 
     private fechaCambio(fecha1: Date, fecha2: Date): boolean {

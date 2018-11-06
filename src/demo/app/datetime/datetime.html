@@ -11,7 +11,7 @@
 
 
         <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora"  
-           name="hora">
+           name="hora" (blur)="onBlur()" (focus)="onBlur()">
         </plex-datetime>
 
         <plex-datetime label="Ingrese la hora de nacimient2o" type="time" [(ngModel)]="tModel.horados" [min]="horaPlus()"
