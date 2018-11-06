@@ -216,7 +216,6 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         if (this.$input) {
             this.$input.val(temp);
         }
-        this.value = temp;
     }
 
     makeTooltip(dir) {
