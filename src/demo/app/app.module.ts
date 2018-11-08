@@ -34,40 +34,40 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BoxDemoComponent,
-    TextDemoComponent,
-    HomeDemoComponent,
-    IntDemoComponent,
-    FloatDemoComponent,
-    ButtonDemoComponent,
-    TabsDemoComponent,
-    FontsDemoComponent,
-    AccordionDemoComponent,
-    BoolDemoComponent,
-    RadioDemoComponent,
-    SelectDemoComponent,
-    DateTimeDemoComponent,
-    ModalDemoComponent,
-    LoaderDemoComponent,
-    RibbonDemoComponent,
-    PhoneDemoComponent,
-    DropdownDemoComponent,
-    WizardDemoComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    PlexModule,
-    routing
-  ],
-  providers: [
-    Plex,
-    appRoutingProviders,
-    ServiceDemoSelect,
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        BoxDemoComponent,
+        TextDemoComponent,
+        HomeDemoComponent,
+        IntDemoComponent,
+        FloatDemoComponent,
+        ButtonDemoComponent,
+        TabsDemoComponent,
+        FontsDemoComponent,
+        AccordionDemoComponent,
+        BoolDemoComponent,
+        RadioDemoComponent,
+        SelectDemoComponent,
+        DateTimeDemoComponent,
+        ModalDemoComponent,
+        LoaderDemoComponent,
+        RibbonDemoComponent,
+        PhoneDemoComponent,
+        DropdownDemoComponent,
+        WizardDemoComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        PlexModule,
+        routing
+    ],
+    providers: [
+        Plex,
+        appRoutingProviders,
+        ServiceDemoSelect,
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

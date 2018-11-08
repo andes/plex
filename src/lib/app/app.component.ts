@@ -90,8 +90,7 @@ export class PlexAppComponent implements OnInit {
         labels: [],
         options: {
             // responsive: true,
-            scales:
-            {
+            scales: {
                 yAxes: [{
                     display: false,
                     gridLines: {

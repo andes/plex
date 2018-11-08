@@ -120,7 +120,7 @@ export class SimpleNotificationsComponent implements OnInit, OnDestroy {
     add(item: Notification): void {
         item.createdOn = new Date();
 
-        let toBlock: boolean = this.preventLastDuplicates || this.preventDuplicates ? this.block(item) : false;
+        const toBlock: boolean = this.preventLastDuplicates || this.preventDuplicates ? this.block(item) : false;
 
         // Save this as the last created notification
         this.lastNotificationCreated = item;
@@ -146,7 +146,7 @@ export class SimpleNotificationsComponent implements OnInit, OnDestroy {
     // Check if notifications should be prevented
     block(item: Notification): boolean {
 
-        let toCheck = item.html ? this.checkHtml : this.checkStandard;
+        const toCheck = item.html ? this.checkHtml : this.checkStandard;
 
         if (this.preventDuplicates && this.notifications.length > 0) {
             for (let i = 0; i < this.notifications.length; i++) {
@@ -195,7 +195,7 @@ export class SimpleNotificationsComponent implements OnInit, OnDestroy {
     }
 
     buildEmit(notification: Notification, to: boolean) {
-        let toEmit: Notification = {
+        const toEmit: Notification = {
             createdOn: notification.createdOn,
             type: notification.type,
             icon: notification.icon,

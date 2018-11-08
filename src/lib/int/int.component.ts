@@ -122,7 +122,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
             }
 
             // Emite los eventos
-            let val = ((value == null) || (value === '')) ? null : Number.parseInt(value);
+            const val = ((value == null) || (value === '')) ? null : Number.parseInt(value, 10);
 
             fn(val);
             this.change.emit({

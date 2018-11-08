@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
 
 @Component({
-    templateUrl: 'wizard.html',
+    templateUrl: 'wizard.html'
 })
 export class WizardDemoComponent {
     public config: WizardConfig = {

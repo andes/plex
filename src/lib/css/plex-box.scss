@@ -1,5 +1,5 @@
-plex-box > DIV,
-.plex-box {
+.plex-box,
+plex-box > DIV {
   height: 100%;
   background: white;
   display: flex;
@@ -54,6 +54,16 @@ plex-box > DIV,
 
   ::-webkit-scrollbar-corner {
     background: transparent;
+  }
+}
+
+// Firefox hacks
+@-moz-document url-prefix() {
+  // https://codepen.io/sulfurious/pen/eWPBjY
+  .plex-box,
+  plex-box > DIV {
+    position: absolute;
+    width: calc(100% - 30px);
   }
 }
 

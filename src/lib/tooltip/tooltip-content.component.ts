@@ -45,7 +45,7 @@ export class TooltipContentComponent implements AfterViewInit {
     // -------------------------------------------------------------------------
 
     constructor(private element: ElementRef,
-        private cdr: ChangeDetectorRef) {
+                private cdr: ChangeDetectorRef) {
     }
 
     // -------------------------------------------------------------------------
@@ -89,32 +89,32 @@ export class TooltipContentComponent implements AfterViewInit {
     // -------------------------------------------------------------------------
 
     private positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody = false): { top: number, left: number } {
-        let positionStrParts = positionStr.split('-');
-        let pos0 = positionStrParts[0];
-        let pos1 = positionStrParts[1] || 'center';
-        let hostElPos = appendToBody ? this.offset(hostEl) : this.position(hostEl);
-        let targetElWidth = targetEl.offsetWidth;
-        let targetElHeight = targetEl.offsetHeight;
-        let shiftWidth: any = {
-            center: function (): number {
+        const positionStrParts = positionStr.split('-');
+        const pos0 = positionStrParts[0];
+        const pos1 = positionStrParts[1] || 'center';
+        const hostElPos = appendToBody ? this.offset(hostEl) : this.position(hostEl);
+        const targetElWidth = targetEl.offsetWidth;
+        const targetElHeight = targetEl.offsetHeight;
+        const shiftWidth: any = {
+            center (): number {
                 return hostElPos.left + hostElPos.width / 2 - targetElWidth / 2;
             },
-            left: function (): number {
+            left (): number {
                 return hostElPos.left;
             },
-            right: function (): number {
+            right (): number {
                 return hostElPos.left + hostElPos.width;
             }
         };
 
-        let shiftHeight: any = {
-            center: function (): number {
+        const shiftHeight: any = {
+            center (): number {
                 return hostElPos.top + hostElPos.height / 2 - targetElHeight / 2;
             },
-            top: function (): number {
+            top (): number {
                 return hostElPos.top;
             },
-            bottom: function (): number {
+            bottom (): number {
                 return hostElPos.top + hostElPos.height;
             }
         };

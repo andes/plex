@@ -19,4 +19,4 @@ jobs:
           command: npm run lint
       - run:
           name: tsc
-          command: npm run build -- --prod --aot --progress=false
+          command: npm run build -- --configuration=production --progress=false

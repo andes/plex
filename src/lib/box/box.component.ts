@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'plex-box',
-  template: ` <div class="plex-box" [ngClass]="{'plex-box-invert': type == 'invert'}">
+    selector: 'plex-box',
+    template: ` <div class="plex-box" [ngClass]="{'plex-box-invert': type == 'invert'}">
                 <ng-content select="header"></ng-content>
                 <div class="plex-box-content">
                     <ng-content></ng-content>
@@ -10,8 +10,8 @@ import { Component, Input } from '@angular/core';
               </div>`,
 })
 export class PlexBoxComponent {
-  @Input() type = '';
+    @Input() type = '';
 
-  constructor() {
-  }
+    constructor() {
+    }
 }

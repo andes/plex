@@ -40,6 +40,5 @@ export class DateTimeDemoComponent implements OnInit {
     }
 
     onBlur() {
-        // console.log('onBlur');
     }
 }

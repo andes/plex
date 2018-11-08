@@ -4,7 +4,7 @@ import { SelectEvent } from './select-event.interface';
 import { hasRequiredValidator } from '../core/validator.functions';
 
 // Importo las librería
-let Selectize = require('selectize/dist/js/standalone/selectize');
+const Selectize = require('selectize/dist/js/standalone/selectize');
 
 @Component({
     selector: 'plex-select',
@@ -55,7 +55,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             this.hasStaticData = true;
             this._data = value;
             if (this.selectize) {
-                let currentValue = this.value;
+                const currentValue = this.value;
                 this.removeOptions();
                 if (value) {
                     this.selectize.addOption(value);
@@ -108,39 +108,39 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 append: true
             };
 
-            let self = this;
-            let html = '<a href="javascript:void(0)" class="' + options.className + '" tabindex="-1" title="' + options.title + '">' + options.label + '</a>';
+            const self = this;
+            const html = '<a href="javascript:void(0)" class="' + options.className + '" tabindex="-1" title="' + options.title + '">' + options.label + '</a>';
 
-            let append = function (html_container, html_element) {
-                let pos = html_container.search(/(<\/[^>]+>\s*)$/);
+            const append = (html_container, html_element) => {
+                const pos = html_container.search(/(<\/[^>]+>\s*)$/);
                 return html_container.substring(0, pos) + html_element + html_container.substring(pos);
             };
 
-            self.setup = (function () {
-                let original = self.setup;
-                return function () {
+            self.setup = (() => {
+                const original = self.setup;
+                return (...args) => {
                     // override the item rendering method to add the button to each
                     if (options.append) {
-                        let render_item = self.settings.render.item;
-                        self.settings.render.item = function (data) {
-                            return append(render_item.apply(self, arguments), html);
+                        const render_item = self.settings.render.item;
+                        self.settings.render.item = (...params) => {
+                            return append(render_item.apply(self, params), html);
                         };
                     }
 
-                    original.apply(self, arguments);
+                    original.apply(self, args);
 
                     // Mouse Events
-                    self.$control.on('mousedown', '.' + options.className, function (e) {
+                    self.$control.on('mousedown', '.' + options.className, (e) => {
                         e.preventDefault();
                         e.stopImmediatePropagation();
                         return false;
                     });
-                    self.$control.on('click', '.' + options.className, function (e) {
+                    self.$control.on('click', '.' + options.className, (e) => {
                         if (!self.isLocked) {
                             if (self.settings.mode === 'single') {
                                 self.clear();
                             } else {
-                                let $item = jQuery(e.currentTarget).parent();
+                                const $item = jQuery(e.currentTarget).parent();
                                 self.setActiveItem($item);
                                 if (self.deleteSelection()) {
                                     self.setCaret(self.items.length);
@@ -158,7 +158,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     }
 
     private splitLabelField(labelField: string, filterLiterals: boolean): string[] {
-        let values = labelField.split('+');
+        const values = labelField.split('+');
         return filterLiterals ? values.filter(i => (i.indexOf('\'') < 0 || i.indexOf('\'') < 0)) : values;
     }
 
@@ -171,7 +171,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         }
 
         let result = '';
-        let labelFields = this.splitLabelField(labelField, false);
+        const labelFields = this.splitLabelField(labelField, false);
         labelFields.forEach(field => {
             if (field.startsWith('\'')) {
                 result += field.slice(1, field.length - 1) + ' ';
@@ -179,8 +179,8 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 if (field.indexOf('.') < 0) {
                     result += item[field] + ' ';
                 } else {
-                    let prefix = field.substr(0, field.indexOf('.'));
-                    let suffix = field.slice(field.indexOf('.') + 1);
+                    const prefix = field.substr(0, field.indexOf('.'));
+                    const suffix = field.slice(field.indexOf('.') + 1);
                     result += this.renderOption(item[prefix], suffix) + ' ';
                 }
             }
@@ -193,7 +193,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
      * Elimina todas las opciones del combo
      */
     removeOptions() {
-        for (let value in this.selectize.options) {
+        for (const value in this.selectize.options) {
             this.selectize.removeOption(value, true);
         }
     }
@@ -224,7 +224,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         this.labelField = this.labelField.replace(/(\s)*\+/g, '+').replace(/\+(\s)*/g, '+');
 
         // Inicializa el plugin
-        let $selectize = (jQuery('SELECT', this.element.nativeElement.children[0]) as any).selectize({
+        const $selectize = (jQuery('SELECT', this.element.nativeElement.children[0]) as any).selectize({
             plugins: ['remove_button_plex'],
             valueField: this.idField,
             labelField: this.labelField,
@@ -248,7 +248,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             load: this.hasStaticData ? null : (query: string, callback: any) => {
                 // Esta función se ejecuta si preload = true o cuando el usuario escribe en el combo
                 this.getData.emit({
-                    query: query,
+                    query,
                     callback: (data) => {
                         this.joinOptions(data);
                         callback(this.data);
@@ -316,7 +316,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         this.value = value;
         if (this.selectize) {
             // Convierte un objeto cualquiera a un string compatible con selectize
-            let valueAsString = (v: any): string => {
+            const valueAsString = (v: any): string => {
                 if (v === null) {
                     return null;
                 } else
@@ -365,12 +365,12 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     registerOnTouched() {
     }
     registerOnChange(fn: any) {
-      this.onChange = (value) => {
-        value = this.remove$order(value);
-        fn(value);
-        this.change.emit({
-            value: value
-        });
-    };
+        this.onChange = (value) => {
+            value = this.remove$order(value);
+            fn(value);
+            this.change.emit({
+                value
+            });
+        };
     }
 }
