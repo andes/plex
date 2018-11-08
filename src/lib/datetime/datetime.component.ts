@@ -203,12 +203,14 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     prev() {
         const temp = this.value ? moment(this.value, this.dateOrTime()).subtract(1, this.skipBy).format(this.format) : null;
         this.setElements(temp);
+        this.value = temp;
         this.onChange(this.value);
     }
 
     next() {
         const temp = this.value ? moment(this.value, this.dateOrTime()).add(1, this.skipBy).format(this.format) : null;
         this.setElements(temp);
+        this.value = temp;
         this.onChange(this.value);
     }
 
