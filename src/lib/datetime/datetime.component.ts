@@ -6,7 +6,7 @@ import { dateValidator, hasRequiredValidator } from '../core/validator.functions
 // Importo las librerías de jQuery
 // @jgabriel: No encontré una forma más elegante de incluir jQuery
 // @andrrr: qué mal
-let jQuery = window['jQuery'] = require('jquery/dist/jquery');
+const jQuery = window['jQuery'] = require('jquery/dist/jquery');
 require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker');
 
 @Component({
@@ -148,7 +148,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     // Actualización Modelo -> Vista
     writeValue(value: any) {
         this.value = value;
-        let temp = this.value ? moment(this.value).format(this.format) : null;
+        const temp = this.value ? moment(this.value).format(this.format) : null;
         this.setElements(temp);
     }
 
@@ -163,7 +163,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             if (typeof value === 'string') {
-                let m = moment(value, this.format);
+                const m = moment(value, this.format);
                 if (m.isValid()) {
                     value = m.toDate();
                 } else {
@@ -174,7 +174,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
             this.value = value;
             fn(value);
             this.change.emit({
-                value: value
+                value
             });
         };
     }
