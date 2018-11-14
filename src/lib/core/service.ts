@@ -78,27 +78,6 @@ export class Plex {
     }
 
     /**
-     * Muestra un mensaje de alerta
-     *
-     * @param {string} content Texto
-     * @param {string} [title='Información'] Título
-     * @returns {Promise<any>} Devuelve una promise se que resuelve cuando la alerta se cierra
-     *
-     * @memberof Plex
-     * @deprecated Utilizar el método info()
-     */
-    alert(content: string, title = 'Información', confirmButtonText = 'ACEPTAR'): Promise<any> {
-        return swal({
-            title,
-            html: content,
-            type: 'warning',
-            confirmButtonText: confirmButtonText.toLocaleUpperCase(),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-warning',
-        });
-    }
-
-    /**
      * TODO: Migrar para usar 1 sólo objeto con su type como param
      * Muestra un diálogo de confirmación
      *
