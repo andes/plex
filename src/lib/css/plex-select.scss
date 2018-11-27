@@ -9,7 +9,7 @@ $selectize-font-size: 1em !default;
 $selectize-line-height: 18px !default;
 
 $selectize-color-text: #303030 !default;
-$selectize-color-border: #d0d0d0 !default;
+$selectize-color-border: rgba(0, 0, 0, 0.15) !default;
 $selectize-color-highlight: rgba(125,168,208,0.2) !default;
 $selectize-color-input: white !default;
 $selectize-color-input-full: $selectize-color-input !default;
@@ -518,6 +518,7 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
   height: auto;
   border: none;
   background: none;
+  line-height: 0;
   @include selectize-box-shadow (none);
   @include selectize-border-radius (0);
 }
