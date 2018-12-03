@@ -60,7 +60,7 @@ export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAc
         this.onChange = (value) => {
             fn(value);
             this.change.emit({
-                value: value
+                value
             });
         };
     }

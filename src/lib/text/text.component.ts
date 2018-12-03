@@ -1,6 +1,5 @@
 import {
-    ViewChild, Component, OnInit, Input,
-    Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, ContentChild
+    ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, ContentChild
 } from '@angular/core';
 import {
     ControlValueAccessor,
@@ -62,9 +61,9 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     public quill = {
         toolbar: [
             ['bold', 'italic', 'underline'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'size': ['small', false, 'large', 'huge'] }],
-            [{ 'align': [] }],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            [{ size: ['small', false, 'large', 'huge'] }],
+            [{ align: [] }],
             ['clean'],
         ]
     };
@@ -87,6 +86,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() password = false;
     @Input() multiline = false;
     @Input() html = false;
+    @Input() debounce = 0;
+
     @Input()
     set height(value: number) {
         this.quillStyle.height = value + 'px';
@@ -95,7 +96,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
         if (this.renderer) {
-            let element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
+            const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
             this.renderer.invokeElementMethod(element, 'focus');
         }
     }
@@ -121,6 +122,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         return false;
     }
 
+    private changeTimeout = null;
+
     constructor(private renderer: Renderer) {
         this.placeholder = '';
         this.password = false;
@@ -132,20 +135,20 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     ngAfterViewInit() {
         if (this.autoFocus) {
-            let element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
+            const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
             this.renderer.invokeElementMethod(element, 'focus');
         }
     }
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        let element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
+        const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
         this.renderer.setElementProperty(element, 'value', typeof value === 'undefined' ? '' : value);
         if (this.multiline) {
             this.adjustTextArea();
         } else {
             if (this.html) {
-                let component = (this.quillEditor as any);
+                const component = (this.quillEditor as any);
                 // Por el dinamismo de RUP hay una primera instancia que quillEditor es undefined
                 if (component.quillEditor) {
                     component.quillEditor.setContents(component.valueSetter(component.quillEditor, typeof value === 'undefined' ? '' : value));
@@ -178,11 +181,14 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             // this.change.emit({
             //   value: value
             // });
-            setTimeout(() => {
+            if (this.changeTimeout) {
+                clearTimeout(this.changeTimeout);
+            }
+            this.changeTimeout = setTimeout(() => {
                 this.change.emit({
-                    value: value
+                    value
                 });
-            });
+            }, this.debounce);
         };
     }
 

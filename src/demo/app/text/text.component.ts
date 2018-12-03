@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Plex } from '../../../lib/core/service';
 
 @Component({
     templateUrl: 'text.html',
@@ -13,6 +14,8 @@ export class TextDemoComponent implements OnInit {
         contenido: '<p>Hello <strong>World</strong></p>'
     };
     public prueba = '';
+
+    constructor(private plex: Plex) { }
 
     onFocus() {
         this.templateModel1.usuario = 'FOCUSED';
@@ -37,5 +40,10 @@ export class TextDemoComponent implements OnInit {
     }
 
     cambio() {
+
+    }
+
+    onChange() {
+        this.plex.info('success', 'Este cartel se demoro un segundo en aparecer después de escribir.');
     }
 }

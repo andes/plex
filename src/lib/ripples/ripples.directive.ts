@@ -1,5 +1,5 @@
 import { Directive, OnInit, ElementRef, AfterViewInit } from '@angular/core';
-let Waves = require('node-waves/dist/waves');
+const Waves = require('node-waves/dist/waves');
 Waves.init();
 
 @Directive({

@@ -65,11 +65,11 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     @Output() focusout = new EventEmitter();
 
     public onFocus () {
-      this.focus.emit();
+        this.focus.emit();
     }
 
     public onFocusout () {
-      this.focusout.emit();
+        this.focusout.emit();
     }
 
     // Funciones públicas
@@ -124,7 +124,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
                 value = this.lastValue;
             }
             // Emite los eventos
-            let val = ((value === null) || (value === '')) ? null : parseInt(value, 10);
+            const val = ((value === null) || (value === '')) ? null : parseInt(value, 10);
             fn(val);
             this.valueChange.emit({ value: val });
         };

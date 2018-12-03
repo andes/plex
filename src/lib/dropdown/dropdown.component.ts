@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, Renderer2 } from '@angular/core';
+import { Component, Input, HostBinding, Renderer2, Output, EventEmitter } from '@angular/core';
 import { Plex } from '../../lib/core/service';
 import { DropdownItem } from './dropdown-item.inteface';
 
@@ -37,6 +37,8 @@ export class PlexDropdownComponent {
     @Input() right: boolean;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
 
+    @Output() onOpen: EventEmitter<void> = new EventEmitter();
+
     private unlisten: Function;
 
     constructor(public plex: Plex, private renderer: Renderer2) {
@@ -49,6 +51,7 @@ export class PlexDropdownComponent {
     public toggleMenu() {
         this.open = !this.open;
         if (this.open) {
+            this.onOpen.emit();
             this.unlisten = this.renderer.listen('document', 'click', (event) => {
                 this.toggleMenu();
                 this.unlisten();

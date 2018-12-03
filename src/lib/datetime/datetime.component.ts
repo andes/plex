@@ -6,7 +6,7 @@ import { dateValidator, hasRequiredValidator } from '../core/validator.functions
 // Importo las librerías de jQuery
 // @jgabriel: No encontré una forma más elegante de incluir jQuery
 // @andrrr: qué mal
-let jQuery = window['jQuery'] = require('jquery/dist/jquery');
+const jQuery = window['jQuery'] = require('jquery/dist/jquery');
 require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker');
 
 @Component({
@@ -28,7 +28,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                     <label *ngIf="label" class="form-control-label">{{ label }}</label>
                     <div class="input-group d-flex align-items-center">
                         <a *ngIf="showArraws" (click)="prev()" class="btn btn-info text-white pl-1 pr-1 hover" [title]="makeTooltip('anterior')"><i class="mdi mdi-menu-left"></i></a>
-                        <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()"/>
+                        <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"/>
                         <span class="input-group-btn">
                         <button class="btn btn-primary" tabindex="-1" [disabled]="disabled || readonly"><i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i></button>
                         </span>
@@ -64,7 +64,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         return this._min;
     }
     set min(value: Date | moment.Moment) {
-        let temp: Date = (value) ? moment(value).toDate() : null;
+        const temp: Date = (value) ? moment(value).toDate() : null;
         if (this.fechaCambio(this._min, temp)) {
             this._min = temp;
             if (this.$button) {
@@ -77,7 +77,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         return this._max;
     }
     set max(value: Date | moment.Moment) {
-        let temp: Date = (value) ? moment(value).toDate() : null;
+        const temp: Date = (value) ? moment(value).toDate() : null;
         if (this.fechaCambio(this._max, temp)) {
             this._max = temp;
             if (this.$button) {
@@ -92,6 +92,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
 
     // Eventos
     @Output() change = new EventEmitter();
+    @Output() blur = new EventEmitter();
+    @Output() focus = new EventEmitter();
 
     // Funciones públicas
     public onChange = (_: any) => { };
@@ -146,7 +148,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     // Actualización Modelo -> Vista
     writeValue(value: any) {
         this.value = value;
-        let temp = this.value ? moment(this.value).format(this.format) : null;
+        const temp = this.value ? moment(this.value).format(this.format) : null;
         this.setElements(temp);
     }
 
@@ -161,7 +163,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             if (typeof value === 'string') {
-                let m = moment(value, this.format);
+                const m = moment(value, this.format);
                 if (m.isValid()) {
                     value = m.toDate();
                 } else {
@@ -172,13 +174,18 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
             this.value = value;
             fn(value);
             this.change.emit({
-                value: value
+                value
             });
         };
     }
 
     onBlur() {
         this.writeValue(this.value);
+        this.blur.emit();
+    }
+
+    onFocus() {
+        this.focus.emit();
     }
 
     private fechaCambio(fecha1: Date, fecha2: Date): boolean {
@@ -194,14 +201,16 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     prev() {
-        let temp = this.value ? moment(this.value, this.dateOrTime()).subtract(1, this.skipBy).format(this.format) : null;
+        const temp = this.value ? moment(this.value, this.dateOrTime()).subtract(1, this.skipBy).format(this.format) : null;
         this.setElements(temp);
+        this.value = temp;
         this.onChange(this.value);
     }
 
     next() {
-        let temp = this.value ? moment(this.value, this.dateOrTime()).add(1, this.skipBy).format(this.format) : null;
+        const temp = this.value ? moment(this.value, this.dateOrTime()).add(1, this.skipBy).format(this.format) : null;
         this.setElements(temp);
+        this.value = temp;
         this.onChange(this.value);
     }
 
@@ -212,7 +221,6 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         if (this.$input) {
             this.$input.val(temp);
         }
-        this.value = temp;
     }
 
     makeTooltip(dir) {

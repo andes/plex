@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: 'accordion.html',
+    templateUrl: 'accordion.html',
 })
 export class AccordionDemoComponent {
-  public test = false;
+    public test = false;
 
-  toggle(showed) {
-  }
+    toggle(showed) {
+    }
 
-  bool(active) {
-  }
+    bool(active) {
+    }
 
 }
