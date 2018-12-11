@@ -1,0 +1,29 @@
+:host {
+    z-index: 3000;
+    // margin-right: 5px;
+     
+    cursor: help; // Texto
+    .texto {
+        color: white;
+        white-space: nowrap;
+    } // Foto header
+    .foto {
+        height: 50px;
+        padding: 5px;
+    } // Popover con detalles de paciente
+    .popover {
+        display: none;
+        margin-top: 2%;
+        cursor: default;
+        font-size: 1em;
+        min-width: 275px;
+    }
+    &:hover .popover {
+        display: block;
+    }
+}
+
+div.clearfix {
+    padding-right: 5px;
+    background: darkblue;
+}
