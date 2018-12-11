@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import { Plex } from './../core/service';
-import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 
 @Component({
     selector: 'plex-app',
@@ -9,6 +8,9 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
                     <div class="navbar-brand hover" [routerLink]="'/'" tabindex="-1">
                         <div class="logo"></div>
                         <div class="text"></div>
+                    </div>
+                    <div class="menu-item">
+                        <ng-template #manuItem></ng-template>
                     </div>
                     <div class="title hidden-md-down">
                         <ng-container *ngFor="let item of plex.title; let last = last">
@@ -79,6 +81,8 @@ import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 })
 export class PlexAppComponent implements OnInit {
     private unlisten: Function;
+    // Referencia al DOM para injectar una componente de forma dinámica
+    @ViewChild('manuItem', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
 
     @Input() type: String = 'inverse';
     public loginOpen = false;
@@ -122,6 +126,8 @@ export class PlexAppComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.plex.setViewContainerRef(this.viewContainerRef);
+
         // Genera N labels vacíos
         this.chart.labels = [];
         for (let i = 0; i < this.chart.maxPoints; i++) {
@@ -131,6 +137,7 @@ export class PlexAppComponent implements OnInit {
         for (let i = 0; i < this.chart.maxPoints; i++) {
             this.chart.dataset[0].data.push(1);
         }
+
     }
 
     public toggleMenu() {

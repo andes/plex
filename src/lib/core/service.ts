@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs/Subject';
-import { Injectable } from '@angular/core';
+import { Injectable, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
@@ -18,8 +18,11 @@ export class Plex {
      */
     public title: PlexTitle[];
 
-    constructor(private titleService: Title, private noficationService: NotificationsService) {
-    }
+    constructor(
+        private titleService: Title,
+        private noficationService: NotificationsService,
+        private componentFactoryResolver: ComponentFactoryResolver
+        ) { }
 
     /**
      * Actualiza el ménu de la aplicación
@@ -331,5 +334,33 @@ export class Plex {
         }
 
         return promise;
+    }
+
+    /**
+     * Navbar dinamico
+     */
+
+    private viewContainerRef: ViewContainerRef;
+    setViewContainerRef (viewContainerRef) {
+        this.viewContainerRef = viewContainerRef;
+    }
+
+    /**
+     * Instancia una componente y la injecta en la parte dinamica del plex-app
+     * @param componentRef
+     * @param inputs
+     */
+    setNavbarItem(componentRef, inputs) {
+        this.viewContainerRef.clear();
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentRef);
+        const component = this.viewContainerRef.createComponent(componentFactory);
+        Object.assign(component.instance, inputs);
+    }
+
+    /**
+     * Borra el item dinamico agregado.
+     */
+    clearNavbar() {
+        this.viewContainerRef.clear();
     }
 }

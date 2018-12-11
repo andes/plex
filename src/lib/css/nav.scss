@@ -103,11 +103,15 @@ nav {
     }
   }
 
+  .menu-item {
+    float: left;
+  }
+
   .title {
     float: left;
     font-size: 1.4em;
     color: white;
-    font-weight: 100;
+    font-weight: 400;
     text-transform: uppercase;
     margin-left: .5em;
     margin-top: .3em;
