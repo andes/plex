@@ -3,7 +3,6 @@ import { Plex } from '../../../lib/core/service';
 import { TemplateData } from './template-data.interface';
 
 
-
 @Component({
     templateUrl: 'template-form-sidebar.html'
 })
@@ -14,7 +13,7 @@ export class TemplateBotoneraSidebarComponent implements OnInit {
     public modelo: TemplateData;
     public opcionesLugarNacimiento: any[] = [{ id: '1', nombre: 'Neuquén' }, { id: '2', nombre: 'Centenario' }, { id: '3', nombre: 'Zapala City' }, { id: '4', nombre: 'Plottier' }];
     public opcionesSexo: any[] = [{ id: 'femenino', label: 'femenino' }, { id: 'masculino', label: 'masculino' }, { id: 'otro', label: 'otro' }];
-   
+
     // Eventos
     @Output() save: EventEmitter<TemplateData> = new EventEmitter<TemplateData>();
 

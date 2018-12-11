@@ -101,7 +101,7 @@ export class TemplateBusquedaComponent implements OnInit {
         this.loader = true;
         setTimeout(() => {
             this.loader = false;
-            let len = Math.floor(Math.random() * this.listados.length);
+            const len = Math.floor(Math.random() * this.listados.length);
             for (let i = 0; i < len; i++) {
                 this.seleccion.push(this.listados[i]);
             }
