@@ -3,6 +3,8 @@ import { SelectEvent } from './../../../lib/select/select-event.interface';
 
 // Importo un servicio de prueba
 import { ServiceDemoSelect } from './select.service';
+import { Unsubscribe } from '../../../../index';
+
 
 @Component({
     templateUrl: 'select.html',
@@ -49,13 +51,36 @@ export class SelectDemoComponent implements OnInit {
             };
 
         }, 10000);
+
+        /**
+         * Ejemplo de unsubscribe decorator.
+         * Los dos primeros loadData se cancelan inmediatamente
+         */
+        this.loadData({ query: 'a' });
+        this.loadData({ query: 'a' });
+        this.loadData({ query: 'a' });
+        this.loadData2({ query: 'b' });
+        this.loadData2({ query: 'b' });
+
     }
 
+    @Unsubscribe()
     loadData(event: SelectEvent) {
         // Event tiene una propiedad 'query' que contiene el texto que el usuario ha escrito en el input.
         // Esto permite enviar a las APIs un parámetro para hacer las búsquedas más eficientes
         if (event.query) {
-            this.servicio.get(event.query).subscribe(event.callback);
+            return this.servicio.get(event.query).subscribe(event.callback);
+        } else {
+            event.callback(null);
+        }
+    }
+
+    @Unsubscribe()
+    loadData2(event: SelectEvent) {
+        // Event tiene una propiedad 'query' que contiene el texto que el usuario ha escrito en el input.
+        // Esto permite enviar a las APIs un parámetro para hacer las búsquedas más eficientes
+        if (event.query) {
+            return this.servicio.get(event.query).subscribe(event.callback);
         } else {
             event.callback(null);
         }
