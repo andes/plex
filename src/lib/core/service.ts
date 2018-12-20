@@ -351,10 +351,15 @@ export class Plex {
      * @param inputs
      */
     setNavbarItem(componentRef, inputs) {
-        this.viewContainerRef.clear();
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentRef);
-        const component = this.viewContainerRef.createComponent(componentFactory);
-        Object.assign(component.instance, inputs);
+        // el setTimeout resuelve el error ExpressionChangedAfterItHasBeenCheckedError.
+        // La componente dinamica se estaba creando antes de que finalize la componente padre, lo que generaba ese error.
+        // Por eso encolamos la creación de la componente al proximo tick del navegador.
+        setTimeout(() => {
+            this.viewContainerRef.clear();
+            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentRef);
+            const component = this.viewContainerRef.createComponent(componentFactory);
+            Object.assign(component.instance, inputs);
+        }, 0);
     }
 
     /**
