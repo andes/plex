@@ -19,6 +19,10 @@ import { PhoneDemoComponent } from './phone/phone.component';
 import { FontsDemoComponent } from './fonts/fonts.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
+import { TemplateFormComponent } from './templates/template-form';
+import { TemplateVisualizacionComponent } from './templates/template-visualizacion';
+import { TemplateBusquedaComponent } from './templates/template-busqueda';
+import { TemplateBotoneraSidebarComponent } from './templates/template-form-sidebar';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -40,6 +44,10 @@ const appRoutes: Routes = [
     { path: 'phone', component: PhoneDemoComponent },
     { path: 'dropdown', component: DropdownDemoComponent },
     { path: 'wizard', component: WizardDemoComponent },
+    { path: 'templates/form', component: TemplateFormComponent },
+    { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },
+    { path: 'templates/visualizacion', component: TemplateVisualizacionComponent },
+    { path: 'templates/busqueda', component: TemplateBusquedaComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 

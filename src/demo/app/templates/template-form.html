@@ -1,0 +1,50 @@
+<plex-layout>
+  <plex-layout-main>
+    <form #formulario="ngForm">
+      <fieldset>
+        <legend>Datos principales</legend>
+        <!-- Row sólo puede tener hijos de tipo col-*/col-*-* -->
+        <!-- Todos los col deben sumar 12 o usar 'col' para un ancho automático -->
+        <div class="row">
+          <div class="col-md">
+            <plex-text label="Apellido" [(ngModel)]="modelo.apellido" name="apellido" [required]="true">
+            </plex-text>
+          </div>
+          <div class="col-md">
+            <plex-text label="Nombre" [(ngModel)]="modelo.nombre" name="nombre" [required]="true">
+            </plex-text>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md">
+            <plex-radio [(ngModel)]="modelo.sexo" label="Sexo" [data]="opcionesSexo" name="sexo" type="horizontal" [required]="true">
+            </plex-radio>
+          </div>
+          <div class="col-md">
+            <plex-bool [(ngModel)]="modelo.tieneHijos" type="slide" label="¿Tiene hijos?" name="tieneHijos"></plex-bool>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Datos de nacimiento</legend>
+        <div class="row">
+          <div class="col-md-4">
+            <plex-datetime type="date" label="Fecha de nacimiento" [(ngModel)]="modelo.fechaNacimiento" name="fechaNacimiento" [required]="true">
+            </plex-datetime>
+          </div>
+          <div class="col-md">
+            <!-- Usar campos labelField y idField en el plex-select cuando se quieren
+                 usar otros campos que no sean los por defecto (id y nombre) -->
+            <plex-select [(ngModel)]="modelo.lugarNacimiento" name="lugarNacimiento" [data]="opcionesLugarNacimiento" labelField="nombre"
+              label="Lugar de nacimiento">
+            </plex-select>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </plex-layout-main>
+  <plex-layout-footer>
+    <plex-button label="Cancelar" type="danger" position="left"></plex-button>
+    <plex-button label="Guardar" type="success" position="right" [validateForm]="formulario" (click)="guardar($event)"></plex-button>
+  </plex-layout-footer>
+</plex-layout>

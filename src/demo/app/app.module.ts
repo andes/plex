@@ -32,6 +32,11 @@ import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
+import { TemplateFormComponent } from './templates/template-form';
+import { TemplateVisualizacionComponent } from './templates/template-visualizacion';
+import { TemplateBusquedaComponent } from './templates/template-busqueda';
+import { TemplateBotoneraSidebarComponent } from './templates/template-form-sidebar';
+import { FechaPipe } from './templates/fecha.pipe';
 
 @NgModule({
     declarations: [
@@ -54,7 +59,12 @@ import { WizardDemoComponent } from './wizard/wizard.component';
         RibbonDemoComponent,
         PhoneDemoComponent,
         DropdownDemoComponent,
-        WizardDemoComponent
+        WizardDemoComponent,
+        TemplateFormComponent,
+        TemplateVisualizacionComponent,
+        TemplateBusquedaComponent,
+        TemplateBotoneraSidebarComponent,
+        FechaPipe
     ],
     imports: [
         BrowserModule,

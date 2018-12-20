@@ -40,6 +40,15 @@ export class SelectDemoComponent implements OnInit {
 
         this.modelo1.select = this.modelo2.select = this.opciones[1];
         this.rModelo1.select = this.opciones[2];
+
+        setTimeout(() => {
+            this.modelo2.select = {
+                _id: '5821da5ab6f2bac35980c464',
+                nombre: 'Arabia Saudita',
+                id: '5821da5ab6f2bac35980c464'
+            };
+
+        }, 10000);
     }
 
     loadData(event: SelectEvent) {
