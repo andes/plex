@@ -9,4 +9,5 @@ export class PlexTabComponent {
     @Input() icon: string;
     @Input() active: boolean;
     @Input() allowClose: boolean;
+    @Input() color = 'default';
 }
