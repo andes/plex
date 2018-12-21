@@ -9,9 +9,9 @@ export class TabsDemoComponent {
     public activoDinamico = 0;
     public mostrar = true;
     public tabs = [
-        { label: 'account', icon: 'account' },
-        { label: 'amplifier', icon: 'amplifier' },
-        { label: 'amazon', icon: 'amazon' }
+        { label: 'account este es un ejemplo re largo', icon: 'account', color: 'procedimiento' },
+        { label: 'amplifier', icon: 'amplifier', color: 'trastorno' },
+        { label: 'amazon', icon: 'amazon', color: 'default' }
     ];
 
     constructor(private plex: Plex) {
@@ -52,7 +52,7 @@ export class TabsDemoComponent {
             'checkbox-intermediate'];
 
         const random = Math.round(Math.random() * icons.length);
-        this.tabs.push({ label: icons[random], icon: icons[random] });
+        this.tabs.push({ label: icons[random], icon: icons[random], color: 'default' });
         this.activoDinamico = this.tabs.length - 1;
     }
 }
