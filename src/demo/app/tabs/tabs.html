@@ -3,7 +3,7 @@
 		<fieldset>
 			<legend>Tabs estático</legend>
 			<plex-tabs [activeIndex]="activo" (change)="cambio($event)">
-				<plex-tab label="Tab 1">
+				<plex-tab label="Tab 1" color="procedimiento">
 					<div class="alert alert-info">
 						Contenido 1
 					</div>
@@ -25,7 +25,7 @@
 		<fieldset>
 			<legend>Tabs dinámico</legend>
 			<plex-tabs [activeIndex]="activoDinamico" (close)="close($event)">
-				<plex-tab *ngFor="let item of tabs" [label]="item.label" [icon]="item.icon" [allowClose]="true">
+				<plex-tab *ngFor="let item of tabs" [label]="item.label" [icon]="item.icon" [color]="item.color" [allowClose]="true">
 					<div class="alert alert-warning">
 						Este es el contenido de <strong>{{item.label}}</strong>
 					</div>
