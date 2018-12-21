@@ -3,12 +3,12 @@ import { PlexTabComponent } from './tab.component';
 
 @Component({
     selector: 'plex-tabs',
-    template: ` <ul #container class="nav nav-tabs">
-                    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item">
+    template: ` <ul #container class="nav nav-tabs" [ngClass]="size">
+                    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{active: tab.active}">
                         <a class="nav-link" [ngClass]="{active: tab.active}" plexRipples onclick="return false">
                             <i *ngIf="tab.icon" class="mdi mdi-{{tab.icon}}"></i>
                             <span *ngIf="tab.label">
-                                {{tab.label}}
+                                {{ tab.label  }}
                             </span>
                             <button *ngIf="tab.allowClose" type="button" class="close" (click)="closeTab(tab)"><i class="mdi mdi-close"></i></button>
                         </a>
@@ -22,6 +22,7 @@ export class PlexTabsComponent implements AfterContentInit {
     @ContentChildren(PlexTabComponent) children: QueryList<PlexTabComponent>;
     @ViewChild('container') container: ElementRef;
 
+    @Input() size;
     @Input()
     get activeIndex(): number {
         return this._activeIndex;

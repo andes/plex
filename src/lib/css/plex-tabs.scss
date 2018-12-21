@@ -1,26 +1,88 @@
 // Tab fix
+/**
+ * Array de colores expandibles de los tabs desde una aplicación externa.
+ */
+$plex-tabs-color-extend: (
+  procedimiento: $red,
+  trastorno: violet
+) !default;
 
 .nav-tabs {
-  overflow-x: auto;
-  overflow-y: hidden;
-  border: none;
-  white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: none;
+    white-space: nowrap;
 
-  .nav-item {
-    margin-bottom: -7px;
-
-    .close {
-      margin-left: 1em;
-      float: none;
-
-      i {
-        font-size: .7em;
-      }
-
-      &:focus,
-      &:hover {
-        outline: none;
-      }
+    &.full .nav-item {
+        flex: 1;
+        text-align: center;
+        a {
+            width: 100%;
+        }
     }
-  }
+
+    .nav-item {
+        margin-bottom: -7px;
+        text-transform: uppercase;
+        opacity: 0.75;
+        border: 1px solid #a5a5a5;
+        border-top-right-radius: 0.25rem;
+        border-top-left-radius: 0.25rem;
+    
+        &.active {
+            opacity: 1;
+        }
+        
+        .nav-link {
+            border: none;
+            span {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        a.active {
+            border: 0px none $dark-blue;
+            font-weight: 600; 
+        }
+
+
+        &.nav-item-default {
+            background-color: $white;
+            color: $blue;
+            a.active {
+                background-color: $dark-blue;
+                color: white; 
+            }
+        }
+
+        @each $name, $color in $plex-tabs-color-extend {
+            &.nav-item-#{$name} {
+                background-color: $white; 
+                color: $color; 
+                a.active {
+                    background-color: $color; 
+                    color: white; 
+                }
+            }
+        }
+
+
+        .close {
+            margin-left: 1em;
+            float: none;
+            line-height: 0.9;
+            opacity: 1;
+
+            i {
+                font-size: .7em;
+            }
+
+            &:focus,
+            &:hover {
+                outline: none;
+            }
+        }
+    }
 }
