@@ -3,6 +3,11 @@
 nav {
   height: $navbar-height;
 
+  &.fixed-top {
+    display: grid;
+    grid-template-columns: 100px auto 1fr;
+  }
+
   .navbar-brand {
     float: left;
     padding: 0; // No hay variables para todos los paddings
