@@ -5,16 +5,17 @@ nav {
 
   &.fixed-top {
     display: grid;
-    grid-template-columns: 100px auto 1fr;
+    grid-template-columns: 100px auto 1fr 1fr;
+    grid-auto-columns: min-content;
   }
 
   .navbar-brand {
-    float: left;
+    // float: left;
     padding: 0; // No hay variables para todos los paddings
     height: $navbar-height;
 
     .logo {
-      float: left;
+      // float: left;
       background-color: $dark-blue;
       width: $navbar-brand-width;
       height: $navbar-height;
@@ -47,8 +48,12 @@ nav {
   }
 
   .actions {
+
+    display: flex;
+    justify-content: flex-end;
+    
     font-size: .9em;
-    float: right;
+    // float: right;
     color: white;
 
     // Botones
