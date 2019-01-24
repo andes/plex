@@ -344,6 +344,8 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 const temp = {...value};
                 this.selectize.addOption(temp);
                 this.selectize.setValue(val, true);
+            } else {
+                this.selectize.clear();
             }
         }
     }
