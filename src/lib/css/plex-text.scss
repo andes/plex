@@ -26,4 +26,12 @@ plex-text {
     resize: none;
     min-height: $input-height;
   }
+
+  input {
+    ::placeholder {
+      color: $input-color-placeholder !important;
+      font-style: italic !important;
+      opacity: 1;
+    }
+    
 }
