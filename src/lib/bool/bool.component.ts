@@ -11,7 +11,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
             multi: true,
         }
     ],
-    template: ` <!-- Slide -->
+    template: `<span [ngClass]="{'d-block form-group': display === 'block'}">
+                <!-- Slide -->
                 <mat-slide-toggle *ngIf="type == 'slide'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
                     <span *ngIf="label">
                     {{label}}
@@ -24,14 +25,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
                     {{label}}
                 </span>
                 </mat-checkbox>
-                `,
+                </span>`,
 })
 export class PlexBoolComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     // Propiedad públicas
     public value: boolean;
     @Input() label: string;
-    @Input() type: string;
+    @Input() type: 'slide' | 'checkbox';
     @Input() readonly = false;
+    @Input() display: 'inline' | 'block' = 'inline';
     @Output() change = new EventEmitter();
 
     // Funciones privadas
