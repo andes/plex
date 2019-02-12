@@ -11,20 +11,21 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
             multi: true,
         }
     ],
-    template: `<span [ngClass]="{'d-block form-group': display === 'block'}">
-                <!-- Slide -->
-                <mat-slide-toggle *ngIf="type == 'slide'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
-                    <span *ngIf="label">
-                    {{label}}
-                </span>
-                </mat-slide-toggle>
+    template: `<label *ngIf="display === 'block'">&nbsp;</label>
+                <span [ngClass]="{'d-block form-group': display === 'block'}">
+                    <!-- Slide -->
+                    <mat-slide-toggle *ngIf="type == 'slide'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
+                        <span *ngIf="label">
+                        {{label}}
+                    </span>
+                    </mat-slide-toggle>
 
-                <!-- Checbox -->
-                <mat-checkbox *ngIf="type == 'checkbox'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
-                    <span *ngIf="label">
-                    {{label}}
-                </span>
-                </mat-checkbox>
+                    <!-- Checbox -->
+                    <mat-checkbox *ngIf="type == 'checkbox'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
+                        <span *ngIf="label">
+                        {{label}}
+                    </span>
+                    </mat-checkbox>
                 </span>`,
 })
 export class PlexBoolComponent implements OnInit, AfterViewInit, ControlValueAccessor {
