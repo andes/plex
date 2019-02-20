@@ -1,81 +1,80 @@
-// Html
+plex-app {
 
-html {
-  height: 100% !important;
-}
-
-body {
-  height: 100% !important;
-  padding-top: $navbar-height + ($grid-gutter-width-base / 2);
-}
-
-// Main container
-.content {
-  margin-left: ($grid-gutter-width-base / 2);
-  margin-right: ($grid-gutter-width-base / 2);
-  height: 100%;
-
-  > *:not(router-outlet) {
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-  }
-}
-
-// Plex Layout
-.plex-layout,
-plex-layout {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-
-  // Footer (se ubica fijo abajo de la pantalla)
-   > plex-layout-footer,
-  > footer {
-    margin-bottom: ($grid-gutter-width-base / 2);
-    padding: ($grid-gutter-width-base / 2);
-    background: white;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  }
-
-  > footer[type='invert'] {
-    background: $dark-blue;
-    color: white;
-  }
-
-   > section,
-  > plex-layout {
-    min-height: 0;
-    flex: 1; // Expande a todo el alto del contenedor
-    margin-bottom: ($grid-gutter-width-base / 2);
-
-    > .row:first-child {
-      height: 100%;
-
-       > [class^="col-"]:first-child,
-      > .col:first-child {
-        padding-right: 0;
-      }
-
-       > [class^="col-"]:only-child,
-      > .col:only-child {
-        padding-right: ($grid-gutter-width-base / 2);
-      }
+    .row, .col-8, .col-4 {
+        margin: 0 !important;
+        padding: 0 !important;
     }
-  }
-}
 
-// Page Title & Subtitle
-.page-title {
-  font-size: 1.8em;
-  color: $dark-grey;
-  font-weight: 100;
-  text-transform: uppercase;
-}
+    display: grid;
+    // 50px del header, 0 del componente de notificaciones (toast), el resto se adapta solo (1fr)
+    grid-template-rows: 50px 0 1fr;
+    
+    // la app siempre va a ocupar el alto del contenedor la ventana
+    height: 100vh;
 
-.page-subtitle {
-  font-size: 1.5em;
-  color: $dark-grey;
-  font-weight: 100;
-  text-transform: uppercase;
+    // El header principal no tiene márgenes
+    >nav {
+        margin: 0;
+    }
+    // El resto tiene un margen a la izquierda
+    >:not(:first-child) {
+        margin: 0 0 0 15px;
+    }
+    // El contenido principal tiene márgenes (gris heredado del body) todo alrededoooor
+    .content {
+        margin: 15px;
+
+        // El header está en otro nivel del plex-box, quedando fijo (no se pierde on scroll)
+        header {
+            margin-bottom: 15px;
+            padding: 5px 0 5px;
+        }
+
+        // Por default se generan 2 columnas con una relación "3 cuartos / 1 cuarto" del ancho
+        section {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            // Espacio entre las 2 columnas
+            grid-gap: 15px;
+            margin: 0;
+
+            // Si hay un sólo contenedor, que ocupe el total del ancho
+            // (cada componente que use plex puede establecer sus columnas de manera similar)
+            >:only-child {
+                grid-column: 1/3;
+            }
+
+            // Siempre ocupa el 100% del contenedor
+            .plex-box {
+                display: flex;
+                flex-flow: column;
+                background: white;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+                min-height: 100%;
+                // La altura de plex-box es el 100vh menos la altura del header principal (50px) menos la altura de los márgenes (15px top + 15px bottom)
+                height: calc(100vh - 80px);
+                padding-right: 5px;
+
+                // La scrollbar está en el contenido principal, permitiendo un header fijo
+                .plex-box-content {
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    padding: 10px;
+                }
+            }
+        }
+        .page-title {
+          font-size: 1.8em;
+          color: $dark-grey;
+          font-weight: 100;
+          text-transform: uppercase;
+        }
+        .page-subtitle {
+          font-size: 1.5em;
+          color: $dark-grey;
+          font-weight: 100;
+          text-transform: uppercase;
+        }
+    }
+
 }
