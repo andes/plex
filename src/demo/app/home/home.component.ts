@@ -20,6 +20,14 @@ export class HomeDemoComponent {
                 documento: '34934522'
             }
         });
+
+        this.plex.updateTitle([{
+            route: '/',
+            name: 'PLEX'
+        }, {
+            route: '/',
+            name: 'Componentes'
+        }]);
     }
 
     guardar($event) {
