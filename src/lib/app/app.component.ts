@@ -4,7 +4,7 @@ import { Plex } from './../core/service';
 @Component({
     selector: 'plex-app',
     template: ` <!--Navigation Bar-->
-                <nav class="navbar-inverse fixed-top"  [ngClass]="'bg-' + type">
+                <nav class="navbar-inverse"  [ngClass]="'bg-' + type">
                     <div class="navbar-brand hover" [routerLink]="'/'" tabindex="-1">
                         <div class="logo"></div>
                         <div class="text"></div>
