@@ -6,14 +6,12 @@ import { Input, Output, EventEmitter, Component, HostListener, ElementRef, After
 })
 export class PlexScrollComponent implements AfterViewInit, OnDestroy {
     private container: any;
-    private containerBody: any;
     @Output() change = new EventEmitter<any>();
 
     constructor(private elementRef: ElementRef) { }
 
     ngAfterViewInit(): void {
         this.container = this.elementRef.nativeElement.parentElement;
-        this.containerBody = this.container;
         this.container.addEventListener('scroll', this.onScroll.bind(this), false);
     }
 
@@ -22,7 +20,7 @@ export class PlexScrollComponent implements AfterViewInit, OnDestroy {
     }
 
     onScroll() {
-        if (this.container.scrollTop + this.containerBody.clientHeight >= this.containerBody.scrollHeight) {
+        if (this.container.scrollTop + this.container.clientHeight >= this.container.scrollHeight) {
             this.change.emit(null);
         }
     }
