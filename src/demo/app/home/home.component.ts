@@ -8,6 +8,7 @@ import { HeaderPacienteComponent } from '../header-paciente/header-paciente.comp
 export class HomeDemoComponent {
     public field = '';
     public tooltip = 'Este es un tooltip<br>multilinea que ocupa mucho espacio';
+    public data = [];
 
     constructor(public plex: Plex) {
         this.plex.updateTitle('Bienvenido a Plex');
@@ -20,10 +21,21 @@ export class HomeDemoComponent {
                 documento: '34934522'
             }
         });
+
+        this.loadData();
     }
 
     guardar($event) {
         // Ejemplo de como limpiar el navbar
         this.plex.clearNavbar();
+    }
+
+    loadData() {
+        // tslint:disable-next-line:no-console
+        console.log('Loading data on scroll');
+        const max = Math.random() * 20 + 5;
+        for (let i = 0; i < max; i++) {
+            this.data = [...this.data, { identificador: Math.round(Math.random() * 1000) + 1 }];
+        }
     }
 }
