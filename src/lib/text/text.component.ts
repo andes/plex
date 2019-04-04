@@ -31,7 +31,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
     <i *ngIf="!readonly && !multiline && !html && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
 
     <!-- Multiline -->
-    <textarea [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+    <textarea [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" [style]="quillStyle"
       (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()"></textarea>
 
     <!-- HTML Editor -->
