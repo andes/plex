@@ -36,6 +36,9 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                     </div>
                     <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
                 </div>`,
+    styles: [
+        `input { border: 1px solid #d0d0d0; }`
+    ]
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private _min: Date;
