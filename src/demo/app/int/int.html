@@ -1,5 +1,5 @@
-<plex-box title="plex-float" type="primary">
-    <plex-box title="Simple">
+<plex-layout>
+    <plex-layout-main>
         <div class="row">
             <div class="col-md-6">
                 <form>
@@ -12,13 +12,11 @@
                 <pre>{{tModel | json}}</pre>
             </div>
         </div>
-    </plex-box>
-    <plex-box title="Con validación">
         <div class="row">
             <div class="col-md-6">
                 <form>
-                    <plex-int label="Ingrese el porcentaje mayor a 10 y menor a 90" [(ngModel)]="tModel.valor" name="valor" min="10" max="90"
-                        suffix="%">
+                    <plex-int label="Ingrese el porcentaje mayor a 10 y menor a 90" [(ngModel)]="tModel.valor"
+                        name="valor" min="10" max="90" suffix="%">
                     </plex-int>
                 </form>
             </div>
@@ -27,5 +25,5 @@
                 <pre>{{tModel | json}}</pre>
             </div>
         </div>
-    </plex-box>
-</plex-box>
+    </plex-layout-main>
+</plex-layout>

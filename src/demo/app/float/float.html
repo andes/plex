@@ -1,31 +1,34 @@
-<plex-box title="plex-float" type="primary">
-    <plex-box title="Simple">
-        <div class="row">
-            <div class="col-md-6">
-                <form>
-                    <plex-float label="Ingrese el peso del paciente" [(ngModel)]="tModel.peso" name="valor" [required]="true">
-                    </plex-float>
-                </form>
+<plex-layout>
+    <plex-layout-main>
+        <plex-box title="Simple">
+            <div class="row">
+                <div class="col-md-6">
+                    <form>
+                        <plex-float label="Ingrese el peso del paciente" [(ngModel)]="tModel.peso" name="valor"
+                            [required]="true">
+                        </plex-float>
+                    </form>
+                </div>
+                <div class="col-md-6" *ngIf="tModel">
+                    <label>Modelo</label>
+                    <pre>{{tModel | json}}</pre>
+                </div>
             </div>
-            <div class="col-md-6" *ngIf="tModel">
-                <label>Modelo</label>
-                <pre>{{tModel | json}}</pre>
+        </plex-box>
+        <plex-box title="Con validación">
+            <div class="row">
+                <div class="col-md-6">
+                    <form>
+                        <plex-float label="Ingrese el porcentaje mayor a 10.5 y menor a 90.4" [(ngModel)]="tModel.valor"
+                            name="valor" [min]="10.5" [max]="90.4" suffix="%">
+                        </plex-float>
+                    </form>
+                </div>
+                <div class="col-md-6" *ngIf="tModel">
+                    <label>Modelo</label>
+                    <pre>{{tModel | json}}</pre>
+                </div>
             </div>
-        </div>
-    </plex-box>
-    <plex-box title="Con validación">
-        <div class="row">
-            <div class="col-md-6">
-                <form>
-                    <plex-float label="Ingrese el porcentaje mayor a 10.5 y menor a 90.4" [(ngModel)]="tModel.valor" name="valor" [min]="10.5"
-                        [max]="90.4" suffix="%">
-                    </plex-float>
-                </form>
-            </div>
-            <div class="col-md-6" *ngIf="tModel">
-                <label>Modelo</label>
-                <pre>{{tModel | json}}</pre>
-            </div>
-        </div>
-    </plex-box>
-</plex-box>
+        </plex-box>
+    </plex-layout-main>
+</plex-layout>
