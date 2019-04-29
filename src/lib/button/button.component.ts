@@ -15,7 +15,7 @@ export class PlexButtonComponent {
     @Input() label: string;
     @Input() icon: string;
     @Input() type: string;
-    @Input() size: 'lg' | 'sm' | 'block';
+    @Input() size: 'sm' | 'md' | 'lg' | 'xl' | 'block';
     @Input() validateForm: boolean | NgForm;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
     /**
