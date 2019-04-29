@@ -34,16 +34,29 @@
             <label>Nombre</label> Pedro
             <label>Apellido</label> Gutierrez
         </fieldset>
+        <fieldset>
+            <legend>Tabla dinámica con plex-scroll</legend>
+            <table class="table table-striped">
+                <tr *ngFor="let item of data">
+                    <td>{{item.identificador}}</td>
+                </tr>
+            </table>
+        </fieldset>
+        <plex-scroll (change)="loadData()"></plex-scroll>
     </plex-layout-main>
     <plex-layout-sidebar>
-        <header class="d-flex justify-content-between">
-            <div class="w-50">
-                Este es el header de plex-box. Siempre queda fijo
-            </div>
-            <div class="btn-group">
-                <plex-button type="success" title="Restaurar usuario" titlePosition="left" icon="account">
-                </plex-button>
-                <plex-button type="danger" icon="clock"></plex-button>
+        <header>
+            <div class="row">
+                <div class="col">
+                    Este es el header de plex-box. Siempre queda fijo
+                </div>
+                <div class="col">
+                    <div class="btn-group float-right">
+                        <plex-button type="success" title="Restaurar usuario" titlePosition="left" icon="account">
+                        </plex-button>
+                        <plex-button type="danger" icon="clock"></plex-button>
+                    </div>
+                </div>
             </div>
         </header>
         <form>
