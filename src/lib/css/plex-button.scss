@@ -3,3 +3,15 @@
     cursor: pointer;
     text-transform: uppercase;
 }
+
+$btn-padding-x-xl: 2.5rem !default;
+$btn-padding-y-xl: 1.75rem !default;
+$font-size-xl: 2rem !default;
+
+$border-radius-xl: 0 !default;
+$btn-border-radius-xl: $border-radius-xl !default;
+
+.btn-xl {
+    // line-height: ensure even-numbered height of button next to extra large input
+    @include button-size($btn-padding-y-xl, $btn-padding-x-xl, $font-size-xl, $btn-border-radius-xl);
+}
