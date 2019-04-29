@@ -10,17 +10,22 @@
         </fieldset>
         <fieldset>
             <legend>Estados</legend>
-            <plex-button label="Deshabilitado" icon="account" [disabled]="true" (click)="onDisabledClick()"></plex-button>
+            <plex-button label="Deshabilitado" icon="account" [disabled]="true" (click)="onDisabledClick()">
+            </plex-button>
         </fieldset>
         <fieldset>
             <legend>Tamaños</legend>
-            <plex-button type="danger" label="Large" size="lg"></plex-button>
-            <plex-button type="success" label="Small" size="md"></plex-button>
+            <div class="row">
+                <div class="col">
+                    <plex-button type="success" label="Extra Large" size="xl" class="mr-2"></plex-button>
+                    <plex-button type="danger" label="Large" size="lg" class="mr-2"></plex-button>
+                    <plex-button type="success" label="Medium" size="md" class="mr-2"></plex-button>
+                    <plex-button type="danger" label="Small" size="sm" class="mr-2"></plex-button>
+                </div>
+            </div>
             <div class="row">
                 <div class="col">
                     <plex-button type="warning" label="Toda la columna (block)" size="block"></plex-button>
-                </div>
-                <div class="col">
                 </div>
             </div>
         </fieldset>
@@ -34,16 +39,20 @@
         <fieldset>
             <legend>Validación de formularios</legend>
             <form #formulario1="ngForm">
-                <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="modelo.campo1" [disabled]="false" [required]="true"></plex-text>
-                <plex-button type="success" label="Guardar formulario" icon="content-save" [validateForm]="formulario1" (click)="guardar($event)"></plex-button>
+                <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="modelo.campo1"
+                    [disabled]="false" [required]="true"></plex-text>
+                <plex-button type="success" label="Guardar formulario" icon="content-save" [validateForm]="formulario1"
+                    (click)="guardar($event)"></plex-button>
             </form>
         </fieldset>
         <fieldset>
             <legend>Formulario inline</legend>
             <form #formulario2="ngForm">
                 <div class="btn-group">
-                    <plex-text name="campo1" [(ngModel)]="modelo.campo1" [disabled]="false" [required]="true"></plex-text>
-                    <plex-button type="success" icon="content-save" [validateForm]="formulario2" (click)="guardar($event)"></plex-button>
+                    <plex-text name="campo1" [(ngModel)]="modelo.campo1" [disabled]="false" [required]="true">
+                    </plex-text>
+                    <plex-button type="success" icon="content-save" [validateForm]="formulario2"
+                        (click)="guardar($event)"></plex-button>
                 </div>
             </form>
         </fieldset>
