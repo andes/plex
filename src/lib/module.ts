@@ -33,6 +33,7 @@ import { PlexLayoutComponent } from './layout/layout.component';
 import { PlexFooterComponent } from './layout/footer.component';
 import { PlexLayoutMainComponent } from './layout/main.component';
 import { PlexLayoutSidebarComponent } from './layout/sidebar.component';
+import { PlexItemComponent } from './item-list/item-list.component';
 
 // Directivas
 import { PlexWizardDirective } from './wizard/wizard.directive';
@@ -73,7 +74,8 @@ const MODULES = [
     PlexLayoutMainComponent,
     PlexLayoutSidebarComponent,
     PlexWizardDirective,
-    TooltipComponent
+    TooltipComponent,
+    PlexItemComponent
 ];
 
 @NgModule({

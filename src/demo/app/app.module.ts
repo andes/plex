@@ -38,6 +38,7 @@ import { TemplateBusquedaComponent } from './templates/template-busqueda';
 import { TemplateBotoneraSidebarComponent } from './templates/template-form-sidebar';
 import { FechaPipe } from './templates/fecha.pipe';
 import { HeaderPacienteComponent } from './header-paciente/header-paciente.component';
+import { ItemDemoComponent } from './item-list/item-list.component';
 
 @NgModule({
     declarations: [
@@ -66,7 +67,8 @@ import { HeaderPacienteComponent } from './header-paciente/header-paciente.compo
         TemplateBusquedaComponent,
         TemplateBotoneraSidebarComponent,
         FechaPipe,
-        HeaderPacienteComponent
+        HeaderPacienteComponent,
+        ItemDemoComponent
     ],
     entryComponents: [
         HeaderPacienteComponent

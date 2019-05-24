@@ -1,0 +1,26 @@
+// Links
+a, ul, li {
+	text-decoration: none;
+	color: inherit;
+	list-style: none;
+	margin: inherit;
+	padding-left: 0;
+
+	&img.item-img {
+		width: 1rem;
+		height: 1rem;
+		background-color: gray;
+	}
+}
+
+// // li {
+// // 	border-bottom: solid 1px black;
+// // 	&:hover {
+// // 		color: lightblue;
+// // 		cursor: pointer;
+// // 		}
+
+// // 	&:visited {
+// //         color: black;
+// //     }
+// }

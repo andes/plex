@@ -1,0 +1,13 @@
+<plex-layout main="8">
+    <plex-layout-main>
+        <ul>
+            <li *ngFor="let item of items">
+                <plex-item checkbox="" subtitulo="{{ item.subtitulo }}" badge="{{ item.badge }}" dropdown="{{ item.dropdown }}">
+                    <span plex-title> {{ item.titulo }} </span>
+                </plex-item>
+            </li>
+        </ul>
+    </plex-layout-main>
+    <plex-layout-sidebar>
+    </plex-layout-sidebar>
+</plex-layout>
