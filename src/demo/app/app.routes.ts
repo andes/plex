@@ -23,6 +23,7 @@ import { TemplateFormComponent } from './templates/template-form';
 import { TemplateVisualizacionComponent } from './templates/template-visualizacion';
 import { TemplateBusquedaComponent } from './templates/template-busqueda';
 import { TemplateBotoneraSidebarComponent } from './templates/template-form-sidebar';
+import { ItemDemoComponent } from './item-list/item-list.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },
     { path: 'templates/visualizacion', component: TemplateVisualizacionComponent },
     { path: 'templates/busqueda', component: TemplateBusquedaComponent },
+    { path: 'item', component: ItemDemoComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 
