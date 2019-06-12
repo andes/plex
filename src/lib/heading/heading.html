@@ -1,0 +1,16 @@
+<div class="item-list" [ngClass]="layout">
+    <b class="checkbox">
+        {{ headings.check }}
+    </b>
+    <ng-container *ngFor="let label of headings.labels">
+        <b [ngStyle]="{'width.px': label.width}">
+            {{ label.title }}
+        </b>
+    </ng-container>
+    <b class="justify-self-end" *ngFor="let badge of headings.badges">
+        {{ badge }}
+    </b>
+    <b class="justify-self-end" *ngFor="let botones of headings.botonera">
+        {{ botones }}
+    </b>
+</div>
