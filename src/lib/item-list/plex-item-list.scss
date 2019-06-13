@@ -35,7 +35,6 @@ div.item-list {
         }
     }
 
-
     ::ng-deep {
         >* {
             display: flex;
@@ -45,7 +44,6 @@ div.item-list {
 
         >plex-bool {
             max-width: 25px;
-            padding: 1.25rem;
 
             label {
                 margin-top: 0 !important;
@@ -64,6 +62,7 @@ div.item-list {
             .dropdown-item {
                 padding: 5px;
                 font-size: .9rem;
+                background: transparent !important;
             }
 
             &[icon] {
