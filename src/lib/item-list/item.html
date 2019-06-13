@@ -1,4 +1,4 @@
-<div class="item-list" [ngClass]="layout">
+<div class="item-list {{ striped ? 'striped' : '' }}" [ngClass]="layout">
     <ng-content></ng-content>
     <div class="badges">
         <ng-content select="plex-badge"></ng-content>

@@ -1,3 +1,11 @@
+::ng-deep {
+    plex-item-list {
+        >&.striped {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    }
+}
+
 div.item-list {
 
     display: grid;

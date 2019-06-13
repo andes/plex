@@ -10,6 +10,7 @@ export class PlexItemComponent {
 
     @Input() layout: 'completo' | 'contenido' | 'izquierda' | 'derecha' = 'completo';
     @Input() headings: any = {};
+    @Input() striped = false;
 
     ngOnInit() {
         this.layout = this.layout ? this.layout : 'completo';
