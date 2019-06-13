@@ -1,0 +1,10 @@
+<div class="item-list" [ngClass]="layout">
+    <ng-content></ng-content>
+    <div class="badges">
+        <ng-content select="plex-badge"></ng-content>
+    </div>
+    <div class="botonera">
+        <ng-content select="plex-button"></ng-content>
+        <ng-content select="plex-dropdown[icon]"></ng-content>
+    </div>
+</div>
