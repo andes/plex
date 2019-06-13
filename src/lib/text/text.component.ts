@@ -25,7 +25,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
         <ng-content selector="[prefix]"></ng-content>
       </span>
 
-      <input #input type="{{password ? 'password' : 'text'}}" class="form-control form-control-sm" [placeholder]="placeholder" [disabled]="disabled"
+      <input #input type="{{password ? 'password' : 'text'}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
         [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
     </div>
     <i *ngIf="!readonly && !multiline && !html && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
