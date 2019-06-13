@@ -17,6 +17,7 @@ export class ItemDemoComponent {
         apellido: 'Botho',
     };
 
+    bold = false;
 
     lista = [
         {
@@ -94,6 +95,11 @@ export class ItemDemoComponent {
         layout.completo = false;
         layout.contenido = false;
         layout[String(layout)] = true;
+    }
+
+    toggleBold() {
+        this.bold = !this.bold;
+        return this.bold;
     }
 
 }

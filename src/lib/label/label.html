@@ -1,4 +1,4 @@
 <div class="plex-label d-flex flex-column" [ngClass]="size">
-    <b>{{ titulo }}</b>
+    <span [ngClass]="{'font-weight-bold': tituloBold}">{{ titulo }}</span>
     <small>{{ subtitulo }}</small>
 </div>

@@ -7,7 +7,7 @@
             <plex-item-list [layout]="layout"
                 [headings]="{ check: '', labels: [{title: 'Datos importantes', width: '200'}, {title: 'Horario', width: '150'}], badges: ['Estados'], botonera: ['Acciones'] }">
                 <plex-bool name="activo"></plex-bool>
-                <plex-label titulo="VIE. 07/06/2019"
+                <plex-label titulo="VIE. 07/06/2019" [tituloBold]="toggleBold()"
                     subtitulo="10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora">
                 </plex-label>
                 <plex-dropdown icon="dots-vertical mdi-24px" [right]="true" [items]="dropitems">

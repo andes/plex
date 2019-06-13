@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
 })
 export class PlexLabelComponent {
     @Input() titulo: string;
+    @Input() tituloBold = true;
     @Input() subtitulo: string;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
 
