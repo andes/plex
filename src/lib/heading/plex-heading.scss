@@ -39,12 +39,15 @@ div.item-list {
     //     justify-content: flex-end;
     // }
 
-
     ::ng-deep {
         >* {
             display: flex;
             align-items: center;
             justify-content: flex-start;
+        }
+
+        >b[checkbox] {
+            justify-content: center;
         }
 
         .checkbox {
