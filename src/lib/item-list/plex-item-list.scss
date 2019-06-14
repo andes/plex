@@ -16,7 +16,7 @@ div.item-list {
     margin-bottom: .2rem;
 
     &.completo {
-        grid-template-columns: minmax(45px, calc(25px + 1.25rem)) repeat(auto-fill, minmax(100px, 400px));
+        grid-template-columns: minmax(0px, calc(25px + 1.25rem)) repeat(auto-fill, minmax(100px, 400px));
         grid-auto-flow: column;
 
         .badges,
