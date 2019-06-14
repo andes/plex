@@ -42,6 +42,12 @@ div.item-list {
             justify-content: center;
         }
 
+        // Items que componen la lista que no son componentes Angular
+        span,
+        div {
+            justify-self: flex-start !important;
+        }
+
         >plex-bool {
             max-width: 25px;
             justify-self: center !important;
