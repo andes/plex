@@ -8,26 +8,21 @@
         <plex-datetime label="Ingrese la fecha del cumpleaños mayor a 1/1/1970" type="date" [(ngModel)]="tModel.fecha"
           name="fecha" [required]="true" [min]="tModel.min" [max]="tModel.max">
         </plex-datetime>
-
-
-        <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora"  
-           name="hora" (blur)="onBlur()" (focus)="onBlur()">
+        <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora" name="hora"
+          (blur)="onBlur()" (focus)="onBlur()">
         </plex-datetime>
-
-        <plex-datetime label="Ingrese la hora de nacimient2o" type="time" [(ngModel)]="tModel.horados" [min]="horaPlus()"
-            name="hora2">
+        <plex-datetime label="Ingrese la hora de nacimient2o" type="time" [(ngModel)]="tModel.horados"
+          [min]="horaPlus()" name="hora2">
         </plex-datetime>
-        
-        <plex-datetime label="Este campo es readonly" type="time" [(ngModel)]="tModel.hora2" name="hora2" [readonly]="model4.disabled">
+        <plex-datetime label="Este campo es readonly" type="time" [(ngModel)]="tModel.hora2" name="hora2"
+          [readonly]="model4.disabled">
         </plex-datetime>
-
-
         <plex-button label="Actualizar maxHora" (click)="updateMaxHora()"></plex-button>
-        <plex-datetime label="Fecha con navegación inline (por dia)" [skipBy]="'day'" [(ngModel)]="tModel.fecha" [min]="tModel.min"
-          [max]="tModel.max" name="fechaSkip" required>
+        <plex-datetime label="Fecha con navegación inline (por dia)" [skipBy]="'day'" [(ngModel)]="tModel.fecha"
+          [min]="tModel.min" [max]="tModel.max" name="fechaSkip" required>
         </plex-datetime>
-        <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'" [(ngModel)]="tModel.fechaHora"
-          [min]="tModel.minHora" [max]="tModel.maxHora" name="horaSkip" required>
+        <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'"
+          [(ngModel)]="tModel.fechaHora" [min]="tModel.minHora" [max]="tModel.maxHora" name="horaSkip" required>
         </plex-datetime>
       </form>
     </div>

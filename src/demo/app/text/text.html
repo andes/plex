@@ -2,16 +2,20 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-text label="Ingrese su usuario" placeholder="Esta es una ayuda" prefix="<i class='mdi mdi-barcode'></i>" [(ngModel)]="templateModel1.usuario"
-                    name="usuario" [required]="true" (focus)="onFocus()" (focusout)="onFocusout()">
+                <plex-text label="Ingrese su usuario" placeholder="Esta es una ayuda"
+                    prefix="<i class='mdi mdi-barcode'></i>" [(ngModel)]="templateModel1.usuario" name="usuario"
+                    [required]="true" (focus)="onFocus()" (focusout)="onFocusout()">
                 </plex-text>
-                <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password" name="password" [required]="true">
+                <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password"
+                    name="password" [required]="true">
                 </plex-text>
                 <plex-text label="Ingrese su usuario" [(ngModel)]="templateModel1.usuario" name="usuario"
                     [readonly]="true">
-                    <i prefix class='mdi mdi-account' ></i>
+                    <i prefix class='mdi mdi-account'></i>
                 </plex-text>
-                <plex-text label="Ingrese un nombre con formato correcto" [(ngModel)]="templateModel1.patron" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ ']+" name="patron" >
+                <plex-text label="Ingrese un nombre con formato correcto" [(ngModel)]="templateModel1.patron"
+                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ ']+"
+                    name="patron">
                 </plex-text>
             </form>
         </div>
@@ -23,13 +27,8 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-text 
-                    label="Ingrese un texto con un mínimo de 10 caracteres (debounce=1s)" 
-                    [(ngModel)]="templateModel2.nombre" 
-                    name="nombre" 
-                    minlength="10"
-                    maxlength="15"
-                    [debounce]="1000"
+                <plex-text label="Ingrese un texto con un mínimo de 10 caracteres (debounce=1s)"
+                    [(ngModel)]="templateModel2.nombre" name="nombre" minlength="10" maxlength="15" [debounce]="1000"
                     (change)="onChange()">
                 </plex-text>
             </form>
@@ -55,7 +54,8 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido" [html]="true" [readonly]="false">
+                <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido" [html]="true"
+                    [readonly]="false">
                 </plex-text>
             </form>
         </div>
@@ -69,7 +69,8 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido" [html]="true" [height]="500" [readonly]="false">
+                <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido" [html]="true"
+                    [height]="500" [readonly]="false">
                 </plex-text>
             </form>
         </div>

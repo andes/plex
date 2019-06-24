@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['plex-list.scss']
 })
 
-export class PlexListComponent {
+export class PlexListComponent implements OnInit {
 
     @Input() striped = false;
 

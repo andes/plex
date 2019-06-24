@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['plex-item-list.scss']
 })
 
-export class PlexItemComponent {
+export class PlexItemComponent implements OnInit {
 
     @Input() layout: 'completo' | 'contenido' | 'izquierda' | 'derecha' = 'completo';
     @Input() headings: any = {};
