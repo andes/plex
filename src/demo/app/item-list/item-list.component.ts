@@ -5,12 +5,12 @@ import { PlexItemComponent } from '../../../lib/item-list/item-list.component';
 @Component({
     templateUrl: 'item-list.html',
 })
-export class ItemDemoComponent {
+export class ItemDemoComponent implements OnInit {
 
     layout = {
         completo: true,
         contenido: false
-    }
+    };
 
     templateModel = {
         nombre: 'Andrrr',
