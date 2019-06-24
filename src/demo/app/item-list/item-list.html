@@ -2,11 +2,11 @@
     <plex-layout-main>
         <plex-list [striped]="true">
             <plex-heading [layout]="layout">
-                <b checkbox>Sel</b>
+                <b checkbox></b>
                 <b label [ngStyle]="{ 'width': '200px' }">Datos importantes</b>
                 <b label [ngStyle]="{ 'width': '200px' }">Horario</b>
-                <b badges>Estados</b>
-                <b buttons>Acciones</b>
+                <b badge>Estados</b>
+                <b button>Acciones</b>
             </plex-heading>
             <ng-container *ngFor="let item of lista; let i=index">
                 <plex-item-list [layout]="layout">
@@ -31,7 +31,7 @@
         <hr>
         <plex-list>
             <plex-item-list *ngFor="let item of lista" [layout]="layout">
-                <plex-bool name="activo"></plex-bool>
+                <!-- <plex-bool name="activo"></plex-bool> -->
                 <plex-label titulo="Título" subtitulo="Un subtítulo"></plex-label>
                 <plex-dropdown label="Dropdown con título" [items]="dropitems">
                 </plex-dropdown>
