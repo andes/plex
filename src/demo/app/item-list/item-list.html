@@ -1,6 +1,6 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <plex-list [striped]="true">
+        <plex-list [striped]="true" [selectable]="true">
             <plex-heading [layout]="layout">
                 <b checkbox></b>
                 <b label [ngStyle]="{ 'width': '200px' }">Datos importantes</b>
@@ -9,7 +9,7 @@
                 <b button>Acciones</b>
             </plex-heading>
             <ng-container *ngFor="let item of lista; let i=index">
-                <plex-item-list [layout]="layout">
+                <plex-item [layout]="layout">
                     <plex-bool name="activo"></plex-bool>
                     <plex-label titulo="VIE. 07/06/2019" [tituloBold]="toggleBold()"
                         subtitulo="10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora">
@@ -24,13 +24,12 @@
                     <plex-badge type="success">aprobado</plex-badge>
                     <plex-badge type="danger">urgente</plex-badge>
                     <plex-button type="success" size="sm" label="Aprobar"></plex-button>
-                </plex-item-list>
+                </plex-item>
             </ng-container>
         </plex-list>
-
         <hr>
         <plex-list>
-            <plex-item-list *ngFor="let item of lista" [layout]="layout">
+            <plex-item *ngFor="let item of lista" [layout]="layout">
                 <!-- <plex-bool name="activo"></plex-bool> -->
                 <plex-label titulo="Título" subtitulo="Un subtítulo"></plex-label>
                 <plex-dropdown label="Dropdown con título" [items]="dropitems">
@@ -39,7 +38,7 @@
                 <plex-badge type="danger">urgente</plex-badge>
                 <plex-button type="success" size="sm" label="Aprobar"></plex-button>
                 <plex-button type="warning" size="sm" icon="clock"></plex-button>
-            </plex-item-list>
+            </plex-item>
         </plex-list>
         <hr>
         <plex-bool type="slide" label="Ancho completo" (click)="toggleLayout('completo')" [(ngModel)]="layout.completo"
@@ -52,7 +51,7 @@
     </plex-layout-main>
     <plex-layout-sidebar>
         <ng-container *ngFor="let item of lista">
-            <plex-item-list [layout]="layout">
+            <plex-item [layout]="layout">
                 <plex-bool name="activo"></plex-bool>
                 <plex-label titulo="Título" subtitulo="Un subtítulo" size="sm"></plex-label>
                 <plex-text size="sm" name="nombre" [readonly]="false" [(ngModel)]="templateModel.nombre">
@@ -61,7 +60,7 @@
                 <plex-badge type="danger">ausente</plex-badge>
                 <plex-button type="success" size="sm" icon="check-circle"></plex-button>
                 <plex-button type="warning" size="sm" icon="clock"></plex-button>
-            </plex-item-list>
+            </plex-item>
         </ng-container>
     </plex-layout-sidebar>
 </plex-layout>
