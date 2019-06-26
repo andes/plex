@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PlexListComponent implements OnInit {
 
     @Input() striped = false;
+    @Input() selectable = false;
 
     ngOnInit() {
     }
