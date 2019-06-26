@@ -14,7 +14,7 @@
     }
 }
 
-div.item-list {
+div.item-list-heading {
 
     display: grid;
     grid-gap: .25rem;
@@ -24,8 +24,6 @@ div.item-list {
     margin-bottom: .2rem;
 
     &.completo {
-        // grid-auto-columns: auto;
-        grid-template-columns: minmax(0px, calc(25px + 1.25rem)) repeat(auto-fill, minmax(100px, 400px));
         grid-auto-flow: column;
     }
 
@@ -34,11 +32,6 @@ div.item-list {
         grid-auto-flow: column;
     }
 
-    // .badges,
-    // .botonera {
-    //     justify-content: flex-end;
-    // }
-
     ::ng-deep {
         >* {
             display: flex;
@@ -46,24 +39,23 @@ div.item-list {
             justify-content: flex-start;
         }
 
-        >b[checkbox] {
+        >[checkbox] {
+            max-width: 25px;
+            padding: 1.25rem;
             justify-content: center;
         }
 
-        .checkbox {
-            max-width: 25px;
-            padding: 1.25rem;
-        }
 
         >plex-bool {
-            // max-width: 25px;// padding: 1.25rem;
 
             label {
                 margin-top: 0 !important;
             }
         }
 
-        plex-label {
+        [label],
+        [badge],
+        [button] {
             justify-self: flex-start !important;
             min-width: 100px;
             max-width: 250px;
