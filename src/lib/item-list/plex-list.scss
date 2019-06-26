@@ -2,4 +2,15 @@
     .striped>:nth-child(odd)>div {
         background: rgba(0, 0, 0, .05);
     }
+
+    .selectable {
+        .item-list {
+            grid-template-columns: 45px repeat(auto-fill, minmax(100px, 300px));
+        }
+
+        .item-list-heading {
+            grid-template-columns: 45px repeat(auto-fill, minmax(100px, 300px));
+        }
+    }
+
 }
