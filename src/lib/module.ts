@@ -36,7 +36,7 @@ import { PlexLayoutSidebarComponent } from './layout/sidebar.component';
 import { PlexListComponent } from './item-list/list.component';
 import { PlexItemComponent } from './item-list/item.component';
 import { PlexLabelComponent } from './label/label.component';
-import { PlexHeadingComponent } from './heading/heading.component';
+import { PlexHeadingComponent } from './item-list/heading.component';
 
 // Directivas
 import { PlexWizardDirective } from './wizard/wizard.directive';
