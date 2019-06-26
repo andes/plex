@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DropdownItem } from '../../../lib/dropdown/dropdown-item.inteface';
-import { PlexItemComponent } from '../../../lib/item-list/item-list.component';
 
 @Component({
     templateUrl: 'item-list.html',
