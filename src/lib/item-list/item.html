@@ -1,7 +1,7 @@
 <div class="item-list {{ striped ? 'striped' : '' }}" [ngClass]="layout">
     <ng-content></ng-content>
     <ng-content select="checkbox"></ng-content>
-    <div class="badges">
+    <div *ngIf="badges" class="badges" [ngClass]="{'mr-1': !botonera}">
         <ng-content select="plex-badge"></ng-content>
     </div>
     <div class="botonera">
