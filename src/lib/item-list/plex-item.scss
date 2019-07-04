@@ -3,15 +3,18 @@ div.item-list {
     display: grid;
     grid-gap: .25rem;
 
-    height: 44px;
-    max-height: 60px;
+    max-height: 80px;
     margin-bottom: .2rem;
+    padding-left: .5rem;
+
+    grid-template-columns: minmax(100px, min-content) repeat(auto-fill, 200px);
 
     &.completo {
         grid-auto-flow: column;
 
         .badges,
-        .botonera {
+        .botonera,
+        span {
             justify-content: flex-start;
         }
     }
@@ -21,7 +24,8 @@ div.item-list {
         grid-auto-flow: column;
 
         .badges,
-        .botonera {
+        .botonera,
+        span {
             justify-content: flex-start;
         }
     }
@@ -30,18 +34,17 @@ div.item-list {
         >* {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-self: center;
         }
 
         // Items que componen la lista que no son componentes Angular
         span,
-        div {
+        div,
+        img {
             justify-self: flex-start !important;
         }
 
         >plex-bool {
-            max-width: 25px;
-            justify-self: center !important;
 
             label {
                 margin-top: 0 !important;
@@ -50,6 +53,7 @@ div.item-list {
 
         plex-label {
             justify-self: flex-start !important;
+            width: 130px;
             min-width: 100px;
             max-width: 250px;
         }
@@ -76,6 +80,11 @@ div.item-list {
             }
         }
 
+        upload-file {
+            display: flex;
+            flex-flow: column-reverse;
+        }
+
         plex-datetime {
             justify-self: flex-start !important;
 
@@ -88,7 +97,9 @@ div.item-list {
 
         plex-button,
         plex-badge,
-        plex-dropdown {
+        plex-dropdown,
+        upload-file,
+        upload {
             margin-right: 4px;
 
             &:last-child {
