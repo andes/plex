@@ -4,7 +4,7 @@
     <div *ngIf="badges" class="badges" [ngClass]="{'mr-1': !botonera}">
         <ng-content select="plex-badge"></ng-content>
     </div>
-    <div class="botonera">
+    <div *ngIf="botonera" class="botonera">
         <ng-content select="plex-button"></ng-content>
         <ng-content select="plex-dropdown[icon]"></ng-content>
     </div>
