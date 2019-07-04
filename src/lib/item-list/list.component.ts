@@ -10,6 +10,7 @@ export class PlexListComponent implements OnInit {
 
     @Input() striped = false;
     @Input() selectable = false;
+    @Input() fullWidth = false;
 
     ngOnInit() {
     }
