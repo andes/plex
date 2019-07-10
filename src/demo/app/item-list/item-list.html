@@ -1,12 +1,12 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <plex-list [striped]="true" [selectable]="true">
+        <plex-list [striped]="true" [selectable]="true" [fullWidth]="true">
             <plex-heading [layout]="layout">
                 <b checkbox></b>
                 <b label [ngStyle]="{ 'width': '200px' }">Datos importantes</b>
                 <b label [ngStyle]="{ 'width': '200px' }">Horario</b>
-                <b badge>Estados</b>
-                <b button>Acciones</b>
+                <!-- <b badge>Estados</b> -->
+                <b button>Badges y Botones</b>
             </plex-heading>
             <ng-container *ngFor="let item of lista; let i=index">
                 <plex-item [layout]="layout">
