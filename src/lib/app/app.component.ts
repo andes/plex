@@ -82,7 +82,7 @@ import { Plex } from './../core/service';
 export class PlexAppComponent implements OnInit {
     private unlisten: Function;
     // Referencia al DOM para injectar una componente de forma dinámica
-    @ViewChild('manuItem', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
+    @ViewChild('manuItem', { static: true, read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
 
     @Input() type: String = 'inverse';
     public loginOpen = false;

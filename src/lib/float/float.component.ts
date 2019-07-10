@@ -38,8 +38,8 @@ const REGEX = /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
 export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
     private lastValue: any = null;
     private renderer: Renderer;
-    @ViewChild('ref') private ref: ElementRef;
-    @ContentChild(NgControl) public control: any;
+    @ViewChild('ref', { static: true }) private ref: ElementRef;
+    @ContentChild(NgControl, { static: true }) public control: any;
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
     }

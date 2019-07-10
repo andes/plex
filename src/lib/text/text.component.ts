@@ -68,10 +68,10 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         ]
     };
 
-    @ViewChild('input') private input: ElementRef;
-    @ViewChild('textarea') private textarea: ElementRef;
-    @ViewChild('quillEditor') private quillEditor: ElementRef;
-    @ContentChild(NgControl) public control: any;
+    @ViewChild('input', { static: true }) private input: ElementRef;
+    @ViewChild('textarea', { static: true }) private textarea: ElementRef;
+    @ViewChild('quillEditor', { static: true }) private quillEditor: ElementRef;
+    @ContentChild(NgControl, { static: true }) public control: any;
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
     }
