@@ -1,22 +1,33 @@
 import { NgForm } from '@angular/forms';
-import { Component, Input, HostBinding, HostListener, Optional, forwardRef } from '@angular/core';
+import { Component, Input, HostBinding, HostListener, Optional, OnInit } from '@angular/core';
 
 @Component({
     selector: 'plex-button',
-    template: `<ng-container *ngIf="type">
-                    <button plexRipples style="pointer-events: auto" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
-                        <i *ngIf="icon" class="mdi mdi-{{icon}}" style="pointer-events: none"></i>
-                        <span *ngIf="label" style="pointer-events: none"> {{label}} </span>
-                        <ng-content *ngIf="!icon && !label"></ng-content>
-                    </button>
-               </ng-container>`,
+    templateUrl: `plex-button.html`,
 })
 export class PlexButtonComponent {
+    private _async;
+    showLoader = false;
     @Input() label: string;
     @Input() icon: string;
     @Input() type: string;
     @Input() size: 'lg' | 'sm' | 'block';
     @Input() validateForm: boolean | NgForm;
+    @Input()
+    get async(): boolean {
+        return this._async;
+    }
+    set async(async) {
+        this._async = async;
+        if (this.async) {
+            this.showLoader = true;
+            this.disabled = true;
+        } else {
+            this.showLoader = false;
+            this.disabled = false;
+        }
+    }
+
     @Input() @HostBinding('attr.disabled') disabled: boolean;
     /**
      * Previene el problema del click bubbling. Ver template para más usos de pointer-events
@@ -46,5 +57,6 @@ export class PlexButtonComponent {
                 (event as any).formValid = form.valid;
             }
         }
+
     }
 }

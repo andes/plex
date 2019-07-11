@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'button.html',
 })
 export class ButtonDemoComponent implements OnInit {
+    loading: boolean;
+
     public modelo = {
         campo1: null
     };
@@ -29,4 +31,13 @@ export class ButtonDemoComponent implements OnInit {
             this.plex.info('warning', 'Completar datos requeridos');
         }
     }
+
+
+    dummyLoader() {
+        this.loading = true;
+        setTimeout(() => {
+            this.loading = false;
+        }, 4000);
+    }
+
 }
