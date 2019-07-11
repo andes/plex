@@ -9,7 +9,8 @@
 
         .item-list,
         .item-list-heading {
-            grid-template-columns: minmax(50px, min-content) repeat(auto-fill, 390px) !important;
+            grid-template-columns: minmax(75px, min-content) repeat(auto-fill, 340px) !important;
+
         }
     }
 

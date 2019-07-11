@@ -36,7 +36,7 @@ div.item-list-heading {
         >* {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
         >[checkbox] {
@@ -57,7 +57,7 @@ div.item-list-heading {
         [badge],
         [button] {
             justify-self: flex-start !important;
-            min-width: 100px;
+            min-width: 50px;
             max-width: 250px;
         }
 
