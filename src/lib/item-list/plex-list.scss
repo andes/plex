@@ -4,7 +4,7 @@
     }
 
     .selectable,
-    .completa,
+    .completo,
     .full-width {
 
         .item-list,
@@ -13,16 +13,20 @@
         }
     }
 
-    @media screen and (max-width: 1336px) {
+    @media screen and (max-width: 1366px) {
 
         .selectable,
-        .completa,
         .full-width {
 
             .item-list,
             .item-list-heading {
-                grid-template-columns: minmax(135px, max-content) repeat(auto-fill, minmax(160px, max-content)) !important;
+                grid-template-columns: minmax(90px, max-content) repeat(auto-fill, minmax(135px, max-content)) !important;
             }
+        }
+
+        .item-list.completo,
+        .item-list-heading.completo {
+            grid-template-columns: minmax(155px, max-content) repeat(auto-fill, minmax(250px, max-content)) !important;
         }
     }
 
