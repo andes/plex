@@ -3,14 +3,15 @@
         background: rgba(0, 0, 0, .05);
     }
 
-    .selectable,
-    .completo,
-    .full-width {
 
-        .item-list,
-        .item-list-heading {
-            grid-template-columns: minmax(135px, max-content) repeat(auto-fill, minmax(310px, max-content)) !important;
-        }
+    .item-list,
+    .item-list-heading {
+        grid-template-columns: minmax(135px, max-content) repeat(auto-fill, minmax(200px, max-content)) !important;
+    }
+
+    .item-list.completo,
+    .item-list-heading.completo {
+        grid-template-columns: minmax(135px, max-content) repeat(auto-fill, minmax(310px, max-content)) !important;
     }
 
     @media screen and (max-width: 1366px) {
@@ -28,6 +29,16 @@
         .item-list-heading.completo {
             grid-template-columns: minmax(155px, max-content) repeat(auto-fill, minmax(250px, max-content)) !important;
         }
+
+        @for $items from 1 through 20 {
+
+            .item-list.count-#{$items},
+            .item-list-heading.count-#{$items} {
+                grid-template-columns: repeat(#{$items, 1fr}) !important;
+            }
+        }
+
+
     }
 
 }
