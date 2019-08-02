@@ -6,10 +6,7 @@ import { DropdownItem } from '../../../lib/dropdown/dropdown-item.inteface';
 })
 export class ItemDemoComponent implements OnInit {
 
-    layout = {
-        completo: true,
-        contenido: false
-    };
+    layout = 'completo';
 
     templateModel = {
         nombre: 'Andrrr',
@@ -90,11 +87,6 @@ export class ItemDemoComponent implements OnInit {
         ];
     }
 
-    toggleLayout(layout) {
-        layout.completo = false;
-        layout.contenido = false;
-        layout[String(layout)] = true;
-    }
 
     toggleBold() {
         this.bold = !this.bold;
