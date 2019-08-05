@@ -3,6 +3,10 @@
 nav {
   height: $navbar-height;
 
+  &.navbar-inverse.bg-info {
+    background-color: var(--nav-bar-color) !important;
+  }
+
   .navbar-brand {
     float: left;
     padding: 0; // No hay variables para todos los paddings
