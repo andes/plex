@@ -3,10 +3,10 @@ import { Component, HostBinding } from '@angular/core';
 @Component({
     templateUrl: './ribbon.html',
     styles: [`
-        plex-ribbon { 
+        plex-ribbon {
             position: absolute;
             top: -40px !important;
-            left: 20px; 
+            left: 20px;
         }
     `]
 })
