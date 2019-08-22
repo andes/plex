@@ -1,0 +1,19 @@
+.plex-label {
+    line-height: 1rem;
+
+    &.sm {
+        font-size: .75rem;
+    }
+
+    &.md {
+        font-size: .9rem;
+    }
+
+    &.lg {
+        font-size: 1rem;
+    }
+
+    small {
+        line-height: .75rem;
+    }
+}

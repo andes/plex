@@ -1,16 +1,16 @@
-
 @mixin badge-factory($color) {
     background: transparent;
     border: 1.5px solid;
     font-size: 0.75em;
     font-weight: normal;
-    padding: 5px;
+    padding: 6px;
     text-transform: uppercase;
+
     // Espaciado del ícono
-    > i {
+    >i {
         margin-right: 5px;
     }
-    
+
     border-color: $color;
     color: $color;
 }
@@ -45,10 +45,9 @@
 /** BADGE EXTENSIBLE DESDE AFUERA DE PLEX */
 $badge-extend: () !default;
 
-@each $name, $color in $badge-extend {
+@each $name,
+$color in $badge-extend {
     .badge-#{$name} {
         @include badge-factory($color);
     }
 }
-
-

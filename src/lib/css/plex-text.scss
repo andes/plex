@@ -1,39 +1,48 @@
 plex-text {
-  position: relative;
-  display: inline-block;
-  width: 100%;
 
-  .clear-icon {
-    display: none;
-    cursor: pointer;
-    position: absolute;
-    margin-top: -30px;
-    right: 1em;
-    color: $dark-grey;
-    z-index: 100;
-    font-size: .9em;
-
-    &:hover {
-      color: black;
+    div.form-group {
+        position: relative;
     }
-  }
 
-  &:hover .clear-icon {
-    display: block;
-  }
-
-  TEXTAREA {
-    resize: none;
-    min-height: $input-height;
-  }
-
-  input {
-    ::placeholder {
-      color: $input-color-placeholder !important;
-      font-style: italic !important;
-      opacity: 1;
+    .input-group {
+        display: flex;
     }
-  
-  }
+
+    .clear-icon {
+        display: none;
+        cursor: pointer;
+        position: absolute;
+        // right: .5rem;
+        // top: 55%;
+        right: .5rem;
+        bottom: 10%;
+        color: $dark-grey;
+        z-index: 100;
+        font-size: .9em;
+        justify-content: flex-end;
+        align-items: flex-start;
+
+        &:hover {
+            color: black;
+        }
+    }
+
+    &:hover .clear-icon {
+        display: block;
+    }
+
+    textarea {
+        resize: none;
+        min-height: $input-height;
+    }
+
+    input {
+        ::placeholder {
+            color: $input-color-placeholder !important;
+            font-style: italic !important;
+            opacity: 1;
+        }
+
+    }
 
 }

@@ -8,7 +8,7 @@ import { DropdownItem } from './dropdown-item.inteface';
                     <button plexRipples data-toggle="dropdown" class="btn btn-{{type}}" [ngClass]="{'dropdown-toggle': label}" type="button" [disabled]="disabled" (click)="toggleMenu(); $event.stopImmediatePropagation();">
                     <i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i> {{label}}
                     </button>
-                    <ul class="dropdown-menu" [ngClass]="{'dropdown-menu-right': right}">
+                    <ul class="dropdown-menu" [ngClass]="{'dropdown-menu-right': right, 'dropdown-menu-left': !right}">
                     <li *ngFor="let item of items">
                         <!--Item con router asociado-->
                         <ng-template [ngIf]="!item.divider && item.route">
