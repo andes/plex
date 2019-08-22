@@ -2,8 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'plex-list',
-    templateUrl: 'list.html',
-    styleUrls: ['plex-list.scss']
+    template: `
+    <div [ngClass]="{'striped': striped, 'selectable': selectable, 'full-width': fullWidth}">
+        <ng-content></ng-content>
+    </div>
+    `
 })
 
 export class PlexListComponent implements OnInit {

@@ -2,8 +2,20 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'plex-item',
-    templateUrl: 'item.html',
-    styleUrls: ['plex-item.scss']
+    template: `
+        <div class="item-list {{ striped ? 'striped' : '' }}" [ngClass]="layout">
+            <ng-content></ng-content>
+            <ng-content select="checkbox"></ng-content>
+            <!-- <div *ngIf="badges" class="badges" [ngClass]="{'mr-1': !botonera}">
+            </div> -->
+            <div class="botonera">
+                <ng-content select="plex-badge"></ng-content>
+                <ng-content select="plex-button"></ng-content>
+                <ng-content select="plex-dropdown[icon]"></ng-content>
+                <ng-content select="upload-file"></ng-content>
+            </div>
+        </div>
+    `
 })
 export class PlexItemComponent implements OnInit {
 

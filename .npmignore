@@ -1,4 +1,5 @@
 node_modules
+dist/src/demo
 src/demo
 typings
 .json

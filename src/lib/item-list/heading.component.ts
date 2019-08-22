@@ -2,10 +2,14 @@ import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'plex-heading',
-    templateUrl: 'heading.html',
-    styleUrls: [
-        'plex-heading.scss'
-    ]
+    template: `
+    <div class="item-list-heading" [ngClass]="layout">
+        <ng-content selector="checkbox"></ng-content>
+        <ng-content selector="label"></ng-content>
+        <ng-content selector="badge"></ng-content>
+        <ng-content selector="button"></ng-content>
+    </div>
+    `
 })
 export class PlexHeadingComponent {
     @Input() layout: 'completo' | 'contenido' | 'izquierda' | 'derecha' = 'completo';
