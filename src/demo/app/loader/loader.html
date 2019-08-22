@@ -1,12 +1,29 @@
-<plex-box title="plex-loader" type="primary">
-    <plex-box title="ball-pulse (default)">
-        <plex-loader type="ball-pulse"></plex-loader>
-    </plex-box>
-
-    <plex-box title="ball-pulse-sync">
-        <plex-loader type="ball-pulse-sync"></plex-loader>
-    </plex-box>
-    <plex-box title="ball-beat">
-        <plex-loader type="ball-beat"></plex-loader>
-    </plex-box>
-</plex-box>
+<plex-layout>
+    <plex-layout-main>
+        <header>
+            <pre>&lt;plex-loader type="ball-pulse | ball-pulse-sync | ball-beat"&gt;&lt;/plex-loader&gt;</pre>
+        </header>
+        <div class="row">
+            <div class="col-4 d-flex justify-content-start">
+                <plex-loader type="ball-pulse"></plex-loader>
+            </div>
+            <div class="col-4 d-flex justify-content-start">
+                <plex-loader type="ball-pulse-sync"></plex-loader>
+            </div>
+            <div class="col-4 d-flex justify-content-start">
+                <plex-loader type="ball-beat"></plex-loader>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 d-flex justify-content-start">
+                <pre>type="ball-pulse"</pre>
+            </div>
+            <div class="col-4 d-flex justify-content-start">
+                <pre>type="ball-pulse-sync"</pre>
+            </div>
+            <div class="col-4 d-flex justify-content-start">
+                <pre>type="ball-beat"</pre>
+            </div>
+        </div>
+    </plex-layout-main>
+</plex-layout>

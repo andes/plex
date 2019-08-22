@@ -25,7 +25,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: $font-family;
+    font-family: $font-family;
 }
 
 // Links
@@ -122,3 +122,9 @@ $tooltip-padding-x: 10px;
 $tooltip-bg: #333;
 $tooltip-arrow-color: $tooltip-bg;
 $tooltip-max-width: auto;
+
+label {
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}
