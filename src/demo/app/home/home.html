@@ -72,7 +72,34 @@
                     <div class="btn-group float-right">
                         <plex-button type="success" title="Restaurar usuario" titlePosition="left" icon="account">
                         </plex-button>
-                        <plex-button type="danger" icon="clock"></plex-button>
+                        <plex-button type="danger" icon="clock" (click)="modal.show();"></plex-button>
+                        <plex-modal #modal>
+                            <plex-icon name="alert-circle" type="info"></plex-icon>
+                            <plex-modal-title type="primary">Historia Universal Digital de Salud</plex-modal-title>
+                            <plex-modal-subtitle type="info">Por favor, indique el motivo de acceso:
+                            </plex-modal-subtitle>
+                            <main>
+                                <form action="">
+                                    <plex-list minWidth="true">
+                                        <plex-item layout="izquierda">
+                                            <plex-bool></plex-bool>
+                                            <plex-label>Continuidad del cuidado del paciente
+                                            </plex-label>
+                                        </plex-item>
+                                        <plex-item layout="izquierda">
+                                            <plex-bool></plex-bool>
+                                            <plex-label>Auditoría</plex-label>
+                                        </plex-item>
+                                        <plex-item layout="izquierda">
+                                            <plex-bool></plex-bool>
+                                            <plex-label>Urgencia / Emergencia</plex-label>
+                                        </plex-item>
+                                    </plex-list>
+                                </form>
+                            </main>
+                            <plex-button modal right type="success" (click)="modal.close()"> ACEPTAR </plex-button>
+                            <plex-button modal left type="danger" (click)="modal.close()"> CANCELAR </plex-button>
+                        </plex-modal>
                     </div>
                 </div>
             </div>
