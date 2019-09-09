@@ -38,6 +38,10 @@ import { PlexItemComponent } from './item-list/item.component';
 import { PlexLabelComponent } from './label/label.component';
 import { PlexHeadingComponent } from './item-list/heading.component';
 import { PlexHelpComponent } from './help/help.component';
+import { PlexModalComponent } from './modal/modal.component';
+import { PlexModalTitleComponent } from './modal/modal-title.component';
+import { PlexModalSubtitleComponent } from './modal/modal-subtitle.component';
+
 // Directivas
 import { PlexWizardDirective } from './wizard/wizard.directive';
 
@@ -88,7 +92,10 @@ const MODULES = [
     PlexTitleComponent,
     JustifyDirective,
     ResponsiveDirective,
-    PlexHelpComponent
+    PlexHelpComponent,
+    PlexModalComponent,
+    PlexModalTitleComponent,
+    PlexModalSubtitleComponent
 ];
 
 @NgModule({
