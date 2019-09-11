@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'plex-modal',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
         <div *ngIf="showed" class="plex-modal" (click)="$event.stopPropagation();close();">
             <div class="plex-modal-content" (click)="$event.stopPropagation();">
                 <header>
+                    <div *ngIf="allowClose" class="plex-modal-close" (click)="close();"><i class="mdi mdi-close"></i></div>
                     <ng-content select="plex-icon"></ng-content>
                     <ng-content select="plex-modal-title"></ng-content>
                     <ng-content select="plex-modal-subtitle"></ng-content>
@@ -20,7 +21,10 @@ import { Component } from '@angular/core';
     `,
 })
 export class PlexModalComponent {
-    private showed = false;
+
+    @Input() allowClose = false;
+
+    showed = false;
 
     public show() {
         this.showed = true;
