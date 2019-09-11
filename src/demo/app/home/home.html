@@ -80,7 +80,23 @@
                             </plex-modal-subtitle>
 
                             <main>
-                                ACA VA EL CUERPO
+                                <form action="">
+                                    <plex-list minWidth="true">
+                                        <plex-item layout="izquierda">
+                                            <plex-bool></plex-bool>
+                                            <plex-label>Continuidad del cuidado del paciente
+                                            </plex-label>
+                                        </plex-item>
+                                        <plex-item layout="izquierda">
+                                            <plex-bool></plex-bool>
+                                            <plex-label>Auditoría</plex-label>
+                                        </plex-item>
+                                        <plex-item layout="izquierda">
+                                            <plex-bool></plex-bool>
+                                            <plex-label>Urgencia / Emergencia</plex-label>
+                                        </plex-item>
+                                    </plex-list>
+                                </form>
                             </main>
 
                             <plex-button modal right type="success" (click)="modal.close()"> ACEPTAR </plex-button>

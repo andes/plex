@@ -13,6 +13,16 @@
 
     animation: present-modal .15s ease-in;
 
+    header {
+        position: relative;
+        .plex-modal-close {
+            position: absolute;
+            right: 0;
+            margin: 4px 6px;
+            cursor: pointer;
+        }
+    }
+
     .plex-modal-content {
         background-color: white;
         min-width: 30vw;
@@ -50,6 +60,7 @@
     main {
         display: flex;
         justify-content: center;
+        margin: 10px 0;
     }
 
     footer {
