@@ -1,0 +1,28 @@
+.plex-title {
+    margin-bottom: 3px;
+    border-bottom: solid grey 1px;
+    
+    .plex-title-label {
+        font-size: 1.8em;
+        color: $blue;
+        font-weight: 300;
+        text-transform: uppercase;
+        &.sm {
+            font-size: 1.4em;
+        }
+    
+        &.md {
+            font-size: 1.6em;
+        }
+    
+        &.lg {
+            font-size: 1.8em;
+        }
+    
+        &.xl {
+            font-size: 2em;
+        }
+    }
+
+
+}
