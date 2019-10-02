@@ -48,6 +48,8 @@ import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 import { ChartsModule } from 'ng2-charts';
 import { QuillModule } from 'ngx-quill';
+import { PlexTitleComponent } from './title/title.component';
+import { JustifyDirective } from './directives/justify.directive';
 
 const MODULES = [
     PlexAppComponent,
@@ -82,6 +84,8 @@ const MODULES = [
     PlexItemComponent,
     PlexLabelComponent,
     PlexHeadingComponent,
+    PlexTitleComponent,
+    JustifyDirective
 ];
 
 @NgModule({
