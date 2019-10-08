@@ -50,6 +50,7 @@ import { ChartsModule } from 'ng2-charts';
 import { QuillModule } from 'ngx-quill';
 import { PlexTitleComponent } from './title/title.component';
 import { JustifyDirective } from './directives/justify.directive';
+import { ResponsiveDirective } from './directives/responsive.directive';
 
 const MODULES = [
     PlexAppComponent,
@@ -85,7 +86,8 @@ const MODULES = [
     PlexLabelComponent,
     PlexHeadingComponent,
     PlexTitleComponent,
-    JustifyDirective
+    JustifyDirective,
+    ResponsiveDirective
 ];
 
 @NgModule({

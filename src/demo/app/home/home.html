@@ -6,7 +6,7 @@
             <plex-button type="success" label="Restaurar usuario" size="sm">
             </plex-button>
         </div>
-        <ul class="list-group">
+        <ul responsive class="list-group">
             <li class="list-group-item active">Cras justo odio</li>
             <li class="list-group-item">Dapibus ac facilisis in</li>
             <li class="list-group-item">Morbi leo risus</li>
@@ -46,15 +46,13 @@
         <plex-scroll (change)="loadData()"></plex-scroll>
     </plex-layout-main>
     <plex-layout-sidebar>
-        <header>
-            <plex-title titulo="Subtitle" size="xl">
-                <plex-button type="success" label="Restaurar usuario" size="sm">
-                </plex-button>
-                <plex-button type="danger" icon="clock" size="sm"></plex-button>
-            </plex-title>
+        <plex-title titulo="Subtitle" size="xl">
+            <plex-button type="success" label="Restaurar usuario" size="sm">
+            </plex-button>
+            <plex-button type="danger" icon="clock" size="sm"></plex-button>
+        </plex-title>
 
-        </header>
-        <form>
+        <form responsive>
             <p>El siguiente ejemplo muestra el uso de la propiedad <strong>validateForm</strong></p>
             <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false">
             </plex-text>
