@@ -1,0 +1,29 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 999;
+    width: calc(100% - 64px);
+    border: 0;
+    height: 30px;
+    &.open {
+        height: auto;
+        border: 2px solid $blue;
+        border-radius: 0.25rem;
+        box-shadow: 2px 2px 5px 0px $dark-grey;
+    }
+    plex-button {
+        position: absolute;
+        top: -1px;
+        right: 0px;
+    }
+    .card-body {
+        transition: all;
+        &.open {
+            height: auto;
+        }
+        &.closed {
+            height: 0px;
+        }
+    }
+}
