@@ -23,6 +23,10 @@
             font-size: 2em;
         }
     }
+}
 
-
+header {
+    .plex-title {
+        border-bottom: none !important;
+    }
 }
