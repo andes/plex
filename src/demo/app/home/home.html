@@ -1,29 +1,26 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <plex-title main titulo="Gestor de agendas"></plex-title>
+        <plex-help main titulo="Información sobre este módulo" subtitulo="A continuación todas las opciones">
+            <ol info class="list-group">
+                <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
+                    (acepta búsquedas
+                    parciales)</li>
+                <li class="list-group-item">Seleccioná el concepto al cual quieras agregar o modificar
+                    plantillas</li>
+                <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
+                <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
+                    del concepto.</li>
+                <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <i
+                       class="mdi mdi-check"></i> para guardar una plantilla individual</li>
+            </ol>
+        </plex-help>
+        <plex-title main justify titulo="Gestor de agendas">
+        </plex-title>
         <div justify>
             <label>Nombre</label>
             <plex-button type="success" label="Restaurar usuario" size="sm">
             </plex-button>
         </div>
-        <plex-help titulo="Ayuda de este módulo">
-            <ul class="list-group">
-                <li class="list-group-item active">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-6">
-                            Columna
-                        </div>
-                        <div class="col-6">
-                            Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </plex-help>
         <hr>
         <ul responsive class="list-group">
             <li class="list-group-item active">Cras justo odio</li>
@@ -80,7 +77,7 @@
                 </div>
             </div>
         </header>
-        <plex-help titulo="Ayuda de este módulo" tituloBoton="Reglas TOP">
+        <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Reglas TOP">
             <ul class="list-group">
                 <li class="list-group-item active">Cras justo odio</li>
                 <li class="list-group-item">Dapibus ac facilisis in</li>
