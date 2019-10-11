@@ -1,29 +1,87 @@
 .card {
     display: flex;
     flex-direction: column;
-    position: absolute;
     z-index: 999;
-    width: calc(100% - 64px);
     border: 0;
     height: 30px;
+    width: 100%;
+    background: transparent;
+    border-top: 1px solid $dark-grey;
+    
+    
+    
     &.open {
         height: auto;
-        border: 2px solid $blue;
         border-radius: 0.25rem;
         box-shadow: 2px 2px 5px 0px $dark-grey;
+        // background: $blue;
+        // color: $alert-info-text;
+        border-top: 1px solid darken($light-grey, 15%);
+        border-left: 1px solid darken($light-grey, 15%);
+        
     }
+    
+    .card-body {
+        transition: all;
+        &.open {
+            height: auto;
+            .toggle-help {
+                right: 60px;
+            }
+        }
+        &.closed {
+            height: 0px;
+        }
+    }
+}
+
+.toggle-help, .toggle-info  {
+    &.closed {
+        position: relative !important;
+        right: 0;
+    }
+    plex-button {
+        position: absolute;
+        right: 0;
+        display: flex;
+        justify-content: flex-end;
+        z-index: 9999;
+    }
+}
+.toggle-info {
+    position: absolute;
+    right: 32px;
+}
+.toggle-help {
+    position: relative;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    left: 10px;
+    plex-button {
+        right: 10px;
+    }
+}
+
+.jumbotron {
+    padding: 15px 30px;
+    border-top: 1px solid darken($light-grey, 15%);
+    border-left: 1px solid darken($light-grey, 15%);
+
     plex-button {
         position: absolute;
         top: -1px;
         right: 0px;
     }
-    .card-body {
-        transition: all;
-        &.open {
-            height: auto;
-        }
-        &.closed {
-            height: 0px;
-        }
+    &.open {
+        position: absolute;
+        z-index: 999;
+        // 60px por los margins/padding + 2px por los bordes
+        width: calc(100% - 63px);
+        border-radius: 0.25rem;
+        box-shadow: 2px 2px 5px 0px $dark-grey;
+    }
+    &.closed {
+        height: 0px;
     }
 }
