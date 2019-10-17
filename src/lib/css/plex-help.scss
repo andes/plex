@@ -1,24 +1,18 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    z-index: 999;
-    border: 0;
-    height: 30px;
-    width: 100%;
-    background: transparent;
-    border-top: 1px solid $dark-grey;
-    
-    
+    display: none;
+    border: 0; // reset
+    border-top: 1px solid darken($light-grey, 15%);
+    border-left: 1px solid darken($light-grey, 15%);
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px 5px 0px $dark-grey;
     
     &.open {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
         height: auto;
-        border-radius: 0.25rem;
-        box-shadow: 2px 2px 5px 0px $dark-grey;
-        // background: $blue;
-        // color: $alert-info-text;
-        border-top: 1px solid darken($light-grey, 15%);
-        border-left: 1px solid darken($light-grey, 15%);
-        
+        background: transparent;
+        z-index: 999;
     }
     
     .card-body {
@@ -37,29 +31,39 @@
 
 .toggle-help, .toggle-info  {
     &.closed {
-        position: relative !important;
+        position: relative;
         right: 0;
     }
+    &.open {
+        plex-button {
+            z-index: 1002;
+        }    
+    }
     plex-button {
-        position: absolute;
+        position: relative;
         right: 0;
         display: flex;
         justify-content: flex-end;
-        z-index: 9999;
+        z-index: 1000;
     }
 }
 .toggle-info {
     position: absolute;
-    right: 32px;
+    right: 15px;
+    top: 24px;
+    &.closed {
+        top: 1px; 
+    }
 }
 .toggle-help {
     position: relative;
-    height: 30px;
+    height: 27px;
     display: flex;
     justify-content: flex-end;
     left: 10px;
     plex-button {
         right: 10px;
+        top: 1px;
     }
 }
 
@@ -75,7 +79,9 @@
     }
     &.open {
         position: absolute;
-        z-index: 999;
+        right: 15px;
+        top: 24px;
+        z-index: 1001;
         // 60px por los margins/padding + 2px por los bordes
         width: calc(100% - 63px);
         border-radius: 0.25rem;

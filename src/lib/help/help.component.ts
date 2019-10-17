@@ -1,12 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 
 @Component({
     selector: 'plex-help',
     template: `
-    <div class="toggle-{{ type }}" [ngClass]="{'closed': closed}">
-        <plex-button *ngIf="!closed" type="danger" size="sm" icon="close" (click)="toggleOpenClose()"></plex-button>
-        <plex-button *ngIf="closed && !tituloBoton" type="info" size="sm" [icon]="icon" (click)="toggleOpenClose()"></plex-button>
-        <plex-button *ngIf="closed && tituloBoton" type="info" size="sm" [label]="tituloBoton" (click)="toggleOpenClose()"></plex-button>
+    <div class="toggle-{{ type }}" [ngClass]="{'closed': closed, 'open': !closed}">
+        <plex-button *ngIf="!closed" type="danger" size="sm" icon="close" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="closed && !tituloBoton" type="info" size="sm" [icon]="icon" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="closed && tituloBoton" type="info" size="sm" [label]="tituloBoton" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
     </div>
     <div class="card {{ type }}" [ngClass]="{'open': !closed}" *ngIf="type === 'help'">
         <ng-container *ngIf="!closed">
@@ -37,10 +37,20 @@ export class PlexHelpComponent {
     unlisten: Function;
     closed = true;
 
-    constructor() { }
+    constructor(private renderer: Renderer2) { }
 
     public toggleOpenClose() {
         this.closed = !this.closed;
+        if (!this.closed) {
+            this.unlisten = this.renderer.listen('document', 'click', (event) => {
+                this.toggleOpenClose();
+                this.unlisten();
+            });
+        } else {
+            if (this.unlisten) {
+                this.unlisten();
+            }
+        }
     }
 }
 
