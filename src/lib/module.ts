@@ -37,7 +37,7 @@ import { PlexListComponent } from './item-list/list.component';
 import { PlexItemComponent } from './item-list/item.component';
 import { PlexLabelComponent } from './label/label.component';
 import { PlexHeadingComponent } from './item-list/heading.component';
-
+import { PlexHelpComponent } from './help/help.component';
 // Directivas
 import { PlexWizardDirective } from './wizard/wizard.directive';
 
@@ -87,7 +87,8 @@ const MODULES = [
     PlexHeadingComponent,
     PlexTitleComponent,
     JustifyDirective,
-    ResponsiveDirective
+    ResponsiveDirective,
+    PlexHelpComponent
 ];
 
 @NgModule({
