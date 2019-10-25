@@ -40,6 +40,7 @@ import { PlexHeadingComponent } from './item-list/heading.component';
 import { PlexHelpComponent } from './help/help.component';
 import { PlexModalComponent } from './modal/modal.component';
 import { PlexModalTitleComponent } from './modal/modal-title.component';
+import { PlexCopyComponent } from './copy/copy.component';
 
 // Directivas
 import { PlexWizardDirective } from './wizard/wizard.directive';
@@ -96,6 +97,7 @@ const MODULES = [
     PlexHelpComponent,
     PlexModalComponent,
     PlexModalTitleComponent,
+    PlexCopyComponent,
 ];
 
 @NgModule({

@@ -9,6 +9,7 @@ export class HomeDemoComponent {
     public field = '';
     public tooltip = 'Este es un tooltip<br>multilinea que ocupa mucho espacio';
     public data = [];
+    documento = '45979360';
 
     constructor(public plex: Plex) {
         this.plex.updateTitle('Bienvenido a Plex');
