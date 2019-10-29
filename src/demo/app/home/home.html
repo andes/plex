@@ -133,7 +133,9 @@
         </form>
     </plex-layout-sidebar>
     <plex-layout-footer>
+        <plex-dropdown dropup="true" right="true" label="Guardar..." type="success" [items]="items" position="right">
+        </plex-dropdown>
         <plex-button label="Cancelar" type="danger" position="left"></plex-button>
-        <plex-button label="Guardar formulario" type="success" position="right"></plex-button>
+        <!-- <plex-button label="Guardar formulario" type="success" position="right"></plex-button> -->
     </plex-layout-footer>
 </plex-layout>
