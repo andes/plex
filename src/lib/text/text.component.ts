@@ -59,6 +59,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Public
     public isEmpty = true;
     public quill = {
+        syntax: true,
+        strict: false,
         toolbar: [
             ['bold', 'italic', 'underline'],
             [{ list: 'ordered' }, { list: 'bullet' }],
@@ -149,11 +151,13 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             this.adjustTextArea();
         } else {
             if (this.html) {
-                const component = (this.quillEditor as any);
-                // Por el dinamismo de RUP hay una primera instancia que quillEditor es undefined
-                if (component.quillEditor) {
-                    component.quillEditor.setContents(component.valueSetter(component.quillEditor, typeof value === 'undefined' ? '' : value));
-                }
+                setTimeout(() => {
+                    const component = (this.quillEditor as any);
+                    // Por el dinamismo de RUP hay una primera instancia que quillEditor es undefined
+                    if (component.quillEditor) {
+                        component.quillEditor.setContents(value);
+                    }
+                }, 1000);
             }
         }
         // Check empty
