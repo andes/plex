@@ -86,6 +86,8 @@
         width: calc(100% - 63px);
         border-radius: 0.25rem;
         box-shadow: 2px 2px 5px 0px $dark-grey;
+        max-height: 69vh;
+        overflow-y: scroll;
     }
     &.closed {
         height: 0px;
