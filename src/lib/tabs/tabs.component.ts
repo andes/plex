@@ -20,7 +20,7 @@ export class PlexTabsComponent implements AfterContentInit {
     private _activeIndex = 0;
     public tabs: PlexTabComponent[] = [];
     @ContentChildren(PlexTabComponent) children: QueryList<PlexTabComponent>;
-    @ViewChild('container') container: ElementRef;
+    @ViewChild('container', { static: true }) container: ElementRef;
 
     @Input() size;
     @Input()

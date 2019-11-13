@@ -314,8 +314,8 @@ declare var moment;
                               svgHourText.textContent = ((i === 0) ? ((this.params.shortTime) ? 12 : i) : i);
 
                               if (!this.toggleTime(i, true)) {
-                                    svgHourCircle.className += " disabled";
-                                    svgHourText.className += " disabled";
+                                    svgHourCircle.classList.add('disabled');
+                                    svgHourText.classList.add('disabled');
                                     svgHourText.setAttribute('fill', '#bdbdbd');
                               } else {
                                     svgHourCircle.addEventListener('click', this._onSelectHour.bind(this));
@@ -340,8 +340,8 @@ declare var moment;
                                     svgHourText.textContent = i + 12;
 
                                     if (!this.toggleTime(i + 12, true)) {
-                                          svgHourCircle.className += " disabled";
-                                          svgHourText.className += " disabled";
+                                          svgHourCircle.classList.add('disabled');
+                                          svgHourText.classList.add('disabled');
                                           svgHourText.setAttribute('fill', '#bdbdbd');
                                     } else {
                                           svgHourCircle.addEventListener('click', this._onSelectHour.bind(this));
@@ -388,7 +388,7 @@ declare var moment;
                               var svgMinuteCircle = this.createSVGElement("circle", { 'id': 'm-' + i, 'class': 'dtp-select-minute', 'style': 'cursor:pointer', r: r, cx: x, cy: y, fill: color, 'data-minute': i });
 
                               if (!this.toggleTime(i, false)) {
-                                    svgMinuteCircle.className += " disabled";
+                                    svgMinuteCircle.classList.add("disabled");
                               } else {
                                     svgMinuteCircle.addEventListener('click', this._onSelectMinute.bind(this));
                               }
@@ -407,7 +407,7 @@ declare var moment;
                                     svgMinuteText.textContent = i;
 
                                     if (!this.toggleTime(i, false)) {
-                                          svgMinuteText.className += " disabled";
+                                          svgMinuteText.classList.add("disabled");
                                           svgMinuteText.setAttribute('fill', '#bdbdbd');
                                     } else {
                                           svgMinuteText.addEventListener('click', this._onSelectMinute.bind(this));

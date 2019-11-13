@@ -30,7 +30,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     private _data: any[];
     private _readonly: boolean;
 
-    @ContentChild(NgControl) control: AbstractControl;
+    @ContentChild(NgControl, { static: false }) control: AbstractControl;
     public uniqueId = new Date().valueOf().toString();
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
@@ -306,7 +306,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
 
         // Setea el valor inicial
         if (this.value) {
-            const temp = {...this.value};
+            const temp = { ...this.value };
             this.selectize.addOption(temp);
             this.writeValue(this.value);
         }
@@ -341,7 +341,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
 
             // Setea el valor
             if (value) {
-                const temp = {...value};
+                const temp = { ...value };
                 this.selectize.addOption(temp);
                 this.selectize.setValue(val, true);
             } else {

@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
 import { SelectEvent } from './../../../lib/select/select-event.interface';
 import { ServiceDemoSelect } from './../select/select.service';
-import { TemplateData } from '@angular/core/src/view';
 
 @Component({
     templateUrl: 'template-busqueda.html'
@@ -21,7 +20,7 @@ export class TemplateBusquedaComponent implements OnInit {
     loader = true;
 
     // Eventos
-    @Output() selected: EventEmitter<TemplateData> = new EventEmitter<TemplateData>();
+    @Output() selected: EventEmitter<any> = new EventEmitter<any>();
 
     // Constructor
     constructor(private plex: Plex, public servicio: ServiceDemoSelect) {
@@ -108,7 +107,7 @@ export class TemplateBusquedaComponent implements OnInit {
         }, 3000);
     }
 
-    seleccionar(item: TemplateData) {
+    seleccionar(item: any) {
         this.plex.info('success', 'Se seleccionó un item');
         this.selected.emit(item);
     }
