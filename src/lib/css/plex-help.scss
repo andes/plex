@@ -1,95 +1,97 @@
-.card {
-    display: none;
-    border: 0; // reset
-    border-top: 1px solid darken($light-grey, 15%);
-    border-left: 1px solid darken($light-grey, 15%);
-    border-radius: 0.25rem;
-    box-shadow: 2px 2px 5px 0px $dark-grey;
-    
-    &.open {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: auto;
-        background: transparent;
-        z-index: 999;
-    }
-    
-    .card-body {
-        transition: all;
+plex-help {
+    .card {
+        display: none;
+        border: 0; // reset
+        border-top: 1px solid darken($light-grey, 15%);
+        border-left: 1px solid darken($light-grey, 15%);
+        border-radius: 0.25rem;
+        box-shadow: 2px 2px 5px 0px $dark-grey;
+        
         &.open {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
             height: auto;
-            .toggle-help {
-                right: 60px;
+            background: transparent;
+            z-index: 999;
+        }
+        
+        .card-body {
+            transition: all;
+            &.open {
+                height: auto;
+                .toggle-help {
+                    right: 60px;
+                }
             }
+            &.closed {
+                height: 0px;
+            }
+        }
+    }
+
+    .toggle-help, .toggle-info  {
+        &.closed {
+            position: relative;
+            right: 0;
+        }
+        &.open {
+            plex-button {
+                z-index: 1002;
+            }    
+        }
+        plex-button {
+            position: relative;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+            z-index: 1000;
+        }
+    }
+    .toggle-info {
+        position: absolute;
+        right: 15px;
+        top: 24px;
+        &.closed {
+            top: 1px; 
+        }
+    }
+    .toggle-help {
+        position: relative;
+        height: 27px;
+        display: flex;
+        justify-content: flex-end;
+        left: 10px;
+        plex-button {
+            right: 10px;
+            top: 1px;
+        }
+    }
+
+    .jumbotron {
+        padding: 15px 30px;
+        border-top: 1px solid darken($light-grey, 15%);
+        border-left: 1px solid darken($light-grey, 15%);
+
+        plex-button {
+            position: absolute;
+            top: -1px;
+            right: 0px;
+        }
+        &.open {
+            position: absolute;
+            right: 15px;
+            top: 24px;
+            z-index: 1001;
+            // 60px por los margins/padding + 2px por los bordes
+            width: calc(100% - 63px);
+            border-radius: 0.25rem;
+            box-shadow: 2px 2px 5px 0px $dark-grey;
+            max-height: 69vh;
+            overflow-y: scroll;
         }
         &.closed {
             height: 0px;
         }
-    }
-}
-
-.toggle-help, .toggle-info  {
-    &.closed {
-        position: relative;
-        right: 0;
-    }
-    &.open {
-        plex-button {
-            z-index: 1002;
-        }    
-    }
-    plex-button {
-        position: relative;
-        right: 0;
-        display: flex;
-        justify-content: flex-end;
-        z-index: 1000;
-    }
-}
-.toggle-info {
-    position: absolute;
-    right: 15px;
-    top: 24px;
-    &.closed {
-        top: 1px; 
-    }
-}
-.toggle-help {
-    position: relative;
-    height: 27px;
-    display: flex;
-    justify-content: flex-end;
-    left: 10px;
-    plex-button {
-        right: 10px;
-        top: 1px;
-    }
-}
-
-.jumbotron {
-    padding: 15px 30px;
-    border-top: 1px solid darken($light-grey, 15%);
-    border-left: 1px solid darken($light-grey, 15%);
-
-    plex-button {
-        position: absolute;
-        top: -1px;
-        right: 0px;
-    }
-    &.open {
-        position: absolute;
-        right: 15px;
-        top: 24px;
-        z-index: 1001;
-        // 60px por los margins/padding + 2px por los bordes
-        width: calc(100% - 63px);
-        border-radius: 0.25rem;
-        box-shadow: 2px 2px 5px 0px $dark-grey;
-        max-height: 69vh;
-        overflow-y: scroll;
-    }
-    &.closed {
-        height: 0px;
     }
 }
