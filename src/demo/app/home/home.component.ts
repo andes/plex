@@ -13,14 +13,14 @@ export class HomeDemoComponent {
     constructor(public plex: Plex) {
         this.plex.updateTitle('Bienvenido a Plex');
 
-        this.plex.setNavbarItem(HeaderPacienteComponent, {
-            paciente: {
-                nombre: 'Mariano',
-                apellido: 'Botta',
-                sexo: 'masculino',
-                documento: '34934522'
-            }
-        });
+        // this.plex.setNavbarItem(HeaderPacienteComponent, {
+        //     paciente: {
+        //         nombre: 'Mariano',
+        //         apellido: 'Botta',
+        //         sexo: 'masculino',
+        //         documento: '34934522'
+        //     }
+        // });
 
         this.loadData();
     }

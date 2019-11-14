@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "incremental": true,
     "outDir": "./dist",
     "baseUrl": "src/demo",
     "sourceMap": true,

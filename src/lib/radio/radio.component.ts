@@ -28,7 +28,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
 })
 export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     public value: any;
-    @ContentChild(NgControl) public control: any;
+    @ContentChild(NgControl, { static: false }) public control: any;
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
     }

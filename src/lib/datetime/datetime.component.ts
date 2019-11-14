@@ -45,7 +45,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private $button: any;
     private $input: any;
 
-    @ContentChild(NgControl) control: AbstractControl;
+    @ContentChild(NgControl, { static: true }) control: AbstractControl;
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
     }

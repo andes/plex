@@ -42,7 +42,9 @@ import { PlexHelpComponent } from './help/help.component';
 import { PlexWizardDirective } from './wizard/wizard.directive';
 
 // Third party
-import { MatSlideToggleModule, MatCheckboxModule, MatRadioModule, MatRadioButton } from '@angular/material';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule, MatRadioButton } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';

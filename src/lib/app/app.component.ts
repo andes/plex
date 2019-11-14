@@ -5,12 +5,11 @@ import { Plex } from './../core/service';
     selector: 'plex-app',
     template: ` <!--Navigation Bar-->
                 <nav class="navbar-inverse fixed-top"  [ngClass]="'bg-' + type">
-                    <div class="navbar-brand hover" [routerLink]="'/'" tabindex="-1">
-                        <div class="logo"></div>
-                        <div class="text"></div>
-                    </div>
+
+                    <ng-content select="[navIcon]"></ng-content>
+
                     <div class="menu-item">
-                        <ng-template #manuItem></ng-template>
+                        <ng-template #menuItem></ng-template>
                     </div>
                     <div class="title hidden-md-down">
                         <ng-container *ngFor="let item of plex.title; let last = last">
@@ -72,7 +71,7 @@ import { Plex } from './../core/service';
                 <simple-notifications></simple-notifications>
 
                 <!-- Componente que muestra un ribbon indicando si se está en un entorno de desarrollo/demo -->
-                <ng-content selector="plex-ribbon"></ng-content>
+                <ng-content select="plex-ribbon"></ng-content>
 
                 <!--Contenedor principal-->
                 <div class="content">
@@ -82,7 +81,7 @@ import { Plex } from './../core/service';
 export class PlexAppComponent implements OnInit {
     private unlisten: Function;
     // Referencia al DOM para injectar una componente de forma dinámica
-    @ViewChild('manuItem', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
+    @ViewChild('menuItem', { static: true, read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
 
     @Input() type: String = 'inverse';
     public loginOpen = false;

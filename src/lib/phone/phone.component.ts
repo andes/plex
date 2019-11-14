@@ -36,8 +36,8 @@ const RegEx_Numero = /^(\d)+$/;
 export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     private lastValue: any = null;
     private renderer: Renderer;
-    @ContentChild(NgControl) control: any;
-    @ViewChild('ref') ref: ElementRef;
+    @ContentChild(NgControl, { static: false }) control: any;
+    @ViewChild('ref', { static: false }) ref: ElementRef;
 
     public get esOpcional(): boolean {
         return hasRequiredValidator(this.control);
@@ -64,11 +64,11 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     @Output() focus = new EventEmitter();
     @Output() focusout = new EventEmitter();
 
-    public onFocus () {
+    public onFocus() {
         this.focus.emit();
     }
 
-    public onFocusout () {
+    public onFocusout() {
         this.focusout.emit();
     }
 
