@@ -18,5 +18,8 @@ jobs:
           name: lint
           command: npm run lint
       - run:
+          name: test
+          command: npm run test:ci
+      - run:
           name: tsc
           command: npm run build -- --configuration=production --progress=false
