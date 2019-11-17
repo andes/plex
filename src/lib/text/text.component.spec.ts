@@ -22,7 +22,7 @@ describe('PlexTextComponent', () => {
         beforeEach(fakeAsync(() => {
             fixture = createTestingModule(
                 PlexTextTestComponent,
-                `<plex-text [(ngModel)]="text" (change)="onChange($event)">
+                `<plex-text [(ngModel)]="text" (change)="onChange($event)" (focus)="onFocus()">
                 </plex-text>`);
             text = fixture.componentInstance.plexText;
             input = getElement(fixture, 'plex-text input').nativeElement;
@@ -36,7 +36,7 @@ describe('PlexTextComponent', () => {
             expect(fixture.componentInstance.text).toBe('hola');
         }));
 
-        it('changing input bar must update html DOM', fakeAsync(() => {
+        it('changing input var must update html DOM', fakeAsync(() => {
             tickAndDetectChanges(fixture);
             fixture.componentInstance.text = 'hola';
             tickAndDetectChanges(fixture);
@@ -49,8 +49,68 @@ describe('PlexTextComponent', () => {
             tickAndDetectChanges(fixture);
             expect(fixture.componentInstance.onChange).toHaveBeenCalledWith({ value: 'hola' });
         }));
+
+        it('focus on click', fakeAsync(() => {
+            spyOn(fixture.componentInstance, 'onFocus');
+            nativeText.dispatchEvent(new Event('focus'));
+
+            tickAndDetectChanges(fixture);
+            expect(fixture.componentInstance.onFocus).toHaveBeenCalled();
+        }));
+    });
+
+    describe('input debounce text', () => {
+        let fixture: ComponentFixture<PlexTextTestComponent>;
+        let input: HTMLInputElement;
+
+        beforeEach(fakeAsync(() => {
+            fixture = createTestingModule(
+                PlexTextTestComponent,
+                `<plex-text [(ngModel)]="text" (change)="onChange($event)" [readonly]="true">
+                </plex-text>`);
+            input = getElement(fixture, 'plex-text input').nativeElement;
+        }));
+
+        it('readonly properties', fakeAsync(() => {
+            const readonly = getElement(fixture, 'plex-text input').nativeElement.getAttribute('readonly');
+            expect(readonly).toBeDefined();
+        }));
+
+    });
+
+    describe('input debounce text', () => {
+        let fixture: ComponentFixture<PlexTextTestComponent>;
+        let text: PlexTextComponent;
+        let input: HTMLInputElement;
+        let nativeText: HTMLInputElement;
+
+        beforeEach(fakeAsync(() => {
+            fixture = createTestingModule(
+                PlexTextTestComponent,
+                `<plex-text [(ngModel)]="text" (change)="onChange($event)" [debounce]="1000">
+                </plex-text>`);
+            text = fixture.componentInstance.plexText;
+            input = getElement(fixture, 'plex-text input').nativeElement;
+            nativeText = getElement(fixture, 'plex-text').nativeElement;
+        }));
+
+        it('after write change must be called', fakeAsync(() => {
+            spyOn(fixture.componentInstance, 'onChange');
+            writePlexText(input, 'hola');
+            tickAndDetectChanges(fixture);
+            expect(fixture.componentInstance.onChange).toHaveBeenCalledTimes(0);
+            tick(1100);
+            expect(fixture.componentInstance.onChange).toHaveBeenCalledWith({ value: 'hola' });
+        }));
+
     });
 });
+
+function sleep(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, ms);
+    });
+}
 
 function writePlexText(element, text) {
     element.value = text;
