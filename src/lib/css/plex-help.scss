@@ -95,3 +95,12 @@ plex-help {
         }
     }
 }
+
+plex-layout-sidebar {
+    plex-help {
+        .toggle-info, .jumbotron.open {
+            top: 22px;
+            right: 48px;
+        }
+    }
+}
