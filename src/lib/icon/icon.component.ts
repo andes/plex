@@ -3,10 +3,11 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef } fro
 
 @Component({
     selector: 'plex-icon',
-    template: `<i class="mdi mdi-{{name}}"></i> `,
+    template: `<i class="mdi mdi-{{name}} text-{{type}}"></i> `,
 })
 export class PlexIconComponent {
     @Input() name: string;
+    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'primary';
 
     constructor() {
 

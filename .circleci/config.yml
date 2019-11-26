@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10 
+      - image: circleci/node:10-browsers
     steps:
       - checkout
       - restore_cache:
@@ -17,6 +17,9 @@ jobs:
       - run:
           name: lint
           command: npm run lint
+      - run:
+          name: test
+          command: npm run test:ci
       - run:
           name: tsc
           command: npm run build -- --configuration=production --progress=false

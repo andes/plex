@@ -5,6 +5,8 @@
 .swal2-modal {
   display: flex !important;
   justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
 
   :not(.swal2-content, .swal2-buttonswrapper, button) {
     flex-flow: wrap;
