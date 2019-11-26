@@ -4,7 +4,7 @@ import { PlexAccordionComponent } from './accordion.component';
 @Component({
     selector: 'plex-panel',
     template: ` <div class="card">
-                    <div class="card-header" role="tab" id="headingOne" (click)="selectPanel()">
+                    <div class="card-header hover" role="tab" id="headingOne" (click)="selectPanel()">
                     <h5 class="mb-0" *ngIf="tituloPrincipal">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne">
                         <span ><i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i> {{tituloPrincipal}}</span>

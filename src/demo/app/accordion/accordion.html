@@ -3,10 +3,14 @@
     <plex-accordion>
       <plex-panel (toggle)="toggle($event)">
 
-        <div plex-accordion-title>
-          Título con elementos html
-          <plex-bool [(ngModel)]="test" [type]="'slide'" label="¿Está activo?" name="activo" (change)="bool($event)">
-          </plex-bool>
+        <div plex-accordion-title justify>
+          <div>
+            Título con elementos html
+          </div>
+          <div>
+            <plex-bool [(ngModel)]="test" [type]="'slide'" label="¿Está activo?" name="activo" (change)="bool($event)">
+            </plex-bool>
+          </div>
         </div>
 
         Contenido <i>HTML</i>
@@ -20,7 +24,7 @@
       </plex-panel>
       <plex-panel icon="youtube" tituloPrincipal="Video embebido" tituloSecundario="Psychocandy!">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/iFp7W3PoNPI?ecver=1" frameborder="0"
-          allowfullscreen></iframe>
+                allowfullscreen></iframe>
       </plex-panel>
     </plex-accordion>
   </plex-layout-main>

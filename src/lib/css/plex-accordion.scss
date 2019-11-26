@@ -19,16 +19,20 @@ plex-accordion {
     color: $blue;
   }
 
-  // PANEL COLAPSADO
+  // CARD
+  .card-header:hover {
+    border-bottom: 1px solid $blue;
+  } 
 
+  // PANEL COLAPSADO
   .panel-default {
     background-color: #fff;
-    border: solid 1px $dark-grey;
+    border: 1px solid $dark-grey;
   }
 
   .panel-default:hover {
     background-color: $light-grey;
-    border: solid 1px $blue;
+    border: 1px solid $blue;
   }
 
   .panel-heading {
