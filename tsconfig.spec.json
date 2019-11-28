@@ -1,8 +1,11 @@
 {
     "compilerOptions": {
         "outDir": "../../out-tsc/spec",
-        "typeRoots": [
-            "./node_modules/@types"
+        "types": [
+            "jasmine",
+            "jquery",
+            "intro.js",
+            "node"
         ],
         "declaration": false,
         "emitDecoratorMetadata": true,
@@ -22,8 +25,8 @@
         "src/demo/polyfills.ts"
     ],
     "include": [
-        "**/*.ts",
-        "**/*.spec.ts",
-        "**/*.d.ts"
+        "./src/**/*.ts",
+        "./src/**/*.spec.ts",
+        "./src/**/*.d.ts"
     ]
 }

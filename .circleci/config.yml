@@ -51,6 +51,8 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
+      - run: "export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`"
+      - run: "export APPLITOOLS_BRANCH_NAME=`echo $CIRCLE_BRANCH`"
       - run:
           name: CYPRESS
           command: npm run test:cypress
