@@ -2,10 +2,13 @@
 
 context('bool', () => {
     before(() => {
+        cy.eyesOpen({ appName: 'PLEX', testName: 'bool' });
+
         cy.visit('/bool');
     });
 
     it('test bool', () => {
+        cy.eyesCheckWindow('main - bool');
 
         cy.contains('CHECKBOX INACTIVE');
         cy.plexBool('name="checkbox"', true);
@@ -20,5 +23,7 @@ context('bool', () => {
 
         cy.contains('SLIDE ACTIVE');
 
+        cy.eyesCheckWindow('end - bool');
+        cy.eyesClose();
     });
 });
