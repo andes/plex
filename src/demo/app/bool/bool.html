@@ -4,32 +4,36 @@
             <div class="col-md-6">
                 <form>
                     <h1>Checkbox</h1>
-                    <plex-bool [(ngModel)]="modelo.checkbox" label="¿Está activo?" name="activo"></plex-bool>
+                    <plex-bool [(ngModel)]="modelo.checkbox" label="¿Está activo?" name="checkbox"></plex-bool>
                 </form>
             </div>
             <div class="col-md-6" *ngIf="modelo">
                 <label>Modelo</label>
-                <pre>{{modelo | json}}</pre>
+                <span>
+                    CHECKBOX {{ modelo.checkbox ? 'ACTIVE' : 'INACTIVE' }}
+                </span>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <form>
                     <h1>Slider</h1>
-                    <plex-bool [(ngModel)]="modelo.slide" type="slide" label="¿Está activo?" name="activo"></plex-bool>
+                    <plex-bool [(ngModel)]="modelo.slide" type="slide" label="¿Está activo?" name="slide"></plex-bool>
                 </form>
             </div>
             <div class="col-md-6" *ngIf="modelo">
                 <label>Modelo</label>
-                <pre>{{modelo | json}}</pre>
+                <span>
+                    SLIDE {{ modelo.slide ? 'ACTIVE' : 'INACTIVE' }}
+                </span>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <form>
                     <h1>Slider readonly</h1>
-                    <plex-bool [(ngModel)]="modelo.slideReadonly" [readonly]="true" type="slide" label="¿Está activo?"
-                        name="activo"></plex-bool>
+                    <plex-bool [(ngModel)]="modelo.slide" [readonly]="true" type="slide" label="¿Está activo?"
+                               name="readonly"></plex-bool>
                 </form>
             </div>
             <div class="col-md-6" *ngIf="modelo">
