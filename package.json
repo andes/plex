@@ -14,10 +14,11 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
+        "serve": "ng serve --progress=false",
         "prepublishOnly": "tsc -p ./ --outDir dist/",
         "test:ci": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
         "cypress": "wait-on http://localhost:4200 && cypress run",
-        "test:cypress": "run-p start cypress"
+        "test:cypress": "run-p --race serve cypress"
     },
     "main": "./dist/index.js",
     "dependencies": {

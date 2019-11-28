@@ -6,6 +6,7 @@ context('bool', () => {
     });
 
     it('test bool', () => {
+
         cy.contains('CHECKBOX INACTIVE');
         cy.plexBool('name="checkbox"', true);
         cy.contains('CHECKBOX ACTIVE');
@@ -18,7 +19,6 @@ context('bool', () => {
         cy.get('plex-bool[name="readonly"]').click();
 
         cy.contains('SLIDE ACTIVE');
-
 
     });
 });
