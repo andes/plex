@@ -53,6 +53,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     @Input() readonly = false;
     @Input() min: number;
     @Input() max: number;
+
     @Input()
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
