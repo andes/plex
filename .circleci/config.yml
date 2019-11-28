@@ -57,6 +57,15 @@ jobs:
           name: CYPRESS
           command: npm run test:cypress
 
+  deploy:
+    working_directory: ~/app
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: npx semantic-release
+
 workflows:
   version: 2
   build_and_test:
@@ -68,3 +77,11 @@ workflows:
       - cypress:
           requires:
             - install
+      - deploy:
+          requires:
+            - cypress
+            - build
+          filters:
+            branches:
+              only: master
+
