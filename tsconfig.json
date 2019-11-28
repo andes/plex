@@ -3,10 +3,10 @@
   "compilerOptions": {
     "incremental": true,
     "outDir": "./dist",
-    "baseUrl": "src/demo",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
+    "mapRoot": "./",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
@@ -17,5 +17,10 @@
       "es2016",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.spec.ts",
+    "./src/**/*.d.ts"
+  ]
 }
