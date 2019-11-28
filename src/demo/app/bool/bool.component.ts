@@ -8,6 +8,6 @@ export class BoolDemoComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        this.modelo = { checkbox: false, slide: true };
+        this.modelo = { checkbox: false, slide: false };
     }
 }
