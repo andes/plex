@@ -13,10 +13,12 @@ export class SelectDemoComponent implements OnInit {
 
     public opciones: any[];
     public modelo1 = { select: null };
-    public rModelo1 = { select: null };
-    public modelo2 = { select: null, soloLectura: false, selectMultiple: null };
-    public modelo3 = { select: null };
-    public modelo4 = { select: null };
+    public modelo2 = {
+        select: null,
+        soloLectura: false,
+        selectMultiple: null
+    };
+
 
     constructor(public servicio: ServiceDemoSelect) { }
 
@@ -39,21 +41,18 @@ export class SelectDemoComponent implements OnInit {
         }];
 
         this.modelo1.select = this.modelo2.select = this.opciones[1];
-        this.rModelo1.select = this.opciones[2];
 
-        setTimeout(() => {
-            this.modelo2.select = {
-                _id: '5821da5ab6f2bac35980c464',
-                nombre: 'Arabia Saudita',
-                id: '5821da5ab6f2bac35980c464'
-            };
+        // setTimeout(() => {
+        //     this.modelo2.select = {
+        //         _id: '5821da5ab6f2bac35980c464',
+        //         nombre: 'Arabia Saudita',
+        //         id: '5821da5ab6f2bac35980c464'
+        //     };
 
-        }, 10000);
+        // }, 1000);
     }
 
     loadData(event: SelectEvent) {
-        // Event tiene una propiedad 'query' que contiene el texto que el usuario ha escrito en el input.
-        // Esto permite enviar a las APIs un parámetro para hacer las búsquedas más eficientes
         if (event.query) {
             this.servicio.get(event.query).subscribe(event.callback);
         } else {
@@ -62,7 +61,6 @@ export class SelectDemoComponent implements OnInit {
     }
 
     cambiarOpciones() {
-        // this.modelo1.select = null;
         this.opciones = [{
             id: 2,
             nombre: 'México',

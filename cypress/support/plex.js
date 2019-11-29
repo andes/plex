@@ -35,9 +35,6 @@ Cypress.Commands.add('plexSelect', { prevSubject: 'optional' }, (subject, label,
     } else {
         return element.children().eq(0);
     }
-
-
-
     return element;
 });
 
@@ -81,6 +78,22 @@ Cypress.Commands.add('plexSelectAsync', { prevSubject: 'optional' }, (subject, l
     }
 });
 
+Cypress.Commands.add('isSelectedID', { prevSubject: 'element' }, (subject, value) => {
+    return cy.wrap(subject).find(`.selectize-input .item[data-value="${value}"]`);
+});
+
+Cypress.Commands.add('isSelectedLabel', { prevSubject: 'element' }, (subject, label) => {
+    return cy.wrap(subject).find(`.selectize-input .item`).contains(label);
+});
+
+Cypress.Commands.add('clearSelect', { prevSubject: 'element' }, (subject, id) => {
+    if (!id) {
+        return cy.wrap(subject).find('.mdi-close-circle').click();
+    } else {
+        return cy.wrap(subject).find(`.selectize-input .item[data-value="${id}"]`).find('.mdi-close-circle').click();
+
+    }
+});
 
 Cypress.Commands.add('plexInt', { prevSubject: 'optional' }, (subject, label, text = null) => {
     let element;

@@ -18,7 +18,9 @@
         "prepublishOnly": "rm -rf dist && tsc -p ./ --outDir dist/",
         "test:ci": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
         "cypress": "wait-on http://localhost:4200 && cypress run",
-        "test:cypress": "run-p --race serve cypress"
+        "test:cypress": "run-p --race serve cypress",
+        "test:cypress:local": "APPLITOOLS_IS_DISABLED=true run-p --race serve cypress",
+        "cypress:open": "APPLITOOLS_IS_DISABLED=true cypress open"
     },
     "main": "./dist/index.js",
     "dependencies": {
