@@ -34,6 +34,10 @@
                                    [(ngModel)]="tModel.fechaHora" [min]="tModel.minHora" [max]="tModel.maxHora"
                                    name="horaSkip" required>
                     </plex-datetime>
+
+                    <plex-datetime label="Datetime con debounce" name="debounce" type="date" [(ngModel)]="tModel.hora"
+                                   (change)="onChange($event)" [debounce]="1000">
+                    </plex-datetime>
                 </form>
             </div>
             <div class="col-md-6">

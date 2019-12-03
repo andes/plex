@@ -59,7 +59,7 @@ describe('PlexTextComponent', () => {
         }));
     });
 
-    describe('input debounce text', () => {
+    describe('readonly check', () => {
         let fixture: ComponentFixture<PlexTextTestComponent>;
         let input: HTMLInputElement;
 
