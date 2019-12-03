@@ -44,6 +44,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private value: any;
     private $button: any;
     private $input: any;
+    private changeTimeout = null;
 
     @ContentChild(NgControl, { static: true }) control: AbstractControl;
     public get esOpcional(): boolean {
@@ -59,6 +60,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() readonly = false;
     @Input() skipBy: 'hour' | 'day' | 'month' | 'year' = null;
     @Input() title: string;
+    @Input() debounce = 0;
+
     @Input()
     get min(): Date | moment.Moment {
         return this._min;
@@ -119,6 +122,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         event.stopImmediatePropagation();
         return false;
     }
+
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
@@ -177,9 +181,14 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
 
             this.value = value;
             fn(value);
-            this.change.emit({
-                value
-            });
+            if (this.changeTimeout) {
+                clearTimeout(this.changeTimeout);
+            }
+            this.changeTimeout = setTimeout(() => {
+                this.change.emit({
+                    value
+                });
+            }, this.debounce);
         };
     }
 
