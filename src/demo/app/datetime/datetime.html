@@ -6,18 +6,16 @@
                     <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora"
                                    name="fechaHora" required>
                     </plex-datetime>
-                    <plex-datetime label="Ingrese la fecha del cumpleaños mayor a 1/1/1970" type="date"
-                                   [(ngModel)]="tModel.fecha" name="fecha" [required]="true" [min]="tModel.min"
-                                   [max]="tModel.max">
+                    <plex-datetime label="Fecha menor a" type="date" [(ngModel)]="tModel.fecha" name="fecha"
+                                   [required]="true" [min]="tModel.min" [max]="tModel.max">
                     </plex-datetime>
-
 
                     <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora"
                                    name="hora" (blur)="onBlur()" (focus)="onBlur()">
                     </plex-datetime>
 
                     <plex-datetime label="Ingrese la hora de nacimient2o" type="time" [(ngModel)]="tModel.horados"
-                                   [min]="horaPlus()" name="hora2">
+                                   [min]="horaPlus()" name="horaconmin">
                     </plex-datetime>
 
                     <plex-datetime label="Este campo es readonly" type="time" [(ngModel)]="tModel.hora2" name="hora2"
