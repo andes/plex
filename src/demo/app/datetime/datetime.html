@@ -7,11 +7,11 @@
                                    name="fechaHora" required>
                     </plex-datetime>
                     <plex-datetime label="Fecha menor a" type="date" [(ngModel)]="tModel.fecha" name="fecha"
-                                   [required]="true" [min]="tModel.min" [max]="tModel.max">
+                                   [required]="true" [min]="tModel.min" [max]="tModel.max" size="lg">
                     </plex-datetime>
 
                     <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora"
-                                   name="hora" (blur)="onBlur()" (focus)="onBlur()">
+                                   name="hora" (blur)="onBlur()" (focus)="onBlur()" size="sm">
                     </plex-datetime>
 
                     <plex-datetime label="Ingrese la hora de nacimient2o" type="time" [(ngModel)]="tModel.horados"
@@ -28,7 +28,7 @@
                                    [(ngModel)]="tModel.fecha" [min]="tModel.min" [max]="tModel.max" name="fechaSkip"
                                    required>
                     </plex-datetime>
-                    <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'"
+                    <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'" size="sm"
                                    [(ngModel)]="tModel.fechaHora" [min]="tModel.minHora" [max]="tModel.maxHora"
                                    name="horaSkip" required>
                     </plex-datetime>
