@@ -187,8 +187,12 @@ Cypress.Commands.add('plexDatetime', { prevSubject: 'optional' }, (subject, labe
             element.type(`${data.text}{enter}`);
         }
     }
-    element = element.parent().parent().parent();
+    element = element.parent().parent();
     return element;
+});
+
+Cypress.Commands.add('iconClick', { prevSubject: 'element' }, (subject, icon) => {
+    return cy.wrap(subject).find(`i.mdi.mdi-${icon}`).click();
 });
 
 Cypress.Commands.add('plexBool', { prevSubject: 'optional' }, (subject, label, checked = false) => {
