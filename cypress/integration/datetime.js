@@ -8,7 +8,7 @@ context('datetime', () => {
     });
 
     it('test datetime', () => {
-        cy.eyesCheckWindow('datetime - main');
+        cy.eyesCheckWindow({ tag: 'datetime - main', ignore: { selector: 'pre' } });
 
         cy.plexDatetime('label="Ingrese la fecha y la hora del evento"', '01/01/2019');
         cy.plexDatetime('label="Fecha menor a"').click();
@@ -32,19 +32,21 @@ context('datetime', () => {
         cy.plexDatetime('name="fechaSkip"').find('input').should('have.value', '01/01/1950 00:00');
 
         cy.plexDatetime('name="fechaSkip"').iconClick('calendar-clock');
-        cy.eyesCheckWindow('datetime - calendario');
+        cy.eyesCheckWindow({ tag: 'datetime - calendario', ignore: { selector: 'pre' } });
+
 
 
         cy.get('.table.dtp-picker-days').find('td[data-date="31"]').click({ multiple: true });
 
-        cy.eyesCheckWindow('datetime - hour pick');
+        cy.eyesCheckWindow({ tag: 'datetime - hour pick', ignore: { selector: 'pre' } });
+
         cy.get('.dtp-picker-datetime').find('[id="h-0"]').click({ multiple: true, force: true });
         cy.get('.dtp-picker-datetime').find('[id="m-0"]').click({ multiple: true, force: true });
 
         cy.plexDatetime('name="fechaSkip"').find('input').should('have.value', '31/01/1970 00:00');
         cy.get('.col-md-6').contains('1970-01-31T03:00:00.000Z');
 
-        cy.eyesCheckWindow('datetime - end');
+        cy.eyesCheckWindow({ tag: 'datetime - end', ignore: { selector: 'pre' } });
 
         cy.eyesClose();
 
