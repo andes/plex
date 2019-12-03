@@ -21,7 +21,6 @@ context('bool', () => {
 
         cy.get('.col-md-6').contains('1950-01-01T03:00:00.000Z');
 
-
         cy.plexDatetime('name="hora"', '13:00');
         cy.plexDatetime('name="horaconmin"', '10:00');
         cy.plexDatetime('name="horaconmin"').validationMessage('El valor debe ser mayor a');
@@ -44,6 +43,9 @@ context('bool', () => {
 
         cy.plexDatetime('name="fechaSkip"').find('input').should('have.value', '31/01/1970 00:00');
         cy.get('.col-md-6').contains('1970-01-31T03:00:00.000Z');
+
+        cy.eyesCheckWindow('datetime - end');
+
 
 
 
