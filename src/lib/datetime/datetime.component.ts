@@ -28,7 +28,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                     <label *ngIf="label" class="form-control-label">{{ label }}</label>
                     <div class="input-group d-flex align-items-center">
                         <a *ngIf="showNav" (click)="prev()" class="btn btn-info text-white pl-1 pr-1 hover" [title]="makeTooltip('anterior')"><i class="mdi mdi-menu-left"></i></a>
-                        <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"/>
+                        <input type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()" (change)="disabledEvent($event)"/>
                         <span class="input-group-btn">
                         <button class="btn btn-primary" tabindex="-1" [disabled]="disabled || readonly"><i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i></button>
                         </span>
@@ -115,6 +115,10 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         this.type = 'datetime';
     }
 
+    public disabledEvent(event: Event) {
+        event.stopImmediatePropagation();
+        return false;
+    }
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
