@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-context('bool', () => {
+context('datetime', () => {
     before(() => {
         cy.eyesOpen({ appName: 'PLEX', testName: 'datetime' });
 
@@ -46,6 +46,7 @@ context('bool', () => {
 
         cy.eyesCheckWindow('datetime - end');
 
+        cy.eyesClose();
 
 
 

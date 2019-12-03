@@ -4,6 +4,8 @@ jobs:
     working_directory: ~/app
     docker:
       - image: circleci/node:10-browsers
+        environment:
+          TZ: "America/Argentina/Buenos_Aires"
     steps:
       - checkout
       - restore_cache:
@@ -27,8 +29,12 @@ jobs:
             - app
   build:
     working_directory: ~/app
+    environment:
+          TZ: "America/Argentina/Buenos_Aires"
     docker:
       - image: circleci/node:10-browsers
+        environment:
+          TZ: "America/Argentina/Buenos_Aires"
     steps:
       - attach_workspace:
           at: ~/
@@ -44,10 +50,13 @@ jobs:
 
   cypress:
     working_directory: ~/app
+    environment:
+      TZ: "America/Argentina/Buenos_Aires"
     docker:
       - image: cypress/base:10
         environment:
-          TERM: xterm
+          TERM: xterm 
+          TZ: "America/Argentina/Buenos_Aires"
     steps:
       - attach_workspace:
           at: ~/
@@ -61,6 +70,8 @@ jobs:
     working_directory: ~/app
     docker:
       - image: circleci/node:10-browsers
+        environment:
+          TZ: "America/Argentina/Buenos_Aires"
     steps:
       - attach_workspace:
           at: ~/
