@@ -24,15 +24,24 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
             multi: true
         },
     ],
-    template: ` <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+    template: `<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
                     <label *ngIf="label" class="form-control-label">{{ label }}</label>
                     <div class="input-group d-flex align-items-center">
-                        <a *ngIf="showNav" (click)="prev()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover" [title]="makeTooltip('anterior')"><i class="mdi mdi-menu-left"></i></a>
-                        <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()" (change)="disabledEvent($event)"/>
+                        <a *ngIf="showNav" (click)="prev()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover"
+                           [title]="makeTooltip('anterior')">
+                           <i class="mdi mdi-menu-left"></i>
+                        </a>
+                        <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
+                               [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"
+                               (change)="disabledEvent($event)" *ngIf="showInput"/>
                         <span class="input-group-btn">
-                        <button class="btn btn-primary btn-{{size}}" tabindex="-1" [disabled]="disabled || readonly"><i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i></button>
+                            <button class="btn btn-primary btn-{{size}}" tabindex="-1" [disabled]="disabled || readonly">
+                                <i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i>
+                            </button>
                         </span>
-                        <a *ngIf="showNav" (click)="next()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover" [title]="makeTooltip('siguiente')"><i class="mdi mdi-menu-right"></i></a>
+                        <a *ngIf="showNav" (click)="next()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover" [title]="makeTooltip('siguiente')">
+                            <i class="mdi mdi-menu-right"></i>
+                        </a>
                     </div>
                     <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
                 </div>`,
@@ -62,6 +71,11 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() title: string;
     @Input() debounce = 0;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
+    @Input() btnOnly = false;
+
+    public get showInput() {
+        return !this.btnOnly;
+    }
 
     @Input()
     get min(): Date | moment.Moment {

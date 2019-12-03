@@ -1,8 +1,8 @@
 <plex-layout>
     <plex-layout-main>
-        <div class="row">
-            <div class="col-md-6">
-                <form #form="ngForm">
+        <form #form="ngForm">
+            <div class="row">
+                <div class="col-md-6">
                     <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora"
                                    name="fechaHora" required>
                     </plex-datetime>
@@ -28,6 +28,10 @@
                                    [(ngModel)]="tModel.fecha" [min]="tModel.min" [max]="tModel.max" name="fechaSkip"
                                    required>
                     </plex-datetime>
+                </div>
+                <div class="col-md-6">
+                    <label>Modelo</label>
+                    <pre>{{ tModel | json }}</pre>
                     <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'" size="sm"
                                    [(ngModel)]="tModel.fechaHora" [min]="tModel.minHora" [max]="tModel.maxHora"
                                    name="horaSkip" required>
@@ -36,12 +40,11 @@
                     <plex-datetime label="Datetime con debounce" name="debounce" type="date" [(ngModel)]="tModel.hora"
                                    (change)="onChange($event)" [debounce]="1000">
                     </plex-datetime>
-                </form>
+
+                    <plex-datetime [(ngModel)]="tModel.fechaHora" name="onlybtn" required [btnOnly]="true" size="sm">
+                    </plex-datetime>
+                </div>
             </div>
-            <div class="col-md-6">
-                <label>Modelo</label>
-                <pre>{{ tModel | json }}</pre>
-            </div>
-        </div>
+        </form>
     </plex-layout-main>
 </plex-layout>
