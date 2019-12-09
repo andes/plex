@@ -56,7 +56,6 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import 'css/nav';
 @import 'css/classes';
 @import 'css/fonts';
-@import 'css/badge';
 @import 'css/forms';
 @import 'css/list-group';
 // Third party
@@ -64,6 +63,7 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import 'css/modals';
 // Plex Components
 @import 'css/plex-accordion';
+@import 'css/plex-badge';
 @import 'css/plex-bool';
 @import 'css/plex-box';
 @import 'css/plex-button';

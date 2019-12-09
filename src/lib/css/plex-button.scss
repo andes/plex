@@ -1,5 +1,32 @@
+@mixin button-factory($color) {
+    color: $white;
+    background-color: $color;
+    border-color: $color;
+}
+
 .btn {
     font-family: $font-family;
     cursor: pointer;
     text-transform: uppercase;
 }
+
+.btn-default {
+    @include button-factory($dark-grey);
+}
+
+.btn-danger {
+    @include button-factory($red);
+}
+
+.btn-success {
+    @include button-factory($green);
+}
+
+.btn-warning {
+    @include button-factory($orange);
+}
+
+.btn-info {
+    @include button-factory($blue);
+}
+
