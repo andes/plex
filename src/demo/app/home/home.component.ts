@@ -1,29 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
 import { HeaderPacienteComponent } from '../header-paciente/header-paciente.component';
 
 @Component({
     templateUrl: 'home.html'
 })
-export class HomeDemoComponent {
+export class HomeDemoComponent implements OnInit {
     public field = '';
     public tooltip = 'Este es un tooltip<br>multilinea que ocupa mucho espacio';
     public data = [];
     documento = '45979360';
 
-    constructor(public plex: Plex) {
+    constructor(public plex: Plex, private ref: ChangeDetectorRef) {
         this.plex.updateTitle('Bienvenido a Plex');
-
-        // this.plex.setNavbarItem(HeaderPacienteComponent, {
-        //     paciente: {
-        //         nombre: 'Mariano',
-        //         apellido: 'Botta',
-        //         sexo: 'masculino',
-        //         documento: '34934522'
-        //     }
-        // });
-
         this.loadData();
+    }
+
+    ngOnInit() {
+        this.ref.detectChanges();
     }
 
     guardar($event) {
