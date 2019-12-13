@@ -37,11 +37,12 @@
                                    name="horaSkip" required>
                     </plex-datetime>
 
-                    <plex-datetime label="Datetime con debounce" name="debounce" type="date" [(ngModel)]="tModel.hora"
-                                   (change)="onChange($event)" [debounce]="1000">
+                    <plex-datetime label="Datetime con debounce" name="debounce" type="date"
+                                   [(ngModel)]="tModel.fechaDecounce" (change)="onChange($event)" [debounce]="1000">
                     </plex-datetime>
 
-                    <plex-datetime [(ngModel)]="tModel.fechaHora" name="onlybtn" required [btnOnly]="true" size="sm">
+                    <plex-datetime [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required [btnOnly]="true"
+                                   size="sm">
                     </plex-datetime>
                 </div>
             </div>
