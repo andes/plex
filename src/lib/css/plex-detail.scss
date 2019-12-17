@@ -1,0 +1,30 @@
+plex-detail {
+    
+    section {
+        display: flex;
+
+        &.vertical {
+            flex-direction: column;
+            align-content: center;
+        }
+        
+        &.horizontal {
+            flex-direction: row;
+            align-content: start;
+        }
+    }
+
+    img {
+        width: 5rem;
+        height: 5rem;
+
+        &.rounded {
+            border-radius: 50%;
+        }
+
+        &.cover {
+            object-fit: cover;
+        }
+    }
+
+}
