@@ -1,30 +1,155 @@
-plex-detail {
-    
-    section {
+// size-lg
+#plex-detalle {
+    margin-top: 1rem;
+
+    .contenedor-horizontal {
         display: flex;
 
-        &.vertical {
-            flex-direction: column;
-            align-content: center;
+        div.contenedor-elementos-graficos {
+            min-width: auto; 
+            
+            // Estilos imagenes
+            img {
+                width: 5.5rem;
+                height: 5.5rem;
+                margin-right: 1rem;
+                
+                &.rounded {
+                    border-radius: 50%;
+                }
+                
+                &.cover {
+                    object-fit: cover;
+                }
+            }
+            
+            // Estilos iconos
+            i {
+                display: flex;
+                justify-content: center;
+                font-size: 2.5rem;
+                border: solid 3px;
+                border-radius: 50%;
+                padding: 15px;
+                margin-right: 1rem;
+                }
+            }
+
+            h4 {
+                margin-top: .25rem;
+
+                &::first-line {
+                    font-weight: 700;
+                }
+            }
+    
+            hr {
+                float: left;
+                margin: 0.25rem 0;
+            }
+            
+            img {
+                margin-bottom: 1rem;
+            }
         }
-        
-        &.horizontal {
-            flex-direction: row;
-            align-content: start;
+
+        hr {
+            width: 25px;
+            border: solid 1px $blue;
+        }
+    
+        .contenedor-datos-secundarios {
+            display: grid;
+            grid-template-columns: repeat( auto-fit, minmax(100px, 1fr));
+            grid-gap: 10px;
+            margin-top: 1rem;  
+        }
+
+        // size-md
+        &.size-md {
+
+            .contenedor-horizontal {
+                display: flex;
+
+                div.contenedor-elementos-graficos {
+
+                    // se disminuye el tamanio de las imagenes
+                    img {
+                        width: 4rem;
+                        height: 4rem;
+                        margin-right: 0.75rem;
+                    }
+
+                    // se disminuye el tamanio de los iconos
+                    i {
+                        font-size: 2rem;
+                        padding: 15px;
+                        margin-right: 1rem;
+                        }
+                
+                    .bloque-titulo {
+                        display: flex;
+                        
+                        h4 {
+                            font-size: 1.25rem;
+                            margin-top: .5rem;
+                            text-align: center;
+                        }
+                        
+                        hr {
+                            float: left;
+                            margin: 0.25rem 0;
+                        }
+                    }
+                }
         }
     }
 
-    img {
-        width: 5rem;
-        height: 5rem;
+        // size-xs
+        &.size-xs {
 
-        &.rounded {
-            border-radius: 50%;
-        }
+            .contenedor-horizontal {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 
-        &.cover {
-            object-fit: cover;
+                // se disminuye el tamanio de las imagenes
+                img {
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    margin-right: 0.5rem;
+                }
+
+                // se disminuye el tamanio de los iconos
+                i {
+                    font-size: 1.5rem;
+                    padding: 10px;
+                    margin-right: 0.5rem;
+                    }
+                
+                .bloque-titulo {
+                    display: flex;
+                    
+                    h4 {
+                        font-size: 1.25rem;
+                        margin-top: .5rem;
+                        text-align: center;
+                    }
+                    
+                    hr {
+                        float: left;
+                        margin: 0.25rem 0;
+                    }
+                    
+                    // mobile/Viewports menores a 640px
+                    &.vertical {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                }
+            }
+            .contenedor-datos-secundarios {
+                text-align: center;
+            }         
         }
     }
-
-}

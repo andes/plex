@@ -1,16 +1,76 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <section>
-            <plex-detail [horizontalidad]="false" titulo="{{ paciente.nombre }}" subtitulo="Este es el subtitulo"
-                         foto="" datoSecundario="Este es un dato secundario">
-                <plex-badge>{{ paciente.estado }}</plex-badge>
-            </plex-detail>
+        <plex-title titulo="Titulo principal">
+            <plex-button type="info">{{ paciente.activo }}</plex-button>
+            <plex-help icon="information">
+                <!-- plex-detail size-xs -->
+                <section info id="plex-detalle" class="size-xs">
+                    <section class="contenedor-horizontal">
+                        <div class="contenedor-elementos-graficos">
+                            <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
+                            <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
+                        </div>
+                        <div class="bloque-titulo vertical">
+                            <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
+                            <h4>{{ paciente.nombreCompleto }}</h4>
+                            <h6>{{ paciente.documento }}</h6>
+                            <hr>
+                        </div>
+                    </section>
+                    <section class="contenedor-datos-secundarios">
+                        <div *ngFor="let dato of datos">
+                            <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
+                        </div>
+                    </section>
+                </section>
+            </plex-help>
+        </plex-title>
+        <!-- plex-detail size-lg -->
+        <section id="plex-detalle" class="size-lg">
+            <section class="contenedor-horizontal">
+                <div class="contenedor-elementos-graficos">
+                    <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
+                    <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
+                </div>
+                <div class="bloque-titulo">
+                    <plex-badge>{{ paciente.estado }}</plex-badge>
+                    <h4>{{ paciente.nombreCompleto }}</h4>
+                    <h6>{{ paciente.documento }}</h6>
+                    <hr>
+                </div>
+            </section>
+            <section class="contenedor-datos-secundarios">
+                <div *ngFor="let dato of datos">
+                    <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
+                </div>
+            </section>
         </section>
     </plex-layout-main>
-    <plex-layout-sidebar>
-        <header title="Titulo">
+    <!-- Sidebar -->
+    <plex-layout-sidebar type="invert">
+        <plex-title justify titulo="Titulo del sidebar" size="sm">
+            <plex-button type="danger" size="sm" (click)="cambiarDireccionalidad()">VOLVER</plex-button>
+        </plex-title>
+        <!-- plex-detail size-md -->
+        <section id="plex-detalle" class="size-md">
+            <section class="contenedor-horizontal">
+                <div class="contenedor-elementos-graficos">
+                    <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
+                    <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
+                </div>
+                <div class="bloque-titulo">
+                    <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
+                    <h4>{{ paciente.nombreCompleto }}</h4>
+                    <h6>{{ paciente.documento }}</h6>
+                    <hr>
+                </div>
+            </section>
+            <section class="contenedor-datos-secundarios">
+                <div *ngFor="let dato of datos">
+                    <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
+                </div>
+            </section>
+        </section>
 
-        </header>
-        <p>Hola</p>
     </plex-layout-sidebar>
 </plex-layout>
