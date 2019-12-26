@@ -3,14 +3,15 @@
         <plex-title titulo="Titulo principal">
             <plex-button type="info">{{ paciente.activo }}</plex-button>
             <plex-help icon="information">
+
                 <!-- plex-detail size-xs -->
-                <section info id="plex-detalle" class="size-xs">
-                    <section class="contenedor-horizontal">
+                <section info id="plex-detalle" type="xs">
+                    <section>
                         <div class="contenedor-elementos-graficos">
                             <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
                             <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
                         </div>
-                        <div class="bloque-titulo vertical">
+                        <div class="direction-column">
                             <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
                             <h4>{{ paciente.nombreCompleto }}</h4>
                             <h6>{{ paciente.documento }}</h6>
@@ -23,16 +24,18 @@
                         </div>
                     </section>
                 </section>
+
             </plex-help>
         </plex-title>
+
         <!-- plex-detail size-lg -->
-        <section id="plex-detalle" class="size-lg">
-            <section class="contenedor-horizontal">
+        <section id="plex-detalle" type="lg">
+            <section justify="start">
                 <div class="contenedor-elementos-graficos">
                     <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
                     <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
                 </div>
-                <div class="bloque-titulo">
+                <div>
                     <plex-badge>{{ paciente.estado }}</plex-badge>
                     <h4>{{ paciente.nombreCompleto }}</h4>
                     <h6>{{ paciente.documento }}</h6>
@@ -45,20 +48,23 @@
                 </div>
             </section>
         </section>
+
     </plex-layout-main>
+
     <!-- Sidebar -->
     <plex-layout-sidebar type="invert">
         <plex-title justify titulo="Titulo del sidebar" size="sm">
             <plex-button type="danger" size="sm" (click)="cambiarDireccionalidad()">VOLVER</plex-button>
         </plex-title>
+
         <!-- plex-detail size-md -->
-        <section id="plex-detalle" class="size-md">
-            <section class="contenedor-horizontal">
+        <section id="plex-detalle" type="md">
+            <section justify="start">
                 <div class="contenedor-elementos-graficos">
                     <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
                     <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
                 </div>
-                <div class="bloque-titulo">
+                <div class="">
                     <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
                     <h4>{{ paciente.nombreCompleto }}</h4>
                     <h6>{{ paciente.documento }}</h6>

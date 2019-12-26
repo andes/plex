@@ -1,37 +1,24 @@
-// size-lg
+// Estilos base
 #plex-detalle {
     margin-top: 1rem;
-
-    .contenedor-horizontal {
-        display: flex;
 
         div.contenedor-elementos-graficos {
             min-width: auto; 
             
             // Estilos imagenes
             img {
-                width: 5.5rem;
-                height: 5.5rem;
-                margin-right: 1rem;
-                
-                &.rounded {
-                    border-radius: 50%;
-                }
-                
-                &.cover {
-                    object-fit: cover;
-                }
+                border-radius: 50%;
+                object-fit: cover;
             }
             
             // Estilos iconos
             i {
                 display: flex;
                 justify-content: center;
-                font-size: 2.5rem;
+                align-items: center;
                 border: solid 3px;
                 border-radius: 50%;
                 padding: 15px;
-                margin-right: 1rem;
                 }
             }
 
@@ -51,7 +38,6 @@
             img {
                 margin-bottom: 1rem;
             }
-        }
 
         hr {
             width: 25px;
@@ -65,91 +51,122 @@
             margin-top: 1rem;  
         }
 
-        // size-md
-        &.size-md {
-
-            .contenedor-horizontal {
-                display: flex;
-
-                div.contenedor-elementos-graficos {
-
-                    // se disminuye el tamanio de las imagenes
-                    img {
-                        width: 4rem;
-                        height: 4rem;
-                        margin-right: 0.75rem;
-                    }
-
-                    // se disminuye el tamanio de los iconos
-                    i {
-                        font-size: 2rem;
-                        padding: 15px;
-                        margin-right: 1rem;
-                        }
-                
-                    .bloque-titulo {
-                        display: flex;
-                        
-                        h4 {
-                            font-size: 1.25rem;
-                            margin-top: .5rem;
-                            text-align: center;
-                        }
-                        
-                        hr {
-                            float: left;
-                            margin: 0.25rem 0;
-                        }
-                    }
-                }
+        // TODO: Incorporar la directiva "align" y "direction" en PLEX
+        .direction-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-    }
 
-        // size-xs
-        &.size-xs {
+        // size-lg
+        &[type="lg"] {
+            div.contenedor-elementos-graficos {
 
-            .contenedor-horizontal {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                // se disminuye el tamanio de las imagenes
+                // imagenes
                 img {
-                    width: 3.5rem;
-                    height: 3.5rem;
-                    margin-right: 0.5rem;
+                    width: 5.5rem;
+                    height: 5.5rem;
+                    margin-right: 0.75rem;
                 }
 
-                // se disminuye el tamanio de los iconos
+                // iconos
                 i {
+                    font-size: 2.5rem;
+                    height: 5rem;
+                    margin-right: 1rem;
+                    padding: 15px;
+                    width: 5rem;
+                    }
+                }
+
+                h4 {
                     font-size: 1.5rem;
-                    padding: 10px;
-                    margin-right: 0.5rem;
-                    }
+                    margin-top: .5rem;
+                    text-align: center;
+                }
                 
-                .bloque-titulo {
-                    display: flex;
-                    
-                    h4 {
-                        font-size: 1.25rem;
-                        margin-top: .5rem;
-                        text-align: center;
-                    }
-                    
-                    hr {
-                        float: left;
-                        margin: 0.25rem 0;
-                    }
-                    
-                    // mobile/Viewports menores a 640px
-                    &.vertical {
-                        flex-direction: column;
-                        align-items: center;
-                    }
+                hr {
+                    float: left;
+                    margin: 0.25rem 0;
                 }
             }
-            .contenedor-datos-secundarios {
-                text-align: center;
-            }         
+
+        // size-md
+        &[type="md"] {
+
+            div.contenedor-elementos-graficos {
+
+                // se disminuye las imagenes
+                img {
+                    width: 4rem;
+                    height: 4rem;
+                    margin-right: 0.75rem;
+                }
+
+                // se disminuye los iconos
+                i {
+                    font-size: 2rem;
+                    height: 3.5rem;
+                    margin-right: 1rem;
+                    padding: 15px;
+                    width: 3.5rem;
+                    }
+                }
+
+                h4 {
+                    font-size: 1.15rem;
+                    margin-top: .5rem;
+                }
+                
+                hr {
+                    float: left;
+                    margin: 0.25rem 0;
+                }
+            }
+
+        // size-xs
+        &[type="xs"] {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            div.contenedor-elementos-graficos {
+                %elementoGrafico {
+                    margin-bottom: 0.5rem;
+                }
+                
+                // se disminuyen las imagenes
+                img {
+                    @extend %elementoGrafico;
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    }
+                
+                // se disminuye los iconos
+                i {
+                    @extend %elementoGrafico;
+                    font-size: 1.5rem;
+                    padding: 10px;
+                    }
+                }
+                
+                h4 {
+                    font-size: 1.15rem;
+                    margin-top: .5rem;
+                }
+                
+                hr {
+                    align-self: center;
+                    margin: 0.25rem 0;
+                }
+                
+                .contenedor-datos-secundarios {
+                    text-align: center;
+                }         
+            }
+            
         }
-    }
+    
