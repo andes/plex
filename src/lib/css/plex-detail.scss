@@ -1,179 +1,184 @@
 // Estilos base
-#plex-detalle {
-    margin-top: 1rem;
 
-        div.contenedor-elementos-graficos {
-            min-width: auto; 
-            
-            // Estilos imagenes
-            img {
-                border-radius: 50%;
-                object-fit: cover;
-            }
-            
-            // Estilos iconos
-            i {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: solid 3px;
-                border-radius: 50%;
-                padding: 15px;
-                }
-            }
+plex-detail {
+     display: flex;
+     flex-wrap: wrap;
+     
+     > section {
+        
+        margin-top: 1rem;
+ 
+    }
 
-        .bloque-titulo {
-            
-            h4 {
-                margin-top: .25rem;
+    section.direction-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
 
-                &::first-line {
-                    font-weight: 700;
-                }
+        --detail-divider-align: center;
+        --detail-image-mr: 0;
+        --detail-image-mb: 1rem;
+    }
+
+    section.direction-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        --detail-divider-align: start;
+        --detail-image-mr: 0.75rem;
+        --detail-image-mb: 0;
+    }
+
+    div.contenedor-elementos-graficos { 
+        margin-bottom: var(--detail-image-mb);
+        margin-right: var(--detail-image-mr);
+
+        // Estilos imagenes
+        img {
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        // Estilos iconos
+        i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: solid 3px;
+            border-radius: 50%;
+            padding: 15px;
+        }
+    }
+
+    .contenedor-textos {
+        
+        div[title] {
+            margin-top: .25rem;
+
+            &::first-line {
+                font-weight: 700;
             }
-    
-            hr {
-                float: left;
-                margin: 0.25rem 0;
-                width: 25px;
-                border: solid 1px $blue;
-                }
-            }
+        }
+
+        hr {
+            float: left;
+            margin: 0.25rem 0;
+            width: 25px;
+            border: solid 1px $blue;
+            align-self: var(--detail-divider-align);
+        }
+    }
         
     
-        .contenedor-datos-secundarios {
-            display: grid;
-            grid-template-columns: repeat( auto-fit, minmax(100px, 1fr));
-            grid-gap: 10px;
-            margin-top: 1rem;  
-        }
+        
 
-        // TODO: Incorporar la directiva "align" y "direction" en PLEX
-        .direction-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
 
         // size-lg
-        &[type="lg"] {
+    section.size-lg {
 
-            div.contenedor-elementos-graficos {
+        div.contenedor-elementos-graficos {
 
-                // imagenes
-                img {
-                    width: 5.5rem;
-                    height: 5.5rem;
-                    margin-right: 0.75rem;
-                }
-
-                // iconos
-                i {
-                    font-size: 2.5rem;
-                    height: 5rem;
-                    margin-right: 1rem;
-                    padding: 15px;
-                    width: 5rem;
-                    }
-                }
-
-                .bloque-titulo {
-                    
-                    h4 {
-                        font-size: 1.5rem;
-                        margin-top: .5rem;
-                    }
-                    
-                    hr {
-                        float: left;
-                        margin: 0.25rem 0;
-                    }
-                }
+            // imagenes
+            img {
+                width: 5.5rem;
+                height: 5.5rem; 
+                
             }
 
-        // size-md
-        &[type="md"] {
-
-            div.contenedor-elementos-graficos {
-
-                // se disminuye las imagenes
-                img {
-                    width: 4rem;
-                    height: 4rem;
-                    margin-right: 0.75rem;
-                }
-
-                // se disminuye los iconos
-                i {
-                    font-size: 2rem;
-                    height: 3.5rem;
-                    margin-right: 1rem;
-                    padding: 15px;
-                    width: 3.5rem;
-                    }
-                }
-
-                .bloque-titulo {
-                    
-                    h4 {
-                        font-size: 1.15rem;
-                        margin-top: .5rem;
-                    }
-                    
-                    hr {
-                        float: left;
-                        margin: 0.25rem 0;
-                    }
-                }
+            // iconos
+            i {
+                font-size: 2.5rem;
+                height: 5rem; 
+                padding: 15px;
+                width: 5rem;
             }
+        }
+
+        .contenedor-textos {
+            div[title] {
+                font-size: 1.5rem;
+                margin-top: .5rem;
+            } 
+            div[subtitle] {
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    // size-md
+    section.size-md {
+        div.contenedor-elementos-graficos {
+            // se disminuye las imagenes
+            img {
+                width: 4rem;
+                height: 4rem; 
+            }
+
+            // se disminuye los iconos
+            i {
+                font-size: 2rem;
+                height: 3.5rem; 
+                padding: 15px;
+                width: 3.5rem;
+            }
+        }
+
+        .contenedor-textos {
+            div[title] {
+                font-size: 1.25rem;
+                margin-top: .5rem;
+            }
+            div[subtitle] {
+                font-size: 1.05rem;
+            }
+        }
+    }
 
         // size-xs
-        &[type="xs"] {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-
-            div.contenedor-elementos-graficos {
-                %elementoGrafico {
-                    margin-bottom: 0.5rem;
-                }
-                
-                // se disminuyen las imagenes
-                img {
-                    @extend %elementoGrafico;
-                    width: 3.5rem;
-                    height: 3.5rem;
-                    }
-                
-                // se disminuye los iconos
-                i {
-                    @extend %elementoGrafico;
-                    font-size: 1.5rem;
-                    padding: 10px;
-                    }
-                }
-
-            .bloque-titulo {
-                
-                h4 {
-                    font-size: 1.15rem;
-                    margin-top: .5rem;
-                }
-                
-                hr {
-                    align-self: center;
-                    margin: 0.25rem 0;
-                }
-                
-            }
-                
-                .contenedor-datos-secundarios {
-                    text-align: center;
-                }         
+    section.size-xs { 
+        div.contenedor-elementos-graficos { 
+            // se disminuyen las imagenes
+            img {  
+                width: 3.5rem;
+                height: 3.5rem;
             }
             
+            i { 
+                font-size: 1.5rem;
+                padding: 10px;
+                width: 2.5rem;
+                height: 2.5rem; 
+            }
         }
+
+        .contenedor-textos {
+            div[title] {
+                font-size: 1.15rem;
+                margin-top: .5rem;
+            }
+            div[subtitle] {
+                font-size: 0.9rem;
+            }
+        }
+            
+    }
+
+    .contenedor-datos-secundarios {
+        display: grid;
+        grid-template-columns: repeat( auto-fill, minmax(100px, 1fr));
+        grid-gap: 10px; 
+        flex: 1 20em;
+    }
+ 
+
+
+    .contenedor-datos-secundarios {
+        // width: fit-content;
+        // text-align: center;
+    }         
+}
     
