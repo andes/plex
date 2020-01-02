@@ -1,97 +1,32 @@
 <plex-layout main="8">
     <plex-layout-main>
         <plex-title titulo="Titulo principal">
-
             <plex-help icon="information">
-
-
-                <plex-detail info direction="column">
-                    <plex-icon name="pencil"></plex-icon>
-                    <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
-                    <div title> {{ paciente.nombreCompleto }} </div>
-                    <div subtitle> {{ paciente.documento }} </div>
-                </plex-detail>
-
-                <!-- plex-detail size-xs -->
-                <!-- <section info id="plex-detalle" type="xs">
-                    <section>
-                        <div class="contenedor-elementos-graficos">
-                            <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
-                            <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
-                        </div>
-                        <div justify="center" class="bloque-titulo d-flex flex-column">
-                            <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
-                            <h4>{{ paciente.nombreCompleto }}</h4>
-                            <h6>{{ paciente.documento }}</h6>
-                            <hr>
-                        </div>
-                    </section>
-                    <section class="contenedor-datos-secundarios">
-                        <div *ngFor="let dato of datos">
-                            <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
-                        </div>
-                    </section>
-                </section> -->
-
+                <div info justify="center">
+                    <plex-detail direction="column" justify="center">
+                        <plex-icon name="pencil"></plex-icon>
+                        <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
+                        <div title>{{ paciente.nombreCompleto }}</div>
+                        <div subtitle>{{ paciente.documento }}</div>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                    </plex-detail>
+                </div>
             </plex-help>
         </plex-title>
 
-
-        <!-- <plex-detail size="xs">
-            <plex-icon name="pencil"></plex-icon>
-            <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
-            <div title> {{ paciente.nombreCompleto }} </div>
-            <div subtitle> {{ paciente.documento }} </div>
-        </plex-detail> -->
-
-        <!-- <plex-detail>
-            <plex-icon name="pencil"></plex-icon>
-            <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
-            <div title> {{ paciente.nombreCompleto }} </div>
-            <div subtitle> {{ paciente.documento }} </div>
-        </plex-detail> -->
-
-
-
-        <plex-detail size="lg">
-            <plex-icon name="pencil"></plex-icon>
-
-            <!-- <img src="{{ paciente.foto }}" alt=""> -->
-
+        <plex-detail size="lg" [items]="datos">
+            <!-- <plex-icon name="pencil"></plex-icon> -->
+            <img src="{{ paciente.foto }}" alt="">
             <plex-badge size="lg">{{ paciente.estado }}</plex-badge>
             <div title> {{ paciente.nombreCompleto }} </div>
             <div subtitle> {{ paciente.documento }} </div>
 
-            <plex-label titulo="documento" subtitulo="34934522"></plex-label>
-            <plex-label titulo="CUIL" subtitulo="20-34934522-7"></plex-label>
-            <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
-            <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
-            <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
-            <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
-            <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
-            <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
         </plex-detail>
-
-        <!-- plex-detail size-lg -->
-        <!-- <section id="plex-detalle">
-            <section justify="start">
-                <div class="contenedor-elementos-graficos">
-                    <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
-                    <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
-                </div>
-                <div class="bloque-titulo">
-                    <plex-badge>{{ paciente.estado }}</plex-badge>
-                    <h4>{{ paciente.nombreCompleto }}</h4>
-                    <h6>{{ paciente.documento }}</h6>
-                    <hr>
-                </div>
-            </section>
-            <section class="contenedor-datos-secundarios">
-                <ng-container *ngFor="let dato of datos">
-                    <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
-                </ng-container>
-            </section>
-        </section> -->
 
     </plex-layout-main>
 
@@ -101,36 +36,12 @@
             <plex-button type="danger" size="sm" (click)="cambiarDireccionalidad()">VOLVER</plex-button>
         </plex-title>
 
-        <!-- plex-detail size-md -->
-        <!-- <section id="plex-detalle" type="md">
-            <section justify="start">
-                <div class="contenedor-elementos-graficos">
-                    <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
-                    <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
-                </div>
-                <div class="bloque-titulo">
-                    <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
-                    <h4>{{ paciente.nombreCompleto }}</h4>
-                    <h6>{{ paciente.documento }}</h6>
-                    <hr>
-                </div>
-            </section>
-            <section class="contenedor-datos-secundarios">
-                <div *ngFor="let dato of datos">
-                    <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
-                </div>
-            </section>
-        </section> -->
-
         <plex-detail size="lg">
-            <plex-icon name="pencil"></plex-icon>
-
+            <plex-icon type="info" name="pencil"></plex-icon>
             <!-- <img src="{{ paciente.foto }}" alt=""> -->
-
             <plex-badge size="lg">{{ paciente.estado }}</plex-badge>
             <div title> {{ paciente.nombreCompleto }} </div>
             <div subtitle> {{ paciente.documento }} </div>
-
             <plex-label titulo="documento" subtitulo="34934522"></plex-label>
             <plex-label class="col-22" titulo="CUIL22" subtitulo="20-34934522-7"></plex-label>
             <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>

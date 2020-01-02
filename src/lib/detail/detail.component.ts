@@ -17,8 +17,8 @@ import { Component, OnInit, Input } from '@angular/core';
             </div>
         </section>
 
-        <section class="contenedor-datos-secundarios">
-            <ng-container *ngFor="let dato of datos">
+        <section [ngClass]="cssDirection" class="contenedor-datos-secundarios">
+            <ng-container *ngFor="let dato of items">
                 <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
             </ng-container>
             <ng-content select="plex-label"></ng-content>
@@ -30,7 +30,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PlexDetailComponent {
     @Input() direction: 'column' | 'row' = 'row';
     @Input() size: 'xs' | 'md' | 'lg' = 'md';
-    @Input() datos: [];
+    @Input() items: [];
 
     get cssDirection() {
         return this.direction === 'row' ? 'direction-row' : 'direction-column';

@@ -5,32 +5,34 @@ plex-detail {
      flex-wrap: wrap;
      
      > section {
-        
         margin-top: 1rem;
- 
+    }
+    section.direction-column {
+        --detail-divider-align: center;
+        --detail-image-mr: 0;
+        --detail-image-mb: 1rem;
+        --detail-text-align: center;
     }
 
-    section.direction-column {
+    section.direction-column:first-child {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-
-        --detail-divider-align: center;
-        --detail-image-mr: 0;
-        --detail-image-mb: 1rem;
     }
-
-    section.direction-row {
+    
+    section.direction-row:first-child {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        align-items: center;
-
+        align-items: center; 
+    }
+        section.direction-row {
         --detail-divider-align: start;
         --detail-image-mr: 0.75rem;
         --detail-image-mb: 0;
+        --detail-text-align: left;
     }
 
     div.contenedor-elementos-graficos { 
@@ -57,7 +59,7 @@ plex-detail {
     .contenedor-textos {
         
         div[title] {
-            margin-top: .25rem;
+            margin: .25rem 2rem 0 0;
 
             &::first-line {
                 font-weight: 700;
@@ -73,11 +75,8 @@ plex-detail {
         }
     }
         
-    
-        
 
-
-        // size-lg
+    // size-lg
     section.size-lg {
 
         div.contenedor-elementos-graficos {
@@ -86,7 +85,6 @@ plex-detail {
             img {
                 width: 5.5rem;
                 height: 5.5rem; 
-                
             }
 
             // iconos
@@ -164,7 +162,6 @@ plex-detail {
                 font-size: 0.9rem;
             }
         }
-            
     }
 
     .contenedor-datos-secundarios {
@@ -172,13 +169,9 @@ plex-detail {
         grid-template-columns: repeat( auto-fill, minmax(100px, 1fr));
         grid-gap: 10px; 
         flex: 1 20em;
+        align-self: center;
+        text-transform: capitalize;
+        text-align: var(--detail-text-align);
     }
- 
-
-
-    .contenedor-datos-secundarios {
-        // width: fit-content;
-        // text-align: center;
-    }         
 }
     
