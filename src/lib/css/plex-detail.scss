@@ -22,6 +22,8 @@
                 }
             }
 
+        .bloque-titulo {
+            
             h4 {
                 margin-top: .25rem;
 
@@ -33,16 +35,11 @@
             hr {
                 float: left;
                 margin: 0.25rem 0;
+                width: 25px;
+                border: solid 1px $blue;
+                }
             }
-            
-            img {
-                margin-bottom: 1rem;
-            }
-
-        hr {
-            width: 25px;
-            border: solid 1px $blue;
-        }
+        
     
         .contenedor-datos-secundarios {
             display: grid;
@@ -61,6 +58,7 @@
 
         // size-lg
         &[type="lg"] {
+
             div.contenedor-elementos-graficos {
 
                 // imagenes
@@ -80,15 +78,17 @@
                     }
                 }
 
-                h4 {
-                    font-size: 1.5rem;
-                    margin-top: .5rem;
-                    text-align: center;
-                }
-                
-                hr {
-                    float: left;
-                    margin: 0.25rem 0;
+                .bloque-titulo {
+                    
+                    h4 {
+                        font-size: 1.5rem;
+                        margin-top: .5rem;
+                    }
+                    
+                    hr {
+                        float: left;
+                        margin: 0.25rem 0;
+                    }
                 }
             }
 
@@ -114,14 +114,17 @@
                     }
                 }
 
-                h4 {
-                    font-size: 1.15rem;
-                    margin-top: .5rem;
-                }
-                
-                hr {
-                    float: left;
-                    margin: 0.25rem 0;
+                .bloque-titulo {
+                    
+                    h4 {
+                        font-size: 1.15rem;
+                        margin-top: .5rem;
+                    }
+                    
+                    hr {
+                        float: left;
+                        margin: 0.25rem 0;
+                    }
                 }
             }
 
@@ -152,6 +155,8 @@
                     padding: 10px;
                     }
                 }
+
+            .bloque-titulo {
                 
                 h4 {
                     font-size: 1.15rem;
@@ -162,6 +167,8 @@
                     align-self: center;
                     margin: 0.25rem 0;
                 }
+                
+            }
                 
                 .contenedor-datos-secundarios {
                     text-align: center;

@@ -14,12 +14,13 @@ import { Component, OnInit, Input } from '@angular/core';
                 <h5 *ngIf="subtitulo">{{ subtitulo }}</h5>
                 <hr class="w-25 float-left">
                 <ng-content select="plex-label"></ng-content>
-                </div>
+            </div>
         </section>
     `,
 })
 
 export class PlexDetailComponent implements OnInit {
+
 
     @Input() horizontalidad: boolean;
     @Input() foto: string;

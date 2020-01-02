@@ -11,7 +11,7 @@
                             <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
                             <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
                         </div>
-                        <div class="direction-column">
+                        <div justify="center" class="bloque-titulo d-flex flex-column">
                             <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
                             <h4>{{ paciente.nombreCompleto }}</h4>
                             <h6>{{ paciente.documento }}</h6>
@@ -35,7 +35,7 @@
                     <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
                     <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
                 </div>
-                <div>
+                <div class="bloque-titulo">
                     <plex-badge>{{ paciente.estado }}</plex-badge>
                     <h4>{{ paciente.nombreCompleto }}</h4>
                     <h6>{{ paciente.documento }}</h6>
@@ -43,9 +43,9 @@
                 </div>
             </section>
             <section class="contenedor-datos-secundarios">
-                <div *ngFor="let dato of datos">
+                <ng-container *ngFor="let dato of datos">
                     <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
-                </div>
+                </ng-container>
             </section>
         </section>
 
@@ -64,7 +64,7 @@
                     <i *ngIf="icon" class="mdi mdi-{{ icono.caracter }} text-{{ icono.color }}"></i>
                     <img *ngIf="foto" class="rounded-circle cover" src="{{ paciente.foto }}" alt="">
                 </div>
-                <div class="">
+                <div class="bloque-titulo">
                     <plex-badge size="sm">{{ paciente.estado }}</plex-badge>
                     <h4>{{ paciente.nombreCompleto }}</h4>
                     <h6>{{ paciente.documento }}</h6>
