@@ -3,41 +3,58 @@
 plex-detail {
      display: flex;
      flex-wrap: wrap;
+
+    &[size=lg] {
+        --detail-img-size: 5.5rem;
+    }
+
+    &[size=md] {
+        --detail-img-size: 3.5rem;
+    }
      
      > section {
         margin-top: 1rem;
     }
+
     section.direction-column {
         --detail-divider-align: center;
-        --detail-image-mr: 0;
-        --detail-image-mb: 1rem;
+        --detail-img-mr: 0;
+        --detail-img-mb: 1rem;
         --detail-text-align: center;
     }
 
-    section.direction-column:first-child {
+    section.direction-row {
+        --detail-divider-align: start; 
+        --detail-img-mr: 0.75rem;
+        --detail-img-mb: 0;
+        --detail-text-align: left;
+    }
+
+    %baseDirection {
         display: flex;
+        align-items: center;
+    }
+
+    section.direction-column:first-child {
+        @extend %baseDirection;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
         text-align: center;
     }
     
     section.direction-row:first-child {
-        display: flex;
+        @extend %baseDirection;
         flex-direction: row;
         justify-content: flex-start;
-        align-items: center; 
     }
-        section.direction-row {
-        --detail-divider-align: start;
-        --detail-image-mr: 0.75rem;
-        --detail-image-mb: 0;
-        --detail-text-align: left;
+
+    section.direction-row:nth-child(2) {
+        margin-left: calc(var(--detail-img-size) + var(--detail-img-mr));
     }
 
     div.contenedor-elementos-graficos { 
-        margin-bottom: var(--detail-image-mb);
-        margin-right: var(--detail-image-mr);
+        margin-bottom: var(--detail-img-mb);
+        margin-right: var(--detail-img-mr);
 
         // Estilos imagenes
         img {
@@ -59,7 +76,8 @@ plex-detail {
     .contenedor-textos {
         
         div[title] {
-            margin: .25rem 2rem 0 0;
+            margin-top: .25rem;
+            line-height: 1.65rem;
 
             &::first-line {
                 font-weight: 700;
@@ -83,8 +101,8 @@ plex-detail {
 
             // imagenes
             img {
-                width: 5.5rem;
-                height: 5.5rem; 
+                width: var(--detail-img-size);
+                height: var(--detail-img-size); 
             }
 
             // iconos
@@ -97,23 +115,25 @@ plex-detail {
         }
 
         .contenedor-textos {
+            
             div[title] {
                 font-size: 1.5rem;
                 margin-top: .5rem;
             } 
             div[subtitle] {
-                font-size: 1.3rem;
+                font-size: 1rem;
             }
         }
     }
 
     // size-md
     section.size-md {
+
         div.contenedor-elementos-graficos {
             // se disminuye las imagenes
             img {
-                width: 4rem;
-                height: 4rem; 
+                width: var(--detail-img-size);
+                height: var(--detail-img-size); 
             }
 
             // se disminuye los iconos
@@ -126,12 +146,13 @@ plex-detail {
         }
 
         .contenedor-textos {
+
             div[title] {
                 font-size: 1.25rem;
                 margin-top: .5rem;
             }
             div[subtitle] {
-                font-size: 1.05rem;
+                font-size: 0.85rem;
             }
         }
     }
@@ -159,7 +180,7 @@ plex-detail {
                 margin-top: .5rem;
             }
             div[subtitle] {
-                font-size: 0.9rem;
+                font-size: 0.65rem;
             }
         }
     }
@@ -172,6 +193,12 @@ plex-detail {
         align-self: center;
         text-transform: capitalize;
         text-align: var(--detail-text-align);
+
+        span {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
     }
 }
     

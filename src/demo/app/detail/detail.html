@@ -25,7 +25,6 @@
             <plex-badge size="lg">{{ paciente.estado }}</plex-badge>
             <div title> {{ paciente.nombreCompleto }} </div>
             <div subtitle> {{ paciente.documento }} </div>
-
         </plex-detail>
 
     </plex-layout-main>
@@ -36,7 +35,7 @@
             <plex-button type="danger" size="sm" (click)="cambiarDireccionalidad()">VOLVER</plex-button>
         </plex-title>
 
-        <plex-detail size="lg">
+        <plex-detail size="md">
             <plex-icon type="info" name="pencil"></plex-icon>
             <!-- <img src="{{ paciente.foto }}" alt=""> -->
             <plex-badge size="lg">{{ paciente.estado }}</plex-badge>

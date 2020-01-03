@@ -57,7 +57,7 @@ export class DetailDemoComponent {
         { label: 'género', valor: 'Hospital Provincial de Neuquen Castro Rendon' },
         { label: 'fecha de nacimiento', valor: '14 de Julio de 1953' },
         { label: 'CUIL', valor: '20-16879253-5' },
-        { label: 'Nota', valor: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis' }
+        { label: 'Nota', valor: 'Donec quam felis, ultricies nec, pellentesque eu, pretium quis. Lorem ipsum sonnet.' }
     ]
 
 }
