@@ -5,14 +5,14 @@ plex-detail {
     flex-wrap: wrap;
     margin: 1rem 0;
     // md size = md default
-    --detail-img-size: 3.5rem;
+    --detail-img-size: 4.5rem;
 
     &[size=lg] {
         --detail-img-size: 5.5rem;
     }
 
     &[size=xs] {
-        --detail-img-size: 2.5rem;
+        --detail-img-size: 3.5rem;
     }
      
     section.direction-column {
@@ -59,6 +59,8 @@ plex-detail {
         img {
             border-radius: 50%;
             object-fit: cover;
+            width: var(--detail-img-size);
+            height: var(--detail-img-size); 
         }
         
         // Estilos iconos
@@ -69,6 +71,11 @@ plex-detail {
             border: solid 3px;
             border-radius: 50%;
             padding: 15px;
+            // se disminuye tamaño de iconos
+            font-size: 2rem;
+            padding: 15px;
+            height: var(--detail-img-size); 
+            width: var(--detail-img-size);
         }
     }
 
@@ -85,7 +92,7 @@ plex-detail {
 
         hr {
             float: left;
-            margin: 0.5rem 0;
+            margin: 0.75rem 0;
             width: 25px;
             border: solid 1px $blue;
             align-self: var(--detail-divider-align);
@@ -107,9 +114,9 @@ plex-detail {
             // iconos
             i {
                 font-size: 2.5rem;
-                height: 5rem; 
+                height: var(--detail-img-size); 
                 padding: 15px;
-                width: 5rem;
+                width: var(--detail-img-size);
             }
         }
 
@@ -128,22 +135,6 @@ plex-detail {
     // size-md
     section.size-md {
 
-        div.contenedor-elementos-graficos {
-            // se disminuye las imagenes
-            img {
-                width: var(--detail-img-size);
-                height: var(--detail-img-size); 
-            }
-
-            // se disminuye los iconos
-            i {
-                font-size: 2rem;
-                height: 3.5rem; 
-                padding: 15px;
-                width: 3.5rem;
-            }
-        }
-
         .contenedor-textos {
 
             div[title] {
@@ -151,7 +142,7 @@ plex-detail {
                 margin-top: .5rem;
             }
             div[subtitle] {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
             }
         }
     }
@@ -179,7 +170,7 @@ plex-detail {
                 margin-top: .5rem;
             }
             div[subtitle] {
-                font-size: 0.65rem;
+                font-size: 0.75rem;
             }
         }
     }
