@@ -7,7 +7,7 @@ import { DropdownItem } from './../../lib/dropdown/dropdown-item.inteface';
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  // Hace que PlexService sea un singleton para toda la aplicación
+    // Hace que PlexService sea un singleton para toda la aplicación
     constructor(public plex: Plex) { }
 
     ngOnInit() {
@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
             { label: 'Box', icon: 'selection', route: '/box' },
             { label: 'Button', icon: 'solid', route: '/button' },
             { label: 'DateTime', icon: 'calendar', route: '/datetime' },
+            { label: 'Detail', icon: 'account', route: '/detail' },
             { label: 'Dropdown', icon: 'menu-right', route: '/dropdown' },
             { label: 'Float', icon: 'numeric', route: '/float' },
             { label: 'Int', icon: 'numeric', route: '/int' },

@@ -1,21 +1,20 @@
 // Estilos base
 
 plex-detail {
-     display: flex;
-     flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+    // md size = md default
+    --detail-img-size: 3.5rem;
 
     &[size=lg] {
         --detail-img-size: 5.5rem;
     }
 
-    &[size=md] {
-        --detail-img-size: 3.5rem;
+    &[size=xs] {
+        --detail-img-size: 2.5rem;
     }
      
-     > section {
-        margin-top: 1rem;
-    }
-
     section.direction-column {
         --detail-divider-align: center;
         --detail-img-mr: 0;
@@ -86,7 +85,7 @@ plex-detail {
 
         hr {
             float: left;
-            margin: 0.25rem 0;
+            margin: 0.5rem 0;
             width: 25px;
             border: solid 1px $blue;
             align-self: var(--detail-divider-align);
@@ -162,8 +161,8 @@ plex-detail {
         div.contenedor-elementos-graficos { 
             // se disminuyen las imagenes
             img {  
-                width: 3.5rem;
-                height: 3.5rem;
+                width: var(--detail-img-size);
+                height: var(--detail-img-size); 
             }
             
             i { 

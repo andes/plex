@@ -75,47 +75,19 @@
         <plex-scroll (change)="loadData()"></plex-scroll>
     </plex-layout-main>
     <plex-layout-sidebar>
-        <header>
-            <div class="row">
-                <div class="col">
-                    Este es el header de plex-box. Siempre queda fijo
-                </div>
-                <div class="col">
-                    <div class="btn-group float-right">
-                        <plex-button type="success" title="Restaurar usuario" titlePosition="left" icon="account">
-                        </plex-button>
-                        <plex-button type="danger" icon="clock" (click)="modal.show();"></plex-button>
-                        <plex-modal #modal>
-                            <plex-icon name="alert-circle" type="info"></plex-icon>
-                            <plex-modal-title type="primary">Historia Universal Digital de Salud</plex-modal-title>
-                            <plex-modal-subtitle type="info">Por favor, indique el motivo de acceso:
-                            </plex-modal-subtitle>
-                            <main>
-                                <form action="">
-                                    <plex-list minWidth="true">
-                                        <plex-item layout="izquierda">
-                                            <plex-bool></plex-bool>
-                                            <plex-label>Continuidad del cuidado del paciente
-                                            </plex-label>
-                                        </plex-item>
-                                        <plex-item layout="izquierda">
-                                            <plex-bool></plex-bool>
-                                            <plex-label>Auditoría</plex-label>
-                                        </plex-item>
-                                        <plex-item layout="izquierda">
-                                            <plex-bool></plex-bool>
-                                            <plex-label>Urgencia / Emergencia</plex-label>
-                                        </plex-item>
-                                    </plex-list>
-                                </form>
-                            </main>
-                            <plex-button modal right type="success" (click)="modal.close()"> ACEPTAR </plex-button>
-                            <plex-button modal left type="danger" (click)="modal.close()"> CANCELAR </plex-button>
-                        </plex-modal>
-                    </div>
-                </div>
-            </div>
-        </header>
+
+        <plex-detail size="md">
+            <img src="https://www.prodapt.com/wp-content/uploads/user-icon.png" alt="">
+            <plex-badge type="info">Validado</plex-badge>
+            <div title>Texto principal o titulo</div>
+            <div subtitle>Texto secundario intrisecamente relacionado al titulo</div>
+            <plex-label titulo="label" subtitulo="texto del label"></plex-label>
+            <plex-label titulo="label" subtitulo="texto del label"></plex-label>
+            <plex-label titulo="label" subtitulo="texto del label"></plex-label>
+            <plex-label titulo="label" subtitulo="texto del label"></plex-label>
+            <plex-label titulo="label" subtitulo="texto del label"></plex-label>
+        </plex-detail>
+
         <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Reglas TOP">
             <ul class="list-group">
                 <li class="list-group-item active">Cras justo odio</li>
