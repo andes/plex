@@ -90,6 +90,10 @@ plex-detail {
             }
         }
 
+        plex-badge:nth-child(n+1) {
+            margin-right: 0.5rem;
+        }
+
         hr {
             float: left;
             margin: 0.75rem 0;
