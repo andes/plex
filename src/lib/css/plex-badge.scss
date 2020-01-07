@@ -1,4 +1,4 @@
-.badge {
+%baseBadge {
     background: transparent;
     border: 1.5px solid;
     font-size: 0.75em;
@@ -13,27 +13,35 @@
     border-color: var(--badge-color);
     color: var(--badge-color);
 }
- 
 
+.badge {
+    @extend %baseBadge;
+}
+ 
 
 .badge-default {
     --badge-color: #{$dark-grey}; 
+    @extend %baseBadge;
 }
 
 .badge-danger {
     --badge-color: #{$red};
+    @extend %baseBadge;
 }
 
 .badge-success {
     --badge-color: #{$green};
+    @extend %baseBadge;
 }
 
 .badge-warning {
-    --badgde-color: #{$orange};
+    --badge-color: #{$orange};
+    @extend %baseBadge;
 }
 
 .badge-info {
     --badge-color: #{$blue};
+    @extend %baseBadge;
 }
 
 // Espaciado del ícono
