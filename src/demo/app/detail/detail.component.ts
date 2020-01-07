@@ -15,7 +15,7 @@ export class DetailDemoComponent {
     icono = {
         caracter: 'pencil',
         color: 'info',
-    }
+    };
 
     paciente =
         {
@@ -48,7 +48,7 @@ export class DetailDemoComponent {
             scan: null,
             reportarError: false,
             notaError: ''
-        }
+        };
 
     datos = [
         { label: 'edad', valor: '41 años' },
@@ -58,6 +58,6 @@ export class DetailDemoComponent {
         { label: 'fecha de nacimiento', valor: '14 de Julio de 1953' },
         { label: 'CUIL', valor: '20-16879253-5' },
         { label: 'Nota', valor: 'Donec quam felis, ultricies nec, pellentesque eu, pretium quis. Lorem ipsum sonnet.' }
-    ]
+    ];
 
 }
