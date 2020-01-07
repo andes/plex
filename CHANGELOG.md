@@ -1,3 +1,10 @@
+## [5.5.1](https://github.com/andes/plex/compare/v5.5.0...v5.5.1) (2020-01-07)
+
+
+### Bug Fixes
+
+* **plex-badge:** compatibilidad con ANDEA ([5ffe749](https://github.com/andes/plex/commit/5ffe7498b2997a64fb00031cc7213dfdb1e5b902))
+
 # [5.5.0](https://github.com/andes/plex/compare/v5.4.0...v5.5.0) (2020-01-07)
 
 
