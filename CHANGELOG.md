@@ -1,3 +1,10 @@
+## [5.5.2](https://github.com/andes/plex/compare/v5.5.1...v5.5.2) (2020-01-07)
+
+
+### Bug Fixes
+
+* **tooltip:** evita mostrar tooltip sin texto ([35b1861](https://github.com/andes/plex/commit/35b1861dba39541efb32d594746ee56f6681b962))
+
 ## [5.5.1](https://github.com/andes/plex/compare/v5.5.0...v5.5.1) (2020-01-07)
 
 
