@@ -38,7 +38,7 @@ export class TooltipComponent {
     @HostListener('focusin')
     @HostListener('mouseenter')
     show(): void {
-        if (this.tooltipDisabled || this.visible) {
+        if (this.tooltipDisabled || this.visible || !this.content) {
             return;
         }
 
