@@ -1,0 +1,50 @@
+<plex-layout main="8">
+    <plex-layout-main>
+        <plex-title titulo="Titulo principal">
+            <plex-help icon="information">
+                <div info justify="center">
+                    <plex-detail direction="column" justify="center">
+                        <!-- <plex-icon name="pencil"></plex-icon> -->
+                        <img src="{{ paciente.foto }}" alt="">
+                        <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
+                        <div title>{{ paciente.nombreCompleto }}</div>
+                        <div subtitle>{{ paciente.documento }}</div>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                        <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+                    </plex-detail>
+                </div>
+            </plex-help>
+        </plex-title>
+
+        <plex-detail size="lg" [items]="datos">
+            <!-- <plex-icon name="pencil"></plex-icon> -->
+            <img src="{{ paciente.foto }}" alt="">
+            <plex-badge size="lg">{{ paciente.estado }}</plex-badge>
+            <div title> {{ paciente.nombreCompleto }} </div>
+            <div subtitle> {{ paciente.documento }} </div>
+        </plex-detail>
+
+    </plex-layout-main>
+
+    <!-- Sidebar -->
+    <plex-layout-sidebar type="invert">
+        <plex-title justify titulo="Titulo del sidebar" size="sm">
+            <plex-button type="danger" size="sm">VOLVER</plex-button>
+        </plex-title>
+
+        <plex-detail size="md">
+            <!-- <plex-icon type="info" name="pencil"></plex-icon> -->
+            <img src="{{ paciente.foto }}" alt="">
+            <plex-badge size="lg">{{ paciente.estado }}</plex-badge>
+            <div title> {{ paciente.nombreCompleto }} </div>
+            <div subtitle> {{ paciente.documento }} </div>
+            <plex-label titulo="documento" subtitulo="34934522"></plex-label>
+            <plex-label class="col-22" titulo="CUIL22" subtitulo="20-34934522-7"></plex-label>
+            <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
+        </plex-detail>
+    </plex-layout-sidebar>
+</plex-layout>
