@@ -1,3 +1,10 @@
+## [5.5.3](https://github.com/andes/plex/compare/v5.5.2...v5.5.3) (2020-01-08)
+
+
+### Bug Fixes
+
+* **css:** grow class only for child ([d9f5b0f](https://github.com/andes/plex/commit/d9f5b0f519643f8dc650c738e5c9411c05ba50e2))
+
 ## [5.5.2](https://github.com/andes/plex/compare/v5.5.1...v5.5.2) (2020-01-07)
 
 
