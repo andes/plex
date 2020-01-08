@@ -20,7 +20,7 @@ import { Plex } from './../core/service';
                     </div>
                     <div class="actions">
                         <!--App Status-->
-                        <div class="action">
+                        <div class="action hidden-md-down">
                             <i *ngIf="online" class="mdi mdi-cloud"></i>
                             <i *ngIf="!online" class="mdi mdi-cloud-off-outline text-danger"></i>
                             <div class="popover popover-bottom">
@@ -36,7 +36,7 @@ import { Plex } from './../core/service';
                                 </div>
                             </div>
                         </div>
-                        <div *ngIf="plex.userInfo" class="userinfo">
+                        <div *ngIf="plex.userInfo" class="userinfo hidden-md-down">
                             <div>
                                 <span>{{plex.userInfo.usuario.nombreCompleto}}</span><br><span *ngIf="plex.userInfo.organizacion">{{plex.userInfo.organizacion.nombre}}</span>
                             </div>
