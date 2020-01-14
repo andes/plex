@@ -6,8 +6,6 @@
                 <b label>Horario</b>
                 <b button></b>
             </plex-heading>
-
-
             <plex-item *ngFor="let item of lista; let par = even" [selected]="item.selected"
                        (click)="item.selected = !item.selected">
                 <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
@@ -65,7 +63,6 @@
             <plex-item [selected]="item.selected" (click)="item.selected = !item.selected" *ngFor="let item of lista">
                 <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
                 <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
-
                 <plex-button type="danger" size="sm" icon="delete"></plex-button>
                 <plex-badge type="danger">ausente</plex-badge>
                 <plex-button type="success" size="sm" icon="check-circle"></plex-button>
