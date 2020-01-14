@@ -28,28 +28,23 @@
             </div>
         </div>
         <hr>
-        <ul responsive class="list-group">
-            <li class="list-group-item active">
-                Cras justo odio
-            </li>
-            <li class="list-group-item">
-                Dapibus ac facilisis in
-                <plex-badge [color]="'#306436'"> VERDE </plex-badge>
-                <plex-badge type="danger"> ROJO </plex-badge>
-            </li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-6">
-                        Columna
-                    </div>
-                    <div class="col-6">
-                        Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
-                    </div>
-                </div>
-            </li>
-        </ul>
+
+        <plex-list [fullWidth]="true" [striped]="true" [selectable]="true">
+            <plex-heading>
+                <b checkbox></b>
+                <b label>Primer titulo</b>
+                <b label>Segundo tiutlo</b>
+                <b badge></b>
+            </plex-heading>
+            <plex-item *ngFor="let item of data" [layout]="completo">
+                <plex-bool type="checkbox"></plex-bool>
+                <plex-label titulo="primer titulo" subtitulo="segundo subtitulo"></plex-label>
+                <plex-label titulo="segundo titulo" subtitulo="segundo subtitulo"></plex-label>
+                <plex-badge type="success" size="sm">{{ item.identificador }}</plex-badge>
+            </plex-item>
+        </plex-list>
+
+
         <fieldset>
             <plex-title titulo="Esta es una leyenda"></plex-title>
             <div class="outline-dashed-default">

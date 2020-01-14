@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'plex-heading',
     template: `
-    <div class="item-list-heading" [ngClass]="layout">
+    <div class="item-list-heading has-icon" [ngClass]="layout">
         <ng-content selector="checkbox"></ng-content>
         <ng-content selector="label"></ng-content>
         <ng-content selector="badge"></ng-content>

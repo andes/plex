@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
     selector: 'plex-item',
     template: `
-        <div class="item-list {{ striped ? 'striped' : '' }}" [ngClass]="layout">
+        <div class="item-list has-icon {{ striped ? 'striped' : '' }}" [ngClass]="layout">
             <ng-content></ng-content>
             <ng-content select="checkbox"></ng-content>
             <!-- <div *ngIf="badges" class="badges" [ngClass]="{'mr-1': !botonera}">
