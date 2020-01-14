@@ -1,10 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { PlexListComponent } from './list.component';
+import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'plex-heading',
     template: `
-    <div class="item-list-heading" [ngClass]="layout">
-        <ng-content selector="checkbox"></ng-content>
+    <div class="item-list-heading" [class.has-icon]="hasIcon" [class.has-checkbox]="hasCheckbox">
+        <b *ngIf="hasCheckbox"></b>
+        <b *ngIf="hasIcon"></b>
         <ng-content selector="label"></ng-content>
         <ng-content selector="badge"></ng-content>
         <ng-content selector="button"></ng-content>
@@ -12,12 +15,24 @@ import { Component, Input } from '@angular/core';
     `
 })
 export class PlexHeadingComponent {
-    @Input() layout: 'completo' | 'contenido' | 'izquierda' | 'derecha' = 'completo';
     @Input() headings: any = {};
     @Input() titulo: string;
     @Input() subtitulo: string;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
 
-    constructor() {
+    constructor(private parent: PlexListComponent, private ref: ChangeDetectorRef) {
+        this.parent.hasCheckbox$.pipe(take(1)).subscribe(() => {
+            this.hasCheckbox = true;
+            this.ref.detectChanges();
+        });
+
+        this.parent.hasIcon$.pipe(take(1)).subscribe(() => {
+            this.hasIcon = true;
+            this.ref.detectChanges();
+        });
     }
+
+    public hasIcon = false;
+    public hasCheckbox = false;
+
 }
