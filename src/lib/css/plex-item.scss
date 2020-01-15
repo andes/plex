@@ -37,13 +37,6 @@ plex-list {
 
         padding: 0 1rem;
 
-        &.sticky {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background-color: var(--heading-background-color)!important;
-        }
-
         >* {
             display: flex;
             align-items: center;
@@ -79,19 +72,31 @@ plex-list {
         cursor: pointer;
         
         &:hover {
-            box-shadow: inset 0 0 0 2px $blue;
-            background-color: $light-blue!important;
-            color: black;
             box-sizing: border-box;
+            box-shadow: inset 0 0 0 2px $blue;
+            // border: solid 2px $blue;
+            background-color: $light-blue;
         }
         
         &.selected {
-            box-shadow: inset 0 0 0 2px $blue;
-            background-color: $light-blue!important;
-            color: black;
-            box-sizing: border-box;
+            background-color: $dark-blue !important;
+            color: white !important;
+            
+            plex-bool {
+                .mat-checkbox-inner-container {
+                    background: white;
+                }
+            }
+    
+            plex-dropdown {
+                .btn {
+                    color: white;
+                }
+            }
         }
-     
+    
+        // grid-template-columns: minmax(100px, min-content) repeat(auto-fill, 200px);
+ 
         >* {
             display: flex;
             align-items: center;
@@ -113,7 +118,6 @@ plex-list {
         > plex-bool {
             label {
                 margin-top: 0 !important;
-                background: white;
             }
         }
     
@@ -198,7 +202,7 @@ plex-list {
     }
     
     .striped>:nth-child(odd)>div {
-        background-color: rgba(0, 0, 0, .05);
+        background: rgba(0, 0, 0, .05);
     }
      
     // Sin checkbox, Sin icono
@@ -222,3 +226,5 @@ plex-list {
         } 
      
 }
+
+ 

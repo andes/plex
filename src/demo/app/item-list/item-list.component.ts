@@ -8,31 +8,42 @@ export class ItemDemoComponent implements OnInit {
 
     lista = [
         {
+            componente: 'PlexTextComponent',
             name: 'UNO',
+            internals: {
+                password: true
+            },
+            id: 1
         },
         {
+            componente: 'PlexItemComponent',
             name: 'DOS',
+            itemType: 'heading-item',
+            internals: {
+                password: true,
+                items: [
+                    'Nombre',
+                    'Apellido'
+                ]
+            },
+            id: 2
         },
         {
+            componente: 'PlexIntComponent',
             name: 'TRES',
+            internals: {
+                readonly: true
+            },
+            id: 3
         },
         {
+            componente: 'PlexBoolComponent',
             name: 'CUATRO',
-        },
-        {
-            name: 'CINCO',
-        },
-        {
-            name: 'SEIS',
-        },
-        {
-            name: 'SIETE',
-        },
-        {
-            name: 'OCHO',
-        },
-        {
-            name: 'NUEVE',
+            internals: {
+                type: 'slide',
+                checkbox: false
+            },
+            id: 4
         },
     ];
 
