@@ -54,25 +54,23 @@
         <plex-bool type="slide" label="Ajustar a cada contenido" [(ngModel)]="layout.contenido" name="contenido">
         </plex-bool> -->
     </plex-layout-main>
-    <plex-layout-sidebar>
+    <plex-layout-sidebar type="invert">
 
-        <!-- <plex-list>
+        <plex-list>
             <plex-heading>
                 <b label>1</b>
-                <b label>2</b>
                 <b badge>3</b>
             </plex-heading>
-            <plex-item *ngFor="let item of lista">
-                <plex-bool name="activo"></plex-bool>
-                <plex-label titulo="Título" subtitulo="Un subtítulo" size="sm"></plex-label>
+            <plex-item [selected]="item.selected" (click)="item.selected = !item.selected" *ngFor="let item of lista">
+                <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
                 <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
- 
+
                 <plex-button type="danger" size="sm" icon="delete"></plex-button>
                 <plex-badge type="danger">ausente</plex-badge>
                 <plex-button type="success" size="sm" icon="check-circle"></plex-button>
                 <plex-button type="warning" size="sm" icon="clock"></plex-button>
             </plex-item>
-        </plex-list> -->
+        </plex-list>
 
     </plex-layout-sidebar>
 </plex-layout>
