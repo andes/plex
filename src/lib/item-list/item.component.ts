@@ -1,13 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit, ViewChildren, QueryList, AfterViewInit, ContentChildren, ElementRef, ViewChild, ContentChild, ChangeDetectorRef } from '@angular/core';
+import { PlexIconComponent } from '../icon/icon.component';
+import { PlexBoolComponent } from '../bool/bool.component';
+import { PlexListComponent } from './list.component';
 @Component({
     selector: 'plex-item',
     template: `
-        <div class="item-list has-icon {{ striped ? 'striped' : '' }}" [ngClass]="layout">
+        <div class="item-list"
+             [class.has-icon]="plexIcons?.length > 0 || imgs"
+             [class.has-checkbox]="plexBools?.length > 0"
+             [class.selected]="selected"
+        >
+            <ng-content select="plex-bool"></ng-content>
+            <ng-content select="img" #imagenes></ng-content>
+            <ng-content select="plex-icon"></ng-content>
             <ng-content></ng-content>
-            <ng-content select="checkbox"></ng-content>
-            <!-- <div *ngIf="badges" class="badges" [ngClass]="{'mr-1': !botonera}">
-            </div> -->
             <div class="botonera">
                 <ng-content select="plex-badge"></ng-content>
                 <ng-content select="plex-button"></ng-content>
@@ -17,16 +23,29 @@ import { Component, Input, OnInit } from '@angular/core';
         </div>
     `
 })
-export class PlexItemComponent implements OnInit {
+export class PlexItemComponent implements AfterViewInit {
+    @Input() selected = false;
 
-    @Input() layout: 'completo' | 'contenido' | 'izquierda' | 'derecha' = 'completo';
-    @Input() headings: any = {};
-    @Input() striped = false;
+    @ContentChildren(PlexIconComponent, { descendants: false }) plexIcons: QueryList<PlexIconComponent>;
+    @ContentChildren(PlexBoolComponent, { descendants: false }) plexBools: QueryList<PlexBoolComponent>;
+
+    public imgs = false;
+
     @Input() botonera = true;
     @Input() badges = true;
 
-    ngOnInit() {
-        this.layout = this.layout ? this.layout : 'completo';
+    ngAfterViewInit() {
+        this.imgs = !!this.elRef.nativeElement.querySelector('img');
+        this.ref.detectChanges();
+        this.parent.setIcon(this.plexIcons.length > 0 || this.imgs);
+        this.parent.setCheckbox(this.plexBools.length > 0);
     }
 
+    constructor(
+        private elRef: ElementRef,
+        private ref: ChangeDetectorRef,
+        private parent: PlexListComponent
+    ) {
+
+    }
 }

@@ -18,7 +18,7 @@ export class ItemDemoComponent implements OnInit {
     lista = [
         {
             componente: 'PlexTextComponent',
-            name: 'PlexTextComponent',
+            name: 'UNO',
             internals: {
                 password: true
             },
@@ -26,7 +26,7 @@ export class ItemDemoComponent implements OnInit {
         },
         {
             componente: 'PlexItemComponent',
-            name: 'PlexItemComponent',
+            name: 'DOS',
             itemType: 'heading-item',
             internals: {
                 password: true,
@@ -39,7 +39,7 @@ export class ItemDemoComponent implements OnInit {
         },
         {
             componente: 'PlexIntComponent',
-            name: 'PlexIntComponent',
+            name: 'TRES',
             internals: {
                 readonly: true
             },
@@ -47,7 +47,7 @@ export class ItemDemoComponent implements OnInit {
         },
         {
             componente: 'PlexBoolComponent',
-            name: 'PlexBoolComponent',
+            name: 'CUATRO',
             internals: {
                 type: 'slide',
                 checkbox: false
