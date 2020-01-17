@@ -1,0 +1,10 @@
+<plex-list>
+    <plex-item *ngFor="let paciente of pacienteService.pacientes">
+        <img src="{{ paciente.foto }}" alt="">
+        <plex-label titulo="{{ paciente.nombre }}" subtitulo="{{ paciente.documento }}"></plex-label>
+        <plex-badge type="info">{{ paciente.entidadesValidadoras }}</plex-badge>
+        <plex-badge type="warning">{{ paciente.fechaNacimiento }}</plex-badge>
+        <plex-button type="info" size="sm">acción de sistema</plex-button>
+        <plex-button type="success" size="sm">acción satisfactoria</plex-button>
+    </plex-item>
+</plex-list>

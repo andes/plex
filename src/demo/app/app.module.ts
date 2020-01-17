@@ -11,6 +11,7 @@ import { Plex } from '../../lib/core/service';
 
 // Services
 import { ServiceDemoSelect } from './select/select.service';
+import { PacienteService } from '../../service/paciente.service';
 
 // Routes
 import { HomeDemoComponent } from './home/home.component';
@@ -40,6 +41,10 @@ import { FechaPipe } from './templates/fecha.pipe';
 import { HeaderPacienteComponent } from './header-paciente/header-paciente.component';
 import { ItemDemoComponent } from './item-list/item-list.component';
 import { DetailDemoComponent } from './detail/detail.component';
+import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
+import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
+import { MainListadoComponent } from './templates/listado-sidebar/main/listado/main-listado.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -69,7 +74,10 @@ import { DetailDemoComponent } from './detail/detail.component';
         FechaPipe,
         HeaderPacienteComponent,
         ItemDemoComponent,
-        DetailDemoComponent
+        DetailDemoComponent,
+        ListadoSidebarComponent,
+        SidebarDetalleComponent,
+        MainListadoComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
@@ -85,6 +93,7 @@ import { DetailDemoComponent } from './detail/detail.component';
         Plex,
         appRoutingProviders,
         ServiceDemoSelect,
+        PacienteService
     ],
     bootstrap: [AppComponent]
 })

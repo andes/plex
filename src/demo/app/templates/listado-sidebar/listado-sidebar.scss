@@ -1,0 +1,13 @@
+#plex-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 5rem;
+    background-color: lightgray;
+    margin-bottom: 1rem;
+
+    plex-text, plex-select, plex-float {
+        max-width: 20%;
+    }
+}

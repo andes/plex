@@ -1,0 +1,10 @@
+<ng-container *ngFor="let paciente of pacienteService.pacientes">
+    <plex-detail direction="row">
+        <img src="{{ paciente.foto }}" alt="">
+        <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
+        <div title>{{ paciente.nombre }}</div>
+        <div subtitle>{{ paciente.documento }}</div>
+        <plex-label titulo="Fecha de Nacimiento" subtitulo="{{ paciente.fechaNacimiento }}">
+        </plex-label>
+    </plex-detail>
+</ng-container>
