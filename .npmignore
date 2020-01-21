@@ -13,3 +13,6 @@ webpack.entry.js
 .sass-cache
 e2e
 karma-cli
+cypress/
+.circleci
+dist/demo/
