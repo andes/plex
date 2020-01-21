@@ -6,6 +6,7 @@ import { NotificationsService } from './../toast/simple-notifications/services/n
 import { default as swal } from 'sweetalert2';
 import { WizardConfig } from './wizard-config.interface';
 import { PlexTitle } from './plex-title.interface';
+import * as introJs from 'intro.js';
 
 @Injectable()
 export class Plex {
@@ -22,7 +23,7 @@ export class Plex {
         private titleService: Title,
         private noficationService: NotificationsService,
         private componentFactoryResolver: ComponentFactoryResolver
-        ) { }
+    ) { }
 
     /**
      * Actualiza el ménu de la aplicación
@@ -303,7 +304,7 @@ export class Plex {
             });
         } else {
             // Utiliza Intro.js
-            const steps: IntroJs.Step[] = [];
+            const steps: introJs.Step[] = [];
             for (const i in config.steps) {
                 steps.push({
                     // title: config.steps[i].title,
@@ -341,7 +342,7 @@ export class Plex {
      */
 
     private viewContainerRef: ViewContainerRef;
-    setViewContainerRef (viewContainerRef) {
+    setViewContainerRef(viewContainerRef) {
         this.viewContainerRef = viewContainerRef;
     }
 

@@ -25,7 +25,7 @@
     "main": "./dist/index.js",
     "dependencies": {
         "@mdi/font": "^2.7.94",
-        "@types/intro.js": "^2.4.3",
+        "@types/intro.js": "^2.4.6",
         "@types/jquery": "^3.3.6",
         "@types/tether-shepherd": "^1.2.28",
         "animate.css": "^3.7.0",
