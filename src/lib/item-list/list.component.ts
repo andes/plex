@@ -1,57 +1,52 @@
-import { Component, Input, OnInit, ContentChild, TemplateRef, ContentChildren, QueryList, AfterViewInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Component, Input, Output, EventEmitter, QueryList, ContentChildren, AfterViewInit, ContentChild } from '@angular/core';
+import { PlexItemComponent } from './item.component';
+import { PlexHeadingComponent } from './heading.component';
 
 @Component({
     selector: 'plex-list',
     template: `
-    <div [class.striped]="striped">
+    <div [class.striped]="striped"
+         infiniteScroll [infiniteScrollDistance]="1" (scrolled)="onScroll()" [scrollWindow]="false"
+         [style.overflow-y]="styleScroll" [style.height]="height">
         <ng-content></ng-content>
-        <!--
-        <ng-container *ngFor="let item of items">
-            <plex-item>
-                <ng-container *ngTemplateOutlet="template; context: { item: item }" ></ng-container>
-            </plex-item>
-        </ng-container>
-        -->
     </div>
     `
 })
-
-export class PlexListComponent {
-    private hasIcon = false;
-    private hasCheckbox = false;
-
-    _hasIcon = new Subject();
-    hasIcon$ = this._hasIcon.asObservable().pipe(
-        filter(flag => !!flag)
-    );
-
-    _hasCheckbox = new Subject();
-    hasCheckbox$ = this._hasCheckbox.asObservable().pipe(
-        filter(flag => !!flag)
-    );
+export class PlexListComponent implements AfterViewInit {
 
     @Input() striped = true;
 
-    @Input() items = [];
+    @Input() height: string;
 
-    setIcon(value) {
-        this.hasIcon = this.hasIcon || value;
-        this._hasIcon.next(this.hasIcon);
+    @Output() scrolled = new EventEmitter<void>();
+
+    @ContentChildren(PlexItemComponent, { descendants: false }) private plexItems: QueryList<PlexItemComponent>;
+    @ContentChild(PlexHeadingComponent, { static: false }) private plexHeading: PlexHeadingComponent;
+
+    constructor() {
+
     }
 
-    getIcon() {
-        return this.hasIcon;
+    get styleScroll() {
+        if (this.height) {
+            return 'scroll';
+        }
     }
 
-    setCheckbox(value) {
-        this.hasCheckbox = this.hasCheckbox || value;
-        this._hasCheckbox.next(this.hasCheckbox);
+    public onScroll() {
+        this.scrolled.emit();
     }
 
-    getCheckbox() {
-        return this.hasCheckbox;
+    ngAfterViewInit() {
+        const hayIcono = this.plexItems.some(item => item.hasIcons());
+        const hayCheckbox = this.plexItems.some(item => item.hasCheckbox());
+        if (this.plexHeading) {
+            this.plexHeading.setIcon(hayIcono);
+            this.plexHeading.setCheckbox(hayCheckbox);
+            if (this.height) {
+                this.plexHeading.setSticky(true);
+            }
+        }
     }
 
 }

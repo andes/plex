@@ -6,53 +6,33 @@ import { DropdownItem } from '../../../lib/dropdown/dropdown-item.inteface';
 })
 export class ItemDemoComponent implements OnInit {
 
-    layout = 'completo';
-
-    templateModel = {
-        nombre: 'Andrrr',
-        apellido: 'Botho',
-    };
-
-    bold = false;
-
     lista = [
         {
-            componente: 'PlexTextComponent',
             name: 'UNO',
-            internals: {
-                password: true
-            },
-            id: 1
         },
         {
-            componente: 'PlexItemComponent',
             name: 'DOS',
-            itemType: 'heading-item',
-            internals: {
-                password: true,
-                items: [
-                    'Nombre',
-                    'Apellido'
-                ]
-            },
-            id: 2
         },
         {
-            componente: 'PlexIntComponent',
             name: 'TRES',
-            internals: {
-                readonly: true
-            },
-            id: 3
         },
         {
-            componente: 'PlexBoolComponent',
             name: 'CUATRO',
-            internals: {
-                type: 'slide',
-                checkbox: false
-            },
-            id: 4
+        },
+        {
+            name: 'CINCO',
+        },
+        {
+            name: 'SEIS',
+        },
+        {
+            name: 'SIETE',
+        },
+        {
+            name: 'OCHO',
+        },
+        {
+            name: 'NUEVE',
         },
     ];
 
@@ -87,10 +67,23 @@ export class ItemDemoComponent implements OnInit {
         ];
     }
 
-
-    toggleBold() {
-        this.bold = !this.bold;
-        return this.bold;
+    onScroll() {
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
+        this.lista.push({ name: 'MAS ITEMS' } as any);
     }
 
 }

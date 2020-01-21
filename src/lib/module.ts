@@ -2,6 +2,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 // Componentes
 import { PlexAppComponent } from './app/app.component';
@@ -112,7 +113,8 @@ const MODULES = [
         MatRadioModule,
         ChartsModule,
         QuillModule,
-        SimpleNotificationsModule.forRoot()
+        SimpleNotificationsModule.forRoot(),
+        InfiniteScrollModule
     ],
     declarations: [
         ...MODULES,
