@@ -1,3 +1,10 @@
+## [5.5.4](https://github.com/andes/plex/compare/v5.5.3...v5.5.4) (2020-01-21)
+
+
+### Bug Fixes
+
+* **chore:** fix version @types/Intro.Js ([052b6dd](https://github.com/andes/plex/commit/052b6dd804ad9c69d87a9a93ba4de40a8a047bc8))
+
 ## [5.5.3](https://github.com/andes/plex/compare/v5.5.2...v5.5.3) (2020-01-08)
 
 
