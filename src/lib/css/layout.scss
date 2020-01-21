@@ -28,6 +28,7 @@ plex-layout {
   display: flex;
   flex-flow: column;
   height: 100%;
+  --heading-background-color: #f2f2f2;
 
   // Footer (se ubica fijo abajo de la pantalla)
    > plex-layout-footer,

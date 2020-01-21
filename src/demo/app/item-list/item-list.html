@@ -1,6 +1,6 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <plex-list>
+        <plex-list height="70%" (scrolled)="onScroll()">
             <plex-heading>
                 <b label>Datos importantes</b>
                 <b label>Horario</b>
@@ -8,11 +8,12 @@
             </plex-heading>
 
 
-            <plex-item *ngFor="let item of lista" [selected]="item.selected" (click)="item.selected = !item.selected">
+            <plex-item *ngFor="let item of lista; let par = even" [selected]="item.selected"
+                       (click)="item.selected = !item.selected">
                 <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
                 <plex-icon name="pencil" size="24" type="warning"></plex-icon>
 
-                <plex-label [titulo]="item.name" [tituloBold]="toggleBold()"
+                <plex-label [titulo]="item.name" [tituloBold]="par"
                             subtitulo="10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora">
                 </plex-label>
                 <plex-dropdown icon="dots-vertical mdi-24px" [right]="true" [items]="dropitems">
@@ -57,7 +58,7 @@
     <plex-layout-sidebar type="invert">
 
         <plex-list>
-            <plex-heading>
+            <plex-heading [sticky]="true">
                 <b label>1</b>
                 <b badge>3</b>
             </plex-heading>

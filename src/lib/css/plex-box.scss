@@ -42,6 +42,7 @@ plex-box > DIV {
 .plex-box-invert {
       background: $dark-blue;
       color: white;
+      --heading-background-color: #{$dark-blue};
 
     ::-webkit-scrollbar-thumb {
         background: #e1e1e1;
