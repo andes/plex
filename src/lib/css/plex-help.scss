@@ -32,20 +32,24 @@ plex-help {
 
     .toggle-help, .toggle-info  {
         &.closed {
+            display: inline;
             position: relative;
             right: 0;
         }
         &.open {
             plex-button {
+                position: relative;
                 z-index: 1002;
             }    
         }
         plex-button {
             position: relative;
             right: 0;
-            display: flex;
-            justify-content: flex-end;
             z-index: 1000;
+
+            &:nth-last-child(n+1) {
+                margin-left: 4px;
+            }
         }
     }
     .toggle-info {
@@ -53,7 +57,7 @@ plex-help {
         right: 15px;
         top: 24px;
         &.closed {
-            top: 1px; 
+            top: 0px; 
         }
     }
     .toggle-help {
@@ -64,7 +68,7 @@ plex-help {
         left: 10px;
         plex-button {
             right: 10px;
-            top: 1px;
+            top: 0px;
         }
     }
 
@@ -72,6 +76,7 @@ plex-help {
         padding: 15px 30px;
         border-top: 1px solid darken($light-grey, 15%);
         border-left: 1px solid darken($light-grey, 15%);
+        color: black;
 
         plex-button {
             position: absolute;
@@ -84,7 +89,7 @@ plex-help {
             top: 24px;
             z-index: 1001;
             // 60px por los margins/padding + 2px por los bordes
-            width: calc(100% - 63px);
+            width: max-content;
             border-radius: 0.25rem;
             box-shadow: 2px 2px 5px 0px $dark-grey;
             max-height: 69vh;
@@ -95,3 +100,18 @@ plex-help {
         }
     }
 }
+
+    // hack para que coincida el deplegable con el borde del plex-layout-sidebar
+    plex-layout-sidebar {
+        plex-help .toggle-info.open {
+            right: 30px!important;
+        }
+        
+        .jumbotron {
+            
+            &.open {
+                right: 30px!important;
+                max-width: calc(100% - 3rem)!important;
+            }
+        }
+    }

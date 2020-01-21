@@ -75,6 +75,26 @@
         <plex-scroll (change)="loadData()"></plex-scroll>
     </plex-layout-main>
     <plex-layout-sidebar>
+
+        <plex-title main justify titulo="Gestor de agendas">
+            <plex-badge type="success">Badge satisfactoria</plex-badge>
+            <plex-help icon="information" titulo="Información sobre este módulo"
+                       subtitulo="A continuación todas las opciones">
+                <ol info class="list-group-flush">
+                    <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li class="list-group-item">Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <i
+                           class="mdi mdi-check"></i> para guardar una plantilla individual</li>
+                </ol>
+            </plex-help>
+        </plex-title>
+
         <plex-detail size="sm">
             <img src="https://www.prodapt.com/wp-content/uploads/user-icon.png" alt="">
             <plex-badge type="info">Validado</plex-badge>
