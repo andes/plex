@@ -6,6 +6,10 @@ plex-help {
         border-left: 1px solid darken($light-grey, 15%);
         border-radius: 0.25rem;
         box-shadow: 2px 2px 5px 0px $dark-grey;
+
+        &.info {
+            position: absolute;
+        }
         
         &.open {
             display: flex;
@@ -32,14 +36,16 @@ plex-help {
 
     .toggle-help, .toggle-info  {
         &.closed {
-            display: inline;
             position: relative;
+            display: inline;
             right: 0;
+            z-index: 0;
         }
         &.open {
+            display: inline;
             plex-button {
                 position: relative;
-                z-index: 1002;
+                z-index: 0;
             }    
         }
         plex-button {
@@ -53,7 +59,7 @@ plex-help {
         }
     }
     .toggle-info {
-        position: absolute;
+        // position: absolute;
         right: 15px;
         top: 24px;
         &.closed {
@@ -86,7 +92,7 @@ plex-help {
         &.open {
             position: absolute;
             right: 15px;
-            top: 24px;
+            top: 22px;
             z-index: 1001;
             // 60px por los margins/padding + 2px por los bordes
             width: max-content;

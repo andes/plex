@@ -4,9 +4,8 @@ import { Component, Input, Renderer2 } from '@angular/core';
     selector: 'plex-help',
     template: `
     <div class="toggle-{{ type }}" [ngClass]="{'closed': closed, 'open': !closed}">
-        <plex-button *ngIf="!closed" type="danger" size="sm" icon="close" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
-        <plex-button *ngIf="closed && !tituloBoton" type="info" size="sm" [icon]="icon" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
-        <plex-button *ngIf="closed && tituloBoton" type="info" size="sm" [label]="tituloBoton" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="!tituloBoton" type="info" size="sm" [icon]="icon" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="tituloBoton" type="info" size="sm" [label]="tituloBoton" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
     </div>
     <div class="card {{ type }}" [ngClass]="{'open': !closed}" *ngIf="type === 'help'">
         <ng-container *ngIf="!closed">
@@ -21,6 +20,7 @@ import { Component, Input, Renderer2 } from '@angular/core';
     </div>
     <ng-container *ngIf="!closed && type === 'info'">
         <div class="jumbotron {{ type }}" [ngClass]="{'open': !closed}">
+            <plex-button type="danger" size="sm" icon="close" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
             <h1 class="display-6">{{ titulo }}</h1>
             <p class="lead" *ngIf="subtitulo"><b>{{ subtitulo }}</b></p>
             <ng-content select="[info]"></ng-content>
