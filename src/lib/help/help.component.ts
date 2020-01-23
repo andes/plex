@@ -8,19 +8,18 @@ import { Component, Input, Renderer2 } from '@angular/core';
         <plex-button *ngIf="closed && !tituloBoton" type="info" size="sm" [icon]="icon" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
         <plex-button *ngIf="closed && tituloBoton" type="info" size="sm" [label]="tituloBoton" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
     </div>
-    <div class="card {{ type }}" [ngClass]="{'open': !closed}" *ngIf="type === 'help'">
+    <div class="card {{ type }}" [ngClass]="{'open': !closed}" *ngIf="type === 'help'" (click)="$event.stopImmediatePropagation();">
         <ng-container *ngIf="!closed">
             <div class="card-header">
-                <plex-title [titulo]="titulo" size="sm">
-                </plex-title>
-                </div>
-                <div class="card-body">
+                <h5>{{ titulo }}</h5>
+            </div>
+            <div class="card-body">
                 <ng-content></ng-content>
             </div>
         </ng-container>
     </div>
     <ng-container *ngIf="!closed && type === 'info'">
-        <div class="jumbotron {{ type }}" [ngClass]="{'open': !closed}">
+        <div class="jumbotron {{ type }}" [ngClass]="{'open': !closed}" (click)="$event.stopImmediatePropagation();">
             <h1 class="display-6">{{ titulo }}</h1>
             <p class="lead" *ngIf="subtitulo"><b>{{ subtitulo }}</b></p>
             <ng-content select="[info]"></ng-content>
