@@ -1,3 +1,16 @@
+# [5.6.0](https://github.com/andes/plex/compare/v5.5.4...v5.6.0) (2020-01-23)
+
+
+### Bug Fixes
+
+* **plex-list:** ajuste visualizacion ([3f6b8d9](https://github.com/andes/plex/commit/3f6b8d9c1671ef39cd7956aba2bc14293c4b056e))
+
+
+### Features
+
+* **plex-help:** type help ahora es flotante ([9a3ba0d](https://github.com/andes/plex/commit/9a3ba0d177159a6b6ef8a25e208b2ed18f1ed413))
+* **plex-list:** implementa scroll infinito ([2d4df93](https://github.com/andes/plex/commit/2d4df939b77a171719d4f7ff1d23709d5b685eba))
+
 ## [5.5.4](https://github.com/andes/plex/compare/v5.5.3...v5.5.4) (2020-01-21)
 
 
