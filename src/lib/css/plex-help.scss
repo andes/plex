@@ -10,12 +10,17 @@ plex-help {
         &.open {
             display: flex;
             flex-direction: column;
-            width: 100%;
+            width: auto;
             height: auto;
-            background: transparent;
+            background: white;
             z-index: 999;
+            position: absolute;
+            right: 30px;
+            left: 30px;
         }
-        
+        .card-header {
+            height: 50px;
+        }
         .card-body {
             transition: all;
             &.open {
@@ -32,6 +37,7 @@ plex-help {
 
     .toggle-help, .toggle-info  {
         &.closed {
+            display: inline-block;
             position: relative;
             right: 0;
         }
@@ -44,27 +50,24 @@ plex-help {
             position: relative;
             right: 0;
             display: flex;
-            justify-content: flex-end;
-            z-index: 1000;
+            justify-content: flex-end; 
         }
     }
-    .toggle-info {
+    .toggle-help, .toggle-info {
         position: absolute;
         right: 15px;
-        top: 24px;
+        top: 23px;
         &.closed {
-            top: 1px; 
+            top: 0; 
         }
     }
     .toggle-help {
-        position: relative;
-        height: 27px;
-        display: flex;
-        justify-content: flex-end;
-        left: 10px;
-        plex-button {
-            right: 10px;
-            top: 1px;
+        position: initial;
+        display: inline-block;
+        min-width: 42px;
+        height: 33px;
+        &.open {
+            top: 0;
         }
     }
 
@@ -81,7 +84,7 @@ plex-help {
         &.open {
             position: absolute;
             right: 15px;
-            top: 24px;
+            top: 23px;
             z-index: 1001;
             // 60px por los margins/padding + 2px por los bordes
             width: calc(100% - 63px);
