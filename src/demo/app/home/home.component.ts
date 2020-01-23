@@ -26,11 +26,12 @@ export class HomeDemoComponent implements OnInit {
     }
 
     loadData() {
-        // tslint:disable-next-line:no-console
-        console.log('Loading data on scroll');
         const max = Math.random() * 20 + 5;
         for (let i = 0; i < max; i++) {
             this.data = [...this.data, { identificador: Math.round(Math.random() * 1000) + 1 }];
         }
+    }
+
+    helpClick() {
     }
 }

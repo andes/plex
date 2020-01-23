@@ -1,6 +1,8 @@
 <plex-layout main="8">
     <plex-layout-main>
         <plex-title main justify titulo="Gestor de agendas">
+            <plex-badge size="sm" type="success">VALIDADO</plex-badge>
+            <plex-button size="sm" type="danger">ELIMINAR TODO</plex-button>
             <plex-help icon="information" titulo="Información sobre este módulo"
                        subtitulo="A continuación todas las opciones">
                 <ol info class="list-group-flush">
@@ -70,6 +72,62 @@
         <plex-scroll (change)="loadData()"></plex-scroll>
     </plex-layout-main>
     <plex-layout-sidebar>
+        <plex-title titulo="Texto principal" size="sm">
+            <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="TOP">
+                <ul class="list-group">
+                    <li class="list-group-item active">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </plex-help>
+        </plex-title>
+        <plex-detail size="sm">
+            <img src="https://www.prodapt.com/wp-content/uploads/user-icon.png" alt="">
+            <plex-badge type="info">Validado</plex-badge>
+            <div title>Texto principal o titulo</div>
+            <div subtitle>Texto secundario intrisecamente relacionado al titulo</div>
+        </plex-detail>
         <plex-detail size="sm">
             <img src="https://www.prodapt.com/wp-content/uploads/user-icon.png" alt="">
             <plex-badge type="info">Validado</plex-badge>
@@ -77,24 +135,99 @@
             <div subtitle>Texto secundario intrisecamente relacionado al titulo</div>
         </plex-detail>
 
-        <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Reglas TOP">
-            <ul class="list-group">
-                <li class="list-group-item active">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-6">
-                            Columna
+        <plex-title titulo="Texto principal" size="sm">
+            <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="TOP">
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        Cras justo odio <plex-button type="success" (click)="helpClick()"></plex-button>
+                    </li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
                         </div>
-                        <div class="col-6">
-                            Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </plex-help>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </plex-help>
+        </plex-title>
+
         <form>
             <p>El siguiente ejemplo muestra el uso de la propiedad <strong>validateForm</strong></p>
             <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false">
