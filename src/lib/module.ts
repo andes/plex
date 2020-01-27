@@ -59,6 +59,7 @@ import { QuillModule } from 'ngx-quill';
 import { PlexTitleComponent } from './title/title.component';
 import { JustifyDirective } from './directives/justify.directive';
 import { ResponsiveDirective } from './directives/responsive.directive';
+import { PlexOptionsComponent } from './options/options.component';
 
 const MODULES = [
     PlexAppComponent,
@@ -100,7 +101,8 @@ const MODULES = [
     PlexModalComponent,
     PlexModalTitleComponent,
     PlexCopyComponent,
-    PlexDetailComponent
+    PlexDetailComponent,
+    PlexOptionsComponent
 ];
 
 @NgModule({
