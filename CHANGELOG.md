@@ -1,3 +1,10 @@
+# [5.7.0](https://github.com/andes/plex/compare/v5.6.0...v5.7.0) (2020-01-28)
+
+
+### Features
+
+* **plex-options:** componente plex-options ([dc7573c](https://github.com/andes/plex/commit/dc7573ce5f3cec999a0f70a064649a8e088f643d))
+
 # [5.6.0](https://github.com/andes/plex/compare/v5.5.4...v5.6.0) (2020-01-23)
 
 
