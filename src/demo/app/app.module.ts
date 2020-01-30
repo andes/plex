@@ -11,7 +11,7 @@ import { Plex } from '../../lib/core/service';
 
 // Services
 import { ServiceDemoSelect } from './select/select.service';
-import { PacienteService } from '../../service/paciente.service';
+import { PacienteService } from './templates/service/paciente.service';
 
 // Routes
 import { HomeDemoComponent } from './home/home.component';

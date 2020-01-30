@@ -1,13 +1,27 @@
 #plex-filter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1rem;
+    grid-template-rows: 2fr;
     width: 100%;
-    height: 5rem;
-    background-color: lightgray;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0 0.75rem 0;
+    border-bottom: solid 1px lightgray;
+}
 
-    plex-text, plex-select, plex-float {
-        max-width: 20%;
-    }
+
+.displayNone {
+    display: none;
+}
+
+.validado {
+    
+}
+
+.temporal {
+
+}
+
+.fallecido {
+
 }

@@ -55,7 +55,7 @@ const appRoutes: Routes = [
     {
         path: 'templates/listado-sidebar', component: ListadoSidebarComponent,
         children: [
-            { path: 'detalle', component: SidebarDetalleComponent },
+            { path: ':id', component: SidebarDetalleComponent }
         ]
     },
     { path: 'item', component: ItemDemoComponent },

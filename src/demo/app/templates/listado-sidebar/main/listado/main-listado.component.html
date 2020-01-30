@@ -1,10 +1,17 @@
 <plex-list>
-    <plex-item *ngFor="let paciente of pacienteService.pacientes">
+    <plex-item *ngFor="let paciente of pacientes$ | async">
         <img src="{{ paciente.foto }}" alt="">
-        <plex-label titulo="{{ paciente.nombre }}" subtitulo="{{ paciente.documento }}"></plex-label>
-        <plex-badge type="info">{{ paciente.entidadesValidadoras }}</plex-badge>
-        <plex-badge type="warning">{{ paciente.fechaNacimiento }}</plex-badge>
-        <plex-button type="info" size="sm">acción de sistema</plex-button>
-        <plex-button type="success" size="sm">acción satisfactoria</plex-button>
+        <plex-label titulo="{{ paciente.nombre }} {{ paciente.apellido }}" subtitulo="{{ paciente.documento }}">
+        </plex-label>
+        <plex-label titulo="{{ paciente.edad }} Años" subtitulo="{{ paciente.fechaNacimiento }}"></plex-label>
+        <plex-badge type="info">{{ paciente.sexo }}</plex-badge>
+        <plex-badge type="warning">{{ paciente.estado }}</plex-badge>
+        <plex-badge *ngIf="paciente.fechaFallecimiento != 'null'" type="danger">Fallecido:
+            {{ paciente.fechaFallecimiento }}
+        </plex-badge>
+        <!-- <plex-button type="info" size="sm" [routerLink]="['/listado-sidebar', paciente.id]">acción de sistema -->
+        <plex-button type="info" size="sm" icon="eye" [routerLink]="[paciente.id]">
+        </plex-button>
+        <!-- <plex-button type="success" size="sm">acción satisfactoria</plex-button> -->
     </plex-item>
 </plex-list>

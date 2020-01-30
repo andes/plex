@@ -1,6 +1,6 @@
 
 export class Paciente {
-    id: string;
+    id: number;
     documento: string;
     cuil: string;
     nombre: string;

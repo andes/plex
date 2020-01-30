@@ -1,36 +1,56 @@
 <plex-layout main="8">
     <plex-layout-main>
-
-        <!-- Desacoplar en componentes! -->
-        <plex-title size="lg" titulo="Hola">
-            <plex-button type="success" size="sm">Esta es una accion</plex-button>
+        <plex-title size="lg" titulo="Bienvenido a Plex">
+            <plex-button type="success" size="sm">Accion Modal</plex-button>
+            <plex-button type="info" size="sm" [icon]="desplegado ? 'chevron-up' : 'chevron-down'"
+                         (click)="desplegarInputs()"></plex-button>
         </plex-title>
-
         <section id="plex-filter">
 
-        </section>
+            <!-- Desacoplar a componente local plex-filter -->
+            <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora" name="fechaHora"
+                           required>
+            </plex-datetime>
+            <plex-float label="plex-float" placeholder="Ingrese porcentaje entre 10.5 y 90.4" [(ngModel)]="tModel.valor"
+                        name="valor" [min]="10.5" [max]="90.4" suffix="%">
+            </plex-float>
 
+            <plex-phone label="Ingrese en número telefónico" placeholder="Número de celular" [(ngModel)]="tModel.valor"
+                        name="valor">
+            </plex-phone>
+
+            <!-- busqueda avanzada -->
+            <ng-container *ngIf="desplegado">
+                <plex-select [(ngModel)]="modelo1.select" [data]="opciones"
+                             label-field="nombre + ' (' + continente + ')'" label="Seleccione un país">
+                </plex-select>
+
+                <plex-text label="Texto mínimo de 10 caracteres" [(ngModel)]="templateModel2.nombre" name="nombre"
+                           minlength="10" maxlength="15" [debounce]="1000" (change)="onChange()">
+                </plex-text>
+            </ng-container>
+
+        </section>
         <main-listado>
 
         </main-listado>
-
     </plex-layout-main>
-    <plex-layout-sidebar type="invert">
 
+    <plex-layout-sidebar type="invert">
         <plex-tabs size="full">
             <plex-tab label="tab-1" icon="star" active="true">
-                <sidebar-detalle>
-
-                </sidebar-detalle>
+                <router-outlet></router-outlet>
             </plex-tab>
+
             <plex-tab label="tab-2" icon="star" active="true">
-
+                <plex-text label="Escriba la biografía de su vida" multiline=true [(ngModel)]="prueba"
+                           (change)="cambio()">
+                </plex-text>
             </plex-tab>
+
             <plex-tab label="tab-3" icon="star" active="true">
 
             </plex-tab>
-
         </plex-tabs>
-
     </plex-layout-sidebar>
 </plex-layout>

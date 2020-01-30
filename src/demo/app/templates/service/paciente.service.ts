@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Paciente } from '../service/paciente';
+import { Paciente } from './paciente';
 import { PACIENTES } from './mock-pacientes';
 import { Observable, of } from 'rxjs';
-
+import { map } from 'rxjs/operators';
 
 @Injectable()
 
 export class PacienteService {
 
-  getPacientes(): Observable<Paciente[]> {
-    return of(PACIENTES);
-  }
+  // getPacientes(): Observable<Paciente[]> {
+  //   return of(PACIENTES);
+  // }
 
 
   pacientes: any[] = [
     {
-      id: 'ìd00321453221',
+      id: 321453221,
       documento: '36307632',
       cuil: '20-36307632-5',
       activo: true,
@@ -46,7 +46,7 @@ export class PacienteService {
       notaError: '',
     },
     {
-      id: 'ìd005i3290854',
+      id: 53290854,
       documento: '12532632',
       cuil: '20-12532632-5',
       activo: true,
@@ -79,9 +79,17 @@ export class PacienteService {
   ];
 
 
-
   constructor() {
-
-
   }
+
+  getPacientes(): Observable<Paciente[]> {
+    return of(PACIENTES);
+  }
+
+  getPaciente(id: number | string) {
+    return this.getPacientes().pipe(
+      map((pacientes: Paciente[]) => pacientes.find(paciente => paciente.id === +id))
+    );
+  }
+
 }
