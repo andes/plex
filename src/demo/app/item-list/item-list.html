@@ -1,62 +1,54 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <<<<<<< HEAD <plex-list height="70%" (scrolled)="onScroll()">
-            =======
-            <plex-list>
-                >>>>>>> c112df3c00d0f7af3b1599d71e13c3d86a9ad2a7
-                <plex-heading>
-                    <b label>Datos importantes</b>
-                    <b label>Horario</b>
-                    <b button></b>
-                </plex-heading>
-                <<<<<<< HEAD <plex-item *ngFor="let item of lista; let par = even" [selected]="item.selected"
-                        (click)="item.selected = !item.selected">
-                    <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
-                    <plex-icon name="pencil" size="24" type="warning"></plex-icon>
+        <plex-list height="70%" (scrolled)="onScroll()">
+            <plex-heading>
+                <b label>Datos importantes</b>
+                <b label>Horario</b>
+                <b button></b>
+            </plex-heading>
 
-                    <plex-label [titulo]="item.name" [tituloBold]="par"=======<plex-item *ngFor="let item of lista"
-                                [selected]="item.selected" (click)="item.selected = !item.selected">
-                        <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
-                        <plex-icon name="pencil" size="24" type="warning"></plex-icon>
 
-                        <plex-label [titulo]="item.name" [tituloBold]="toggleBold()">>>>>>>
-                            c112df3c00d0f7af3b1599d71e13c3d86a9ad2a7
-                            subtitulo="10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora 10:00 a
-                            11:00 hs 1 hora">
-                        </plex-label>
-                        <plex-dropdown icon="dots-vertical mdi-24px" [right]="true" [items]="dropitems">
-                        </plex-dropdown>
-                        <plex-button type="warning" size="sm" icon="clock"></plex-button>
-                        <plex-button type="danger" size="sm" label="Eliminar" (click)="tModelFecha.fechaHora = null">
-                        </plex-button>
-                        <plex-datetime [(ngModel)]="tModelFecha.fechaHora" type="time" name="fechaHora" skipBy="hour"
-                                       showNav="true">
-                        </plex-datetime>
-                        <plex-badge type="success">aprobado</plex-badge>
-                        <plex-badge type="danger">urgente</plex-badge>
-                        <plex-button type="success" size="sm" label="Aprobar"></plex-button>
-                        </plex-item>
-            </plex-list>
-            <hr>
-            <plex-list>
-                <plex-heading>
-                    <b label>Datos importantes</b>
-                    <b label>Horario</b>
-                    <b button></b>
-                </plex-heading>
-                <plex-item>
-                    <plex-bool name="activo"></plex-bool>
-                    <plex-label titulo="Título" subtitulo="Un subtítulo"></plex-label>
-                    <plex-dropdown label="Dropdown con título" [items]="dropitems">
-                    </plex-dropdown>
-                    <plex-badge type="success">aprobado</plex-badge>
-                    <plex-badge type="danger">urgente</plex-badge>
-                    <plex-button type="success" size="sm" label="Aprobar"></plex-button>
-                    <plex-button type="warning" size="sm" icon="clock"></plex-button>
-                    <plex-dropdown icon="dots-vertical mdi-24px" [right]="true" [items]="dropitems"></plex-dropdown>
-                </plex-item>
-            </plex-list>
-            <!-- <hr>
+            <plex-item *ngFor="let item of lista; let par = even" [selected]="item.selected"
+                       (click)="item.selected = !item.selected">
+                <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
+                <plex-icon name="pencil" size="24" type="warning"></plex-icon>
+
+                <plex-label [titulo]="item.name" [tituloBold]="par"
+                            subtitulo="10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora 10:00 a 11:00 hs 1 hora">
+                </plex-label>
+                <plex-dropdown icon="dots-vertical mdi-24px" [right]="true" [items]="dropitems">
+                </plex-dropdown>
+                <plex-button type="warning" size="sm" icon="clock"></plex-button>
+                <plex-button type="danger" size="sm" label="Eliminar" (click)="tModelFecha.fechaHora = null">
+                </plex-button>
+                <plex-datetime [(ngModel)]="tModelFecha.fechaHora" type="time" name="fechaHora" skipBy="hour"
+                               showNav="true">
+                </plex-datetime>
+                <plex-badge type="success">aprobado</plex-badge>
+                <plex-badge type="danger">urgente</plex-badge>
+                <plex-button type="success" size="sm" label="Aprobar"></plex-button>
+            </plex-item>
+        </plex-list>
+        <hr>
+        <plex-list>
+            <plex-heading>
+                <b label>Datos importantes</b>
+                <b label>Horario</b>
+                <b button></b>
+            </plex-heading>
+            <plex-item>
+                <plex-bool name="activo"></plex-bool>
+                <plex-label titulo="Título" subtitulo="Un subtítulo"></plex-label>
+                <plex-dropdown label="Dropdown con título" [items]="dropitems">
+                </plex-dropdown>
+                <plex-badge type="success">aprobado</plex-badge>
+                <plex-badge type="danger">urgente</plex-badge>
+                <plex-button type="success" size="sm" label="Aprobar"></plex-button>
+                <plex-button type="warning" size="sm" icon="clock"></plex-button>
+                <plex-dropdown icon="dots-vertical mdi-24px" [right]="true" [items]="dropitems"></plex-dropdown>
+            </plex-item>
+        </plex-list>
+        <!-- <hr>
         <plex-bool type="slide" label="Ancho completo" [(ngModel)]="layout.completo" name="completo">
         </plex-bool>
         <br>
@@ -66,13 +58,14 @@
     <plex-layout-sidebar type="invert">
 
         <plex-list>
-            <plex-heading>
+            <plex-heading [sticky]="true">
                 <b label>1</b>
                 <b badge>3</b>
             </plex-heading>
             <plex-item [selected]="item.selected" (click)="item.selected = !item.selected" *ngFor="let item of lista">
                 <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
                 <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
+
                 <plex-button type="danger" size="sm" icon="delete"></plex-button>
                 <plex-badge type="danger">ausente</plex-badge>
                 <plex-button type="success" size="sm" icon="check-circle"></plex-button>

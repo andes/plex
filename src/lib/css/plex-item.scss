@@ -37,6 +37,13 @@ plex-list {
 
         padding: 0 1rem;
 
+        &.sticky {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: var(--heading-background-color)!important;
+        }
+
         >* {
             display: flex;
             align-items: center;
