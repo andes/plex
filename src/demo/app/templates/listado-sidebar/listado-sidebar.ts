@@ -14,9 +14,10 @@ import { Paciente } from '../service/paciente';
 export class ListadoSidebarComponent implements OnInit {
 
     // public listadoPaciente: Paciente[];
-    pacientes$: Observable<Paciente[]>
+    pacientes$: Observable<Paciente[]>;
     selectedId: Number;
-
+    public prueba = '';
+    public cambio = '';
     constructor(
         private pacienteService: PacienteService,
         private route: ActivatedRoute

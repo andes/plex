@@ -2,34 +2,32 @@ import { Component, OnInit } from '@angular/core';
 import { PacienteService } from '../../../service/paciente.service';
 import { Paciente } from '../../../service/paciente';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'main-listado',
-  templateUrl: './main-listado.component.html',
+    selector: 'plex-main-listado',
+    templateUrl: './main-listado.component.html',
 })
 export class MainListadoComponent implements OnInit {
 
-  // public listadoPaciente: Paciente[];
-  pacientes$: Observable<Paciente[]>
-  selectedId: Number;
+    pacientes$: Observable<Paciente[]>;
+    selectedId: string;
 
-  constructor(
-    private pacienteService: PacienteService,
-    private route: ActivatedRoute
-  ) {
+    constructor(
+        private pacienteService: PacienteService,
+        private router: Router,
+    ) {
 
-  }
-  ngOnInit() {
+    }
+    ngOnInit() {
 
-    this.pacientes$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        this.selectedId = +params.get('id');
-        return this.pacienteService.getPacientes();
-      })
-    );
+        this.pacientes$ = this.pacienteService.getPacientes();
 
-    // this.pacienteService.getPacientes();
-  }
+    }
+
+    selected(paciente) {
+        this.selectedId = paciente.id;
+        this.router.navigate(['templates', 'listado-sidebar', this.selectedId]);
+    }
 }

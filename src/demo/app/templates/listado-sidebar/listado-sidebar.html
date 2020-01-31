@@ -2,18 +2,22 @@
     <plex-layout-main>
         <plex-title size="lg" titulo="Bienvenido a Plex">
             <plex-button type="success" size="sm" (click)="modal.mostrarModal()">Accion Modal</plex-button>
-            <plex-modal-template #modal>
+            <plex-modal-template #modal></plex-modal-template>
 
-            </plex-modal-template>
+            <plex-help titulo="Ayuda de este panel" tituloBoton="TOP">
+                <div info>
+                    contenido del plex-help
+                </div>
+            </plex-help>
         </plex-title>
 
         <plex-filters>
 
         </plex-filters>
 
-        <main-listado>
+        <plex-main-listado>
 
-        </main-listado>
+        </plex-main-listado>
     </plex-layout-main>
 
     <plex-layout-sidebar type="invert">
@@ -27,10 +31,21 @@
                 <plex-filters>
 
                 </plex-filters>
+                <div class="grow">
+                    <plex-text multiline=true [(ngModel)]="prueba">
+                    </plex-text>
+                    <plex-button type="danger" icon="pencil"></plex-button>
+                </div>
 
-                <plex-text label="Escriba la biografía de su vida" multiline=true [(ngModel)]="prueba"
-                           (change)="cambio()">
-                </plex-text>
+
+                <div justify>
+                    <plex-button type="success"> LABEL </plex-button>
+                    <plex-button type="warning">
+                        <plex-icon name="pencil"></plex-icon>
+                    </plex-button>
+                    <plex-button type="danger" icon="pencil"></plex-button>
+                    <plex-button size="sm" type="info" label="LABEL"></plex-button>
+                </div>
 
             </plex-tab>
 

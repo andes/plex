@@ -28,5 +28,5 @@ export class Paciente {
     entidadesValidadoras: string;
     scan: string;
     reportarError: boolean;
-    notaError: string
+    notaError: string;
 }
