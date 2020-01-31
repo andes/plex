@@ -1,36 +1,16 @@
 <plex-layout main="8">
     <plex-layout-main>
         <plex-title size="lg" titulo="Bienvenido a Plex">
-            <plex-button type="success" size="sm">Accion Modal</plex-button>
-            <plex-button type="info" size="sm" [icon]="desplegado ? 'chevron-up' : 'chevron-down'"
-                         (click)="desplegarInputs()"></plex-button>
+            <plex-button type="success" size="sm" (click)="modal.mostrarModal()">Accion Modal</plex-button>
+            <plex-modal-template #modal>
+
+            </plex-modal-template>
         </plex-title>
-        <section id="plex-filter">
 
-            <!-- Desacoplar a componente local plex-filter -->
-            <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora" name="fechaHora"
-                           required>
-            </plex-datetime>
-            <plex-float label="plex-float" placeholder="Ingrese porcentaje entre 10.5 y 90.4" [(ngModel)]="tModel.valor"
-                        name="valor" [min]="10.5" [max]="90.4" suffix="%">
-            </plex-float>
+        <plex-filters>
 
-            <plex-phone label="Ingrese en número telefónico" placeholder="Número de celular" [(ngModel)]="tModel.valor"
-                        name="valor">
-            </plex-phone>
+        </plex-filters>
 
-            <!-- busqueda avanzada -->
-            <ng-container *ngIf="desplegado">
-                <plex-select [(ngModel)]="modelo1.select" [data]="opciones"
-                             label-field="nombre + ' (' + continente + ')'" label="Seleccione un país">
-                </plex-select>
-
-                <plex-text label="Texto mínimo de 10 caracteres" [(ngModel)]="templateModel2.nombre" name="nombre"
-                           minlength="10" maxlength="15" [debounce]="1000" (change)="onChange()">
-                </plex-text>
-            </ng-container>
-
-        </section>
         <main-listado>
 
         </main-listado>
@@ -43,13 +23,34 @@
             </plex-tab>
 
             <plex-tab label="tab-2" icon="star" active="true">
+                <!-- Formulario -->
+                <plex-filters>
+
+                </plex-filters>
+
                 <plex-text label="Escriba la biografía de su vida" multiline=true [(ngModel)]="prueba"
                            (change)="cambio()">
                 </plex-text>
+
             </plex-tab>
 
             <plex-tab label="tab-3" icon="star" active="true">
+                <plex-accordion>
+                    <plex-panel>
+                        <div plex-accordion-title>Titulo</div>
+                        <p>algo</p>
+                    </plex-panel>
+                    <plex-panel>
+                        <div plex-accordion-title>Titulo 2</div>
+                        <p>otra cosa</p>
 
+                    </plex-panel>
+                    <plex-panel>
+                        <div plex-accordion-title>Titulo 3</div>
+                        <p>tercer acordion</p>
+
+                    </plex-panel>
+                </plex-accordion>
             </plex-tab>
         </plex-tabs>
     </plex-layout-sidebar>

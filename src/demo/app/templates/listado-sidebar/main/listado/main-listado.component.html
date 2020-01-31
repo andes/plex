@@ -1,11 +1,16 @@
 <plex-list>
-    <plex-item *ngFor="let paciente of pacientes$ | async">
+    <plex-item *ngFor="let paciente of pacientes$ | async" class=""
+               [ngClass]="{ 'pacienteFallecido' : paciente.fechaFallecimiento != 'null'}">
         <img src="{{ paciente.foto }}" alt="">
         <plex-label titulo="{{ paciente.nombre }} {{ paciente.apellido }}" subtitulo="{{ paciente.documento }}">
         </plex-label>
         <plex-label titulo="{{ paciente.edad }} Años" subtitulo="{{ paciente.fechaNacimiento }}"></plex-label>
-        <plex-badge type="info">{{ paciente.sexo }}</plex-badge>
-        <plex-badge type="warning">{{ paciente.estado }}</plex-badge>
+        <plex-badge type="info">{{ paciente.sexo }}
+        </plex-badge>
+        <plex-badge type="" class=""
+                    [ngClass]="{'text-success' : paciente.estado === 'validado' , 'text-warning' : paciente.estado === 'temporal'} ">
+            {{ paciente.estado }}
+        </plex-badge>
         <plex-badge *ngIf="paciente.fechaFallecimiento != 'null'" type="danger">Fallecido:
             {{ paciente.fechaFallecimiento }}
         </plex-badge>
