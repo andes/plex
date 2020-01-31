@@ -25,6 +25,8 @@ import { TemplateBusquedaComponent } from './templates/template-busqueda';
 import { TemplateBotoneraSidebarComponent } from './templates/template-form-sidebar';
 import { ItemDemoComponent } from './item-list/item-list.component';
 import { DetailDemoComponent } from './detail/detail.component';
+import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
+import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -50,6 +52,12 @@ const appRoutes: Routes = [
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },
     { path: 'templates/visualizacion', component: TemplateVisualizacionComponent },
     { path: 'templates/busqueda', component: TemplateBusquedaComponent },
+    {
+        path: 'templates/listado-sidebar', component: ListadoSidebarComponent,
+        children: [
+            { path: ':id', component: SidebarDetalleComponent }
+        ]
+    },
     { path: 'item', component: ItemDemoComponent },
     { path: 'detail', component: DetailDemoComponent },
     { path: '**', redirectTo: 'inicio' }
