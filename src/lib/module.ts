@@ -60,6 +60,7 @@ import { PlexTitleComponent } from './title/title.component';
 import { JustifyDirective } from './directives/justify.directive';
 import { ResponsiveDirective } from './directives/responsive.directive';
 import { PlexOptionsComponent } from './options/options.component';
+import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
 
 const MODULES = [
     PlexAppComponent,
@@ -102,7 +103,8 @@ const MODULES = [
     PlexModalTitleComponent,
     PlexCopyComponent,
     PlexDetailComponent,
-    PlexOptionsComponent
+    PlexOptionsComponent,
+    PlexVisualizadorComponent
 ];
 
 @NgModule({
