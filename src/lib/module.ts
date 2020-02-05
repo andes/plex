@@ -61,6 +61,7 @@ import { JustifyDirective } from './directives/justify.directive';
 import { ResponsiveDirective } from './directives/responsive.directive';
 import { PlexOptionsComponent } from './options/options.component';
 import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
+import { PreviewDirective } from './visualizador/preview.directive';
 
 const MODULES = [
     PlexAppComponent,
@@ -104,7 +105,8 @@ const MODULES = [
     PlexCopyComponent,
     PlexDetailComponent,
     PlexOptionsComponent,
-    PlexVisualizadorComponent
+    PlexVisualizadorComponent,
+    PreviewDirective
 ];
 
 @NgModule({
@@ -127,7 +129,9 @@ const MODULES = [
     ],
     entryComponents: [
         TooltipContentComponent,
-        MatRadioButton
+        MatRadioButton,
+        PlexVisualizadorComponent
+
     ],
     exports: MODULES
 })
