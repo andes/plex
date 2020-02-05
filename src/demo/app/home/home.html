@@ -135,6 +135,7 @@
             <div subtitle>Texto secundario intrisecamente relacionado al titulo</div>
         </plex-detail>
 
+
         <plex-title titulo="Texto principal" size="sm">
             <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="TOP">
                 <ul class="list-group">
@@ -237,7 +238,8 @@
         </form>
         <div class="grow">
             <plex-text [(ngModel)]="field" prefix="<i class='mdi mdi-barcode'></i>"></plex-text>
-            <plex-button type="success">HOLA</plex-button>
+            <plex-button type="success" (click)="viewer.open(1)">HOLA</plex-button>
+            <plex-visualizador [files]="imagenes" #viewer (click)="viewer.close()"></plex-visualizador>
         </div>
     </plex-layout-sidebar>
     <plex-layout-footer>
