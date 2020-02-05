@@ -20,8 +20,9 @@
             </plex-help>
         </plex-title>
         <div justify="end">
-            <plex-button type="success" label="Restaurar usuario" size="sm">
+            <plex-button type="success" label="Restaurar usuario" size="sm" (click)="viewer.open(1)">
             </plex-button>
+            <plex-visualizador [files]="imagenes" #viewer (click)="viewer.close()"></plex-visualizador>
         </div>
         <div class="row mt-3">
             <div class="col">
@@ -129,7 +130,7 @@
             <div subtitle>Texto secundario intrisecamente relacionado al titulo</div>
         </plex-detail>
         <plex-detail size="sm">
-            <img src="https://www.prodapt.com/wp-content/uploads/user-icon.png" alt="">
+            <img src="https://www.prodapt.com/wp-content/uploads/user-icon.png" alt="" preview>
             <plex-badge type="info">Validado</plex-badge>
             <div title>Texto principal o titulo</div>
             <div subtitle>Texto secundario intrisecamente relacionado al titulo</div>
@@ -238,8 +239,8 @@
         </form>
         <div class="grow">
             <plex-text [(ngModel)]="field" prefix="<i class='mdi mdi-barcode'></i>"></plex-text>
-            <plex-button type="success" (click)="viewer.open(1)">HOLA</plex-button>
-            <plex-visualizador [files]="imagenes" #viewer (click)="viewer.close()"></plex-visualizador>
+            <plex-button type="success">HOLA</plex-button>
+
         </div>
     </plex-layout-sidebar>
     <plex-layout-footer>
