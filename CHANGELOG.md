@@ -1,3 +1,11 @@
+# [5.8.0](https://github.com/andes/plex/compare/v5.7.0...v5.8.0) (2020-02-05)
+
+
+### Features
+
+* **plex-visualizador:** agrega componente de visualizacion de imagenes. ([e23cc58](https://github.com/andes/plex/commit/e23cc583a9a314944c2b65d8bb5b7f44599df07c))
+* **plex-visualizador:** directiva Preview ([68c8688](https://github.com/andes/plex/commit/68c86885971b8750fd3ee0e011c8545aaf5f385f))
+
 # [5.7.0](https://github.com/andes/plex/compare/v5.6.0...v5.7.0) (2020-01-28)
 
 
