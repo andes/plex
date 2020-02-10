@@ -27,6 +27,7 @@ import { ItemDemoComponent } from './item-list/item-list.component';
 import { DetailDemoComponent } from './detail/detail.component';
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
 import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
+import { WrapperDemoComponent } from './wrapper/wrapper.component.';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     { path: 'text', component: TextDemoComponent },
     { path: 'datetime', component: DateTimeDemoComponent },
     { path: 'fonts', component: FontsDemoComponent },
+    { path: 'wrapper', component: WrapperDemoComponent },
     { path: 'bool', component: BoolDemoComponent },
     { path: 'radio', component: RadioDemoComponent },
     { path: 'int', component: IntDemoComponent },

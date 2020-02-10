@@ -11,9 +11,23 @@
             </plex-help>
         </plex-title>
 
-        <plex-filters>
-
-        </plex-filters>
+        <plex-wrapper>
+            <plex-datetime label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
+            </plex-datetime>
+            <plex-select grow="3" [(ngModel)]="modelo1.select" [data]="opciones"
+                         label-field="nombre + ' (' + continente + ')'" label="Seleccione un país"></plex-select>
+            <plex-float label="plex-float" placeholder="Ingrese porcentaje entre 10.5 y 90.4" [(ngModel)]="tModel.valor"
+                        name="valor" [min]="10.5" [max]="90.4" suffix="%"></plex-float>
+            <div collapse>
+                <plex-float label="plex-float" placeholder="Ingrese porcentaje entre 10.5 y 90.4"
+                            [(ngModel)]="tModel.valor" name="valor" [min]="10.5" [max]="90.4" suffix="%"></plex-float>
+                <plex-bool [(ngModel)]="modelo.slide" type="slide" label="¿Está activo?" name="slide"></plex-bool>
+                <plex-phone label="Número telefónico" placeholder="Número de celular" [(ngModel)]="tModel.valor"
+                            name="valor"></plex-phone>
+                <plex-select grow="2" [(ngModel)]="modelo1.select" [data]="opciones"
+                             label-field="nombre + ' (' + continente + ')'" label="Seleccione un país"></plex-select>
+            </div>
+        </plex-wrapper>
 
         <plex-main-listado>
 
@@ -28,9 +42,9 @@
 
             <plex-tab label="tab-2" icon="star" active="true">
                 <!-- Formulario -->
-                <plex-filters>
+                <plex-wrapper>
 
-                </plex-filters>
+                </plex-wrapper>
                 <div class="grow">
                     <plex-text multiline=true [(ngModel)]="prueba">
                     </plex-text>

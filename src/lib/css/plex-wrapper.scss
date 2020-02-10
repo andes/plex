@@ -1,0 +1,114 @@
+plex-wrapper  {
+    > section {
+        display: flex;
+        position: relative;
+        flex-flow: row wrap;
+        width: 100%;
+        margin-bottom: 0.75rem;
+        padding: 0.25rem 0 0.75rem 0;
+        border-bottom: solid 1px lightgray;
+        
+        &.hidden {
+            clear: right;
+            
+            [collapse] {
+                display: none;
+                flex-flow: wrap;
+            }
+        }
+        
+        &.desplegado {
+            transition: translate .3s ease-in;
+            
+            [collapse] {
+                display: flex;
+                flex-flow: wrap;
+                width: 100%;
+            }
+        }
+    }
+
+    plex-button.btn-toogle {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    label {
+        white-space: nowrap; 
+        width: 190px; 
+        overflow: hidden;
+        text-overflow: ellipsis; 
+    }
+
+    @mixin baseInputs {
+        margin-right: 1rem;
+    }
+
+    plex-select, plex-phone, plex-text, plex-float {
+        @include baseInputs;
+        flex: 1 0 190px;
+    }
+    
+    plex-datetime, plex-radio {
+        @include baseInputs;
+        flex: 0 0 190px;
+    }
+
+    .size-xs {
+        plex-datetime, plex-radio {
+            flex: 1 0 190px;
+        }
+    }
+
+    plex-button, plex-bool, plex-dropdown {
+        @include baseInputs;
+        flex: 0 0 0;
+    }
+
+    // Alinear elementos en formulario
+    plex-bool {
+        display: flex;
+        align-items: center;
+        justify-content: center;        
+    }
+    
+    plex-button, plex-dropdown, plex-radio {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    // Componentes de ancho variable
+    
+    @media screen and (max-width: 768px) {
+        // Para que los elementos con directiva 'columns' no restringan la grilla
+        plex-datetime, plex-phone, plex-text, plex-float {
+            flex: 1!important;
+        }
+    }
+    
+    // Directiva Columns
+    .grid-columns-auto {
+        flex: auto;
+    }
+
+    .grid-columns-span-1 {
+        flex-grow: 1;
+    }
+
+    .grid-columns-span-2 {
+        flex-grow: 2;
+    }
+
+    .grid-columns-span-3 {
+        flex-grow: 3;
+    }
+
+    .grid-columns-span-4 {
+        flex-grow: 4;
+    }
+
+    .grid-columns-full {
+        flex-basis: 100%;
+    }
+}
