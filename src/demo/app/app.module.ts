@@ -41,11 +41,11 @@ import { FechaPipe } from './templates/fecha.pipe';
 import { HeaderPacienteComponent } from './header-paciente/header-paciente.component';
 import { ItemDemoComponent } from './item-list/item-list.component';
 import { DetailDemoComponent } from './detail/detail.component';
+import { WrapperDemoComponent } from './wrapper/wrapper.component.';
 // Template
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
 import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
 import { MainListadoComponent } from './templates/listado-sidebar/main/listado/main-listado.component';
-import { PlexFiltersComponent } from './templates/componentes/plex-filters/plex-filters.component';
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
 
 @NgModule({
@@ -78,10 +78,10 @@ import { ModalTemplateComponent } from './templates/componentes/plex-modal-templ
         HeaderPacienteComponent,
         ItemDemoComponent,
         DetailDemoComponent,
+        WrapperDemoComponent,
         ListadoSidebarComponent,
         SidebarDetalleComponent,
         MainListadoComponent,
-        PlexFiltersComponent,
         ModalTemplateComponent
     ],
     entryComponents: [
