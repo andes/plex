@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
             <div class="contenedor-elementos-graficos">
                 <ng-content select="plex-icon"></ng-content>
                 <ng-content select="img"></ng-content>
-                <!-- <img *ngIf="foto" class="rounded-circle cover" src="{{ foto }}" alt=""> -->
             </div>
             <div class="contenedor-textos" [ngClass]="{ 'd-flex flex-column': direction === 'column'  }">
                 <ng-content select="plex-badge"></ng-content>

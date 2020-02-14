@@ -3,7 +3,7 @@
 plex-detail {
     display: flex;
     flex-wrap: wrap;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     // md size = md default
     --detail-img-size: 4.5rem;
 
@@ -27,6 +27,11 @@ plex-detail {
         --detail-img-mr: 0.75rem;
         --detail-img-mb: 0;
         --detail-text-align: left;
+
+        .contenedor-textos {
+            margin-right: 2rem;
+        }
+
     }
 
     %baseDirection {
@@ -47,16 +52,16 @@ plex-detail {
         justify-content: flex-start;
     }
 
-    section.direction-row:nth-child(2) {
-        margin-left: calc(var(--detail-img-size) + var(--detail-img-mr));
-    }
-
     div.contenedor-elementos-graficos { 
-        margin-bottom: var(--detail-img-mb);
-        margin-right: var(--detail-img-mr);
+
+        @mixin margins {
+            margin-bottom: var(--detail-img-mb);
+            margin-right: var(--detail-img-mr);
+        }
 
         // Estilos imagenes
         img {
+            @include margins;
             border-radius: 50%;
             object-fit: cover;
             width: var(--detail-img-size);
@@ -65,6 +70,7 @@ plex-detail {
         
         // Estilos iconos
         i {
+            @include margins;
             display: flex;
             justify-content: center;
             align-items: center;
