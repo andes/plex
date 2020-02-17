@@ -24,6 +24,12 @@ export class PlexModalComponent {
 
     @Input() allowClose = false;
 
+    /**
+     * Emite un evento cuando se cierra el modal.
+     */
+
+    @Output() closed = new EventEmitter<void>();
+
     showed = false;
 
     public show() {
