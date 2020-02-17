@@ -4,6 +4,7 @@ plex-detail {
     display: flex;
     flex-wrap: wrap;
     margin: 1.5rem 0;
+    align-items: flex-start;
     // md size = md default
     --detail-img-size: 4.5rem;
 
