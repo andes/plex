@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
     selector: 'plex-modal',
@@ -6,7 +7,9 @@ import { Component, Input } from '@angular/core';
         <div *ngIf="showed" class="plex-modal" (click)="$event.stopPropagation();close();">
             <div class="plex-modal-content" (click)="$event.stopPropagation();">
                 <header>
-                    <div *ngIf="allowClose" class="plex-modal-close" (click)="close();"><i class="mdi mdi-close"></i></div>
+                    <div *ngIf="allowClose" class="plex-modal-close" (click)="close();">
+                        <i class="mdi mdi-close">
+                    </i></div>
                     <ng-content select="plex-icon"></ng-content>
                     <ng-content select="plex-modal-title"></ng-content>
                     <ng-content select="plex-modal-subtitle"></ng-content>
@@ -22,6 +25,9 @@ import { Component, Input } from '@angular/core';
 })
 export class PlexModalComponent {
 
+    /**
+     * Muestra una cruz para cerrar el modal.
+     */
     @Input() allowClose = false;
 
     /**
@@ -38,5 +44,16 @@ export class PlexModalComponent {
 
     public close() {
         this.showed = false;
+        this.closed.emit();
+    }
+
+    @HostListener('document:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent) {
+        if (!this.showed) {
+            return false;
+        }
+        if (event.which === 27) {
+            return this.close();
+        }
     }
 }
