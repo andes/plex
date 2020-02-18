@@ -5,3 +5,19 @@
     line-height: inherit !important;
   }
 }
+
+.simple-notification.success {
+  background-color: $green !important;
+}
+
+.simple-notification.alert {
+  background-color: $orange !important;
+}
+
+.simple-notification.error {
+  background-color: $red !important;
+}
+
+.simple-notification.info {
+  background-color: $blue !important;
+}
