@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     { path: 'radio', component: RadioDemoComponent },
     { path: 'int', component: IntDemoComponent },
     { path: 'float', component: FloatDemoComponent },
-    { path: 'button', component: ButtonDemoComponent },
+    { path: 'button-badge', component: ButtonDemoComponent },
     { path: 'tabs', component: TabsDemoComponent },
     { path: 'accordion', component: AccordionDemoComponent },
     { path: 'modal', component: ModalDemoComponent },

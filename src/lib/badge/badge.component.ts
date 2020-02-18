@@ -3,13 +3,17 @@ import { Component, Input, ElementRef, ViewChild, OnChanges } from '@angular/cor
 @Component({
     selector: 'plex-badge',
     template: `
-        <span #badge class="badge badge-{{type}} badge-{{size}}">
+        <span #badge class="badge badge-{{ type }} badge-{{ size }}">
+            <ng-content select="plex-icon"></ng-content>
             <ng-content></ng-content>
         </span>
-                `,
+        <span class="btn-badge-{{ type }}">
+            <ng-content select="plex-button"></ng-content>
+        </span>
+        `,
 })
 export class PlexBadgeComponent implements OnChanges {
-    @Input() type: string;
+    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'primary';
     @Input() size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
     @Input() color: string;
 

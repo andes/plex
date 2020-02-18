@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
             { label: 'Accordion', icon: 'view-day', route: '/accordion' },
             { label: 'Bool', icon: 'checkbox-marked-outline', route: '/bool' },
             { label: 'Box', icon: 'selection', route: '/box' },
-            { label: 'Button', icon: 'solid', route: '/button' },
+            { label: 'Button & Badge', icon: 'solid', route: '/button-badge' },
             { label: 'DateTime', icon: 'calendar', route: '/datetime' },
             { label: 'Detail', icon: 'account', route: '/detail' },
             { label: 'Dropdown', icon: 'menu-right', route: '/dropdown' },
