@@ -1,13 +1,18 @@
-import { Directive, HostBinding, ElementRef, AfterViewChecked, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, AfterViewChecked, Renderer2, HostListener } from '@angular/core';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
     selector: '[responsive]'
 })
 export class ResponsiveDirective implements AfterViewChecked {
-    constructor(private el: ElementRef, private render: Renderer2) { }
+    constructor(
+        private el: ElementRef,
+        private render: Renderer2
+    ) { }
+
     width = 0;
-    ngAfterViewChecked() {
+
+    checkDimension() {
         this.width = this.el.nativeElement.clientWidth;
         this.render.removeClass(this.el.nativeElement, 'size-xs');
         this.render.removeClass(this.el.nativeElement, 'size-md');
@@ -20,6 +25,14 @@ export class ResponsiveDirective implements AfterViewChecked {
         } else if (this.width < 768) {
             this.render.addClass(this.el.nativeElement, 'size-xs');
         }
+    }
 
+    ngAfterViewChecked() {
+        this.checkDimension();
+    }
+
+    @HostListener('window:resize', ['event'])
+    onResize() {
+        this.checkDimension();
     }
 }
