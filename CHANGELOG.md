@@ -1,3 +1,13 @@
+# [5.9.0](https://github.com/andes/plex/compare/v5.8.0...v5.9.0) (2020-02-18)
+
+
+### Features
+
+* **plex-detail:** auto label size ([956c152](https://github.com/andes/plex/commit/956c1527dc7dbfd5ce94e77b5435dca95da26bd6))
+* **plex-modal:** agrega evento closed ([4d5b5da](https://github.com/andes/plex/commit/4d5b5da7ef64b9ec1e945d7b51d7dcfc272a43ca))
+* **plex-modal:** cierra modal al tocar escape ([a71e4f0](https://github.com/andes/plex/commit/a71e4f0d046bf4832f1ba996509486bfed88b29e))
+* **responsive:** adapt on window.resize ([6a9a9f8](https://github.com/andes/plex/commit/6a9a9f84e24479887e9e8acd74c6e8e01234cfdb))
+
 # [5.8.0](https://github.com/andes/plex/compare/v5.7.0...v5.8.0) (2020-02-05)
 
 
