@@ -19,6 +19,10 @@ import { Plex } from './../core/service';
                         </ng-container>
                     </div>
                     <div class="actions">
+
+                        <!-- Novedades -->
+                        <ng-content select="[nav-item]"></ng-content>
+
                         <!--App Status-->
                         <div class="action hidden-md-down">
                             <i *ngIf="online" class="mdi mdi-cloud"></i>

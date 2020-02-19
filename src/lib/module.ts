@@ -62,6 +62,7 @@ import { ResponsiveDirective } from './directives/responsive.directive';
 import { PlexOptionsComponent } from './options/options.component';
 import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
 import { PreviewDirective } from './visualizador/preview.directive';
+import { NavItemComponent } from './app/nav-item.component';
 
 const MODULES = [
     PlexAppComponent,
@@ -106,7 +107,8 @@ const MODULES = [
     PlexDetailComponent,
     PlexOptionsComponent,
     PlexVisualizadorComponent,
-    PreviewDirective
+    PreviewDirective,
+    NavItemComponent
 ];
 
 @NgModule({
