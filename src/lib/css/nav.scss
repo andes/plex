@@ -25,7 +25,8 @@ nav {
       float: left;
       height: $navbar-height;
 
-      > i {
+      > i,
+      > plex-icon i {
         font-size: 2em;
         line-height: $navbar-height;
       }
@@ -40,6 +41,24 @@ nav {
         opacity: 0;
         transition: visibility 0s, opacity .2s linear;
       }
+
+      plex-help {
+        .jumbotron {
+          top: unset;
+          right: 0;
+        }
+
+        .toggle-info.open {
+          right: 0!important;
+          top: unset!important;
+        }
+
+      }
+
+    }
+
+    > div.action.hover {
+      background: $dark-blue;
     }
 
     > div.action:hover {
