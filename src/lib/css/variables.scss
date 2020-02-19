@@ -1,6 +1,3 @@
-:root {
-  --nav-bar-color: #00A8E0;
-}
 
 $red: #dd4b39;
 $orange: #ff8d22;
@@ -11,6 +8,12 @@ $dark-blue: #002738;
 $light-grey: #f9f9f9;
 $dark-grey: #AAAAAA;
 $light-blue: #edf8fd;
+
+:root {
+    --nav-bar-color: $blue;
+}
+
+$darken-percentage: 15%;
 
 // Brand
 $brand-primary: $blue;

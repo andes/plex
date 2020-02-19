@@ -99,8 +99,6 @@ import { NotificationsService } from '../services/notifications.service';
             right: auto;
         }
 
-        
-
         .simple-notification .sn-progress-loader {
             position: absolute;
             top: 0;
@@ -113,10 +111,6 @@ import { NotificationsService } from '../services/notifications.service';
             float: left;
             height: 100%;
         }
-
-        
-
-        
     `]
 })
 
