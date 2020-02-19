@@ -75,7 +75,8 @@ plex-help {
         padding: 15px 30px;
         border-top: 1px solid darken($light-grey, 15%);
         border-left: 1px solid darken($light-grey, 15%);
-
+        color: black;
+        
         plex-button {
             position: absolute;
             top: -1px;
@@ -86,8 +87,7 @@ plex-help {
             right: 15px;
             top: 23px;
             z-index: 1001;
-            // 60px por los margins/padding + 2px por los bordes
-            width: calc(100% - 63px);
+            width: max-content;
             border-radius: 0.25rem;
             box-shadow: 2px 2px 5px 0px $dark-grey;
             max-height: 69vh;
