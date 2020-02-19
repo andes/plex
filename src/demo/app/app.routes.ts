@@ -35,6 +35,9 @@ import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/det
 import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
+import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
+import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
+import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -73,6 +76,14 @@ const appRoutes: Routes = [
             { path: ':id', component: SidebarDetalleComponent }
         ]
     },
+    {
+        path: 'templates/mpi-maquetado', component: MpiMaquetadoComponent,
+        children: [
+            { path: ':id', component: MpiDetalleComponent }
+        ]
+    },
+    { path: 'templates/mpi-maquetado/mpi-alta', component: MpiAltaComponent },
+
     { path: 'item', component: ItemDemoComponent },
     { path: 'detail', component: DetailDemoComponent },
     { path: 'icon', component: DemoIconComponent },

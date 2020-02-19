@@ -1,0 +1,20 @@
+<plex-title titulo="Detalle paciente" size="sm">
+    <plex-button type="success" label="Validar paciente" size="sm"></plex-button>
+</plex-title>
+
+<ng-container *ngIf="paciente$ | async as paciente">
+    <plex-detail direction="column" size="lg" class="justify-content-center">
+        <img src="{{ paciente.foto }}" alt="">
+        <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
+        <plex-badge *ngIf="paciente.fechaFallecimiento != 'null'" type="danger">Fallecido:
+            {{ paciente.fechaFallecimiento }}
+        </plex-badge>
+        <div title>{{ paciente.nombre }}</div>
+        <div subtitle>{{ paciente.documento }}</div>
+        <plex-label titulo="Fecha de Nacimiento" subtitulo="{{ paciente.fechaNacimiento }}"></plex-label>
+        <plex-label titulo="CUIL" subtitulo="{{ paciente.cuil }}"></plex-label>
+        <plex-label titulo="Edad" subtitulo="{{ paciente.edad }}"></plex-label>
+        <plex-label titulo="Sexo" subtitulo="{{ paciente.sexo }}"></plex-label>
+        <plex-label titulo="Género" subtitulo="{{ paciente.genero }}"></plex-label>
+        <plex-label titulo="Financiador" subtitulo="{{ paciente.financiador }}"></plex-label>
+    </plex-detail>

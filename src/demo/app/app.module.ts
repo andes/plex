@@ -55,6 +55,10 @@ import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
 import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
 import { HelpDemoComponent } from './help/help.component';
+import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
+import { MpiListadoComponent } from './templates/modulos/mpi/main/listado/mpi-listado.component';
+import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
+import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
 
 @NgModule({
     declarations: [
@@ -97,7 +101,17 @@ import { HelpDemoComponent } from './help/help.component';
         ListadoSidebarComponent,
         SidebarDetalleComponent,
         MainListadoComponent,
-        ModalTemplateComponent
+        ModalTemplateComponent,
+        // Templates genéricos
+        ListadoSidebarComponent,
+        SidebarDetalleComponent,
+        MainListadoComponent,
+        // Maquetado módulos
+        MpiMaquetadoComponent,
+        MpiListadoComponent,
+        MpiDetalleComponent,
+        ModalTemplateComponent,
+        MpiAltaComponent,
     ],
     entryComponents: [
         HeaderPacienteComponent
