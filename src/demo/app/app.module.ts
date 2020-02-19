@@ -47,6 +47,10 @@ import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/det
 import { MainListadoComponent } from './templates/listado-sidebar/main/listado/main-listado.component';
 import { PlexFiltersComponent } from './templates/componentes/plex-filters/plex-filters.component';
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
+import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
+import { MpiListadoComponent } from './templates/modulos/mpi/main/listado/mpi-listado.component';
+import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
+import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
 
 @NgModule({
     declarations: [
@@ -78,11 +82,18 @@ import { ModalTemplateComponent } from './templates/componentes/plex-modal-templ
         HeaderPacienteComponent,
         ItemDemoComponent,
         DetailDemoComponent,
+        // Templates genéricos
         ListadoSidebarComponent,
         SidebarDetalleComponent,
         MainListadoComponent,
+        // Maquetado módulos
+        MpiMaquetadoComponent,
+        MpiListadoComponent,
+        MpiDetalleComponent,
+        ModalTemplateComponent,
+        MpiAltaComponent,
+        // Componente experimental
         PlexFiltersComponent,
-        ModalTemplateComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
