@@ -5,13 +5,20 @@
     font-weight: normal;
     padding: 6px;
     text-transform: uppercase;
-    
-    >i {
-        margin-right: 5px;
-    }
-    
     border-color: var(--badge-color);
     color: var(--badge-color);
+    
+    i {
+        margin-right: 5px;
+        font-size: 20px;
+        overflow: hidden;
+        line-height: 0;
+        height: 0;
+        position: relative;
+        top: 3px;
+        right: 3px;
+        border-color: var(--badge-color);
+    }
 
 }
 
@@ -20,32 +27,17 @@
 }
 
 
-.badge-default {
-    --badge-color: #{$dark-grey}; 
-    @extend %baseBadge;
+.btn-badge {
+    button.btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        border-radius: 0;
+        color: #fff;
+        background-color: var(--badge-color);
+        border-color: var(--badge-color);
+    }
+
 }
-
-.badge-danger {
-    --badge-color: #{$red};
-    @extend %baseBadge;
-}
-
-.badge-success {
-    --badge-color: #{$green};
-    @extend %baseBadge;
-}
-
-.badge-warning {
-    --badge-color: #{$orange};
-    @extend %baseBadge;
-}
-
-.badge-info {
-    --badge-color: #{$blue};
-    @extend %baseBadge;
-}
-
-
 
 // Espaciado del ícono
 [class^="badge-"]>i,
@@ -53,11 +45,32 @@
     margin-right: 5px;
 }
 
+$colors: (
+    warning: $orange,
+    danger: $red,
+    success: $green,
+    info: $blue
+);
+
+@each $name, $color in $colors {
+    
+    .badge-#{$name} {
+        --badge-color: #{$color};
+        // Compatibilidad con andes hasta que se haga el refactor a plex-badge
+        @extend %baseBadge;
+    }
+
+    .btn-badge-#{$name} {
+        --badge-color: #{$color};
+    }
+    
+}
+
+
 /** BADGE EXTENSIBLE DESDE AFUERA DE PLEX */
 $badge-extend: () !default;
 
-@each $name,
-$color in $badge-extend {
+@each $name, $color in $badge-extend {
     .badge-#{$name} {
          --badge-color: #{$color};
     }
@@ -72,41 +85,3 @@ $color in $badge-extend {
         }
     }
 }
-
-$colors: (
-    warning: $orange,
-    danger: $red,
-    success: $green,
-    info: $blue
-);
-
-@each $name,
-$color in $colors {
-    .badge-#{$name} {
-         --badge-color: #{$color};
-    }
-    .btn-badge-#{$name} {
-        button.btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.875rem;
-            border-radius: 0;
-            color: #fff;
-            background-color: #{$color};
-            border-color: #{$color};
-        }
-
-    }
-    .badge-#{$name} {
-        i {
-            font-size: 20px;
-            overflow: hidden;
-            line-height: 0;
-            height: 0;
-            position: relative;
-            top: 3px;
-            right: 3px;
-            border-color: #{$color};
-        }
-    }
-}
-
