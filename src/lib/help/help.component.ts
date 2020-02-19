@@ -1,12 +1,12 @@
-import { Component, Input, Renderer2 } from '@angular/core';
+import { Component, Input, Renderer2, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'plex-help',
     template: `
     <div class="toggle-{{ type }}" [ngClass]="{'closed': closed, 'open': !closed}">
-        <plex-button *ngIf="!closed" type="danger" size="sm" icon="close" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
-        <plex-button *ngIf="closed && !tituloBoton" type="info" size="sm" [icon]="icon" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
-        <plex-button *ngIf="closed && tituloBoton" type="info" size="sm" [label]="tituloBoton" (click)="toggleOpenClose();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="!closed" type="danger" size="sm" icon="close" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="content && closed && !tituloBoton" type="info" size="sm" [icon]="icon" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="content && closed && tituloBoton" type="info" size="sm" [label]="tituloBoton" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
     </div>
     <div class="card {{ type }}" [ngClass]="{'open': !closed}" *ngIf="type === 'help'" (click)="$event.stopImmediatePropagation();">
         <ng-container *ngIf="!closed">
@@ -28,24 +28,41 @@ import { Component, Input, Renderer2 } from '@angular/core';
     `
 })
 export class PlexHelpComponent {
+
     @Input() type: 'info' | 'help' = 'info';
+
     @Input() titulo = '';
+
     @Input() subtitulo: string;
+
     @Input() tituloBoton = '';
+
     @Input() icon = 'help-circle';
-    unlisten: Function;
+
+    @Output() close = new EventEmitter();
+
+    @Output() open = new EventEmitter();
+
+    private unlisten: Function;
+
     closed = true;
 
     constructor(private renderer: Renderer2) { }
 
-    public toggleOpenClose() {
+    get content() {
+        return (this.icon && this.icon.length > 0) || (this.tituloBoton && this.tituloBoton.length > 0);
+    }
+
+    public toogle() {
         this.closed = !this.closed;
         if (!this.closed) {
+            this.open.emit();
             this.unlisten = this.renderer.listen('document', 'click', (event) => {
-                this.toggleOpenClose();
+                this.toogle();
                 this.unlisten();
             });
         } else {
+            this.close.emit();
             if (this.unlisten) {
                 this.unlisten();
             }
