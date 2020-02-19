@@ -8,6 +8,9 @@ export class ButtonDemoComponent implements OnInit {
     public modelo = {
         campo1: null
     };
+
+    color = 'red';
+
     constructor(private plex: Plex) { }
 
     ngOnInit(): void {
