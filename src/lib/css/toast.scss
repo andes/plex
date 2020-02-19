@@ -6,18 +6,18 @@
   }
 }
 
-.simple-notification.success {
-  background-color: $green !important;
-}
+.simple-notification.error { background: $red; }
+.simple-notification.success { background: $green; }
+.simple-notification.alert { background: $orange; }
+.simple-notification.info { background: $blue; }
+.simple-notification.warn { background: $orange; }
 
-.simple-notification.alert {
-  background-color: $orange !important;
-}
+.simple-notification.success .sn-progress-loader span { background: darken($green, $darken-percentage); }
+.simple-notification.error .sn-progress-loader span { background: darken($red, $darken-percentage); }
+.simple-notification.alert .sn-progress-loader span { background: darken($orange, $darken-percentage); }
+.simple-notification.info .sn-progress-loader span { background: darken($blue, $darken-percentage); }
+.simple-notification.warn .sn-progress-loader span { background: darken($orange, $darken-percentage); }
+.simple-notification.bare .sn-progress-loader span { background: darken($light-grey, $darken-percentage); }
 
-.simple-notification.error {
-  background-color: $red !important;
-}
-
-.simple-notification.info {
-  background-color: $blue !important;
-}
+.simple-notification.warn div .sn-title { color: $dark-grey; }
+.simple-notification.warn div .sn-content { color: $dark-grey; }
