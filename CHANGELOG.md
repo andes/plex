@@ -1,3 +1,18 @@
+# [5.10.0](https://github.com/andes/plex/compare/v5.9.0...v5.10.0) (2020-02-19)
+
+
+### Bug Fixes
+
+* **plex-help:** ajuste a contenido ([1683355](https://github.com/andes/plex/commit/1683355560873c8a021ee0921f953274738ee17f))
+* **toast:** se aplica paleta de colores correcta ([d40b794](https://github.com/andes/plex/commit/d40b7949053d5cb59fd1f618aa6107e3fdb5e6b7))
+
+
+### Features
+
+* **navbar:** custom item ([0ee344f](https://github.com/andes/plex/commit/0ee344fc9f674c2d36abda95c62e50198184556a))
+* **plex-badge:** suporta boton e icono con costum color ([7f844e4](https://github.com/andes/plex/commit/7f844e44f708f6b40b68ef73c93aff0c7b99b67f))
+* **plex-help:** eventos open and close ([a860a20](https://github.com/andes/plex/commit/a860a20dae8f00cf15b0dadd6ff509f10d01d8ca))
+
 # [5.9.0](https://github.com/andes/plex/compare/v5.8.0...v5.9.0) (2020-02-18)
 
 
