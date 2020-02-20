@@ -31,8 +31,6 @@ export class MpiMaquetadoComponent implements OnInit {
     public templateModel2: any;
     public modelo: any;
 
-
-
     constructor(
         private pacienteService: PacienteService,
         private route: ActivatedRoute,
@@ -68,6 +66,8 @@ export class MpiMaquetadoComponent implements OnInit {
         // plex-phone
         // plex-float
         this.tModel = { valor: null };
+
+
 
         // plex-select
         this.opciones = [{
@@ -120,9 +120,8 @@ export class MpiMaquetadoComponent implements OnInit {
 
 
     goToAlta() {
-        this.router.navigate(['templates', 'mpi-alta']);
+        this.router.navigate(['templates/mpi-maquetado/mpi-alta']);
     }
-
 
 }
 
