@@ -1,8 +1,10 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <plex-title size="lg" titulo="Busqueda de pacientes">
-            <plex-button type="danger" size="md">Volver</plex-button>
-        </plex-title>
+        <header>
+            <plex-title size="lg" titulo="Busqueda de pacientes">
+                <plex-button type="danger" size="md">Volver</plex-button>
+            </plex-title>
+        </header>
 
         <!-- plex-filter: en etapa experimental -->
         <plex-filters>
@@ -10,7 +12,7 @@
                        placeholder="Escanee un documento digital, o escriba un documento / apellido / nombre"
                        [(ngModel)]="templateModel2.nombre" name="nombre">
             </plex-text>
-            <plex-button type="info" size="md" routerLink="/mpi-alta">Nuevo paciente</plex-button>
+            <plex-button type="info" size="md" (click)="goToAlta()">Nuevo paciente</plex-button>
         </plex-filters>
         <mpi-listado>
 
@@ -19,5 +21,20 @@
 
     <plex-layout-sidebar type="invert">
         <router-outlet></router-outlet>
+        <plex-title titulo="Relaciones" size="sm">
+            <plex-button type="success" size="sm" icon="plus"></plex-button>
+            <plex-button type="info" size="sm" icon="eye"></plex-button>
+        </plex-title>
+        <plex-list>
+            <plex-item *ngFor="let paciente of pacientes$ | async" class="">
+                <img src="{{ paciente.foto }}" alt="">
+                <plex-label titulo="{{ paciente.nombre }} {{ paciente.apellido }}" subtitulo="{{ paciente.documento }}">
+                </plex-label>
+                <plex-badge type="info">{{ paciente.relaciones }}
+                </plex-badge>
+                <plex-button type="danger" size="sm" icon="close">
+                </plex-button>
+            </plex-item>
+        </plex-list>
     </plex-layout-sidebar>
 </plex-layout>

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PacienteService } from '../../../../service/paciente.service';
 import { Paciente } from '../../../../service/paciente';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'mpi-listado',

@@ -70,6 +70,7 @@ const appRoutes: Routes = [
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },
     { path: 'templates/visualizacion', component: TemplateVisualizacionComponent },
     { path: 'templates/busqueda', component: TemplateBusquedaComponent },
+    { path: 'templates/mpi-maquetado/mpi-alta', component: MpiAltaComponent },
     {
         path: 'templates/listado-sidebar', component: ListadoSidebarComponent,
         children: [
@@ -79,10 +80,9 @@ const appRoutes: Routes = [
     {
         path: 'templates/mpi-maquetado', component: MpiMaquetadoComponent,
         children: [
-            { path: ':id', component: MpiDetalleComponent }
+            { path: ':id', component: MpiDetalleComponent },
         ]
     },
-    { path: 'templates/mpi-maquetado/mpi-alta', component: MpiAltaComponent },
 
     { path: 'item', component: ItemDemoComponent },
     { path: 'detail', component: DetailDemoComponent },

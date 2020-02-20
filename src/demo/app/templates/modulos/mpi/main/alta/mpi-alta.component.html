@@ -1,1 +1,50 @@
-<p>Alta works!</p>
+<plex-layout main="8">
+    <plex-layout-main>
+        <header>
+            <plex-title size="lg" titulo="Alta de pacientes">
+                <plex-button type="danger" size="md" routerLink="/templates/mpi-maquetado">Volver</plex-button>
+                <plex-button type="info" size="md">Gestión de app mobile</plex-button>
+                <plex-button type="success" size="md">Guardar</plex-button>
+            </plex-title>
+        </header>
+
+        <plex-tabs>
+            <plex-tab label="datos básicos" icon="">
+                <datos-basicos></datos-basicos>
+            </plex-tab>
+
+            <plex-tab label="datos de contacto" icon="">
+                <datos-contacto></datos-contacto>
+            </plex-tab>
+
+            <plex-tab label="notas" icon="">
+                <datos-notas></datos-notas>
+            </plex-tab>
+
+            <plex-tab label="relaciones" icon="">
+                <datos-relaciones></datos-relaciones>
+            </plex-tab>
+        </plex-tabs>
+    </plex-layout-main>
+
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="Detalle" size="sm">
+            <plex-button type="danger" icon="close" size="sm"></plex-button>
+        </plex-title>
+
+        <plex-detail direction="column" size="sm" class="justify-content-center">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6kC2G5mah771aAk-RG2zh10844QBCW9NHkZhE8zofvVkB_wAA&s"
+                 alt="">
+            <plex-badge size="xs">validado</plex-badge>
+            <div title>Pedro Ernesto Martinez Valenzuela</div>
+            <div subtitle>21532632</div>
+            <plex-label titulo="Fecha de Nacimiento" subtitulo="11/09/1975"></plex-label>
+            <plex-label titulo="CUIL" subtitulo="20-21532632-5"></plex-label>
+            <plex-label titulo="Edad" subtitulo="63"></plex-label>
+            <plex-label titulo="Sexo" subtitulo="Femenino"></plex-label>
+            <plex-label titulo="Género" subtitulo="Otro"></plex-label>
+            <plex-label titulo="Financiador" subtitulo="ISSN"></plex-label>
+        </plex-detail>
+    </plex-layout-sidebar>
+
+</plex-layout>
