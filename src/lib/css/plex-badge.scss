@@ -36,6 +36,11 @@
         color: #fff;
         background-color: var(--badge-color);
         border-color: var(--badge-color);
+        &:hover {
+            background-color: var(--badge-color);
+            mix-blend-mode: darken;
+            opacity: .75;
+        }
     }
 
 }
@@ -60,10 +65,20 @@ $colors: (
         --badge-color: #{$color};
         // Compatibilidad con andes hasta que se haga el refactor a plex-badge
         @extend %baseBadge;
+        .btn {
+            @include button-factory($color);
+            position: relative;
+            right: 2px;
+        }
     }
     
     .btn-badge-#{$name} {
         --badge-color: #{$color};
+        .btn {
+            @include button-factory($color);
+            position: relative;
+            right: 2px;
+        }
     }
     
 }
@@ -75,16 +90,17 @@ $badge-extend: () !default;
 @each $name, $color in $badge-extend {
     .badge-#{$name} {
         --badge-color: #{$color};
+        .btn {
+            @include button-factory($color);
+            position: relative;
+            right: 2px;
+        }
     }
     .btn-badge-#{$name} {
         .btn {
-            // padding: 0.25rem 0.5rem;
-            // font-size: 0.875rem;
-            // border-radius: 0;
-            // color: #fff;
-            // background-color: #{$color};
-            // border-color: #{$color};
-            @include button-factory($blue);
+            @include button-factory($color);
+            position: relative;
+            right: 2px;
         }
     }
 }
