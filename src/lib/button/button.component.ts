@@ -14,7 +14,7 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef } fro
 export class PlexButtonComponent {
     @Input() label: string;
     @Input() icon: string;
-    @Input() type: string;
+    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default';
     @Input() size: 'lg' | 'sm' | 'block';
     @Input() validateForm: boolean | NgForm;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
