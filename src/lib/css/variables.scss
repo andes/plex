@@ -1,4 +1,3 @@
-
 $red: #dd4b39;
 $orange: #ff8d22;
 $yellow: #ffd500;
@@ -10,7 +9,7 @@ $dark-grey: #999999;
 $light-blue: #edf8fd;
 
 :root {
-    --nav-bar-color: $blue;
+    --nav-bar-color: #{$blue};
 }
 
 $darken-percentage: 15%;
