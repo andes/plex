@@ -1,3 +1,4 @@
+
 %baseBadge {
     background: transparent;
     border: 1.5px solid;
@@ -49,7 +50,8 @@ $colors: (
     warning: $orange,
     danger: $red,
     success: $green,
-    info: $blue
+    info: $blue,
+    default: $dark-grey
 );
 
 @each $name, $color in $colors {
@@ -59,7 +61,7 @@ $colors: (
         // Compatibilidad con andes hasta que se haga el refactor a plex-badge
         @extend %baseBadge;
     }
-
+    
     .btn-badge-#{$name} {
         --badge-color: #{$color};
     }
@@ -72,16 +74,17 @@ $badge-extend: () !default;
 
 @each $name, $color in $badge-extend {
     .badge-#{$name} {
-         --badge-color: #{$color};
+        --badge-color: #{$color};
     }
     .btn-badge-#{$name} {
         .btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.875rem;
-            border-radius: 0;
-            color: #fff;
-            background-color: #{$color};
-            border-color: #{$color};
+            // padding: 0.25rem 0.5rem;
+            // font-size: 0.875rem;
+            // border-radius: 0;
+            // color: #fff;
+            // background-color: #{$color};
+            // border-color: #{$color};
+            @include button-factory($blue);
         }
     }
 }

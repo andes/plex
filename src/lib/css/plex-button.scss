@@ -1,9 +1,3 @@
-@mixin button-factory($color) {
-    color: $white;
-    background-color: $color;
-    border-color: $color;
-}
-
 .btn {
     font-family: $font-family;
     cursor: pointer;

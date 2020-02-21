@@ -1,0 +1,12 @@
+@function hexToRGB($hex) {
+    @return red($hex), green($hex), blue($hex);
+}
+
+@mixin button-factory($color) {
+    color: $white;
+    background-color: $color;
+    border-color: $color;
+    @include hover {
+       background: darken($color, $darken-percentage);
+    }
+}
