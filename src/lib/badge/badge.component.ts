@@ -13,7 +13,7 @@ import { Component, Input, ElementRef, ViewChild, OnChanges } from '@angular/cor
         `,
 })
 export class PlexBadgeComponent implements OnChanges {
-    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'primary';
+    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default';
     @Input() size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
     @Input() color: string;
 

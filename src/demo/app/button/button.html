@@ -3,8 +3,9 @@
         <plex-title titulo="PLEX-BUTTON"></plex-title>
         <plex-title size="sm" titulo="Tipos"></plex-title>
         <plex-button label="Default" icon="account" (click)="onClick()"></plex-button>
-        <plex-button label="Primary" type="primary" icon="account"></plex-button>
+        <plex-button label="Info" type="info" icon="account"></plex-button>
         <plex-button label="Danger" type="danger" icon="account"></plex-button>
+        <plex-button label="Warning" type="warning" icon="account"></plex-button>
         <plex-button label="Success" type="success" icon="account"></plex-button>
         <plex-button label="Link" type="link" icon="account"></plex-button>
         <hr>
@@ -13,7 +14,7 @@
         <hr>
         <plex-title size="sm" titulo="Tamaños"></plex-title>
         <plex-button type="danger" label="Large" size="lg"></plex-button>
-        <plex-button type="success" label="Small" size="md"></plex-button>
+        <plex-button type="success" label="Small" size="sm"></plex-button>
         <div class="row">
             <div class="col">
                 <plex-button type="warning" label="Toda la columna (block)" size="block"></plex-button>
@@ -31,15 +32,13 @@
         <form #formulario1="ngForm">
             <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="modelo.campo1"
                        [disabled]="false" [required]="true"></plex-text>
-            <plex-button type="success" label="Guardar formulario" icon="content-save" [validateForm]="formulario1"
-                         (click)="guardar($event)"></plex-button>
         </form>
         <hr>
         <plex-title size="sm" titulo="Formulario inline"></plex-title>
         <form #formulario2="ngForm">
             <div class="btn-group">
                 <plex-text name="campo1" [(ngModel)]="modelo.campo1" [disabled]="false" [required]="true"></plex-text>
-                <plex-button type="success" icon="content-save" [validateForm]="formulario2" (click)="guardar($event)">
+                <plex-button type="info" icon="content-save" [validateForm]="formulario2" (click)="guardar($event)">
                 </plex-button>
             </div>
         </form>
@@ -53,6 +52,7 @@
         <plex-badge size="sm" type="warning" class="mr-1">TEMPORAL</plex-badge>
         <plex-badge size="sm" type="danger" class="mr-1">RESTRINGIDO</plex-badge>
         <plex-badge size="sm" type="info" class="mr-1">14/02/2020</plex-badge>
+        <plex-badge size="sm" type="default" class="mr-1">EN PLANIFICACIÓN</plex-badge>
 
         <hr>
         <plex-title size="sm" titulo="button y badge"></plex-title>
