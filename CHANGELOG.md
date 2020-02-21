@@ -1,3 +1,10 @@
+## [5.10.1](https://github.com/andes/plex/compare/v5.10.0...v5.10.1) (2020-02-21)
+
+
+### Bug Fixes
+
+* **nav-item:** remove hover class on close ([695ec84](https://github.com/andes/plex/commit/695ec84766b7f23ad60e36585fa5fab6a32f5b85))
+
 # [5.10.0](https://github.com/andes/plex/compare/v5.9.0...v5.10.0) (2020-02-19)
 
 
