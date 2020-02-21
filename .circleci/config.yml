@@ -87,17 +87,10 @@ workflows:
       - cypress:
           requires:
             - install
-      - request-deploy:
-          type: approval
+      - deploy:
           requires:
             - build
             - cypress
-          filters:
-            branches:
-              only: master
-      - deploy:
-          requires:
-            - request-deploy
           filters:
             branches:
               only: master
