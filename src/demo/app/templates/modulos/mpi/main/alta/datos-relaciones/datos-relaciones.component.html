@@ -1,26 +1,30 @@
-<plex-filters>
+<plex-title titulo="Relaciones" size="sm">
+    <plex-button type="info" size="sm" (click)="agregarRelacion()">agregar relación</plex-button>
+</plex-title>
+<plex-filters *ngIf="nuevaRelacion === true">
     <plex-text label="Buscar relación de paciente"
                placeholder="Escanee un documento digital, o escriba un documento / apellido / nombre"
                [(ngModel)]="templateModel2.nombre" name="nombre">
     </plex-text>
-    <plex-button type="info" size="md" (click)="goToAlta()">agregar relación</plex-button>
 </plex-filters>
 <plex-list>
-    <plex-heading>
-        <b label>Documento</b>
-        <b label>Apellido y nombre</b>
-        <b label>Relación</b>
-        <b label>Acción</b>
-    </plex-heading>
-    <plex-item *ngFor="let paciente of pacientes$ | async" class="">
-        <img src="{{ paciente.foto }}" alt="">
-        <plex-label titulo="{{ paciente.nombre }} {{ paciente.apellido }}" subtitulo="{{ paciente.documento }}">
-        </plex-label>
-        <plex-select [(ngModel)]="modelo1.select" [data]="opciones6" label-field="nombre" label="relación">
-        </plex-select>
-        <plex-badge type="info">{{ paciente.estado }}
-        </plex-badge>
-        <plex-button type="danger" size="sm" icon="close">
-        </plex-button>
-    </plex-item>
+
+    <plex-list>
+        <plex-item *ngFor="let paciente of pacientes$ | async">
+            <img src="{{ paciente.foto }}" alt="">
+            <plex-label titulo="{{ paciente.nombre }} {{ paciente.apellido }}" subtitulo="{{ paciente.documento }}">
+            </plex-label>
+            <plex-label titulo="{{ paciente.edad }} Años" subtitulo="{{ paciente.fechaNacimiento }}"></plex-label>
+            <plex-badge type="info">{{ paciente.sexo }}
+            </plex-badge>
+            <plex-badge type="info">{{ paciente.relaciones }}
+            </plex-badge>
+            <plex-badge type="" class=""
+                        [ngClass]="{'text-success' : paciente.estado === 'validado' , 'text-warning' : paciente.estado === 'temporal'} ">
+                {{ paciente.estado }}
+            </plex-badge>
+            <plex-button type="danger" size="sm" icon="close">
+            </plex-button>
+        </plex-item>
+    </plex-list>
 </plex-list>

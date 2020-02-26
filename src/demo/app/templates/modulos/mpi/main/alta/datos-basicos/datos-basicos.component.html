@@ -2,17 +2,17 @@
     <!-- Desacoplar en componente -->
     <plex-title titulo="datos básicos" size="sm" class="mt-2"></plex-title>
     <plex-filters>
-        <plex-text columns="3" label="Nombre" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8"
-                   maxlength="8" [debounce]="1000" (change)="onChange()"></plex-text>
-        <plex-text columns="3" label="Apellido" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8"
-                   maxlength="8" [debounce]="1000" (change)="onChange()"></plex-text>
-        <plex-datetime columns="1" label="Fecha con navegación inline (por dia)" [skipBy]="'day'"
-                       [(ngModel)]="tModel.fecha" [min]="tModel.min" [max]="tModel.max" name="fechaSkip" required>
-        </plex-datetime>
+        <plex-text label="Ingrese dni" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8" maxlength="8"
+                   [debounce]="1000" (change)="onChange()"></plex-text>
         <plex-select [(ngModel)]="modelo1.select" [data]="opciones" label-field="nombre" label="Seleccione sexo">
         </plex-select>
-        <plex-text columns="1" label="Ingrese dni" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8"
-                   maxlength="8" [debounce]="1000" (change)="onChange()"></plex-text>
+        <plex-datetime label="Fecha con navegación inline (por dia)" [skipBy]="'day'" [(ngModel)]="tModel.fecha"
+                       [min]="tModel.min" [max]="tModel.max" name="fechaSkip" required>
+        </plex-datetime>
+        <plex-text label="Nombre" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8" maxlength="8"
+                   [debounce]="1000" (change)="onChange()"></plex-text>
+        <plex-text label="Apellido" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8" maxlength="8"
+                   [debounce]="1000" (change)="onChange()"></plex-text>
         <plex-select [(ngModel)]="modelo1.select" [data]="opciones" label-field="nombre"
                      label="Seleccione estado civil">
         </plex-select>
@@ -23,7 +23,8 @@
         <plex-text label="Nombre" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8" maxlength="8"
                    [debounce]="1000" (change)="onChange()"></plex-text>
 
-        <plex-select [(ngModel)]="modelo1.select" [data]="opciones2" label-field="nombre" label="Seleccione género">
+        <plex-select columns="2" [(ngModel)]="modelo1.select" [data]="opciones2" label-field="nombre"
+                     label="Seleccione género">
         </plex-select>
     </plex-filters>
 </section>

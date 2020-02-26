@@ -4,26 +4,17 @@ import { Directive, Input, HostBinding } from '@angular/core';
     selector: '[columns]'
 })
 export class ColumnsDirective {
-    @Input() columns: 'auto' | '2' | '3' | '4' = 'auto';
+    @Input() columns: '1' | '2' | '3' = '1';
 
-    @HostBinding('class.grid-columns-auto') get auto() {
-        return this.columns === 'auto';
+    @HostBinding('class.flex-grow-1') get 1() {
+        return this.columns === '1';
     }
 
-    @HostBinding('class.grid-columns-span-2') get 2() {
+    @HostBinding('class.flex-grow-2') get 2() {
         return this.columns === '2';
     }
 
-    @HostBinding('class.grid-columns-span-3') get 3() {
+    @HostBinding('class.flex-grow-3') get 3() {
         return this.columns === '3';
     }
-
-    @HostBinding('class.grid-columns-span-4') get 4() {
-        return this.columns === '4';
-    }
-
-    @HostBinding('class.grid-columns-default') get default() {
-        return !this.columns || this.columns === 'auto';
-    }
-
 }
