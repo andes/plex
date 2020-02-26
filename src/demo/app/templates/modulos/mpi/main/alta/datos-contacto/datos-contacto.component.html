@@ -1,7 +1,8 @@
 <section class="mt-4" justify>
     <div>
         <plex-title titulo="datos de contacto" size="sm">
-            <plex-bool type="checkbox" label="No posee ningún dato de contacto"></plex-bool>
+            <plex-bool type="checkbox" label="Sin datos de contacto"></plex-bool>
+            <!-- <plex-button type="info" icon="marker" size="sm"></plex-button> -->
         </plex-title>
         <plex-filters>
             <plex-select [(ngModel)]="modelo1.select" [data]="opciones3" label-field="nombre" label="Tipo de contacto">
@@ -20,7 +21,7 @@
 
             <plex-text columns="auto" label="Dirección" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8"
                        maxlength="8" [debounce]="1000" (change)="onChange()"></plex-text>
-            <plex-button type="info" size="md" icon="marker"></plex-button>
+            <plex-button type="info" size="md" icon="map-marker"></plex-button>
         </plex-filters>
     </div>
     <div class="gmap_canvas map ml-4">

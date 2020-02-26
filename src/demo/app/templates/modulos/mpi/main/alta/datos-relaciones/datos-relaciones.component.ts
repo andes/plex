@@ -14,6 +14,7 @@ export class DatosRelacionesComponent implements OnInit {
   public modelo1 = { select: null };
   public templateModel2: any;
   public opciones6 = [];
+  nuevaRelacion = false;
 
   constructor(
     private pacienteService: PacienteService,
@@ -53,9 +54,12 @@ export class DatosRelacionesComponent implements OnInit {
       nombre: 'Tutor/a"',
     }
     ];
+
     // plex-text
     this.templateModel2 = { nombre: null, min: 8, max: 8 };
+  }
 
-
+  agregarRelacion() {
+    this.nuevaRelacion = !this.nuevaRelacion;
   }
 }

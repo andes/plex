@@ -63,7 +63,7 @@ const appRoutes: Routes = [
         ]
     },
     {
-        path: 'templates/mpi-maquetado', component: MpiMaquetadoComponent,
+        path: 'templates/mpi-maquetado/1', component: MpiMaquetadoComponent,
         children: [
             { path: ':id', component: MpiDetalleComponent },
         ]
