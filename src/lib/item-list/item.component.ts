@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Component, Input, QueryList, AfterViewInit, ContentChildren, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { PlexIconComponent } from '../icon/icon.component';
 import { PlexBoolComponent } from '../bool/bool.component';
@@ -6,13 +7,15 @@ import { PlexBoolComponent } from '../bool/bool.component';
     selector: 'plex-item',
     template: `
         <div class="item-list"
-             [class.has-icon]="plexIcons?.length > 0 || imgs"
+             [class.has-icon]="plexIcons?.length > 0 || imgs || svgs"
              [class.has-checkbox]="plexBools?.length > 0"
              [class.selected]="selected"
         >
             <ng-content select="plex-bool"></ng-content>
-            <ng-content select="img" #imagenes></ng-content>
+            <ng-content select="img"></ng-content>
             <ng-content select="plex-icon"></ng-content>
+            <ng-content select="svg"></ng-content>
+
             <ng-content></ng-content>
             <div class="botonera">
                 <ng-content select="plex-badge"></ng-content>
@@ -30,6 +33,7 @@ export class PlexItemComponent implements AfterViewInit {
     @ContentChildren(PlexBoolComponent, { descendants: false }) plexBools: QueryList<PlexBoolComponent>;
 
     public imgs = false;
+    public svgs = false;
 
     @Input() botonera = true;
     @Input() badges = true;
@@ -44,6 +48,10 @@ export class PlexItemComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         this.imgs = !!this.elRef.nativeElement.querySelector('img');
+
+        const elementos = this.elRef.nativeElement.querySelectorAll('.item-list > svg');
+        this.svgs = elementos.length > 0;
+
         this.ref.detectChanges();
     }
 
