@@ -175,7 +175,7 @@ plex-list {
         }
 
         // Estilos imagenes
-        img {
+        img, svg {
             align-self: center;
             border-radius: 50%;
             object-fit: cover;
@@ -202,23 +202,23 @@ plex-list {
     }
      
     // Sin checkbox, Sin icono
-        .item-list,.item-list-heading {
-            grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)) !important;
-        } 
+    .item-list,.item-list-heading {
+        grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)) !important;
+    } 
     
     // Con icono, sin checkbox
-        .item-list.has-icon,.item-list-heading.has-icon {
-            grid-template-columns: 55px repeat(auto-fit, minmax(135px, 1fr)) !important;
-        } 
+    .item-list.has-icon,.item-list-heading.has-icon {
+        grid-template-columns: 55px repeat(auto-fit, minmax(135px, 1fr)) !important;
+    } 
     
     // Sin icono, con checkbox
-        .item-list.has-checkbox,.item-list-heading.has-checkbox {
-            grid-template-columns: 25px repeat(auto-fit, minmax(135px, 1fr)) !important;
-        } 
+    .item-list.has-checkbox,.item-list-heading.has-checkbox {
+        grid-template-columns: 25px repeat(auto-fit, minmax(135px, 1fr)) !important;
+    } 
     
     // Con icono, con checkbox
-        .item-list.has-checkbox.has-icon,.item-list-heading.has-checkbox.has-icon {
-            grid-template-columns: 25px 55px repeat(auto-fit, minmax(135px, 1fr)) !important;
-        } 
-     
+    .item-list.has-checkbox.has-icon,.item-list-heading.has-checkbox.has-icon {
+        grid-template-columns: 25px 55px repeat(auto-fit, minmax(135px, 1fr)) !important;
+    } 
+    
 }
