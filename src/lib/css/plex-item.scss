@@ -174,8 +174,8 @@ plex-list {
             }
         }
 
-        // Estilos imagenes
-        img, svg {
+        // Estilos imágenes
+        img, > svg {
             align-self: center;
             border-radius: 50%;
             object-fit: cover;
