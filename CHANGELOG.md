@@ -1,3 +1,10 @@
+## [5.10.2](https://github.com/andes/plex/compare/v5.10.1...v5.10.2) (2020-03-02)
+
+
+### Bug Fixes
+
+* **plex-modal:** se agrega control para no bloquar teclas que no sean ESC ([#128](https://github.com/andes/plex/issues/128)) ([0539cb6](https://github.com/andes/plex/commit/0539cb6a8ba944bb9d1f920b9fc2fa292e3d76b8))
+
 ## [5.10.1](https://github.com/andes/plex/compare/v5.10.0...v5.10.1) (2020-02-21)
 
 
