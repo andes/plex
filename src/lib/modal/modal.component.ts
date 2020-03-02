@@ -49,7 +49,8 @@ export class PlexModalComponent {
 
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
-        if (!this.showed) {
+        // Nos aseguramos de no bloquear el teclado si el usuario está escribiendo (isComposing)
+        if (event['isComposing'] && !this.showed) {
             return false;
         }
         if (event.which === 27) {
