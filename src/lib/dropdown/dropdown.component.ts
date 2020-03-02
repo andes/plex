@@ -33,7 +33,7 @@ export class PlexDropdownComponent {
     @Input() icon: string;
     @Input() open: boolean;
     @Input() items: DropdownItem[];
-    @Input() type: string;
+    @Input() type: 'default' | 'info' | 'warning' | 'danger' = 'info';
     @Input() right: boolean;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
 
@@ -44,7 +44,7 @@ export class PlexDropdownComponent {
     constructor(public plex: Plex, private renderer: Renderer2) {
         this.open = false;
         this.disabled = false;
-        this.type = 'secondary';
+        this.type = 'default';
         this.right = false;
     }
 
