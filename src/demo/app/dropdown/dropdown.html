@@ -1,30 +1,103 @@
-<plex-layout>
+<plex-layout main="8">
     <plex-layout-main>
-        <div class="row">
-            <div class="col-4">
-                <plex-dropdown label="Dropdown con título" [items]="items">
-                </plex-dropdown>
+        <plex-title titulo="plex-dropdown">
+            <plex-dropdown label="Dropdown size md" right="false" size="md" type="primary" [items]="items">
+            </plex-dropdown>
+        </plex-title>
+        <section class="d-flex flex-row justify-content-between w-100 mt-4">
+            <div class="d-flex flex-column justify-content-between w-25 mr-4">
+                <plex-title titulo="Cromaticidad" size="sm"></plex-title>
+                <div>
+                    <label>Dropdown con título</label>
+                    <plex-dropdown label="Dropdown con título" [items]="items">
+                    </plex-dropdown>
+                </div>
+                <div>
+                    <label>Dropdown primary</label>
+                    <plex-dropdown label="Dropdown con tipo primary" type="primary" [items]="items">
+                    </plex-dropdown>
+                </div>
+                <div>
+                    <label>Dropdown warning</label>
+                    <plex-dropdown label="Dropdown con tipo warning" type="warning" [items]="items">
+                    </plex-dropdown>
+                </div>
+                <div>
+                    <label>Dropdown danger</label>
+                    <plex-dropdown label="Dropdown con tipo danger" type="danger" [items]="items">
+                    </plex-dropdown>
+                </div>
+                <div>
+                    <label>Dropdown disable</label>
+                    <plex-dropdown label="Dropdown con tipo danger" type="disable" [items]="items">
+                    </plex-dropdown>
+                </div>
             </div>
-            <div class="col-4">
-                <plex-dropdown icon="account" [items]="items">
+            <div class="d-flex flex-column justify-content-start w-50">
+                <plex-title titulo="Tamaños" size="sm"></plex-title>
+                <label>Dropdown size="sm"</label>
+                <plex-dropdown label="Dropdown con atributo size" size="sm" [items]="items">
                 </plex-dropdown>
-            </div>
-            <div class="col-4">
-                <plex-dropdown label="Dropdown con tipo primary" type="primary" [items]="items">
+                <label>Dropdown size="md"</label>
+                <plex-dropdown label="Dropdown con atributo size" size="md" [items]="items">
                 </plex-dropdown>
-            </div>
-        </div>
-        <div class="row margin-top">
-            <div class="col-4">
-                <label>Dropdown sólo con ícono</label>
-                <plex-dropdown icon="dots-horizontal" [items]="items">
+                <label>Dropdown size="lg"</label>
+                <plex-dropdown label="Dropdown con atributo size" size="lg" [items]="items">
                 </plex-dropdown>
+
+                <!-- Iconograficos -->
+                <plex-title titulo="Iconográficos" size="sm" class="mt-4">
+                    <plex-dropdown icon="dots-vertical" right="false" type="link" [items]="items"></plex-dropdown>
+                </plex-title>
+                <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row justify-content-between w-100">
+                        <div>
+                            <label>Right="true"</label>
+                            <plex-dropdown icon="account" right="true" [items]="items"></plex-dropdown>
+                        </div>
+                        <div>
+                            <label>type="warning"</label>
+                            <plex-dropdown icon="star" right="false" type="warning" [items]="items">
+                            </plex-dropdown>
+                        </div>
+                        <div>
+                            <label>type="link"</label>
+                            <plex-dropdown icon="star" right="false" type="link" [items]="items">
+                            </plex-dropdown>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="col-4">
-                <label>Dropdown sólo con ícono y tipo link</label>
-                <plex-dropdown icon="dots-horizontal" type="link" [items]="items">
-                </plex-dropdown>
-            </div>
-        </div>
+        </section>
     </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="Casos de uso">
+            <plex-dropdown label="Dropdown size md" right="false" size="md" type="primary" [items]="items">
+            </plex-dropdown>
+        </plex-title>
+        <div class="mt-4">
+            <plex-title titulo="Dropdown en plex-item" size="sm"></plex-title>
+        </div>
+        <plex-list>
+            <plex-item *ngFor="let item of lista">
+                <plex-bool name="activo"></plex-bool>
+                <plex-icon name="pencil" size="24" type="warning"></plex-icon>
+                <plex-label titulo="Este el titulo" subtitulo="Este es el subtitulo"></plex-label>
+                <plex-dropdown icon="dots-vertical" size="lg" type="link" right="false" [items]="items">
+                </plex-dropdown>
+            </plex-item>
+        </plex-list>
+        <div class="mt-4">
+            <plex-title titulo="Subtitulo con size=sm" size="sm">
+                <plex-dropdown label="Dropdown size sm" right="false" size="sm" type="danger" [items]="items">
+                </plex-dropdown>
+            </plex-title>
+        </div>
+        <div class="d-flex flex-row align-items-end">
+            <plex-text label="Ingrese su contraseña" class="w-100" password="true" [(ngModel)]="templateModel1.password"
+                       name="password" [required]="true"></plex-text>
+            <plex-dropdown icon="account" type="primary" [items]="items" right="false"></plex-dropdown>
+        </div>
+    </plex-layout-sidebar>
 </plex-layout>
