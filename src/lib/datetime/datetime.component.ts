@@ -25,7 +25,9 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
         },
     ],
     template: `<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
-                    <label *ngIf="label" class="form-control-label">{{ label }}</label>
+                    <label *ngIf="label" class="form-control-label">{{ label }}
+                        <span *ngIf="control.name && esRequerido" class="requerido"></span>
+                    </label>
                     <div class="input-group d-flex align-items-center">
                         <a *ngIf="showNav" (click)="prev()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover"
                            [title]="makeTooltip('anterior')">
@@ -56,7 +58,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private changeTimeout = null;
 
     @ContentChild(NgControl, { static: true }) control: AbstractControl;
-    public get esOpcional(): boolean {
+    public get esRequerido(): boolean {
         return hasRequiredValidator(this.control);
     }
 

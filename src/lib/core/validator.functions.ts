@@ -124,5 +124,5 @@ export function dateValidator(type: string, min: any, max: any) {
  */
 export function hasRequiredValidator(control: AbstractControl) {
     const validator: any = control.validator && control.validator({ value: null } as AbstractControl);
-    return !(validator && validator.required);
+    return (validator && validator.required);
 }

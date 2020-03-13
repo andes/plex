@@ -14,7 +14,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
     ],
     template: `<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
                 <label *ngIf="label" class="form-control-label">{{label}}
-                    <span *ngIf="control.name && esOpcional" class="opcional"></span>
+                    <span *ngIf="control.name && esRequerido" class="requerido"></span>
                 </label>
                 <mat-radio-group [(ngModel)]="value">
                     <mat-radio-button *ngFor="let item of data" [value]="item.id" [disabled]="readonly" (change)="radioChange($event)" [ngClass]="{'d-block': type == 'vertical'}">
@@ -29,7 +29,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
 export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     public value: any;
     @ContentChild(NgControl, { static: false }) public control: any;
-    public get esOpcional(): boolean {
+    public get esRequerido(): boolean {
         return hasRequiredValidator(this.control);
     }
 
