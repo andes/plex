@@ -8,23 +8,23 @@ import { DropdownItem } from './dropdown-item.inteface';
                     <button plexRipples data-toggle="dropdown" class="btn btn-{{type}}" [ngClass]="{'dropdown-toggle': label}" type="button" [disabled]="disabled" (click)="toggleMenu(); $event.stopImmediatePropagation();">
                     <i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i> {{label}}
                     </button>
-                    <ul class="dropdown-menu" [ngClass]="{'dropdown-menu-right': right, 'dropdown-menu-left': !right}">
-                    <li *ngFor="let item of items">
-                        <!--Item con router asociado-->
-                        <ng-template [ngIf]="!item.divider && item.route">
-                        <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active" (click)="open=false">
-                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
-                        </ng-template>
-                        <!--Item con handler asociado-->
-                        <ng-template [ngIf]="!item.divider && item.handler">
-                        <a plexRipples class="dropdown-item" href="#" (click)="toggleMenu(); item.handler($event); false;">
-                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
-                        </ng-template>
-                        <!--Divider-->
-                        <ng-template [ngIf]="item.divider">
-                        <div role="separator" class="dropdown-divider"></div>
-                        </ng-template>
-                    </li>
+                    <ul class="dropdown-menu" [ngClass]="{'dropdown-menu-right': position === 'right', 'dropdown-menu-left': position === 'left'}">
+                        <li *ngFor="let item of items">
+                            <!--Item con router asociado-->
+                            <ng-template [ngIf]="!item.divider && item.route">
+                            <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active" (click)="open=false">
+                                <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
+                            </ng-template>
+                            <!--Item con handler asociado-->
+                            <ng-template [ngIf]="!item.divider && item.handler">
+                            <a plexRipples class="dropdown-item" href="#" (click)="toggleMenu(); item.handler($event); false;">
+                                <span *ngIf="item.icon" class="mdi mdi-{{item.icon}} mdi-md"></span> {{item.label}}</a>
+                            </ng-template>
+                            <!--Divider-->
+                            <ng-template [ngIf]="item.divider">
+                            <div role="separator" class="dropdown-divider"></div>
+                            </ng-template>
+                        </li>
                     </ul>
                 </div>`,
 })
@@ -34,7 +34,7 @@ export class PlexDropdownComponent {
     @Input() open: boolean;
     @Input() items: DropdownItem[];
     @Input() type: 'default' | 'info' | 'warning' | 'danger' = 'info';
-    @Input() right: boolean;
+    @Input() position: 'center' | 'left' | 'right' | 'top' | 'bottom' = 'center';
     @Input() @HostBinding('attr.disabled') disabled: boolean;
 
     @Output() onOpen: EventEmitter<void> = new EventEmitter();
@@ -45,7 +45,7 @@ export class PlexDropdownComponent {
         this.open = false;
         this.disabled = false;
         this.type = 'default';
-        this.right = false;
+        this.position = 'center';
     }
 
     public toggleMenu() {
