@@ -26,7 +26,7 @@ const REGEX = /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
         }
     ],
     template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
-                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esOpcional" class="opcional"></span></label>
+                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esRequerido" class="requerido"></span></label>
                     <div [ngClass]="{'input-group': prefix || suffix}">
                         <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
                         <input #ref type="text" class="form-control" [disabled]="disabled" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
@@ -40,7 +40,7 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
     private renderer: Renderer;
     @ViewChild('ref', { static: true }) private ref: ElementRef;
     @ContentChild(NgControl, { static: true }) public control: any;
-    public get esOpcional(): boolean {
+    public get esRequerido(): boolean {
         return hasRequiredValidator(this.control);
     }
 

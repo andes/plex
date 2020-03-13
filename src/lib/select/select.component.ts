@@ -17,7 +17,7 @@ const Selectize = require('selectize/dist/js/standalone/selectize');
         }
     ],
     template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
-                    <label *ngIf="label" class="form-control-label">{{ label }}<span *ngIf="esOpcional" class="opcional"></span></label>
+                    <label *ngIf="label" class="form-control-label">{{ label }}<span *ngIf="esRequerido" class="requerido"></span></label>
                     <select *ngIf="!multiple" id="{{ uniqueId }}" (change)="onChange($event.target.value)"></select>
                     <select *ngIf="multiple" id="{{ uniqueId }}" multiple (change)="onChange($event.target.value)"></select>
                     <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
@@ -32,7 +32,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
 
     @ContentChild(NgControl, { static: false }) control: AbstractControl;
     public uniqueId = new Date().valueOf().toString();
-    public get esOpcional(): boolean {
+    public get esRequerido(): boolean {
         return hasRequiredValidator(this.control);
     }
 
