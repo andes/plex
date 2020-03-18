@@ -61,13 +61,10 @@ jobs:
           TZ: "America/Argentina/Buenos_Aires"
     steps:
       - attach_workspace:
-          at: ~/
-      - run: "export APPLITOOLS_BATCH_ID=$CIRCLE_SHA1"
-      - run: "export APPLITOOLS_BATCH_NAME=$CIRCLE_BRANCH"
-      - run: "export APPLITOOLS_BRANCH_NAME=$CIRCLE_BRANCH"
+          at: ~/ 
       - run:
           name: CYPRESS
-          command: npm run test:cypress
+          command: APPLITOOLS_PARENT_BRANCH_NAME=master APPLITOOLS_BRANCH_NAME=$CIRCLE_BRANCH npm run test:cypress
 
   deploy:
     working_directory: ~/app
