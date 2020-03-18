@@ -74,12 +74,16 @@
         "@angular/platform-server": "^8.1.0",
         "@angular/router": "^8.1.0",
         "@applitools/eyes-cypress": "^3.8.21",
+        "@commitlint/cli": "^8.3.5",
+        "@commitlint/config-angular": "^8.3.4",
         "@semantic-release/changelog": "^3.0.6",
         "@semantic-release/git": "^7.0.18",
         "@types/jasmine": "^2.5.45",
         "@types/node": "^6.0.117",
         "codelyzer": "^4.4.4",
+        "commitlint-circle": "^1.0.0",
         "cypress": "^3.7.0",
+        "husky": "^4.2.3",
         "jasmine-core": "^3.5.0",
         "jasmine-spec-reporter": "~4.1.0",
         "karma": "^4.4.1",
@@ -106,5 +110,32 @@
             "@semantic-release/git",
             "@semantic-release/github"
         ]
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-angular"
+        ],
+        "rules": {
+            "type-enum": [
+                2,
+                "always",
+                [
+                    "docs",
+                    "feat",
+                    "fix",
+                    "perf",
+                    "refactor",
+                    "revert",
+                    "style",
+                    "test",
+                    "chore"
+                ]
+            ]
+        }
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
     }
 }
