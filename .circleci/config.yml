@@ -38,6 +38,9 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
+          name: commit lint
+          command: npm run commitlint-circle
+      - run:
           name: lint
           command: npm run lint
       - run:

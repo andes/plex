@@ -20,7 +20,8 @@
         "cypress": "wait-on http://localhost:4200 && cypress run",
         "test:cypress": "run-p --race serve cypress",
         "test:cypress:local": "APPLITOOLS_IS_DISABLED=true run-p --race serve cypress",
-        "cypress:open": "APPLITOOLS_IS_DISABLED=true cypress open"
+        "cypress:open": "APPLITOOLS_IS_DISABLED=true cypress open",
+        "commitlint-circle": "commitlint-circle"
     },
     "main": "./dist/index.js",
     "dependencies": {
