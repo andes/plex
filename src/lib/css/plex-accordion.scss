@@ -5,6 +5,12 @@ plex-accordion {
     padding: .75rem 1.25rem;
   }
 
+  h5 a span{      
+    &:hover, :focus {
+      color: $blue;
+    }
+  }
+
   h5.item-title {
     display: inline-block;
     font-weight: 400;
@@ -20,7 +26,6 @@ plex-accordion {
   }
 
   // PANEL COLAPSADO
-
   .panel-default {
     background-color: #fff;
     border: solid 1px $dark-grey;
@@ -64,5 +69,12 @@ plex-accordion {
     border-top: solid 1px $dark-grey;
     border-radius: 0;
     padding: 20px;
+  }
+}
+
+// INVERT
+plex-layout-sidebar[type=invert] {
+  .card, .card-header {
+    border-color: white;
   }
 }
