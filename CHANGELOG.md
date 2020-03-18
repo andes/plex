@@ -1,3 +1,19 @@
+# [5.11.0](https://github.com/andes/plex/compare/v5.10.2...v5.11.0) (2020-03-18)
+
+
+### Bug Fixes
+
+* **plex-dropdown:** estilo active con color de paleta plex ([0c6d408](https://github.com/andes/plex/commit/0c6d4080d967bf820f08907fde12290b3c4b3bee))
+
+
+### Features
+
+* **color:** se agrega tipos de valores aceptados ([e82b38e](https://github.com/andes/plex/commit/e82b38e7c69b61ecd8029681aac856d0c07184bf))
+* **color-scheme:** se levanta valor de gris de dark-grey ([50a796e](https://github.com/andes/plex/commit/50a796e59a0f1719ab67c9ee56290e7baf7fce32))
+* **plex:** marca campo requerido con un asterisco ([8e95160](https://github.com/andes/plex/commit/8e95160d0d1a54be6c4417c1b6398799b8862ac8))
+* **plex-badge:** efecto hover para custom colors ([b3299dc](https://github.com/andes/plex/commit/b3299dc910d8329e30d800b289dc8d89fe7cbb6f))
+* **plex-item:** permite el uso de svg ([96e8f17](https://github.com/andes/plex/commit/96e8f174775c3e4e3d3086ec9d1430836e08a8c9))
+
 ## [5.10.2](https://github.com/andes/plex/compare/v5.10.1...v5.10.2) (2020-03-02)
 
 
