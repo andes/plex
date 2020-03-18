@@ -1,4 +1,4 @@
-<plex-layout>
+<plex-layout main="8">
     <plex-layout-main>
         <plex-accordion>
             <plex-panel (toggle)="toggle($event)" active="true">
@@ -24,4 +24,29 @@
             </plex-panel>
         </plex-accordion>
     </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-accordion>
+            <plex-panel (toggle)="toggle($event)" active="true">
+                <div plex-accordion-title>
+                    Título con elementos html
+                    <plex-bool [(ngModel)]="test" type="slide" label="¿Está activo?" name="activo"
+                               (change)="bool($event)">
+                    </plex-bool>
+                </div>
+                <ng-container *ngIf="test">
+                    TOOGLE ACTIVE
+                </ng-container>
+                <ng-container *ngIf="!test">
+                    TOOGLE INACTIVE
+                </ng-container>
+            </plex-panel>
+            <plex-panel icon="history" tituloPrincipal="Título con ícono">
+                SEGUNDO PANEL
+            </plex-panel>
+            <plex-panel icon="youtube" tituloPrincipal="Video embebido" tituloSecundario="Psychocandy!">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/iFp7W3PoNPI?ecver=1" frameborder="0"
+                        allowfullscreen></iframe>
+            </plex-panel>
+        </plex-accordion>
+    </plex-layout-sidebar>
 </plex-layout>
