@@ -1,3 +1,10 @@
+## [5.11.1](https://github.com/andes/plex/compare/v5.11.0...v5.11.1) (2020-03-19)
+
+
+### Bug Fixes
+
+* **plex-accordion:** border white y se actualiza demo accordion ([1286e92](https://github.com/andes/plex/commit/1286e92f02d747800a26e8a0bb1ef5aadbe65732))
+
 # [5.11.0](https://github.com/andes/plex/compare/v5.10.2...v5.11.0) (2020-03-18)
 
 
