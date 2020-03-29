@@ -1,3 +1,15 @@
+# [5.12.0](https://github.com/andes/plex/compare/v5.11.1...v5.12.0) (2020-03-29)
+
+
+### Bug Fixes
+
+* **plex-phone:** fix cant read nativeElement ([81fad9d](https://github.com/andes/plex/commit/81fad9d3f27afd50be612e31a661004e9a63c933))
+
+
+### Features
+
+* **plex-wrapper:** contenedor de controles de formularios ([793d131](https://github.com/andes/plex/commit/793d1315e856f8a9d9567f25bcee9afa1d61fd3c))
+
 ## [5.11.1](https://github.com/andes/plex/compare/v5.11.0...v5.11.1) (2020-03-19)
 
 
