@@ -3,7 +3,7 @@ import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef } from '
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'tooltip-content',
-    template: `<div class="tooltip show tooltip-{{ placement }} no-wrap"
+    template: `<div class="tooltip show tooltip-{{ placement }}"
                 [style.top]="top + 'px'"
                 [style.left]="left + 'px'"
                 role="tooltip">
@@ -45,7 +45,7 @@ export class TooltipContentComponent implements AfterViewInit {
     // -------------------------------------------------------------------------
 
     constructor(private element: ElementRef,
-                private cdr: ChangeDetectorRef) {
+        private cdr: ChangeDetectorRef) {
     }
 
     // -------------------------------------------------------------------------
@@ -96,25 +96,25 @@ export class TooltipContentComponent implements AfterViewInit {
         const targetElWidth = targetEl.offsetWidth;
         const targetElHeight = targetEl.offsetHeight;
         const shiftWidth: any = {
-            center (): number {
+            center(): number {
                 return hostElPos.left + hostElPos.width / 2 - targetElWidth / 2;
             },
-            left (): number {
+            left(): number {
                 return hostElPos.left;
             },
-            right (): number {
+            right(): number {
                 return hostElPos.left + hostElPos.width;
             }
         };
 
         const shiftHeight: any = {
-            center (): number {
+            center(): number {
                 return hostElPos.top + hostElPos.height / 2 - targetElHeight / 2;
             },
-            top (): number {
+            top(): number {
                 return hostElPos.top;
             },
-            bottom (): number {
+            bottom(): number {
                 return hostElPos.top + hostElPos.height;
             }
         };

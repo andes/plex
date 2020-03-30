@@ -67,9 +67,12 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import 'css/fonts';
 @import 'css/forms';
 @import 'css/list-group';
+@import 'css/tooltip.scss';
+
 // Third party
 @import 'css/toast';
 @import 'css/modals';
+
 // Plex Components
 @import 'css/plex-accordion';
 @import 'css/plex-badge';
