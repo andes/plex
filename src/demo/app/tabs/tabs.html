@@ -1,39 +1,55 @@
 <plex-layout main="8">
 	<plex-layout-main>
-		<fieldset>
-			<legend>Tabs estático</legend>
-			<plex-tabs [activeIndex]="activo" (change)="cambio($event)">
-				<plex-tab label="Tab 1" color="procedimiento">
-					<div class="alert alert-info">
-						Contenido 1
-					</div>
-				</plex-tab>
-				<plex-tab *ngIf="mostrar" label="Tab 2" icon="account">
-					<div class="alert alert-warning">
-						Contenido 2
-					</div>
-				</plex-tab>
-				<plex-tab icon="history">
-					<div class="alert alert-danger">
-						Contenido 3
-					</div>
-				</plex-tab>
-			</plex-tabs>
-			<pre>Tab activo: {{activo}}</pre>
+		<plex-title titulo="Tabs estáticos">
 			<plex-button (click)="next()" label="Siguiente tab"></plex-button>
-		</fieldset>
-		<fieldset>
-			<legend>Tabs dinámico</legend>
-			<plex-tabs [activeIndex]="activoDinamico" (close)="close($event)">
-				<plex-tab *ngFor="let item of tabs" [label]="item.label" [icon]="item.icon" [color]="item.color" [allowClose]="true">
-					<div class="alert alert-warning">
-						Este es el contenido de <strong>{{item.label}}</strong>
-					</div>
-				</plex-tab>
-			</plex-tabs>
+		</plex-title>
+		<pre>Tab activo: {{activo}}</pre>
+		<plex-tabs [activeIndex]="activo" (change)="cambio($event)">
+			<plex-tab label="Tab 1" color="procedimiento">
+				<div class="alert alert-info">
+					Contenido 1
+				</div>
+			</plex-tab>
+			<plex-tab *ngIf="mostrar" label="Tab 2" icon="account">
+				<div class="alert alert-warning">
+					Contenido 2
+				</div>
+			</plex-tab>
+			<plex-tab icon="history">
+				<div class="alert alert-danger">
+					Contenido 3
+				</div>
+			</plex-tab>
+		</plex-tabs>
+		<plex-title titulo="Tabs dinámicos">
 			<plex-button (click)="add()" label="Agregar" type="success"></plex-button>
-		</fieldset>
+		</plex-title>
+		<plex-tabs [activeIndex]="activoDinamico" (close)="close($event)">
+			<plex-tab *ngFor="let item of tabs" [label]="item.label" [icon]="item.icon" [color]="item.color"
+					  [allowClose]="true">
+				<div class="alert alert-warning">
+					Este es el contenido de <strong>{{item.label}}</strong>
+				</div>
+			</plex-tab>
+		</plex-tabs>
 	</plex-layout-main>
 	<plex-layout-sidebar>
+		<plex-tabs size="full">
+			<plex-tab label="Buscador" color="procedimiento">
+				<div class="alert alert-info">
+					Contenido 1
+				</div>
+			</plex-tab>
+			<plex-tab label="Historia de Salud">
+				<div class="alert alert-warning">
+					Contenido 2
+				</div>
+			</plex-tab>
+			<plex-tab icon="file-tree">
+				<div class="alert alert-danger">
+					Contenido 3
+				</div>
+			</plex-tab>
+		</plex-tabs>
 	</plex-layout-sidebar>
 </plex-layout>
