@@ -4,7 +4,7 @@ import { PlexTabComponent } from './tab.component';
 @Component({
     selector: 'plex-tabs',
     template: ` <ul #container class="nav nav-tabs" [ngClass]="size">
-                    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{active: tab.active}">
+                    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{'active': tab.active, 'icon': tab.icon && !tab.label}">
                         <a class="nav-link" [ngClass]="{active: tab.active}" plexRipples onclick="return false">
                             <i *ngIf="tab.icon" class="mdi mdi-{{tab.icon}}"></i>
                             <span *ngIf="tab.label">
