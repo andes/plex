@@ -2,7 +2,7 @@
 %baseBadge {
     background: transparent;
     border: 1.5px solid;
-    font-size: 0.75em;
+    font-size: $badge-font-size;
     font-weight: normal;
     padding: 6px;
     text-transform: uppercase;
@@ -39,7 +39,7 @@ plex-badge {
 .btn-badge {
     button.btn {
         padding: 0.25rem 0.5rem;
-        font-size: 0.875rem;
+        font-size: $badge-font-size;
         border-radius: 0;
         color: #fff;
         background-color: var(--badge-color);

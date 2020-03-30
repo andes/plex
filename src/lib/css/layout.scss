@@ -7,8 +7,8 @@ html {
 body {
   height: 100% !important;
   padding-top: $navbar-height + ($grid-gutter-width-base / 2);
+  font-size: $font-size-sm;
 }
-
 // Main container
 .content {
   margin-left: ($grid-gutter-width-base / 2);
