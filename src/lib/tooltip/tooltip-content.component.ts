@@ -44,7 +44,8 @@ export class TooltipContentComponent implements AfterViewInit {
     // Constructor
     // -------------------------------------------------------------------------
 
-    constructor(private element: ElementRef,
+    constructor(
+        private element: ElementRef,
         private cdr: ChangeDetectorRef) {
     }
 
