@@ -1,4 +1,7 @@
 plex-help {
+
+    $top-open: 21px;
+
     .card {
         display: none;
         border: 0; // reset
@@ -57,7 +60,7 @@ plex-help {
     .toggle-help, .toggle-info {
         position: absolute;
         right: 15px;
-        top: 23px;
+        top: $top-open;
         &.closed {
             top: 0; 
         }
@@ -86,7 +89,7 @@ plex-help {
         &.open {
             position: absolute;
             right: 15px;
-            top: 23px;
+            top: $top-open;
             z-index: 1001;
             width: auto;
             border-radius: 0.25rem;
