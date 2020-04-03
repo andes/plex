@@ -87,6 +87,9 @@ nav {
         overflow-y: scroll;    
         padding-right: 10px;
  
+        li {
+          line-height: 1.35;
+        }
 
       &::-webkit-scrollbar {
           width: 8px;
