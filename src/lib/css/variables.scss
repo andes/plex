@@ -27,6 +27,9 @@ $font-size-base: .9rem; // Assumes the browser default, typically `16px`
 $badge-font-size: $font-size-xs;
 $close-font-size: $font-size-base * 1.5;
 
+// Calles entre contenedores (main, sidebar, footer)
+$grid-gutter-width-base:     20px;
+
 $body-bg: #e6e6e6;
 
 // Headings
