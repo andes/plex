@@ -12,6 +12,7 @@ $light-blue: #edf8fd;
     --nav-bar-color: #{$blue};
 }
 
+
 $darken-percentage: 15%;
 
 // Brand
@@ -23,7 +24,7 @@ $font-size-lg:   1rem;
 $font-size-sm:   .9rem;
 $font-size-xs:   .75rem;
 $font-size-base: .9rem; // Assumes the browser default, typically `16px`
-$badge-font-size: $font-size-sm;
+$badge-font-size: $font-size-xs;
 $close-font-size: $font-size-base * 1.5;
 
 $body-bg: #e6e6e6;
