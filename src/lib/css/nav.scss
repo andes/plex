@@ -83,7 +83,7 @@ nav {
     }
 
     .dropdown .dropdown-menu {
-        max-height: 80vh;
+        max-height: calc(100vh - 64px);
         overflow-y: scroll;    
         padding-right: 10px;
  
