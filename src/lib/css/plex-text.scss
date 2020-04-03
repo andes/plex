@@ -6,6 +6,8 @@ plex-text {
 
     .input-group {
         display: flex;
+        .input-group-addon {
+            height: 35px;
     }
 
     .clear-icon {
