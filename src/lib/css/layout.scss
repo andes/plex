@@ -86,6 +86,13 @@ plex-layout {
   } 
 }
 
+// Compatibiidad con layout viejo
+plex-box {
+  .plex-box, plex-box > DIV {
+    margin-right: -5px;
+  }
+}
+
 
 
 // Page Title & Subtitle
