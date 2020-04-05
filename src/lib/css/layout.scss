@@ -50,7 +50,7 @@ plex-layout {
     color: white;
   }
 
-   > section,
+  > section,
   > plex-layout {
     min-height: 0;
     flex: 1; // Expande a todo el alto del contenedor
@@ -69,6 +69,15 @@ plex-layout {
         padding-right: ($grid-gutter-width-base / 2) !important;
       }
     }
+
+      > .row
+      > .col-12:only-child {
+        plex-layout-main {
+          .plex-box {
+            margin-right: -5px !important;
+          }
+        }
+      }
   }
   > section,
   > plex-layout {
@@ -85,14 +94,15 @@ plex-layout {
         padding-left: 0px;
       }
   } 
+}
 
-  // Compatibiidad con layout viejo
+// Compatibiidad con layout viejo
 plex-box {
   .plex-box, plex-box > DIV {
     margin-right: -5px;
   }
 }
-}
+
 
 
 // Page Title & Subtitle
