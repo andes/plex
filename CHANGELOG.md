@@ -1,3 +1,17 @@
+# [5.13.0](https://github.com/andes/plex/compare/v5.12.0...v5.13.0) (2020-04-07)
+
+
+### Bug Fixes
+
+* **plex-help:** corrige overflow de contenido en resoluciones bajas ([#140](https://github.com/andes/plex/issues/140)) ([ac09bfd](https://github.com/andes/plex/commit/ac09bfd6afa54b3ff204e16cbb349d58754c35f7))
+
+
+### Features
+
+* **plex-badge:** soporte para plex-datetime ([#142](https://github.com/andes/plex/issues/142)) ([e6ea0b9](https://github.com/andes/plex/commit/e6ea0b9848e2ed53a3c44a8a3ea00aa7427a9e45))
+* **plex-tab:** Se optimiza uso de espacio de tab cuando tiene ícono ([#138](https://github.com/andes/plex/issues/138)) ([6eb4871](https://github.com/andes/plex/commit/6eb487157a6f839b85fcd89a3310172cd6e788a1))
+* **tooltip:** Soporte multilínea para textos largos ([#139](https://github.com/andes/plex/issues/139)) ([b3a08d1](https://github.com/andes/plex/commit/b3a08d1e7b1e032eeb33eb4a568e64d9bf147e5d))
+
 # [5.12.0](https://github.com/andes/plex/compare/v5.11.1...v5.12.0) (2020-03-29)
 
 
