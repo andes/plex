@@ -23,10 +23,18 @@
 
 }
 
+// Para integración de plex-datetime dentro de un plex-badge
+plex-badge {
+    display: inline-flex;
+    align-items: flex-end;
+    plex-datetime {
+        display: inline-flex;
+    }
+}
+
 .badge {
     @extend %baseBadge;
 }
-
 
 .btn-badge {
     button.btn {
@@ -60,7 +68,6 @@ $colors: (
 );
 
 @each $name, $color in $colors {
-    
     .badge-#{$name} {
         --badge-color: #{$color};
         // Compatibilidad con andes hasta que se haga el refactor a plex-badge
@@ -104,3 +111,4 @@ $badge-extend: () !default;
         }
     }
 }
+

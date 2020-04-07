@@ -9,6 +9,7 @@ export class DateTimeDemoComponent implements OnInit {
     public model3: any;
     public model4: any;
     public tModel: any;
+    badgeModel: { fecha: any; };
 
     ngOnInit() {
         // Tepmlate-Form1 model
@@ -28,6 +29,10 @@ export class DateTimeDemoComponent implements OnInit {
         this.model4 = {
             fechaHora: null,
             disabled: true
+        };
+
+        this.badgeModel = {
+            fecha: moment(),
         };
     }
 
