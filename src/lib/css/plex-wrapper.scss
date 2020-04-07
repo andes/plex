@@ -36,7 +36,8 @@ plex-wrapper  {
 
     label {
         white-space: nowrap; 
-        width: 190px; 
+        min-width: 190px; 
+        max-width: 75%;
         overflow: hidden;
         text-overflow: ellipsis; 
     }
