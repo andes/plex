@@ -87,9 +87,10 @@ plex-help {
             right: 15px;
             top: 23px;
             z-index: 1001;
-            width: max-content;
+            width: auto;
             border-radius: 0.25rem;
             box-shadow: 2px 2px 5px 0px $dark-grey;
+            min-width: 41vw;
             max-height: 69vh;
             overflow-y: scroll;
         }
