@@ -23,84 +23,92 @@
 
 }
 
-.badge {
-    @extend %baseBadge;
-}
-
-
-.btn-badge {
-    button.btn {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.875rem;
-        border-radius: 0;
-        color: #fff;
-        background-color: var(--badge-color);
-        border-color: var(--badge-color);
-        &:hover {
-            background-color: var(--badge-color);
-            mix-blend-mode: darken;
-            opacity: .75;
-        }
+// Para integración de plex-datetime dentro de un plex-badge
+plex-badge {
+    display: inline-flex;
+    align-items: flex-end;
+    plex-datetime {
+        display: inline-flex;
     }
 
-}
-
-// Espaciado del ícono
-[class^="badge-"]>i,
-[class^="label-"]>i {
-    margin-right: 5px;
-}
-
-$colors: (
-    warning: $orange,
-    danger: $red,
-    success: $green,
-    info: $blue,
-    default: $dark-grey
-);
-
-@each $name, $color in $colors {
-    
-    .badge-#{$name} {
-        --badge-color: #{$color};
-        // Compatibilidad con andes hasta que se haga el refactor a plex-badge
+    .badge {
         @extend %baseBadge;
-        .btn {
-            @include button-factory($color);
-            position: relative;
-            right: 2px;
-        }
     }
-    
-    .btn-badge-#{$name} {
-        --badge-color: #{$color};
-        .btn {
-            @include button-factory($color);
-            position: relative;
-            right: 2px;
+
+    .btn-badge {
+        button.btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            border-radius: 0;
+            color: #fff;
+            background-color: var(--badge-color);
+            border-color: var(--badge-color);
+            &:hover {
+                background-color: var(--badge-color);
+                mix-blend-mode: darken;
+                opacity: .75;
+            }
         }
+
     }
-    
-}
+
+    // Espaciado del ícono
+    [class^="badge-"]>i,
+    [class^="label-"]>i {
+        margin-right: 5px;
+    }
+
+    $colors: (
+        warning: $orange,
+        danger: $red,
+        success: $green,
+        info: $blue,
+        default: $dark-grey
+    );
+
+    @each $name, $color in $colors {
+        .badge-#{$name} {
+            --badge-color: #{$color};
+            // Compatibilidad con andes hasta que se haga el refactor a plex-badge
+            @extend %baseBadge;
+            .btn {
+                @include button-factory($color);
+                position: relative;
+                right: 2px;
+            }
+        }
+        
+        .btn-badge-#{$name} {
+            --badge-color: #{$color};
+            .btn {
+                @include button-factory($color);
+                position: relative;
+                right: 2px;
+            }
+        }
+        
+    }
 
 
-/** BADGE EXTENSIBLE DESDE AFUERA DE PLEX */
-$badge-extend: () !default;
+    /** BADGE EXTENSIBLE DESDE AFUERA DE PLEX */
+    $badge-extend: () !default;
 
-@each $name, $color in $badge-extend {
-    .badge-#{$name} {
-        --badge-color: #{$color};
-        .btn {
-            @include button-factory($color);
-            position: relative;
-            right: 2px;
+    @each $name, $color in $badge-extend {
+        .badge-#{$name} {
+            --badge-color: #{$color};
+            .btn {
+                @include button-factory($color);
+                position: relative;
+                right: 2px;
+            }
+        }
+        .btn-badge-#{$name} {
+            .btn {
+                @include button-factory($color);
+                position: relative;
+                right: 2px;
+            }
         }
     }
-    .btn-badge-#{$name} {
-        .btn {
-            @include button-factory($color);
-            position: relative;
-            right: 2px;
-        }
-    }
+
 }
