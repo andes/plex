@@ -1,6 +1,13 @@
 // Nav Bar
+.navbar-container {
+  height: 42px;
+  display: flex;
+  align-items: center;
+}
 
 nav {
+  display: flex;
+  justify-content: space-between;
   height: $navbar-height;
 
   &.navbar-inverse.bg-info {
@@ -73,9 +80,10 @@ nav {
 
     // User info
     .userinfo {
-      line-height: 15px;
-      padding-top: 8px;
+      display: flex;
+      align-items: center;
       text-align: right;
+      line-height: 15px;
 
       span:last-child {
         font-size: .7em;

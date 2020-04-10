@@ -4,72 +4,76 @@ import { Plex } from './../core/service';
 @Component({
     selector: 'plex-app',
     template: ` <!--Navigation Bar-->
-                <nav class="navbar-inverse fixed-top"  [ngClass]="'bg-' + type">
+                    <nav class="navbar-inverse fixed-top"  [ngClass]="'bg-' + type">
+                        
+                        <div class="navbar-container">
+                            <ng-content select="[navIcon]"></ng-content>
 
-                    <ng-content select="[navIcon]"></ng-content>
+                            <div class="menu-item">
+                                <ng-template #menuItem></ng-template>
+                            </div>
+                            <div class="title hidden-md-down">
+                                <ng-container *ngFor="let item of plex.title; let last = last">
+                                    <a *ngIf="item.route" [routerLink]="item.route">{{item.name}}</a>
+                                    <span *ngIf="!item.route">{{item.name}}</span>
+                                    <span *ngIf="!last"> / </span>
+                                </ng-container>
+                            </div>
+                        </div>
 
-                    <div class="menu-item">
-                        <ng-template #menuItem></ng-template>
-                    </div>
-                    <div class="title hidden-md-down">
-                        <ng-container *ngFor="let item of plex.title; let last = last">
-                            <a *ngIf="item.route" [routerLink]="item.route">{{item.name}}</a>
-                            <span *ngIf="!item.route">{{item.name}}</span>
-                            <span *ngIf="!last"> / </span>
-                        </ng-container>
-                    </div>
-                    <div class="actions">
+                        <div class="actions">
 
-                        <!-- Novedades -->
-                        <ng-content select="[nav-item]"></ng-content>
+                            <!-- Novedades -->
+                            <ng-content select="[nav-item]"></ng-content>
 
-                        <!--App Status-->
-                        <div class="action hidden-md-down">
-                            <i *ngIf="online" class="mdi mdi-cloud"></i>
-                            <i *ngIf="!online" class="mdi mdi-cloud-off-outline text-danger"></i>
-                            <div class="popover popover-bottom">
-                                <h3 *ngIf="online" class="popover-title bg-success text-white text-center">Conectividad OK</h3>
-                                <h3 *ngIf="!online" class="popover-title bg-danger text-white text-center">Problemas con la conectividad</h3>
+                            <!--App Status-->
+                            <div class="action hidden-md-down">
+                                <i *ngIf="online" class="mdi mdi-cloud"></i>
+                                <i *ngIf="!online" class="mdi mdi-cloud-off-outline text-danger"></i>
+                                <div class="popover popover-bottom">
+                                    <h3 *ngIf="online" class="popover-title bg-success text-white text-center">Conectividad OK</h3>
+                                    <h3 *ngIf="!online" class="popover-title bg-danger text-white text-center">Problemas con la conectividad</h3>
 
-                                <div class="popover-content">
-                                    <p *ngIf="online">El servicio ANDES funciona correctamente</p>
-                                    <p *ngIf="!online">El servicio ANDES no está disponible</p>
-                                    <canvas baseChart [datasets]="chart.dataset" [labels]="chart.labels" [options]="chart.options" [colors]="chart.colors" [legend]="false"
-                                        [chartType]="'line'">
-                                    </canvas>
+                                    <div class="popover-content">
+                                        <p *ngIf="online">El servicio ANDES funciona correctamente</p>
+                                        <p *ngIf="!online">El servicio ANDES no está disponible</p>
+                                        <canvas baseChart [datasets]="chart.dataset" [labels]="chart.labels" [options]="chart.options" [colors]="chart.colors" [legend]="false"
+                                            [chartType]="'line'">
+                                        </canvas>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div *ngIf="plex.userInfo" class="userinfo hidden-md-down">
-                            <div>
-                                <span>{{plex.userInfo.usuario.nombreCompleto}}</span><br><span *ngIf="plex.userInfo.organizacion">{{plex.userInfo.organizacion.nombre}}</span>
+                            <div *ngIf="plex.userInfo" class="userinfo hidden-md-down">
+                                <div>
+                                    <span>{{plex.userInfo.usuario.nombreCompleto}}</span><br><span *ngIf="plex.userInfo.organizacion">{{plex.userInfo.organizacion.nombre}}</span>
+                                </div>
+                            </div>
+                            <!--Menu-->
+                            <div *ngIf="plex.menu && plex.menu.length" class="action dropdown" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();">
+                                <i class="mdi mdi-menu"></i>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li *ngFor="let item of plex.menu">
+                                        <!--Item con router asociado-->
+                                        <ng-template [ngIf]="!item.divider && item.route">
+                                            <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active">
+                                                <span *ngIf="item.icon" class="mdi mdi-{{item.icon}}"></span> {{item.label}}</a>
+                                        </ng-template>
+                                        <!--Item con handler asociado-->
+                                        <ng-template [ngIf]="!item.divider && item.handler">
+                                            <a plexRipples class="dropdown-item" href="#" (click)="item.handler($event); false;">
+                                                <span *ngIf="item.icon" class="mdi mdi-{{item.icon}}"></span> {{item.label}}</a>
+                                        </ng-template>
+                                        <!--Divider-->
+                                        <ng-template [ngIf]="item.divider">
+                                            <div role="separator" class="dropdown-divider"></div>
+                                        </ng-template>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <!--Menu-->
-                        <div *ngIf="plex.menu && plex.menu.length" class="action dropdown" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();">
-                            <i class="mdi mdi-menu"></i>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li *ngFor="let item of plex.menu">
-                                    <!--Item con router asociado-->
-                                    <ng-template [ngIf]="!item.divider && item.route">
-                                        <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active">
-                                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}}"></span> {{item.label}}</a>
-                                    </ng-template>
-                                    <!--Item con handler asociado-->
-                                    <ng-template [ngIf]="!item.divider && item.handler">
-                                        <a plexRipples class="dropdown-item" href="#" (click)="item.handler($event); false;">
-                                            <span *ngIf="item.icon" class="mdi mdi-{{item.icon}}"></span> {{item.label}}</a>
-                                    </ng-template>
-                                    <!--Divider-->
-                                    <ng-template [ngIf]="item.divider">
-                                        <div role="separator" class="dropdown-divider"></div>
-                                    </ng-template>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <plex-loader *ngIf="plex.loaderCount > 0" class="loader" type="linear"></plex-loader>
-                </nav>
+                        <plex-loader *ngIf="plex.loaderCount > 0" class="loader" type="linear"></plex-loader>
+                    </nav>
+
 
                 <!-- Componente de notificaciones Toast -->
                 <simple-notifications></simple-notifications>
