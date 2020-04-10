@@ -17,7 +17,7 @@ nav {
   .navbar-brand {
     float: left;
     padding: 0; // No hay variables para todos los paddings
-    height: $navbar-height;
+    height: 50px;
   }
 
   .actions {
@@ -153,7 +153,7 @@ nav {
   }
 
   .title {
-    float: left;
+    min-width: 50vw;
     font-size: 1.4em;
     color: white;
     font-weight: 400;
