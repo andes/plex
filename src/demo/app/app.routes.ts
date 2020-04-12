@@ -28,6 +28,7 @@ import { DetailDemoComponent } from './detail/detail.component';
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
 import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
 import { WrapperDemoComponent } from './wrapper/wrapper.component.';
+import { DemoIconComponent } from './icon/icon';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     },
     { path: 'item', component: ItemDemoComponent },
     { path: 'detail', component: DetailDemoComponent },
+    { path: 'icon', component: DemoIconComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 

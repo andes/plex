@@ -47,6 +47,7 @@ import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sid
 import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
 import { MainListadoComponent } from './templates/listado-sidebar/main/listado/main-listado.component';
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
+import { DemoIconComponent } from './icon/icon';
 
 @NgModule({
     declarations: [
@@ -70,6 +71,7 @@ import { ModalTemplateComponent } from './templates/componentes/plex-modal-templ
         PhoneDemoComponent,
         DropdownDemoComponent,
         WizardDemoComponent,
+        DemoIconComponent,
         TemplateFormComponent,
         TemplateVisualizacionComponent,
         TemplateBusquedaComponent,
