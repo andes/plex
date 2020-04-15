@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/andes/plex/compare/v6.0.0...v6.0.1) (2020-04-15)
+
+
+### Bug Fixes
+
+* **plex-detail:** corrige margen e info principal y labels ([d697499](https://github.com/andes/plex/commit/d6974994e34075d23fa6e93ac175c69b3b81a046))
+
 # [6.0.0](https://github.com/andes/plex/compare/v5.13.0...v6.0.0) (2020-04-15)
 
 
