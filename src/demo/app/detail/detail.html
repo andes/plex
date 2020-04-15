@@ -6,6 +6,8 @@
                     <plex-detail direction="column" justify="center">
                         <img src="{{ paciente.foto }}" alt="">
                         <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
+                        <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
+                        <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
                         <div title>{{ paciente.nombreCompleto }}</div>
                         <div subtitle>{{ paciente.documento }}</div>
                         <plex-label titulo="Fecha de Nacimiento" subtitulo="09/03/1990"></plex-label>
@@ -52,8 +54,10 @@
         </plex-title>
 
         <plex-title titulo="plex detail con imagen" size="sm"></plex-title>
-        <plex-detail size="md">
+        <plex-detail size="lg">
             <img src="{{ paciente.foto }}" alt="">
+            <plex-badge size="lg">{{ paciente.estado }}</plex-badge>
+            <plex-badge size="lg">{{ paciente.estado }}</plex-badge>
             <plex-badge size="lg">{{ paciente.estado }}</plex-badge>
             <div title> {{ paciente.nombreCompleto }} </div>
             <div subtitle> {{ paciente.documento }} </div>

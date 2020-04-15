@@ -10,7 +10,9 @@ import { PlexLabelComponent } from '../label/label.component';
                 <ng-content select="img"></ng-content>
             </div>
             <div class="contenedor-textos" [ngClass]="{ 'd-flex flex-column': direction === 'column'  }">
-                <ng-content select="plex-badge"></ng-content>
+                <span class="d-flex flex-row">
+                    <ng-content select="plex-badge"></ng-content>
+                </span>
                 <ng-content select="div[title]"></ng-content>
                 <ng-content select="div[subtitle]"></ng-content>
                 <hr>
