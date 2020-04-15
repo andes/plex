@@ -5,7 +5,7 @@ import { Plex } from './../core/service';
     selector: 'plex-app',
     template: ` <!--Navigation Bar-->
                     <nav class="navbar-inverse fixed-top"  [ngClass]="'bg-' + type">
-                        
+
                         <div class="navbar-container">
                             <ng-content select="[navIcon]"></ng-content>
 
