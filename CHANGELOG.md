@@ -1,3 +1,25 @@
+# [6.0.0](https://github.com/andes/plex/compare/v5.13.0...v6.0.0) (2020-04-15)
+
+
+### Bug Fixes
+
+* **plex-wrapper:** label con ellipsis en 75% del ancho ([#144](https://github.com/andes/plex/issues/144)) ([f286bc1](https://github.com/andes/plex/commit/f286bc1fb0f66f15166544f0f26807b343168dad))
+
+
+### chore
+
+* **package:** actualiza  @mid/font@v5.0.45 ([b266716](https://github.com/andes/plex/commit/b2667164bfa78545a646f36ee99b2be7c52dc9da))
+
+
+### Features
+
+* **plex:** reducción global de cuerpo tipográfico y relacionados ([#141](https://github.com/andes/plex/issues/141)) ([2a0fad9](https://github.com/andes/plex/commit/2a0fad96c50f8e513958a7002399a10ad27a9e65))
+
+
+### BREAKING CHANGES
+
+* **package:** hay iconos en la nueva version de la libreria que no existen mas.
+
 # [5.13.0](https://github.com/andes/plex/compare/v5.12.0...v5.13.0) (2020-04-07)
 
 
