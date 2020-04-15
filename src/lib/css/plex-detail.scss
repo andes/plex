@@ -21,12 +21,13 @@ plex-detail {
         --detail-img-mr: 0;
         --detail-img-mb: 1rem;
         --detail-text-align: center;
+        --detail-badge-align: center;
     }
 
     section.direction-row {
         --detail-divider-align: start; 
         --detail-img-mr: 0.75rem;
-        --detail-img-mb: 0;
+        --detail-img-mb: 1rem;
         --detail-text-align: left;
 
         .contenedor-textos {
@@ -45,6 +46,10 @@ plex-detail {
         flex-direction: column;
         justify-content: center;
         text-align: center;
+
+        span {
+            justify-content: var(--detail-badge-align);
+        }
     }
     
     section.direction-row:first-child {
@@ -106,6 +111,7 @@ plex-detail {
             margin: 0.75rem 0;
             width: 25px;
             border: solid 1px $blue;
+            background: $blue;
             align-self: var(--detail-divider-align);
         }
     }
