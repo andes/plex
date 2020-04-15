@@ -103,7 +103,9 @@
     },
     "release": {
         "branches": [
-            "master",
+            {
+                "name": "master"
+            },
             {
                 "name": "beta",
                 "prerelease": true
