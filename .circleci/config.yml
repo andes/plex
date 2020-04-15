@@ -15,7 +15,9 @@ jobs:
             - v2-deps-
       - run:
           name: Install dependencies
-          command: npm ci
+          command: | 
+              PR=$(echo $CIRCLE_PULL_REQUEST | cut -d/ -f7)
+              curl -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${PR} | jq -r '.head.ref'
       - save_cache:
           key: v2-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
