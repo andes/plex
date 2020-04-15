@@ -39,7 +39,7 @@ jobs:
           at: ~/
       - run:
           name: commit lint
-          command: npm run commitlint-circle
+          command: ./node_modules/.bin/commitlint --from origin/master --to ${CIRCLE_SHA1}
       - run:
           name: lint
           command: npm run lint
