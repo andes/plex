@@ -1,6 +1,13 @@
 // Nav Bar
+.navbar-container {
+  height: 42px;
+  display: flex;
+  align-items: center;
+}
 
 nav {
+  display: flex;
+  justify-content: space-between;
   height: $navbar-height;
 
   &.navbar-inverse.bg-info {
@@ -10,7 +17,7 @@ nav {
   .navbar-brand {
     float: left;
     padding: 0; // No hay variables para todos los paddings
-    height: $navbar-height;
+    height: 50px;
   }
 
   .actions {
@@ -73,9 +80,10 @@ nav {
 
     // User info
     .userinfo {
-      line-height: 15px;
-      padding-top: 8px;
+      display: flex;
+      align-items: center;
       text-align: right;
+      line-height: 15px;
 
       span:last-child {
         font-size: .7em;
@@ -83,10 +91,13 @@ nav {
     }
 
     .dropdown .dropdown-menu {
-        max-height: 80vh;
+        max-height: calc(100vh - 64px);
         overflow-y: scroll;    
         padding-right: 10px;
  
+        li {
+          line-height: 1.35;
+        }
 
       &::-webkit-scrollbar {
           width: 8px;
@@ -142,13 +153,13 @@ nav {
   }
 
   .title {
-    float: left;
+    min-width: 50vw;
     font-size: 1.4em;
     color: white;
     font-weight: 400;
     text-transform: uppercase;
     margin-left: .5em;
-    margin-top: .3em;
+    margin-top: .15em;
 
     a {
       color: white;
