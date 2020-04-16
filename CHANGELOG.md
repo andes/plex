@@ -1,3 +1,11 @@
+## [6.0.2](https://github.com/andes/plex/compare/v6.0.1...v6.0.2) (2020-04-16)
+
+
+### Bug Fixes
+
+* **nav-actions:** se fuerza posición de .action en nav ([450f81a](https://github.com/andes/plex/commit/450f81abf7260fdf5ad14dc977c3d8d098b4035d))
+* **plex-select:** nuevo hex value de loading icon ([0c2b646](https://github.com/andes/plex/commit/0c2b646a747dee03d9a83ee9e5f5e527075c2175))
+
 ## [6.0.1](https://github.com/andes/plex/compare/v6.0.0...v6.0.1) (2020-04-15)
 
 
