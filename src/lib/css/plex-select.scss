@@ -527,12 +527,12 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
 .selectize-control.loading:before {
   color: $dark-grey;
   position: absolute;
-  right: 33px;
-  top: 2px;
+  right: 29px;
+  top: 3px;
   z-index: 10;
 
   font-family: "Material Design Icons";
-  content: "\F06A";
+  content: "\F0772";
   font-size: 1.4em;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
