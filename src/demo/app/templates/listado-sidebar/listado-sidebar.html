@@ -1,4 +1,4 @@
-<plex-layout main="8">
+<plex-layout [main]="foco === 'main' ? 12 : 8 " [foco]="foco">
     <plex-layout-main>
         <plex-title size="lg" titulo="Bienvenido a Plex">
             <plex-help type="help" titulo="Ayuda de este panel" size="sm" title="este es un atributo [title]"
@@ -41,7 +41,8 @@
     <plex-layout-sidebar type="invert">
         <plex-tabs size="full">
             <plex-tab label="tab-1" icon="star" active="true">
-                <router-outlet></router-outlet>
+                <router-outlet (activate)="foco = 'sidebar'" (deactivate)="foco = 'main'">
+                </router-outlet>
             </plex-tab>
 
             <plex-tab label="tab-2" icon="star" active="true">

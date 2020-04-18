@@ -50,6 +50,24 @@ plex-layout {
     background: white!important;
   } 
  
+
+  // > plex-layout-sidebar {
+  //   > .row:first-child {
+  //     padding: 0px 15px 0px 10px;
+  //   }
+  // }
+
+  section.size-xs {
+      .focused {
+          flex: 0 0 100%;
+          max-width: 100%;
+      }
+
+      .not-focused {
+          display: none;
+      }
+  }
+
   // Footer (se ubica fijo abajo de la pantalla)
    > plex-layout-footer,
   > footer {
