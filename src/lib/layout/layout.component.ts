@@ -1,4 +1,4 @@
-import { Component, Input, ContentChild, AfterViewInit, AfterContentInit, AfterContentChecked, ComponentRef, ElementRef } from '@angular/core';
+import { Component, Input, ContentChild, AfterViewInit, AfterContentInit, AfterContentChecked, ComponentRef, ElementRef, DebugElement } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { EventEmitter } from 'events';
 
@@ -33,12 +33,44 @@ import { EventEmitter } from 'events';
     <ng-content select="plex-layout-footer"></ng-content>
   `,
 })
-export class PlexLayoutComponent {
+export class PlexLayoutComponent implements AfterContentInit {
     // Compatibility mode
     public maxcolumns = 12;
     @Input() main = 12;
 
+    @ContentChild(RouterOutlet, { static: true }) routerOutlet: RouterOutlet;
+
+    @Input() aspect = 12;
+
     @Input() foco: 'main' | 'sidebar' = null;
+
+    ngOnit() {
+        if (this.aspect) {
+            this.foco = 'main';
+            this.main = 12;
+        }
+    }
+
+    ngAfterContentInit() {
+        // MODO MANUAL
+        if (!this.aspect) { return; }
+
+        if (this.routerOutlet.isActivated) {
+            this.main = this.aspect;
+            this.foco = 'sidebar';
+        } else {
+            this.foco = 'main';
+        }
+        this.routerOutlet.activateEvents.subscribe(() => {
+            this.main = this.aspect;
+            this.foco = 'sidebar';
+        });
+
+        this.routerOutlet.deactivateEvents.subscribe(() => {
+            this.main = 12;
+            this.foco = 'main';
+        });
+    }
 
 
     constructor() {
