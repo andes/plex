@@ -27,21 +27,17 @@ plex-list {
     }
     
     div.item-list-heading {
-    
         display: grid;
         grid-gap: .25rem;
-    
         height: 40px;
         max-height: 40px;
-        margin-bottom: .2rem;
-
-        padding: 0 1rem;
+        width: 100%;
 
         &.sticky {
             position: sticky;
             top: 0;
             z-index: 10;
-            background-color: var(--heading-background-color)!important;
+            // background-color: var(--heading-background-color)!important;
         }
 
         >* {
@@ -68,14 +64,13 @@ plex-list {
             text-align: right;
         }
     }
-    
-    div.item-list {
-        display: grid;
-        grid-gap: .25rem;
-        height: 85px;
-        max-height: 80px;
-        margin-bottom: .2rem;
-        padding: 0 1rem;
+
+    section.item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .75rem;
+        width: 100%;
         cursor: pointer;
         
         &:hover {
@@ -91,134 +86,210 @@ plex-list {
             color: black;
             box-sizing: border-box;
         }
-     
-        >* {
+        
+        @mixin flex {
             display: flex;
+            flex-direction: row;
             align-items: center;
-            justify-self: flex-start;
+            justify-content: flex-start;
         }
-
-        div.botonera {
-            width: 100%;
-            justify-content: flex-end;
-        }
-    
-        // Items que componen la lista que no son componentes Angular
-        span,
-        div,
-        img {
-            justify-self: flex-start !important;
-        }
-    
-        > plex-bool {
-            label {
-                margin-top: 0 !important;
-                background: white;
-            }
-        }
-    
-        plex-label {
-            justify-self: flex-start !important;
-            width: auto;
-            min-width: 100px;
-            max-width: 400px;
-        }
-    
-        plex-dropdown {
-    
-            .btn,
-            .dropdown-item {
-                padding: 5px;
-                font-size: .9rem;
-                background: transparent !important;
-            }
-    
-            &[icon] {
-                button {
-                    padding: 0;
-                    border: 0;
-                    height: 27px;
+        
+        .item-row {
+            @include flex;
+            width: 75%;
+            
+            .elementos-graficos {
+                @include flex;
+                width: max-content;
+        
+                // Se estiliza icono - TODO: Agregar propiedad outline al componente plex-icon                        
+                > plex-bool {
+                    label {
+                        margin-top: 0 !important;
+                        margin-right: 1rem !important;
+                        background: white;
+                    }
                 }
-    
-                i {
-                    line-height: 28px;
+            
+                @mixin graficos {
+                    align-items: center;
+                    height: 3rem; 
+                    width: 3rem;
+                    margin-right: 1rem; 
+                    border-radius: 50%; 
                 }
-            }
-        }
-    
-        upload-file {
-            display: flex;
-            flex-flow: column-reverse;
-        }
-    
-        plex-datetime {
-            justify-self: flex-start !important;
-    
-            input,
-            .btn {
-                padding: 5px;
-                font-size: .9rem;
-            }
-        }
-    
-        // Se estiliza icono - TODO: Agregar propiedad outline al componente plex-icon
-        plex-icon {
-            i {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: solid 2px;
-                border-radius: 50%; 
-                height: 3rem; 
-                width: 3rem;            
-            }
-        }
 
-        // Estilos imágenes
-        img, > svg {
-            align-self: center;
-            border-radius: 50%;
-            object-fit: cover;
-            width: 3rem;
-            height: 3rem; 
+                plex-icon {
+                    i {
+                        @include graficos;
+                        justify-content: center;
+                        border: solid 2px;
+                        display: flex;         
+                    }
+                }
+                // Estilos imágenes
+                img, > svg {
+                    @include graficos;
+                    object-fit: cover;
+                } 
+            }
+
+            div.item-list {
+                display: grid;
+                grid-gap: .25rem;
+                height: fit-content;
+                margin: 0.5rem 0;
+                
+                >* {
+                    display: flex;
+                    align-items: center;
+                    justify-self: flex-start;
+                }
+            
+                // Items que componen la lista que no son componentes Angular
+                span,
+                div,
+                img {
+                    justify-self: flex-start !important;
+                }
+            
+                plex-label {
+                    justify-self: flex-start !important;
+                    width: auto;
+                    min-width: 100px;
+                    max-width: 400px;
+                }
+        
+                upload-file {
+                    display: flex;
+                    flex-flow: column-reverse;
+                }
+            
+                plex-datetime {
+                    justify-self: flex-start !important;
+                    width: 135px; 
+            
+                    input,
+                    .btn {
+                        padding: 5px;
+                        font-size: .9rem;
+                    }
+                }       
+            }
         }
+    }
     
+    .striped>:nth-child(odd)>section.item {
+        background-color: rgba(0, 0, 0, .05);
+    }
+    
+    div.botonera {
+        display: flex;
+        width: 25%;
+        justify-content: flex-end;
+
         plex-button,
         plex-badge,
         plex-dropdown,
-        upload-file,
-        upload {
-            margin-right: 4px;
+        upload-file {
+            margin-right: .25rem;
     
             &:last-child {
                 margin-right: 0;
             }
         }
-    
     }
-    
-    .striped>:nth-child(odd)>div {
-        background-color: rgba(0, 0, 0, .05);
+
+    plex-dropdown {
+        display: flex;
+        align-items: center;
+
+        .btn,
+        .dropdown-item {
+            padding: 5px;
+            font-size: .9rem;
+            background: transparent !important;
+        }
+
+        &[icon] {
+            button {
+                padding: 0;
+                border: 0;
+                height: 27px;
+            }
+
+            i {
+                line-height: 28px;
+            }
+        }
     }
-     
-    // Sin checkbox, Sin icono
+}
+
+    // Grilla interna
     .item-list,.item-list-heading {
-        grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)) !important;
+        grid-template-columns: repeat(auto-fit, minmax(135px, 1fr))!important;
+        grid-auto-flow: column;
     } 
     
+    // Con botonera
+    .item-list.has-botonera {
+        width: 100%;
+    }
+    
+    .item-list-heading.has-botonera {
+        width: 75%;
+    }
+    
+    // Sin checkbox, Sin icono
+    .item-list {
+        padding-left: 0px;
+    }
+
     // Con icono, sin checkbox
-    .item-list.has-icon,.item-list-heading.has-icon {
-        grid-template-columns: 55px repeat(auto-fit, minmax(135px, 1fr)) !important;
+    .item-list-heading.has-icon {
+        padding-left: 70px;
     } 
     
     // Sin icono, con checkbox
-    .item-list.has-checkbox,.item-list-heading.has-checkbox {
-        grid-template-columns: 25px repeat(auto-fit, minmax(135px, 1fr)) !important;
+    .item-list-heading.has-checkbox {
+        padding-left: 40px;
     } 
     
     // Con icono, con checkbox
-    .item-list.has-checkbox.has-icon,.item-list-heading.has-checkbox.has-icon {
-        grid-template-columns: 25px 55px repeat(auto-fit, minmax(135px, 1fr)) !important;
+    .item-list-heading.has-checkbox.has-icon {
+        padding-left: 105px;
     } 
+
+// Emulando directiva responsive
+@media screen and (max-width: 1024px) {
+    plex-list {
+
+        plex-heading {
+            display: none!important;
+        }
     
+        section.item {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+
+            div.item-row {
+                width: 100%!important;
+            }
+
+            div.item-list {
+                margin-top: .5rem;
+                grid-auto-flow: unset;
+                width: 100%!important;
+            }
+        
+            .botonera {
+                justify-content: space-between!important;
+                width: 100%;
+                & > div {
+                    width: fit-content;
+                }
+            }
+        }
+
+    }
 }
