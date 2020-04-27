@@ -24,7 +24,7 @@ const RegEx_Numero = /^(\d)+$/;
         },
     ],
     template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
-                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esOpcional" class="opcional"></span></label>
+                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esRequerido" class="requerido"></span></label>
                     <div [ngClass]="{'input-group': prefix || suffix}">
                         <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
                         <input #ref type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (focus)="onFocus()" (focusout)="onFocusout()">
@@ -36,10 +36,10 @@ const RegEx_Numero = /^(\d)+$/;
 export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     private lastValue: any = null;
     private renderer: Renderer;
-    @ContentChild(NgControl, { static: false }) control: any;
-    @ViewChild('ref', { static: false }) ref: ElementRef;
+    @ContentChild(NgControl, { static: true }) control: any;
+    @ViewChild('ref', { static: true }) ref: ElementRef;
 
-    public get esOpcional(): boolean {
+    public get esRequerido(): boolean {
         return hasRequiredValidator(this.control);
     }
 

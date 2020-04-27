@@ -1,5 +1,5 @@
-plex-filters  {
-    & section {
+plex-wrapper  {
+    > section {
         display: flex;
         position: relative;
         flex-flow: row wrap;
@@ -11,24 +11,24 @@ plex-filters  {
         &.hidden {
             clear: right;
             
-            [masFiltros] {
-                display: flex;
+            [collapse] {
+                display: none;
                 flex-flow: wrap;
-                width: 100%;
             }
         }
         
         &.desplegado {
             transition: translate .3s ease-in;
             
-            [masFiltros] {
-                display: none;
+            [collapse] {
+                display: flex;
                 flex-flow: wrap;
+                width: 100%;
             }
         }
     }
 
-    plex-button.botonDesplegar {
+    plex-button.btn-toogle {
         position: absolute;
         top: 0;
         right: 0;
@@ -36,7 +36,8 @@ plex-filters  {
 
     label {
         white-space: nowrap; 
-        width: fit-content; 
+        min-width: 190px; 
+        max-width: 75%;
         overflow: hidden;
         text-overflow: ellipsis; 
     }
@@ -45,13 +46,25 @@ plex-filters  {
         margin-right: 1rem;
     }
 
-    plex-select {
+    plex-select, plex-phone, plex-text, plex-float {
         @include baseInputs;
+        flex: 1 0 190px;
     }
     
-    plex-datetime, plex-phone, plex-text, plex-float {
+    plex-datetime, plex-radio {
         @include baseInputs;
-        flex: 1 0 190px!important;
+        flex: 0 0 190px;
+    }
+
+    .size-xs {
+        plex-datetime, plex-radio {
+            flex: 1 0 190px;
+        }
+    }
+
+    plex-button, plex-bool, plex-dropdown {
+        @include baseInputs;
+        flex: 0 0 0;
     }
 
     // Alinear elementos en formulario
@@ -61,7 +74,7 @@ plex-filters  {
         justify-content: center;        
     }
     
-    plex-button {
+    plex-button, plex-dropdown, plex-radio {
         display: flex;
         align-items: flex-end;
     }
@@ -76,16 +89,27 @@ plex-filters  {
     }
     
     // Directiva Columns
-    .flex-grow-1 {
+    .grid-columns-auto {
+        flex: auto;
+    }
+
+    .grid-columns-span-1 {
         flex-grow: 1;
     }
 
-    .flex-grow-2 {
+    .grid-columns-span-2 {
         flex-grow: 2;
     }
 
-    .flex-grow-3 {
+    .grid-columns-span-3 {
         flex-grow: 3;
     }
 
+    .grid-columns-span-4 {
+        flex-grow: 4;
+    }
+
+    .grid-columns-full {
+        flex-basis: 100%;
+    }
 }

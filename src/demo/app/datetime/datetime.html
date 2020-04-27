@@ -3,6 +3,19 @@
         <form #form="ngForm">
             <div class="row">
                 <div class="col-md-6">
+                    <plex-title size="sm" titulo="Integrado con plex-badge">
+                        <plex-badge size="sm" type="info">{{ tModel.fechaDecounce | date: 'dd/MM/yyyy' }}
+                            <plex-datetime type="date" [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required
+                                           [btnOnly]="true" size="sm">
+                            </plex-datetime>
+                        </plex-badge>
+                    </plex-title>
+                    <plex-badge size="sm" type="warning">{{ tModel.fechaDecounce | date: 'dd/MM/yyyy' }}
+                        <plex-datetime type="date" [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required
+                                       [btnOnly]="true" size="sm">
+                        </plex-datetime>
+                    </plex-badge>
+
                     <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora"
                                    name="fechaHora" required>
                     </plex-datetime>
@@ -22,12 +35,13 @@
                                    [readonly]="model4.disabled">
                     </plex-datetime>
 
-
                     <plex-button label="Actualizar maxHora" (click)="updateMaxHora()"></plex-button>
                     <plex-datetime label="Fecha con navegación inline (por dia)" [skipBy]="'day'"
                                    [(ngModel)]="tModel.fecha" [min]="tModel.min" [max]="tModel.max" name="fechaSkip"
                                    required>
                     </plex-datetime>
+
+
                 </div>
                 <div class="col-md-6">
                     <label>Modelo</label>

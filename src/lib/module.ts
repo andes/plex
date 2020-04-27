@@ -38,14 +38,22 @@ import { PlexListComponent } from './item-list/list.component';
 import { PlexItemComponent } from './item-list/item.component';
 import { PlexLabelComponent } from './label/label.component';
 import { PlexHeadingComponent } from './item-list/heading.component';
+import { PlexTitleComponent } from './title/title.component';
 import { PlexHelpComponent } from './help/help.component';
 import { PlexModalComponent } from './modal/modal.component';
 import { PlexModalTitleComponent } from './modal/modal-title.component';
 import { PlexCopyComponent } from './copy/copy.component';
 import { PlexDetailComponent } from './detail/detail.component';
+import { PlexOptionsComponent } from './options/options.component';
+import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
+import { PlexWrapperComponent } from './wrapper/wrapper.component';
 
 // Directivas
 import { PlexWizardDirective } from './wizard/wizard.directive';
+import { GrowDirective } from './directives/grow.directive';
+import { JustifyDirective } from './directives/justify.directive';
+import { PreviewDirective } from './visualizador/preview.directive';
+import { ResponsiveDirective } from './directives/responsive.directive';
 
 // Third party
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -56,12 +64,7 @@ import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 import { ChartsModule } from 'ng2-charts';
 import { QuillModule } from 'ngx-quill';
-import { PlexTitleComponent } from './title/title.component';
-import { JustifyDirective } from './directives/justify.directive';
-import { ResponsiveDirective } from './directives/responsive.directive';
-import { PlexOptionsComponent } from './options/options.component';
-import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
-import { PreviewDirective } from './visualizador/preview.directive';
+import { NavItemComponent } from './app/nav-item.component';
 
 const MODULES = [
     PlexAppComponent,
@@ -99,6 +102,7 @@ const MODULES = [
     PlexTitleComponent,
     JustifyDirective,
     ResponsiveDirective,
+    GrowDirective,
     PlexHelpComponent,
     PlexModalComponent,
     PlexModalTitleComponent,
@@ -106,7 +110,9 @@ const MODULES = [
     PlexDetailComponent,
     PlexOptionsComponent,
     PlexVisualizadorComponent,
-    PreviewDirective
+    PreviewDirective,
+    NavItemComponent,
+    PlexWrapperComponent
 ];
 
 @NgModule({

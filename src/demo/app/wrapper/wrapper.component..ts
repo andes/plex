@@ -1,53 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-
-// Servicios y modelo
-import { PacienteService } from '../service/paciente.service';
-import { Paciente } from '../service/paciente';
-
-import { Plex } from './../../../../lib/core/service';
+import { Plex } from '../../../lib/core/service';
 
 @Component({
-    templateUrl: 'listado-sidebar.html',
-    styleUrls: ['listado-sidebar.scss'],
+    templateUrl: './wrapper.html',
 })
-
-export class ListadoSidebarComponent implements OnInit {
+export class WrapperDemoComponent implements OnInit {
 
     public tModel: any;
     public opciones: any[];
-    public modelo1 = { select: null };
+    public modelo1 = { select: null, radio: null };
     public modelo2 = {
         select: null,
         soloLectura: false,
         selectMultiple: null
     };
-    // public prueba = '';
+    public prueba = '';
     public templateModel2: any;
     public modelo: any;
 
-    // public listadoPaciente: Paciente[];
-    pacientes$: Observable<Paciente[]>;
-    selectedId: Number;
-    public prueba = '';
-    public cambio = '';
+    public opciones2 = [
+        { id: 1, label: 'Rojo' },
+        { id: 2, label: 'Verde' }
+    ];
+
     constructor(
-        private pacienteService: PacienteService,
-        private route: ActivatedRoute,
-        private plex: Plex
+        private plex: Plex,
     ) { }
 
     ngOnInit() {
-        this.pacientes$ = this.route.paramMap.pipe(
-            switchMap(params => {
-                this.selectedId = +params.get('id');
-                return this.pacienteService.getPacientes();
-            })
-        );
-
-
         // plex-datetime
         this.tModel = {
             fechaHora: null,
@@ -61,6 +41,10 @@ export class ListadoSidebarComponent implements OnInit {
             fechaDecounce: new Date(1970, 0, 1),
         };
 
+
+        // Template-Form2 model
+        this.templateModel2 = { nombre: null, min: 10, max: 15 };
+
         // plex-phone
         // plex-float
         this.tModel = { valor: null };
@@ -68,19 +52,30 @@ export class ListadoSidebarComponent implements OnInit {
         // plex-select
         this.opciones = [{
             id: 1,
-            nombre: 'Argentina',
-            continente: 'Latinoamerica',
+            nombre: 'Hospital "Dr. Horacio Heller',
+            continente: 'Zona metro',
         },
         {
             id: 2,
-            nombre: 'Brasil',
-            continente: 'Latinoamerica',
+            nombre: 'Hospital Bouquet Roldán',
+            continente: 'Zona metro',
         },
         {
             id: 3,
+            nombre: 'Hospital San Martín de los Andes "Dr. Ramón Carrillo"',
+            continente: 'Zona tres',
+        },
+        {
+            id: 4,
+            nombre: 'Hospital Centenario',
+            continente: 'Zona metro',
+        },
+        {
+            id: 5,
             nombre: 'Hospital Provincial Neuquen "Dr. Eduardo Castro Rendón"',
-            continente: 'Latinoamerica',
-        }];
+            continente: 'Zona metro',
+        }
+        ];
 
         this.modelo1.select = this.modelo2.select = this.opciones[1];
 
@@ -99,8 +94,7 @@ export class ListadoSidebarComponent implements OnInit {
         return moment(this.tModel.hora).add(30, 'minutes');
     }
 
-    onChange() {
-        this.plex.info('success', 'Este cartel se demoro un segundo en aparecer después de escribir.');
+    get cssColumns() {
+        return this.columns === 'auto' ? 'col-auto' : 'col-span';
     }
 }
-

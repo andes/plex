@@ -1,4 +1,7 @@
 plex-help {
+
+    $top-open: 21px;
+
     .card {
         display: none;
         border: 0; // reset
@@ -48,6 +51,7 @@ plex-help {
         }
         plex-button {
             position: relative;
+            top: 1px;
             right: 0;
             display: flex;
             justify-content: flex-end; 
@@ -56,7 +60,7 @@ plex-help {
     .toggle-help, .toggle-info {
         position: absolute;
         right: 15px;
-        top: 23px;
+        top: $top-open;
         &.closed {
             top: 0; 
         }
@@ -75,7 +79,8 @@ plex-help {
         padding: 15px 30px;
         border-top: 1px solid darken($light-grey, 15%);
         border-left: 1px solid darken($light-grey, 15%);
-
+        color: black;
+        
         plex-button {
             position: absolute;
             top: -1px;
@@ -84,12 +89,12 @@ plex-help {
         &.open {
             position: absolute;
             right: 15px;
-            top: 23px;
+            top: $top-open;
             z-index: 1001;
-            // 60px por los margins/padding + 2px por los bordes
-            width: calc(100% - 63px);
+            width: auto;
             border-radius: 0.25rem;
             box-shadow: 2px 2px 5px 0px $dark-grey;
+            min-width: 41vw;
             max-height: 69vh;
             overflow-y: scroll;
         }

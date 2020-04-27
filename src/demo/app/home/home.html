@@ -2,10 +2,13 @@
     <plex-layout-main>
         <plex-title main justify titulo="Gestor de agendas">
             <plex-badge size="sm" type="success">VALIDADO</plex-badge>
-            <plex-button size="sm" type="danger">ELIMINAR TODO</plex-button>
+            <plex-button size="sm" type="danger" title="
+            VALIDADO
+            Texto principal o titulo
+            Texto secundario intrisecamente relacionado al titulo" titlePosition="top">ELIMINAR TODO</plex-button>
             <plex-help icon="information" titulo="Información sobre este módulo"
                        subtitulo="A continuación todas las opciones">
-                <ol info class="list-group-flush" *tpl>
+                <ol info class="list-group-flush">
                     <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
                         (acepta búsquedas
                         parciales)</li>
@@ -234,7 +237,7 @@
             <p>El siguiente ejemplo muestra el uso de la propiedad <strong>validateForm</strong></p>
             <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false">
             </plex-text>
-            <plex-button label="Guardar formulario" icon="content-save" validateForm="true" (click)="guardar($event)">
+            <plex-button label="Guardar formulario" icon="cable-data" validateForm="true" (click)="guardar($event)">
             </plex-button>
         </form>
         <div class="grow">

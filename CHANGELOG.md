@@ -1,3 +1,118 @@
+## [6.0.2](https://github.com/andes/plex/compare/v6.0.1...v6.0.2) (2020-04-16)
+
+
+### Bug Fixes
+
+* **nav-actions:** se fuerza posición de .action en nav ([450f81a](https://github.com/andes/plex/commit/450f81abf7260fdf5ad14dc977c3d8d098b4035d))
+* **plex-select:** nuevo hex value de loading icon ([0c2b646](https://github.com/andes/plex/commit/0c2b646a747dee03d9a83ee9e5f5e527075c2175))
+
+## [6.0.1](https://github.com/andes/plex/compare/v6.0.0...v6.0.1) (2020-04-15)
+
+
+### Bug Fixes
+
+* **plex-detail:** corrige margen e info principal y labels ([d697499](https://github.com/andes/plex/commit/d6974994e34075d23fa6e93ac175c69b3b81a046))
+
+# [6.0.0](https://github.com/andes/plex/compare/v5.13.0...v6.0.0) (2020-04-15)
+
+
+### Bug Fixes
+
+* **plex-wrapper:** label con ellipsis en 75% del ancho ([#144](https://github.com/andes/plex/issues/144)) ([f286bc1](https://github.com/andes/plex/commit/f286bc1fb0f66f15166544f0f26807b343168dad))
+
+
+### chore
+
+* **package:** actualiza  @mid/font@v5.0.45 ([b266716](https://github.com/andes/plex/commit/b2667164bfa78545a646f36ee99b2be7c52dc9da))
+
+
+### Features
+
+* **plex:** reducción global de cuerpo tipográfico y relacionados ([#141](https://github.com/andes/plex/issues/141)) ([2a0fad9](https://github.com/andes/plex/commit/2a0fad96c50f8e513958a7002399a10ad27a9e65))
+
+
+### BREAKING CHANGES
+
+* **package:** hay iconos en la nueva version de la libreria que no existen mas.
+
+# [5.13.0](https://github.com/andes/plex/compare/v5.12.0...v5.13.0) (2020-04-07)
+
+
+### Bug Fixes
+
+* **plex-help:** corrige overflow de contenido en resoluciones bajas ([#140](https://github.com/andes/plex/issues/140)) ([ac09bfd](https://github.com/andes/plex/commit/ac09bfd6afa54b3ff204e16cbb349d58754c35f7))
+
+
+### Features
+
+* **plex-badge:** soporte para plex-datetime ([#142](https://github.com/andes/plex/issues/142)) ([e6ea0b9](https://github.com/andes/plex/commit/e6ea0b9848e2ed53a3c44a8a3ea00aa7427a9e45))
+* **plex-tab:** Se optimiza uso de espacio de tab cuando tiene ícono ([#138](https://github.com/andes/plex/issues/138)) ([6eb4871](https://github.com/andes/plex/commit/6eb487157a6f839b85fcd89a3310172cd6e788a1))
+* **tooltip:** Soporte multilínea para textos largos ([#139](https://github.com/andes/plex/issues/139)) ([b3a08d1](https://github.com/andes/plex/commit/b3a08d1e7b1e032eeb33eb4a568e64d9bf147e5d))
+
+# [5.12.0](https://github.com/andes/plex/compare/v5.11.1...v5.12.0) (2020-03-29)
+
+
+### Bug Fixes
+
+* **plex-phone:** fix cant read nativeElement ([81fad9d](https://github.com/andes/plex/commit/81fad9d3f27afd50be612e31a661004e9a63c933))
+
+
+### Features
+
+* **plex-wrapper:** contenedor de controles de formularios ([793d131](https://github.com/andes/plex/commit/793d1315e856f8a9d9567f25bcee9afa1d61fd3c))
+
+## [5.11.1](https://github.com/andes/plex/compare/v5.11.0...v5.11.1) (2020-03-19)
+
+
+### Bug Fixes
+
+* **plex-accordion:** border white y se actualiza demo accordion ([1286e92](https://github.com/andes/plex/commit/1286e92f02d747800a26e8a0bb1ef5aadbe65732))
+
+# [5.11.0](https://github.com/andes/plex/compare/v5.10.2...v5.11.0) (2020-03-18)
+
+
+### Bug Fixes
+
+* **plex-dropdown:** estilo active con color de paleta plex ([0c6d408](https://github.com/andes/plex/commit/0c6d4080d967bf820f08907fde12290b3c4b3bee))
+
+
+### Features
+
+* **color:** se agrega tipos de valores aceptados ([e82b38e](https://github.com/andes/plex/commit/e82b38e7c69b61ecd8029681aac856d0c07184bf))
+* **color-scheme:** se levanta valor de gris de dark-grey ([50a796e](https://github.com/andes/plex/commit/50a796e59a0f1719ab67c9ee56290e7baf7fce32))
+* **plex:** marca campo requerido con un asterisco ([8e95160](https://github.com/andes/plex/commit/8e95160d0d1a54be6c4417c1b6398799b8862ac8))
+* **plex-badge:** efecto hover para custom colors ([b3299dc](https://github.com/andes/plex/commit/b3299dc910d8329e30d800b289dc8d89fe7cbb6f))
+* **plex-item:** permite el uso de svg ([96e8f17](https://github.com/andes/plex/commit/96e8f174775c3e4e3d3086ec9d1430836e08a8c9))
+
+## [5.10.2](https://github.com/andes/plex/compare/v5.10.1...v5.10.2) (2020-03-02)
+
+
+### Bug Fixes
+
+* **plex-modal:** se agrega control para no bloquar teclas que no sean ESC ([#128](https://github.com/andes/plex/issues/128)) ([0539cb6](https://github.com/andes/plex/commit/0539cb6a8ba944bb9d1f920b9fc2fa292e3d76b8))
+
+## [5.10.1](https://github.com/andes/plex/compare/v5.10.0...v5.10.1) (2020-02-21)
+
+
+### Bug Fixes
+
+* **nav-item:** remove hover class on close ([695ec84](https://github.com/andes/plex/commit/695ec84766b7f23ad60e36585fa5fab6a32f5b85))
+
+# [5.10.0](https://github.com/andes/plex/compare/v5.9.0...v5.10.0) (2020-02-19)
+
+
+### Bug Fixes
+
+* **plex-help:** ajuste a contenido ([1683355](https://github.com/andes/plex/commit/1683355560873c8a021ee0921f953274738ee17f))
+* **toast:** se aplica paleta de colores correcta ([d40b794](https://github.com/andes/plex/commit/d40b7949053d5cb59fd1f618aa6107e3fdb5e6b7))
+
+
+### Features
+
+* **navbar:** custom item ([0ee344f](https://github.com/andes/plex/commit/0ee344fc9f674c2d36abda95c62e50198184556a))
+* **plex-badge:** suporta boton e icono con costum color ([7f844e4](https://github.com/andes/plex/commit/7f844e44f708f6b40b68ef73c93aff0c7b99b67f))
+* **plex-help:** eventos open and close ([a860a20](https://github.com/andes/plex/commit/a860a20dae8f00cf15b0dadd6ff509f10d01d8ca))
+
 # [5.9.0](https://github.com/andes/plex/compare/v5.8.0...v5.9.0) (2020-02-18)
 
 

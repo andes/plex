@@ -6,6 +6,23 @@ import { PlexDropdownComponent } from '../../../lib/dropdown/dropdown.component'
     templateUrl: 'dropdown.html',
 })
 export class DropdownDemoComponent implements OnInit {
+
+    lista = [
+        {
+            titulo: 'Titulo del primer item',
+            subtitulo: 'Este es el subtitulo del primer item',
+        },
+        {
+            titulo: 'Titulo del segundo item',
+            subtitulo: 'Este es el subtitulo del segundo item',
+        },
+        {
+            titulo: 'Titulo del tercer item',
+            subtitulo: 'Este es el subtitulo del tercer item',
+        },
+    ];
+
+    public templateModel1: any;
     public items: DropdownItem[];
 
     ngOnInit() {
@@ -15,5 +32,10 @@ export class DropdownDemoComponent implements OnInit {
             { divider: true },
             { label: 'Item con handler', icon: 'wrench', handler: (() => { alert('Este es un handler'); }) }
         ];
+
+        // Form1: Sin validador
+        this.templateModel1 = { nombre: null };
     }
+
+
 }

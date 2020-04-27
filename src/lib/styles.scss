@@ -4,8 +4,15 @@
 // Reset and dependencies
 @import "node_modules/bootstrap/scss/normalize";
 @import "node_modules/bootstrap/scss/print";
+
 // Plex colors & variables
 @import "css/variables";
+
+// Mixins
+@import "css/mixins/hover";
+@import "css/mixins/buttons";
+@import 'css/mixins/scrollbar';
+
 // Core CSS
 @import "node_modules/bootstrap/scss/reboot";
 @import "node_modules/bootstrap/scss/type";
@@ -50,7 +57,6 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import '~sweetalert2/src/sweetalert2';
 @import '~animate.css/animate'; // DEPRECATION WARNING https://github.com/sass/node-sass/issues/2362
 
-@import 'css/mixins/scrollbar';
 
 // Plex core
 @import 'css/layout';
@@ -61,9 +67,12 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import 'css/fonts';
 @import 'css/forms';
 @import 'css/list-group';
+@import 'css/tooltip.scss';
+
 // Third party
 @import 'css/toast';
 @import 'css/modals';
+
 // Plex Components
 @import 'css/plex-accordion';
 @import 'css/plex-badge';
@@ -87,3 +96,4 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import 'css/plex-modal';
 @import 'css/plex-detail';
 @import 'css/plex-visualizador';
+@import 'css/plex-wrapper.scss';

@@ -30,6 +30,8 @@ import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/det
 import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
 import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
 import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
+import { WrapperDemoComponent } from './wrapper/wrapper.component.';
+import { DemoIconComponent } from './icon/icon';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -37,11 +39,12 @@ const appRoutes: Routes = [
     { path: 'text', component: TextDemoComponent },
     { path: 'datetime', component: DateTimeDemoComponent },
     { path: 'fonts', component: FontsDemoComponent },
+    { path: 'wrapper', component: WrapperDemoComponent },
     { path: 'bool', component: BoolDemoComponent },
     { path: 'radio', component: RadioDemoComponent },
     { path: 'int', component: IntDemoComponent },
     { path: 'float', component: FloatDemoComponent },
-    { path: 'button', component: ButtonDemoComponent },
+    { path: 'button-badge', component: ButtonDemoComponent },
     { path: 'tabs', component: TabsDemoComponent },
     { path: 'accordion', component: AccordionDemoComponent },
     { path: 'modal', component: ModalDemoComponent },
@@ -71,6 +74,7 @@ const appRoutes: Routes = [
 
     { path: 'item', component: ItemDemoComponent },
     { path: 'detail', component: DetailDemoComponent },
+    { path: 'icon', component: DemoIconComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 

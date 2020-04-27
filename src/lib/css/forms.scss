@@ -2,13 +2,13 @@
 
 fieldset {
   > legend {
-    margin-bottom: ($grid-gutter-width-base / 2);
-    padding-bottom: ($grid-gutter-width-base / 2);
-    font-size: 1.4em;
+    border-bottom: solid $dark-grey 1px;
     color: $dark-grey;
     font-weight: 100;
+    font-size: 1.4em;
     text-transform: uppercase;
-    border-bottom: solid $dark-grey 1px;
+    margin-bottom: ($grid-gutter-width-base / 2);
+    padding-bottom: ($grid-gutter-width-base / 2);
   }
 }
 
@@ -23,13 +23,12 @@ label {
   margin-bottom: 0;
   margin-top: 10px;
 
-  > span.opcional {
+  > span.requerido {
     &::before {
-      content: "(opcional)";
-      color: $dark-grey;
-      font-size: .7em;
-      font-weight: normal;
-      margin-left: .5em;
+      content: "*";
+      color: $red;
+      font-size: 1.35rem;
+      line-height: 0;
     }
   }
 }

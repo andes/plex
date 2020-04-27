@@ -1,51 +1,99 @@
-<plex-layout>
+<plex-layout main="6">
     <plex-layout-main>
-        <fieldset>
-            <legend>Tipos</legend>
-            <plex-button label="Default" icon="account" (click)="onClick()"></plex-button>
-            <plex-button label="Primary" type="primary" icon="account"></plex-button>
-            <plex-button label="Danger" type="danger" icon="account"></plex-button>
-            <plex-button label="Success" type="success" icon="account"></plex-button>
-            <plex-button label="Link" type="link" icon="account"></plex-button>
-        </fieldset>
-        <fieldset>
-            <legend>Estados</legend>
-            <plex-button label="Deshabilitado" icon="account" [disabled]="true" (click)="onDisabledClick()"></plex-button>
-        </fieldset>
-        <fieldset>
-            <legend>Tamaños</legend>
-            <plex-button type="danger" label="Large" size="lg"></plex-button>
-            <plex-button type="success" label="Small" size="md"></plex-button>
-            <div class="row">
-                <div class="col">
-                    <plex-button type="warning" label="Toda la columna (block)" size="block"></plex-button>
-                </div>
-                <div class="col">
-                </div>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Grupos</legend>
+        <plex-title titulo="PLEX-BUTTON"></plex-title>
+        <hr>
+
+        <plex-title size="sm" titulo="Tipos"></plex-title>
+        <plex-button label="Default" (click)="onClick()"></plex-button>
+        <plex-button label="Info" type="info"></plex-button>
+        <plex-button label="Danger" type="danger"></plex-button>
+        <plex-button label="Warning" type="warning"></plex-button>
+        <plex-button label="Success" type="success"></plex-button>
+        <plex-button label="Link" type="link"></plex-button>
+        <hr>
+        <plex-title size="sm" titulo="Estados"></plex-title>
+        <plex-button label="Deshabilitado" [disabled]="true" (click)="onDisabledClick()"></plex-button>
+        <hr>
+        <plex-title size="sm" titulo="Tamaños"></plex-title>
+        <plex-button type="success" label="Small" size="sm"></plex-button>
+        <hr>
+        <plex-button type="info" label="Medium"></plex-button>
+        <hr>
+        <plex-button type="danger" label="Large" size="lg"></plex-button>
+        <hr>
+        <plex-button type="warning" label="Toda la columna (block)" size="block"></plex-button>
+        <hr>
+        <plex-title size="sm" titulo="Grupos"></plex-title>
+        <div class="btn-group">
+            <plex-button type="success" icon="account"></plex-button>
+            <plex-button type="danger" icon="clock"></plex-button>
+        </div>
+        <hr>
+        <plex-title size="sm" titulo="Validación de formularios"></plex-title>
+        <form #formulario1="ngForm">
+            <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="modelo.campo1"
+                       [disabled]="false" [required]="true"></plex-text>
+        </form>
+        <hr>
+        <plex-title size="sm" titulo="Formulario inline"></plex-title>
+        <form #formulario2="ngForm">
             <div class="btn-group">
-                <plex-button type="success" icon="account"></plex-button>
-                <plex-button type="danger" icon="clock"></plex-button>
+                <plex-text name="campo1" [(ngModel)]="modelo.campo1" [disabled]="false" [required]="true"></plex-text>
+                <plex-button type="info" icon="content-save" [validateForm]="formulario2" (click)="guardar($event)">
+                </plex-button>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Validación de formularios</legend>
-            <form #formulario1="ngForm">
-                <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="modelo.campo1" [disabled]="false" [required]="true"></plex-text>
-                <plex-button type="success" label="Guardar formulario" icon="content-save" [validateForm]="formulario1" (click)="guardar($event)"></plex-button>
-            </form>
-        </fieldset>
-        <fieldset>
-            <legend>Formulario inline</legend>
-            <form #formulario2="ngForm">
-                <div class="btn-group">
-                    <plex-text name="campo1" [(ngModel)]="modelo.campo1" [disabled]="false" [required]="true"></plex-text>
-                    <plex-button type="success" icon="content-save" [validateForm]="formulario2" (click)="guardar($event)"></plex-button>
-                </div>
-            </form>
-        </fieldset>
+        </form>
     </plex-layout-main>
+    <plex-layout-sidebar>
+        <plex-title titulo="PLEX-BADGE"></plex-title>
+        <hr>
+
+        <plex-title size="sm" titulo="badge normal"></plex-title>
+        <plex-badge size="sm" type="success" class="mr-1">VALIDADO</plex-badge>
+        <plex-badge size="sm" type="warning" class="mr-1">TEMPORAL</plex-badge>
+        <plex-badge size="sm" type="danger" class="mr-1">RESTRINGIDO</plex-badge>
+        <plex-badge size="sm" type="info" class="mr-1">14/02/2020</plex-badge>
+        <plex-badge size="sm" type="default" class="mr-1">EN PLANIFICACIÓN</plex-badge>
+
+        <hr>
+        <plex-title size="sm" titulo="button y badge"></plex-title>
+        <plex-badge size="sm" type="warning" class="mr-1">TEMPORAL
+            <plex-button icon="clock"></plex-button>
+        </plex-badge>
+        <plex-badge size="sm" type="danger" class="mr-1">RESTRINGIDO
+            <plex-button icon="clock"></plex-button>
+        </plex-badge>
+        <plex-badge size="sm" type="info" class="mr-1">14/02/2020
+            <plex-button icon="clock"></plex-button>
+        </plex-badge>
+
+        <plex-badge size="sm" [color]="color" class="mr-1">
+            CUSTOM COLOR
+            <plex-button icon="clock" (click)="color = 'blue'"></plex-button>
+        </plex-badge>
+
+        <hr>
+        <plex-title size="sm" titulo="icon y badge"></plex-title>
+        <plex-badge size="sm" type="success" class="mr-1">VALIDADO
+            <plex-icon name="clock"></plex-icon>
+        </plex-badge>
+
+        <hr>
+        <plex-title size="sm" titulo="icon + button"></plex-title>
+        <!-- <plex-badge size="sm" type="primary" class="mr-1">14/02/2020</plex-badge> -->
+        <plex-badge size="sm" type="success" class="mr-1">
+            VALIDADO
+            <plex-icon name="clock"></plex-icon>
+            <plex-button icon="clock"></plex-button>
+        </plex-badge>
+
+        <plex-badge size="sm" [color]="color" class="mr-1">
+            TEMPORAL
+            <plex-icon name="clock"></plex-icon>
+            <plex-button icon="clock"></plex-button>
+        </plex-badge>
+
+
+
+    </plex-layout-sidebar>
 </plex-layout>

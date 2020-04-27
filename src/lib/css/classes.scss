@@ -11,7 +11,7 @@
 // Textos
 // -------------------------
 [class^="text-"] .btn {
-  font-size: 1em; // Así no duplica el tamaño
+  font-size: $font-size-base; // Así no duplica el tamaño
 }
 
 .text-overflow {

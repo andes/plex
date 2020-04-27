@@ -1,7 +1,3 @@
-:root {
-  --nav-bar-color: #00A8E0;
-}
-
 $red: #dd4b39;
 $orange: #ff8d22;
 $yellow: #ffd500;
@@ -9,15 +5,43 @@ $green: #8CC63F;
 $blue: #00A8E0;
 $dark-blue: #002738;
 $light-grey: #f9f9f9;
-$dark-grey: #AAAAAA;
+$dark-grey: #999999;
 $light-blue: #edf8fd;
+
+:root {
+    --nav-bar-color: #{$blue};
+}
+
+
+$darken-percentage: 15%;
 
 // Brand
 $brand-primary: $blue;
 $brand-inverse: $dark-blue;
 
 // Body
+$font-size-lg:   1rem;
+$font-size-sm:   .9rem;
+$font-size-xs:   .75rem;
+$font-size-base: .9rem; // Assumes the browser default, typically `16px`
+$badge-font-size: $font-size-xs;
+$close-font-size: $font-size-base * 1.5;
+
+// Calles entre contenedores (main, sidebar, footer)
+$grid-gutter-width-base:     30px;
+
 $body-bg: #e6e6e6;
+
+// Headings
+$font-size-h1: 2rem !default;
+$font-size-h2: 1.75rem !default;
+$font-size-h3: 1.5rem !default;
+$font-size-h4: 1.25rem !default;
+$font-size-h5: 1rem !default;
+$font-size-h6: .875rem !default;
+
+// Dropdown
+$dropdown-link-active-bg: $blue;
 
 // Font
 $font-family: 'TypoPRO Source Sans Pro';
@@ -42,7 +66,7 @@ $navbar-padding-x: 0;
 $navbar-padding-y: 0;
 $navbar-brand-padding-x: 0;
 $navbar-brand-padding-y: 0;
-$navbar-height: 50px;
+$navbar-height: 46px;
 // Variable custom de layout.scss
 $navbar-brand-width: 100px; // Variable custom de layout.scss
 
@@ -133,3 +157,7 @@ label {
         text-transform: uppercase;
     }
 }
+
+// Accordion
+$card-bg: transparent;
+$card-cap-bg: var(--heading-background-color);

@@ -1,47 +1,56 @@
+
 %baseBadge {
     background: transparent;
     border: 1.5px solid;
-    font-size: 0.75em;
+    font-size: $badge-font-size;
     font-weight: normal;
-    padding: 6px;
+    padding: 5px;
     text-transform: uppercase;
-    
-    >i {
-        margin-right: 5px;
-    }
-    
     border-color: var(--badge-color);
     color: var(--badge-color);
+    
+    i {
+        margin-right: 5px;
+        font-size: 20px;
+        overflow: hidden;
+        line-height: 0;
+        height: 0;
+        position: relative;
+        top: 3px;
+        right: 3px;
+        border-color: var(--badge-color);
+    }
+
+}
+
+// Para integración de plex-datetime dentro de un plex-badge
+plex-badge {
+    display: inline-flex;
+    align-items: flex-end;
+    plex-datetime {
+        display: inline-flex;
+    }
 }
 
 .badge {
     @extend %baseBadge;
 }
- 
 
-.badge-default {
-    --badge-color: #{$dark-grey}; 
-    @extend %baseBadge;
-}
+.btn-badge {
+    button.btn {
+        padding: 0.25rem 0.5rem;
+        font-size: $badge-font-size;
+        border-radius: 0;
+        color: #fff;
+        background-color: var(--badge-color);
+        border-color: var(--badge-color);
+        &:hover {
+            background-color: var(--badge-color);
+            mix-blend-mode: darken;
+            opacity: .75;
+        }
+    }
 
-.badge-danger {
-    --badge-color: #{$red};
-    @extend %baseBadge;
-}
-
-.badge-success {
-    --badge-color: #{$green};
-    @extend %baseBadge;
-}
-
-.badge-warning {
-    --badge-color: #{$orange};
-    @extend %baseBadge;
-}
-
-.badge-info {
-    --badge-color: #{$blue};
-    @extend %baseBadge;
 }
 
 // Espaciado del ícono
@@ -50,12 +59,56 @@
     margin-right: 5px;
 }
 
+$colors: (
+    warning: $orange,
+    danger: $red,
+    success: $green,
+    info: $blue,
+    default: $dark-grey
+);
+
+@each $name, $color in $colors {
+    .badge-#{$name} {
+        --badge-color: #{$color};
+        // Compatibilidad con andes hasta que se haga el refactor a plex-badge
+        @extend %baseBadge;
+        .btn {
+            @include button-factory($color);
+            position: relative;
+            right: 2px;
+        }
+    }
+    
+    .btn-badge-#{$name} {
+        --badge-color: #{$color};
+        .btn {
+            @include button-factory($color);
+            position: relative;
+            right: 2px;
+        }
+    }
+    
+}
+
+
 /** BADGE EXTENSIBLE DESDE AFUERA DE PLEX */
 $badge-extend: () !default;
 
-@each $name,
-$color in $badge-extend {
+@each $name, $color in $badge-extend {
     .badge-#{$name} {
-         --badge-color: $color;
+        --badge-color: #{$color};
+        .btn {
+            @include button-factory($color);
+            position: relative;
+            right: 2px;
+        }
+    }
+    .btn-badge-#{$name} {
+        .btn {
+            @include button-factory($color);
+            position: relative;
+            right: 2px;
+        }
     }
 }
+

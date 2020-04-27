@@ -5,7 +5,7 @@ import { DropdownItem } from './dropdown-item.inteface';
 @Component({
     selector: 'plex-dropdown',
     template: ` <div class="dropdown" [ngClass]="{show: open}">
-                    <button plexRipples data-toggle="dropdown" class="btn btn-{{type}}" [ngClass]="{'dropdown-toggle': label}" type="button" [disabled]="disabled" (click)="toggleMenu(); $event.stopImmediatePropagation();">
+                    <button plexRipples data-toggle="dropdown" class="btn btn-{{type}} {{( 'size' ? 'btn-' + size : '' )}}" [ngClass]="{'dropdown-toggle': label}" type="button" [disabled]="disabled" (click)="toggleMenu(); $event.stopImmediatePropagation();">
                     <i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i> {{label}}
                     </button>
                     <ul class="dropdown-menu" [ngClass]="{'dropdown-menu-right': right, 'dropdown-menu-left': !right}">
@@ -35,6 +35,7 @@ export class PlexDropdownComponent {
     @Input() items: DropdownItem[];
     @Input() type: string;
     @Input() right: boolean;
+    @Input() size: 'sm' | 'md' | 'lg' | 'block' = 'md';
     @Input() @HostBinding('attr.disabled') disabled: boolean;
 
     @Output() onOpen: EventEmitter<void> = new EventEmitter();

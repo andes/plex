@@ -1,0 +1,8 @@
+@mixin button-factory($color) {
+    color: $white;
+    background-color: $color;
+    border-color: $color;
+    @include hover {
+       background: darken($color, $darken-percentage);
+    }
+}

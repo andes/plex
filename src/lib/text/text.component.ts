@@ -14,7 +14,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
 
     <!-- Label -->
     <label *ngIf="label" class="form-control-label">{{label}}
-      <span *ngIf="control.name && esOpcional" class="opcional"></span>
+      <span *ngIf="control.name && esRequerido" class="requerido"></span>
     </label>
 
     <!-- Simple text field -->
@@ -72,7 +72,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @ViewChild('textarea', { static: true }) private textarea: ElementRef;
     @ViewChild('quillEditor', { static: true }) private quillEditor: ElementRef;
     @ContentChild(NgControl, { static: true }) public control: any;
-    public get esOpcional(): boolean {
+    public get esRequerido(): boolean {
         return hasRequiredValidator(this.control);
     }
 

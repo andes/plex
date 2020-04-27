@@ -1,0 +1,80 @@
+<plex-layout main="8">
+    <plex-layout-main>
+        <plex-title titulo="plex-wrapper">
+            <plex-button type="success" size="sm">accion satisfactoria</plex-button>
+        </plex-title>
+        <plex-wrapper>
+            <plex-datetime label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora">
+            </plex-datetime>
+            <plex-select grow="auto" [(ngModel)]="modelo1.select" [data]="opciones"
+                         label="Seleccione efector ojo que tiene nombre largo">
+            </plex-select>
+            <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre"> </plex-text>
+
+            <div collapse>
+                <plex-float label="plex-float" placeholder="Ingrese porcentaje entre 10.5 y 90.4"
+                            [(ngModel)]="tModel.valor" name="valor" [min]="10.5" [max]="90.4" suffix="%"></plex-float>
+                <plex-bool [(ngModel)]="modelo.slide" type="slide" label="¿Está activo?" name="slide"></plex-bool>
+                <plex-text label="Buscar profesional" [(ngModel)]="templateModel2.nombre" name="nombre"></plex-text>
+                <plex-select grow="2" [(ngModel)]="modelo1.select" [data]="opciones"
+                             label-field="nombre + ' (' + continente + ')'" label="Seleccione efector">
+                </plex-select>
+                <plex-radio [(ngModel)]="modelo1.radio" [data]="opciones2" name="colores" type="horizontal"
+                            [required]="true">
+                </plex-radio>
+            </div>
+        </plex-wrapper>
+        <plex-title titulo="plex-wrapper sin secundarios">
+        </plex-title>
+        <plex-wrapper>
+            <plex-datetime label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora">
+            </plex-datetime>
+            <plex-select grow="4" [(ngModel)]="modelo1.select" [data]="opciones" label="Seleccione efector">
+            </plex-select>
+            <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre"> </plex-text>
+            <!-- <plex-button type="success">BUSCAR</plex-button> -->
+            <plex-dropdown label="OLA" type="success"></plex-dropdown>
+        </plex-wrapper>
+        <plex-title titulo="plex-wrapper otros ejemplos">
+        </plex-title>
+        <plex-wrapper>
+            <plex-select grow="full" [(ngModel)]="modelo1.select" [data]="opciones" label="Seleccione efector">
+            </plex-select>
+            <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre"> </plex-text>
+            <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre"> </plex-text>
+        </plex-wrapper>
+        <plex-list>
+            <plex-item></plex-item>
+            <plex-item></plex-item>
+            <plex-item></plex-item>
+            <plex-item></plex-item>
+            <plex-item></plex-item>
+            <plex-item></plex-item>
+            <plex-item></plex-item>
+            <plex-item></plex-item>
+        </plex-list>
+    </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="Casos de uso: Formulario"></plex-title>
+        <plex-wrapper>
+            <plex-datetime label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
+            </plex-datetime>
+            <plex-select grow="2" [(ngModel)]="modelo1.select" [data]="opciones" label="Seleccione efector">
+            </plex-select>
+            <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre"></plex-text>
+            <div collapse>
+                <plex-float label="plex-float" placeholder="Ingrese porcentaje entre 10.5 y 90.4"
+                            [(ngModel)]="tModel.valor" name="valor" [min]="10.5" [max]="90.4" suffix="%"></plex-float>
+                <plex-bool [(ngModel)]="modelo.slide" type="slide" label="¿Está activo?" name="slide"></plex-bool>
+                <plex-text label="Buscar profesional" [(ngModel)]="templateModel2.nombre" name="nombre"></plex-text>
+                <plex-select grow="auto" [(ngModel)]="modelo1.select" [data]="opciones"
+                             label-field="nombre + ' (' + continente + ')'" label="Seleccione efector">
+                </plex-select>
+            </div>
+        </plex-wrapper>
+        <section justify="between">
+            <plex-button type="danger" size="md">Cancelar</plex-button>
+            <plex-button type="success" size="md">Confirmar</plex-button>
+        </section>
+    </plex-layout-sidebar>
+</plex-layout>
