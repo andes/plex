@@ -94,7 +94,7 @@ export class WrapperDemoComponent implements OnInit {
         return moment(this.tModel.hora).add(30, 'minutes');
     }
 
-    get cssColumns() {
-        return this.columns === 'auto' ? 'col-auto' : 'col-span';
-    }
+    // get cssColumns() {
+    //     return this.columns === 'auto' ? 'col-auto' : 'col-span';
+    // }
 }

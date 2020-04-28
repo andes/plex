@@ -1,16 +1,16 @@
-<plex-title titulo="Relaciones" size="sm">
+<plex-title titulo="Relaciones existentes" size="sm">
     <plex-button type="info" size="sm" (click)="agregarRelacion()">agregar relación</plex-button>
 </plex-title>
-<plex-filters *ngIf="nuevaRelacion === true">
-    <plex-text label="Buscar relación de paciente"
+
+<plex-wrapper *ngIf="nuevaRelacion === true">
+    <plex-text label="Buscar relación de paciente" grow="full"
                placeholder="Escanee un documento digital, o escriba un documento / apellido / nombre"
                [(ngModel)]="templateModel2.nombre" name="nombre">
     </plex-text>
-</plex-filters>
-<plex-list>
-
-    <plex-list>
-        <plex-item *ngFor="let paciente of pacientes$ | async">
+    <plex-title grow="full" titulo="Resultado" size="sm"></plex-title>
+    <!-- Resultado de busqueda al agregar relacion -->
+    <plex-list grow="full">
+        <plex-item *ngFor="let paciente of pacientes$ | async | slice:5">
             <img src="{{ paciente.foto }}" alt="">
             <plex-label titulo="{{ paciente.nombre }} {{ paciente.apellido }}" subtitulo="{{ paciente.documento }}">
             </plex-label>
@@ -27,4 +27,24 @@
             </plex-button>
         </plex-item>
     </plex-list>
+</plex-wrapper>
+
+<!-- Relaciones existentes -->
+<plex-list>
+    <plex-item *ngFor="let paciente of pacientes$ | async">
+        <img src="{{ paciente.foto }}" alt="">
+        <plex-label titulo="{{ paciente.nombre }} {{ paciente.apellido }}" subtitulo="{{ paciente.documento }}">
+        </plex-label>
+        <plex-label titulo="{{ paciente.edad }} Años" subtitulo="{{ paciente.fechaNacimiento }}"></plex-label>
+        <plex-badge type="info">{{ paciente.sexo }}
+        </plex-badge>
+        <plex-badge type="info">{{ paciente.relaciones }}
+        </plex-badge>
+        <plex-badge type="" class=""
+                    [ngClass]="{'text-success' : paciente.estado === 'validado' , 'text-warning' : paciente.estado === 'temporal'} ">
+            {{ paciente.estado }}
+        </plex-badge>
+        <plex-button type="danger" size="sm" icon="close">
+        </plex-button>
+    </plex-item>
 </plex-list>

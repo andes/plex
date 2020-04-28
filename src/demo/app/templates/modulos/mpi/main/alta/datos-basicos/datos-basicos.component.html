@@ -1,7 +1,7 @@
 <section class="mt-4">
     <!-- Desacoplar en componente -->
     <plex-title titulo="datos básicos" size="sm" class="mt-2"></plex-title>
-    <plex-filters>
+    <plex-wrapper>
         <plex-text label="Ingrese dni" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8" maxlength="8"
                    [debounce]="1000" (change)="onChange()"></plex-text>
         <plex-select [(ngModel)]="modelo1.select" [data]="opciones" label-field="nombre" label="Seleccione sexo">
@@ -17,14 +17,14 @@
                      label="Seleccione estado civil">
         </plex-select>
 
-    </plex-filters>
+    </plex-wrapper>
     <plex-title titulo="identidad autopercibida" size="sm" class="mt-2"></plex-title>
-    <plex-filters>
+    <plex-wrapper>
         <plex-text label="Nombre" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8" maxlength="8"
                    [debounce]="1000" (change)="onChange()"></plex-text>
 
         <plex-select columns="2" [(ngModel)]="modelo1.select" [data]="opciones2" label-field="nombre"
                      label="Seleccione género">
         </plex-select>
-    </plex-filters>
+    </plex-wrapper>
 </section>

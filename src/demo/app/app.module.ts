@@ -42,12 +42,21 @@ import { HeaderPacienteComponent } from './header-paciente/header-paciente.compo
 import { ItemDemoComponent } from './item-list/item-list.component';
 import { DetailDemoComponent } from './detail/detail.component';
 import { WrapperDemoComponent } from './wrapper/wrapper.component.';
+
 // Template
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
 import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
 import { MainListadoComponent } from './templates/listado-sidebar/main/listado/main-listado.component';
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
 import { DemoIconComponent } from './icon/icon';
+import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
+import { MpiListadoComponent } from './templates/modulos/mpi/main/listado/mpi-listado.component';
+import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
+import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
+import { DatosBasicosComponent } from './templates/modulos/mpi/main/alta/datos-basicos/datos-basicos.component';
+import { DatosContactoComponent } from './templates/modulos/mpi/main/alta/datos-contacto/datos-contacto.component';
+import { DatosNotasComponent } from './templates/modulos/mpi/main/alta/datos-notas/datos-notas.component';
+import { DatosRelacionesComponent } from './templates/modulos/mpi/main/alta/datos-relaciones/datos-relaciones.component';
 
 @NgModule({
     declarations: [
@@ -84,7 +93,19 @@ import { DemoIconComponent } from './icon/icon';
         ListadoSidebarComponent,
         SidebarDetalleComponent,
         MainListadoComponent,
-        ModalTemplateComponent
+
+        // Componentes locales
+        ModalTemplateComponent,
+
+        // Maquetado MPI
+        MpiMaquetadoComponent,
+        MpiListadoComponent,
+        MpiDetalleComponent,
+        MpiAltaComponent,
+        DatosBasicosComponent,
+        DatosContactoComponent,
+        DatosNotasComponent,
+        DatosRelacionesComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
