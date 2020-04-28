@@ -6,7 +6,7 @@
     <plex-detail direction="column" size="lg" class="justify-content-center">
         <img src="{{ paciente.foto }}" alt="">
         <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
-        <plex-badge *ngIf="paciente.fechaFallecimiento != 'null'" type="danger">Fallecido:
+        <plex-badge *ngIf="paciente.fechaFallecimiento != null" type="danger">Fallecido:
             {{ paciente.fechaFallecimiento }}
         </plex-badge>
         <div title>{{ paciente.nombre }}</div>

@@ -6,14 +6,13 @@
             </plex-title>
         </header>
 
-        <!-- plex-filter: en etapa experimental -->
-        <plex-filters>
+        <plex-wrapper>
             <plex-text label="Buscar paciente"
                        placeholder="Escanee un documento digital, o escriba un documento / apellido / nombre"
                        [(ngModel)]="templateModel2.nombre" name="nombre">
             </plex-text>
             <plex-button type="info" size="md" (click)="goToAlta()">Nuevo paciente</plex-button>
-        </plex-filters>
+        </plex-wrapper>
         <mpi-listado>
 
         </mpi-listado>

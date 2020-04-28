@@ -11,7 +11,7 @@
                     [ngClass]="{'text-success' : paciente.estado === 'validado' , 'text-warning' : paciente.estado === 'temporal'} ">
             {{ paciente.estado }}
         </plex-badge>
-        <plex-badge *ngIf="paciente.fechaFallecimiento != 'null'" type="danger">Fallecido:
+        <plex-badge *ngIf="paciente.fechaFallecimiento !== null" type="danger">Fallecido:
             {{ paciente.fechaFallecimiento }}
         </plex-badge>
         <plex-button type="info" size="sm" icon="eye" (click)="selected(paciente)">

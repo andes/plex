@@ -2,12 +2,14 @@
     <plex-button type="info" size="sm" (click)="agregarNota()">agregar nota</plex-button>
 </plex-title>
 
-<plex-filters *ngIf="nuevaNota === true">
-    <plex-text columns="4" label="Agregar nota" placeholder="" [(ngModel)]="templateModel2.nombre" name="nombre"
+<plex-wrapper justify *ngIf="nuevaNota === true">
+    <plex-text columns="4" label="" placeholder="Titulo de la nota" [(ngModel)]="templateModel2.nombre" name="nombre">
+    </plex-text>
+    <plex-text columns="4" label="" placeholder="Contenido de la nota" [(ngModel)]="templateModel2.nombre" name="nombre"
                multiline=true>
     </plex-text>
-    <plex-button type="success" icon="plus" size="sm" justify="end"></plex-button>
-</plex-filters>
+    <plex-button type="success" icon="plus" size="md" justify="end"></plex-button>
+</plex-wrapper>
 <plex-list *ngFor="let nota of notas">
     <plex-item *ngFor="let nota of notas" class="">
         <plex-icon name="file-document"></plex-icon>

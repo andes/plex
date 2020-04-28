@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   selector: 'datos-relaciones',
   templateUrl: './datos-relaciones.component.html',
 })
+
 export class DatosRelacionesComponent implements OnInit {
 
   pacientes$: Observable<Paciente[]>;

@@ -4,15 +4,15 @@
             <plex-bool type="checkbox" label="Sin datos de contacto"></plex-bool>
             <!-- <plex-button type="info" icon="marker" size="sm"></plex-button> -->
         </plex-title>
-        <plex-filters>
+        <plex-wrapper>
             <plex-select [(ngModel)]="modelo1.select" [data]="opciones3" label-field="nombre" label="Tipo de contacto">
             </plex-select>
             <plex-text label="Número" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8" maxlength="8"
                        [debounce]="1000" (change)="onChange()"></plex-text>
             <plex-button type="info" icon="plus"></plex-button>
-        </plex-filters>
+        </plex-wrapper>
         <plex-title titulo="datos de domicilio" size="sm" class="mt-2"></plex-title>
-        <plex-filters>
+        <plex-wrapper>
             <plex-select columns="4" [(ngModel)]="modelo1.select" [data]="opciones4" label-field="nombre"
                          label="Provincia">
             </plex-select>
@@ -22,7 +22,7 @@
             <plex-text columns="auto" label="Dirección" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8"
                        maxlength="8" [debounce]="1000" (change)="onChange()"></plex-text>
             <plex-button type="info" size="md" icon="map-marker"></plex-button>
-        </plex-filters>
+        </plex-wrapper>
     </div>
     <div class="gmap_canvas map ml-4">
         <iframe width="100%" height="100%" id="gmap_canvas"
