@@ -56,9 +56,11 @@ import { PreviewDirective } from './visualizador/preview.directive';
 import { ResponsiveDirective } from './directives/responsive.directive';
 
 // Third party
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule, MatRadioButton } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTooltipModule, MatTooltip } from '@angular/material/tooltip';
 import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
@@ -112,7 +114,8 @@ const MODULES = [
     PlexVisualizadorComponent,
     PreviewDirective,
     NavItemComponent,
-    PlexWrapperComponent
+    PlexWrapperComponent,
+    // MatTooltip
 ];
 
 @NgModule({
@@ -120,13 +123,15 @@ const MODULES = [
         CommonModule,
         RouterModule,
         FormsModule,
+        BrowserAnimationsModule,
         MatSlideToggleModule,
         MatCheckboxModule,
         MatRadioModule,
+        MatTooltipModule,
         ChartsModule,
         QuillModule,
+        InfiniteScrollModule,
         SimpleNotificationsModule.forRoot(),
-        InfiniteScrollModule
     ],
     declarations: [
         ...MODULES,
@@ -137,9 +142,11 @@ const MODULES = [
         TooltipContentComponent,
         MatRadioButton,
         PlexVisualizadorComponent
-
     ],
-    exports: MODULES
+    exports: [
+        ...MODULES,
+        MatTooltip
+    ]
 })
 export class PlexModule {
     constructor() {
