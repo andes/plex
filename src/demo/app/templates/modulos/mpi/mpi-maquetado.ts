@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
@@ -14,6 +14,12 @@ import { Paciente } from '../../service/paciente';
     styleUrls: ['mpi-maquetado.scss'],
 })
 export class MpiMaquetadoComponent implements OnInit {
+
+    sidebar = 12;
+
+    recibirSidebar($event) {
+        this.sidebar = $event;
+    }
 
     // public listadoPaciente: Paciente[];
     pacientes$: Observable<Paciente[]>;

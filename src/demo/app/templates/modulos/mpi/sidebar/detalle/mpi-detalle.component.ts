@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PacienteService } from '../../../../service/paciente.service';
 import { Paciente } from '../../../../service/paciente';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -10,6 +10,13 @@ import { switchMap } from 'rxjs/operators';
     templateUrl: './mpi-detalle.component.html',
 })
 export class MpiDetalleComponent implements OnInit {
+
+    sidebar: number = 12;
+    @Output() cerrar = new EventEmitter<number>();
+
+    cerrarSidebar() {
+        this.cerrar.emit(this.sidebar);
+    }
 
     public listadoPaciente: Paciente[];
     paciente$: Observable<Paciente>;
