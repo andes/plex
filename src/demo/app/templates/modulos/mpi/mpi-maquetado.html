@@ -1,4 +1,4 @@
-<plex-layout main="8">
+<plex-layout main="{{ sidebar }}">
     <plex-layout-main>
         <header>
             <plex-title size="lg" titulo="Busqueda de pacientes">
@@ -13,27 +13,12 @@
             </plex-text>
             <plex-button type="info" size="md" (click)="goToAlta()">Nuevo paciente</plex-button>
         </plex-wrapper>
-        <mpi-listado>
+        <mpi-listado (enviar)="recibirSidebar($event)">
 
         </mpi-listado>
     </plex-layout-main>
 
     <plex-layout-sidebar type="invert">
         <router-outlet></router-outlet>
-        <plex-title titulo="Relaciones" size="sm">
-            <plex-button type="success" size="sm" icon="plus"></plex-button>
-            <plex-button type="info" size="sm" icon="eye"></plex-button>
-        </plex-title>
-        <plex-list>
-            <plex-item *ngFor="let paciente of pacientes$ | async" class="">
-                <img src="{{ paciente.foto }}" alt="">
-                <plex-label titulo="{{ paciente.nombre }} {{ paciente.apellido }}" subtitulo="{{ paciente.documento }}">
-                </plex-label>
-                <plex-badge type="info">{{ paciente.relaciones }}
-                </plex-badge>
-                <plex-button type="danger" size="sm" icon="close">
-                </plex-button>
-            </plex-item>
-        </plex-list>
     </plex-layout-sidebar>
 </plex-layout>
