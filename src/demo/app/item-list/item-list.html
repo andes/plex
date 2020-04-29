@@ -4,7 +4,6 @@
             <plex-heading>
                 <b label>Datos importantes</b>
                 <b label>Horario</b>
-                <b button></b>
             </plex-heading>
             <plex-item *ngFor="let item of lista; let par = even" [selected]="item.selected"
                        (click)="item.selected = !item.selected">
@@ -178,7 +177,6 @@
             <plex-heading>
                 <b label>Datos importantes con plex-bool</b>
                 <b label>Horario</b>
-                <b button></b>
             </plex-heading>
             <plex-item>
                 <plex-bool name="activo"></plex-bool>
@@ -196,7 +194,6 @@
             <plex-heading>
                 <b label>Datos importantes sin plex-bool</b>
                 <b label>Horario</b>
-                <b button></b>
             </plex-heading>
             <plex-item>
                 <plex-label titulo="Título" subtitulo="Un subtítulo"></plex-label>
@@ -209,30 +206,22 @@
                 <plex-dropdown icon="dots-vertical mdi-24px" [right]="true" [items]="dropitems"></plex-dropdown>
             </plex-item>
         </plex-list>
-        <!-- <hr>
-        <plex-bool type="slide" label="Ancho completo" [(ngModel)]="layout.completo" name="completo">
-        </plex-bool>
-        <br>
-        <plex-bool type="slide" label="Ajustar a cada contenido" [(ngModel)]="layout.contenido" name="contenido">
-        </plex-bool> -->
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
-
         <plex-list>
             <plex-heading [sticky]="true">
                 <b label>1</b>
-                <b badge>3</b>
+                <b label>3</b>
             </plex-heading>
             <plex-item [selected]="item.selected" (click)="item.selected = !item.selected" *ngFor="let item of lista">
                 <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
                 <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
-
+                <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
                 <plex-button type="danger" size="sm" icon="delete"></plex-button>
                 <plex-badge type="danger">ausente</plex-badge>
                 <plex-button type="success" size="sm" icon="check-circle"></plex-button>
                 <plex-button type="warning" size="sm" icon="clock"></plex-button>
             </plex-item>
         </plex-list>
-
     </plex-layout-sidebar>
 </plex-layout>

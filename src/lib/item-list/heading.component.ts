@@ -3,9 +3,15 @@ import { Component, ChangeDetectorRef, Input } from '@angular/core';
 @Component({
     selector: 'plex-heading',
     template: `
-    <div class="item-list-heading" [class.sticky]="sticky" [class.has-icon]="hasIcon" [class.has-checkbox]="hasCheckbox" [class.has-botonera]="hasBotonera">
-        <ng-content selector="label"></ng-content>
-    </div>
+    <section responsive>
+        <div class="item-list-heading"
+            [class.sticky]="sticky"
+            [class.has-icon]="hasIcon"
+            [class.has-checkbox]="hasCheckbox"
+            [class.has-botonera]="hasBotonera">
+            <ng-content selector="label"></ng-content>
+        </div>
+    </section>
     `
 })
 export class PlexHeadingComponent {
