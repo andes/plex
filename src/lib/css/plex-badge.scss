@@ -10,14 +10,12 @@
     color: var(--badge-color);
     
     i {
-        margin-right: 5px;
         font-size: 20px;
         overflow: hidden;
         line-height: 0;
         height: 0;
         position: relative;
         top: 3px;
-        right: 3px;
         border-color: var(--badge-color);
     }
 
