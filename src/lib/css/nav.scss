@@ -10,6 +10,10 @@ nav {
   justify-content: space-between;
   height: $navbar-height;
 
+  &.fixed-top {
+    z-index: 1000;
+  }
+
   &.navbar-inverse.bg-info {
     background-color: var(--nav-bar-color) !important;
   }
