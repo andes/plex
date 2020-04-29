@@ -1,3 +1,10 @@
+## [6.0.3](https://github.com/andes/plex/compare/v6.0.2...v6.0.3) (2020-04-29)
+
+
+### Bug Fixes
+
+* **loader:** se arregla posicionamiento de loader ([aa81b98](https://github.com/andes/plex/commit/aa81b98019dd205e0ff98731bdc57cac34612453))
+
 ## [6.0.2](https://github.com/andes/plex/compare/v6.0.1...v6.0.2) (2020-04-16)
 
 
