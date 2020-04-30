@@ -1,12 +1,15 @@
 <plex-layout main="8">
     <plex-layout-main>
         <plex-title main justify titulo="Gestor de agendas">
-            <plex-badge size="sm" type="success">VALIDADO
+            <plex-button size="sm" type="danger" tooltip="Texto secundario intrínsecamente...">
+                Tooltip 1
+            </plex-button>
+            <plex-button class="ml-1" size="sm" type="danger" tooltip="...relacionado al contenedor" position="above">
+                Tooltip 2
+            </plex-button>
+            <plex-badge class="ml-1" size="sm" type="success">VALIDADO
             </plex-badge>
-            <plex-button size="sm" type="danger" matTooltipPosition="above"
-                         matTooltip="Texto secundario intrínsecamente relacionado al título">
-                Tooltip 1</plex-button>
-            <plex-help icon="information" titulo="Información sobre este módulo"
+            <plex-help class="ml-1" icon="information" titulo="Información sobre este módulo"
                        subtitulo="A continuación todas las opciones">
                 <ol info class="list-group-flush">
                     <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
@@ -77,8 +80,8 @@
     </plex-layout-main>
     <plex-layout-sidebar>
         <plex-title titulo="Texto principal" size="sm">
-            <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Tooltip" matTooltipPosition="right"
-                       matTooltip="Estaba la blanca paloma sentada en un verde limón, con el pico cortaba la rama como la rama cortaba la flor">
+            <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Tooltip" position="right"
+                       tooltip="Estaba la blanca paloma sentada en un verde limón, con el pico cortaba la rama como la rama cortaba la flor">
                 <ul class="list-group">
                     <li class="list-group-item active">Cras justo odio</li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>
