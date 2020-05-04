@@ -1,3 +1,10 @@
+## [6.0.5](https://github.com/andes/plex/compare/v6.0.4...v6.0.5) (2020-05-04)
+
+
+### Bug Fixes
+
+* **tooltip:** se revierte a tooltip anterior ([6ab1785](https://github.com/andes/plex/commit/6ab17854fbd9aab61c844d40f234396f37bcb0fd))
+
 ## [6.0.4](https://github.com/andes/plex/compare/v6.0.3...v6.0.4) (2020-05-04)
 
 
