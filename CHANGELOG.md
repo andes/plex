@@ -1,3 +1,10 @@
+## [6.0.4](https://github.com/andes/plex/compare/v6.0.3...v6.0.4) (2020-05-04)
+
+
+### Bug Fixes
+
+* **badge-icon:** plex-badge con icon ([#154](https://github.com/andes/plex/issues/154)) ([1776492](https://github.com/andes/plex/commit/1776492c9e8045abf484e005b75a7bafaaeb5def))
+
 ## [6.0.3](https://github.com/andes/plex/compare/v6.0.2...v6.0.3) (2020-04-29)
 
 
