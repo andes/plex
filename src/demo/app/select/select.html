@@ -15,6 +15,10 @@
                             <plex-bool [(ngModel)]="modelo2.soloLectura" name="soloLectura" label="Sólo lectura">
                             </plex-bool>
 
+                            <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmultiple-2"
+                                         (getData)="loadData($event)" label="Disabled plex-select" [disabled]="true">
+                            </plex-select>
+
                         </form>
                     </div>
                     <div class="col-md-6">
