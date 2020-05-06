@@ -10,20 +10,6 @@ export class ModalTemplateComponent {
 
     @ViewChild('modal', { static: true }) modal: PlexModalComponent;
 
-
-    mostrarModal() {
-        this.modal.show();
-        this.motivoSelected = null;
-    }
-
-    @Input()
-    set show(value) {
-        if (value) {
-            this.modal.show();
-            this.motivoSelected = null;
-        }
-    }
-
     @Output() motivoAccesoHuds = new EventEmitter<any>();
 
     public motivosAccesoHuds = [
@@ -46,6 +32,5 @@ export class ModalTemplateComponent {
         } else {
             this.motivoAccesoHuds.emit(null);
         }
-        this.modal.close();
     }
 }

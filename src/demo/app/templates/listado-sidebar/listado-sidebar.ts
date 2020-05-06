@@ -28,6 +28,8 @@ export class ListadoSidebarComponent implements OnInit {
     public templateModel2: any;
     public modelo: any;
 
+    public showModal = false;
+
     // public listadoPaciente: Paciente[];
     pacientes$: Observable<Paciente[]>;
     selectedId: Number;

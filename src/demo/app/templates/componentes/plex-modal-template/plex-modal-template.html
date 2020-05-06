@@ -1,4 +1,4 @@
-<plex-modal #modal>
+<plex-modal #modal [startOpen]="true" (closed)="notificarAccion(false)">
     <plex-icon name="alert-circle" type="danger"></plex-icon>
     <plex-modal-title type="danger">Este es el título del modal</plex-modal-title>
     <plex-modal-subtitle type="">Este es el texto secundario del modal</plex-modal-subtitle>
