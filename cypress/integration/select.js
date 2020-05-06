@@ -25,6 +25,14 @@ context('select', () => {
         cy.get('@selectMultiple').isSelectedLabel('Argentina');
         cy.get('@selectMultiple').clearSelect('57f523e269fe79a5980fc5eb');
 
+        cy.plexSelectType('name="selectmultiple"', '{esc}')
+
+        cy.plexBool('name="soloLectura"', true);
+
+        cy.get('@selectMultiple').clearSelect('57f3b5c469fe79a598e6281f');
+
+
+
         cy.plexSelect('label="Seleccione un país"').clearSelect();
 
         cy.eyesCheckWindow('select - end');
