@@ -29,13 +29,11 @@ plex-layout {
   flex-flow: column;
   height: 100%;
   --heading-background-color: #f2f2f2;
-
-  // > plex-layout-sidebar {
-  //   > .row:first-child {
-  //     padding: 0px 15px 0px 10px;
-  //   }
-  // }
-
+ 
+  .mat-checkbox-inner-container {
+    background: white!important;
+  } 
+ 
   // Footer (se ubica fijo abajo de la pantalla)
    > plex-layout-footer,
   > footer {
