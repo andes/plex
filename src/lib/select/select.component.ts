@@ -29,6 +29,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     private hasStaticData = false;
     private _data: any[];
     private _readonly: boolean;
+    private _disabled: boolean;
 
     @ContentChild(NgControl, { static: false }) control: AbstractControl;
     public uniqueId = new Date().valueOf().toString();
@@ -72,6 +73,18 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     @Input()
     set readonly(value: boolean) {
         this._readonly = value;
+        if (this.selectize) {
+            if (value) {
+                this.selectize.lock();
+            } else {
+                this.selectize.unlock();
+            }
+        }
+    }
+
+    @Input()
+    set disabled(value: boolean) {
+        this._disabled = value;
         if (this.selectize) {
             if (value) {
                 this.selectize.disable();
@@ -299,6 +312,12 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
 
         // Setea el estado inicial
         if (this._readonly) {
+            this.selectize.lock();
+        } else {
+            this.selectize.unlock();
+        }
+
+        if (this._disabled) {
             this.selectize.disable();
         } else {
             this.selectize.enable();
