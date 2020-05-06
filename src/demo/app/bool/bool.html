@@ -1,4 +1,4 @@
-<plex-layout>
+<plex-layout main=8>
     <plex-layout-main>
         <div class="row">
             <div class="col-md-6">
@@ -42,4 +42,12 @@
             </div>
         </div>
     </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <div class="col-md-6">
+            <form>
+                <h1>Checkbox</h1>
+                <plex-bool [(ngModel)]="modelo.checkbox" label="¿Está activo?" name="checkbox"></plex-bool>
+            </form>
+        </div>
+    </plex-layout-sidebar>
 </plex-layout>
