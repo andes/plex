@@ -1,4 +1,4 @@
-import { Component, Input, HostListener, Output, EventEmitter } from '@angular/core';
+import { Component, Input, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
 
 
 @Component({
@@ -23,7 +23,7 @@ import { Component, Input, HostListener, Output, EventEmitter } from '@angular/c
         </div>
     `,
 })
-export class PlexModalComponent {
+export class PlexModalComponent implements OnInit {
 
     /**
      * Muestra una cruz para cerrar el modal.
@@ -41,12 +41,23 @@ export class PlexModalComponent {
     @Input() allowEscClose = true;
 
     /**
+     * El modal se visualiza abierto al arrancar.
+     */
+    @Input() startOpen = false;
+
+    /**
      * Emite un evento cuando se cierra el modal.
      */
 
     @Output() closed = new EventEmitter<void>();
 
     showed = false;
+
+    ngOnInit() {
+        if (this.startOpen) {
+            this.showed = true;
+        }
+    }
 
     public show() {
         this.showed = true;
