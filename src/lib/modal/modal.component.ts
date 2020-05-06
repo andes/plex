@@ -4,7 +4,7 @@ import { Component, Input, HostListener, Output, EventEmitter } from '@angular/c
 @Component({
     selector: 'plex-modal',
     template: `
-        <div *ngIf="showed" class="plex-modal" (click)="$event.stopPropagation();close();">
+        <div *ngIf="showed" class="plex-modal" (click)="$event.stopPropagation();backdropClick();">
             <div class="plex-modal-content" (click)="$event.stopPropagation();">
                 <header>
                     <div *ngIf="allowClose" class="plex-modal-close" (click)="close();">
@@ -31,6 +31,16 @@ export class PlexModalComponent {
     @Input() allowClose = false;
 
     /**
+     * Habilita cerrar el modal haciendo haciendo click afuera.
+     */
+    @Input() allowBackdropClose = true;
+
+    /**
+     * Habilita cerrar el modal con la tecla esc.
+     */
+    @Input() allowEscClose = true;
+
+    /**
      * Emite un evento cuando se cierra el modal.
      */
 
@@ -47,6 +57,12 @@ export class PlexModalComponent {
         this.closed.emit();
     }
 
+    public backdropClick() {
+        if (this.allowBackdropClose) {
+            this.close();
+        }
+    }
+
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
         // Nos aseguramos de no bloquear el teclado si el usuario está escribiendo (isComposing)
@@ -54,7 +70,9 @@ export class PlexModalComponent {
             return false;
         }
         if (event.which === 27) {
-            return this.close();
+            if (this.allowEscClose) {
+                return this.close();
+            }
         }
     }
 }
