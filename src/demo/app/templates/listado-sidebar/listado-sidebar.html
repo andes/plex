@@ -1,8 +1,8 @@
 <plex-layout main="8">
     <plex-layout-main>
         <plex-title size="lg" titulo="Bienvenido a Plex">
-            <plex-button type="success" size="sm" (click)="modal.mostrarModal()">Accion Modal</plex-button>
-            <plex-modal-template #modal></plex-modal-template>
+            <plex-button type="success" size="sm" (click)="showModal = true">Accion Modal</plex-button>
+            <plex-modal-template *ngIf="showModal" (motivoAccesoHuds)="showModal = false"></plex-modal-template>
 
             <plex-help titulo="Ayuda de este panel" tituloBoton="TOP">
                 <div info>
