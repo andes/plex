@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 
 export interface IPlexOptionsItems {
@@ -20,7 +20,7 @@ export interface IPlexOptionsItems {
         </div>
     `
 })
-export class PlexOptionsComponent implements OnInit {
+export class PlexOptionsComponent implements OnInit, OnChanges {
 
     /**
      * Listado de items a mostrar
@@ -50,6 +50,14 @@ export class PlexOptionsComponent implements OnInit {
     ngOnInit() {
         if (this.items.length > 0) {
             this.active = this.items[0].key;
+        }
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.items.previousValue) {
+            if (changes.items.currentValue.length !== changes.items.previousValue.length) {
+                this.active = this.items[0].key;
+            }
         }
     }
 
