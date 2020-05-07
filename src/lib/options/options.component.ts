@@ -54,15 +54,21 @@ export class PlexOptionsComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.items.previousValue) {
-            if (changes.items.currentValue.length !== changes.items.previousValue.length) {
-                this.active = this.items[0].key;
-            }
+        if (changes.items) {
+            this.checkKey();
         }
     }
 
     onOptionsClick(item: IPlexOptionsItems) {
         this.active = item.key;
         this.activated.emit(item.key);
+    }
+
+    private checkKey() {
+        const isKeyPresent = this.items.some(item => item.key === this.active);
+        if (!isKeyPresent) {
+            this.active = this.items[0].key;
+            this.activated.emit(this.active);
+        }
     }
 }

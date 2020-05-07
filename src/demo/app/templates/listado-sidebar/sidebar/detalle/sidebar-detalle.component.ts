@@ -82,10 +82,13 @@ export class SidebarDetalleComponent implements OnInit {
 
     toggleItems() {
         if (this.items.length === 2) {
-            this.items.push({label: 'opcion 3', key: '3'});
+            this.items.push({ label: 'opcion 3', key: '3' });
         } else {
             this.items = this.items.filter(item => item.key !== '3');
-            this.onActiveOption('1');
+            this.items = [
+                { label: 'otras 1', key: '7' },
+                { label: 'otas 2', key: '8' },
+            ];
         }
     }
 
