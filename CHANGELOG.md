@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/andes/plex/compare/v6.1.0...v6.1.1) (2020-05-08)
+
+
+### Bug Fixes
+
+* **plex-select:** resolve cant start in readonly ([6ea784b](https://github.com/andes/plex/commit/6ea784b5ba647aab19e3d78c59d08440c31a8d31))
+
 # [6.1.0](https://github.com/andes/plex/compare/v6.0.5...v6.1.0) (2020-05-08)
 
 
