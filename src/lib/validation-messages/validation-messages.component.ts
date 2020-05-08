@@ -12,6 +12,9 @@ import { FormControl } from '@angular/forms';
                 <div class="form-control-feedback" *ngIf="control.errors && control.errors.pattern">
                     <span>Formato incorrecto</span>
                 </div>
+                <div class="form-control-feedback" *ngIf="control.errors && control.errors.email">
+                    <span>Formato incorrecto</span>
+                </div>
                 <div class="form-control-feedback" *ngIf="control.errors && control.errors.min">
                     <span>El valor debe ser mayor a {{control.errors.min.limit}}</span>
                 </div>
