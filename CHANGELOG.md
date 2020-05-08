@@ -1,3 +1,10 @@
+## [6.1.2](https://github.com/andes/plex/compare/v6.1.1...v6.1.2) (2020-05-08)
+
+
+### Bug Fixes
+
+* **plex-select:** readonly style ([e7c5555](https://github.com/andes/plex/commit/e7c5555b630c85274434d092c8bd74a65b6ffe2f))
+
 ## [6.1.1](https://github.com/andes/plex/compare/v6.1.0...v6.1.1) (2020-05-08)
 
 
