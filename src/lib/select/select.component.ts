@@ -310,18 +310,14 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         // Guarda el componente para futura referencia
         this.selectize = $selectize[0].selectize;
 
-        // Setea el estado inicial
-        if (this._readonly) {
-            this.selectize.lock();
-        } else {
-            this.selectize.unlock();
-        }
-
         if (this._disabled) {
             this.selectize.disable();
         } else {
-            this.selectize.enable();
+            if (this._readonly) {
+                this.selectize.lock();
+            }
         }
+
 
         // Setea el valor inicial
         if (this.value) {
