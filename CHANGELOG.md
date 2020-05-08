@@ -1,3 +1,18 @@
+# [6.1.0](https://github.com/andes/plex/compare/v6.0.5...v6.1.0) (2020-05-08)
+
+
+### Bug Fixes
+
+* **plex-bool:** se corrige visualización en invert ([3f25b9d](https://github.com/andes/plex/commit/3f25b9d6c3d91f17add961c73ed0774ed0f5d026))
+
+
+### Features
+
+* **modal:** opciones para el cierre del modal ([291cd58](https://github.com/andes/plex/commit/291cd58a2655533cc7f0ce8242fe7ca9b5285cbc))
+* **modal:** startOpen properties ([30374d9](https://github.com/andes/plex/commit/30374d940872ed93769ae28187fb25263431b5ee))
+* **plex-options:** refresh on changes ([#161](https://github.com/andes/plex/issues/161)) ([f5dda95](https://github.com/andes/plex/commit/f5dda95f03df80c2376473ffb606ad54ee151f21))
+* **plex-select:** disabled properties ([46fe88b](https://github.com/andes/plex/commit/46fe88b7e06704b6e506dcee75c33ff23f6b9039))
+
 ## [6.0.5](https://github.com/andes/plex/compare/v6.0.4...v6.0.5) (2020-05-04)
 
 
