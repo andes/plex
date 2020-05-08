@@ -12,34 +12,34 @@ import { hasRequiredValidator } from '../core/validator.functions';
     template: `
     <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
 
-    <!-- Label -->
-    <label *ngIf="label" class="form-control-label">{{label}}
-      <span *ngIf="control.name && esRequerido" class="requerido"></span>
-    </label>
+        <!-- Label -->
+        <label *ngIf="label" class="form-control-label">{{label}}
+        <span *ngIf="control.name && esRequerido" class="requerido"></span>
+        </label>
 
-    <!-- Simple text field -->
-    <div [hidden]="multiline || html" [ngClass]="{'input-group': prefix || suffix || prefixParent?.children.length > 0}">
+        <!-- Simple text field -->
+        <div [hidden]="multiline || html" [ngClass]="{'input-group': prefix || suffix || prefixParent?.children.length > 0}">
 
-      <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
-      <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
-        <ng-content selector="[prefix]"></ng-content>
-      </span>
+        <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
+        <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
+            <ng-content selector="[prefix]"></ng-content>
+        </span>
 
-      <input #input type="{{password ? 'password' : 'text'}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
-        [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
+        <input #input type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
+            [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
+            <i *ngIf="!readonly && !multiline && !html && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
+        </div>
+
+        <!-- Multiline -->
+        <textarea [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+        (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()"></textarea>
+
+        <!-- HTML Editor -->
+        <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
+
+        <!-- Validation -->
+        <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
     </div>
-    <i *ngIf="!readonly && !multiline && !html && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
-
-    <!-- Multiline -->
-    <textarea [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
-      (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()"></textarea>
-
-    <!-- HTML Editor -->
-    <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
-
-    <!-- Validation -->
-    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
-  </div>
     `,
     providers: [
         // Permite acceder al atributo formControlName/ngModel
@@ -77,6 +77,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
 
     // Propiedades
+    @Input() type: 'text' | 'password' | 'email' = 'text';
     @Input() label: string;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
     @Input() placeholder: string;
@@ -84,10 +85,16 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() suffix: string;
     @Input() disabled = false;
     @Input() readonly = false;
-    @Input() password = false;
     @Input() multiline = false;
     @Input() html = false;
     @Input() debounce = 0;
+
+    @Input()
+    set password(value) {
+        if (value) {
+            this.type = 'password';
+        }
+    }
 
     @Input()
     set height(value: number) {
