@@ -142,7 +142,7 @@ Cypress.Commands.add('plexTextArea', { prevSubject: 'optional' }, (subject, labe
         element = cy.get(`plex-text[${label}] textarea`).first();
     }
     if (text) {
-        element.type(text);
+        element.type(text, { force: true });
     }
     return element.parent().parent().parent();
 });
@@ -264,7 +264,7 @@ Cypress.Commands.add('plexDropdown', { prevSubject: 'optional' }, (subject, labe
     return element;
 });
 
-Cypress.Commands.add('validationMessage', { prevSubject: true }, (subject, text) => {
+Cypress.Commands.add('validationMessage', { prevSubject: false }, (subject, text) => {
     text = text || 'Valor requerido';
     return cy.wrap(subject).find('div[class="form-control-feedback"]').should('contain', text);
 })
