@@ -4,7 +4,7 @@ import { Plex } from './../core/service';
 @Component({
     selector: 'plex-app',
     template: ` <!--Navigation Bar-->
-                    <nav class="navbar-inverse fixed-top"  [ngClass]="'bg-' + type">
+                    <nav *ngIf="plex.navbarVisible" class="navbar-inverse fixed-top bg-{{type}}">
 
                         <div class="navbar-container">
                             <ng-content select="[navIcon]"></ng-content>
@@ -82,7 +82,7 @@ import { Plex } from './../core/service';
                 <ng-content select="plex-ribbon"></ng-content>
 
                 <!--Contenedor principal-->
-                <div class="content">
+                <div class="content" [ngClass]="{'nav-top-margin': plex.navbarVisible, 'nav-top-no-margin': !plex.navbarVisible}">
                     <router-outlet></router-outlet>
                 </div>`,
 })
@@ -91,7 +91,7 @@ export class PlexAppComponent implements OnInit {
     // Referencia al DOM para injectar una componente de forma dinámica
     @ViewChild('menuItem', { static: true, read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
 
-    @Input() type: String = 'inverse';
+    @Input() type = 'inverse';
     public loginOpen = false;
     public menuOpen = false;
     public online = true;

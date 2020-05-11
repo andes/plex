@@ -1,0 +1,30 @@
+<plex-layout>
+    <plex-layout-main>
+        <plex-title titulo="Barra de Navegación"></plex-title>
+        <br>
+        <div class="row">
+            <div class="col">
+                <plex-title size="sm" titulo="Intercalar ocultar/mostrar"></plex-title>
+                <plex-button size="md" type="{{ plex.navbarVisible ? 'danger' : 'success' }}"
+                             icon="{{ plex.navbarVisible ? 'eye-off' : 'eye' }}" (click)="plex.toggleHideNavBar()">
+                </plex-button>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <plex-title size="sm" titulo="ocultar"></plex-title>
+                <plex-button size="md" type="info" (click)="plex.navVisible(false)" [disabled]="!plex.navbarVisible">
+                    Ocultar Navbar</plex-button>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <plex-title size="sm" titulo="mostrar"></plex-title>
+                <plex-button size="md" type="info" (click)="plex.navVisible(true)" [disabled]="plex.navbarVisible">
+                    Mostrar Navbar</plex-button>
+            </div>
+        </div>
+    </plex-layout-main>
+</plex-layout>

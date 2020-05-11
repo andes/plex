@@ -14,6 +14,8 @@ export class Plex {
     public loaderCount = 0;
     public appStatus: Subject<any> = new Subject();
     public userInfo: any;
+    public navbarVisible = true;
+
     /**
      * Contiene el título y breadcrumb que se muestran en el navbar
      */
@@ -368,5 +370,19 @@ export class Plex {
      */
     clearNavbar() {
         this.viewContainerRef.clear();
+    }
+
+    /**
+     * Esconde la barra de navegación.
+     * Sólo para pantalla de login
+     */
+    toggleHideNavBar() {
+        this.navbarVisible = !this.navbarVisible;
+        return this.navbarVisible;
+    }
+
+    navVisible(visible: boolean) {
+        this.navbarVisible = visible;
+        return this.navbarVisible;
     }
 }
