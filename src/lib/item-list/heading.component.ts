@@ -3,7 +3,7 @@ import { Component, ChangeDetectorRef, Input } from '@angular/core';
 @Component({
     selector: 'plex-heading',
     template: `
-    <section responsive>
+    <section>
         <div class="item-list-heading"
             [class.sticky]="sticky"
             [class.has-icon]="hasIcon"

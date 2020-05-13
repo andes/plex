@@ -8,7 +8,7 @@ import { PlexButtonComponent } from '../button/button.component';
 @Component({
     selector: 'plex-item',
     template: `
-        <section class="item" responsive [class.selected]="selected">
+        <section class="item" [class.selected]="selected">
             <div class="item-row">
                 <div class="elementos-graficos">
                     <ng-content select="plex-bool"></ng-content>

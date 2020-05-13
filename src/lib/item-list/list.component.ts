@@ -5,7 +5,7 @@ import { PlexHeadingComponent } from './heading.component';
 @Component({
     selector: 'plex-list',
     template: `
-    <div [class.striped]="striped"
+    <div [class.striped]="striped" responsive
          infiniteScroll [infiniteScrollDistance]="1" (scrolled)="onScroll()" [scrollWindow]="false"
          [style.overflow-y]="styleScroll" [style.height]="height">
         <ng-content></ng-content>
