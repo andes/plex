@@ -15,19 +15,19 @@ export class GrowDirective {
         return this.grow === 'auto';
     }
 
-    @HostBinding('class.grid-columns-span-1') get 1() {
+    @HostBinding('class.grid-columns-span-1') get grow1() {
         return this.grow === '1';
     }
 
-    @HostBinding('class.grid-columns-span-2') get 2() {
+    @HostBinding('class.grid-columns-span-2') get grow2() {
         return this.grow === '2';
     }
 
-    @HostBinding('class.grid-columns-span-3') get 3() {
+    @HostBinding('class.grid-columns-span-3') get grow3() {
         return this.grow === '3';
     }
 
-    @HostBinding('class.grid-columns-span-4') get 4() {
+    @HostBinding('class.grid-columns-span-4') get grow4() {
         return this.grow === '4';
     }
 }
