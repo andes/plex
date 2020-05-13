@@ -49,18 +49,18 @@ import { Plex } from './../core/service';
                                 </div>
                             </div>
                             <!--Menu-->
-                            <div *ngIf="plex.menu && plex.menu.length" class="action dropdown" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();">
+                            <div role="button" *ngIf="plex.menu && plex.menu.length" class="action dropdown" tabindex="1" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();">
                                 <i class="mdi mdi-menu"></i>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li *ngFor="let item of plex.menu">
+                                    <li *ngFor="let item of plex.menu; let i = index">
                                         <!--Item con router asociado-->
                                         <ng-template [ngIf]="!item.divider && item.route">
-                                            <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active">
+                                            <a plexRipples class="dropdown-item" href="#" tabindex="{{i + 1}}" [routerLink]="item.route" routerLinkActive="active">
                                                 <span *ngIf="item.icon" class="mdi mdi-{{item.icon}}"></span> {{item.label}}</a>
                                         </ng-template>
                                         <!--Item con handler asociado-->
                                         <ng-template [ngIf]="!item.divider && item.handler">
-                                            <a plexRipples class="dropdown-item" href="#" (click)="item.handler($event); false;">
+                                            <a plexRipples class="dropdown-item" href="#" tabindex="{{i + 1}}" (click)="item.handler($event); false;">
                                                 <span *ngIf="item.icon" class="mdi mdi-{{item.icon}}"></span> {{item.label}}</a>
                                         </ng-template>
                                         <!--Divider-->
