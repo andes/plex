@@ -1,14 +1,13 @@
-import { Component, Output, ViewChild, Input, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { PlexModalComponent } from '../../../../../lib/modal/modal.component';
+import { NgModel, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'plex-modal-template',
     templateUrl: 'plex-modal-template.html'
 })
 
-export class ModalTemplateComponent {
-
-    @ViewChild('modal', { static: true }) modal: PlexModalComponent;
+export class ModalTemplateComponent implements AfterViewInit {
 
     @Output() motivoAccesoHuds = new EventEmitter<any>();
 
@@ -20,6 +19,19 @@ export class ModalTemplateComponent {
     ];
 
     public motivoSelected = null;
+
+    @ViewChildren('modal') modalRefs: QueryList<PlexModalComponent>;
+
+    openModal(index) {
+        this.modalRefs.find((x, i) => i === index).show();
+    }
+
+    closeModal(index, formulario?) {
+        this.modalRefs.find((x, i) => i === index).close();
+        if (formulario) {
+            formulario.reset();
+        }
+    }
 
     motivoSelect() {
         return this.motivoSelected === null;
