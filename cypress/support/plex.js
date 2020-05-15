@@ -208,6 +208,20 @@ Cypress.Commands.add('plexBool', { prevSubject: 'optional' }, (subject, label, c
     return element;
 });
 
+// Position === which radio button (radio buttons work in groups only ;-)
+Cypress.Commands.add('plexRadio', { prevSubject: 'optional' }, (subject, label, position = 0, checked = false) => {
+    let element;
+    if (subject) {
+        element = cy.wrap(subject).find(`plex-radio[${label}] input[type="radio"]`).eq(position);
+    } else {
+        element = cy.get(`plex-radio[${label}] input[type="radio"]`).eq(position);
+    }
+    if (checked) {
+        element = element.check({ force: true });
+    }
+    return element;
+});
+
 Cypress.Commands.add('plexTab', { prevSubject: 'optional' }, (subject, label) => {
     let element;
     if (subject) {
