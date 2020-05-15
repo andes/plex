@@ -1,3 +1,16 @@
+# [6.2.0](https://github.com/andes/plex/compare/v6.1.2...v6.2.0) (2020-05-15)
+
+
+### Bug Fixes
+
+* **tabindex:** se agrega tabindex y role al menú ([7b9b32a](https://github.com/andes/plex/commit/7b9b32abb4f952b851c5c8271754075d305ce53a))
+* **wrapper:** directiva grow asignaba todas las clases ([60c11c2](https://github.com/andes/plex/commit/60c11c2bc08eeac4393bd57cd81c1a39dd8c5748))
+
+
+### Features
+
+* **nav-bar:** hide navbar feature ([#163](https://github.com/andes/plex/issues/163)) ([ea5431f](https://github.com/andes/plex/commit/ea5431f46a9cf686547ba6c2cfcd8095c718d91c))
+
 ## [6.1.2](https://github.com/andes/plex/compare/v6.1.1...v6.1.2) (2020-05-08)
 
 
