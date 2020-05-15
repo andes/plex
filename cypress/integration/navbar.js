@@ -16,7 +16,10 @@ context('nav-bar', () => {
 
         cy.get('nav .title span').should('contain', 'Plex: UI/UX para ANDES');
         cy.plexButtonIcon('eye-off').click();
-        cy.get('nav .title span').should('not.contain', 'Plex: UI/UX para ANDES');
+
+        cy.eyesCheckWindow('start - sin navbar');
+        cy.get('plex-app nav').should('not.be.visible');
+
         cy.plexButtonIcon('eye').click();
         cy.get('nav .title span').should('contain', 'Plex: UI/UX para ANDES');
 
