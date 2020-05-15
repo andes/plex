@@ -14,11 +14,11 @@ context('nav-bar', () => {
 
     it('Mostrar y ocultar navbar', () => {
 
-        cy.get('nav .title span').should('contain', 'Bienvenido a Plex');
-        cy.plexButtonIcon('close').click();
-        cy.get('nav .title span').should('not.contain', 'Bienvenido a Plex');
+        cy.get('nav .title span').should('contain', 'Plex: UI/UX para ANDES');
+        cy.plexButtonIcon('eye-off').click();
+        cy.get('nav .title span').should('not.contain', 'Plex: UI/UX para ANDES');
         cy.plexButtonIcon('eye').click();
-        cy.get('nav .title span').should('contain', 'Bienvenido a Plex');
+        cy.get('nav .title span').should('contain', 'Plex: UI/UX para ANDES');
 
     });
 
