@@ -159,13 +159,13 @@ Cypress.Commands.add('plexButton', { prevSubject: 'optional' }, (subject, label)
     return element;
 });
 
-Cypress.Commands.add('plexButtonIcon', { prevSubject: 'optional' }, (subject, icon, position = 0) => {
+Cypress.Commands.add('plexButtonIcon', { prevSubject: 'optional' }, (subject, icon) => {
     let element;
     if (subject) {
 
-        element = cy.wrap(subject).find(`plex-button i.mdi.mdi-${icon}`).eq(positon).parent();
+        element = cy.wrap(subject).find(`plex-button i.mdi.mdi-${icon}`).parent();
     } else {
-        element = cy.get(`plex-button i.mdi.mdi-${icon}`).eq(position).parent();
+        element = cy.get(`plex-button i.mdi.mdi-${icon}`).parent();
     }
     return element;
 });
@@ -201,20 +201,6 @@ Cypress.Commands.add('plexBool', { prevSubject: 'optional' }, (subject, label, c
         element = cy.wrap(subject).find(`plex-bool[${label}] input[type="checkbox"]`)
     } else {
         element = cy.get(`plex-bool[${label}] input[type="checkbox"]`);
-    }
-    if (checked) {
-        element = element.check({ force: true });
-    }
-    return element;
-});
-
-// Position === which radio button (radio buttons work in groups only ;-)
-Cypress.Commands.add('plexRadio', { prevSubject: 'optional' }, (subject, label, position = 0, checked = false) => {
-    let element;
-    if (subject) {
-        element = cy.wrap(subject).find(`plex-radio[${label}] input[type="radio"]`).eq(position);
-    } else {
-        element = cy.get(`plex-radio[${label}] input[type="radio"]`).eq(position);
     }
     if (checked) {
         element = element.check({ force: true });
