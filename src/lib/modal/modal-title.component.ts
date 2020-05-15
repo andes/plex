@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
     `,
 })
 export class PlexModalTitleComponent {
-    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'primary';
+    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default' = 'default';
 }

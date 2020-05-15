@@ -1,15 +1,16 @@
 import { Component, Input, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
+import { PlexSize } from '../core/size.type';
 
 
 @Component({
     selector: 'plex-modal',
     template: `
         <div *ngIf="showed" class="plex-modal" (click)="$event.stopPropagation();backdropClick();">
-            <div class="plex-modal-content" (click)="$event.stopPropagation();">
+            <div class="plex-modal-content {{size}}" (click)="$event.stopPropagation();">
+                <div *ngIf="allowClose" class="plex-modal-close" (click)="close();">
+                    <i class="mdi mdi-close">
+                </i></div>
                 <header>
-                    <div *ngIf="allowClose" class="plex-modal-close" (click)="close();">
-                        <i class="mdi mdi-close">
-                    </i></div>
                     <ng-content select="plex-icon"></ng-content>
                     <ng-content select="plex-modal-title"></ng-content>
                     <ng-content select="plex-modal-subtitle"></ng-content>
@@ -17,6 +18,9 @@ import { Component, Input, HostListener, Output, EventEmitter, OnInit } from '@a
                 <ng-content select="main"></ng-content>
                 <footer>
                     <ng-content select="plex-button[modal][left]"></ng-content>
+                    <div class="w-100" justify="center">
+                        <ng-content select="plex-button[modal][center]"></ng-content>
+                    </div>
                     <ng-content select="plex-button[modal][right]"></ng-content>
                 </footer>
             </div>
@@ -24,6 +28,8 @@ import { Component, Input, HostListener, Output, EventEmitter, OnInit } from '@a
     `,
 })
 export class PlexModalComponent implements OnInit {
+
+    @Input() size: PlexSize = 'md';
 
     /**
      * Muestra una cruz para cerrar el modal.
