@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, ViewChild, ViewContainerRef, ContentChild } from '@angular/core';
 import { Plex } from './../core/service';
 
 @Component({
     selector: 'plex-app',
     template: ` <!--Navigation Bar-->
-                    <nav *ngIf="plex.navbarVisible" class="navbar-inverse fixed-top bg-{{type}}">
+                    <nav [hidden]="!plex.navbarVisible" class="navbar-inverse fixed-top bg-{{type}}">
 
                         <div class="navbar-container">
                             <ng-content select="[navIcon]"></ng-content>
