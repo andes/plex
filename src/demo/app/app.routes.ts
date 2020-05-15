@@ -29,9 +29,11 @@ import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sid
 import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
 import { WrapperDemoComponent } from './wrapper/wrapper.component.';
 import { DemoIconComponent } from './icon/icon';
+import { NavbarDemoComponent } from './navbar/navbar';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
+    { path: 'navbar', component: NavbarDemoComponent },
     { path: 'box', component: BoxDemoComponent },
     { path: 'text', component: TextDemoComponent },
     { path: 'datetime', component: DateTimeDemoComponent },

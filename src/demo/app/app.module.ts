@@ -48,6 +48,7 @@ import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/det
 import { MainListadoComponent } from './templates/listado-sidebar/main/listado/main-listado.component';
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
 import { DemoIconComponent } from './icon/icon';
+import { NavbarDemoComponent } from './navbar/navbar';
 
 @NgModule({
     declarations: [
@@ -55,6 +56,7 @@ import { DemoIconComponent } from './icon/icon';
         BoxDemoComponent,
         TextDemoComponent,
         HomeDemoComponent,
+        NavbarDemoComponent,
         IntDemoComponent,
         FloatDemoComponent,
         ButtonDemoComponent,
