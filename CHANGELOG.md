@@ -1,3 +1,10 @@
+## [6.2.1](https://github.com/andes/plex/compare/v6.2.0...v6.2.1) (2020-05-15)
+
+
+### Bug Fixes
+
+* **navbar:** custom navbar item clear ([e4551ab](https://github.com/andes/plex/commit/e4551ab4242144b38d2743aea547caa647e45ff0))
+
 # [6.2.0](https://github.com/andes/plex/compare/v6.1.2...v6.2.0) (2020-05-15)
 
 
