@@ -264,7 +264,7 @@ Cypress.Commands.add('plexDropdown', { prevSubject: 'optional' }, (subject, labe
     return element;
 });
 
-Cypress.Commands.add('validationMessage', { prevSubject: false }, (subject, text) => {
+Cypress.Commands.add('validationMessage', { prevSubject: true }, (subject, text) => {
     text = text || 'Valor requerido';
     return cy.wrap(subject).find('div[class="form-control-feedback"]').should('contain', text);
 })
