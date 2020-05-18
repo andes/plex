@@ -202,9 +202,7 @@ plex-detail {
         text-align: var(--detail-text-align);
 
         span {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
+            white-space: wrap;
         }
     }
 }

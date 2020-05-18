@@ -1,0 +1,45 @@
+<plex-layout main=8>
+
+    <plex-layout-main>
+        <plex-title titulo="Usos y atributos"></plex-title>
+        <div class="w-100 h-100 d-flex justify-content-center align-items-center" *ngFor="let dato of datos | slice:7">
+            <plex-label icon="arrow-up" type="default" size="xl" direction="column" titulo="{{ dato.label }}"
+                        subtitulo="{{ dato.valor }}"></plex-label>
+        </div>
+    </plex-layout-main>
+
+
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="Usos y atributos"></plex-title>
+        <plex-title titulo="Size='xl' | direction='column'" size="sm"></plex-title>
+        <section class="plex-grid">
+            <div *ngFor="let dato of datos | slice:1:5">
+                <plex-label type="{{ dato.type }}" direction="column" icon="account" size="xl" titulo="{{ dato.label }}"
+                            subtitulo="{{ dato.valor }}">
+                </plex-label>
+            </div>
+        </section>
+        <plex-title titulo="Size='lg' | direction='column'" size="sm"></plex-title>
+        <section class="plex-grid">
+            <div *ngFor="let dato of datos | slice:1:5">
+                <plex-label size="lg" direction="column" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+                </plex-label>
+            </div>
+        </section>
+        <plex-title titulo="Size='md'(default) | direction='row(default)'" size="sm"></plex-title>
+        <section class="plex-grid">
+            <div *ngFor="let dato of datos | slice:0:4">
+                <plex-label size="md" titulo="{{ dato.label }}" icon="star" subtitulo="{{ dato.valor }}">
+                </plex-label>
+            </div>
+        </section>
+        <plex-title titulo="Size='sm' | direction='row(default)'" size="sm"></plex-title>
+        <section class="plex-grid">
+            <div *ngFor="let dato of datos">
+                <plex-label size="sm" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+                </plex-label>
+            </div>
+        </section>
+    </plex-layout-sidebar>
+
+</plex-layout>

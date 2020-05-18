@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
             { label: 'Float', icon: 'numeric', route: '/float' },
             { label: 'Int', icon: 'numeric', route: '/int' },
             { label: 'Item List', icon: 'format-list-checks', route: '/item' },
+            { label: 'Label', icon: 'list', route: '/label' },
             { label: 'Loader', icon: 'dots-horizontal', route: '/loader' },
             { label: 'Modal', icon: 'application', route: '/modal' },
             { label: 'Nav bar', icon: 'page-layout-header', route: '/navbar' },
