@@ -16,16 +16,15 @@ context('<plex-text>', () => {
 
         // Input normal con FOCUS
         cy.plexText('name="usuario"').click().should('have.value', 'FOCUSED');
+        // Se borra el input
         cy.plexText('name="usuario"').clear();
+        // Se comprueba que el mensaje está visible
         cy.plexText('name="usuario"').get('.form-control-feedback').should('contain', 'Valor requerido');
+        // Se ingresa valor válido
         cy.plexText('name="usuario"', 'Max Ernst').should('not.have', '.form-control-feedback');
-
-
     });
 
     it('plex-text type="email"', () => {
-        // cy.eyesCheckWindow('start - text/email');
-
         // Email incorrecto
         cy.plexText('name="email"', 'email inválido 1').should('have', '.form-control-feedback');
         cy.plexText('name="email"').get('.form-control-feedback').should('contain', 'Formato incorrecto');
@@ -34,8 +33,6 @@ context('<plex-text>', () => {
         cy.plexText('name=email').clear();
         cy.plexText('name="email"', 'plex@mailinator.com').should('not.have', '.form-control-feedback');
 
-        // cy.eyesCheckWindow('end - text/email');
-        // cy.eyesClose();
     });
 
     it('plex-text con validación de patrón', () => {
