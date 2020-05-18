@@ -1,19 +1,65 @@
 .plex-label {
-    line-height: 1rem;
-
+    margin: .5rem 0;
+    --font-size-sm: .75rem;
+    --font-size-md: .9rem;
+    --font-size-lg: 1.05rem;
+    --font-size-xl: 1.25rem;
+    
     &.sm {
-        font-size: .75rem;
+        font-size: var(--font-size-sm);
     }
-
+    
     &.md {
-        font-size: .9rem;
+        font-size: var(--font-size-md);
     }
-
+    
     &.lg {
-        font-size: 1rem;
+        font-size: var(--font-size-lg);
+    }
+    
+    &.xl {
+        font-size: var(--font-size-xl);
+        // line-height: 1.5;
+    }
+    
+    span, small {
+        line-height: 1.25;
+
     }
 
-    small {
-        line-height: .75rem;
+    // Icono
+    i {
+        border: solid 2px;
+        border-radius: 50%;
+        padding: 5px 7px;
+    }
+
+    &.flex-row {
+
+        // Icono
+        plex-icon > i {
+            margin-right: .5rem;
+        }
+    }
+
+    &.flex-column {
+        text-align: center;
+    }
+}
+
+// plex-grid
+.plex-grid {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(100px, 1fr));
+    grid-gap: .5rem; 
+    flex: 1 20em;
+    align-self: center;
+    margin-top: .5rem;
+    text-transform: capitalize;
+
+    span {
+        white-space: wrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 }
