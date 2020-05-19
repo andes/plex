@@ -1,0 +1,23 @@
+$tooltip-padding-y: .35rem;
+$tooltip-padding-x: .55rem;
+$border-radius: 4px;
+// $tooltip-bg: #616161;
+$tooltip-opacity: .7;
+$tooltip-arrow-color: #616161;
+
+.tooltip {
+
+    &.show { opacity: $tooltip-opacity; }
+
+    // Wrapper for the tooltip content
+    .tooltip-inner {
+        font-size: 11px;
+        max-width: $tooltip-max-width;
+        padding: $tooltip-padding-y $tooltip-padding-x;
+        color: $tooltip-color;
+        text-align: center;
+        background: $tooltip-bg;
+        @include border-radius($border-radius);
+        transition: ease-in;
+    }
+}

@@ -2,10 +2,11 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { Component, OnInit, AfterViewInit, Host, Self, Optional, Input, ElementRef, ChangeDetectorRef } from '@angular/core';
 
 @Component({
+    selector: 'plex-hint',
     template: `
-        <span *ngIf="position" class="hint-container" [matTooltip]="content" [matTooltipPosition]="position">
+        <a (click)="$event.preventImmediatePropagation()" href="javascript:void(0)" *ngIf="position" class="hint-container" [matTooltip]="content" [matTooltipPosition]="position">
             <plex-icon class="hint" [name]="icon" type="default"></plex-icon>
-        </span>
+        </a>
     `
 })
 export class HintComponent implements OnInit, AfterViewInit {
