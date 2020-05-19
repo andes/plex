@@ -74,129 +74,57 @@
     </plex-layout-main>
     <plex-layout-sidebar>
         <plex-title titulo="Texto principal" size="sm">
-            <<<<<<< HEAD <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Ayuda" position="right">
-                <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="TOP"
-                           matTooltip="Estaba la blanca paloma sentada en un verde limón, con el pico cortaba la rama como la rama cortaba la flor">
-                    <ul class="list-group">
-                        <li class="list-group-item active">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-6">
-                                    Columna
-                                </div>
-                                <div class="col-6">
-                                    Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
-                                </div>
-                                <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Tooltip"
-                                           matTooltipPosition="right"
-                                           matTooltip="Estaba la blanca paloma sentada en un verde limón, con el pico cortaba la rama como la rama cortaba la flor">
-                                    <ul class="list-group">
-                                        <li class="list-group-item active">Cras justo odio</li>
-                                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                                        <li class="list-group-item">Morbi leo risus</li>
-                                        <li class="list-group-item">Porta ac consectetur ac</li>
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    Columna
-                                                    >>>>>>> ab87c70... fix(tooltip): se modifica z-index de nav
-                                                </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    Columna
-                                                </div>
-                                                <div class="col-6">
-                                                    Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    Columna
-                                                </div>
-                                                <div class="col-6">
-                                                    Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    Columna
-                                                </div>
-                                                <div class="col-6">
-                                                    Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </plex-help>
-                                <plex-button size="sm" type="{{ plex.navbarVisible ? 'danger' : 'success' }}"
-                                             icon="{{ plex.navbarVisible ? 'close' : 'eye' }}"
-                                             (click)="plex.toggleHideNavBar()">
-                                </plex-button>
-                                =======
-                                <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Tooltip"
-                                           position="right"
-                                           tooltip="Estaba la blanca paloma sentada en un verde limón, con el pico cortaba la rama como la rama cortaba la flor">
-                                    <ul class="list-group">
-                                        <li class="list-group-item active">Cras justo odio</li>
-                                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                                        <li class="list-group-item">Morbi leo risus</li>
-                                        <li class="list-group-item">Porta ac consectetur ac</li>
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    Columna
-                                                </div>
-                                                <div class="col-6">
-                                                    Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    Columna
-                                                </div>
-                                                <div class="col-6">
-                                                    Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    Columna
-                                                </div>
-                                                <div class="col-6">
-                                                    Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    Columna
-                                                </div>
-                                                <div class="col-6">
-                                                    Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </plex-help>
-                                <plex-button size="sm" type="{{ plex.navbarVisible ? 'danger' : 'success' }}"
-                                             icon="{{ plex.navbarVisible ? 'close' : 'eye' }}"
-                                             (click)="plex.toggleHideNavBar()">
-                                </plex-button>
-                                >>>>>>> 2525ca0... feat(tooltip-hint): implementa tooltip en modo hint
+            <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Ayuda" position="right">
+                <ul class="list-group">
+                    <li class="list-group-item active">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </plex-help>
+            <plex-button size="sm" type="{{ plex.navbarVisible ? 'danger' : 'success' }}"
+                         icon="{{ plex.navbarVisible ? 'close' : 'eye' }}" (click)="plex.toggleHideNavBar()">
+            </plex-button>
         </plex-title>
         <plex-detail size="sm">
             <img src="https://www.prodapt.com/wp-content/uploads/user-icon.png" alt="">
