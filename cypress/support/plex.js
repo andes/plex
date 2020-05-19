@@ -273,6 +273,16 @@ Cypress.Commands.add('tooltip', { prevSubject: true }, (subject, text) => {
     return cy.wrap(subject).parent().parent().find('.tooltip-inner').should('contain', text);
 });
 
+/**
+ * @decrecated
+ */
+Cypress.Commands.add('selectOption', (label, value) => {
+    return cy.get(`plex-select[${label}]`).children().children('.selectize-control').click()
+        .find(`.option[data-value=${value}]`).click({
+            force: true
+        });
+});
+
 Cypress.Commands.add('toast', (option, label) => {
 
     if (label) {
