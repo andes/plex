@@ -47,6 +47,7 @@ import { PlexDetailComponent } from './detail/detail.component';
 import { PlexOptionsComponent } from './options/options.component';
 import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
 import { PlexWrapperComponent } from './wrapper/wrapper.component';
+import { PlexGridComponent } from './grid/grid.component';
 
 // Directivas
 import { PlexWizardDirective } from './wizard/wizard.directive';
@@ -112,7 +113,8 @@ const MODULES = [
     PlexVisualizadorComponent,
     PreviewDirective,
     NavItemComponent,
-    PlexWrapperComponent
+    PlexWrapperComponent,
+    PlexGridComponent
 ];
 
 @NgModule({

@@ -18,14 +18,12 @@ import { PlexLabelComponent } from '../label/label.component';
                 <hr>
             </div>
         </section>
-
-        <section [ngClass]="cssDirection" class="contenedor-datos-secundarios">
+        <plex-grid [ngClass]="cssDirection">
             <ng-container *ngFor="let dato of items">
                 <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
             </ng-container>
             <ng-content select="plex-label"></ng-content>
-        </section>
-
+        </plex-grid>
     `,
 })
 
@@ -56,5 +54,4 @@ export class PlexDetailComponent implements AfterViewChecked {
             }
         });
     }
-
 }

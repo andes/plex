@@ -1,0 +1,35 @@
+plex-grid {
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(100px, 1fr));
+    grid-gap: .5rem;
+    grid-auto-flow: dense; 
+    flex: 1 20em;
+    align-self: center;
+    margin-top: .5rem;
+    text-transform: capitalize;
+    
+    &[size=full] {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        width: 100%;
+    
+        img {
+            object-fit: cover;
+            width: 100%;
+            max-height: 10rem;
+        }
+    }
+    
+
+    span {
+        white-space: wrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        max-height: 4rem;
+    }
+}

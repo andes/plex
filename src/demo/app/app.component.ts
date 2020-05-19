@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
             { label: 'Float', icon: 'numeric', route: '/float' },
             { label: 'Int', icon: 'numeric', route: '/int' },
             { label: 'Item List', icon: 'format-list-checks', route: '/item' },
-            { label: 'Label', icon: 'list', route: '/label' },
+            { label: 'Label', icon: 'format-list-text', route: '/label' },
             { label: 'Loader', icon: 'dots-horizontal', route: '/loader' },
             { label: 'Modal', icon: 'application', route: '/modal' },
             { label: 'Nav bar', icon: 'page-layout-header', route: '/navbar' },
@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
             { label: 'Tooltip', icon: 'tooltip', route: '/tooltip' },
             { label: 'Wizard', icon: 'auto-fix', route: '/wizard' },
             { label: 'Wrapper', icon: 'view-quilt', route: '/wrapper' },
+            { label: 'Grid', icon: 'view-grid', route: '/grid' },
         ];
         this.plex.updateMenu(menu);
         this.plex.updateAppStatus({ API: 'OK' });

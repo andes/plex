@@ -17,7 +17,7 @@ export class PlexLabelComponent {
     @Input() titulo: string;
     @Input() tituloBold = true;
     @Input() subtitulo: string;
-    @Input() size: 'sm' | 'md' | 'lg' | "xl" = 'md';
+    @Input() size: 'sm' | 'md' | 'lg' | 'xl' = 'md';
     @Input() icon: string;
     @Input() direction: 'column' | 'row' = 'row';
     @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default';

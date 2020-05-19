@@ -1,5 +1,4 @@
 // Estilos base
-
 plex-detail {
     display: flex;
     flex-wrap: wrap;
@@ -33,7 +32,6 @@ plex-detail {
         .contenedor-textos {
             margin-right: 2rem;
         }
-
     }
 
     %baseDirection {
@@ -189,20 +187,6 @@ plex-detail {
             div[subtitle] {
                 font-size: 0.75rem;
             }
-        }
-    }
-
-    .contenedor-datos-secundarios {
-        display: grid;
-        grid-template-columns: repeat( auto-fill, minmax(100px, 1fr));
-        grid-gap: 10px; 
-        flex: 1 20em;
-        align-self: center;
-        text-transform: capitalize;
-        text-align: var(--detail-text-align);
-
-        span {
-            white-space: wrap;
         }
     }
 }

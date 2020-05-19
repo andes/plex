@@ -46,20 +46,3 @@
         text-align: center;
     }
 }
-
-// plex-grid
-.plex-grid {
-    display: grid;
-    grid-template-columns: repeat( auto-fill, minmax(100px, 1fr));
-    grid-gap: .5rem; 
-    flex: 1 20em;
-    align-self: center;
-    margin-top: .5rem;
-    text-transform: capitalize;
-
-    span {
-        white-space: wrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
-}
