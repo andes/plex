@@ -67,8 +67,8 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 import { ChartsModule } from 'ng2-charts';
 import { QuillModule } from 'ngx-quill';
 import { NavItemComponent } from './app/nav-item.component';
-import { TooltipHintComponent } from './tooltip-hint/tooltip-hint.component';
-import { TooltipHintDirective } from './tooltip-hint/tooltip-hint.directive';
+import { HintComponent } from './hint/hint.component';
+import { HintDirective } from './hint/hint.directive';
 
 const MODULES = [
     PlexAppComponent,
@@ -117,7 +117,7 @@ const MODULES = [
     PreviewDirective,
     NavItemComponent,
     PlexWrapperComponent,
-    TooltipHintDirective
+    HintDirective
     // MatTooltip
 ];
 
@@ -140,14 +140,14 @@ const MODULES = [
         ...MODULES,
         ValidationMessagesComponent,
         TooltipContentComponent,
-        TooltipHintComponent,
+        HintComponent,
 
     ],
     entryComponents: [
         TooltipContentComponent,
         MatRadioButton,
         PlexVisualizadorComponent,
-        TooltipHintComponent
+        HintComponent
     ],
     exports: [
         ...MODULES,

@@ -1,14 +1,15 @@
 import { Directive, ComponentRef, ViewContainerRef, ComponentFactoryResolver, OnInit, Input, AfterViewInit, Host } from '@angular/core';
-import { TooltipHintComponent } from './tooltip-hint.component';
+import { HintComponent } from './hint.component';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
-    selector: '[tooltip], [position:has(tooltip)]',
+    selector: '[hint], [position:has(hint)], [icon:has(hint)]',
 })
-export class TooltipHintDirective implements AfterViewInit {
+export class HintDirective implements AfterViewInit {
 
-    private tooltip: ComponentRef<TooltipHintComponent>;
-    @Input('tooltip') content: string | TooltipHintComponent;
+    private tooltip: ComponentRef<HintComponent>;
+    @Input('hint') content: string | HintComponent;
+    @Input() icon = 'help';
 
     @Input()
     set position(value: 'top' | 'right' | 'bottom' | 'left' | 'above' | 'below') {
@@ -28,11 +29,12 @@ export class TooltipHintDirective implements AfterViewInit {
 
     ngAfterViewInit(): void {
 
-        const factory = this.resolver.resolveComponentFactory(TooltipHintComponent);
+        const factory = this.resolver.resolveComponentFactory(HintComponent);
         this.tooltip = this.viewContainerRef.createComponent(factory);
         this.tooltip.instance.hostElement = this.viewContainerRef.element.nativeElement;
         this.tooltip.instance.content = this.content as string;
         this.tooltip.instance.position = this.position as string;
+        this.tooltip.instance.icon = this.icon;
 
     }
 

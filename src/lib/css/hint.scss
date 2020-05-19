@@ -1,0 +1,29 @@
+.hint-container {
+
+    @include position(relative);
+    width: 0;
+    height: 18px;
+    display: inline-flex;
+
+    .hint {
+        font-size: 12px;
+        color: $light-blue;
+        background-color: $dark-grey;
+        border-radius: 9px;
+        padding: 1px 3px;
+        
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        z-index: 1;
+    
+        // Position
+        @include position(relative, $bottom: 10px, $right: 10px);
+
+        &:hover {
+            background-color: $blue;
+        }
+
+    }
+}

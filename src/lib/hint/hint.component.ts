@@ -3,15 +3,17 @@ import { Component, OnInit, AfterViewInit, Host, Self, Optional, Input, ElementR
 
 @Component({
     template: `
-        <span *ngIf="position" class="tooltip-hint-container" [matTooltip]="content" [matTooltipPosition]="position">
-            <plex-icon class="tooltip-hint" name="help" type="default"></plex-icon>
+        <span *ngIf="position" class="hint-container" [matTooltip]="content" [matTooltipPosition]="position">
+            <plex-icon class="hint" [name]="icon" type="default"></plex-icon>
         </span>
     `
 })
-export class TooltipHintComponent implements OnInit, AfterViewInit {
+export class HintComponent implements OnInit, AfterViewInit {
 
     @Input()
     hostElement: HTMLElement;
+
+    @Input() icon = 'help';
 
     @Input()
     content: string;
@@ -19,8 +21,6 @@ export class TooltipHintComponent implements OnInit, AfterViewInit {
     @Input() position = 'above';
 
     constructor(
-        @Optional() @Host() @Self() private matTooltip: MatTooltip,
-        private element: ElementRef,
         private cdr: ChangeDetectorRef) { }
 
     ngOnInit() {
