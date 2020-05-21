@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -50,6 +49,8 @@ import { ModalTemplateComponent } from './templates/componentes/plex-modal-templ
 import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
 import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
+import { CommonModule } from '@angular/common';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -94,7 +95,8 @@ import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component'
         HeaderPacienteComponent
     ],
     imports: [
-        BrowserModule,
+        CommonModule,
+        NoopAnimationsModule,
         FormsModule,
         HttpModule,
         PlexModule,

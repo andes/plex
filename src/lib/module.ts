@@ -1,5 +1,4 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -69,6 +68,7 @@ import { QuillModule } from 'ngx-quill';
 import { NavItemComponent } from './app/nav-item.component';
 import { HintComponent } from './hint/hint.component';
 import { HintDirective } from './hint/hint.directive';
+import { BrowserModule } from '@angular/platform-browser';
 
 const MODULES = [
     PlexAppComponent,
@@ -123,10 +123,11 @@ const MODULES = [
 
 @NgModule({
     imports: [
-        CommonModule,
+        BrowserModule,
+        BrowserAnimationsModule,
         RouterModule,
         FormsModule,
-        BrowserAnimationsModule,
+        BrowserModule,
         MatSlideToggleModule,
         MatCheckboxModule,
         MatRadioModule,
