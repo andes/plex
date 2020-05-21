@@ -1,11 +1,11 @@
 <plex-layout main="8">
     <plex-layout-main>
         <plex-title titulo="Directivas tooltip y hint">
-            <plex-button size="sm" type="danger" title="El tooltip es un texto que refuerza la acción a realizar">
+            <plex-button size="sm" type="danger" tooltip="El tooltip es un texto que refuerza la acción a realizar">
                 tooltip
             </plex-button>
             <plex-button class="ml-1" size="sm" type="danger"
-                         hint="¿Sabías que... el hint es un texto que sugiere acciones o indica alguna novedad?"
+                         hint="¿Sabías que... el hint es un texto que sugiere acciones o indica alguna novedad? Además tiene soporte multilínea."
                          position="above">
                 hint
             </plex-button>
@@ -17,12 +17,20 @@
             <b>Tooltip</b>
             <ul>
                 <li class="list-item">Se emplea sobre <a class="d-inline-block" href="tooltip-hint"
-                       title="Acción inofensiva">elementos de acción</a> o elementos iconográficos (por ej.: badges)
+                       title="Tooltip con directiva [title] (deprecated)">elementos de acción</a> o elementos
+                    iconográficos (por ej.: badges)
                 </li>
-                <li class="list-item">En estado de reposo es invisible, se activa en el evento onMouseOver</li>
+                <li class="list-item">En estado de reposo es <a class="d-inline-block" href="tooltip-hint"
+                       tooltip="Tooltip con directiva [tooltip]">invisible</a>, se activa en el evento onMouseOver</li>
                 <li class="list-item">No es multilínea</li>
                 <li class="list-item">Provee información complementaria acerca de una acción</li>
                 <li class="list-item">Brinda información extendida de un estado o situación</li>
+                <li class="list-item">Opcionalmente se puede indicar su posición (<a href="tooltip-hint"
+                       class="d-inline-block" tooltip="arriba" tooltipPosition="top">arriba</a>, <a href="tooltip-hint"
+                       class="d-inline-block" tooltip="abajo" tooltipPosition="bottom">abajo</a>, <a href="tooltip-hint"
+                       class="d-inline-block" tooltip="izquierda" titlePosition="left">izquierda</a> o <a
+                       href="tooltip-hint" class="d-inline-block" tooltip="derecha" titlePosition="right">derecha</a>)
+                </li>
                 <li class="list-item">Posee un "tip", una pequeña flecha que indica el elemento puntual de referencia
                 </li>
                 <li class="list-item">
@@ -31,11 +39,11 @@
                 </li>
             </ul>
             <hr>
-            <b hint="¡Alerta! este es un tag &lt;b&gt;" icon="bell">Hint &nbsp;&nbsp;</b>
+            <b hint="¡Alerta! estoy en un tag &lt;b&gt;" icon="bell">Hint &nbsp;&nbsp;</b>
             <ul>
                 <li class="list-item">Se emplea sobre cualquier elemento, sea o no de acción</li>
                 <li class="list-item">Sirve para indicar que hay alguna novedad o sugiere una funcionalidad</li>
-                <li class="list-item">Se puede usar a manera de "¡Sabías qué...?</li>
+                <li class="list-item">Se puede usar a manera de "¿Sabías qué...?</li>
                 <li class="list-item">Siempre visible como ícono flotante junto al elemento</li>
                 <li class="list-item">Tiene un ícono que lo identifica (default: help)</li>
                 <li class="list-item">Es multilínea</li>
