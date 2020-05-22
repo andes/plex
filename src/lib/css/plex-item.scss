@@ -261,33 +261,34 @@ plex-list {
     plex-list {
         > div.size-xs {
             
-                section {
-                    .item-list-heading {
-                        display: none!important;
-                        }
+            section {
+                .item-list-heading {
+                    display: none!important;
                     }
-            
-                section.item{
-                    flex-direction: column-reverse;
-                    align-items: flex-start;
-            
-                    div.item-row {
-                        width: 100%!important;
+                }
+        
+            section.item {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+        
+                div.item-row {
+                    width: 100%!important;
+                }
+        
+                div.item-list {
+                    margin-top: .5rem;
+                    grid-auto-flow: unset;
+                    width: 100%!important;
+                }
+        
+                .botonera {
+                    justify-content: space-between!important;
+                    width: 100%;
+                    text-align: left;
+                    & > div {
+                        width: fit-content;
                     }
-            
-                    div.item-list {
-                        margin-top: .5rem;
-                        grid-auto-flow: unset;
-                        width: 100%!important;
-                    }
-            
-                    .botonera {
-                        justify-content: space-between!important;
-                        width: 100%;
-                        & > div {
-                            width: fit-content;
-                        }
-                    }
+                }
             }
         }
     }
