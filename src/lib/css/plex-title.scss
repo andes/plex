@@ -34,3 +34,15 @@ header {
         border-bottom: none !important;
     }
 }
+
+@include media-breakpoint-down(sm) {
+    .plex-title {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        div:last-child {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
