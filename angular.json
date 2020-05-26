@@ -16,7 +16,6 @@
             "main": "src/demo/main.ts",
             "tsConfig": "src/demo/tsconfig.app.json",
             "polyfills": "src/demo/polyfills.ts",
-            "baseHref": "/plex/",
             "assets": [
               "src/demo/assets",
               "src/demo/favicon.ico"

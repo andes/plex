@@ -61,6 +61,8 @@ context('<plex-text>', () => {
         cy.plexText('name="nombre"').clear();
         cy.plexText('name="nombre"', '1234567890 123').should('not.have', '.form-control-feedback');
 
+        cy.toast('success');
+
     });
 
     it('plex-text multiline', () => {
