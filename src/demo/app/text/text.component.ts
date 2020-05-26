@@ -44,6 +44,6 @@ export class TextDemoComponent implements OnInit {
     }
 
     onChange() {
-        this.plex.info('success', 'Este cartel se demoro un segundo en aparecer después de escribir.');
+        this.plex.toast('success', 'Este cartel se demoro un segundo en aparecer después de escribir.', 'Debounce!');
     }
 }

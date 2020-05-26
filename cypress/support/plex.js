@@ -142,7 +142,7 @@ Cypress.Commands.add('plexTextArea', { prevSubject: 'optional' }, (subject, labe
         element = cy.get(`plex-text[${label}] textarea`).first();
     }
     if (text) {
-        element.type(text);
+        element.type(text, { force: true });
     }
     return element.parent().parent().parent();
 });

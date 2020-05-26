@@ -15,15 +15,11 @@ plex-text {
         display: none;
         cursor: pointer;
         position: absolute;
-        // right: .5rem;
-        // top: 55%;
         right: .5rem;
-        bottom: 10%;
+        bottom: .5rem;
         color: $dark-grey;
         z-index: 100;
         font-size: .9em;
-        justify-content: flex-end;
-        align-items: flex-start;
 
         &:hover {
             color: black;
