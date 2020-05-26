@@ -75,6 +75,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
+      - run: npx gh-pages
       - run: npx semantic-release
 
 workflows:

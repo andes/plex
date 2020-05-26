@@ -10,7 +10,7 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build",
+        "build": "ng build --prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
@@ -84,6 +84,7 @@
         "codelyzer": "^4.4.4",
         "commitlint-circle": "^1.0.0",
         "cypress": "^4.6.0",
+        "gh-pages": "^2.2.0",
         "husky": "^4.2.3",
         "jasmine-core": "^3.5.0",
         "jasmine-spec-reporter": "~4.1.0",
