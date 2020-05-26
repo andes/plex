@@ -5,7 +5,7 @@ import { Component, Input, Renderer } from '@angular/core';
     template: `
         <div class="plex-title d-flex flex-row justify-content-between align-items-center">
             <div class="plex-title-label {{ size }}"> {{ titulo }} </div>
-            <div>
+            <div class="title-content">
                 <ng-content></ng-content>
             </div>
         </div>

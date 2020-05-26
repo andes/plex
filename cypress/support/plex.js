@@ -269,6 +269,9 @@ Cypress.Commands.add('validationMessage', { prevSubject: true }, (subject, text)
     return cy.wrap(subject).find('div[class="form-control-feedback"]').should('contain', text);
 })
 
+Cypress.Commands.add('tooltip', { prevSubject: true }, (subject, text) => {
+    return cy.wrap(subject).parent().parent().find('.tooltip-inner').should('contain', text);
+});
 
 /**
  * @decrecated

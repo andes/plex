@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 export class PlexIconComponent {
     @Input() prefix = 'mdi';
     @Input() name: string;
-    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'primary';
+    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default' = 'default';
     @Input() size: '18' | '24' | '36' | '48';
 
     constructor() {

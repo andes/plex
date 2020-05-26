@@ -56,15 +56,19 @@ import { PreviewDirective } from './visualizador/preview.directive';
 import { ResponsiveDirective } from './directives/responsive.directive';
 
 // Third party
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule, MatRadioButton } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTooltipModule, MatTooltip } from '@angular/material/tooltip';
 import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 import { ChartsModule } from 'ng2-charts';
 import { QuillModule } from 'ngx-quill';
 import { NavItemComponent } from './app/nav-item.component';
+import { HintComponent } from './hint/hint.component';
+import { HintDirective } from './hint/hint.directive';
 
 const MODULES = [
     PlexAppComponent,
@@ -94,12 +98,12 @@ const MODULES = [
     PlexLayoutMainComponent,
     PlexLayoutSidebarComponent,
     PlexWizardDirective,
-    TooltipComponent,
     PlexListComponent,
     PlexItemComponent,
     PlexLabelComponent,
     PlexHeadingComponent,
     PlexTitleComponent,
+    TooltipComponent,
     JustifyDirective,
     ResponsiveDirective,
     GrowDirective,
@@ -112,7 +116,9 @@ const MODULES = [
     PlexVisualizadorComponent,
     PreviewDirective,
     NavItemComponent,
-    PlexWrapperComponent
+    PlexWrapperComponent,
+    HintDirective
+    // MatTooltip
 ];
 
 @NgModule({
@@ -120,26 +126,33 @@ const MODULES = [
         CommonModule,
         RouterModule,
         FormsModule,
+        BrowserAnimationsModule,
         MatSlideToggleModule,
         MatCheckboxModule,
         MatRadioModule,
+        MatTooltipModule,
         ChartsModule,
         QuillModule,
+        InfiniteScrollModule,
         SimpleNotificationsModule.forRoot(),
-        InfiniteScrollModule
     ],
     declarations: [
         ...MODULES,
         ValidationMessagesComponent,
-        TooltipContentComponent
+        TooltipContentComponent,
+        HintComponent,
+
     ],
     entryComponents: [
         TooltipContentComponent,
         MatRadioButton,
-        PlexVisualizadorComponent
-
+        PlexVisualizadorComponent,
+        HintComponent
     ],
-    exports: MODULES
+    exports: [
+        ...MODULES,
+        MatTooltip
+    ]
 })
 export class PlexModule {
     constructor() {
