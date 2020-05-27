@@ -1,7 +1,4 @@
-import {
-    ViewChild, ContentChild, Component, OnInit,
-    AfterViewInit, Input, Output, EventEmitter, forwardRef, ElementRef, Renderer, OnChanges
-} from '@angular/core';
+import { ViewChild, ContentChild, Component, OnInit, AfterViewInit, Input, Output, EventEmitter, forwardRef, ElementRef, OnChanges, Renderer2 } from '@angular/core';
 import {
     ControlValueAccessor, FormControl,
     NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS
@@ -45,7 +42,7 @@ const REGEX = /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
 })
 export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
     private lastValue: any = null;
-    private renderer: Renderer;
+    private renderer: Renderer2;
     @ViewChild('ref', { static: true }) private ref: ElementRef;
     @ContentChild(NgControl, { static: true }) public control: any;
     public get esRequerido(): boolean {
@@ -65,7 +62,7 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
         if (this.renderer) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+            this.ref.nativeElement.focus();
         }
     }
 
@@ -92,7 +89,7 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
         }
     }
 
-    constructor(renderer: Renderer) {
+    constructor(renderer: Renderer2) {
         this.renderer = renderer;
         this.placeholder = '';
     }
@@ -101,13 +98,13 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
     ngOnInit() { }
     ngAfterViewInit() {
         if (this.autoFocus) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+            this.ref.nativeElement.focus();
         }
     }
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        this.renderer.setElementProperty(this.ref.nativeElement, 'value', typeof value === 'undefined' ? '' : value);
+        this.renderer.setProperty(this.ref.nativeElement, 'value', typeof value === 'undefined' ? '' : value);
     }
 
     hasDanger() {

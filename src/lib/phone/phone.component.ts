@@ -1,7 +1,4 @@
-import {
-    ViewChild, ContentChild, Component, OnInit, Input, AfterViewInit,
-    Output, EventEmitter, forwardRef, ElementRef, Renderer, OnChanges
-} from '@angular/core';
+import { ViewChild, ContentChild, Component, OnInit, Input, AfterViewInit, Output, EventEmitter, forwardRef, ElementRef, OnChanges, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
 import { hasRequiredValidator } from '../core/validator.functions';
 
@@ -40,7 +37,7 @@ const RegEx_Numero = /^(\d)+$/;
 })
 export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     private lastValue: any = null;
-    private renderer: Renderer;
+    private renderer: Renderer2;
     @ContentChild(NgControl, { static: true }) control: any;
     @ViewChild('ref', { static: true }) ref: ElementRef;
 
@@ -60,7 +57,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
         if (this.renderer) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+            this.ref.nativeElement.focus();
         }
     }
 
@@ -94,7 +91,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
         }
     }
 
-    constructor(renderer: Renderer) {
+    constructor(renderer: Renderer2) {
         this.renderer = renderer;
         this.placeholder = '';
     }
@@ -103,13 +100,13 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     ngOnInit() { }
     ngAfterViewInit() {
         if (this.autoFocus) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+            this.ref.nativeElement.focus();
         }
     }
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
+        this.renderer.setProperty(this.ref.nativeElement, 'value', value);
     }
 
     public hasDanger() {

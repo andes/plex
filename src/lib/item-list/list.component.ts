@@ -24,7 +24,7 @@ export class PlexListComponent implements AfterViewInit {
     @Output() scrolled = new EventEmitter<void>();
 
     @ContentChildren(PlexItemComponent, { descendants: false }) private plexItems: QueryList<PlexItemComponent>;
-    @ContentChild(PlexHeadingComponent, { static: false }) private plexHeading: PlexHeadingComponent;
+    @ContentChild(PlexHeadingComponent) private plexHeading: PlexHeadingComponent;
 
     constructor() {
 

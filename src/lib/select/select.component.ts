@@ -31,7 +31,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     private _readonly: boolean;
     private _disabled: boolean;
 
-    @ContentChild(NgControl, { static: false }) control: AbstractControl;
+    @ContentChild(NgControl) control: AbstractControl;
     public uniqueId = new Date().valueOf().toString();
     public get esRequerido(): boolean {
         return hasRequiredValidator(this.control);

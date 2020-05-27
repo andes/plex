@@ -120,7 +120,7 @@ function getElement(fixture: ComponentFixture<any>, selector: string): DebugElem
     template: ``
 })
 class PlexDateTimeTestComponent {
-    @ViewChild(PlexDateTimeComponent, { static: false }) plexDateTime: PlexDateTimeComponent;
+    @ViewChild(PlexDateTimeComponent) plexDateTime: PlexDateTimeComponent;
     text;
 
     onChange(_: Event) {

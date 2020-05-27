@@ -15,7 +15,7 @@
             "dom"
         ],
         "mapRoot": "./",
-        "module": "es6",
+        "module": "esnext",
         "moduleResolution": "node",
         "sourceMap": true,
         "target": "es5",

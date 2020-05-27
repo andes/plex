@@ -28,7 +28,7 @@ export * from './simple-notifications/services/notifications.service';
     exports: [SimpleNotificationsComponent]
 })
 export class SimpleNotificationsModule {
-    public static forRoot(): ModuleWithProviders {
+    public static forRoot(): ModuleWithProviders<SimpleNotificationsModule> {
         return {
             ngModule: SimpleNotificationsModule,
             providers: [NotificationsService]

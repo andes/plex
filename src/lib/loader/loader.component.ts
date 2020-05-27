@@ -1,4 +1,4 @@
-import { Component, Input, Renderer } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 
 @Component({
     selector: 'plex-loader',
@@ -33,7 +33,7 @@ export class PlexLoaderComponent {
     // Propiedades
     @Input() type: string;
 
-    constructor(renderer: Renderer) {
+    constructor(renderer: Renderer2) {
         this.type = '';
     }
 }

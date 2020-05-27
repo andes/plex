@@ -1,4 +1,4 @@
-import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, OnChanges } from '@angular/core';
+import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit, OnChanges, Renderer2 } from '@angular/core';
 import { NgControl, NG_VALUE_ACCESSOR, NgForm, NG_VALIDATORS, FormControl, AbstractControl } from '@angular/forms';
 import * as moment from 'moment';
 import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
@@ -135,7 +135,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         }
     }
 
-    constructor(private element: ElementRef, private renderer: Renderer) {
+    constructor(private element: ElementRef, private renderer: Renderer2) {
         this.placeholder = '';
         this.type = 'datetime';
     }

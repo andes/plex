@@ -1,4 +1,3 @@
-import { WizardConfig } from './wizard-config.interface';
 export interface WizardConfig {
     /**
      * ID del wizard. Suele corresponder al nombre de un módulo.
