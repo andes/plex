@@ -1,3 +1,11 @@
+# [6.3.0](https://github.com/andes/plex/compare/v6.2.1...v6.3.0) (2020-05-27)
+
+
+### Features
+
+* **hint:** hint directive([#153](https://github.com/andes/plex/issues/153)) ([b12ce97](https://github.com/andes/plex/commit/b12ce970c97b22d223f4b7c044a4c60cfaf8b302))
+* **plex-text:** validación formato email ([#162](https://github.com/andes/plex/issues/162)) ([d538cd1](https://github.com/andes/plex/commit/d538cd11b4c20249a372fe314db60f114c62f439))
+
 ## [6.2.1](https://github.com/andes/plex/compare/v6.2.0...v6.2.1) (2020-05-15)
 
 
