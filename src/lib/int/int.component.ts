@@ -1,7 +1,6 @@
-import { ViewChild, Component, OnInit, Input, AfterViewInit, Output, EventEmitter, forwardRef, ElementRef, ContentChild, HostBinding, OnChanges, Renderer2 } from '@angular/core';
+import { ViewChild, Component, OnInit, Input, AfterViewInit, Output, EventEmitter, ElementRef, ContentChild, OnChanges, Renderer2, Self, Optional } from '@angular/core';
 import {
-    ControlValueAccessor, FormControl,
-    NG_VALUE_ACCESSOR, NG_VALIDATORS, NgControl
+    ControlValueAccessor, FormControl, NgControl
 } from '@angular/forms';
 import { numberValidator, hasRequiredValidator } from '../core/validator.functions';
 
@@ -9,19 +8,6 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
 
 @Component({
     selector: 'plex-int',
-    // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexIntComponent),
-            multi: true
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => PlexIntComponent),
-            multi: true
-        },
-    ],
     template: `
         <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
             <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esRequerido" class="requerido"></span></label>
@@ -42,11 +28,11 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
 })
 export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
     private lastValue: any = null;
-    private renderer: Renderer2;
+
     @ViewChild('ref', { static: true }) private ref: ElementRef;
-    @ContentChild(NgControl, { static: true }) public control: any;
+
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Propiedades
@@ -90,8 +76,13 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
         }
     }
 
-    constructor(renderer: Renderer2) {
-        this.renderer = renderer;
+    constructor(
+        private renderer: Renderer2,
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor = this;
+        }
         this.placeholder = '';
     }
 

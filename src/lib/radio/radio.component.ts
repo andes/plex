@@ -1,17 +1,10 @@
-import { Component, OnInit, AfterViewInit, Input, forwardRef, Output, EventEmitter, ContentChild } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { Component, OnInit, AfterViewInit, Input, Output, EventEmitter, Self, Optional } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { hasRequiredValidator } from '../core/validator.functions';
 
 @Component({
     selector: 'plex-radio',
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexRadioComponent),
-            multi: true,
-        }
-    ],
+
     template: `<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
                 <label *ngIf="label" class="form-control-label">{{label}}
                     <span *ngIf="control.name && esRequerido" class="requerido"></span>
@@ -28,11 +21,18 @@ import { hasRequiredValidator } from '../core/validator.functions';
 })
 export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     public value: any;
-    @ContentChild(NgControl) public control: any;
+
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
+    constructor(
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor = this;
+        }
+    }
     // Propiedad públicas
     @Input() data: any[];
     @Input() label: string;

@@ -1,8 +1,5 @@
-import { ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit, ContentChild, Renderer2 } from '@angular/core';
-import {
-    ControlValueAccessor,
-    NG_VALUE_ACCESSOR, NgControl
-} from '@angular/forms';
+import { ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit, ContentChild, Renderer2, Self, Optional, Inject } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { hasRequiredValidator } from '../core/validator.functions';
 
 @Component({
@@ -46,15 +43,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
         <!-- Validation -->
         <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
     </div>
-    `,
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexTextComponent),
-            multi: true,
-        }
-    ]
+    `
 })
 export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     // private
@@ -80,9 +69,10 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @ViewChild('input', { static: true }) private input: ElementRef;
     @ViewChild('textarea', { static: true }) private textarea: ElementRef;
     @ViewChild('quillEditor', { static: true }) private quillEditor: ElementRef;
-    @ContentChild(NgControl, { static: true }) public control: any;
+    // @ContentChild(NgControl, { static: true }) public control: any;
+
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Propiedades
@@ -146,7 +136,13 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     private changeTimeout = null;
 
-    constructor(private renderer: Renderer2) {
+    constructor(
+        private renderer: Renderer2,
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor = this;
+        }
         this.placeholder = '';
         this.password = false;
     }

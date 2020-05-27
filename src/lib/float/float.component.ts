@@ -1,7 +1,6 @@
-import { ViewChild, ContentChild, Component, OnInit, AfterViewInit, Input, Output, EventEmitter, forwardRef, ElementRef, OnChanges, Renderer2 } from '@angular/core';
+import { ViewChild, ContentChild, Component, OnInit, AfterViewInit, Input, Output, EventEmitter, forwardRef, ElementRef, OnChanges, Renderer2, Self, Optional } from '@angular/core';
 import {
-    ControlValueAccessor, FormControl,
-    NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS
+    ControlValueAccessor, FormControl, NgControl
 } from '@angular/forms';
 import { numberValidator, hasRequiredValidator } from '../core/validator.functions';
 
@@ -9,21 +8,8 @@ const REGEX = /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
 
 @Component({
     selector: 'plex-float',
-    // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexFloatComponent),
-            multi: true
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => PlexFloatComponent),
-            multi: true
-        }
-    ],
     template: `
-         <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
+        <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
             <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esRequerido" class="requerido"></span></label>
             <div [ngClass]="{'input-group': prefix || suffix ||   suffixParent?.children.length > 0 ||  prefixParent?.children.length > 0}">
                 <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
@@ -42,11 +28,11 @@ const REGEX = /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
 })
 export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
     private lastValue: any = null;
-    private renderer: Renderer2;
+
     @ViewChild('ref', { static: true }) private ref: ElementRef;
-    @ContentChild(NgControl, { static: true }) public control: any;
+
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Propiedades
@@ -89,8 +75,13 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
         }
     }
 
-    constructor(renderer: Renderer2) {
-        this.renderer = renderer;
+    constructor(
+        private renderer: Renderer2,
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor = this;
+        }
         this.placeholder = '';
     }
 

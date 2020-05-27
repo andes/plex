@@ -1,5 +1,5 @@
-import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit, OnChanges, Renderer2 } from '@angular/core';
-import { NgControl, NG_VALUE_ACCESSOR, NgForm, NG_VALIDATORS, FormControl, AbstractControl } from '@angular/forms';
+import { Component, OnInit, Input, Output, ElementRef, EventEmitter, AfterViewInit, OnChanges, Self, Optional } from '@angular/core';
+import { NgControl, FormControl } from '@angular/forms';
 import * as moment from 'moment';
 import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
 
@@ -11,20 +11,9 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
 
 @Component({
     selector: 'plex-datetime',
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexDateTimeComponent),
-            multi: true,
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => PlexDateTimeComponent),
-            multi: true
-        },
-    ],
-    template: `<div class="form-group datetime" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+    template: `
+        <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+
                     <label *ngIf="label" class="form-control-label">{{ label }}
                         <span *ngIf="control.name && esRequerido" class="requerido"></span>
                     </label>
@@ -53,9 +42,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private $input: any;
     private changeTimeout = null;
 
-    @ContentChild(NgControl, { static: true }) control: AbstractControl;
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Input properties
@@ -128,6 +116,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     validate(c: FormControl) {
         return this.validateFn(c);
     }
+
     ngOnChanges(changes) {
         // Cuando cambias las cotas, devuelve una nueva función de validación
         if (changes.min || changes.max) {
@@ -135,7 +124,13 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         }
     }
 
-    constructor(private element: ElementRef, private renderer: Renderer2) {
+    constructor(
+        private element: ElementRef,
+        @Self() @Optional() public control: NgControl
+    ) {
+        if (this.control) {
+            this.control.valueAccessor = this;
+        }
         this.placeholder = '';
         this.type = 'datetime';
     }
@@ -179,6 +174,9 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
+        if (this.control && this.control.control) {
+            this.control.control.setValidators(this.validate.bind(this) as any);
+        }
         this.format = this.dateOrTime();
         this.$input = jQuery('INPUT', this.element.nativeElement.children[0]);
         this.$button = jQuery('BUTTON', this.element.nativeElement.children[0]);
