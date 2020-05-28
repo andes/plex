@@ -54,22 +54,23 @@ export class PlexLayoutComponent implements AfterContentInit {
     ngAfterContentInit() {
         // MODO MANUAL
         if (!this.aspect) { return; }
+        if (this.routerOutlet) {
+            if (this.routerOutlet.isActivated) {
+                this.main = this.aspect;
+                this.foco = 'sidebar';
+            } else {
+                this.foco = 'main';
+            }
+            this.routerOutlet.activateEvents.subscribe(() => {
+                this.main = this.aspect;
+                this.foco = 'sidebar';
+            });
 
-        if (this.routerOutlet.isActivated) {
-            this.main = this.aspect;
-            this.foco = 'sidebar';
-        } else {
-            this.foco = 'main';
+            this.routerOutlet.deactivateEvents.subscribe(() => {
+                this.main = 12;
+                this.foco = 'main';
+            });
         }
-        this.routerOutlet.activateEvents.subscribe(() => {
-            this.main = this.aspect;
-            this.foco = 'sidebar';
-        });
-
-        this.routerOutlet.deactivateEvents.subscribe(() => {
-            this.main = 12;
-            this.foco = 'main';
-        });
     }
 
 
