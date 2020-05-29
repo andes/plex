@@ -23,17 +23,17 @@ plex-detail {
         --detail-text-align: center;
         --detail-badge-align: center;
     }
-
+    
     section.direction-row {
         --detail-divider-align: start; 
         --detail-img-mr: 0.75rem;
         --detail-img-mb: 1rem;
         --detail-text-align: left;
-
+        
         .contenedor-textos {
+            width: fit-content;
             margin-right: 2rem;
         }
-
     }
 
     %baseDirection {
