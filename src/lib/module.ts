@@ -43,7 +43,6 @@ import { PlexHelpComponent } from './help/help.component';
 import { PlexModalComponent } from './modal/modal.component';
 import { PlexModalTitleComponent } from './modal/modal-title.component';
 import { PlexCopyComponent } from './copy/copy.component';
-import { PlexDetailComponent } from './detail/detail.component';
 import { PlexOptionsComponent } from './options/options.component';
 import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
 import { PlexWrapperComponent } from './wrapper/wrapper.component';
@@ -111,7 +110,6 @@ const MODULES = [
     PlexModalComponent,
     PlexModalTitleComponent,
     PlexCopyComponent,
-    PlexDetailComponent,
     PlexOptionsComponent,
     PlexVisualizadorComponent,
     PreviewDirective,
