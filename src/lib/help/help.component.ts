@@ -5,7 +5,9 @@ import { Component, Input, Renderer2, Output, EventEmitter } from '@angular/core
     template: `
     <div class="toggle-{{ type }}" [ngClass]="{'closed': closed, 'open': !closed}">
         <plex-button *ngIf="!closed" type="danger" size="sm" icon="close" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
-        <plex-button *ngIf="content && closed && !tituloBoton" type="info" size="sm" [icon]="icon" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="content && closed && !tituloBoton" type="info" size="sm" title="{{ title }}" (click)="toogle();$event.stopImmediatePropagation();">
+            <plex-icon [name]="type === 'info'? 'information-variant' : 'help-circle'" size="{{ iconSize }}"></plex-icon>
+        </plex-button>
         <plex-button *ngIf="content && closed && tituloBoton" type="info" size="sm" [label]="tituloBoton" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
     </div>
     <div class="card {{ type }}" [ngClass]="{'open': !closed}" *ngIf="type === 'help'" (click)="$event.stopImmediatePropagation();">
@@ -35,9 +37,13 @@ export class PlexHelpComponent {
 
     @Input() subtitulo: string;
 
+    @Input() title: string;
+
     @Input() tituloBoton = '';
 
-    @Input() icon = 'help-circle';
+    @Input() icon: 'help-circle' | 'information-variant' = 'help-circle';
+
+    @Input() iconSize = '';
 
     @Output() close = new EventEmitter();
 
