@@ -1,3 +1,10 @@
+## [6.3.1](https://github.com/andes/plex/compare/v6.3.0...v6.3.1) (2020-06-03)
+
+
+### Bug Fixes
+
+* **plex:** quita BrowserAnimationsModule ([1d958eb](https://github.com/andes/plex/commit/1d958eb99063999ae69cc516d81ed497f0614f2c))
+
 # [6.3.0](https://github.com/andes/plex/compare/v6.2.1...v6.3.0) (2020-05-27)
 
 
