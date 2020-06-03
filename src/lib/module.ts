@@ -126,7 +126,6 @@ const MODULES = [
         CommonModule,
         RouterModule,
         FormsModule,
-        BrowserAnimationsModule,
         MatSlideToggleModule,
         MatCheckboxModule,
         MatRadioModule,
