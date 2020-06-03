@@ -1,4 +1,4 @@
-import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
+import { TooltipHintDemoComponent } from './tooltip/tooltip.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeDemoComponent } from './home/home.component';
@@ -53,7 +53,7 @@ const appRoutes: Routes = [
     { path: 'ribbon', component: RibbonDemoComponent },
     { path: 'phone', component: PhoneDemoComponent },
     { path: 'dropdown', component: DropdownDemoComponent },
-    { path: 'tooltip-hint', component: TooltipHintDemoComponent },
+    { path: 'tooltip', component: TooltipHintDemoComponent },
     { path: 'wizard', component: WizardDemoComponent },
     { path: 'templates/form', component: TemplateFormComponent },
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },

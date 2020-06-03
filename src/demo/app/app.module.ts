@@ -49,7 +49,7 @@ import { MainListadoComponent } from './templates/listado-sidebar/main/listado/m
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
 import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
-import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
+import { TooltipHintDemoComponent } from './tooltip/tooltip.component';
 
 @NgModule({
     declarations: [
