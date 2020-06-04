@@ -69,7 +69,7 @@ plex-help {
         position: initial;
         display: inline-block;
         min-width: 42px;
-        height: 33px;
+        height: auto;
         &.open {
             top: 0;
         }
