@@ -79,4 +79,11 @@ context('<plex-text>', () => {
             expect($el).to.have.css('height', '500px');
         })
     });
+
+    it.only('plex-text extend quill-editor', () => {
+
+        cy.plexTextArea('name="contenido1"').find('.ql-fullscreen').click();
+        cy.toast('success');
+
+    });
 });
