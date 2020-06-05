@@ -10,9 +10,9 @@ export interface IPlexOptionsItems {
     selector: 'plex-options',
     template: `
         <div class="row">
-            <div class="btn-group col">
+            <div class="d-flex col flex-wrap">
                 <ng-container *ngFor="let item of items">
-                    <button class="btn btn-primary btn-sm btn-block m-0" (click)="onOptionsClick(item)" [class.active]="active === item.key">
+                    <button class="btn btn-primary btn-sm option-grow m-0" (click)="onOptionsClick(item)" [class.active]="active === item.key">
                         {{ item.label }}
                     </button>
                 </ng-container>
