@@ -5,7 +5,7 @@ import { PlexHeadingComponent } from './heading.component';
 @Component({
     selector: 'plex-list',
     template: `
-    <div [class.striped]="striped"
+    <div [class.striped]="striped" responsive
          infiniteScroll [infiniteScrollDistance]="1" (scrolled)="onScroll()" [scrollWindow]="false"
          [style.overflow-y]="styleScroll" [style.height]="height">
         <ng-content></ng-content>
@@ -40,9 +40,11 @@ export class PlexListComponent implements AfterViewInit {
     ngAfterViewInit() {
         const hayIcono = this.plexItems.some(item => item.hasIcons());
         const hayCheckbox = this.plexItems.some(item => item.hasCheckbox());
+        const hayBotonera = this.plexItems.some(item => item.hasBotonera());
         if (this.plexHeading) {
             this.plexHeading.setIcon(hayIcono);
             this.plexHeading.setCheckbox(hayCheckbox);
+            this.plexHeading.setBotonera(hayBotonera);
             if (this.height) {
                 this.plexHeading.setSticky(true);
             }
