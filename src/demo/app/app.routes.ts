@@ -2,6 +2,7 @@ import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component'
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeDemoComponent } from './home/home.component';
+import { HelpDemoComponent } from './help/help.component';
 import { BoxDemoComponent } from './box/box.component';
 import { TextDemoComponent } from './text/text.component';
 import { DateTimeDemoComponent } from './datetime/datetime.component';
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
     { path: 'box', component: BoxDemoComponent },
     { path: 'text', component: TextDemoComponent },
     { path: 'datetime', component: DateTimeDemoComponent },
+    { path: 'help', component: HelpDemoComponent },
     { path: 'fonts', component: FontsDemoComponent },
     { path: 'wrapper', component: WrapperDemoComponent },
     { path: 'bool', component: BoolDemoComponent },

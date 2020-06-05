@@ -51,6 +51,7 @@ import { ModalTemplateComponent } from './templates/componentes/plex-modal-templ
 import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
 import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
+import { HelpDemoComponent } from './help/help.component';
 
 @NgModule({
     declarations: [
@@ -58,6 +59,7 @@ import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component'
         BoxDemoComponent,
         TextDemoComponent,
         HomeDemoComponent,
+        HelpDemoComponent,
         NavbarDemoComponent,
         IntDemoComponent,
         FloatDemoComponent,
