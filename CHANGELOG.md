@@ -1,3 +1,17 @@
+# [6.4.0](https://github.com/andes/plex/compare/v6.3.1...v6.4.0) (2020-06-05)
+
+
+### Bug Fixes
+
+* **plex-detail:** se define ancho de nombres y wrapean los badges ([#168](https://github.com/andes/plex/issues/168)) ([154dc97](https://github.com/andes/plex/commit/154dc97fbeaede3bd5e4926e29c0c77c9d8cfd00))
+
+
+### Features
+
+* **plex-item:** se adapta componente a responsive ([#151](https://github.com/andes/plex/issues/151)) ([75d33d7](https://github.com/andes/plex/commit/75d33d77a345bd70eb77053468ae23cd55ea6ffa))
+* **plex-options:** comportamiento responsivo ([#157](https://github.com/andes/plex/issues/157)) ([51c7949](https://github.com/andes/plex/commit/51c79499d05e3aadbaed38887153f44c9d68aa10))
+* **plex-title:** modo responsive de botonera ([#167](https://github.com/andes/plex/issues/167)) ([a27625c](https://github.com/andes/plex/commit/a27625c24f199028bd747daad4e7d252c9d3937a))
+
 ## [6.3.1](https://github.com/andes/plex/compare/v6.3.0...v6.3.1) (2020-06-03)
 
 
