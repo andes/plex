@@ -59,13 +59,16 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Public
     public isEmpty = true;
     public quill = {
-        toolbar: [
-            ['bold', 'italic', 'underline'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            [{ size: ['small', false, 'large', 'huge'] }],
-            [{ align: [] }],
-            ['clean'],
-        ]
+        toolbar: {
+            container: [
+                ['bold', 'italic', 'underline'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ size: ['small', false, 'large', 'huge'] }],
+                [{ align: [] }],
+                ['clean'],
+            ],
+            handlers: {}
+        }
     };
 
     @ViewChild('input', { static: true }) private input: ElementRef;
@@ -88,6 +91,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() multiline = false;
     @Input() html = false;
     @Input() debounce = 0;
+    @Input() qlToolbar: PlexTextToolBar[];
 
     @Input()
     set password(value) {
@@ -139,12 +143,18 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     // Inicialización
     ngOnInit() {
+        if (this.html) {
+            this.prepareQuillToolbar();
+        }
     }
 
     ngAfterViewInit() {
         if (this.autoFocus) {
             const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
             this.renderer.invokeElementMethod(element, 'focus');
+        }
+        if (this.html) {
+            this.createToolbarIcons();
         }
     }
 
@@ -223,4 +233,39 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.textarea.nativeElement.style.height = 'auto';
         this.textarea.nativeElement.style.height = this.textarea.nativeElement.scrollHeight + 'px';
     }
+
+
+    private prepareQuillToolbar() {
+        if (this.qlToolbar) {
+            const toolBarItems: string[] = [];
+            const handlers: any = {};
+
+            this.qlToolbar.forEach(item => {
+                toolBarItems.push(item.name);
+                handlers[item.name] = item.handler;
+            });
+
+            this.quill.toolbar.container.push(toolBarItems);
+            this.quill.toolbar.handlers = handlers;
+        }
+    }
+
+    private createToolbarIcons() {
+        if (this.qlToolbar) {
+            const editor = (this.quillEditor as any).quillEditor;
+            const toolbar = editor.getModule('toolbar').container;
+            this.qlToolbar.forEach(item => {
+                const qlItem = toolbar.getElementsByClassName(`ql-${item.name}`);
+                if (qlItem.length > 0) {
+                    qlItem[0].innerHTML = `<i class="mdi mdi-${item.icon || item.name}"></i>`;
+                }
+            });
+        }
+    }
+}
+
+export interface PlexTextToolBar {
+    name: string;
+    icon?: string;
+    handler: () => void;
 }
