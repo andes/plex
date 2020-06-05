@@ -25,7 +25,13 @@
         }
     }
     .title-content {
-        max-height: 26px;
+        max-height: 36px;
+    }
+    &.size-sm {
+        flex-wrap: wrap;
+        .title-content {
+            justify-content: space-between;
+        }
     }
 }
 
@@ -34,3 +40,4 @@ header {
         border-bottom: none !important;
     }
 }
+
