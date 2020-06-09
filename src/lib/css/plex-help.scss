@@ -72,7 +72,15 @@ plex-help {
         min-width: 42px;
         height: auto;
         &.open {
-            top: 0;
+            top:
+             0;
+        }
+    }
+
+    &[type="info"] {
+        plex-button[type="danger"] {
+            top: -3px;
+            right: 16px;
         }
     }
 
@@ -89,8 +97,8 @@ plex-help {
         }
         &.open {
             position: absolute;
-            right: 15px;
-            top: $top-open;
+            right: 32px;
+            top: 18px;
             z-index: 998;
             width: auto;
             border-radius: 0.25rem;

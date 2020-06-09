@@ -163,9 +163,9 @@ Cypress.Commands.add('plexButtonIcon', { prevSubject: 'optional' }, (subject, ic
     let element;
     if (subject) {
 
-        element = cy.wrap(subject).find(`plex-button i.mdi.mdi-information-variant`).parent();
+        element = cy.wrap(subject).find(`plex-button i.mdi.mdi-${icon}`).parent();
     } else {
-        element = cy.get(`plex-button i.mdi.mdi-information-variant`).parent();
+        element = cy.get(`plex-button i.mdi.mdi-${icon}`).parent();
     }
     return element;
 });
@@ -192,7 +192,7 @@ Cypress.Commands.add('plexDatetime', { prevSubject: 'optional' }, (subject, labe
 });
 
 Cypress.Commands.add('iconClick', { prevSubject: 'element' }, (subject, icon) => {
-    return cy.wrap(subject).find(`i.mdi.mdi-information-variant`).click();
+    return cy.wrap(subject).find(`i.mdi.mdi-${icon}`).click();
 });
 
 Cypress.Commands.add('plexBool', { prevSubject: 'optional' }, (subject, label, checked = false) => {

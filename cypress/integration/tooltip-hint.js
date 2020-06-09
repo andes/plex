@@ -16,7 +16,7 @@ context('tooltip & hint', () => {
         cy.plexButton('tooltip').blur();
     });
 
-    it.only('hint directive', () => {
+    it('hint directive', () => {
         const hintText = '¿Sabías que... el hint es un texto que sugiere acciones o indica alguna novedad?';
         cy.get('#cdk-describedby-message-container div').eq(0).should('not.be.visible');
         cy.get('plex-hint').eq(0).find('a').focus().trigger('mouseover', { force: true });
