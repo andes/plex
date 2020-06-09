@@ -67,16 +67,36 @@
             </plex-help>
         </plex-title>
         <h6>
-            Se emplea en casos en los que se necesita brindar información complementaria y circunstancial al usuario.
+            Se emplea en casos en los que se necesita brindar información complementaria y circunstancial al
+            usuario.
             <hr>
             <ul>
                 <li>Es un elemento emergente de carácter informativo.</li><br>
-                <li>Evita incorporar elementos informativos que le restan espacio, jerarquía y visibilidad a otros de
+                <li>Evita incorporar elementos informativos que le restan espacio, jerarquía y visibilidad a otros
+                    de
                     mayor
                     relevancia o frecuencia de uso en las interfaces.</li><br>
                 <li>El componente presenta dos tipologías: <b>info</b> y <b>help</b>.</li>
             </ul>
         </h6>
+        <plex-title titulo="plex-help con botones" size="sm">
+            <plex-button size="sm" type="success" label="acción satisfactoria"></plex-button>
+            <plex-help type="help" class="ml-1" titulo="Información sobre este módulo"
+                       subtitulo="A continuación todas las opciones">
+                <ol info class="list-group-flush">
+                    <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li class="list-group-item">Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <i
+                           class="mdi mdi-check"></i> para guardar una plantilla individual</li>
+                </ol>
+            </plex-help>
+        </plex-title>
 
     </plex-layout-sidebar>
 </plex-layout>
