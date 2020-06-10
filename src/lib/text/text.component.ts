@@ -101,8 +101,12 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
 
     @Input()
-    set height(value: number) {
-        this.quillStyle.height = value + 'px';
+    set height(value: number | string) {
+        if (typeof value === 'number') {
+            this.quillStyle.height = value + 'px';
+        } else {
+            this.quillStyle.height = value;
+        }
     }
     @Input()
     set autoFocus(value: any) {
