@@ -9,7 +9,7 @@ context('template listado', () => {
     it('test accordion', () => {
         cy.eyesCheckWindow('main');
 
-        cy.plexButton('Accion Modal').click();
+        cy.get('plex-title').plexButtonIcon('chevron-down').click();
 
         cy.eyesCheckWindow('modal');
 
@@ -36,7 +36,7 @@ context('template listado', () => {
 
         cy.eyesCheckWindow('accordion open');
 
-        cy.get('plex-help').plexButton('TOP').click();
+        cy.get('plex-help').plexButtonIcon('help-circle').click();
 
         cy.eyesCheckWindow('plex-help open');
 

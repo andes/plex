@@ -69,6 +69,7 @@ import { QuillModule } from 'ngx-quill';
 import { NavItemComponent } from './app/nav-item.component';
 import { HintComponent } from './hint/hint.component';
 import { HintDirective } from './hint/hint.directive';
+import { HelpDirective } from './help/help.directive';
 
 const MODULES = [
     PlexAppComponent,
@@ -117,7 +118,8 @@ const MODULES = [
     PreviewDirective,
     NavItemComponent,
     PlexWrapperComponent,
-    HintDirective
+    HintDirective,
+    HelpDirective
     // MatTooltip
 ];
 
