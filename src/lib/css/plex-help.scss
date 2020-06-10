@@ -1,5 +1,4 @@
 plex-help {
-
     $top-open: 21px;
 
     .card {
@@ -9,7 +8,7 @@ plex-help {
         border-left: 1px solid darken($light-grey, 15%);
         border-radius: 0.25rem;
         box-shadow: 2px 2px 5px 0px $dark-grey;
-        
+
         &.open {
             display: flex;
             flex-direction: column;
@@ -38,7 +37,8 @@ plex-help {
         }
     }
 
-    .toggle-help, .toggle-info  {
+    .toggle-help,
+    .toggle-info {
         &.closed {
             display: inline-block;
             position: relative;
@@ -46,23 +46,24 @@ plex-help {
         }
         &.open {
             plex-button {
-                z-index: 1002;
-            }    
+                z-index: 999;
+            }
         }
         plex-button {
             position: relative;
             top: 1px;
             right: 0;
             display: flex;
-            justify-content: flex-end; 
+            justify-content: flex-end;
         }
     }
-    .toggle-help, .toggle-info {
+    .toggle-help,
+    .toggle-info {
         position: absolute;
         right: 15px;
         top: $top-open;
         &.closed {
-            top: 0; 
+            top: 0;
         }
     }
     .toggle-help {
@@ -80,7 +81,7 @@ plex-help {
         border-top: 1px solid darken($light-grey, 15%);
         border-left: 1px solid darken($light-grey, 15%);
         color: black;
-        
+
         plex-button {
             position: absolute;
             top: -1px;
@@ -90,7 +91,7 @@ plex-help {
             position: absolute;
             right: 15px;
             top: $top-open;
-            z-index: 1001;
+            z-index: 998;
             width: auto;
             border-radius: 0.25rem;
             box-shadow: 2px 2px 5px 0px $dark-grey;
