@@ -276,10 +276,11 @@ Cypress.Commands.add('tooltip', { prevSubject: true }, (subject, text) => {
 Cypress.Commands.add('toast', (option, label) => {
 
     if (label) {
-        return cy.get(`div[class="simple-notification toast ${option}"]`).contains(label).click();
+        cy.get(`div[class="simple-notification toast ${option}"]`).contains(label).click();
     } else {
-        return cy.get(`div[class="simple-notification toast ${option}"]`).click();
+        cy.get(`div[class="simple-notification toast ${option}"]`).click();
     }
 
+    return cy.get(`div[class="simple-notification toast ${option}"]`).should('not.exist');
 
 })
