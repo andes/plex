@@ -97,8 +97,8 @@ plex-help {
         }
         &.open {
             position: absolute;
-            right: 32px;
-            top: 18px;
+            right: 15px;
+            top: $top-open;
             z-index: 998;
             width: auto;
             border-radius: 0.25rem;
