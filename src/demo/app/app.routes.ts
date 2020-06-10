@@ -1,6 +1,8 @@
+import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeDemoComponent } from './home/home.component';
+import { HelpDemoComponent } from './help/help.component';
 import { BoxDemoComponent } from './box/box.component';
 import { TextDemoComponent } from './text/text.component';
 import { DateTimeDemoComponent } from './datetime/datetime.component';
@@ -32,12 +34,15 @@ import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi
 import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
 import { WrapperDemoComponent } from './wrapper/wrapper.component.';
 import { DemoIconComponent } from './icon/icon';
+import { NavbarDemoComponent } from './navbar/navbar';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
+    { path: 'navbar', component: NavbarDemoComponent },
     { path: 'box', component: BoxDemoComponent },
     { path: 'text', component: TextDemoComponent },
     { path: 'datetime', component: DateTimeDemoComponent },
+    { path: 'help', component: HelpDemoComponent },
     { path: 'fonts', component: FontsDemoComponent },
     { path: 'wrapper', component: WrapperDemoComponent },
     { path: 'bool', component: BoolDemoComponent },
@@ -53,6 +58,7 @@ const appRoutes: Routes = [
     { path: 'ribbon', component: RibbonDemoComponent },
     { path: 'phone', component: PhoneDemoComponent },
     { path: 'dropdown', component: DropdownDemoComponent },
+    { path: 'tooltip-hint', component: TooltipHintDemoComponent },
     { path: 'wizard', component: WizardDemoComponent },
     { path: 'templates/form', component: TemplateFormComponent },
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },

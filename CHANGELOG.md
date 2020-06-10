@@ -1,3 +1,102 @@
+# [6.4.0](https://github.com/andes/plex/compare/v6.3.1...v6.4.0) (2020-06-05)
+
+
+### Bug Fixes
+
+* **plex-detail:** se define ancho de nombres y wrapean los badges ([#168](https://github.com/andes/plex/issues/168)) ([154dc97](https://github.com/andes/plex/commit/154dc97fbeaede3bd5e4926e29c0c77c9d8cfd00))
+
+
+### Features
+
+* **plex-item:** se adapta componente a responsive ([#151](https://github.com/andes/plex/issues/151)) ([75d33d7](https://github.com/andes/plex/commit/75d33d77a345bd70eb77053468ae23cd55ea6ffa))
+* **plex-options:** comportamiento responsivo ([#157](https://github.com/andes/plex/issues/157)) ([51c7949](https://github.com/andes/plex/commit/51c79499d05e3aadbaed38887153f44c9d68aa10))
+* **plex-title:** modo responsive de botonera ([#167](https://github.com/andes/plex/issues/167)) ([a27625c](https://github.com/andes/plex/commit/a27625c24f199028bd747daad4e7d252c9d3937a))
+
+## [6.3.1](https://github.com/andes/plex/compare/v6.3.0...v6.3.1) (2020-06-03)
+
+
+### Bug Fixes
+
+* **plex:** quita BrowserAnimationsModule ([1d958eb](https://github.com/andes/plex/commit/1d958eb99063999ae69cc516d81ed497f0614f2c))
+
+# [6.3.0](https://github.com/andes/plex/compare/v6.2.1...v6.3.0) (2020-05-27)
+
+
+### Features
+
+* **hint:** hint directive([#153](https://github.com/andes/plex/issues/153)) ([b12ce97](https://github.com/andes/plex/commit/b12ce970c97b22d223f4b7c044a4c60cfaf8b302))
+* **plex-text:** validación formato email ([#162](https://github.com/andes/plex/issues/162)) ([d538cd1](https://github.com/andes/plex/commit/d538cd11b4c20249a372fe314db60f114c62f439))
+
+## [6.2.1](https://github.com/andes/plex/compare/v6.2.0...v6.2.1) (2020-05-15)
+
+
+### Bug Fixes
+
+* **navbar:** custom navbar item clear ([e4551ab](https://github.com/andes/plex/commit/e4551ab4242144b38d2743aea547caa647e45ff0))
+
+# [6.2.0](https://github.com/andes/plex/compare/v6.1.2...v6.2.0) (2020-05-15)
+
+
+### Bug Fixes
+
+* **tabindex:** se agrega tabindex y role al menú ([7b9b32a](https://github.com/andes/plex/commit/7b9b32abb4f952b851c5c8271754075d305ce53a))
+* **wrapper:** directiva grow asignaba todas las clases ([60c11c2](https://github.com/andes/plex/commit/60c11c2bc08eeac4393bd57cd81c1a39dd8c5748))
+
+
+### Features
+
+* **nav-bar:** hide navbar feature ([#163](https://github.com/andes/plex/issues/163)) ([ea5431f](https://github.com/andes/plex/commit/ea5431f46a9cf686547ba6c2cfcd8095c718d91c))
+
+## [6.1.2](https://github.com/andes/plex/compare/v6.1.1...v6.1.2) (2020-05-08)
+
+
+### Bug Fixes
+
+* **plex-select:** readonly style ([e7c5555](https://github.com/andes/plex/commit/e7c5555b630c85274434d092c8bd74a65b6ffe2f))
+
+## [6.1.1](https://github.com/andes/plex/compare/v6.1.0...v6.1.1) (2020-05-08)
+
+
+### Bug Fixes
+
+* **plex-select:** resolve cant start in readonly ([6ea784b](https://github.com/andes/plex/commit/6ea784b5ba647aab19e3d78c59d08440c31a8d31))
+
+# [6.1.0](https://github.com/andes/plex/compare/v6.0.5...v6.1.0) (2020-05-08)
+
+
+### Bug Fixes
+
+* **plex-bool:** se corrige visualización en invert ([3f25b9d](https://github.com/andes/plex/commit/3f25b9d6c3d91f17add961c73ed0774ed0f5d026))
+
+
+### Features
+
+* **modal:** opciones para el cierre del modal ([291cd58](https://github.com/andes/plex/commit/291cd58a2655533cc7f0ce8242fe7ca9b5285cbc))
+* **modal:** startOpen properties ([30374d9](https://github.com/andes/plex/commit/30374d940872ed93769ae28187fb25263431b5ee))
+* **plex-options:** refresh on changes ([#161](https://github.com/andes/plex/issues/161)) ([f5dda95](https://github.com/andes/plex/commit/f5dda95f03df80c2376473ffb606ad54ee151f21))
+* **plex-select:** disabled properties ([46fe88b](https://github.com/andes/plex/commit/46fe88b7e06704b6e506dcee75c33ff23f6b9039))
+
+## [6.0.5](https://github.com/andes/plex/compare/v6.0.4...v6.0.5) (2020-05-04)
+
+
+### Bug Fixes
+
+* **tooltip:** se revierte a tooltip anterior ([6ab1785](https://github.com/andes/plex/commit/6ab17854fbd9aab61c844d40f234396f37bcb0fd))
+
+## [6.0.4](https://github.com/andes/plex/compare/v6.0.3...v6.0.4) (2020-05-04)
+
+
+### Bug Fixes
+
+* **badge-icon:** plex-badge con icon ([#154](https://github.com/andes/plex/issues/154)) ([1776492](https://github.com/andes/plex/commit/1776492c9e8045abf484e005b75a7bafaaeb5def))
+
+## [6.0.3](https://github.com/andes/plex/compare/v6.0.2...v6.0.3) (2020-04-29)
+
+
+### Bug Fixes
+
+* **loader:** se arregla posicionamiento de loader ([aa81b98](https://github.com/andes/plex/commit/aa81b98019dd205e0ff98731bdc57cac34612453))
+
 ## [6.0.2](https://github.com/andes/plex/compare/v6.0.1...v6.0.2) (2020-04-16)
 
 

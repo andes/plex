@@ -24,6 +24,15 @@
             font-size: 2em;
         }
     }
+    .title-content {
+        max-height: 36px;
+    }
+    &.size-sm {
+        flex-wrap: wrap;
+        .title-content {
+            justify-content: space-between;
+        }
+    }
 }
 
 header {
@@ -31,3 +40,4 @@ header {
         border-bottom: none !important;
     }
 }
+

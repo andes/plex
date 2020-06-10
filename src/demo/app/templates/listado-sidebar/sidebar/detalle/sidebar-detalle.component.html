@@ -4,7 +4,7 @@
     <plex-detail direction="row">
         <img src="{{ paciente.foto }}" alt="">
         <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
-        <plex-badge *ngIf="paciente.fechaFallecimiento != 'null'" type="danger">Fallecido:
+        <plex-badge *ngIf="paciente.fechaFallecimiento != null" type="danger">Fallecido:
             {{ paciente.fechaFallecimiento }}
         </plex-badge>
         <div title>{{ paciente.nombre }}</div>
@@ -22,17 +22,46 @@
         <plex-button size="sm" type="warning" icon="pencil"></plex-button>
     </plex-title>
 </ng-container>
+<ng-container *ngIf="selectedOption === '1'">
+    <ng-container *ngIf="paciente$ | async as paciente">
+        <plex-detail direction="row">
+            <img src="{{ paciente.foto }}" alt="">
+            <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
+            <plex-badge *ngIf="paciente.fechaFallecimiento != 'null'" type="danger">Fallecido:
+                {{ paciente.fechaFallecimiento }}
+            </plex-badge>
+            <div title>{{ paciente.nombre }}</div>
+            <div subtitle>{{ paciente.documento }}</div>
+            <plex-label titulo="Fecha de Nacimiento" subtitulo="{{ paciente.fechaNacimiento }}"></plex-label>
+            <plex-label titulo="CUIL" subtitulo="{{ paciente.cuil }}"></plex-label>
+            <plex-label titulo="Edad" subtitulo="{{ paciente.edad }}"></plex-label>
+            <plex-label titulo="Sexo" subtitulo="{{ paciente.sexo }}"></plex-label>
+            <plex-label titulo="Género" subtitulo="{{ paciente.genero }}"></plex-label>
+            <plex-label titulo="Financiador" subtitulo="{{ paciente.financiador }}"></plex-label>
+        </plex-detail>
+        <plex-title titulo="Este es un subtitulo" size="sm">
+            <plex-button size="sm" type="success" icon="check"></plex-button>
+            <plex-button size="sm" type="info" icon="plus"></plex-button>
+            <plex-button size="sm" type="warning" icon="pencil"></plex-button>
+        </plex-title>
+    </ng-container>
 
-<!-- Desacoplar listado -->
-<plex-list>
-    <plex-heading>
-        <b label>Titulo del item</b>
-        <b badge>Estado/acciones</b>
-    </plex-heading>
-    <plex-item *ngFor="let item of historial">
-        <plex-bool type="checkbox"></plex-bool>
-        <plex-label titulo="{{ item.fecha }}" subtitulo="{{ item.prestacion }}"></plex-label>
-        <plex-badge type="info">{{ item.estado }}</plex-badge>
-        <plex-button size="sm" type="warning" icon="pencil"></plex-button>
-    </plex-item>
-</plex-list>
+    <!-- Desacoplar listado -->
+    <plex-list>
+        <plex-heading>
+            <b label>Titulo del item</b>
+            <b badge>Estado/acciones</b>
+        </plex-heading>
+        <plex-item *ngFor="let item of historial">
+            <plex-bool type="checkbox"></plex-bool>
+            <plex-label titulo="{{ item.fecha }}" subtitulo="{{ item.prestacion }}"></plex-label>
+            <plex-badge type="info">{{ item.estado }}</plex-badge>
+            <plex-button size="sm" type="warning" icon="pencil"></plex-button>
+        </plex-item>
+    </plex-list>
+</ng-container>
+<ng-container *ngIf="selectedOption === '2'">
+    <plex-title titulo="Opcion 2">
+        <plex-button size="sm" type="warning" label="Toggle Items" (click)="toggleItems()"></plex-button>
+    </plex-title>
+</ng-container>

@@ -4,9 +4,9 @@ import { Component, Input, Renderer2, Output, EventEmitter } from '@angular/core
     selector: 'plex-help',
     template: `
     <div class="toggle-{{ type }}" [ngClass]="{'closed': closed, 'open': !closed}">
-        <plex-button *ngIf="!closed" type="danger" size="sm" icon="close" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
-        <plex-button *ngIf="content && closed && !tituloBoton" type="info" size="sm" [icon]="icon" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
-        <plex-button *ngIf="content && closed && tituloBoton" type="info" size="sm" [label]="tituloBoton" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="!closed" type="danger" size="{{ size }}" icon="close" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="content && closed && !tituloBoton" type="info" size="{{ size }}" title="{{ title }}" [icon]="type === 'info'? 'information-variant' : 'help-circle'" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="content && closed && tituloBoton" type="info" size="{{ size }}" [label]="tituloBoton" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
     </div>
     <div class="card {{ type }}" [ngClass]="{'open': !closed}" *ngIf="type === 'help'" (click)="$event.stopImmediatePropagation();">
         <ng-container *ngIf="!closed">
@@ -35,9 +35,13 @@ export class PlexHelpComponent {
 
     @Input() subtitulo: string;
 
+    @Input() size: 'sm' | 'md' | 'lg' = 'sm';
+
+    @Input() title: string;
+
     @Input() tituloBoton = '';
 
-    @Input() icon = 'help-circle';
+    @Input() icon: 'help-circle' | 'information-variant' = 'help-circle';
 
     @Output() close = new EventEmitter();
 
@@ -69,4 +73,3 @@ export class PlexHelpComponent {
         }
     }
 }
-

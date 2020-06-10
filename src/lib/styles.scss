@@ -12,6 +12,7 @@
 @import "css/mixins/hover";
 @import "css/mixins/buttons";
 @import 'css/mixins/scrollbar';
+@import 'css/mixins/position';
 
 // Core CSS
 @import "node_modules/bootstrap/scss/reboot";
@@ -68,6 +69,7 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import 'css/forms';
 @import 'css/list-group';
 @import 'css/tooltip.scss';
+@import 'css/hint.scss';
 
 // Third party
 @import 'css/toast';
@@ -95,5 +97,6 @@ $mdi-font-path: '~@mdi/font/fonts/';
 @import 'css/plex-help';
 @import 'css/plex-modal';
 @import 'css/plex-detail';
+@import 'css/plex-options';
 @import 'css/plex-visualizador';
-@import 'css/plex-wrapper.scss';
+@import 'css/plex-wrapper';

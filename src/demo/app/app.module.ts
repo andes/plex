@@ -1,7 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { routing, appRoutingProviders } from './app.routes';
 import { AppComponent } from './app.component';
 
@@ -57,6 +58,9 @@ import { DatosBasicosComponent } from './templates/modulos/mpi/main/alta/datos-b
 import { DatosContactoComponent } from './templates/modulos/mpi/main/alta/datos-contacto/datos-contacto.component';
 import { DatosNotasComponent } from './templates/modulos/mpi/main/alta/datos-notas/datos-notas.component';
 import { DatosRelacionesComponent } from './templates/modulos/mpi/main/alta/datos-relaciones/datos-relaciones.component';
+import { NavbarDemoComponent } from './navbar/navbar';
+import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
+import { HelpDemoComponent } from './help/help.component';
 
 @NgModule({
     declarations: [
@@ -64,6 +68,8 @@ import { DatosRelacionesComponent } from './templates/modulos/mpi/main/alta/dato
         BoxDemoComponent,
         TextDemoComponent,
         HomeDemoComponent,
+        HelpDemoComponent,
+        NavbarDemoComponent,
         IntDemoComponent,
         FloatDemoComponent,
         ButtonDemoComponent,
@@ -81,6 +87,7 @@ import { DatosRelacionesComponent } from './templates/modulos/mpi/main/alta/dato
         DropdownDemoComponent,
         WizardDemoComponent,
         DemoIconComponent,
+        TooltipHintDemoComponent,
         TemplateFormComponent,
         TemplateVisualizacionComponent,
         TemplateBusquedaComponent,
@@ -111,7 +118,7 @@ import { DatosRelacionesComponent } from './templates/modulos/mpi/main/alta/dato
         HeaderPacienteComponent
     ],
     imports: [
-        BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         HttpModule,
         PlexModule,

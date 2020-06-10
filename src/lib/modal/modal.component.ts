@@ -1,10 +1,10 @@
-import { Component, Input, HostListener, Output, EventEmitter } from '@angular/core';
+import { Component, Input, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
 
 
 @Component({
     selector: 'plex-modal',
     template: `
-        <div *ngIf="showed" class="plex-modal" (click)="$event.stopPropagation();close();">
+        <div *ngIf="showed" class="plex-modal" (click)="$event.stopPropagation();backdropClick();">
             <div class="plex-modal-content" (click)="$event.stopPropagation();">
                 <header>
                     <div *ngIf="allowClose" class="plex-modal-close" (click)="close();">
@@ -23,12 +23,27 @@ import { Component, Input, HostListener, Output, EventEmitter } from '@angular/c
         </div>
     `,
 })
-export class PlexModalComponent {
+export class PlexModalComponent implements OnInit {
 
     /**
      * Muestra una cruz para cerrar el modal.
      */
     @Input() allowClose = false;
+
+    /**
+     * Habilita cerrar el modal haciendo haciendo click afuera.
+     */
+    @Input() allowBackdropClose = true;
+
+    /**
+     * Habilita cerrar el modal con la tecla esc.
+     */
+    @Input() allowEscClose = true;
+
+    /**
+     * El modal se visualiza abierto al arrancar.
+     */
+    @Input() startOpen = false;
 
     /**
      * Emite un evento cuando se cierra el modal.
@@ -37,6 +52,12 @@ export class PlexModalComponent {
     @Output() closed = new EventEmitter<void>();
 
     showed = false;
+
+    ngOnInit() {
+        if (this.startOpen) {
+            this.showed = true;
+        }
+    }
 
     public show() {
         this.showed = true;
@@ -47,6 +68,12 @@ export class PlexModalComponent {
         this.closed.emit();
     }
 
+    public backdropClick() {
+        if (this.allowBackdropClose) {
+            this.close();
+        }
+    }
+
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
         // Nos aseguramos de no bloquear el teclado si el usuario está escribiendo (isComposing)
@@ -54,7 +81,9 @@ export class PlexModalComponent {
             return false;
         }
         if (event.which === 27) {
-            return this.close();
+            if (this.allowEscClose) {
+                return this.close();
+            }
         }
     }
 }

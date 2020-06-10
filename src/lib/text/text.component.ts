@@ -12,34 +12,34 @@ import { hasRequiredValidator } from '../core/validator.functions';
     template: `
     <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
 
-    <!-- Label -->
-    <label *ngIf="label" class="form-control-label">{{label}}
-      <span *ngIf="control.name && esRequerido" class="requerido"></span>
-    </label>
+        <!-- Label -->
+        <label *ngIf="label" class="form-control-label">{{label}}
+        <span *ngIf="control.name && esRequerido" class="requerido"></span>
+        </label>
 
-    <!-- Simple text field -->
-    <div [hidden]="multiline || html" [ngClass]="{'input-group': prefix || suffix || prefixParent?.children.length > 0}">
+        <!-- Simple text field -->
+        <div [hidden]="multiline || html" [ngClass]="{'input-group': prefix || suffix || prefixParent?.children.length > 0}">
 
-      <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
-      <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
-        <ng-content selector="[prefix]"></ng-content>
-      </span>
+        <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
+        <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
+            <ng-content selector="[prefix]"></ng-content>
+        </span>
 
-      <input #input type="{{password ? 'password' : 'text'}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
-        [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
+        <input #input type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
+            [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
+            <i *ngIf="!readonly && !multiline && !html && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
+        </div>
+
+        <!-- Multiline -->
+        <textarea [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+        (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()"></textarea>
+
+        <!-- HTML Editor -->
+        <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
+
+        <!-- Validation -->
+        <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
     </div>
-    <i *ngIf="!readonly && !multiline && !html && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
-
-    <!-- Multiline -->
-    <textarea [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
-      (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()"></textarea>
-
-    <!-- HTML Editor -->
-    <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
-
-    <!-- Validation -->
-    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
-  </div>
     `,
     providers: [
         // Permite acceder al atributo formControlName/ngModel
@@ -59,13 +59,16 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Public
     public isEmpty = true;
     public quill = {
-        toolbar: [
-            ['bold', 'italic', 'underline'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            [{ size: ['small', false, 'large', 'huge'] }],
-            [{ align: [] }],
-            ['clean'],
-        ]
+        toolbar: {
+            container: [
+                ['bold', 'italic', 'underline'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ size: ['small', false, 'large', 'huge'] }],
+                [{ align: [] }],
+                ['clean'],
+            ],
+            handlers: {}
+        }
     };
 
     @ViewChild('input', { static: true }) private input: ElementRef;
@@ -77,6 +80,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
 
     // Propiedades
+    @Input() type: 'text' | 'password' | 'email' = 'text';
     @Input() label: string;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
     @Input() placeholder: string;
@@ -84,10 +88,17 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() suffix: string;
     @Input() disabled = false;
     @Input() readonly = false;
-    @Input() password = false;
     @Input() multiline = false;
     @Input() html = false;
     @Input() debounce = 0;
+    @Input() qlToolbar: PlexTextToolBar[];
+
+    @Input()
+    set password(value) {
+        if (value) {
+            this.type = 'password';
+        }
+    }
 
     @Input()
     set height(value: number) {
@@ -132,12 +143,18 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     // Inicialización
     ngOnInit() {
+        if (this.html) {
+            this.prepareQuillToolbar();
+        }
     }
 
     ngAfterViewInit() {
         if (this.autoFocus) {
             const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
             this.renderer.invokeElementMethod(element, 'focus');
+        }
+        if (this.html) {
+            this.createToolbarIcons();
         }
     }
 
@@ -216,4 +233,39 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.textarea.nativeElement.style.height = 'auto';
         this.textarea.nativeElement.style.height = this.textarea.nativeElement.scrollHeight + 'px';
     }
+
+
+    private prepareQuillToolbar() {
+        if (this.qlToolbar) {
+            const toolBarItems: string[] = [];
+            const handlers: any = {};
+
+            this.qlToolbar.forEach(item => {
+                toolBarItems.push(item.name);
+                handlers[item.name] = item.handler;
+            });
+
+            this.quill.toolbar.container.push(toolBarItems);
+            this.quill.toolbar.handlers = handlers;
+        }
+    }
+
+    private createToolbarIcons() {
+        if (this.qlToolbar) {
+            const editor = (this.quillEditor as any).quillEditor;
+            const toolbar = editor.getModule('toolbar').container;
+            this.qlToolbar.forEach(item => {
+                const qlItem = toolbar.getElementsByClassName(`ql-${item.name}`);
+                if (qlItem.length > 0) {
+                    qlItem[0].innerHTML = `<i class="mdi mdi-${item.icon || item.name}"></i>`;
+                }
+            });
+        }
+    }
+}
+
+export interface PlexTextToolBar {
+    name: string;
+    icon?: string;
+    handler: () => void;
 }

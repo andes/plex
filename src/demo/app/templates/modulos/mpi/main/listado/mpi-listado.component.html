@@ -17,21 +17,4 @@
         <plex-button type="info" size="sm" icon="eye" (click)="selected(paciente)">
         </plex-button>
     </plex-item>
-
-    <!-- Propuesta para mostrar otros datos preliminares -->
-    <plex-title titulo="Relaciones" size="sm">
-        <plex-button type="success" size="sm" icon="plus"></plex-button>
-        <plex-button type="info" size="sm" icon="eye"></plex-button>
-    </plex-title>
-    <plex-list>
-        <plex-item *ngFor="let paciente of pacientes$ | async" class="">
-            <img src="{{ paciente.foto }}" alt="">
-            <plex-label titulo="{{ paciente.nombre }} {{ paciente.apellido }}" subtitulo="{{ paciente.documento }}">
-            </plex-label>
-            <plex-badge type="info">{{ paciente.relaciones }}
-            </plex-badge>
-            <plex-button type="danger" size="sm" icon="close">
-            </plex-button>
-        </plex-item>
-    </plex-list>
 </plex-list>

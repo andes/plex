@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
+import { PlexTextToolBar } from '../../../lib/text/text.component';
 
 @Component({
     templateUrl: 'text.html',
@@ -14,6 +15,13 @@ export class TextDemoComponent implements OnInit {
         contenido: '<p>Hello <strong>World</strong></p>'
     };
     public prueba = '';
+
+    public qlToolbar: PlexTextToolBar[] = [{
+        name: 'fullscreen',
+        handler: () => {
+            this.fullscreen();
+        }
+    }];
 
     constructor(private plex: Plex) { }
 
@@ -43,7 +51,11 @@ export class TextDemoComponent implements OnInit {
 
     }
 
+    fullscreen() {
+        this.plex.toast('success', 'Fullscreen detected!');
+    }
+
     onChange() {
-        this.plex.info('success', 'Este cartel se demoro un segundo en aparecer después de escribir.');
+        this.plex.toast('success', 'Este cartel se demoro un segundo en aparecer después de escribir.', 'Debounce!');
     }
 }

@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ContentChild } from '@angular/core';
 import { PacienteService } from '../../../service/paciente.service';
 import { Paciente } from '../../../service/paciente';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { PlexOptionsComponent } from '../../../../../../lib/options/options.component';
 
 @Component({
     selector: 'plex-sidebar-detalle',
     templateUrl: './sidebar-detalle.component.html',
 })
 export class SidebarDetalleComponent implements OnInit {
+
+    @ContentChild(PlexOptionsComponent, { static: true }) plexOptions: PlexOptionsComponent;
 
     public listadoPaciente: Paciente[];
     paciente$: Observable<Paciente>;
@@ -27,6 +30,8 @@ export class SidebarDetalleComponent implements OnInit {
             key: '3',
         }
     ];
+    public viewOptions = true;
+    public selectedOption = '1';
 
     constructor(
         private pacienteService: PacienteService,
@@ -75,6 +80,20 @@ export class SidebarDetalleComponent implements OnInit {
         this.router.navigate(['/listado-sidebar', { id: pacienteId, foo: 'foo' }]);
     }
 
+    toggleItems() {
+        if (this.items.length === 2) {
+            this.items.push({ label: 'opcion 3', key: '3' });
+        } else {
+            this.items = this.items.filter(item => item.key !== '3');
+            this.items = [
+                { label: 'otras 1', key: '7' },
+                { label: 'otas 2', key: '8' },
+            ];
+        }
+    }
 
+    onActiveOption(opcion) {
+        this.selectedOption = opcion;
+    }
 }
 

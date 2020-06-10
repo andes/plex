@@ -1,0 +1,105 @@
+<plex-layout main="8">
+    <plex-layout-main>
+
+        <plex-title titulo="plex-help (type ='help')">
+            <plex-button size="sm" type="warning" label="acción sensible"></plex-button>
+            <plex-help type="help" titulo="Ayuda de este panel" size="sm">
+                <div class="ml-4 mb-4" *plHelp>
+                    <label>Organización:</label>
+                    prestacion.solicitud.organizacion.nombre
+                    <label>Fecha:</label>
+                    prestacion.solicitud.fecha | date
+                    <label>Prestación de origen:</label>
+                    prestacion.solicitud.prestacionOrigen
+                    {{ asyncContent | async | json }}
+                </div>
+            </plex-help>
+        </plex-title>
+        <h6>El component e <code>&#706;plex-help&#707;</code> en su tipología 'help' se emplea en aquellas situaciones
+            en
+            las que
+            consideramos necesario expandir información para guiar al usuario sobre una acción u elemento que cuya
+            finalidad no se intuye por si misma.</h6>
+        <plex-title size="sm" titulo="plex-help (size:'sm')" class="mb-4">
+            <plex-help type="help" titulo="size = sm" size="sm">
+                <div class="ml-4 mb-4">
+                    <label>Organización:</label>
+                    prestacion.solicitud.organizacion.nombre
+                </div>
+            </plex-help>
+        </plex-title>
+        <p>plex-help (size:'md')</p>
+        <plex-title size="md" titulo="plex-help (size:'md')" class="mb-4">
+            <plex-help type="help" titulo="size = md" size="md">
+                <div class="ml-4 mb-4">
+                    <label>Organización:</label>
+                    prestacion.solicitud.organizacion.nombre
+                </div>
+            </plex-help>
+        </plex-title>
+        <p>plex-help (size:'lg')</p>
+        <plex-title size="lg" titulo="plex-help (size:'lg')" class="mb-4">
+            <plex-help type="help" titulo="size = lg" size="lg">
+                <div class="ml-4 mb-4">
+                    <label>Organización:</label>
+                    prestacion.solicitud.organizacion.nombre
+                </div>
+            </plex-help>
+        </plex-title>
+        <p>plex-help (size:'sm')</p>
+
+    </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+
+        <plex-title titulo="plex-help (type ='info')">
+            <plex-button size="sm" type="success" label="acción satisfactoria"></plex-button>
+            <plex-help type="info" class="ml-1" titulo="Información sobre este módulo"
+                       subtitulo="A continuación todas las opciones">
+                <ol info class="list-group-flush">
+                    <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li class="list-group-item">Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <i
+                           class="mdi mdi-check"></i> para guardar una plantilla individual</li>
+                </ol>
+            </plex-help>
+        </plex-title>
+        <h6>
+            Se emplea en casos en los que se necesita brindar información complementaria y circunstancial al
+            usuario.
+            <hr>
+            <ul>
+                <li>Es un elemento emergente de carácter informativo.</li><br>
+                <li>Evita incorporar elementos informativos que le restan espacio, jerarquía y visibilidad a otros
+                    de
+                    mayor
+                    relevancia o frecuencia de uso en las interfaces.</li><br>
+                <li>El componente presenta dos tipologías: <b>info</b> y <b>help</b>.</li>
+            </ul>
+        </h6>
+        <plex-title titulo="plex-help con botones" size="sm">
+            <plex-button size="sm" type="danger" label="acción peligrosa"></plex-button>
+            <plex-help type="help" class="ml-1" titulo="Información sobre este módulo"
+                       subtitulo="A continuación todas las opciones">
+                <ol info class="list-group-flush">
+                    <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li class="list-group-item">Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <i
+                           class="mdi mdi-check"></i> para guardar una plantilla individual</li>
+                </ol>
+            </plex-help>
+        </plex-title>
+
+    </plex-layout-sidebar>
+</plex-layout>

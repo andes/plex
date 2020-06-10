@@ -13,7 +13,7 @@ $selectize-color-border: rgba(0, 0, 0, 0.15) !default;
 $selectize-color-highlight: rgba(125,168,208,0.2) !default;
 $selectize-color-input: white !default;
 $selectize-color-input-full: $selectize-color-input !default;
-$selectize-color-disabled: #fafafa !default;
+$selectize-color-disabled: #eceeef !default; 
 $selectize-color-item: #f2f2f2 !default;
 $selectize-color-item-text: $selectize-color-text !default;
 $selectize-color-item-border: #d0d0d0 !default;
@@ -168,6 +168,10 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
       color: $selectize-color-item-active-text;
       border: $selectize-width-item-border solid $selectize-color-item-active-border;
     }
+  }
+
+  &.locked {
+    background-color: $selectize-color-disabled;
   }
 
   .selectize-control.multi &.disabled > div {

@@ -5,21 +5,37 @@ html {
 }
 
 body {
-  height: 100% !important;
-  padding-top: $navbar-height + ($grid-gutter-width-base / 3);
   font-size: $font-size-sm;
 }
 // Main container
 .content {
   margin-left: ($grid-gutter-width-base / 3);
   margin-right: ($grid-gutter-width-base / 2);
-  height: 100%;
+  // height: 100%;
 
   > *:not(router-outlet) {
     display: flex;
     flex-flow: column;
     height: 100%;
   }
+
+  &.nav-top-margin {
+    height: calc(100vh - 55px) !important;
+    margin-top: 55px;
+  }
+  &.nav-top-no-margin {
+    height: calc(100vh - 10px);
+    margin-top: 10px;
+  }
+}
+
+.nav-top {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  height: var(--nav-bar-height);
 }
 
 // Plex Layout
@@ -29,13 +45,11 @@ plex-layout {
   flex-flow: column;
   height: 100%;
   --heading-background-color: #f2f2f2;
-
-  // > plex-layout-sidebar {
-  //   > .row:first-child {
-  //     padding: 0px 15px 0px 10px;
-  //   }
-  // }
-
+ 
+  .mat-checkbox-inner-container {
+    background: white!important;
+  } 
+ 
   // Footer (se ubica fijo abajo de la pantalla)
    > plex-layout-footer,
   > footer {

@@ -7,8 +7,21 @@ context('select', () => {
     });
 
     it('test accordion', () => {
+
         cy.server();
-        cy.route('GET', '**/api/core/tm/paises**').as('paises');
+        cy.route('GET', '**/api/core/tm/paises?nombre=brasil', [{
+            id: 2,
+            nombre: 'Brasil',
+            continente: 'Latinoamerica',
+        }]).as('paisesBrasil');
+
+        cy.route('GET', '**/api/core/tm/paises?nombre=argentina', [{
+            id: 1,
+            nombre: 'Argentina',
+            continente: 'Latinoamerica',
+        }]).as('paisArgentina');
+
+
         cy.eyesCheckWindow('select - main');
 
         cy.plexSelectType('name="select1"', 'Brasil').as('select1');
@@ -18,12 +31,20 @@ context('select', () => {
         cy.get('@select1').validationMessage();
 
         cy.plexSelect('name="selectmultiple"').as('selectMultiple');
-        cy.plexSelectAsync('name="selectmultiple"', 'brasil', '@paises', 0);
-        cy.plexSelectAsync('name="selectmultiple"', 'argentina', '@paises', 0);
+        cy.plexSelectAsync('name="selectmultiple"', 'brasil', '@paisesBrasil', 0);
+        cy.plexSelectAsync('name="selectmultiple"', 'argentina', '@paisArgentina', 0);
 
         cy.get('@selectMultiple').isSelectedLabel('Brasil');
         cy.get('@selectMultiple').isSelectedLabel('Argentina');
-        cy.get('@selectMultiple').clearSelect('57f523e269fe79a5980fc5eb');
+        cy.get('@selectMultiple').clearSelect('2');
+
+        cy.plexSelectType('name="selectmultiple"', '{esc}')
+
+        cy.plexBool('name="soloLectura"', true);
+
+        cy.get('@selectMultiple').clearSelect('1');
+
+
 
         cy.plexSelect('label="Seleccione un país"').clearSelect();
 

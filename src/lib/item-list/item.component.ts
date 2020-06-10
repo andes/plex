@@ -2,41 +2,47 @@ import { map } from 'rxjs/operators';
 import { Component, Input, QueryList, AfterViewInit, ContentChildren, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { PlexIconComponent } from '../icon/icon.component';
 import { PlexBoolComponent } from '../bool/bool.component';
+import { PlexBadgeComponent } from '../badge/badge.component';
+import { PlexButtonComponent } from '../button/button.component';
 
 @Component({
     selector: 'plex-item',
     template: `
-        <div class="item-list"
-             [class.has-icon]="plexIcons?.length > 0 || imgs || svgs"
-             [class.has-checkbox]="plexBools?.length > 0"
-             [class.selected]="selected"
-        >
-            <ng-content select="plex-bool"></ng-content>
-            <ng-content select="img"></ng-content>
-            <ng-content select="plex-icon"></ng-content>
-            <ng-content select="svg"></ng-content>
-
-            <ng-content></ng-content>
-            <div class="botonera">
-                <ng-content select="plex-badge"></ng-content>
-                <ng-content select="plex-button"></ng-content>
-                <ng-content select="plex-dropdown[icon]"></ng-content>
-                <ng-content select="upload-file"></ng-content>
+        <section class="item" [class.selected]="selected">
+            <div class="item-row">
+                <div class="elementos-graficos">
+                    <ng-content select="plex-bool"></ng-content>
+                    <ng-content select="plex-icon"></ng-content>
+                    <ng-content select="img"></ng-content>
+                    <ng-content select="svg"></ng-content>
+                </div>
+                <div class="item-list"
+                    [class.has-icon]="plexIcons?.length > 0 || imgs || svgs"
+                    [class.has-checkbox]="plexBools?.length > 0"
+                    [class.has-botonera]="plexButtons?.length > 0 || plexBadges?.length > 0" >
+                    <ng-content></ng-content>
+                </div>
             </div>
-        </div>
+            <div class="botonera">
+                <div>
+                    <ng-content select="plex-badge"></ng-content>
+                    <ng-content select="plex-button"></ng-content>
+                    <ng-content select="upload-file"></ng-content>
+                </div>
+                <ng-content select="plex-dropdown[icon]"></ng-content>
+            </div>
+        </section>
     `
 })
 export class PlexItemComponent implements AfterViewInit {
     @Input() selected = false;
-
     @ContentChildren(PlexIconComponent, { descendants: false }) plexIcons: QueryList<PlexIconComponent>;
     @ContentChildren(PlexBoolComponent, { descendants: false }) plexBools: QueryList<PlexBoolComponent>;
+    @ContentChildren(PlexBadgeComponent, { descendants: false }) plexBadges: QueryList<PlexBadgeComponent>;
+    @ContentChildren(PlexButtonComponent, { descendants: false }) plexButtons: QueryList<PlexButtonComponent>;
 
     public imgs = false;
     public svgs = false;
-
-    @Input() botonera = true;
-    @Input() badges = true;
 
     hasIcons() {
         return this.plexIcons.length > 0 || this.imgs;
@@ -44,6 +50,10 @@ export class PlexItemComponent implements AfterViewInit {
 
     hasCheckbox() {
         return this.plexBools.length > 0;
+    }
+
+    hasBotonera() {
+        return this.plexButtons.length > 0 || this.plexBadges.length > 0;
     }
 
     ngAfterViewInit() {

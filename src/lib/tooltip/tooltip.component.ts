@@ -4,7 +4,7 @@ import { TooltipContentComponent } from './tooltip-content.component';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
-    selector: '[title]'
+    selector: '[tooltip],[title]'
 })
 // tslint:disable-next-line:directive-class-suffix
 export class TooltipComponent {
@@ -12,7 +12,7 @@ export class TooltipComponent {
     // Properties
     // -------------------------------------------------------------------------
 
-    private tooltip: ComponentRef<TooltipContentComponent>;
+    private tooltipComp: ComponentRef<TooltipContentComponent>;
     private visible: boolean;
 
     // -------------------------------------------------------------------------
@@ -21,7 +21,15 @@ export class TooltipComponent {
 
     // tslint:disable-next-line:no-input-rename
     @Input('title') content: string | TooltipContentComponent;
-    @Input() titlePosition: 'top' | 'bottom' | 'left' | 'right' = 'top';
+    @Input()
+    set tooltip(value: string | TooltipContentComponent) {
+        this.content = value;
+    }
+    @Input() tooltipPosition: 'top' | 'bottom' | 'left' | 'right' = 'top';
+    @Input()
+    set titlePosition(value: 'top' | 'bottom' | 'left' | 'right') {
+        this.tooltipPosition = value;
+    }
     @Input() tooltipDisabled: boolean;
     @Input() tooltipAnimation = false;
 
@@ -49,15 +57,15 @@ export class TooltipComponent {
                 return;
             }
 
-            this.tooltip = this.viewContainerRef.createComponent(factory);
-            this.tooltip.instance.hostElement = this.viewContainerRef.element.nativeElement;
-            this.tooltip.instance.content = this.content as string;
-            this.tooltip.instance.placement = this.titlePosition;
-            this.tooltip.instance.animation = this.tooltipAnimation;
+            this.tooltipComp = this.viewContainerRef.createComponent(factory);
+            this.tooltipComp.instance.hostElement = this.viewContainerRef.element.nativeElement;
+            this.tooltipComp.instance.content = this.content as string;
+            this.tooltipComp.instance.placement = this.tooltipPosition;
+            this.tooltipComp.instance.animation = this.tooltipAnimation;
         } else {
             const tooltip = this.content as TooltipContentComponent;
             tooltip.hostElement = this.viewContainerRef.element.nativeElement;
-            tooltip.placement = this.titlePosition;
+            tooltip.placement = this.tooltipPosition;
             tooltip.animation = this.tooltipAnimation;
             tooltip.show();
         }
@@ -71,8 +79,8 @@ export class TooltipComponent {
         }
 
         this.visible = false;
-        if (this.tooltip) {
-            this.tooltip.destroy();
+        if (this.tooltipComp) {
+            this.tooltipComp.destroy();
         }
 
         if (this.content instanceof TooltipContentComponent) {
