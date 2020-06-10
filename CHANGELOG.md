@@ -1,3 +1,16 @@
+# [6.5.0](https://github.com/andes/plex/compare/v6.4.0...v6.5.0) (2020-06-10)
+
+
+### Bug Fixes
+
+* **plex-help:** z-index menor al menú principal ([#177](https://github.com/andes/plex/issues/177)) ([d7ae8c5](https://github.com/andes/plex/commit/d7ae8c522593fb00bfddcd264725e53cd481470b))
+
+
+### Features
+
+* **plex-help:** se agrega atributo size y title ([#173](https://github.com/andes/plex/issues/173)) ([6bce25e](https://github.com/andes/plex/commit/6bce25e63263759cccc87a46d8d7ef01ba4f75a9))
+* **plex-text:** custom toolbar quill editor ([0725bf1](https://github.com/andes/plex/commit/0725bf12307a3a31d0e065b22c52145018377afa))
+
 # [6.4.0](https://github.com/andes/plex/compare/v6.3.1...v6.4.0) (2020-06-05)
 
 
