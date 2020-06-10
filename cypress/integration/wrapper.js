@@ -15,6 +15,8 @@ context('wrapper', () => {
 
         cy.get('plex-layout-sidebar plex-wrapper').first().plexButtonIcon('chevron-down').click();
 
+        cy.plexText('label="Buscar paciente"', 'TEST')
+
         cy.eyesCheckWindow('plex-wrapper - end');
 
         cy.eyesClose();

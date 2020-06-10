@@ -65,6 +65,13 @@ context('<plex-text>', () => {
 
     });
 
+    it('plex-text extend quill-editor', () => {
+
+        cy.plexTextArea('name="contenido1"').find('.ql-fullscreen').click();
+        cy.toast('success');
+
+    });
+
     it('plex-text multiline', () => {
 
         // Editor texto simple
@@ -80,10 +87,5 @@ context('<plex-text>', () => {
         })
     });
 
-    it.only('plex-text extend quill-editor', () => {
 
-        cy.plexTextArea('name="contenido1"').find('.ql-fullscreen').click();
-        cy.toast('success');
-
-    });
 });
