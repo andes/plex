@@ -1,0 +1,46 @@
+<plex-layout main="8">
+    <plex-layout-main>
+        <plex-title titulo="Titulo principal"></plex-title>
+        <h6>Plex-grid es un envolvente que tiene como objetivo organizar y distribuir elementos en una reticula</h6>
+        <plex-title titulo="Grid aplicado a imagenes" size="sm"></plex-title>
+        <plex-grid size="full">
+            <img *ngFor="let img of img" src="{{ img.url }}" alt="">
+        </plex-grid>
+        <hr class="mt-4">
+        <plex-title titulo="Grid aplicado a cards" size="sm"></plex-title>
+        <plex-grid size="full">
+            <div class="card p-4 d-flex justify-content-center" *ngFor="let dato of datos | slice:1:4">
+                <plex-label size="xl" icon="star" direction="column" titulo="{{ dato.label }}"
+                            subtitulo="{{ dato.valor }}">
+                </plex-label>
+                <hr>
+            </div>
+        </plex-grid>
+    </plex-layout-main>
+
+    <!-- Sidebar -->
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="Titulo principal"></plex-title>
+        <h6>Plex-grid es un envolvente que tiene como objetivo organizar y distribuir elementos en una reticula</h6>
+        <hr>
+        <plex-title titulo="Grid aplicado a labels" size="sm"></plex-title>
+        <plex-grid>
+            <div *ngFor="let dato of datos | slice:1:5">
+                <plex-label size="lg" direction="column" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+                </plex-label>
+            </div>
+        </plex-grid>
+        <plex-title titulo="Grid aplicado a otros elementos" size="sm"></plex-title>
+        <plex-grid>
+            <plex-button size="full" type="success">button</plex-button>
+            <plex-button size="full" type="warning">button</plex-button>
+            <plex-button size="full" type="default">button</plex-button>
+            <plex-button size="full" type="info">button</plex-button>
+        </plex-grid>
+        <hr>
+        <plex-title titulo="Grid aplicado a imagenes" size="sm"></plex-title>
+        <plex-grid>
+            <img *ngFor="let img of img" src="{{ img.url }}" alt="">
+        </plex-grid>
+    </plex-layout-sidebar>
+</plex-layout>
