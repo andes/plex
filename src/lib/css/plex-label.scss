@@ -62,4 +62,21 @@
         text-overflow: ellipsis;
         overflow: hidden;
     }
+
+    &.flex-row {
+
+        // Icono
+        plex-icon > i {
+            margin-right: .5rem;
+        }
+    }
+
+    &.flex-column {
+        text-align: center;
+    }
+}
+
+.plex-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
