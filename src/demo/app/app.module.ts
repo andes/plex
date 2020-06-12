@@ -43,7 +43,6 @@ import { HeaderPacienteComponent } from './header-paciente/header-paciente.compo
 import { ItemDemoComponent } from './item-list/item-list.component';
 import { DetailDemoComponent } from './detail/detail.component';
 import { WrapperDemoComponent } from './wrapper/wrapper.component';
-import { GridDemoComponent } from './grid/grid.component';
 
 // Template
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
@@ -91,7 +90,6 @@ import { NavbarDemoComponent } from './navbar/navbar';
         SidebarDetalleComponent,
         MainListadoComponent,
         ModalTemplateComponent,
-        GridDemoComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
