@@ -19,7 +19,7 @@ import { PlexButtonComponent } from '../button/button.component';
                 <div class="item-list"
                     [class.has-icon]="plexIcons?.length > 0 || imgs || svgs"
                     [class.has-checkbox]="plexBools?.length > 0"
-                    [class.has-botonera]="plexButtons?.length > 0 || plexBadges?.length > 0" >
+                    >
                     <ng-content></ng-content>
                 </div>
             </div>

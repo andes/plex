@@ -31,13 +31,11 @@ plex-list {
         grid-gap: .25rem;
         height: 40px;
         max-height: 40px;
-        width: 100%;
 
         &.sticky {
             position: sticky;
             top: 0;
             z-index: 10;
-            // background-color: var(--heading-background-color)!important;
         }
 
         >* {
@@ -229,11 +227,11 @@ plex-list {
     } 
     
     // Con botonera
-    .item-list.has-botonera {
+    .item-list {
         width: 100%;
     }
     
-    .item-list-heading.has-botonera {
+    .item-list-heading {
         width: 75%;
     }
     
@@ -259,7 +257,7 @@ plex-list {
 
     // Directiva responsive
     plex-list {
-        > div.size-xs {
+        > div.size-sm {
             
             section {
                 .item-list-heading {
@@ -278,7 +276,7 @@ plex-list {
                 div.item-list {
                     margin-top: .5rem;
                     grid-auto-flow: unset;
-                    width: 100%!important;
+                    // width: 100%!important;
                 }
         
                 .botonera {
