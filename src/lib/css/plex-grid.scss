@@ -1,35 +1,115 @@
 plex-grid {	
-    width: auto;	
     display: grid;	
-    grid-template-columns: repeat( auto-fill, minmax(100px, 1fr));	
     grid-gap: .5rem;	
     grid-auto-flow: dense; 	
     flex: 1 20em;	
     align-self: center;	
     margin-top: .5rem;	
-    text-transform: capitalize;	
+    text-transform: capitalize;
 
-    &[size=full] {	
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));	
-        width: 100%;	
-
-        img {	
+    // labels 
+        span {	
+            white-space: wrap;	
+            text-overflow: ellipsis;	
+            overflow: hidden;	
+        }	
+    
+        %baseElemento {
             object-fit: cover;	
-            width: 100%;	
-            max-height: 10rem;	
+            width: 100%;
+            height: fit-content;
+        }
+        
+        &[size=md] {
+            --colSize: 10.5rem;
+            --rowSize: 10.5rem;
+            grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
+                    
+            img {
+                @extend %baseElemento;
+                max-height: var(--rowSize);	
+            }	
+        }
+    
+    // types
+    &[type=fit] {
+        --type: auto-fit;
+    }
+    
+    &[type=fill] {
+        --type: auto-fill;
+    }
+
+    // columnas fijas
+    &[cols="2"] {
+            grid-template-columns: repeat(2, 1fr)!important;	
+    }
+
+    &[cols="3"] {
+            grid-template-columns: repeat(3, 1fr)!important;	
+    }
+
+    &[cols="4"] {
+            grid-template-columns: repeat(4, 1fr)!important;	
+    }
+
+    // sizes
+    //size=sm     
+    &[size=sm] {	
+        --colSize: 3.5rem;
+        --rowSize: 3.5rem;
+        grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
+        
+        img {
+            @extend %baseElemento;
+            max-height: var(--rowSize);	
         }	
     }	
+    
+    //size=lg 
+    &[size=lg] {	
+        --colSize: 14rem;
+        --rowSize: 14rem;
+        grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
 
+            img {	
+                @extend %baseElemento;
+                max-height: var(--rowSize);	
+            }	
+        }	
 
-    span {	
-        white-space: wrap;	
-        text-overflow: ellipsis;	
-        overflow: hidden;	
-    }	
+    // directiva span
+    .grid-column-auto {
+        grid-column: auto;
+    }
+    .grid-column-span-2 {
+        grid-column: span 2;
+    }
+    .grid-column-span-3 {
+        grid-column: span 3;
+    }
+    .grid-column-span-4 {
+        grid-column: span 4;
+    }
+    .grid-column-span-full {
+        grid-column: 100%;
+    }
 
-    img {	
-        object-fit: cover;	
-        width: 100%;	
-        max-height: 4rem;	
-    }	
+    // row span
+    .grid-row-auto {
+        grid-row: auto;
+    }
+    .grid-row-span-2 {
+        grid-row: span 2;
+    }
+    .grid-row-span-3 {
+        grid-row: span 3;
+    }
+    .grid-row-span-4 {
+        grid-row: span 4;
+    }
+    .grid-row-span-full {
+        grid-row: 100%;
+    }
+	
 } 

@@ -3,12 +3,12 @@
         <plex-title titulo="Titulo principal"></plex-title>
         <h6>Plex-grid es un envolvente que tiene como objetivo organizar y distribuir elementos en una reticula</h6>
         <plex-title titulo="Grid aplicado a imagenes" size="sm"></plex-title>
-        <plex-grid size="full">
+        <plex-grid type="fit" size="sm">
             <img *ngFor="let img of img" src="{{ img.url }}" alt="">
         </plex-grid>
         <hr class="mt-4">
         <plex-title titulo="Grid aplicado a cards" size="sm"></plex-title>
-        <plex-grid size="full">
+        <plex-grid type="fill" size="md" cols="2">
             <div class="card p-4 d-flex justify-content-center" *ngFor="let dato of datos | slice:1:4">
                 <plex-label size="xl" icon="star" direction="column" titulo="{{ dato.label }}"
                             subtitulo="{{ dato.valor }}">
@@ -39,8 +39,14 @@
         </plex-grid>
         <hr>
         <plex-title titulo="Grid aplicado a imagenes" size="sm"></plex-title>
-        <plex-grid>
-            <img *ngFor="let img of img" src="{{ img.url }}" alt="">
+        <plex-grid type="fill" size="sm">
+            <img span=2
+                 src="https://images.unsplash.com/photo-1560582861-45078880e48e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                 alt="">
+            <img src="https://images.unsplash.com/photo-1560582861-45078880e48e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                 alt="">
+            <img src="https://images.unsplash.com/photo-1560582861-45078880e48e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                 alt="">
         </plex-grid>
     </plex-layout-sidebar>
 </plex-layout>

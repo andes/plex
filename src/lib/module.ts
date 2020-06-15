@@ -55,6 +55,7 @@ import { GrowDirective } from './directives/grow.directive';
 import { JustifyDirective } from './directives/justify.directive';
 import { PreviewDirective } from './visualizador/preview.directive';
 import { ResponsiveDirective } from './directives/responsive.directive';
+import { SpanDirective } from './directives/span.directive';
 
 // Third party
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -109,6 +110,7 @@ const MODULES = [
     JustifyDirective,
     ResponsiveDirective,
     GrowDirective,
+    SpanDirective,
     PlexHelpComponent,
     PlexModalComponent,
     PlexModalTitleComponent,
