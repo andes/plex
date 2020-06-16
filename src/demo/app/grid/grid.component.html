@@ -66,6 +66,14 @@
             <img *ngFor="let img of img | slice:0:4" src="{{ img.url }}" alt="">
         </plex-grid>
         <hr>
+        <plex-title titulo="plex-grid utilizado con labels" size="sm"></plex-title>
+        <plex-grid type="fit" size="sm">
+            <div *ngFor="let dato of datos | slice:0:4">
+                <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+                </plex-label>
+            </div>
+        </plex-grid>
+        <hr>
         <plex-title titulo="Directiva span = '2' | '3' | '4'" size="sm"></plex-title>
         <h6>Es aplicable a los elementos que integran el plex-grid. El valor asignado determina la cantidad de columnas
             que ocupa el elemento.</h6>

@@ -6,6 +6,7 @@ plex-grid {
     align-self: center;	
     margin-top: .5rem;	
     text-transform: capitalize;
+    grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
 
     // labels 
         span {	
@@ -18,6 +19,7 @@ plex-grid {
             object-fit: cover;	
             width: 100%;
             height: fit-content;
+            max-height: var(--rowSize);	
         }
     
     // types
@@ -39,7 +41,7 @@ plex-grid {
     }
 
     &[cols="4"] {
-            grid-template-columns: repeat(4, 1fr)!important;	
+            grid-template-columns: repeat(4, 1fr)!important;
     }
 
     // sizes
@@ -47,22 +49,18 @@ plex-grid {
     &[size=sm] {	
         --colSize: 3.5rem;
         --rowSize: 3.5rem;
-        grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
         
         img {
             @extend %baseElemento;
-            max-height: var(--rowSize);	
         }	
     }	
             
     &[size=md] {
         --colSize: 7rem;
         --rowSize: 7rem;
-        grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
                 
         img {
             @extend %baseElemento;
-            max-height: var(--rowSize);	
         }	
     }
 
@@ -70,11 +68,9 @@ plex-grid {
     &[size=lg] {	
         --colSize: 14rem;
         --rowSize: 14rem;
-        grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
 
             img {	
                 @extend %baseElemento;
-                max-height: var(--rowSize);	
             }	
         }	
 
