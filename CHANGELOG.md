@@ -1,3 +1,10 @@
+## [6.6.1](https://github.com/andes/plex/compare/v6.6.0...v6.6.1) (2020-06-16)
+
+
+### Bug Fixes
+
+* **tooltip:** display flex para evitar pesada herencia de display ([4a493f0](https://github.com/andes/plex/commit/4a493f045b469a1683498bfd48b31bb7293c8968))
+
 # [6.6.0](https://github.com/andes/plex/compare/v6.5.0...v6.6.0) (2020-06-12)
 
 
