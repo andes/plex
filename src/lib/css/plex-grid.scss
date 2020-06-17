@@ -23,11 +23,11 @@ plex-grid {
         }
     
     // types
-    &[type=fit] {
+    &[type=full] {
         --type: auto-fit;
     }
     
-    &[type=fill] {
+    &[type=auto] {
         --type: auto-fill;
     }
 
@@ -89,23 +89,5 @@ plex-grid {
     }
     .grid-column-span-full {
         grid-column: 100%;
-    }
-
-    // row span
-    .grid-row-auto {
-        grid-row: auto;
-    }
-    .grid-row-span-2 {
-        grid-row: span 2;
-    }
-    .grid-row-span-3 {
-        grid-row: span 3;
-    }
-    .grid-row-span-4 {
-        grid-row: span 4;
-    }
-    .grid-row-span-full {
-        grid-row: 100%;
-    }
-	
+    }	
 } 
