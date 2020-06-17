@@ -1,6 +1,8 @@
 <section class="mt-4">
     <!-- Desacoplar en componente -->
-    <plex-title titulo="datos básicos" size="sm" class="mt-2"></plex-title>
+    <plex-title titulo="datos básicos" size="sm" class="mt-2">
+        <plex-bool type="slide" label="Sin DNI argentino"></plex-bool>
+    </plex-title>
     <plex-wrapper>
         <plex-text label="Ingrese dni" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8" maxlength="8"
                    [debounce]="1000" (change)="onChange()"></plex-text>
@@ -16,7 +18,6 @@
         <plex-select [(ngModel)]="modelo1.select" [data]="opciones" label-field="nombre"
                      label="Seleccione estado civil">
         </plex-select>
-
     </plex-wrapper>
     <plex-title titulo="identidad autopercibida" size="sm" class="mt-2"></plex-title>
     <plex-wrapper>
@@ -27,4 +28,5 @@
                      label="Seleccione género">
         </plex-select>
     </plex-wrapper>
+    <plex-bool type="checkbox" label="Considero que los datos son incorrectos y quiero reportar el error"></plex-bool>
 </section>
