@@ -1,3 +1,12 @@
+# [6.7.0](https://github.com/andes/plex/compare/v6.6.1...v6.7.0) (2020-06-19)
+
+
+### Features
+
+* **plex-grid:** componente para ordenamiento de elementos en retícula ([#184](https://github.com/andes/plex/issues/184)) ([7708037](https://github.com/andes/plex/commit/7708037e046b5cca58619765bfc4004feea94127))
+* **plex-label:** iconos y tamaños ([#180](https://github.com/andes/plex/issues/180)) ([99d91b7](https://github.com/andes/plex/commit/99d91b7c39b0279f6b726ba08e305b148ceadf0c))
+* **plex-modal:** atributos size ([#186](https://github.com/andes/plex/issues/186)) ([b8e5f36](https://github.com/andes/plex/commit/b8e5f36b6570c1c2d2dd4414b932446668d8892c))
+
 ## [6.6.1](https://github.com/andes/plex/compare/v6.6.0...v6.6.1) (2020-06-16)
 
 
