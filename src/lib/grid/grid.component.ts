@@ -10,6 +10,16 @@ import { PlexLabelComponent } from '../label/label.component';
 
 export class PlexGridComponent implements AfterViewChecked {
 
+    /**
+     * Propiedades desde CSS
+     *
+     * type= auto|fill
+     * size= sm|md|lg
+     * cols= 2|3|4
+     * span= 2|3|4
+     *
+     */
+
     @ContentChildren(PlexLabelComponent) plexLabels: QueryList<PlexLabelComponent>;
     @ContentChildren(PlexLabelComponent, { read: ElementRef }) plexLabelsElement: QueryList<ElementRef>;
 
