@@ -1,0 +1,81 @@
+plex-grid {	
+    display: grid;	
+    grid-gap: .5rem;	
+    grid-auto-flow: dense; 	
+    flex: 1 20em;	
+    align-self: center;	
+    margin-top: .5rem;	
+    text-transform: capitalize;
+    grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
+
+    // labels 
+    span {	
+        white-space: wrap;	
+        text-overflow: ellipsis;	
+        overflow: hidden;	
+    }	
+
+    img {
+        object-fit: cover;	
+        width: 100%;
+        height: fit-content;
+        max-height: var(--rowSize);	
+    }
+    
+    // types
+    &[type=full] {
+        --type: auto-fit;
+    }
+    
+    &[type=auto] {
+        --type: auto-fill;
+    }
+
+    // columnas fijas
+    &[cols="2"] {
+            grid-template-columns: repeat(2, 1fr)!important;	
+    }
+
+    &[cols="3"] {
+            grid-template-columns: repeat(3, 1fr)!important;	
+    }
+
+    &[cols="4"] {
+            grid-template-columns: repeat(4, 1fr)!important;
+    }
+
+    // sizes
+    //size=sm     
+    &[size=sm] {	
+        --colSize: 3.5rem;
+        --rowSize: 3.5rem;
+    }	
+            
+    &[size=md] {
+        --colSize: 7rem;
+        --rowSize: 7rem;
+    }
+
+    //size=lg 
+    &[size=lg] {	
+        --colSize: 14rem;
+        --rowSize: 14rem;
+    }	
+
+    // directiva span
+    .grid-column-auto {
+        grid-column: auto;
+    }
+    .grid-column-span-2 {
+        grid-column: span 2;
+    }
+    .grid-column-span-3 {
+        grid-column: span 3;
+    }
+    .grid-column-span-4 {
+        grid-column: span 4;
+    }
+    .grid-column-span-full {
+        grid-column: 100%;
+    }	
+} 

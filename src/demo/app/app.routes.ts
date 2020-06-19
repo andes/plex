@@ -21,6 +21,8 @@ import { PhoneDemoComponent } from './phone/phone.component';
 import { FontsDemoComponent } from './fonts/fonts.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
+import { WrapperDemoComponent } from './wrapper/wrapper.component.';
+import { GridDemoComponent } from './grid/grid.component';
 import { TemplateFormComponent } from './templates/template-form';
 import { TemplateVisualizacionComponent } from './templates/template-visualizacion';
 import { TemplateBusquedaComponent } from './templates/template-busqueda';
@@ -29,7 +31,6 @@ import { ItemDemoComponent } from './item-list/item-list.component';
 import { DetailDemoComponent } from './detail/detail.component';
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
 import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
-import { WrapperDemoComponent } from './wrapper/wrapper.component.';
 import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
 
@@ -41,7 +42,6 @@ const appRoutes: Routes = [
     { path: 'datetime', component: DateTimeDemoComponent },
     { path: 'help', component: HelpDemoComponent },
     { path: 'fonts', component: FontsDemoComponent },
-    { path: 'wrapper', component: WrapperDemoComponent },
     { path: 'bool', component: BoolDemoComponent },
     { path: 'radio', component: RadioDemoComponent },
     { path: 'int', component: IntDemoComponent },
@@ -57,6 +57,8 @@ const appRoutes: Routes = [
     { path: 'dropdown', component: DropdownDemoComponent },
     { path: 'tooltip-hint', component: TooltipHintDemoComponent },
     { path: 'wizard', component: WizardDemoComponent },
+    { path: 'wrapper', component: WrapperDemoComponent },
+    { path: 'grid', component: GridDemoComponent },
     { path: 'templates/form', component: TemplateFormComponent },
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },
     { path: 'templates/visualizacion', component: TemplateVisualizacionComponent },
