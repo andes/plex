@@ -1,3 +1,24 @@
+## [6.6.1](https://github.com/andes/plex/compare/v6.6.0...v6.6.1) (2020-06-16)
+
+
+### Bug Fixes
+
+* **tooltip:** display flex para evitar pesada herencia de display ([4a493f0](https://github.com/andes/plex/commit/4a493f045b469a1683498bfd48b31bb7293c8968))
+
+# [6.6.0](https://github.com/andes/plex/compare/v6.5.0...v6.6.0) (2020-06-12)
+
+
+### Bug Fixes
+
+* **plex-list:** ajusta heading con items sin acciones ([#178](https://github.com/andes/plex/issues/178)) ([1edf9b7](https://github.com/andes/plex/commit/1edf9b7bb427eb80a6b8bf6337155c3699beec88))
+* **plex-text:** permite setear unidades de altura ([600bb77](https://github.com/andes/plex/commit/600bb77661ce931bf43edb2599694ace1215142a))
+
+
+### Features
+
+* **navbar:**  desplegar menu con enter ([da06fd7](https://github.com/andes/plex/commit/da06fd7f20bd5d44cd616cba67b6ab30d5863656))
+* **plex-layout:** se settea scrollbar en overlay ([#170](https://github.com/andes/plex/issues/170)) ([8cdb92a](https://github.com/andes/plex/commit/8cdb92aa866198aec57ad1b2f7fa36bc4a5249a3))
+
 # [6.5.0](https://github.com/andes/plex/compare/v6.4.0...v6.5.0) (2020-06-10)
 
 

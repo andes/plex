@@ -15,10 +15,10 @@ plex-box > DIV {
 
     & > .plex-box-content {
         clear: both;
-        overflow-y: auto;
+        overflow-y: overlay;
         overflow-x: hidden; // expandir a todo el alto del contenedor
         flex: 1;
-        padding-right: 10px; // Distancia desde el scrollback
+        padding-right: 15px; // Distancia desde el scrollback
         height: 0;
         // Fix momentaneo
         .plex-box-content {

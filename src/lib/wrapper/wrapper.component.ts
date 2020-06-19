@@ -6,7 +6,7 @@ import { Plex } from '../core/service';
     template: `
     <section class="hidden" [class.desplegado]="desplegado" responsive>
         <plex-button class="btn-toogle" type="info" size="sm" *ngIf="hasCollapse"
-                     [icon]="!desplegado ? 'chevron-down' : 'chevron-up'" (click)="toogle()">
+            [icon]="!desplegado ? 'chevron-down' : 'chevron-up'" (click)="toogle()">
         </plex-button>
         <ng-content></ng-content>
         <ng-content select="[collapse]"></ng-content>

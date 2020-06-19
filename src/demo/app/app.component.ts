@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
             { label: 'Tooltip & Hint', icon: 'tooltip', route: '/tooltip-hint' },
             { label: 'Wizard', icon: 'auto-fix', route: '/wizard' },
             { label: 'Wrapper', icon: 'view-quilt', route: '/wrapper' },
+            { label: 'Grid', icon: 'view-grid', route: '/grid' },
         ];
         this.plex.updateMenu(menu);
         this.plex.updateAppStatus({ API: 'OK' });

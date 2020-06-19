@@ -49,7 +49,7 @@ import { Plex } from './../core/service';
                                 </div>
                             </div>
                             <!--Menu-->
-                            <div role="button" *ngIf="plex.menu && plex.menu.length" class="action dropdown" tabindex="1" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();">
+                            <div role="button" *ngIf="plex.menu && plex.menu.length" class="action dropdown" tabindex="1" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();" (keyup)="onMenuKeyup($event)">
                                 <i class="mdi mdi-menu"></i>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li *ngFor="let item of plex.menu; let i = index">
@@ -158,6 +158,12 @@ export class PlexAppComponent implements OnInit {
             if (this.unlisten) {
                 this.unlisten();
             }
+        }
+    }
+
+    onMenuKeyup($event) {
+        if ($event.keyCode === 32 || $event.keyCode === 13) {
+            this.toggleMenu();
         }
     }
 }

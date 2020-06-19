@@ -47,6 +47,7 @@ import { PlexDetailComponent } from './detail/detail.component';
 import { PlexOptionsComponent } from './options/options.component';
 import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
 import { PlexWrapperComponent } from './wrapper/wrapper.component';
+import { PlexGridComponent } from './grid/grid.component';
 
 // Directivas
 import { PlexWizardDirective } from './wizard/wizard.directive';
@@ -54,6 +55,7 @@ import { GrowDirective } from './directives/grow.directive';
 import { JustifyDirective } from './directives/justify.directive';
 import { PreviewDirective } from './visualizador/preview.directive';
 import { ResponsiveDirective } from './directives/responsive.directive';
+import { SpanDirective } from './directives/span.directive';
 
 // Third party
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -108,6 +110,7 @@ const MODULES = [
     JustifyDirective,
     ResponsiveDirective,
     GrowDirective,
+    SpanDirective,
     PlexHelpComponent,
     PlexModalComponent,
     PlexModalTitleComponent,
@@ -118,6 +121,7 @@ const MODULES = [
     PreviewDirective,
     NavItemComponent,
     PlexWrapperComponent,
+    PlexGridComponent,
     HintDirective,
     HelpDirective
     // MatTooltip
