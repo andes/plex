@@ -25,7 +25,6 @@ import { PlexLabelComponent } from '../label/label.component';
             </ng-container>
             <ng-content select="plex-label"></ng-content>
         </section>
-
     `,
 })
 

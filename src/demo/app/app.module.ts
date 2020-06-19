@@ -29,6 +29,7 @@ import { AccordionDemoComponent } from './accordion/accordion.component';
 import { SelectDemoComponent } from './select/select.component';
 import { DateTimeDemoComponent } from './datetime/datetime.component';
 import { ModalDemoComponent } from './modal/modal.component';
+import { LabelDemoComponent } from './label/label.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
@@ -42,7 +43,7 @@ import { FechaPipe } from './templates/fecha.pipe';
 import { HeaderPacienteComponent } from './header-paciente/header-paciente.component';
 import { ItemDemoComponent } from './item-list/item-list.component';
 import { DetailDemoComponent } from './detail/detail.component';
-import { WrapperDemoComponent } from './wrapper/wrapper.component.';
+import { WrapperDemoComponent } from './wrapper/wrapper.component';
 import { GridDemoComponent } from './grid/grid.component';
 
 // Template
@@ -74,6 +75,7 @@ import { HelpDemoComponent } from './help/help.component';
         SelectDemoComponent,
         DateTimeDemoComponent,
         ModalDemoComponent,
+        LabelDemoComponent,
         LoaderDemoComponent,
         RibbonDemoComponent,
         PhoneDemoComponent,

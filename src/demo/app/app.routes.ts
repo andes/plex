@@ -15,13 +15,14 @@ import { TabsDemoComponent } from './tabs/tabs.component';
 import { AccordionDemoComponent } from './accordion/accordion.component';
 import { SelectDemoComponent } from './select/select.component';
 import { ModalDemoComponent } from './modal/modal.component';
+import { LabelDemoComponent } from './label/label.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { FontsDemoComponent } from './fonts/fonts.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
-import { WrapperDemoComponent } from './wrapper/wrapper.component.';
+import { WrapperDemoComponent } from './wrapper/wrapper.component';
 import { GridDemoComponent } from './grid/grid.component';
 import { TemplateFormComponent } from './templates/template-form';
 import { TemplateVisualizacionComponent } from './templates/template-visualizacion';
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
     { path: 'accordion', component: AccordionDemoComponent },
     { path: 'modal', component: ModalDemoComponent },
     { path: 'select', component: SelectDemoComponent },
+    { path: 'label', component: LabelDemoComponent },
     { path: 'loader', component: LoaderDemoComponent },
     { path: 'ribbon', component: RibbonDemoComponent },
     { path: 'phone', component: PhoneDemoComponent },
