@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
             { label: 'Item List', icon: 'format-list-checks', route: '/item' },
             { label: 'Label', icon: 'account-circle', route: '/label' },
             { label: 'Loader', icon: 'dots-horizontal', route: '/loader' },
+            { label: 'Swal modal', icon: 'application', route: '/swal-modal' },
             { label: 'Modal', icon: 'application', route: '/modal' },
             { label: 'Nav bar', icon: 'page-layout-header', route: '/navbar' },
             { label: 'Phone', icon: 'phone', route: '/phone' },

@@ -28,8 +28,8 @@ import { TabsDemoComponent } from './tabs/tabs.component';
 import { AccordionDemoComponent } from './accordion/accordion.component';
 import { SelectDemoComponent } from './select/select.component';
 import { DateTimeDemoComponent } from './datetime/datetime.component';
-import { ModalDemoComponent } from './modal/modal.component';
 import { LabelDemoComponent } from './label/label.component';
+import { SwalModalDemoComponent } from './swal-modal/swal-modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
@@ -74,8 +74,9 @@ import { HelpDemoComponent } from './help/help.component';
         RadioDemoComponent,
         SelectDemoComponent,
         DateTimeDemoComponent,
-        ModalDemoComponent,
         LabelDemoComponent,
+        SwalModalDemoComponent,
+        ModalTemplateComponent,
         LoaderDemoComponent,
         RibbonDemoComponent,
         PhoneDemoComponent,

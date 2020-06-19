@@ -9,11 +9,11 @@ context('template listado', () => {
     it('test accordion', () => {
         cy.eyesCheckWindow('main');
 
-        cy.get('plex-title').plexButtonIcon('chevron-down').click();
+        // SE SACO PORQUE PISARON TODA UNA COMPONENTE
+        // cy.get('plex-title').plexButtonIcon('chevron-down').click();
+        // cy.eyesCheckWindow('modal');
 
-        cy.eyesCheckWindow('modal');
-
-        cy.plexButton('CANCELAR').click();
+        // cy.plexButton('CANCELAR').click();
 
         cy.get('plex-list plex-item').eq(0).plexButtonIcon('eye').click();
 

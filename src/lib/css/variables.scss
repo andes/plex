@@ -8,6 +8,17 @@ $light-grey: #f9f9f9;
 $dark-grey: #999999;
 $light-blue: #edf8fd;
 
+// Overwrite bootstrap text
+$text-muted: $dark-grey;
+$brand-primary: $blue;
+$brand-success: $green;
+$brand-info: $blue;
+$brand-warning: $orange;
+$brand-danger: $red;
+// Font color
+$gray-dark: $dark-grey;
+
+
 :root {
     --nav-bar-color: #{$blue};
     --nav-bar-height: 46px;

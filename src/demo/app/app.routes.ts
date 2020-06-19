@@ -14,8 +14,8 @@ import { ButtonDemoComponent } from './button/button.component';
 import { TabsDemoComponent } from './tabs/tabs.component';
 import { AccordionDemoComponent } from './accordion/accordion.component';
 import { SelectDemoComponent } from './select/select.component';
-import { ModalDemoComponent } from './modal/modal.component';
 import { LabelDemoComponent } from './label/label.component';
+import { SwalModalDemoComponent } from './swal-modal/swal-modal.component';
 import { LoaderDemoComponent } from './loader/loader.component';
 import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
@@ -34,6 +34,7 @@ import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sid
 import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
 import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
+import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     { path: 'button-badge', component: ButtonDemoComponent },
     { path: 'tabs', component: TabsDemoComponent },
     { path: 'accordion', component: AccordionDemoComponent },
-    { path: 'modal', component: ModalDemoComponent },
+    { path: 'swal-modal', component: SwalModalDemoComponent },
+    { path: 'modal', component: ModalTemplateComponent },
     { path: 'select', component: SelectDemoComponent },
     { path: 'label', component: LabelDemoComponent },
     { path: 'loader', component: LoaderDemoComponent },

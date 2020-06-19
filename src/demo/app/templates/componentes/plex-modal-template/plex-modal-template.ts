@@ -1,4 +1,4 @@
-import { Component, Output, ViewChild, Input, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { PlexModalComponent } from '../../../../../lib/modal/modal.component';
 
 @Component({
@@ -8,8 +8,6 @@ import { PlexModalComponent } from '../../../../../lib/modal/modal.component';
 
 export class ModalTemplateComponent {
 
-    @ViewChild('modal', { static: true }) modal: PlexModalComponent;
-
     @Output() motivoAccesoHuds = new EventEmitter<any>();
 
     public motivosAccesoHuds = [
@@ -18,8 +16,21 @@ export class ModalTemplateComponent {
         { id: 'administrativo', label: 'Procesos Administrativos' },
         { id: 'continuidad', label: 'Intervención en el proceso de cuidado del paciente' }
     ];
-
+    public contenido = '';
     public motivoSelected = null;
+
+    @ViewChildren('modal') modalRefs: QueryList<PlexModalComponent>;
+
+    openModal(index) {
+        this.modalRefs.find((x, i) => i === index).show();
+    }
+
+    closeModal(index, formulario?) {
+        this.modalRefs.find((x, i) => i === index).close();
+        if (formulario) {
+            formulario.reset();
+        }
+    }
 
     motivoSelect() {
         return this.motivoSelected === null;

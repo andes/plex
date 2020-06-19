@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
 
 @Component({
-    templateUrl: 'modal.html'
+    templateUrl: 'swal-modal.html'
 })
-export class ModalDemoComponent {
+export class SwalModalDemoComponent {
     public alertText = 'Se ha detectado un error en la base de datos';
     public alertTimeout = 0;
     public toastText = 'Esta es una rica tostada';
