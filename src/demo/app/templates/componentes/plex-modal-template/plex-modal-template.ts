@@ -1,13 +1,12 @@
 import { Component, Output, EventEmitter, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { PlexModalComponent } from '../../../../../lib/modal/modal.component';
-import { NgModel, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'plex-modal-template',
     templateUrl: 'plex-modal-template.html'
 })
 
-export class ModalTemplateComponent implements AfterViewInit {
+export class ModalTemplateComponent {
 
     @Output() motivoAccesoHuds = new EventEmitter<any>();
 
@@ -17,7 +16,7 @@ export class ModalTemplateComponent implements AfterViewInit {
         { id: 'administrativo', label: 'Procesos Administrativos' },
         { id: 'continuidad', label: 'Intervención en el proceso de cuidado del paciente' }
     ];
-
+    public contenido = '';
     public motivoSelected = null;
 
     @ViewChildren('modal') modalRefs: QueryList<PlexModalComponent>;

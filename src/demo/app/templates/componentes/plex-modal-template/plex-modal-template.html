@@ -149,24 +149,11 @@
         </plex-modal>
 
         <plex-modal size="lg" #modal [startOpen]="false" (closed)="notificarAccion(false)">
-            <plex-icon name="alert-circle" type="info"></plex-icon>
             <plex-modal-title type="info">Modal 80% ancho</plex-modal-title>
-            <plex-modal-subtitle type="info">Puede contener múltiples columnas</plex-modal-subtitle>
             <main>
-                <div class="row">
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                    <div class="col-md-1 col-6">Columna</div>
-                </div>
+                <plex-text label="Escriba el informe" [(ngModel)]="contenido" name="contenido2" [html]="true"
+                           [height]="'50vh'" [readonly]="false" class="w-100">
+                </plex-text>
             </main>
             <plex-button modal left type="danger" (click)="closeModal(3)">
                 CANCELAR
