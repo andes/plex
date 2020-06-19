@@ -5,6 +5,8 @@ import { Component, Input } from '@angular/core';
     template: `
         <div class="plex-label {{ size }} d-flex flex-{{direction}}" [ngClass]="{ 'align-items-center': direction === 'column' }">
             <plex-icon *ngIf="icon" name="{{icon}}" class="text-{{ type }}"></plex-icon>
+            <ng-content select="plex-icon"></ng-content>
+
             <div class="d-flex flex-column" [ngClass]="{ 'align-items-center mt-2': direction === 'column' }">
                 <span *ngIf="titulo" class="text-{{ type }}" [ngClass]="{'font-weight-bold': tituloBold}">{{ titulo }}</span>
                 <small *ngIf="titulo && subtitulo">{{ subtitulo }}</small>

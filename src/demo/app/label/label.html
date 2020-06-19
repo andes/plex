@@ -1,4 +1,4 @@
-<plex-layout main=8>
+<plex-layout main=6>
 
         <plex-layout-main>
                 <plex-title titulo="Usos y atributos"></plex-title>
@@ -17,6 +17,18 @@
                         <div *ngFor="let dato of datos | slice:1:5">
                                 <plex-label type="{{ dato.type }}" direction="column" icon="account" size="xl"
                                             titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+                                </plex-label>
+                        </div>
+                        <div>
+                                <plex-label type="success" direction="column" size="xl" titulo="Prueba icono"
+                                            subtitulo="Desacoplado">
+                                        <plex-icon type="success" name="account"></plex-icon>
+                                </plex-label>
+                        </div>
+                        <div>
+                                <plex-label type="success" direction="column" size="xl">
+                                        <plex-icon type="success" name="account"></plex-icon>
+                                        Titulo aparte
                                 </plex-label>
                         </div>
                 </section>
