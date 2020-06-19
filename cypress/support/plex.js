@@ -264,6 +264,21 @@ Cypress.Commands.add('plexDropdown', { prevSubject: 'optional' }, (subject, labe
     return element;
 });
 
+Cypress.Commands.add('plexRadio', { prevSubject: 'optional' }, (subject, label, option) => {
+    let element;
+    if (subject) {
+        element = cy.wrap(subject).find(`plex-radio[${label}] mat-radio-button`);
+    } else {
+        element = cy.get(`plex-radio[${label}] mat-radio-button`);
+    }
+    if (option !== undefined && option !== null) {
+
+        element.eq(option).click();
+
+    }
+    return element;
+});
+
 Cypress.Commands.add('validationMessage', { prevSubject: true }, (subject, text) => {
     text = text || 'Valor requerido';
     return cy.wrap(subject).find('div[class="form-control-feedback"]').should('contain', text);
