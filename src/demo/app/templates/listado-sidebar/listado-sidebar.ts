@@ -42,6 +42,7 @@ export class ListadoSidebarComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+
         this.pacientes$ = this.route.paramMap.pipe(
             switchMap(params => {
                 this.selectedId = +params.get('id');
