@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
     template: `<i class="{{prefix}} {{prefix}}-{{name}} text-{{type}} {{ cssSize }}"></i> `,
 })
 export class PlexIconComponent {
-    @Input() prefix = 'mdi';
+    @Input() prefix = 'adi';
     @Input() name: string;
     @Input() type: 'light' | 'dark' | 'success' | 'info' | 'warning' | 'danger' | 'default' = 'light';
     // Usar números con mdi, valores string con otro prefix
@@ -15,11 +15,8 @@ export class PlexIconComponent {
 
     }
 
-    get cssSize() {
-        if (this.size) {
-            return `${this.prefix}-${this.size}px`;
-        }
-        return '';
+    get cssSize(): string {
+        return `${this.prefix === 'mdi' ? `${this.prefix}-${this.size}px` : this.size}`;
     }
 
 }
