@@ -46,7 +46,7 @@ plex-wrapper  {
         margin-right: 1rem;
     }
 
-    plex-select, plex-phone, plex-text, plex-float {
+    plex-int, plex-select, plex-phone, plex-text, plex-float {
         @include baseInputs;
         flex: 1 0 190px;
     }
@@ -80,7 +80,6 @@ plex-wrapper  {
     }
 
     // Componentes de ancho variable
-    
     @media screen and (max-width: 768px) {
         // Para que los elementos con directiva 'columns' no restringan la grilla
         plex-datetime, plex-phone, plex-text, plex-float {
@@ -89,27 +88,27 @@ plex-wrapper  {
     }
     
     // Directiva Columns
-    .grid-columns-auto {
+    .grow-auto {
         flex: auto;
     }
 
-    .grid-columns-span-1 {
+    .grow-1 {
         flex-grow: 1;
     }
 
-    .grid-columns-span-2 {
+    .grow-2 {
         flex-grow: 2;
     }
 
-    .grid-columns-span-3 {
+    .grow-3 {
         flex-grow: 3;
     }
 
-    .grid-columns-span-4 {
+    .grow-4 {
         flex-grow: 4;
     }
 
-    .grid-columns-full {
+    .grow-full {
         flex-basis: 100%;
     }
 }
