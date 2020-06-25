@@ -19,6 +19,7 @@ export class MpiDetalleComponent implements OnInit {
     }
 
     public listadoPaciente: Paciente[];
+    pacientes$: Observable<Paciente[]>;
     paciente$: Observable<Paciente>;
     public items = [
         {
@@ -70,6 +71,7 @@ export class MpiDetalleComponent implements OnInit {
     ];
 
     ngOnInit() {
+        this.pacientes$ = this.pacienteService.getPacientes();
 
         this.paciente$ = this.route.paramMap.pipe(
             switchMap((params: ParamMap) =>
@@ -79,9 +81,6 @@ export class MpiDetalleComponent implements OnInit {
 
     gotoPacientes(paciente: Paciente) {
         const pacienteId = paciente ? paciente.id : null;
-        this.router.navigate(['/listado-sidebar', { id: pacienteId, foo: 'foo' }]);
+        this.router.navigate(['/listado-sidebar', { id: pacienteId }]);
     }
-
-
 }
-

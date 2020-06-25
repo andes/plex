@@ -1,4 +1,4 @@
-<plex-layout main="8">
+<plex-layout main="10">
     <plex-layout-main>
         <header>
             <plex-title size="lg" titulo="Alta de pacientes">
@@ -11,19 +11,19 @@
 
         <plex-tabs>
             <plex-tab label="datos básicos" icon="">
-                <datos-basicos></datos-basicos>
+                <plex-datos-basicos></plex-datos-basicos>
             </plex-tab>
 
             <plex-tab label="datos de contacto" icon="">
-                <datos-contacto></datos-contacto>
+                <plex-datos-contacto></plex-datos-contacto>
             </plex-tab>
 
             <plex-tab label="notas" icon="">
-                <datos-notas></datos-notas>
+                <plex-datos-notas></plex-datos-notas>
             </plex-tab>
 
             <plex-tab label="relaciones" icon="">
-                <datos-relaciones></datos-relaciones>
+                <plex-datos-relaciones></plex-datos-relaciones>
             </plex-tab>
         </plex-tabs>
     </plex-layout-main>
@@ -31,7 +31,7 @@
         <plex-title titulo="Detalle" size="sm">
             <!-- <plex-button type="danger" icon="close" size="sm"></plex-button> -->
         </plex-title>
-        <plex-detail direction="row" size="sm">
+        <plex-detail direction="column" size="sm">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6kC2G5mah771aAk-RG2zh10844QBCW9NHkZhE8zofvVkB_wAA&s"
                  alt="">
             <plex-badge size="xs">validado</plex-badge>

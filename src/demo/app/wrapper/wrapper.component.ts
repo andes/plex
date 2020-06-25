@@ -94,13 +94,7 @@ export class WrapperDemoComponent implements OnInit {
         return moment(this.tModel.hora).add(30, 'minutes');
     }
 
-<<<<<<< HEAD:src/demo/app/wrapper/wrapper.component.ts
     onChange() {
         this.plex.info('success', 'Este cartel se demoro un segundo en aparecer después de escribir.');
     }
-=======
-    // get cssColumns() {
-    //     return this.columns === 'auto' ? 'col-auto' : 'col-span';
-    // }
->>>>>>> template(MPI): se incorpora plex-wrapper:src/demo/app/wrapper/wrapper.component..ts
 }

@@ -10,7 +10,7 @@ import { Paciente } from '../service/paciente';
 import { Plex } from './../../../../lib/core/service';
 
 @Component({
-    templateUrl: 'plex-listado-sidebar.html',
+    templateUrl: 'listado-sidebar.html',
     styleUrls: ['listado-sidebar.scss'],
 })
 
@@ -42,6 +42,7 @@ export class ListadoSidebarComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+
         this.pacientes$ = this.route.paramMap.pipe(
             switchMap(params => {
                 this.selectedId = +params.get('id');

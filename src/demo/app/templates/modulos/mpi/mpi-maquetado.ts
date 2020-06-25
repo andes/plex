@@ -10,7 +10,7 @@ import { PacienteService } from '../../service/paciente.service';
 import { Paciente } from '../../service/paciente';
 
 @Component({
-    templateUrl: 'plex-mpi-maquetado.html',
+    templateUrl: 'mpi-maquetado.html',
     styleUrls: ['mpi-maquetado.scss'],
 })
 export class MpiMaquetadoComponent implements OnInit {
