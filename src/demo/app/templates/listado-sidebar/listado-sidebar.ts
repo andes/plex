@@ -10,7 +10,7 @@ import { Paciente } from '../service/paciente';
 import { Plex } from './../../../../lib/core/service';
 
 @Component({
-    templateUrl: 'listado-sidebar.html',
+    templateUrl: 'plex-listado-sidebar.html',
     styleUrls: ['listado-sidebar.scss'],
 })
 
@@ -103,4 +103,3 @@ export class ListadoSidebarComponent implements OnInit {
     }
 
 }
-
