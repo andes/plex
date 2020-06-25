@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-    selector: 'mpi-sidebar-detalle',
+    selector: 'plex-mpi-sidebar-detalle',
     templateUrl: './mpi-detalle.component.html',
 })
 export class MpiDetalleComponent implements OnInit {
 
-    sidebar: number = 12;
+    sidebar = 12;
     @Output() cerrar = new EventEmitter<number>();
 
     cerrarSidebar() {

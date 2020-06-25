@@ -7,7 +7,7 @@ import { Router, ParamMap, ActivatedRoute } from '@angular/router';
 import { Plex } from '../../../../../../../lib/core/service';
 
 @Component({
-    selector: 'mpi-alta',
+    selector: 'plex-mpi-alta',
     templateUrl: './mpi-alta.component.html',
 })
 export class MpiAltaComponent implements OnInit {

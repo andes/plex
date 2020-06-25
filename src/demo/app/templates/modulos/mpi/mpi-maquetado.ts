@@ -10,7 +10,7 @@ import { PacienteService } from '../../service/paciente.service';
 import { Paciente } from '../../service/paciente';
 
 @Component({
-    templateUrl: 'mpi-maquetado.html',
+    templateUrl: 'plex-mpi-maquetado.html',
     styleUrls: ['mpi-maquetado.scss'],
 })
 export class MpiMaquetadoComponent implements OnInit {
@@ -73,8 +73,6 @@ export class MpiMaquetadoComponent implements OnInit {
         // plex-float
         this.tModel = { valor: null };
 
-
-
         // plex-select
         this.opciones = [{
             id: 1,
@@ -130,7 +128,3 @@ export class MpiMaquetadoComponent implements OnInit {
     }
 
 }
-
-
-
-

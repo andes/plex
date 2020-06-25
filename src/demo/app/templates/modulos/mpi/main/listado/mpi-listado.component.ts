@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'mpi-listado',
+    selector: 'plex-mpi-listado',
     templateUrl: './mpi-listado.component.html',
 })
 export class MpiListadoComponent implements OnInit {
@@ -13,7 +13,7 @@ export class MpiListadoComponent implements OnInit {
     selectedId: string;
 
 
-    sidebar: number = 8;
+    sidebar = 8;
     @Output() enviar = new EventEmitter<number>();
 
     constructor(
