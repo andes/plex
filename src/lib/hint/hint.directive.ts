@@ -37,6 +37,7 @@ export class HintDirective implements AfterViewInit {
         this.tooltip.instance.content = this.content as string;
         this.tooltip.instance.position = this.position as string;
         this.tooltip.instance.icon = this.icon;
+        this.tooltip.instance.hintType = this.hintType;
 
     }
 

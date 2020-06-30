@@ -9,10 +9,11 @@
 @import "css/variables";
 
 // Mixins
+@import "css/mixins/generic";
 @import "css/mixins/hover";
 @import "css/mixins/buttons";
-@import 'css/mixins/scrollbar';
-@import 'css/mixins/position';
+@import "css/mixins/scrollbar";
+@import "css/mixins/position";
 
 // Core CSS
 @import "node_modules/bootstrap/scss/reboot";
@@ -48,56 +49,55 @@
 // Utility classes
 @import "node_modules/bootstrap/scss/utilities";
 // Fonts
-$typoPRO-font-path: '~@andes/plex/src/lib/css/fonts/' !default;
-@import 'css/fonts/TypoPRO-SourceSansPro';
+$typoPRO-font-path: "~@andes/plex/src/lib/css/fonts/" !default;
+@import "css/fonts/TypoPRO-SourceSansPro";
 // Icons
-$mdi-font-path: '~@mdi/font/fonts/';
-@import '~@mdi/font/scss/materialdesignicons';
+$mdi-font-path: "~@mdi/font/fonts/";
+@import "~@mdi/font/scss/materialdesignicons";
 // Misc
-@import '~node-waves/src/scss/waves';
-@import '~sweetalert2/src/sweetalert2';
-@import '~animate.css/animate'; // DEPRECATION WARNING https://github.com/sass/node-sass/issues/2362
-
+@import "~node-waves/src/scss/waves";
+@import "~sweetalert2/src/sweetalert2";
+@import "~animate.css/animate"; // DEPRECATION WARNING https://github.com/sass/node-sass/issues/2362
 
 // Plex core
-@import 'css/layout';
-@import 'css/alert';
-@import 'css/colors';
-@import 'css/nav';
-@import 'css/classes';
-@import 'css/fonts';
-@import 'css/forms';
-@import 'css/list-group';
-@import 'css/tooltip.scss';
-@import 'css/hint.scss';
+@import "css/layout";
+@import "css/alert";
+@import "css/colors";
+@import "css/nav";
+@import "css/classes";
+@import "css/fonts";
+@import "css/forms";
+@import "css/list-group";
+@import "css/tooltip.scss";
+@import "css/hint.scss";
 
 // Third party
-@import 'css/toast';
-@import 'css/modals';
+@import "css/toast";
+@import "css/modals";
 
 // Plex Components
-@import 'css/plex-accordion';
-@import 'css/plex-badge';
-@import 'css/plex-bool';
-@import 'css/plex-box';
-@import 'css/plex-button';
-@import 'css/plex-datetime';
-@import 'css/plex-dropdown';
-@import 'css/plex-loader';
-@import 'css/plex-radio';
-@import 'css/plex-ribbon';
-@import 'css/plex-select';
-@import 'css/plex-tabs';
-@import 'css/plex-text';
-@import 'css/plex-text-rich';
-@import 'css/plex-wizard';
-@import 'css/plex-item';
-@import 'css/plex-label';
-@import 'css/plex-title';
-@import 'css/plex-help';
-@import 'css/plex-modal';
-@import 'css/plex-detail';
-@import 'css/plex-options';
-@import 'css/plex-visualizador';
-@import 'css/plex-wrapper';
-@import 'css/plex-grid';
+@import "css/plex-accordion";
+@import "css/plex-badge";
+@import "css/plex-bool";
+@import "css/plex-box";
+@import "css/plex-button";
+@import "css/plex-datetime";
+@import "css/plex-dropdown";
+@import "css/plex-loader";
+@import "css/plex-radio";
+@import "css/plex-ribbon";
+@import "css/plex-select";
+@import "css/plex-tabs";
+@import "css/plex-text";
+@import "css/plex-text-rich";
+@import "css/plex-wizard";
+@import "css/plex-item";
+@import "css/plex-label";
+@import "css/plex-title";
+@import "css/plex-help";
+@import "css/plex-modal";
+@import "css/plex-detail";
+@import "css/plex-options";
+@import "css/plex-visualizador";
+@import "css/plex-wrapper";
+@import "css/plex-grid";
