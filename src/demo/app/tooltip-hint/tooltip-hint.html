@@ -6,7 +6,7 @@
             </plex-button>
             <plex-button class="ml-1" size="sm" type="danger"
                          hint="¿Sabías que... el hint es un texto que sugiere acciones o indica alguna novedad? Además tiene soporte multilínea."
-                         position="above" (click)="alertar($event);">
+                         position="above" (click)="alertar($event);" hintType="info">
                 hint
             </plex-button>
         </plex-title>
@@ -43,6 +43,8 @@
             <ul>
                 <li class="list-item">Se emplea sobre cualquier elemento, sea o no de acción</li>
                 <li class="list-item">Sirve para indicar que hay alguna novedad o sugiere una funcionalidad</li>
+                <li class="list-item">Puede darse un valor de importancia <span
+                          tooltip="default, info, success, warning o danger">por color</span></li>
                 <li class="list-item">Se puede usar a manera de "¿Sabías qué...?</li>
                 <li class="list-item">Siempre visible como ícono flotante junto al elemento</li>
                 <li class="list-item">Tiene un ícono que lo identifica (default: help)</li>
