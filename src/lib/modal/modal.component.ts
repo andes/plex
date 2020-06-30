@@ -1,5 +1,5 @@
 import { Component, Input, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
-import { PlexSize } from '../core/size.type';
+import { PlexSize } from '../core/plex-size.type';
 
 
 @Component({

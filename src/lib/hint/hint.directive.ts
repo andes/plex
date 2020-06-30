@@ -1,5 +1,6 @@
 import { Directive, ComponentRef, ViewContainerRef, ComponentFactoryResolver, OnInit, Input, AfterViewInit, Host } from '@angular/core';
 import { HintComponent } from './hint.component';
+import { PlexType } from '../core/plex-type.type';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
@@ -10,6 +11,7 @@ export class HintDirective implements AfterViewInit {
     private tooltip: ComponentRef<HintComponent>;
     @Input('hint') content: string | HintComponent;
     @Input() icon = 'help';
+    @Input() hintType: PlexType = 'default';
 
     @Input()
     set position(value: 'top' | 'right' | 'bottom' | 'left' | 'above' | 'below') {

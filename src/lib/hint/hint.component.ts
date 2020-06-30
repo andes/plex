@@ -1,4 +1,4 @@
-import { MatTooltip } from '@angular/material/tooltip';
+import { PlexType } from '../core/plex-type.type';
 import { Component, OnInit, AfterViewInit, Host, Self, Optional, Input, ElementRef, ChangeDetectorRef } from '@angular/core';
 
 @Component({
@@ -14,7 +14,9 @@ export class HintComponent implements OnInit, AfterViewInit {
     @Input()
     hostElement: HTMLElement;
 
-    @Input() icon = 'help';
+    @Input()
+    hintType: PlexType = 'default';
+
 
     @Input()
     content: string;
