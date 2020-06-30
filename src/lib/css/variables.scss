@@ -1,8 +1,8 @@
 $red: #dd4b39;
 $orange: #ff8d22;
 $yellow: #ffd500;
-$green: #8CC63F;
-$blue: #00A8E0;
+$green: #8cc63f;
+$blue: #00a8e0;
 $dark-blue: #002738;
 $light-grey: #f9f9f9;
 $dark-grey: #999999;
@@ -18,12 +18,18 @@ $brand-danger: $red;
 // Font color
 $gray-dark: $dark-grey;
 
+$colors: (
+    warning: $orange,
+    danger: $red,
+    success: $green,
+    info: $blue,
+    default: $dark-grey,
+);
 
 :root {
     --nav-bar-color: #{$blue};
     --nav-bar-height: 46px;
 }
-
 
 $darken-percentage: 15%;
 
@@ -32,15 +38,15 @@ $brand-primary: $blue;
 $brand-inverse: $dark-blue;
 
 // Body
-$font-size-lg:   1rem;
-$font-size-sm:   .9rem;
-$font-size-xs:   .75rem;
-$font-size-base: .9rem; // Assumes the browser default, typically `16px`
+$font-size-lg: 1rem;
+$font-size-sm: 0.9rem;
+$font-size-xs: 0.75rem;
+$font-size-base: 0.9rem; // Assumes the browser default, typically `16px`
 $badge-font-size: $font-size-xs;
 $close-font-size: $font-size-base * 1.5;
 
 // Calles entre contenedores (main, sidebar, footer)
-$grid-gutter-width-base:     30px;
+$grid-gutter-width-base: 30px;
 
 $body-bg: #e6e6e6;
 
@@ -50,16 +56,16 @@ $font-size-h2: 1.75rem !default;
 $font-size-h3: 1.5rem !default;
 $font-size-h4: 1.25rem !default;
 $font-size-h5: 1rem !default;
-$font-size-h6: .875rem !default;
+$font-size-h6: 0.875rem !default;
 
 // Dropdown
 $dropdown-link-active-bg: $blue;
 
 // Font
-$font-family: 'TypoPRO Source Sans Pro';
-$font-family-sans-serif: 'TypoPRO Source Sans Pro';
-$font-family-serif: 'TypoPRO Source Sans Pro';
-$font-family-base: 'TypoPRO Source Sans Pro';
+$font-family: "TypoPRO Source Sans Pro";
+$font-family-sans-serif: "TypoPRO Source Sans Pro";
+$font-family-serif: "TypoPRO Source Sans Pro";
+$font-family-base: "TypoPRO Source Sans Pro";
 
 button,
 input,
@@ -157,7 +163,7 @@ $table-inverse-bg: $dark-blue;
 }
 
 // Tooltips: ;
-$tooltip-opacity: .8;
+$tooltip-opacity: 0.8;
 $tooltip-padding-y: 10px;
 $tooltip-padding-x: 10px;
 $tooltip-bg: #333;

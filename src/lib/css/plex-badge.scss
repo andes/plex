@@ -1,4 +1,3 @@
-
 %baseBadge {
     background: transparent;
     border: 1.5px solid;
@@ -8,7 +7,7 @@
     text-transform: uppercase;
     border-color: var(--badge-color);
     color: var(--badge-color);
-    
+
     i {
         font-size: 20px;
         overflow: hidden;
@@ -18,7 +17,6 @@
         top: 3px;
         border-color: var(--badge-color);
     }
-
 }
 
 // Para integración de plex-datetime dentro de un plex-badge
@@ -55,26 +53,18 @@ plex-badge {
         &:hover {
             background-color: var(--badge-color);
             mix-blend-mode: darken;
-            opacity: .75;
+            opacity: 0.75;
         }
     }
-
 }
 
 // Espaciado del ícono
-[class^="badge-"]>i,
-[class^="label-"]>i {
+[class^="badge-"] > i,
+[class^="label-"] > i {
     margin-right: 5px;
 }
 
-$colors: (
-    warning: $orange,
-    danger: $red,
-    success: $green,
-    info: $blue,
-    default: $dark-grey
-);
-
+// $colors definidos en variables.scss
 @each $name, $color in $colors {
     .badge-#{$name} {
         --badge-color: #{$color};
@@ -86,7 +76,7 @@ $colors: (
             right: 2px;
         }
     }
-    
+
     .btn-badge-#{$name} {
         --badge-color: #{$color};
         .btn {
@@ -95,9 +85,7 @@ $colors: (
             right: 2px;
         }
     }
-    
 }
-
 
 /** BADGE EXTENSIBLE DESDE AFUERA DE PLEX */
 $badge-extend: () !default;
@@ -119,4 +107,3 @@ $badge-extend: () !default;
         }
     }
 }
-

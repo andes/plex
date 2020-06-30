@@ -4,7 +4,7 @@ import { Component, OnInit, AfterViewInit, Input, ChangeDetectorRef, HostListene
     selector: 'plex-hint',
     template: `
         <a href="javascript:void(0)" *ngIf="position" class="hint-container" [matTooltip]="content" [matTooltipPosition]="position">
-            <plex-icon class="hint" [name]="icon" type="default"></plex-icon>
+            <plex-icon class="hint {{ hintType }}" [name]="icon" type="default"></plex-icon>
         </a>
     `
 })
@@ -16,11 +16,14 @@ export class HintComponent implements OnInit, AfterViewInit {
     @Input()
     hintType: PlexType = 'default';
 
+    @Input()
+    icon = 'help';
 
     @Input()
     content: string;
 
-    @Input() position = 'above';
+    @Input()
+    position = 'above';
 
     constructor(
         private cdr: ChangeDetectorRef) { }
