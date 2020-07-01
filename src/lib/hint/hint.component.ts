@@ -4,7 +4,7 @@ import { PlexType } from '../core/plex-type.type';
 @Component({
     selector: 'plex-hint',
     template: `
-        <a href="javascript:void(0)" *ngIf="position && content" class="hint-container" [matTooltip]="content" [matTooltipPosition]="position">
+        <a href="javascript:void(0)" *ngIf="position && content" class="hint-container detach-{{detach}}" [matTooltip]="content" [matTooltipPosition]="position">
             <plex-icon class="hint {{ hintType }}" [name]="icon" type="default"></plex-icon>
         </a>
     `
@@ -25,6 +25,9 @@ export class HintComponent implements OnInit {
 
     @Input()
     position = 'above';
+
+    @Input()
+    detach: '' | 'both' | 'right' | 'top';
 
     constructor() { }
 

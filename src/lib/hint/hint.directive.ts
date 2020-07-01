@@ -4,7 +4,7 @@ import { PlexType } from '../core/plex-type.type';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
-    selector: '[hint], [position:has(hint)], [icon:has(hint)]',
+    selector: '[hint], [position:has(hint)], [icon:has(hint)], [detach:has(hint)]',
 })
 export class HintDirective implements OnInit {
 
@@ -12,6 +12,8 @@ export class HintDirective implements OnInit {
     @Input('hint') content: string | HintComponent;
     @Input() icon = 'help';
     @Input() hintType: PlexType = 'default';
+    @Input() detach: '' | 'both' | 'right' | 'top' = '';
+
 
     @Input()
     set position(value: 'top' | 'right' | 'bottom' | 'left' | 'above' | 'below') {
@@ -40,7 +42,7 @@ export class HintDirective implements OnInit {
         this.tooltip.instance.position = this.position as string;
         this.tooltip.instance.icon = this.icon;
         this.tooltip.instance.hintType = this.hintType;
-
+        this.tooltip.instance.detach = this.detach;
     }
 
 }

@@ -1,11 +1,22 @@
 .hint-container {
     @include position(relative);
+    &.detach-both {
+        left: 5px;
+        bottom: 5px;
+    }
+    &.detach-right {
+        left: 5px;
+    }
+    &.detach-top {
+        bottom: 5px;
+    }
+
     width: 0;
     height: 18px;
     display: inline-flex;
 
     .hint {
-        // $colors definidos en variables.scss
+        // $colors definidos en colors.scss
         @each $name, $color in $colors {
             &.#{$name} {
                 @include generic-factory($bg-color: $color);
