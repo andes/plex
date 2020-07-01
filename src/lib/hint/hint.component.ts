@@ -1,10 +1,9 @@
-import { MatTooltip } from '@angular/material/tooltip';
-import { Component, OnInit, AfterViewInit, Host, Self, Optional, Input, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ChangeDetectorRef, HostListener } from '@angular/core';
 
 @Component({
     selector: 'plex-hint',
     template: `
-        <a (click)="$event.preventImmediatePropagation()" href="javascript:void(0)" *ngIf="position" class="hint-container" [matTooltip]="content" [matTooltipPosition]="position">
+        <a href="javascript:void(0)" *ngIf="position" class="hint-container" [matTooltip]="content" [matTooltipPosition]="position">
             <plex-icon class="hint" [name]="icon" type="default"></plex-icon>
         </a>
     `
@@ -30,6 +29,11 @@ export class HintComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         this.cdr.detectChanges();
+    }
+
+    // Si el elemento que tiene la directiva [hint] tiene un evento (click), este se ejecutará, guste o no.
+    @HostListener('click', ['$event']) onClick() {
+        this.hostElement.click();
     }
 
 }
