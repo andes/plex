@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
         this.plex.updateTitle('Plex: UI/UX para ANDES');
 
         const menu: DropdownItem[] = [
+            { label: 'Ir al Inicio', icon: 'home', route: '/incio' },
             { label: 'Accordion', icon: 'view-day', route: '/accordion' },
             { label: 'Bool', icon: 'checkbox-marked-outline', route: '/bool' },
             { label: 'Box', icon: 'selection', route: '/box' },
