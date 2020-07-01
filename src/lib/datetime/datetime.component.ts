@@ -38,7 +38,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                                (change)="disabledEvent($event)" *ngIf="showInput"/>
                         <span class="input-group-btn">
                             <button class="btn btn-primary btn-{{size}}" tabindex="-1" [disabled]="disabled || readonly">
-                                <i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i>
+                                <i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i>	
                             </button>
                         </span>
                         <a *ngIf="showNav" (click)="next()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover" [title]="makeTooltip('siguiente')">

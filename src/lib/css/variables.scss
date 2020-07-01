@@ -18,14 +18,6 @@ $brand-danger: $red;
 // Font color
 $gray-dark: $dark-grey;
 
-$colors: (
-    warning: $orange,
-    danger: $red,
-    success: $green,
-    info: $blue,
-    default: $dark-grey,
-);
-
 :root {
     --nav-bar-color: #{$blue};
     --nav-bar-height: 46px;
@@ -37,7 +29,7 @@ $darken-percentage: 15%;
 $brand-primary: $blue;
 $brand-inverse: $dark-blue;
 
-// Body
+// Global Fonts
 $font-size-lg: 1rem;
 $font-size-sm: 0.9rem;
 $font-size-xs: 0.75rem;

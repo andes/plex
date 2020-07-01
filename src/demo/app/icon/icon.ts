@@ -35,7 +35,6 @@ export class DemoIconComponent {
         'calendar-multiple',
         'cellphone-android',
         'pencil',
-        'information',
         'clock',
         'history',
         'folder-account',
@@ -180,6 +179,5 @@ export class DemoIconComponent {
         'delete-empty',
         'chevron-right',
     ];
-
 
 }
