@@ -1,14 +1,27 @@
-import { Component, Input, ContentChild, AfterViewInit, AfterContentInit, AfterContentChecked, ComponentRef, ElementRef, DebugElement } from '@angular/core';
+import { Component, Input, ContentChild, AfterViewInit, AfterContentInit, AfterContentChecked, ComponentRef, ElementRef, DebugElement, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { EventEmitter } from 'events';
+import { Subscription } from 'rxjs-compat/Subscription';
 
 /**
  * ATENCION! SI NO SE ESTABLECE FOCO SE MANTIENE FUNCIONALIDAD ANTERIOR.
  *
- * TIENEN UN NGIF SI MAIN = 12
+ * TIENE UN NGIF SI MAIN = 12
  * HACIENDO QUE EL CONTENIDO DEL SIDEBAR NO SE RENDERIZE.
  * SI SIMPLEMENTE LO OCULTO, PUEDE CAUSAR ERRORES QUE NO SABEMOS
  * NO TODOS LOS SIDEBAR DEBEN ESTAR PREPARADOS
+ */
+
+/**
+ * Formas de uso:
+ *
+ * 1. Statico:
+ *    Setear main
+ * 2. Responsive manual
+ *    Setear main=8 y manualmente cambiar el foco de atención
+ * 3. Responsive Automatico
+ *    Setear aspect=8 y usar >router-outlet> en el sidebar.
+ *
  */
 
 @Component({
@@ -33,24 +46,36 @@ import { EventEmitter } from 'events';
     <ng-content select="plex-layout-footer"></ng-content>
   `,
 })
-export class PlexLayoutComponent implements AfterContentInit {
+export class PlexLayoutComponent implements AfterContentInit, OnInit, OnDestroy {
     // Compatibility mode
     public maxcolumns = 12;
     @Input() main = 12;
 
     @ContentChild(RouterOutlet, { static: true }) routerOutlet: RouterOutlet;
 
-    @Input() aspect = 12;
+    @Input() aspect = null;
 
     @Input() foco: 'main' | 'sidebar' = null;
 
-    ngOnit() {
+
+    private subscription1: Subscription;
+    private subscription2: Subscription;
+
+    ngOnInit() {
         if (this.aspect) {
             this.foco = 'main';
             this.main = 12;
         }
     }
 
+    ngOnDestroy() {
+        if (this.subscription1) {
+            this.subscription1.unsubscribe();
+        }
+        if (this.subscription2) {
+            this.subscription2.unsubscribe();
+        }
+    }
     ngAfterContentInit() {
         // MODO MANUAL
         if (!this.aspect) { return; }
@@ -61,12 +86,12 @@ export class PlexLayoutComponent implements AfterContentInit {
             } else {
                 this.foco = 'main';
             }
-            this.routerOutlet.activateEvents.subscribe(() => {
+            this.subscription1 = this.routerOutlet.activateEvents.subscribe(() => {
                 this.main = this.aspect;
                 this.foco = 'sidebar';
             });
 
-            this.routerOutlet.deactivateEvents.subscribe(() => {
+            this.subscription2 = this.routerOutlet.deactivateEvents.subscribe(() => {
                 this.main = 12;
                 this.foco = 'main';
             });
