@@ -61,21 +61,21 @@ plex-grid {
         --colSize: 14rem;
         --rowSize: 14rem;
     }	
-
-    // directiva span
-    .grid-column-auto {
-        grid-column: auto;
-    }
-    .grid-column-span-2 {
-        grid-column: span 2;
-    }
-    .grid-column-span-3 {
-        grid-column: span 3;
-    }
-    .grid-column-span-4 {
-        grid-column: span 4;
-    }
-    .grid-column-span-full {
-        grid-column: 100%;
-    }	
 } 
+
+// directiva span
+.grid-column-auto {
+    grid-column: auto;
+}
+.grid-column-span-2 {
+    grid-column: span 2;
+}
+.grid-column-span-3 {
+    grid-column: span 3;
+}
+.grid-column-span-4 {
+    grid-column: span 4;
+}
+.grid-column-span-full {
+    grid-column: 100%;
+}	

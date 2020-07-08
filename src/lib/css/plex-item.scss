@@ -141,7 +141,6 @@ plex-list {
                 >* {
                     display: flex;
                     align-items: center;
-                    justify-self: flex-start;
                 }
             
                 // Items que componen la lista que no son componentes Angular
@@ -163,6 +162,13 @@ plex-list {
                     flex-flow: column-reverse;
                 }
             
+                plex-select, plex-select, plex-phone, plex-text, plex-float, plex-int {
+                    div.form-group {
+                        min-width: 135px;
+                        width: 100%;
+                    }
+                }
+
                 plex-datetime {
                     justify-self: flex-start !important;
                     width: 135px; 
