@@ -48,7 +48,13 @@ export class ItemDemoComponent implements OnInit {
     ];
 
     public dropitems: DropdownItem[];
-
+    public opciones: any[];
+    public modelo1 = { select: null, radio: null };
+    public modelo2 = {
+        select: null,
+        soloLectura: false,
+        selectMultiple: null
+    };
     public model1: any;
     public model2: any;
     public tModel: any;
@@ -59,6 +65,31 @@ export class ItemDemoComponent implements OnInit {
         this.tModel = { valor: null };
         this.model1 = { valor: null };
         this.model2 = { valor: null };
+        this.modelo1.select = this.modelo2.select = this.opciones;
+
+        // plex-select
+        this.opciones = [{
+            id: 1,
+            nombre: 'Hermano/a',
+        },
+        {
+            id: 2,
+            nombre: 'Padre',
+        },
+        {
+            id: 3,
+            nombre: 'Madre',
+        },
+        {
+            id: 4,
+            nombre: 'Abuelo/a',
+        },
+        {
+            id: 5,
+            nombre: 'Primo/a',
+        }
+        ];
+
 
         this.tModelFecha = {
             fechaHora: null,
