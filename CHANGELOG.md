@@ -1,3 +1,17 @@
+# [6.8.0](https://github.com/andes/plex/compare/v6.7.0...v6.8.0) (2020-07-08)
+
+
+### Bug Fixes
+
+* **layout:** directiva responsive change class name ([a11f413](https://github.com/andes/plex/commit/a11f413dedccdd2de2fbb351421667870b67faba))
+* **plex-list:** soporta form controls ([#188](https://github.com/andes/plex/issues/188)) ([c0f7c73](https://github.com/andes/plex/commit/c0f7c73e1eb98bb3bd4cc2cafee870a98a1d6513))
+* **plex-wrapper:** soporte plex-int ([#187](https://github.com/andes/plex/issues/187)) ([b3e7a4a](https://github.com/andes/plex/commit/b3e7a4a04d58798284a3f397cb00f8d4acbe69b7))
+
+
+### Features
+
+* **layout:** layout responsive  ([#191](https://github.com/andes/plex/issues/191)) ([d64d2bc](https://github.com/andes/plex/commit/d64d2bc8d9638c510d850231c5d513bcababad3c))
+
 # [6.7.0](https://github.com/andes/plex/compare/v6.6.1...v6.7.0) (2020-06-19)
 
 
