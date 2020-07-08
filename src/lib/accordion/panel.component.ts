@@ -7,7 +7,9 @@ import { PlexAccordionComponent } from './accordion.component';
                     <div class="card-header" role="tab" id="headingOne" (click)="selectPanel()">
                     <h5 class="mb-0" *ngIf="tituloPrincipal">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne">
-                        <span ><i *ngIf="icon" class="mdi mdi-{{icon}} mdi-md"></i> {{tituloPrincipal}}</span>
+                        <span>
+                            <plex-icon type="default" size="xl" [name]="icon"></plex-icon> {{tituloPrincipal}}
+                        </span>
                         </a>
                     </h5>
                     <ng-content *ngIf="!tituloPrincipal" select="[plex-accordion-title]"></ng-content>

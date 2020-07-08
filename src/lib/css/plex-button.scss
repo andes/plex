@@ -1,3 +1,5 @@
+$btn-padding-y-sm: 0.32rem;
+
 .btn {
     font-family: $font-family;
     cursor: pointer;
@@ -23,14 +25,12 @@
 .btn-info {
     @include button-factory($blue);
 }
-
+// 0.45rem 0.9rem
 .btn-lg {
-// line-height: ensure even-numbered height of button next to large input
-@include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
+    // line-height: ensure even-numbered height of button next to large input
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
 }
 .btn-sm {
-// line-height: ensure proper height of button next to small input
-@include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-xs, $btn-border-radius-sm);
+    // line-height: ensure proper height of button next to small input
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-xs, $btn-border-radius-sm);
 }
-  
-

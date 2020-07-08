@@ -3,7 +3,7 @@
     border: 1.5px solid;
     font-size: $badge-font-size;
     font-weight: normal;
-    padding: 5px;
+    padding: 6px;
     text-transform: uppercase;
     border-color: var(--badge-color);
     color: var(--badge-color);
@@ -14,7 +14,7 @@
         line-height: 0;
         height: 0;
         position: relative;
-        top: 3px;
+        top: 1px;
         border-color: var(--badge-color);
     }
 }
@@ -26,7 +26,7 @@ plex-badge {
 
     &[size="block"] {
         width: 100%;
-        
+
         span.badge-block {
             display: block;
             width: 100%;
@@ -44,7 +44,7 @@ plex-badge {
 
 .btn-badge {
     button.btn {
-        padding: 0.25rem 0.5rem;
+        padding: 0.3rem 0.5rem;
         font-size: $badge-font-size;
         border-radius: 0;
         color: #fff;

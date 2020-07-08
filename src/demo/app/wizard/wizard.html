@@ -1,16 +1,16 @@
 <plex-layout main="8">
   <plex-layout-main>
-    <header>
-      <div class="page-title">Plex Wizard
-        <span class="float-right">
-          <plex-button title="Mostrar Wizard fullscreen" type="warning" icon="auto-fix" (click)="mostrar(true)"></plex-button>
-          <plex-button title="Mostrar Wizard por elementos" type="success" icon="auto-fix" (click)="mostrar(false)" position="right"></plex-button>
-        </span>
-      </div>
-      <form>
-          <plex-bool [(ngModel)]="config.forceShow" label="Forzar a mostrar el wizard aún cuando el usuario optó por ocultarlo" (change)="changeForce()" name="forceShow"></plex-bool>
-      </form>
-    </header>
+    <plex-title titulo="Plex Wizard">
+      <plex-button title="Mostrar Wizard fullscreen" type="warning" icon="auto-fix" (click)="mostrar(true)">
+      </plex-button>
+      <plex-button title="Mostrar Wizard por elementos" type="success" icon="auto-fix" (click)="mostrar(false)"
+                   position="right"></plex-button>
+    </plex-title>
+    <form>
+      <plex-bool [(ngModel)]="config.forceShow"
+                 label="Forzar a mostrar el wizard aún cuando el usuario optó por ocultarlo" (change)="changeForce()"
+                 name="forceShow"></plex-bool>
+    </form>
     <ul class="list-group" [plexWizard]="0">
       <li class="list-group-item active">Cras justo odio</li>
       <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -48,25 +48,19 @@
     </fieldset>
   </plex-layout-main>
   <plex-layout-sidebar>
-    <header>
-      <div class="row">
-        <div class="col">
-          Este es el header de plex-box. Siempre queda fijo
-        </div>
-        <div class="col">
-          <div class="btn-group float-right">
-            <plex-button type="success" title="Restaurar usuario" titlePosition="left" icon="account"></plex-button>
-            <plex-button type="danger" icon="clock"></plex-button>
-          </div>
-        </div>
-      </div>
-    </header>
+    <plex-title titulo="Panel lateral" size="sm">
+      <plex-button type="success" tooltip="Restaurar usuario" tooltipPosition="left" icon="account" size="sm">
+      </plex-button>
+      <plex-button type="danger" icon="clock" size="sm" hint="botón muerto"></plex-button>
+    </plex-title>
     <form>
       <p [plexWizard]="1">El siguiente ejemplo muestra el uso de la propiedad
         <strong>validateForm</strong>
       </p>
-      <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false" [required]="true"></plex-text>
-      <plex-button label="Guardar formulario" icon="content-save" validateForm="true" (click)="guardar($event)"></plex-button>
+      <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false"
+                 [required]="true"></plex-text>
+      <plex-button label="Guardar formulario" icon="content-save" validateForm="true" (click)="guardar($event)">
+      </plex-button>
     </form>
   </plex-layout-sidebar>
 </plex-layout>

@@ -1,21 +1,29 @@
+// Íconos sólo disponibles con plex-icon
+$adi-font-path: "~@andes/icons/fonts/";
+@import "~@andes/icons/scss/andes-icons";
+
+$icon-sizes: (
+    xs: 10px,
+    sm: 12px,
+    md: 14px,
+    lg: 18px,
+    xl: 20px,
+    xxl: 24px,
+);
+
 plex-icon {
-    line-height: normal;
-    .xs {
-        font-size: 0.85rem;
+    @each $size, $value in $icon-sizes {
+        i {
+            &.#{$size} {
+                font-size: $value;
+                line-height: 0.8;
+            }
+        }
     }
-    .sm {
-        font-size: 1rem;
-    }
-    .md {
-        font-size: 1.25rem;
-    }
-    .lg {
-        font-size: 1.5rem;
-    }
-    .xl {
-        font-size: 1.85rem;
-    }
-    .xxl {
-        font-size: 2.25rem;
+
+    @each $name, $value in $colors {
+        .icon-#{$name} {
+            color: $value;
+        }
     }
 }

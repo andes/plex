@@ -44,7 +44,7 @@ export class DemoIconComponent {
         'check',
         'calendar',
         'close-circle-outline',
-        'mdi-content-save',
+        'content-save',
         'home-plus',
         'arrow-left',
         'trash-can',
