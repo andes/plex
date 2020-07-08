@@ -32,7 +32,7 @@ export class ListadoSidebarComponent implements OnInit {
 
     // public listadoPaciente: Paciente[];
     pacientes$: Observable<Paciente[]>;
-    selectedId: Number;
+    foco = 'main';
     public prueba = '';
     public cambio = '';
     constructor(
@@ -41,16 +41,8 @@ export class ListadoSidebarComponent implements OnInit {
         private plex: Plex
     ) { }
 
+
     ngOnInit() {
-
-        this.pacientes$ = this.route.paramMap.pipe(
-            switchMap(params => {
-                this.selectedId = +params.get('id');
-                return this.pacienteService.getPacientes();
-            })
-        );
-
-
         // plex-datetime
         this.tModel = {
             fechaHora: null,

@@ -49,7 +49,23 @@ plex-layout {
   .mat-checkbox-inner-container {
     background: white!important;
   } 
- 
+
+  section.size-xs {
+      .focused {
+          flex: 0 0 100%;
+          max-width: 100%;
+      }
+
+      .not-focused {
+          display: none;
+      }
+
+    //  Calle izq. del sidebar en responsive
+      > div > div:nth-child(2) {
+        padding-left: 10px;
+      } 
+  }
+
   // Footer (se ubica fijo abajo de la pantalla)
    > plex-layout-footer,
   > footer {
