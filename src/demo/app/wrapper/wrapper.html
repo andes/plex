@@ -4,16 +4,20 @@
             <plex-button type="success" size="sm">accion satisfactoria</plex-button>
         </plex-title>
         <plex-wrapper>
-            <plex-datetime label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora">
+            <plex-datetime grow="4" label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora">
             </plex-datetime>
-            <plex-select grow="auto" [(ngModel)]="modelo1.select" [data]="opciones"
+            <plex-int grow="4" label="plex-int" [(ngModel)]="tModel.valor" name="valor" min="10" max="90" suffix="%">
+            </plex-int>
+            <plex-select grow="4" [(ngModel)]="modelo1.select" [data]="opciones"
                          label="Seleccione efector ojo que tiene nombre largo">
             </plex-select>
-            <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre"> </plex-text>
-
+            <plex-text grow="4" label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre">
+            </plex-text>
+            <plex-float grow="1" label="plex-float" placeholder="Ingrese porcentaje entre 10.5 y 90.4"
+                        [(ngModel)]="tModel.valor" name="valor" [min]="10.5" [max]="90.4" suffix="%"></plex-float>
             <div collapse>
-                <plex-float label="plex-float" placeholder="Ingrese porcentaje entre 10.5 y 90.4"
-                            [(ngModel)]="tModel.valor" name="valor" [min]="10.5" [max]="90.4" suffix="%"></plex-float>
+                <plex-int label="plex-int" [(ngModel)]="tModel.valor" name="valor" min="10" max="90" suffix="%">
+                </plex-int>
                 <plex-bool [(ngModel)]="modelo.slide" type="slide" label="¿Está activo?" name="slide"></plex-bool>
                 <plex-text label="Buscar profesional" [(ngModel)]="templateModel2.nombre" name="nombre"></plex-text>
                 <plex-select grow="2" [(ngModel)]="modelo1.select" [data]="opciones"
