@@ -16,8 +16,9 @@
 				</div>
 			</plex-tab>
 			<plex-tab icon="history">
-				<div class="alert alert-danger">
+				<div class="alert alert-danger" *plTab="5000">
 					Contenido 3
+					<span *ngFor="let item of contenidoAsync | async"> {{ item }} </span>
 				</div>
 			</plex-tab>
 		</plex-tabs>
