@@ -59,11 +59,15 @@ export class PlexTabsComponent implements AfterContentInit {
     selectTab(tab: PlexTabComponent) {
         setTimeout(() => {
             this.tabs.forEach((t) => {
+                if (t.active) {
+                    t.toggle.emit(false);
+                }
                 t.active = false;
             });
             tab.active = true;
             this._activeIndex = this.tabs.indexOf(tab);
             this.change.emit(this._activeIndex);
+            tab.toggle.emit(true);
 
             // Focus tab header
             const tabHeader = this.container.nativeElement.children[this._activeIndex];
