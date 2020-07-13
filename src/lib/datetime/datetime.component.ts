@@ -30,6 +30,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                     </label>
                     <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [icon]="hintIcon" (click)="callAction(hintAction)"></div>
                     <div class="input-group d-flex align-items-center">
+                        <div class="datetime-hint" *ngIf="isDate(min) && isDate(max)" hint="min: {{min ? (min | date:'dd-MM-yyyy') : 'sin valor'}}, max: {{max ? (max | date:'dd-MM-yyyy') : 'sin valor'}}"></div>
                         <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
 
                         <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
@@ -41,7 +42,8 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                         <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabled" [tooltip]="makeTooltip('siguiente')"></plex-button>
                     </div>
                     <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
-                </div>`,
+                </div>
+                `,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private _min: Date;
@@ -71,6 +73,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() debounce = 0;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
     @Input() btnOnly = false;
+    @Input() hint: string;
 
     hint: string;
 
@@ -105,6 +108,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         }
     }
 
+
     get showNav(): Boolean {
         return this.skipBy && this.value;
     }
@@ -113,6 +117,10 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         return this.type === 'date' ? 'calendar' :
             (this.type === 'time' ? 'clock' :
                 (this.type === 'datetime' ? 'calendar-clock' : 'date'));
+    }
+
+    isDate(m) {
+        return moment.isDate(m);
     }
 
     // Eventos
