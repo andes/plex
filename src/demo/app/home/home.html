@@ -239,7 +239,7 @@
             <p>El siguiente ejemplo muestra el uso de la propiedad <strong>validateForm</strong></p>
             <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false">
             </plex-text>
-            <plex-button label="Guardar formulario" icon="cable-data" validateForm="true" (click)="guardar($event)">
+            <plex-button label="Guardar formulario" validateForm="true" (click)="guardar($event)">
             </plex-button>
         </form>
         <div class="grow">

@@ -41,7 +41,7 @@ export class PlexHelpComponent {
 
     @Input() tituloBoton = '';
 
-    @Input() icon: 'help-circle' | 'information-variant' = 'help-circle';
+    @Input() icon: 'help-circle' | 'informacion' = 'help-circle';
 
     @Output() close = new EventEmitter();
 

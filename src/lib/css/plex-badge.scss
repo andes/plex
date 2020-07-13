@@ -3,18 +3,18 @@
     border: 1.5px solid;
     font-size: $badge-font-size;
     font-weight: normal;
-    padding: 6px;
+    padding: 5px;
     text-transform: uppercase;
     border-color: var(--badge-color);
     color: var(--badge-color);
 
-    i {
+    plex-icon i {
         font-size: 20px;
         overflow: hidden;
         line-height: 0;
         height: 0;
         position: relative;
-        top: 1px;
+        top: 3px;
         border-color: var(--badge-color);
     }
 }

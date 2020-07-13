@@ -28,8 +28,8 @@ import { Plex } from './../core/service';
 
                             <!--App Status-->
                             <div class="action hidden-md-down">
-                                <plex-icon *ngIf="online" type="light" size="xl" name="cloud-check-outline"></plex-icon>
-                                <plex-icon *ngIf="!online" type="light" size="xl" name="cloud-off-outline"></plex-icon>
+                                <plex-icon *ngIf="online" name="cloud-check-outline" type="light" size="lg"></plex-icon>
+                                <plex-icon *ngIf="!online" name="cloud-off-outline" type="danger" size="lg"></plex-icon>
                                 <div class="popover popover-bottom">
                                     <h3 *ngIf="online" class="popover-title bg-success text-white text-center">Conectividad OK</h3>
                                     <h3 *ngIf="!online" class="popover-title bg-danger text-white text-center">Problemas con la conectividad</h3>

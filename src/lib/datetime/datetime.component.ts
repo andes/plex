@@ -30,7 +30,6 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                     </label>
                     <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [icon]="hintIcon" (click)="callAction(hintAction)"></div>
                     <div class="input-group d-flex align-items-center">
-                        <div class="datetime-hint" *ngIf="isDate(min) && isDate(max)" hint="min: {{min ? (min | date:'dd-MM-yyyy') : 'sin valor'}}, max: {{max ? (max | date:'dd-MM-yyyy') : 'sin valor'}}"></div>
                         <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
 
                         <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
@@ -117,10 +116,6 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         return this.type === 'date' ? 'calendar' :
             (this.type === 'time' ? 'clock' :
                 (this.type === 'datetime' ? 'calendar-clock' : 'date'));
-    }
-
-    isDate(m) {
-        return moment.isDate(m);
     }
 
     // Eventos

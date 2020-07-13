@@ -19,7 +19,7 @@ export class DemoIconComponent {
         'phone-plus',
         'file-multiple',
         'delete',
-        'information-variant',
+        'informacion',
         'settings',
         'chevron-left',
         'chevron-right',
@@ -399,6 +399,8 @@ export class DemoIconComponent {
         'universidad',
         'estudiante',
         'engranaje-outline',
+        'cloud-check-outline',
+        'cloud-off-outline'
     ];
 
 
