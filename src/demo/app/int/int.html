@@ -1,5 +1,6 @@
 <plex-layout>
     <plex-layout-main>
+        <plex-title titulo="Simple"></plex-title>
         <div class="row">
             <div class="col-md-6">
                 <form>
@@ -12,11 +13,12 @@
                 <pre>{{tModel | json}}</pre>
             </div>
         </div>
+        <plex-title titulo="Con min y max"></plex-title>
         <div class="row">
             <div class="col-md-6">
                 <form>
                     <plex-int label="Ingrese el porcentaje mayor a 10 y menor a 90" [(ngModel)]="tModel.valor"
-                        name="valor" min="10" max="90" suffix="%">
+                              name="valor" min="10" max="90" suffix="%">
                     </plex-int>
                 </form>
             </div>
