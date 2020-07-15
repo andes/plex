@@ -30,7 +30,7 @@ $sizes: (
 
     header {
         position: relative;
-        padding: 3rem 1rem;
+        padding: 1rem;
     }
 
     .plex-modal-content {
@@ -46,6 +46,12 @@ $sizes: (
             justify-content: center;
             margin: 10px 0;
             min-height: 25vh;
+            > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+            }
         }
 
         @each $size, $length in $sizes {
