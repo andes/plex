@@ -10,7 +10,7 @@ export class HintDirective implements AfterViewInit {
 
     private tooltip: ComponentRef<HintComponent>;
     @Input('hint') content: string | HintComponent;
-    @Input() icon = 'help';
+    @Input() icon;
     @Input() hintType: PlexType = 'default';
     @Input() detach: '' | 'both' | 'right' | 'top' = '';
 
@@ -36,6 +36,9 @@ export class HintDirective implements AfterViewInit {
         const factory = this.resolver.resolveComponentFactory(HintComponent);
         this.tooltip = this.viewContainerRef.createComponent(factory);
         this.tooltip.instance.hostElement = this.viewContainerRef.element.nativeElement;
+        // if (!this.tooltip.instance.content) {
+        //     return;
+        // }
         this.tooltip.instance.content = this.content as string;
         this.tooltip.instance.position = this.position as string;
         this.tooltip.instance.icon = this.icon;
