@@ -16,20 +16,21 @@
                 similitudes y diferencias.</p>
             <b>Tooltip</b>
             <ul>
-                <li class="list-item">Se emplea sobre <a class="d-inline-block" href="tooltip-hint"
+                <li class="list-item">Se emplea sobre <a class="d-inline-block" href="javascript:void(0)"
                        title="Tooltip con directiva [title] (deprecated)">elementos de acción</a> o elementos
                     iconográficos (por ej.: badges)
                 </li>
-                <li class="list-item">En estado de reposo es <a class="d-inline-block" href="tooltip-hint"
+                <li class="list-item">En estado de reposo es <a class="d-inline-block" href="javascript:void(0)"
                        tooltip="Tooltip con directiva [tooltip]">invisible</a>, se activa en el evento onMouseOver</li>
                 <li class="list-item">No es multilínea</li>
                 <li class="list-item">Provee información complementaria acerca de una acción</li>
                 <li class="list-item">Brinda información extendida de un estado o situación</li>
-                <li class="list-item">Opcionalmente se puede indicar su posición (<a href="tooltip-hint"
-                       class="d-inline-block" tooltip="arriba" tooltipPosition="top">arriba</a>, <a href="tooltip-hint"
-                       class="d-inline-block" tooltip="abajo" tooltipPosition="bottom">abajo</a>, <a href="tooltip-hint"
-                       class="d-inline-block" tooltip="izquierda" titlePosition="left">izquierda</a> o <a
-                       href="tooltip-hint" class="d-inline-block" tooltip="derecha" titlePosition="right">derecha</a>)
+                <li class="list-item">Opcionalmente se puede indicar su posición (<a href="javascript:void(0)"
+                       class="d-inline-block" tooltip="arriba" tooltipPosition="top">arriba</a>, <a
+                       href="javascript:void(0)" class="d-inline-block" tooltip="abajo"
+                       tooltipPosition="bottom">abajo</a>, <a href="javascript:void(0)" class="d-inline-block"
+                       tooltip="izquierda" titlePosition="left">izquierda</a> o <a href="javascript:void(0)"
+                       class="d-inline-block" tooltip="derecha" titlePosition="right">derecha</a>)
                 </li>
                 <li class="list-item">Posee un "tip", una pequeña flecha que indica el elemento puntual de referencia
                 </li>
@@ -45,8 +46,8 @@
                 <li class="list-item">Se emplea sobre cualquier elemento, sea o no de acción</li>
                 <li class="list-item">Si el elemento tiene una acción (click), el hint se vuelve clickeable</li>
                 <li class="list-item">Sirve para indicar que hay alguna novedad o sugiere una funcionalidad</li>
-                <li class="list-item">Puede darse un valor de importancia <a href="tooltip-hint" class="d-inline-block"
-                       tooltip="default, info, success, warning o danger">por color</a>
+                <li class="list-item">Puede darse un valor de importancia <a href="javascript:void(0)"
+                       class="d-inline-block" tooltip="default, info, success, warning o danger">por color</a>
                 </li>
                 <li class="list-item">Se puede usar a manera de "¿Sabías qué...?</li>
                 <li class="list-item">Siempre visible como ícono flotante junto al elemento</li>
@@ -55,8 +56,8 @@
                 <li class="list-item">Según criterio, puede tener una función temporal, como indicar que hay una novedad
                 </li>
                 <li class="list-item">
-                    Para más opciones ver <a href="https://ui.andes.gob.ar/components/hint-directive/overview"
-                       target="_blank">la documentación oficial de hint</a>
+                    Para más opciones ver <a href="https://ui.andes.gob.ar/components/hint/overview" target="_blank">la
+                        documentación oficial de hint</a>
                 </li>
             </ul>
         </main>
@@ -64,7 +65,7 @@
     <plex-layout-sidebar>
         <plex-title titulo="Hint con poco espacio">
             <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Ayuda" position="right"
-                       hint="Para más ayuda sobre PLEX podés ir al sitio ui.andes.gob.ar">
+                       hint="Para más ayuda sobre PLEX podés ir al sitio ui.andes.gob.ar" (click)="mensaje('hola!')">
                 <main role="main" class="inner px-2">
                     <p class="lead mt-2">¡Hola!</p>
                     <p> Soy el contenido de un plex-help. En este panel podés leer este mensaje.</p>

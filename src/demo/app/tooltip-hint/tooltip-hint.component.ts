@@ -7,4 +7,8 @@ export class TooltipHintDemoComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void { }
+
+    mensaje(m) {
+        alert(m);
+    }
 }
