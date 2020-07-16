@@ -24,10 +24,11 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
             multi: true
         },
     ],
-    template: `<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+    template: `<div class="form-group datetime" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
                     <label *ngIf="label" class="form-control-label">{{ label }}
                         <span *ngIf="control.name && esRequerido" class="requerido"></span>
                     </label>
+                    <div *ngIf="actionHint" hint="Aplicar fecha actual" hintType="warning" icon="update" (click)="setCurrentDate()"></div> 
                     <div class="input-group d-flex align-items-center">
                         <a *ngIf="showNav" (click)="prev()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover"
                            [title]="makeTooltip('anterior')">
@@ -67,6 +68,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() type: string;
     @Input() label: string;
     @Input() placeholder: string;
+    @Input() actionHint = false;
     @Input() disabled = false;
     @Input() readonly = false;
     @Input() skipBy: 'hour' | 'day' | 'month' | 'year' = null;
@@ -228,6 +230,13 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
                 return (fecha1 && fecha2 && fecha1.getTime() !== fecha2.getTime());
             }
         }
+    }
+
+    setCurrentDate() {
+        const temp = moment().format(this.format);
+        this.setElements(temp);
+        this.value = temp;
+        this.onChange(this.value);
     }
 
     prev() {
