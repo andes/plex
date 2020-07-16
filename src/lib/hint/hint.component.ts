@@ -4,9 +4,9 @@ import { Component, OnInit, AfterViewInit, Input, ChangeDetectorRef, HostListene
 @Component({
     selector: 'plex-hint',
     template: `
-        <a href="javascript:void(0)" *ngIf="position" class="hint-container detach-{{detach}}" [matTooltip]="content" [matTooltipPosition]="position">
+        <span *ngIf="position" class="hint-container detach-{{detach}}" [matTooltip]="content" [matTooltipPosition]="position">
             <plex-icon class="hint {{ hintType }}" [name]="icon" type="default"></plex-icon>
-        </a>
+        </span>
     `
 })
 export class HintComponent implements OnInit, AfterViewInit {
@@ -45,5 +45,4 @@ export class HintComponent implements OnInit, AfterViewInit {
     @HostListener('click', ['$event']) onClick() {
         this.hostElement.click();
     }
-
 }
