@@ -15,7 +15,7 @@ import { Component, Input, ElementRef, ViewChild, OnChanges } from '@angular/cor
 })
 export class PlexBadgeComponent implements OnChanges {
     @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default';
-    @Input() size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
+    @Input() size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'block' = 'md';
     @Input() color: string;
 
     @ViewChild('badge', { static: true }) el: ElementRef;
