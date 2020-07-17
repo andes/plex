@@ -1,7 +1,5 @@
 @import "../datetime/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker";
 
-@import "../datetime/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker";
-
 plex-datetime {
     plex-button[icon="menu-left"],
     plex-button[icon="menu-right"] {
@@ -19,8 +17,9 @@ plex-datetime {
         width: auto;
         display: flex;
         justify-content: flex-end;
+        position: relative;
+        height: 0px;
         align-items: flex-end;
-        right: 0;
-        top: 0;
+        flex-direction: column-reverse;
     }
 }

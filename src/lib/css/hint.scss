@@ -1,13 +1,3 @@
-plex-hint {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    height: 0px;
-    align-items: flex-end;
-    flex-direction: column-reverse;
-}
-
 .hint-container {
     @include position(relative);
     &.detach-both {
