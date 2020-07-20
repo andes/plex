@@ -72,6 +72,7 @@ import { NavItemComponent } from './app/nav-item.component';
 import { HintComponent } from './hint/hint.component';
 import { HintDirective } from './hint/hint.directive';
 import { HelpDirective } from './help/help.directive';
+import { TabDirective } from './tabs/pl-tab.directive';
 
 const MODULES = [
     PlexAppComponent,
@@ -123,7 +124,8 @@ const MODULES = [
     PlexWrapperComponent,
     PlexGridComponent,
     HintDirective,
-    HelpDirective
+    HelpDirective,
+    TabDirective
     // MatTooltip
 ];
 
