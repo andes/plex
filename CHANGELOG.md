@@ -1,3 +1,16 @@
+# [6.9.0](https://github.com/andes/plex/compare/v6.8.0...v6.9.0) (2020-07-20)
+
+
+### Bug Fixes
+
+* **plex-select:** valor inicial multiple ([#192](https://github.com/andes/plex/issues/192)) ([25cfab4](https://github.com/andes/plex/commit/25cfab44acf9952bf820ee87a9b4633f61bc7837))
+
+
+### Features
+
+* **plex-badge:** add size block ([#194](https://github.com/andes/plex/issues/194)) ([0b86e4b](https://github.com/andes/plex/commit/0b86e4b550fd3830fe1979d994b70c0f1dfee22c))
+* **plex-tab:** directiva plTab para carga diferenciada de contenido ([#193](https://github.com/andes/plex/issues/193)) ([ef84e98](https://github.com/andes/plex/commit/ef84e98d63cb63db5222e2cffb3dd322f3257f1d))
+
 # [6.8.0](https://github.com/andes/plex/compare/v6.7.0...v6.8.0) (2020-07-08)
 
 
