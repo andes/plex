@@ -1,5 +1,7 @@
 import { Plex } from './../../../lib/core/service';
 import { Component, OnDestroy } from '@angular/core';
+import { from, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
     templateUrl: 'tabs.html',
@@ -13,6 +15,11 @@ export class TabsDemoComponent {
         { label: 'amplifier', icon: 'amplifier', color: 'trastorno' },
         { label: 'amazon', icon: 'amazon', color: 'default' }
     ];
+
+    public contenidoAsync = of([1, 2, 3]).pipe(
+        // tslint:disable-next-line:no-console
+        tap(console.log)
+    );
 
     constructor(private plex: Plex) {
     }
