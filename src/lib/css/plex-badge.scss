@@ -25,6 +25,16 @@
 plex-badge {
     display: inline-flex;
     align-items: flex-end;
+
+    &[size="block"] {
+        width: 100%;
+        
+        span.badge-block {
+            display: block;
+            width: 100%;
+        }
+    }
+
     plex-datetime {
         display: inline-flex;
     }
