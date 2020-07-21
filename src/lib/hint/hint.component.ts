@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, Input, ChangeDetectorRef, HostListener } from '@angular/core';
+import { PlexType } from '../core/plex-type.type';
 
 @Component({
     selector: 'plex-hint',

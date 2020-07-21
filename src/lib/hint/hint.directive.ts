@@ -1,4 +1,4 @@
-import { Directive, ComponentRef, ViewContainerRef, ComponentFactoryResolver, OnInit, Input, AfterViewInit, Host } from '@angular/core';
+import { Directive, ComponentRef, ViewContainerRef, ComponentFactoryResolver, Input, AfterViewInit } from '@angular/core';
 import { HintComponent } from './hint.component';
 import { PlexType } from '../core/plex-type.type';
 
