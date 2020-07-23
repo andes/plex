@@ -12,9 +12,7 @@ plex-help {
         &.open {
             display: flex;
             flex-direction: column;
-            width: auto;
-            height: auto;
-            background: white;
+            background: var(--heading-background-color);
             z-index: 999;
             position: absolute;
         &.full {
