@@ -17,9 +17,16 @@ plex-help {
             background: white;
             z-index: 999;
             position: absolute;
-            right: 30px;
+        &.full {
             left: 30px;
+            width: auto;
+            height: auto;
         }
+        &.half {
+            width: 50%;
+            height: auto;
+        }
+
         .card-header {
             height: 50px;
         }

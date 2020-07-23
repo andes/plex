@@ -8,7 +8,7 @@ import { Component, Input, Renderer2, Output, EventEmitter } from '@angular/core
         <plex-button *ngIf="content && closed && !tituloBoton" type="info" [size]="size" title="{{ title }}" [icon]="type === 'info'? 'informacion' : 'help-circle'" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
         <plex-button *ngIf="content && closed && tituloBoton" type="info" [size]="size" [label]="tituloBoton" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
     </div>
-    <div class="card {{ type }}" [ngClass]="{'open': !closed}" *ngIf="type === 'help'" (click)="$event.stopImmediatePropagation();">
+    <div class="card help" [ngClass]="{'open': !closed, 'full': cardSize === 'full', 'half': cardSize === 'half'}" (click)="$event.stopImmediatePropagation();">
         <ng-container *ngIf="!closed">
             <div class="card-header">
                 <h5>{{ titulo }}</h5>
@@ -35,7 +35,7 @@ export class PlexHelpComponent {
 
     @Input() subtitulo: string;
 
-    @Input() size: 'sm' | 'md' | 'lg' = 'sm';
+    @Input() cardSize: 'full' | 'half' = 'full';
 
     @Input() title: string;
 
