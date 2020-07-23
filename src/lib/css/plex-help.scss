@@ -1,6 +1,9 @@
 plex-help {
     $top-open: 21px;
+    min-width: 30px;
+    display: inline-block;
 
+    // Contenido del panel/card
     .card {
         display: none;
         border: 0; // reset
@@ -12,9 +15,15 @@ plex-help {
         &.open {
             display: flex;
             flex-direction: column;
+
+            max-height: fit-content;
             background: var(--heading-background-color);
+
             z-index: 999;
             position: absolute;
+            right: 34px;
+        }
+
         &.full {
             left: 30px;
             width: auto;
@@ -25,9 +34,12 @@ plex-help {
             height: auto;
         }
 
+        // @Input() titulo:
         .card-header {
             height: 50px;
         }
+
+        // @Input() subtitulo + ng-content:
         .card-body {
             transition: all;
             &.open {
@@ -39,73 +51,40 @@ plex-help {
             &.closed {
                 height: 0px;
             }
+            .list-group-item {
+                background: inherit;
+            }
         }
     }
 
-    .toggle-help,
-    .toggle-info {
+    // Botón que abre/cierra
+    .toggle-help {
+        position: initial;
+        right: 15px;
+        top: $top-open;
+        display: inline-block;
+        min-width: 30px;
+        height: auto;
+
         &.closed {
             display: inline-block;
             position: relative;
+            top: 0;
             right: 0;
         }
         &.open {
+            top: 0;
             plex-button {
                 z-index: 999;
             }
         }
+
         plex-button {
             position: relative;
             top: 1px;
             right: 0;
             display: flex;
             justify-content: flex-end;
-        }
-    }
-    .toggle-help,
-    .toggle-info {
-        position: absolute;
-        right: 15px;
-        top: $top-open;
-        &.closed {
-            top: 0;
-        }
-    }
-    .toggle-help {
-        position: initial;
-        display: inline-block;
-        // min-width: 42px;
-        height: auto;
-        &.open {
-            top: 0;
-        }
-    }
-
-    .jumbotron {
-        padding: 15px 30px;
-        border-top: 1px solid darken($light-grey, 15%);
-        border-left: 1px solid darken($light-grey, 15%);
-        color: black;
-
-        plex-button {
-            position: absolute;
-            top: -1px;
-            right: 0px;
-        }
-        &.open {
-            position: absolute;
-            right: 15px;
-            top: $top-open;
-            z-index: 998;
-            width: auto;
-            border-radius: 0.25rem;
-            box-shadow: 2px 2px 5px 0px $dark-grey;
-            min-width: 41vw;
-            max-height: 69vh;
-            overflow-y: scroll;
-        }
-        &.closed {
-            height: 0px;
         }
     }
 }

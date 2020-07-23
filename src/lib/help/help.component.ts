@@ -5,7 +5,7 @@ import { Component, Input, Renderer2, Output, EventEmitter } from '@angular/core
     template: `
     <div class="toggle-{{ type }}" [ngClass]="{'closed': closed, 'open': !closed}">
         <plex-button *ngIf="!closed" type="danger" [size]="size" icon="close" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
-        <plex-button *ngIf="content && closed && !tituloBoton" type="info" [size]="size" title="{{ title }}" [icon]="type === 'info'? 'informacion' : 'help-circle'" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
+        <plex-button *ngIf="content && closed && !tituloBoton" type="info" [size]="size" [title]="title" [icon]="type === 'info'? 'informacion' : 'help'" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
         <plex-button *ngIf="content && closed && tituloBoton" type="info" [size]="size" [label]="tituloBoton" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
     </div>
     <div class="card help" [ngClass]="{'open': !closed, 'full': cardSize === 'full', 'half': cardSize === 'half'}" (click)="$event.stopImmediatePropagation();">
@@ -13,31 +13,28 @@ import { Component, Input, Renderer2, Output, EventEmitter } from '@angular/core
             <div class="card-header">
                 <h5>{{ titulo }}</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body m-3">
+                <h6 *ngIf="type === 'info' && subtitulo">{{ subtitulo }}</h6>
                 <ng-content></ng-content>
             </div>
         </ng-container>
     </div>
-    <ng-container *ngIf="!closed && type === 'info'">
-        <div class="jumbotron {{ type }}" [ngClass]="{'open': !closed}" (click)="$event.stopImmediatePropagation();">
-            <h1 class="display-6">{{ titulo }}</h1>
-            <p class="lead" *ngIf="subtitulo"><b>{{ subtitulo }}</b></p>
-            <ng-content select="[info]"></ng-content>
-        </div>
-    </ng-container>
     `
 })
 export class PlexHelpComponent {
 
-    @Input() type: 'info' | 'help' = 'info';
 
     @Input() titulo = '';
 
     @Input() subtitulo: string;
 
+    @Input() size: 'sm' | 'md' = 'sm';
+
     @Input() cardSize: 'full' | 'half' = 'full';
 
     @Input() title: string;
+
+    @Input() type: 'info' | 'help' = 'help'; // deprecated
 
     @Input() tituloBoton = '';
 
