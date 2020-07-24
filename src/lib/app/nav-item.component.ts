@@ -27,7 +27,7 @@ export class NavItemComponent {
     click() {
         if (!this.opened) {
             event.stopImmediatePropagation();
-            this.plexHelp.toogle();
+            this.plexHelp.toggle();
             this.opened = true;
         }
     }
