@@ -1,31 +1,36 @@
 plex-help {
-    $top-open: 21px;
-    min-width: 30px;
+    $top-open: unset;
     display: inline-block;
+    color: $dark-blue;
 
     // Contenido del panel/card
     .card {
+        position: absolute;
         display: none;
         border: 0; // reset
-        border-top: 1px solid darken($light-grey, 15%);
-        border-left: 1px solid darken($light-grey, 15%);
-        border-radius: 0.25rem;
-        box-shadow: 2px 2px 5px 0px $dark-grey;
 
         &.open {
-            display: flex;
+            box-sizing: border-box;
+            width: 100%;
+            min-width: 40vw;
+            border-top: 1px solid darken($light-grey, 15%);
+            border-left: 1px solid darken($light-grey, 15%);
+            border-radius: 0.25rem;
+            box-shadow: 2px 2px 5px 0px $dark-grey;
+
+            // Display dinámico (none|flex)
+            display: none;
             flex-direction: column;
 
             max-height: fit-content;
             background: var(--heading-background-color);
+            background: $light-grey;
 
+            right: 0;
             z-index: 999;
-            position: absolute;
-            right: 34px;
         }
 
         &.full {
-            left: 30px;
             width: auto;
             height: auto;
         }
@@ -59,12 +64,20 @@ plex-help {
 
     // Botón que abre/cierra
     .toggle-help {
-        position: initial;
-        right: 15px;
+        position: absolute;
+        right: 0;
         top: $top-open;
         display: inline-block;
-        min-width: 30px;
+
         height: auto;
+
+        plex-button {
+            position: relative;
+            top: 0;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
 
         &.closed {
             display: inline-block;
@@ -73,18 +86,11 @@ plex-help {
             right: 0;
         }
         &.open {
-            top: 0;
+            left: 15px;
             plex-button {
-                z-index: 999;
+                top: 25px;
+                z-index: 1000;
             }
-        }
-
-        plex-button {
-            position: relative;
-            top: 1px;
-            right: 0;
-            display: flex;
-            justify-content: flex-end;
         }
     }
 }
