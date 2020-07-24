@@ -1,7 +1,7 @@
 .plex-title {
     margin-bottom: 3px;
     border-bottom: solid $dark-grey 1px;
-    
+
     width: 100%;
     .plex-title-label {
         font-size: 1.8em;
@@ -11,21 +11,24 @@
         &.sm {
             font-size: 1.4em;
         }
-    
+
         &.md {
             font-size: 1.6em;
         }
-    
+
         &.lg {
             font-size: 1.8em;
         }
-    
+
         &.xl {
             font-size: 2em;
         }
     }
     .title-content {
+        height: 30px;
         max-height: 36px;
+        display: flex;
+        align-items: center;
     }
     &.size-sm {
         flex-wrap: wrap;
@@ -40,4 +43,3 @@ header {
         border-bottom: none !important;
     }
 }
-
