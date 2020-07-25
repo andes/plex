@@ -1,56 +1,77 @@
 <plex-layout main="8">
-	<plex-layout-main>
-		<plex-title titulo="Tabs estáticos">
-			<plex-button (click)="next()" label="Siguiente tab"></plex-button>
-		</plex-title>
-		<pre>Tab activo: {{activo}}</pre>
-		<plex-tabs [activeIndex]="activo" (change)="cambio($event)">
-			<plex-tab label="Tab 1" color="procedimiento">
-				<div class="alert alert-info">
-					Contenido 1
-				</div>
-			</plex-tab>
-			<plex-tab *ngIf="mostrar" label="Tab 2" icon="account">
-				<div class="alert alert-warning">
-					Contenido 2
-				</div>
-			</plex-tab>
-			<plex-tab icon="history">
-				<div class="alert alert-danger" *plTab="5000">
-					Contenido 3
-					<span *ngFor="let item of contenidoAsync | async"> {{ item }} </span>
-				</div>
-			</plex-tab>
-		</plex-tabs>
-		<plex-title titulo="Tabs dinámicos">
-			<plex-button (click)="add()" label="Agregar" type="success"></plex-button>
-		</plex-title>
-		<plex-tabs [activeIndex]="activoDinamico" (close)="close($event)">
-			<plex-tab *ngFor="let item of tabs" [label]="item.label" [icon]="item.icon" [color]="item.color"
-					  [allowClose]="true">
-				<div class="alert alert-warning">
-					Este es el contenido de <strong>{{item.label}}</strong>
-				</div>
-			</plex-tab>
-		</plex-tabs>
-	</plex-layout-main>
-	<plex-layout-sidebar>
-		<plex-tabs size="full">
-			<plex-tab icon="account" label="Buscador" color="procedimiento">
-				<div class="alert alert-info">
-					Contenido 1
-				</div>
-			</plex-tab>
-			<plex-tab label="Historia de Salud">
-				<div class="alert alert-warning">
-					Contenido 2
-				</div>
-			</plex-tab>
-			<plex-tab icon="file-tree">
-				<div class="alert alert-danger">
-					Contenido 3
-				</div>
-			</plex-tab>
-		</plex-tabs>
-	</plex-layout-sidebar>
+    <plex-layout-main>
+        <plex-title titulo="plex-tabs | Casos de uso y tipologías">
+            <plex-button (click)="next()" label="Siguiente tab"></plex-button>
+        </plex-title>
+        <pre>Tab activo: {{activo}}</pre>
+        <section justify>
+            <plex-tabs [activeIndex]="activo" (change)="cambio($event)">
+                <plex-tab label="Tab 1" color="procedimiento">
+                    <div class="alert alert-info">
+                        Contenido 1
+                    </div>
+                </plex-tab>
+                <plex-tab *ngIf="mostrar" label="Tab 2" icon="account">
+                    <div class="alert alert-warning">
+                        Contenido 2
+                    </div>
+                </plex-tab>
+                <plex-tab icon="history">
+                    <div class="alert alert-danger" *plTab="5000">
+                        Contenido 3
+                        <span *ngFor="let item of contenidoAsync | async"> {{ item }} </span>
+                    </div>
+                </plex-tab>
+                <plex-button type="info" size="sm" title="anterior" icon="chevron-left" (click)="previous()">
+                </plex-button>
+                <plex-button type="info" size="sm" title="siguiente" icon="chevron-right" (click)="next()">
+                </plex-button>
+            </plex-tabs>
+        </section>
+        <plex-title titulo="Tabs dinámicos">
+            <plex-button (click)="add()" label="Agregar" type="success"></plex-button>
+        </plex-title>
+        <section justify>
+            <plex-tabs [activeIndex]="activoDinamico" (close)="close($event)">
+                <plex-tab *ngFor="let item of tabs" [label]="item.label" [icon]="item.icon" [color]="item.color"
+                          [allowClose]="true">
+                    <div>
+                        Este es el contenido de <strong>{{item.label}}</strong>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                        mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
+                        quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo,
+                        rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+                        Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
+                        tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante,
+                        dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.
+                    </p>
+                </plex-tab>
+                <plex-badge type="warning" size="sm">badge warning</plex-badge>
+                <plex-button type="info" size="sm" label="test"></plex-button>
+                <plex-button type="warning" size="sm" label="test"></plex-button>
+            </plex-tabs>
+        </section>
+    </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-tabs size="full">
+            <plex-tab icon="account" label="Inicio">
+                <div class="d-flex flex-column mt-4 justify-content-center align-items-center">
+                    <b>Primer pestaña.</b>Generalmente utilizada como panel de resumen.
+                </div>
+            </plex-tab>
+            <plex-tab icon="pencil" label="Edición" color="procedimiento">
+                <div class="alert alert-danger">
+                    <b>Segunda pestaña.</b>Generalmente utilizado como panel para la edición de datos.
+                </div>
+            </plex-tab>
+            <plex-tab icon="clock" label="Histórico" color="default">
+                <div class="alert alert-info">
+                    <b>Tercera pestaña.</b>Generalmente utilizado como panel para listados de historiales.
+                </div>
+            </plex-tab>
+            <plex-button type="danger" size="sm" icon="close" title="prueba sidebar"></plex-button>
+        </plex-tabs>
+    </plex-layout-sidebar>
 </plex-layout>

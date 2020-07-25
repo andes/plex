@@ -32,6 +32,12 @@ export class TabsDemoComponent {
         }
     }
 
+    public previous() {
+        if (this.activo > 0) {
+            this.activo = this.activo - 1;
+        }
+    }
+
     public cambio(value: number) {
         this.plex.toast('info', 'Tab seleccionado: ' + value);
         this.activo = value;

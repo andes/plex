@@ -3,18 +3,27 @@ import { PlexTabComponent } from './tab.component';
 
 @Component({
     selector: 'plex-tabs',
-    template: ` <ul #container class="nav nav-tabs" [ngClass]="size">
-                    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{'active': tab.active, 'icon': tab.icon && !tab.label}">
-                        <a class="nav-link" [ngClass]="{active: tab.active}" plexRipples onclick="return false">
-                            <i *ngIf="tab.icon" class="mdi mdi-{{tab.icon}}"></i>
-                            <span *ngIf="tab.label">
-                                {{ tab.label  }}
-                            </span>
-                            <button *ngIf="tab.allowClose" type="button" class="close" (click)="closeTab(tab)"><i class="mdi mdi-close"></i></button>
-                        </a>
-                    </li>
-                </ul>
-                <ng-content></ng-content>`,
+    template: ` <section id="tabs" justify>
+                    <ul #container class="nav nav-tabs" [ngClass]="size">
+                        <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{'active': tab.active, 'icon': tab.icon && !tab.label}">
+                            <a class="nav-link" [ngClass]="{active: tab.active}" plexRipples onclick="return false">
+                                <i *ngIf="tab.icon" class="mdi mdi-{{tab.icon}}"></i>
+                                <span *ngIf="tab.label">
+                                    {{ tab.label  }}
+                                </span>
+                                <button *ngIf="tab.allowClose" type="button" class="close" (click)="closeTab(tab)"><i class="mdi mdi-close"></i></button>
+                            </a>
+                        </li>
+                    </ul>
+                    <div justify="end">
+                        <ng-content select="plex-badge"></ng-content>
+                        <ng-content select="plex-button"></ng-content>
+                    </div>
+                </section>
+                <section>
+                    <ng-content></ng-content>
+                </section>
+                `,
 })
 export class PlexTabsComponent implements AfterContentInit {
     private _activeIndex = 0;
