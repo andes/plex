@@ -31,14 +31,14 @@ import { Subscription } from 'rxjs-compat/Subscription';
         <div class="row">
             <div class="col-{{ main }} h-100"
                  [class.focused]="foco === 'main'"
-                 [class.not-focused]="foco !== 'main'">
+                 [class.not-focused]="foco && foco !== 'main'">
                 <ng-content select="plex-layout-main"></ng-content>
             </div>
             <div class="col-{{ maxcolumns - main }} h-100"
                  *ngIf="(main < maxcolumns && !foco) || !!foco"
                  [hidden]="main === maxcolumns && foco"
                  [class.focused]="foco === 'sidebar'"
-                 [class.not-focused]="foco !== 'sidebar'">
+                 [class.not-focused]="foco && foco !== 'sidebar'">
                 <ng-content select="plex-layout-sidebar"></ng-content>
             </div>
         </div>
