@@ -1,16 +1,47 @@
-import { Directive, ElementRef, AfterViewChecked, Renderer2, HostListener } from '@angular/core';
+import { Directive, ElementRef, AfterViewChecked, Renderer2, HostListener, OnInit, NgZone, OnDestroy } from '@angular/core';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
     selector: '[responsive]'
 })
-export class ResponsiveDirective implements AfterViewChecked {
+export class ResponsiveDirective implements AfterViewChecked, OnInit, OnDestroy {
+    // ResizeObserver es soportado desde la version 64 de Chrome.
+    // Tenemos algunos usuarios en la version 59 todavía.
+    ResizeObserver = (window as any).ResizeObserver;
+
     constructor(
         private el: ElementRef,
-        private render: Renderer2
+        private render: Renderer2,
+        private zone: NgZone
     ) { }
 
     width = 0;
+    observer;
+    handler;
+
+
+    ngOnInit() {
+        if (this.ResizeObserver) {
+            this.observer = new this.ResizeObserver(entries => {
+                this.zone.run(() => {
+                    this.checkDimension();
+                });
+            });
+            this.observer.observe(this.el.nativeElement);
+        } else {
+            this.handler = this.onResize.bind(this);
+            window.addEventListener('resize', this.handler);
+        }
+    }
+
+    ngOnDestroy() {
+        if (this.observer) {
+            this.observer.unobserve(this.el.nativeElement);
+        }
+        if (this.handler) {
+            window.removeEventListener('resize', this.handler);
+        }
+    }
 
     checkDimension() {
         this.width = this.el.nativeElement.clientWidth;
@@ -31,11 +62,14 @@ export class ResponsiveDirective implements AfterViewChecked {
     }
 
     ngAfterViewChecked() {
-        this.checkDimension();
+        if (!this.ResizeObserver) {
+            this.checkDimension();
+        }
     }
 
-    @HostListener('window:resize', ['event'])
     onResize() {
-        this.checkDimension();
+        this.zone.run(() => {
+            this.checkDimension();
+        });
     }
 }
