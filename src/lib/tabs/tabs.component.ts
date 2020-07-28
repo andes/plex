@@ -18,6 +18,7 @@ import { PlexTabComponent } from './tab.component';
                     <div justify="end">
                         <ng-content select="plex-badge"></ng-content>
                         <ng-content select="plex-button"></ng-content>
+                        <ng-content select="plex-help"></ng-content>
                     </div>
                 </section>
                 <section>

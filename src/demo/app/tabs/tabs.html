@@ -51,6 +51,17 @@
                 <plex-badge type="warning" size="sm">badge warning</plex-badge>
                 <plex-button type="info" size="sm" label="test"></plex-button>
                 <plex-button type="warning" size="sm" label="test"></plex-button>
+                <plex-help type="help" titulo="Ayuda de este panel" size="sm">
+                    <div class="ml-4 mb-4" *plHelp>
+                        <label>Organización:</label>
+                        prestacion.solicitud.organizacion.nombre
+                        <label>Fecha:</label>
+                        prestacion.solicitud.fecha | date
+                        <label>Prestación de origen:</label>
+                        prestacion.solicitud.prestacionOrigen
+                        {{ asyncContent | async | json }}
+                    </div>
+                </plex-help>
             </plex-tabs>
         </section>
     </plex-layout-main>

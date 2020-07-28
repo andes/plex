@@ -2,11 +2,11 @@
 /**
  * Array de colores expandibles de los tabs desde una aplicación externa.
  */
+ 
 $plex-tabs-color-extend: (
   procedimiento: $red,
   trastorno: violet
 ) !default;
-
 
 plex-tabs {
     width: 100%;
@@ -18,12 +18,9 @@ plex-tabs {
         border-bottom: solid 1px black;
     
         .nav-tabs {
-            //--buttonContainer: fit-content;
-
             overflow-x: auto;
             overflow-y: hidden;
             width: 100%;
-            //width: calc(100% - var(--buttonContainer));
             border: none;
             white-space: nowrap;
         
@@ -64,7 +61,6 @@ plex-tabs {
                     font-weight: 600; 
                 }
         
-        
                 &.nav-item-default {
                     background-color: $white;
                     color: $blue;
@@ -84,7 +80,6 @@ plex-tabs {
                         }
                     }
                 }
-        
         
                 .close {
                     margin-left: 1em;
