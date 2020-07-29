@@ -15,7 +15,7 @@ export class HintComponent implements OnInit {
     hostElement: HTMLElement;
 
     @Input()
-    hintType: PlexType = 'default';
+    hintType: PlexType;
 
     @Input()
     hintIcon = 'help';
