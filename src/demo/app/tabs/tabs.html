@@ -9,6 +9,7 @@
                 <plex-tab label="Tab 1" color="procedimiento">
                     <div class="alert alert-info">
                         Contenido 1
+                        <span *ngFor="let item of contenidoAsync | async"> {{ item }} </span>
                     </div>
                 </plex-tab>
                 <plex-tab *ngIf="mostrar" label="Tab 2" icon="account">
@@ -19,7 +20,6 @@
                 <plex-tab icon="history">
                     <div class="alert alert-danger" *plTab="5000">
                         Contenido 3
-                        <span *ngFor="let item of contenidoAsync | async"> {{ item }} </span>
                     </div>
                 </plex-tab>
                 <plex-dropdown label="hola" size="sm" [items]="items" right="false">

@@ -1,13 +1,14 @@
 import { Plex } from './../../../lib/core/service';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { from, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { DropdownItem } from '../../../lib/dropdown/dropdown-item.inteface';
 
+
 @Component({
     templateUrl: 'tabs.html',
 })
-export class TabsDemoComponent {
+export class TabsDemoComponent implements OnInit {
     public activo = 1;
     public activoDinamico = 0;
     public mostrar = true;
@@ -23,6 +24,9 @@ export class TabsDemoComponent {
 
     public items: DropdownItem[];
 
+    constructor(private plex: Plex) {
+    }
+
     ngOnInit() {
         this.items = [
             { label: 'Ir a inicio', icon: 'dna', route: '/incio' },
@@ -31,11 +35,6 @@ export class TabsDemoComponent {
             { label: 'Item con handler', icon: 'wrench', handler: (() => { alert('Este es un handler'); }) }
         ];
     }
-
-
-    constructor(private plex: Plex) {
-    }
-
 
     public next() {
         this.activo++;
