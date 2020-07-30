@@ -22,6 +22,8 @@
                         <span *ngFor="let item of contenidoAsync | async"> {{ item }} </span>
                     </div>
                 </plex-tab>
+                <plex-dropdown label="hola" size="sm" [items]="items" right="false">
+                </plex-dropdown>
                 <plex-button type="info" size="sm" title="anterior" icon="chevron-left" (click)="previous()">
                 </plex-button>
                 <plex-button type="info" size="sm" title="siguiente" icon="chevron-right" (click)="next()">

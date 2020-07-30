@@ -2,6 +2,7 @@ import { Plex } from './../../../lib/core/service';
 import { Component, OnDestroy } from '@angular/core';
 import { from, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { DropdownItem } from '../../../lib/dropdown/dropdown-item.inteface';
 
 @Component({
     templateUrl: 'tabs.html',
@@ -15,11 +16,22 @@ export class TabsDemoComponent {
         { label: 'amplifier', icon: 'amplifier', color: 'trastorno' },
         { label: 'amazon', icon: 'amazon', color: 'default' }
     ];
-
     public contenidoAsync = of([1, 2, 3]).pipe(
         // tslint:disable-next-line:no-console
         tap(console.log)
     );
+
+    public items: DropdownItem[];
+
+    ngOnInit() {
+        this.items = [
+            { label: 'Ir a inicio', icon: 'dna', route: '/incio' },
+            { label: 'Ir a ruta inexistente', icon: 'flag', route: '/ruta-rota' },
+            { divider: true },
+            { label: 'Item con handler', icon: 'wrench', handler: (() => { alert('Este es un handler'); }) }
+        ];
+    }
+
 
     constructor(private plex: Plex) {
     }
