@@ -1,4 +1,3 @@
-
 export class Paciente {
     id: number;
     documento: string;

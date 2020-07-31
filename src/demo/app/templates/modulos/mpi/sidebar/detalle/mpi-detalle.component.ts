@@ -1,20 +1,25 @@
-import { Component, OnInit, ContentChild } from '@angular/core';
-import { PacienteService } from '../../../service/paciente.service';
-import { Paciente } from '../../../service/paciente';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { PacienteService } from '../../../../service/paciente.service';
+import { Paciente } from '../../../../service/paciente';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { PlexOptionsComponent } from '../../../../../../lib/options/options.component';
 
 @Component({
-    selector: 'plex-sidebar-detalle',
-    templateUrl: './sidebar-detalle.component.html',
+    selector: 'plex-mpi-sidebar-detalle',
+    templateUrl: './mpi-detalle.component.html',
 })
-export class SidebarDetalleComponent implements OnInit {
+export class MpiDetalleComponent implements OnInit {
 
-    @ContentChild(PlexOptionsComponent, { static: true }) plexOptions: PlexOptionsComponent;
+    sidebar = 12;
+    @Output() cerrar = new EventEmitter<number>();
+
+    cerrarSidebar() {
+        this.cerrar.emit(this.sidebar);
+    }
 
     public listadoPaciente: Paciente[];
+    pacientes$: Observable<Paciente[]>;
     paciente$: Observable<Paciente>;
     public items = [
         {
@@ -30,8 +35,6 @@ export class SidebarDetalleComponent implements OnInit {
             key: '3',
         }
     ];
-    public viewOptions = true;
-    public selectedOption = '1';
 
     constructor(
         private pacienteService: PacienteService,
@@ -68,6 +71,7 @@ export class SidebarDetalleComponent implements OnInit {
     ];
 
     ngOnInit() {
+        this.pacientes$ = this.pacienteService.getPacientes();
 
         this.paciente$ = this.route.paramMap.pipe(
             switchMap((params: ParamMap) =>
@@ -77,22 +81,6 @@ export class SidebarDetalleComponent implements OnInit {
 
     gotoPacientes(paciente: Paciente) {
         const pacienteId = paciente ? paciente.id : null;
-        this.router.navigate(['/listado-sidebar', { id: pacienteId, foo: 'foo' }]);
-    }
-
-    toggleItems() {
-        if (this.items.length === 2) {
-            this.items.push({ label: 'opcion 3', key: '3' });
-        } else {
-            this.items = this.items.filter(item => item.key !== '3');
-            this.items = [
-                { label: 'otras 1', key: '7' },
-                { label: 'otas 2', key: '8' },
-            ];
-        }
-    }
-
-    onActiveOption(opcion) {
-        this.selectedOption = opcion;
+        this.router.navigate(['/listado-sidebar', { id: pacienteId }]);
     }
 }

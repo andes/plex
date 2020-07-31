@@ -94,8 +94,4 @@ export class ListadoSidebarComponent implements OnInit {
         return moment(this.tModel.hora).add(30, 'minutes');
     }
 
-    onChange() {
-        this.plex.info('success', 'Este cartel se demoro un segundo en aparecer después de escribir.');
-    }
 }
-
