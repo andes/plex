@@ -35,6 +35,7 @@ import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
+import { TemplateInicioComponent } from './templates/template-inicio';
 import { TemplateFormComponent } from './templates/template-form';
 import { TemplateVisualizacionComponent } from './templates/template-visualizacion';
 import { TemplateBusquedaComponent } from './templates/template-busqueda';
@@ -93,6 +94,7 @@ import { DatosRelacionesComponent } from './templates/modulos/mpi/main/alta/dato
         WizardDemoComponent,
         DemoIconComponent,
         TooltipHintDemoComponent,
+        TemplateInicioComponent,
         TemplateFormComponent,
         TemplateVisualizacionComponent,
         TemplateBusquedaComponent,

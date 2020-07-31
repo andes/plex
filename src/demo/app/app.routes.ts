@@ -24,6 +24,7 @@ import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
 import { WrapperDemoComponent } from './wrapper/wrapper.component';
 import { GridDemoComponent } from './grid/grid.component';
+import { TemplateInicioComponent } from './templates/template-inicio';
 import { TemplateFormComponent } from './templates/template-form';
 import { TemplateVisualizacionComponent } from './templates/template-visualizacion';
 import { TemplateBusquedaComponent } from './templates/template-busqueda';
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
     { path: 'wizard', component: WizardDemoComponent },
     { path: 'wrapper', component: WrapperDemoComponent },
     { path: 'grid', component: GridDemoComponent },
+    { path: 'templates', component: TemplateInicioComponent },
     { path: 'templates/form', component: TemplateFormComponent },
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },
     { path: 'templates/visualizacion', component: TemplateVisualizacionComponent },
