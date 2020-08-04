@@ -12,7 +12,6 @@ plex-help {
         &.open {
             box-sizing: border-box;
             width: 100%;
-            min-width: 40vw;
             border-top: 1px solid darken($light-grey, 15%);
             border-left: 1px solid darken($light-grey, 15%);
             border-radius: 0.25rem;
@@ -31,7 +30,7 @@ plex-help {
         }
 
         &.full {
-            width: auto;
+            width: 90%;
             height: auto;
         }
         &.half {
@@ -66,8 +65,8 @@ plex-help {
     .toggle-help {
         position: absolute;
         right: 0;
-        top: $top-open;
         display: inline-block;
+        box-sizing: border-box;
 
         height: auto;
 
@@ -75,8 +74,11 @@ plex-help {
             position: relative;
             top: 0;
             right: 0;
+            display: inline-block;
             display: flex;
             justify-content: flex-end;
+            align-items: flex-end;
+            max-height: 36px;
         }
 
         &.closed {
@@ -88,7 +90,6 @@ plex-help {
         &.open {
             left: 15px;
             plex-button {
-                top: 25px;
                 z-index: 1000;
             }
         }

@@ -1,5 +1,6 @@
 .plex-box,
 plex-box > DIV {
+    box-sizing: border-box;
     height: 100%;
     background: white;
     display: flex;
@@ -8,9 +9,8 @@ plex-box > DIV {
     padding: ($grid-gutter-width-base / 3);
 
     & > header {
-      margin-bottom: 15px;
-      border-bottom: solid grey 1px;
-      border-bottom: solid #aaa 1px;
+        margin-bottom: 15px;
+        border-bottom: solid #aaa 1px;
     }
 
     & > .plex-box-content {
@@ -18,7 +18,7 @@ plex-box > DIV {
         overflow-y: overlay;
         overflow-x: hidden; // expandir a todo el alto del contenedor
         flex: 1;
-        padding-right: 15px; // Distancia desde el scrollback
+        // padding-right: 15px; // Distancia desde el scrollback
         height: 0;
         // Fix momentaneo
         .plex-box-content {
@@ -40,9 +40,9 @@ plex-box > DIV {
 }
 
 .plex-box-invert {
-      background: $dark-blue;
-      color: white;
-      --heading-background-color: #{$dark-blue};
+    background: $dark-blue;
+    color: white;
+    --heading-background-color: #{$dark-blue};
 
     ::-webkit-scrollbar-thumb {
         background: #e1e1e1;
@@ -61,7 +61,6 @@ plex-box > DIV {
     ::-webkit-scrollbar-track,
     ::-webkit-scrollbar-track:active,
     ::-webkit-scrollbar-track:hover {
-        background: rgba(255,255,255,0.1);
+        background: rgba(255, 255, 255, 0.1);
     }
-
 }
