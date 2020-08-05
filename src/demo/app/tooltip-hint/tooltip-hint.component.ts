@@ -7,4 +7,8 @@ export class TooltipHintDemoComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void { }
+
+    alertar(e) {
+        alert(`Inner HTML: ${e.target.innerHTML}`);
+    }
 }
