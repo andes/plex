@@ -1,0 +1,13 @@
+// Genera clases genéricas para cualquier elemento
+// $darken-percentage es 15%, seteado en variables.scss
+@mixin generic-factory($front-color: $light-blue, $bg-color: "", $border-color: "none") {
+    color: $front-color;
+    background-color: $bg-color;
+    border-color: $border-color;
+    @include hover {
+        background: darken($bg-color, $darken-percentage);
+        @if $border-color != "none" {
+            border-color: darken($border-color, $darken-percentage);
+        }
+    }
+}

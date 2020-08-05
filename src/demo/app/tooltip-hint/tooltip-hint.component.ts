@@ -4,11 +4,15 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './tooltip-hint.html'
 })
 export class TooltipHintDemoComponent implements OnInit {
+    message = '';
     constructor() { }
 
     ngOnInit(): void { }
 
     alertar(e) {
-        alert(`Inner HTML: ${e.target.innerHTML}`);
+        if (e.target) {
+            this.message = '¿Cuántos clicks fallidos hace uno en la vida?';
+            alert(`Inner HTML: ${this.message}`);
+        }
     }
 }
