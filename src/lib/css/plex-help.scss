@@ -8,6 +8,10 @@ plex-help {
         }
     }
 
+    plex-button {
+        top: -30px;
+        z-index: 1000;
+    }
     // Contenido del panel/card
     .card {
         position: absolute;
@@ -75,17 +79,6 @@ plex-help {
 
         height: auto;
 
-        plex-button {
-            position: relative;
-            top: 0;
-            right: 0;
-            display: inline-block;
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-            max-height: 36px;
-        }
-
         &.closed {
             display: inline-block;
             position: relative;
@@ -94,9 +87,6 @@ plex-help {
         }
         &.open {
             left: 15px;
-            plex-button {
-                z-index: 1000;
-            }
         }
     }
 }
