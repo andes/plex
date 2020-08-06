@@ -3,6 +3,7 @@ import { Component, Input, Renderer2, Output, EventEmitter, ElementRef } from '@
 @Component({
     selector: 'plex-help',
     template: `
+    <plex-button class="btn-close" *ngIf="!closed" type="danger" size="sm" icon="close" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>
     <div class="toggle-help" [ngClass]="{'closed': closed, 'open': !closed}">
         <plex-button *ngIf="!closed" type="danger" size="sm" icon="close" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>
         <plex-button *ngIf="content && closed && !tituloBoton" type="info" [size]="size" title="{{ title }}" [icon]="type === 'info'? 'information-variant' : 'help'" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>

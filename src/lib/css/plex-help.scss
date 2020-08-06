@@ -2,6 +2,11 @@ plex-help {
     $top-open: unset;
     display: inline-block;
     color: $dark-blue;
+    &.no-icon {
+        .btn-close {
+            display: none;
+        }
+    }
 
     // Contenido del panel/card
     .card {
