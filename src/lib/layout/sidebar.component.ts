@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, HostListener, AfterViewInit } from '@angular/core';
 
 @Component({
     selector: 'plex-layout-sidebar',
@@ -6,15 +6,35 @@ import { Component, Input } from '@angular/core';
     <div class="plex-box" [ngClass]="{'plex-box-invert': type == 'invert'}">
         <ng-content select="header"></ng-content>
         <ng-content select="plex-title[main]"></ng-content>
-        <div class="plex-box-content">
+        <div class="plex-box-content" [ngClass]="{'scrollbar': scrollBarPresent}">
             <ng-content></ng-content>
         </div>
     </div>
     `,
 })
-export class PlexLayoutSidebarComponent {
+export class PlexLayoutSidebarComponent implements AfterViewInit {
     @Input() type = '';
-    constructor() {
+    scrollBarPresent: boolean;
+    content: any;
 
+    constructor(private el: ElementRef) {
+    }
+
+    ngAfterViewInit() {
+        this.content = this.el.nativeElement.querySelector('.plex-box-content');
+        this.checkScroll();
+    }
+
+    checkScroll() {
+        if (this.content.scrollHeight > this.content.clientHeight) {
+            this.scrollBarPresent = true;
+        } else {
+            this.scrollBarPresent = false;
+        }
+    }
+
+    @HostListener('window:resize', ['event'])
+    onResize() {
+        this.checkScroll();
     }
 }

@@ -15,14 +15,21 @@ plex-box > DIV {
 
     & > .plex-box-content {
         clear: both;
-        overflow-y: overlay;
         overflow-x: hidden; // expandir a todo el alto del contenedor
         flex: 1;
-        // padding-right: 15px; // Distancia desde el scrollback
         height: 0;
+
         // Fix momentaneo
         .plex-box-content {
             height: auto;
+        }
+
+        // Ver src/lib/layout/{main,sidebar}.component.ts
+        &.scrollbar {
+            padding-right: 10px;
+            plex-help .card {
+                right: 30px;
+            }
         }
     }
 
