@@ -3,8 +3,11 @@ import { Component, Input, Renderer2, Output, EventEmitter, ElementRef } from '@
 @Component({
     selector: 'plex-help',
     template: `
-    <plex-button class="btn-close" *ngIf="!closed" type="danger" size="sm" icon="close" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>
-    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" type="info" [size]="size" title="{{ title }}" [icon]="type === 'info'? 'information-variant' : 'help'" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>
+    <plex-button class="btn-close" *ngIf="!closed" type="danger" [size]="size" icon="close" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>
+    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" type="info" [size]="size" [icon]="type === 'info'? 'information-variant' : 'help'" (click)="toggle();$event.stopImmediatePropagation();">
+    </plex-button>
+    <plex-button class="btn-open" *ngIf="content && closed && tituloBoton" type="info" [size]="size" [label]="tituloBoton" (click)="toggle();$event.stopImmediatePropagation();">
+    </plex-button>
     <div class="toggle-help" [ngClass]="{'closed': closed, 'open': !closed}">
         <div class="card help" [ngClass]="{'open': !closed, 'full': cardSize === 'full', 'half': cardSize === 'half'}" (click)="$event.stopImmediatePropagation();">
             <ng-container *ngIf="!closed">
