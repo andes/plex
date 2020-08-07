@@ -1,3 +1,10 @@
+# [6.10.0](https://github.com/andes/plex/compare/v6.9.0...v6.10.0) (2020-08-07)
+
+
+### Features
+
+* **hint:** permite hint clickeable ([#196](https://github.com/andes/plex/issues/196)) ([591ee09](https://github.com/andes/plex/commit/591ee0976e6f680047d6d12ee74e92fd0ae5d9df))
+
 # [6.9.0](https://github.com/andes/plex/compare/v6.8.0...v6.9.0) (2020-07-20)
 
 
