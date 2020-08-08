@@ -241,11 +241,6 @@ plex-list {
         upload-file {
             margin: 0 .15rem;
         }
-    }
-
-    plex-dropdown {
-        display: flex;
-        align-items: center;
 
         .btn,
         .dropdown-item {
@@ -260,12 +255,34 @@ plex-list {
                 border: 0;
                 height: 27px;
             }
-
-            i {
-                line-height: 28px;
+    
+            plex-dropdown {
+                display: flex;
+                align-items: center;
+        
+                .btn,
+                .dropdown-item {
+                    padding: 5px;
+                    font-size: .9rem;
+                    background: transparent !important;
+                }
+        
+                &[icon] {
+                    button {
+                        padding: 0;
+                        border: 0;
+                        height: 27px;
+                    }
+        
+                    i {
+                        line-height: 28px;
+                    }
+                }
             }
+    
         }
     }
+
 }
 
     // Grilla interna
