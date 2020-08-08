@@ -94,7 +94,7 @@ plex-list {
         
         .item-row {
             @include flex;
-            width: 75%;
+            width: 70%;
             
             .elementos-graficos {
                 @include flex;
@@ -189,7 +189,8 @@ plex-list {
     
     div.botonera {
         display: flex;
-        width: 25%;
+        min-width: 30%;
+        width: fit-content;
         justify-content: flex-end;
         text-align: right;
 
@@ -199,31 +200,42 @@ plex-list {
         upload-file {
             margin: .25rem 0 .25rem .25rem;
         }
+
+        & > div {
+            display: flex;
+            flex-direction: row;
+    
+            &:first-child {
+                margin-bottom: 2px;
+            }
+    
+            plex-dropdown {
+                display: flex;
+                align-items: center;
+        
+                .btn,
+                .dropdown-item {
+                    padding: 5px;
+                    font-size: .9rem;
+                    background: transparent !important;
+                }
+        
+                &[icon] {
+                    button {
+                        padding: 0;
+                        border: 0;
+                        height: 27px;
+                    }
+        
+                    i {
+                        line-height: 28px;
+                    }
+                }
+            }
+    
+        }
     }
 
-    plex-dropdown {
-        display: flex;
-        align-items: center;
-
-        .btn,
-        .dropdown-item {
-            padding: 5px;
-            font-size: .9rem;
-            background: transparent !important;
-        }
-
-        &[icon] {
-            button {
-                padding: 0;
-                border: 0;
-                height: 27px;
-            }
-
-            i {
-                line-height: 28px;
-            }
-        }
-    }
 }
 
     // Grilla interna
@@ -238,7 +250,7 @@ plex-list {
     }
     
     .item-list-heading {
-        width: 75%;
+        width: 70%;
     }
     
     // Sin checkbox, Sin icono
@@ -263,7 +275,7 @@ plex-list {
 
     // Directiva responsive
     plex-list {
-        > div.size-sm {
+        > div.size-sm, div.size-md {
             
             section {
                 .item-list-heading {
@@ -282,7 +294,6 @@ plex-list {
                 div.item-list {
                     margin-top: .5rem;
                     grid-auto-flow: unset;
-                    // width: 100%!important;
                 }
         
                 .botonera {

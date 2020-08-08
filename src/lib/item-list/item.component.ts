@@ -26,10 +26,12 @@ import { PlexButtonComponent } from '../button/button.component';
             <div class="botonera">
                 <div>
                     <ng-content select="plex-badge"></ng-content>
+                </div>
+                <div>
                     <ng-content select="plex-button"></ng-content>
                     <ng-content select="upload-file"></ng-content>
+                    <ng-content select="plex-dropdown[icon]"></ng-content>
                 </div>
-                <ng-content select="plex-dropdown[icon]"></ng-content>
             </div>
         </section>
     `
