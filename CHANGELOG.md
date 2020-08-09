@@ -1,3 +1,10 @@
+# [6.11.0](https://github.com/andes/plex/compare/v6.10.0...v6.11.0) (2020-08-09)
+
+
+### Features
+
+* **plex-tabs:** posibilita convivencia con badge y button ([#198](https://github.com/andes/plex/issues/198)) ([c994f72](https://github.com/andes/plex/commit/c994f7247eee9bad6c7b59d57522beaf01aaee9d))
+
 # [6.10.0](https://github.com/andes/plex/compare/v6.9.0...v6.10.0) (2020-08-07)
 
 
