@@ -115,7 +115,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         // Basado en remove_button de selectize/dist/js/standalone/selectize
         Selectize.define('remove_button_plex', function (options) {
             options = {
-                label: '<plex-icon name="close-circle" size="sm" default="dark"></plex-icon>',
+                label: '<i class="adi adi-close-circle"></i>',
                 title: 'Quitar esta opción',
                 className: 'remove-button',
                 append: true
