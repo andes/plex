@@ -48,6 +48,7 @@ import { PlexOptionsComponent } from './options/options.component';
 import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
 import { PlexWrapperComponent } from './wrapper/wrapper.component';
 import { PlexGridComponent } from './grid/grid.component';
+import { PlexCardComponent } from './card/card.component';
 
 // Directivas
 import { PlexWizardDirective } from './wizard/wizard.directive';
@@ -92,7 +93,6 @@ const MODULES = [
     PlexLoaderComponent,
     PlexRibbonComponent,
     PlexScrollComponent,
-    PlexRipplesDirective,
     PlexPhoneComponent,
     PlexDropdownComponent,
     PlexIconComponent,
@@ -101,17 +101,12 @@ const MODULES = [
     PlexFooterComponent,
     PlexLayoutMainComponent,
     PlexLayoutSidebarComponent,
-    PlexWizardDirective,
     PlexListComponent,
     PlexItemComponent,
     PlexLabelComponent,
     PlexHeadingComponent,
     PlexTitleComponent,
     TooltipComponent,
-    JustifyDirective,
-    ResponsiveDirective,
-    GrowDirective,
-    SpanDirective,
     PlexHelpComponent,
     PlexModalComponent,
     PlexModalTitleComponent,
@@ -119,12 +114,21 @@ const MODULES = [
     PlexDetailComponent,
     PlexOptionsComponent,
     PlexVisualizadorComponent,
-    PreviewDirective,
     NavItemComponent,
     PlexWrapperComponent,
     PlexGridComponent,
-    HintDirective,
+    PlexCardComponent,
+
+    //Directivas
+    GrowDirective,
     HelpDirective,
+    HintDirective,
+    JustifyDirective,
+    PreviewDirective,
+    PlexRipplesDirective,
+    PlexWizardDirective,
+    ResponsiveDirective,
+    SpanDirective,
     TabDirective
     // MatTooltip
 ];

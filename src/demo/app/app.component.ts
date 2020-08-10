@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
             { label: 'Wizard', icon: 'auto-fix', route: '/wizard' },
             { label: 'Wrapper', icon: 'view-quilt', route: '/wrapper' },
             { label: 'Grid', icon: 'view-grid', route: '/grid' },
+            { label: 'Card', icon: 'card-account-details-star-outline', route: '/card' },
         ];
         this.plex.updateMenu(menu);
         this.plex.updateAppStatus({ API: 'OK' });
