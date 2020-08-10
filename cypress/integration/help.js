@@ -10,7 +10,7 @@ context('help', () => {
 
         cy.get('plex-layout plex-help:first').plexButtonIcon('help-circle').click();
 
-        cy.get('plex-layout plex-help').plexButtonIcon('information-variant').click();
+        cy.get('plex-layout plex-help').plexButtonIcon('informacion').click();
 
         cy.eyesCheckWindow('plex-help');
 
