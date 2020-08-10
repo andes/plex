@@ -1,3 +1,11 @@
+## [6.11.1](https://github.com/andes/plex/compare/v6.11.0...v6.11.1) (2020-08-10)
+
+
+### Bug Fixes
+
+* **hint:** change detection para evitar error al iniciar ([#205](https://github.com/andes/plex/issues/205)) ([de1307b](https://github.com/andes/plex/commit/de1307b997f6e6f0e5af076bfb2bc065bb33b808))
+* **hint:** change detection para evitar error al iniciar ([#206](https://github.com/andes/plex/issues/206)) ([68c0124](https://github.com/andes/plex/commit/68c0124f0a88c3a3d8050dfc7d9a90f660c323c7))
+
 # [6.11.0](https://github.com/andes/plex/compare/v6.10.0...v6.11.0) (2020-08-09)
 
 
