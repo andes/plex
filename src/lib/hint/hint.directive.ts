@@ -1,4 +1,4 @@
-import { Directive, ComponentRef, ViewContainerRef, ComponentFactoryResolver, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Directive, ComponentRef, ViewContainerRef, ComponentFactoryResolver, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HintComponent } from './hint.component';
 import { PlexType } from '../core/plex-type.type';
 
@@ -6,7 +6,7 @@ import { PlexType } from '../core/plex-type.type';
     // tslint:disable-next-line:directive-selector
     selector: '[hint], [position:has(hint)], [icon:has(hint)]',
 })
-export class HintDirective implements AfterViewInit {
+export class HintDirective implements OnInit {
 
     private tooltip: ComponentRef<HintComponent>;
     @Input('hint') content: string | HintComponent;
@@ -30,7 +30,7 @@ export class HintDirective implements AfterViewInit {
     ) {
     }
 
-    ngAfterViewInit(): void {
+    ngOnInit(): void {
         this.cdr.detectChanges();
 
         const factory = this.resolver.resolveComponentFactory(HintComponent);
