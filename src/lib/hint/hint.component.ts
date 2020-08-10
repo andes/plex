@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, ChangeDetectorRef, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { PlexType } from '../core/plex-type.type';
 
 @Component({
@@ -9,7 +9,7 @@ import { PlexType } from '../core/plex-type.type';
         </a>
     `
 })
-export class HintComponent implements OnInit, AfterViewInit {
+export class HintComponent implements OnInit {
 
     @Input()
     hostElement: HTMLElement;
@@ -26,15 +26,10 @@ export class HintComponent implements OnInit, AfterViewInit {
     @Input()
     position = 'above';
 
-    constructor(
-        private cdr: ChangeDetectorRef) { }
+    constructor() { }
 
     ngOnInit() {
         this.position = 'above';
-    }
-
-    ngAfterViewInit(): void {
-        this.cdr.detectChanges();
     }
 
     // Si el elemento que tiene la directiva [hint] tiene un evento (click), este se ejecutará, guste o no.

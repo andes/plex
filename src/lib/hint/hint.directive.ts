@@ -1,4 +1,4 @@
-import { Directive, ComponentRef, ViewContainerRef, ComponentFactoryResolver, Input, AfterViewInit } from '@angular/core';
+import { Directive, ComponentRef, ViewContainerRef, ComponentFactoryResolver, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { HintComponent } from './hint.component';
 import { PlexType } from '../core/plex-type.type';
 
@@ -25,11 +25,13 @@ export class HintDirective implements AfterViewInit {
 
     constructor(
         private viewContainerRef: ViewContainerRef,
-        private resolver: ComponentFactoryResolver
+        private resolver: ComponentFactoryResolver,
+        private cdr: ChangeDetectorRef
     ) {
     }
 
     ngAfterViewInit(): void {
+        this.cdr.detectChanges();
 
         const factory = this.resolver.resolveComponentFactory(HintComponent);
         this.tooltip = this.viewContainerRef.createComponent(factory);
