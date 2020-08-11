@@ -1,13 +1,22 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <plex-title titulo="plex-grid"></plex-title>
-        <h6>Plex-grid es un envolvente que tiene como objetivo organizar y distribuir elementos en una reticula</h6>
+        <plex-title titulo="plex-card"></plex-title>
+        <h6>plex-card es una envolvente que aloja otros micro-componentes (plex-badge, plex-label, plex-button) en un
+            rectangulo.</h6>
         <plex-grid cols="2">
-            <plex-card *ngFor="let dato of datos | slice:0:3">
+            <plex-card items="start" type="" *ngFor="let dato of datos | slice:0:3">
                 <plex-badge type="success">Este es un badge</plex-badge>
-                <plex-label size="lg" direction="column" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+                <plex-label size="lg" direction="row" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
                 </plex-label>
                 <plex-button type="success" label="aceptar"></plex-button>
+            </plex-card>
+        </plex-grid>
+        <plex-grid cols="3">
+            <plex-card items="center" type="success" *ngFor="let dato of datos | slice:0:3">
+                <plex-badge type="info">Este es un badge</plex-badge>
+                <plex-label size="lg" direction="column" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+                </plex-label>
+                <plex-button type="warning" label="aceptar"></plex-button>
             </plex-card>
         </plex-grid>
     </plex-layout-main>
@@ -16,8 +25,8 @@
     <plex-layout-sidebar type="invert">
         <plex-title titulo="atributos y usos"></plex-title>
         <h6></h6>
-        <plex-title titulo="plex-grid type='full'" size="sm"></plex-title>
-        <h6>La propiedad 'full' genera que las celdas que integran la grilla ocupen todo el espacio disponible.</h6>
+        <plex-title titulo="plex-card" size="sm"></plex-title>
+        <h6>Aqui se redactaran propiedades del plex-card</h6>
         <plex-grid type="auto" size="md">
 
         </plex-grid>
