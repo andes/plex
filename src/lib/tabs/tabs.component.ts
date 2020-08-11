@@ -22,9 +22,8 @@ import { PlexTabComponent } from './tab.component';
                         <ng-content select="plex-help"></ng-content>
                     </div>
                 </section>
-                <section>
-                    <ng-content></ng-content>
-                </section>
+                <ng-content></ng-content>
+
                 `,
 })
 export class PlexTabsComponent implements AfterContentInit {
