@@ -1,3 +1,10 @@
+## [6.11.3](https://github.com/andes/plex/compare/v6.11.2...v6.11.3) (2020-08-12)
+
+
+### Bug Fixes
+
+* **plex-tabs:** handler tabs index ([79af585](https://github.com/andes/plex/commit/79af585df7d7762b4195bd5a0f7ba4210d5c0ce4))
+
 ## [6.11.2](https://github.com/andes/plex/compare/v6.11.1...v6.11.2) (2020-08-12)
 
 
