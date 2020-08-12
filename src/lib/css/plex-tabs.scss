@@ -11,7 +11,7 @@ $plex-tabs-color-extend: (
 plex-tabs {
     width: 100%;
     
-    section:first-child {
+    > section:first-child {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
