@@ -39,13 +39,20 @@ export class PlexTabsComponent implements AfterContentInit {
     }
     set activeIndex(value: number) {
         this._activeIndex = value;
-        this.tabs.forEach((t) => {
-            t.active = false;
-        });
+        this.doActiveTab(this._activeIndex);
+        // this.tabs.forEach((t) => {
+        //     if (t.active) {
+        //         t.toggle.emit(false);
+        //     }
+        //     t.active = false;
+        // });
 
-        if (this.tabs.length) {
-            this.tabs[Math.min(this.tabs.length - 1, this._activeIndex)].active = true;
-        }
+        // if (this.tabs.length) {
+        //     const tab = this.tabs[Math.min(this.tabs.length - 1, this._activeIndex)];
+        //     tab.active = true;
+        //     this.change.emit(this._activeIndex);
+        //     tab.toggle.emit(true);
+        // }
     }
 
     // Eventos
@@ -68,14 +75,40 @@ export class PlexTabsComponent implements AfterContentInit {
 
     selectTab(tab: PlexTabComponent) {
         setTimeout(() => {
-            this.tabs.forEach((t) => {
-                if (t.active) {
-                    t.toggle.emit(false);
-                }
-                t.active = false;
-            });
-            tab.active = true;
             this._activeIndex = this.tabs.indexOf(tab);
+            this.doActiveTab(this._activeIndex);
+            // this.tabs.forEach((t) => {
+            //     if (t.active) {
+            //         t.toggle.emit(false);
+            //     }
+            //     t.active = false;
+            // });
+            // tab.active = true;
+            // this.change.emit(this._activeIndex);
+            // tab.toggle.emit(true);
+
+            // // Focus tab header
+            // const tabHeader = this.container.nativeElement.children[this._activeIndex];
+            // if (tabHeader) {
+            //     tabHeader.scrollIntoViewIfNeeded ? tabHeader.scrollIntoViewIfNeeded() : tabHeader.scrollIntoView();
+            // }
+        });
+    }
+
+    closeTab(tab: PlexTabComponent) {
+        this.close.emit(this.tabs.indexOf(tab));
+    }
+
+    private doActiveTab(index: number) {
+        this.tabs.forEach((t) => {
+            if (t.active) {
+                t.toggle.emit(false);
+            }
+            t.active = false;
+        });
+        if (this.tabs.length) {
+            const tab = this.tabs[index];
+            tab.active = true;
             this.change.emit(this._activeIndex);
             tab.toggle.emit(true);
 
@@ -84,10 +117,6 @@ export class PlexTabsComponent implements AfterContentInit {
             if (tabHeader) {
                 tabHeader.scrollIntoViewIfNeeded ? tabHeader.scrollIntoViewIfNeeded() : tabHeader.scrollIntoView();
             }
-        });
-    }
-
-    closeTab(tab: PlexTabComponent) {
-        this.close.emit(this.tabs.indexOf(tab));
+        }
     }
 }

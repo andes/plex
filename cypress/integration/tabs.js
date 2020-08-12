@@ -12,13 +12,13 @@ context('tabs', () => {
 
         cy.eyesCheckWindow('tab selected');
 
-        cy.plexTab('Tab 2')
+        cy.plexTab('Tab 2').click()
 
-        cy.get('plex-layout plex-tabs:first plex-tab:nth-child(2) > div.alert.alert-warning').should('contain.text', 'Contenido 2');
+        cy.get('plex-layout plex-tabs:first').find('plex-tab').eq(1).contains('Contenido 2');
 
         cy.plexButtonIcon('chevron-right').click();
 
-        cy.get('plex-layout plex-tabs:first plex-tab:nth-child(3) > div.alert.alert-danger').should('contain.text', 'Contenido 3');
+        cy.get('plex-layout plex-tabs:first').find('plex-tab').eq(2).contains('Contenido 3');
 
         cy.eyesClose();
 
