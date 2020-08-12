@@ -1,3 +1,16 @@
+## [6.11.2](https://github.com/andes/plex/compare/v6.11.1...v6.11.2) (2020-08-12)
+
+
+### Bug Fixes
+
+* **plex-tabs:** active tabs when index change ([d90daa9](https://github.com/andes/plex/commit/d90daa95b235f25269d3e6f6243ca2c36ca785c2))
+* **plex-tabs:** mantiene height al 100% ([6aaeecd](https://github.com/andes/plex/commit/6aaeecd6f941f271ab6ba0212bd48b717afa1ca6))
+
+
+### Performance Improvements
+
+* **responsive:** implementa ResizeObserver ([7720a25](https://github.com/andes/plex/commit/7720a25920b95b1a635944a6342d13444b455958))
+
 ## [6.11.1](https://github.com/andes/plex/compare/v6.11.0...v6.11.1) (2020-08-10)
 
 
