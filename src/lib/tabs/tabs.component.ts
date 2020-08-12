@@ -40,19 +40,6 @@ export class PlexTabsComponent implements AfterContentInit {
     set activeIndex(value: number) {
         this._activeIndex = value;
         this.doActiveTab(this._activeIndex);
-        // this.tabs.forEach((t) => {
-        //     if (t.active) {
-        //         t.toggle.emit(false);
-        //     }
-        //     t.active = false;
-        // });
-
-        // if (this.tabs.length) {
-        //     const tab = this.tabs[Math.min(this.tabs.length - 1, this._activeIndex)];
-        //     tab.active = true;
-        //     this.change.emit(this._activeIndex);
-        //     tab.toggle.emit(true);
-        // }
     }
 
     // Eventos
@@ -77,21 +64,6 @@ export class PlexTabsComponent implements AfterContentInit {
         setTimeout(() => {
             this._activeIndex = this.tabs.indexOf(tab);
             this.doActiveTab(this._activeIndex);
-            // this.tabs.forEach((t) => {
-            //     if (t.active) {
-            //         t.toggle.emit(false);
-            //     }
-            //     t.active = false;
-            // });
-            // tab.active = true;
-            // this.change.emit(this._activeIndex);
-            // tab.toggle.emit(true);
-
-            // // Focus tab header
-            // const tabHeader = this.container.nativeElement.children[this._activeIndex];
-            // if (tabHeader) {
-            //     tabHeader.scrollIntoViewIfNeeded ? tabHeader.scrollIntoViewIfNeeded() : tabHeader.scrollIntoView();
-            // }
         });
     }
 
@@ -107,7 +79,7 @@ export class PlexTabsComponent implements AfterContentInit {
             t.active = false;
         });
         if (this.tabs.length) {
-            const tab = this.tabs[index];
+            const tab = this.tabs[Math.min(this.tabs.length - 1, index)];
             tab.active = true;
             this.change.emit(this._activeIndex);
             tab.toggle.emit(true);
