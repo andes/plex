@@ -1,3 +1,10 @@
+## [6.11.4](https://github.com/andes/plex/compare/v6.11.3...v6.11.4) (2020-08-12)
+
+
+### Bug Fixes
+
+* **plex-tabs:** herencia de estilos ([be49301](https://github.com/andes/plex/commit/be493014a25cf0d8e9fedbaf74679be8560a38a0))
+
 ## [6.11.3](https://github.com/andes/plex/compare/v6.11.2...v6.11.3) (2020-08-12)
 
 
