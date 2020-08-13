@@ -1,0 +1,41 @@
+@import './variables.scss';
+
+plex-card {
+
+    @mixin cardBasic {
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+    
+    // Estado selected
+    > .selected {
+        box-shadow: inset 0 0 0 2px $blue;
+        background-color: $light-blue;
+        box-sizing: border-box;
+        color: $dark-blue!important;
+    }
+    
+    // Estados hover
+    &[type="default"] 
+        > div:hover {
+            @include cardBasic;
+            box-shadow: inset 0 0 0 2px $blue;
+            background-color: $light-blue;
+            color: $dark-blue;
+    }
+
+    // Version invert
+    &[type="dark"] {
+        > div {
+            background-color: $dark-blue;
+        }
+    }
+
+    // Espaciado entre elementos
+    plex-badge, plex-button {
+        &:nth-child(n+2) {
+            margin-left: .5rem;
+        }
+    }
+
+}

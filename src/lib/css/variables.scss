@@ -19,6 +19,18 @@ $brand-danger: $red;
 // Font color
 $gray-dark: $dark-grey;
 
+// Background invert (plex-card)
+$bg-dark: $dark-blue;
+
+$colors: (
+    warning: $orange,
+    danger: $red,
+    success: $green,
+    info: $blue,
+    default: $dark-grey,
+    invert: $dark-blue,
+);
+
 :root {
     --nav-bar-color: #{$blue};
     --nav-bar-height: 46px;

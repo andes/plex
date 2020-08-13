@@ -5,35 +5,66 @@ import { Component } from '@angular/core';
 })
 export class CardDemoComponent {
 
-    img = [
-        {
-            url: 'https://images.unsplash.com/photo-1560582861-45078880e48e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1550831107-1553da8c8464?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-    ];
 
     datos = [
-        { label: 'edad', valor: '41 años', type: 'success' },
-        { label: 'documento', valor: '29.879.253', type: 'info' },
-        { label: 'sexo', valor: 'Masculino', type: 'default' },
-        { label: 'género', valor: 'Hospital Provincial de Neuquen Castro Rendon', type: 'warning' },
-        { label: 'fecha de nacimiento', valor: '14 de Julio de 1953', type: 'success' },
-        { label: 'CUIL', valor: '20-16879253-5', type: 'warning' },
-        { label: 'Nota', valor: 'Donec quam felis, ultricies nec, pellentesque eu, pretium quis. Lorem ipsum sonnet.', type: 'warning' },
-        { label: 'Comience buscando un paciente en la barra superior', valor: 'Ingrese al menos tres caracteres. Si la búsqueda no arroja el resultado esperado, presione el botón "Paciente Nuevo"', type: 'warning' }
+        { label: 'Funcionar como botones destacados en una interfaz', valor: 'Por ejemplo en puntos de inicio', type: 'default' },
+        { label: 'Representar opciones seleccionables', valor: 'Usuarios, organizaciones, items propios de un módulo', type: 'success' },
+        { label: 'Enriquecer las celdas de una grilla', valor: 'Por este motivo se combina con el componente plex-grid', type: 'info' },
+        { label: 'Definir bloques de información destacada', valor: 'Recomendable la tipología "invert"', type: 'dark' },
+    ];
+
+    agendas = [
+        { horario: '09:00 - 12:00 hs.', profesional: 'Monteverde, María Laura', prestacion: 'Consulta de niño sano', efector: 'Hospital Provincial Neuquén', turnos: '3 turnos', type: "warning" },
+        { horario: '12:00 - 14:00 hs.', profesional: 'Molini, Walter Juan', prestacion: 'Exámen médico del adulto', efector: 'Consultorios Huemul', turnos: '15 turnos', type: "success" },
+        { horario: '14:00 - 16:00 hs.', profesional: 'Ramirez, Jorge Sebastián', prestacion: 'Consulta de medicina general', efector: 'Centro de salud Progreso', turnos: 'sin turnos', type: "danger" },
+    ];
+
+    efectores = [
+        { nombre: 'Hospital Provincial Neuquén', localidad: 'Neuquén', img: 'https://www.saludneuquen.gob.ar/wp-content/uploads/2020/02/castro-rend%C3%B3n-1-1440x1080.jpg', },
+        { nombre: 'Hospital Dr. Horacio Heller', localidad: 'Neuquén', img: 'https://www.saludneuquen.gob.ar/wp-content/uploads/2019/11/Frente-Hospital-Horacio-Heller-4-1620x1080.jpg', },
+    ]
+
+    horarios = [
+        { hora: '09:00 hs.' },
+        { hora: '09:30 hs.' },
+        { hora: '10:00 hs.' },
+        { hora: '10:30 hs.' },
+        { hora: '11:00 hs.' },
+        { hora: '11:30 hs.' },
+        { hora: '12:00 hs.' },
+    ];
+
+    calendario = [
+        { fecha: '1', turnos: '5 turnos' },
+        { fecha: '2', turnos: '5 turnos' },
+        { fecha: '3', turnos: '5 turnos' },
+        { fecha: '4', turnos: '5 turnos' },
+        { fecha: '5', turnos: '5 turnos' },
+        { fecha: '6', turnos: '5 turnos' },
+        { fecha: '7', turnos: '5 turnos' },
+        { fecha: '8', turnos: '5 turnos' },
+        { fecha: '9', turnos: '5 turnos' },
+        { fecha: '10', turnos: 'sin turnos' },
+        { fecha: '11', turnos: 'sin turnos' },
+        { fecha: '12', turnos: 'sin turnos' },
+        { fecha: '13', turnos: 'sin turnos' },
+        { fecha: '14', turnos: 'sin turnos' },
+        { fecha: '15', turnos: 'sin turnos' },
+        { fecha: '16', turnos: 'sin turnos' },
+        { fecha: '17', turnos: 'sin turnos' },
+        { fecha: '18', turnos: 'sin turnos' },
+        { fecha: '19', turnos: 'sin turnos' },
+        { fecha: '20', turnos: 'sin turnos' },
+        { fecha: '21', turnos: 'sin turnos' },
+        { fecha: '22', turnos: 'sin turnos' },
+        { fecha: '23', turnos: 'sin turnos' },
+        { fecha: '24', turnos: 'sin turnos' },
+        { fecha: '25', turnos: 'sin turnos' },
+        { fecha: '26', turnos: 'sin turnos' },
+        { fecha: '27', turnos: 'sin turnos' },
+        { fecha: '28', turnos: 'sin turnos' },
+        { fecha: '29', turnos: 'sin turnos' },
+        { fecha: '30', turnos: 'sin turnos' },
+        { fecha: '31', turnos: 'sin turnos' },
     ];
 }
