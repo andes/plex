@@ -1,20 +1,14 @@
-<plex-layout main="8">
+<plex-layout main="6">
     <plex-layout-main>
-        <plex-title titulo="Directivas tooltip y hint">
+        <plex-title titulo="Directiva tooltip">
             <plex-button size="sm" type="danger" tooltip="El tooltip es un texto que refuerza la acción a realizar">
                 tooltip
-            </plex-button>
-            <plex-button class="ml-1" size="sm" type="danger"
-                         hint="¿Sabías que... el hint es un texto que sugiere acciones o indica alguna novedad? Además tiene soporte multilínea."
-                         position="above" (click)="alertar($event);" hintType="info">
-                hint
             </plex-button>
         </plex-title>
         <main role="main" class="inner">
             <div class="hint-click-test">{{ message }}</div>
-            <!-- <h4 class="cover-heading">Modals de Plex</h4> -->
-            <p class="lead">Las directivas <em>tooltip</em> y <em>hint</em> se usan como una ayuda contextual, tienen
-                similitudes y diferencias.</p>
+            <p class="lead">La directiva <em>tooltip</em> se usa como una ayuda puntual, a manera de mensaje simple y
+                directo.</p>
             <b>Tooltip</b>
             <ul>
                 <li class="list-item">Se emplea sobre <a class="d-inline-block" href="javascript:void(0)"
@@ -41,11 +35,43 @@
                 </li>
             </ul>
             <hr>
+
+        </main>
+    </plex-layout-main>
+    <plex-layout-sidebar>
+        <plex-title titulo="Directiva Hint">
+            <plex-button size="sm" type="danger"
+                         hint="¿Sabías que... el hint es un texto que sugiere acciones o indica alguna novedad? Además tiene soporte multilínea."
+                         position="above" (click)="alertar($event);" hintType="info">
+                hint
+            </plex-button>
+            <plex-help class="ml-2" type="help" titulo="Ayuda de este panel" tituloBoton="Ayuda" position="right"
+                       hint="Para más ayuda sobre PLEX podés ir al sitio ui.andes.gob.ar" (click)="alertar('hola!')">
+                <main role="main" class="inner px-2">
+                    <p class="lead mt-2">¡Hola!</p>
+                    <p> Soy el contenido de un plex-help. En este panel podés leer este mensaje.</p>
+                </main>
+            </plex-help>
+        </plex-title>
+        <main role="main" class="inner">
+            <p class="lead">La directiva <em>hint</em> se usa como una ayuda contextual avanzada.</p>
             <b hint="¡Hola! soy un hint y estoy en un tag &lt;b&gt;" hintType="success" icon="bell" detach="right">Hint
                 &nbsp;&nbsp;</b>
             <ul>
                 <li class="list-item">Es multilínea</li>
                 <li class="list-item">Se emplea sobre cualquier elemento, sea o no de acción</li>
+                <li class="list-item">Opcionalmente se puede separar con <plex-badge type="info" hintType="danger"
+                                hint="círculo arriba" detach="top">
+                        detach arriba
+                    </plex-badge>,
+                    <plex-badge class="ml-2
+                    " type="info" hintType="danger" hint="círculo a la derecha" detach="right">
+                        detach derecha
+                    </plex-badge>,
+                    <plex-badge class="ml-2
+                    " type="info" hintType="danger" hint="círculo arriba y a la derecha" detach="both">
+                        detach ambos
+                    </plex-badge>.</li>
                 <li class="list-item">Si el elemento tiene una acción (click), el hint se vuelve clickeable</li>
                 <li class="list-item">Sirve para indicar que hay alguna novedad o sugiere una funcionalidad</li>
                 <li class="list-item">Puede darse un valor de importancia <a href="javascript:void(0)"
@@ -62,21 +88,6 @@
                         documentación oficial de hint</a>
                 </li>
             </ul>
-        </main>
-    </plex-layout-main>
-    <plex-layout-sidebar>
-        <plex-title titulo="Hint con poco espacio">
-            <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Ayuda" position="right"
-                       hint="Para más ayuda sobre PLEX podés ir al sitio ui.andes.gob.ar" (click)="alertar('hola!')">
-                <main role="main" class="inner px-2">
-                    <p class="lead mt-2">¡Hola!</p>
-                    <p> Soy el contenido de un plex-help. En este panel podés leer este mensaje.</p>
-                </main>
-            </plex-help>
-        </plex-title>
-        <main role="main" class="inner">
-            <!-- <h4 class="cover-heading">Modals de Plex</h4> -->
-            <p class="lead">El hint es multilínea, y se posiciona automáticamente según el espacio que tenga</p>
         </main>
     </plex-layout-sidebar>
 </plex-layout>

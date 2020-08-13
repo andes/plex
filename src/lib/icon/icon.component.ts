@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'plex-icon',
-    template: `<i class="{{prefix}} {{prefix}}-{{name}} icon-{{type}} {{ cssSize }}"></i> `,
+    template: `<i class="{{prefix}} {{prefix}}-{{name}} text-{{type}} {{ cssSize }}"></i> `,
 })
 export class PlexIconComponent {
     @Input() prefix = 'mdi';
