@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
     selector: 'plex-card',
     template: `
     <div class="card d-flex p-4 bg-{{ type }}" [ngClass]="{'text-white' : type != 'default'}" [class.selected]="selected">
-         <ng-content select="img"></ng-content>
+        <ng-content select="img"></ng-content>
         <div class="d-flex" [ngClass]="cssAlign">
             <ng-content select="plex-badge"></ng-content>
         </div>
@@ -31,7 +31,4 @@ export class PlexCardComponent {
     get cssAlign() {
         return this.align === 'start' ? 'justify-content-start' : 'justify-content-center';
     }
-
-
-
 }

@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
 })
 export class CardDemoComponent {
 
-
     datos = [
         { label: 'Funcionar como botones destacados en una interfaz', valor: 'Por ejemplo en puntos de inicio', type: 'default' },
         { label: 'Representar opciones seleccionables', valor: 'Usuarios, organizaciones, items propios de un módulo', type: 'success' },
@@ -14,15 +13,15 @@ export class CardDemoComponent {
     ];
 
     agendas = [
-        { horario: '09:00 - 12:00 hs.', profesional: 'Monteverde, María Laura', prestacion: 'Consulta de niño sano', efector: 'Hospital Provincial Neuquén', turnos: '3 turnos', type: "warning" },
-        { horario: '12:00 - 14:00 hs.', profesional: 'Molini, Walter Juan', prestacion: 'Exámen médico del adulto', efector: 'Consultorios Huemul', turnos: '15 turnos', type: "success" },
-        { horario: '14:00 - 16:00 hs.', profesional: 'Ramirez, Jorge Sebastián', prestacion: 'Consulta de medicina general', efector: 'Centro de salud Progreso', turnos: 'sin turnos', type: "danger" },
+        { horario: '09:00 - 12:00 hs.', profesional: 'Monteverde, María Laura', prestacion: 'Consulta de niño sano', efector: 'Hospital Provincial Neuquén', turnos: '3 turnos', type: 'warning' },
+        { horario: '12:00 - 14:00 hs.', profesional: 'Molini, Walter Juan', prestacion: 'Exámen médico del adulto', efector: 'Consultorios Huemul', turnos: '15 turnos', type: 'success' },
+        { horario: '14:00 - 16:00 hs.', profesional: 'Ramirez, Jorge Sebastián', prestacion: 'Consulta de medicina general', efector: 'Centro de salud Progreso', turnos: 'sin turnos', type: 'danger' },
     ];
 
     efectores = [
         { nombre: 'Hospital Provincial Neuquén', localidad: 'Neuquén', img: 'https://www.saludneuquen.gob.ar/wp-content/uploads/2020/02/castro-rend%C3%B3n-1-1440x1080.jpg', },
         { nombre: 'Hospital Dr. Horacio Heller', localidad: 'Neuquén', img: 'https://www.saludneuquen.gob.ar/wp-content/uploads/2019/11/Frente-Hospital-Horacio-Heller-4-1620x1080.jpg', },
-    ]
+    ];
 
     horarios = [
         { hora: '09:00 hs.' },

@@ -65,7 +65,7 @@
             <plex-card align="start" type="" *ngFor="let agenda of agendas">
                 <plex-badge type="{{ agenda.type }}">{{ agenda.turnos }}</plex-badge>
                 <plex-label size="md" direction="row" titulo="{{ agenda.horario }}"
-                            subtitulo="{{ agenda.profesional }} | {{ agenda.prestacion }} | {{ agenda.efector }}">
+                            subtitulo="{{ agenda.profesional }}">
                 </plex-label>
                 <plex-button type="warning" label="modificar" size="sm"></plex-button>
             </plex-card>

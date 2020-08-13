@@ -119,7 +119,7 @@ const MODULES = [
     PlexGridComponent,
     PlexCardComponent,
 
-    //Directivas
+    // Directivas
     GrowDirective,
     HelpDirective,
     HintDirective,
