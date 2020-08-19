@@ -11,7 +11,9 @@ $theme:   mat-light-theme($primary, $accent, $warn);
 mat-slide-toggle {
     margin: 0 !important;
 }
-.mat-checkbox-frame{
+    ::first-letter {
+        text-transform: uppercase;
+    }
     border-width: 1px !important;
 }
 .mat-checkbox-background, .mat-checkbox-frame{
