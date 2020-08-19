@@ -1,11 +1,9 @@
-
 // Tema principal
 $primary: mat-palette($mat-blue);
-$accent:  mat-palette($mat-blue, A200, A100, A400);
-$warn:    mat-palette($mat-red);
-$theme:   mat-light-theme($primary, $accent, $warn);
+$accent: mat-palette($mat-blue, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
-
 
 // Material design patches
 mat-slide-toggle {
@@ -37,4 +35,21 @@ mat-slide-toggle {
     font-weight: normal;
     align-self: center;
     margin-left: 0.15rem;
+    &:hover {
+        // $colors definidos en variables.scss
+        @include generic-factory($front-color: $blue);
+    }
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: $blue !important;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: $blue !important;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: transparentize($color: $blue, $amount: 0.54) !important;
 }
