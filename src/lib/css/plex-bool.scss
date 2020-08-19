@@ -11,17 +11,30 @@ $theme:   mat-light-theme($primary, $accent, $warn);
 mat-slide-toggle {
     margin: 0 !important;
 }
+.mat-checkbox-layout {
+    white-space: normal !important;
+    vertical-align: unset !important;
+    align-items: baseline;
     ::first-letter {
         text-transform: uppercase;
     }
+}
+.mat-checkbox-inner-container {
+    margin: unset !important;
+}
+.mat-checkbox-frame {
     border-width: 1px !important;
 }
-.mat-checkbox-background, .mat-checkbox-frame{
+.mat-checkbox-background,
+.mat-checkbox-frame {
     border-radius: 0 !important;
 }
 .mat-checkbox-label,
 .mat-slide-toggle-content > span {
-    font-family: 'TypoPRO Source Sans Pro';
-    font-size: 16px;
+    font-family: "TypoPRO Source Sans Pro";
+    font-size: 15px;
+    line-height: 16px !important;
     font-weight: normal;
+    align-self: center;
+    margin-left: 0.15rem;
 }
