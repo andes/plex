@@ -1,3 +1,10 @@
+## [6.11.5](https://github.com/andes/plex/compare/v6.11.4...v6.11.5) (2020-08-24)
+
+
+### Bug Fixes
+
+* **plex-select:** $order appear again ([#210](https://github.com/andes/plex/issues/210)) ([8a835ee](https://github.com/andes/plex/commit/8a835ee0b3222987cd961ee429ae1c8044a43f76))
+
 ## [6.11.4](https://github.com/andes/plex/compare/v6.11.3...v6.11.4) (2020-08-12)
 
 
