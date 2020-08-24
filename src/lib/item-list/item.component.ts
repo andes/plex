@@ -1,5 +1,5 @@
 import { map } from 'rxjs/operators';
-import { Component, Input, QueryList, AfterViewInit, ContentChildren, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, QueryList, AfterViewInit, ContentChildren, ElementRef, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
 import { PlexIconComponent } from '../icon/icon.component';
 import { PlexBoolComponent } from '../bool/bool.component';
 import { PlexBadgeComponent } from '../badge/badge.component';
@@ -8,7 +8,7 @@ import { PlexButtonComponent } from '../button/button.component';
 @Component({
     selector: 'plex-item',
     template: `
-        <section class="item" [class.selected]="selected">
+        <section class="item" [class.selectable]="selectable" [class.selected]="selectable && selected">
             <div class="item-row">
                 <div class="elementos-graficos">
                     <ng-content select="plex-bool"></ng-content>
@@ -37,7 +37,13 @@ import { PlexButtonComponent } from '../button/button.component';
     `
 })
 export class PlexItemComponent implements AfterViewInit {
+
+    // Permite :hover y click()
+    @Input() selectable = true;
+
+    // Muestra efecto de selección
     @Input() selected = false;
+
     @ContentChildren(PlexIconComponent, { descendants: false }) plexIcons: QueryList<PlexIconComponent>;
     @ContentChildren(PlexBoolComponent, { descendants: false }) plexBools: QueryList<PlexBoolComponent>;
     @ContentChildren(PlexBadgeComponent, { descendants: false }) plexBadges: QueryList<PlexBadgeComponent>;

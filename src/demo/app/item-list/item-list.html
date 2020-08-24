@@ -209,13 +209,13 @@
         </plex-list>
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
-        <plex-list>
+        <plex-title size="sm" titulo="Sin heading, no seleccionable"></plex-title>
+        <plex-list [selectable]="false">
             <plex-heading [sticky]="true">
                 <b label>1</b>
                 <b label>3</b>
             </plex-heading>
-            <plex-item [selected]="item.selected" (click)="item.selected = !item.selected" *ngFor="let item of lista">
-                <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
+            <plex-item *ngFor="let item of lista">
                 <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
                 <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
                 <plex-button type="danger" size="sm" icon="delete"></plex-button>
