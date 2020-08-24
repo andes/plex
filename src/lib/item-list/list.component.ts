@@ -1,5 +1,5 @@
 import { PlexSize } from './../core/plex-size.type';
-import { Component, Input, Output, EventEmitter, QueryList, ContentChildren, AfterViewInit, ContentChild } from '@angular/core';
+import { Component, Input, Output, EventEmitter, QueryList, ContentChildren, AfterViewInit, ContentChild, ChangeDetectorRef } from '@angular/core';
 import { PlexItemComponent } from './item.component';
 import { PlexHeadingComponent } from './heading.component';
 
@@ -17,6 +17,8 @@ export class PlexListComponent implements AfterViewInit {
 
     @Input() striped = true;
 
+    @Input() selectable = true;
+
     @Input() height: string;
 
     @Input() size: PlexSize = 'md';
@@ -26,7 +28,10 @@ export class PlexListComponent implements AfterViewInit {
     @ContentChildren(PlexItemComponent, { descendants: false }) private plexItems: QueryList<PlexItemComponent>;
     @ContentChild(PlexHeadingComponent) private plexHeading: PlexHeadingComponent;
 
-    constructor() {
+    constructor(
+        private ref: ChangeDetectorRef
+
+    ) {
 
     }
 
@@ -41,6 +46,8 @@ export class PlexListComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
+        this.ref.detectChanges();
+
         const hayIcono = this.plexItems.some(item => item.hasIcons());
         const hayCheckbox = this.plexItems.some(item => item.hasCheckbox());
         const hayBotonera = this.plexItems.some(item => item.hasBotonera());
@@ -52,5 +59,14 @@ export class PlexListComponent implements AfterViewInit {
                 this.plexHeading.setSticky(true);
             }
         }
+        setTimeout(() => {
+            if (!this.selectable) {
+                this.plexItems.forEach(item => {
+                    item.selectable = false;
+                });
+            }
+        }, 0);
+
+
     }
 }

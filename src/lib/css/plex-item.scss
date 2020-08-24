@@ -9,18 +9,14 @@ plex-list {
         margin: inherit;
         padding-left: 0;
     }
-
     .plex-label {
         line-height: 1rem;
-
         &.sm {
             font-size: 0.75rem;
         }
-
         &.md {
             font-size: 0.9rem;
         }
-
         &.lg {
             font-size: 1rem;
         }
@@ -126,21 +122,25 @@ plex-list {
         align-items: center;
         justify-content: space-between;
         box-sizing: border-box;
+        padding: 0.75rem;
         width: 100%;
-        cursor: pointer;
 
-        &:hover {
-            box-shadow: inset 0 0 0 2px $blue;
-            background-color: $light-blue !important;
-            color: black;
-            box-sizing: border-box;
+        &.selectable {
+            cursor: pointer;
+            &:hover {
+                box-sizing: border-box;
+                box-shadow: inset 0 0 0 2px transparentize($color: $blue, $amount: 0.4);
+                // border: 2px solid $blue;
+                background-color: $light-blue !important;
+                color: black;
+            }
         }
-
         &.selected {
+            // border: 2px solid $blue;
+            box-sizing: border-box;
             box-shadow: inset 0 0 0 2px $blue;
             background-color: $light-blue !important;
             color: black;
-            box-sizing: border-box;
         }
 
 
@@ -283,7 +283,6 @@ plex-list {
         }
     }
 
-}
 
     // Grilla interna
     .item-list,.item-list-heading {
@@ -307,6 +306,7 @@ plex-list {
     .item-list {
         padding-left: 0px;
     }
+}
 
 // Con botonera
 .item-list {

@@ -8,6 +8,7 @@ export class ItemDemoComponent implements OnInit {
 
     lista = [
         {
+            selected: false,
             componente: 'PlexTextComponent',
             name: 'UNO',
             internals: {
@@ -16,6 +17,7 @@ export class ItemDemoComponent implements OnInit {
             id: 1
         },
         {
+            selected: false,
             componente: 'PlexItemComponent',
             name: 'DOS',
             itemType: 'heading-item',
@@ -29,6 +31,7 @@ export class ItemDemoComponent implements OnInit {
             id: 2
         },
         {
+            selected: false,
             componente: 'PlexIntComponent',
             name: 'TRES',
             internals: {
@@ -37,6 +40,7 @@ export class ItemDemoComponent implements OnInit {
             id: 3
         },
         {
+            selected: false,
             componente: 'PlexBoolComponent',
             name: 'CUATRO',
             internals: {
