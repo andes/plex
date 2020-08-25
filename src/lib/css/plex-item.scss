@@ -25,6 +25,61 @@ plex-list {
             font-size: 1rem;
         }
     }
+
+    div {
+        &.sm {
+            section.item {
+                max-height: 70px;
+                padding: .45rem;
+                .item-row {
+                    box-sizing: border-box;
+                    padding: 0 0 0.1rem 0.35rem;
+                    height: 33px;
+
+                    .elementos-graficos {
+                        plex-icon {
+                            i {
+                                @include graficos(2rem);
+                                justify-content: center;
+                                border: solid 2px;
+                                display: flex;         
+                            }
+                        }
+                        // Estilos imágenes
+                        img, > svg {
+                            @include graficos(2rem);
+                            object-fit: cover;
+                        } 
+                    }
+                }
+                .item-list {
+                    height: 70px !important;
+                    margin: 0 !important;
+                    align-items: center;
+                }
+            }
+        }
+    
+        &.md section.item {
+            padding: .75rem;
+
+            .item-row .elementos-graficos {
+                    plex-icon {
+                        i {
+                            @include graficos(3rem);
+                            justify-content: center;
+                            border: solid 2px;
+                            display: flex;         
+                        }
+                    }
+                    // Estilos imágenes
+                    img, > svg {
+                        @include graficos(3rem);
+                        object-fit: cover;
+                    } 
+                }
+            }
+    }
     
     div.item-list-heading {
         display: grid;
@@ -63,11 +118,14 @@ plex-list {
         }
     }
 
+    
+    
+
     section.item {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: .75rem;
+        box-sizing: border-box;
         width: 100%;
         cursor: pointer;
         
@@ -84,17 +142,12 @@ plex-list {
             color: black;
             box-sizing: border-box;
         }
-        
-        @mixin flex {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-start;
-        }
-        
+
+
         .item-row {
             @include flex;
-            width: 75%;
+            min-width: 75%;
+            width: 100%;
             
             .elementos-graficos {
                 @include flex;
@@ -108,28 +161,7 @@ plex-list {
                         background: white;
                     }
                 }
-            
-                @mixin graficos {
-                    align-items: center;
-                    height: 3rem; 
-                    width: 3rem;
-                    margin-right: 1rem; 
-                    border-radius: 50%; 
-                }
-
-                plex-icon {
-                    i {
-                        @include graficos;
-                        justify-content: center;
-                        border: solid 2px;
-                        display: flex;         
-                    }
-                }
-                // Estilos imágenes
-                img, > svg {
-                    @include graficos;
-                    object-fit: cover;
-                } 
+                
             }
 
             div.item-list {
@@ -140,7 +172,7 @@ plex-list {
                 
                 >* {
                     display: flex;
-                    align-items: center;
+                    align-items: flex-start;
                 }
             
                 // Items que componen la lista que no son componentes Angular
@@ -189,15 +221,20 @@ plex-list {
     
     div.botonera {
         display: flex;
-        width: 25%;
+        min-width: 25%;
         justify-content: flex-end;
         text-align: right;
+
+        & > div {
+            align-items: center;
+            display: flex;
+        }
 
         plex-button,
         plex-badge,
         plex-dropdown,
         upload-file {
-            margin: .25rem 0 .25rem .25rem;
+            margin: 0 .15rem;
         }
     }
 
@@ -238,7 +275,10 @@ plex-list {
     }
     
     .item-list-heading {
-        width: 75%;
+        width: 100%;
+        &.has-botonera {
+            width: 75%;
+        }
     }
     
     // Sin checkbox, Sin icono
