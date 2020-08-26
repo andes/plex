@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 export class PlexIconComponent {
     @Input() prefix = 'adi';
     @Input() name: string;
-    @Input() type: PlexType = 'default';
+    @Input() type: PlexType = 'light';
     // Usar números con mdi, valores string con otro prefix
     @Input() size: '18' | '24' | '36' | '48' | PlexSize = 'sm';
 

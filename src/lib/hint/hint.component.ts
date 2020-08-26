@@ -5,7 +5,7 @@ import { PlexType } from '../core/plex-type.type';
     selector: 'plex-hint',
     template: `
         <a href="javascript:void(0)" *ngIf="position && content" class="hint-container" [matTooltip]="content" [matTooltipPosition]="position">
-            <plex-icon class="hint {{ hintType }}" [name]="hintIcon" type="default"></plex-icon>
+            <plex-icon class="hint {{ hintType }}" [name]="hintIcon" type="light"></plex-icon>
         </a>
     `
 })
