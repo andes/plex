@@ -23,7 +23,7 @@ import { PlexButtonComponent } from '../button/button.component';
                     <ng-content></ng-content>
                 </div>
             </div>
-            <div class="botonera">
+            <div *ngIf="hasBotonera()" class="botonera">
                 <div>
                     <ng-content select="plex-badge"></ng-content>
                     <ng-content select="plex-button"></ng-content>

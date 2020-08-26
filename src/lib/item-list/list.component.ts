@@ -1,3 +1,4 @@
+import { PlexSize } from './../core/plex-size.type';
 import { Component, Input, Output, EventEmitter, QueryList, ContentChildren, AfterViewInit, ContentChild } from '@angular/core';
 import { PlexItemComponent } from './item.component';
 import { PlexHeadingComponent } from './heading.component';
@@ -5,7 +6,7 @@ import { PlexHeadingComponent } from './heading.component';
 @Component({
     selector: 'plex-list',
     template: `
-    <div [class.striped]="striped" responsive
+    <div [class.striped]="striped" [ngClass]="size" responsive
          infiniteScroll [infiniteScrollDistance]="1" (scrolled)="onScroll()" [scrollWindow]="false"
          [style.overflow-y]="styleScroll" [style.height]="height">
         <ng-content></ng-content>
@@ -17,6 +18,8 @@ export class PlexListComponent implements AfterViewInit {
     @Input() striped = true;
 
     @Input() height: string;
+
+    @Input() size: PlexSize = 'md';
 
     @Output() scrolled = new EventEmitter<void>();
 

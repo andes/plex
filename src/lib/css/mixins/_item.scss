@@ -1,0 +1,14 @@
+@mixin graficos($dim: 3rem) {
+    align-items: center;
+    height: $dim; 
+    width: $dim;
+    margin-right: 1rem; 
+    border-radius: 50%; 
+}
+
+@mixin flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
