@@ -1,11 +1,23 @@
 .hint-container {
     @include position(relative);
+    &.detach-both {
+        left: 5px;
+        bottom: 5px;
+    }
+    &.detach-right {
+        left: 5px;
+    }
+    &.detach-top {
+        bottom: 5px;
+    }
+
     width: 0;
     height: 18px;
     display: inline-flex;
+    z-index: 10;
 
     .hint {
-        // $colors definidos en variables.scss
+        // $colors definidos en colors.scss
         @each $name, $color in $colors {
             &.#{$name} {
                 @include generic-factory($bg-color: $color);
@@ -25,10 +37,11 @@
         z-index: 1;
 
         // Position
-        @include position(relative, $bottom: 10px, $right: 10px);
+        @include position(relative, $bottom: 8px, $right: 10px);
 
         &:hover {
             background-color: $blue;
+            cursor: auto;
         }
     }
 }

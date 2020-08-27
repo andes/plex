@@ -27,7 +27,7 @@ nav {
   .actions {
     position: absolute;
     right: 0;
-    font-size: .9em;
+    font-size: 0.9em;
     float: right;
     color: white;
 
@@ -52,7 +52,7 @@ nav {
         color: black;
         visibility: hidden;
         opacity: 0;
-        transition: visibility 0s, opacity .2s linear;
+        transition: visibility 0s, opacity 0.2s linear;
       }
 
       plex-help {
@@ -62,12 +62,10 @@ nav {
         }
 
         .toggle-info.open {
-          right: 0!important;
-          top: unset!important;
+          right: 0 !important;
+          top: unset !important;
         }
-
       }
-
     }
 
     > div.action.hover {
@@ -84,6 +82,11 @@ nav {
       }
     }
 
+    > div.action:focus {
+      outline: none;
+      background: $dark-blue;
+    }
+
     // User info
     .userinfo {
       display: flex;
@@ -92,54 +95,54 @@ nav {
       line-height: 15px;
 
       span:last-child {
-        font-size: .7em;
+        font-size: 0.7em;
       }
     }
 
     .dropdown .dropdown-menu {
-        max-height: calc(100vh - 64px);
-        overflow-y: scroll;    
-        padding-right: 10px;
- 
-        li {
-          line-height: 1.35;
-        }
+      max-height: calc(100vh - 64px);
+      overflow-y: scroll;
+      padding-right: 10px;
+
+      li {
+        line-height: 1.35;
+      }
 
       &::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
+        width: 8px;
+        height: 8px;
       }
-  
+
       &::-webkit-scrollbar-button {
-          width: 0;
-          height: 0;
+        width: 0;
+        height: 0;
       }
-  
+
       &::-webkit-scrollbar-thumb {
-          background: #00A8E0;
-          border: 0;
-          border-radius: 0;
+        background: #00a8e0;
+        border: 0;
+        border-radius: 0;
       }
-  
+
       &::-webkit-scrollbar-thumb:hover {
-          background: $dark-blue;
+        background: $dark-blue;
       }
-  
+
       &::-webkit-scrollbar-thumb:active {
-          background: $dark-blue;
+        background: $dark-blue;
       }
-  
+
       &::-webkit-scrollbar-track,
       &::-webkit-scrollbar-track:active,
       &::-webkit-scrollbar-track:hover {
-          background: $light-grey;
-          border: 0;
-          border-radius: 0;
+        background: $light-grey;
+        border: 0;
+        border-radius: 0;
       }
-  
+
       &::-webkit-scrollbar-corner {
-          background: transparent;
-      }   
+        background: transparent;
+      }
     }
   }
 
@@ -163,8 +166,8 @@ nav {
     color: white;
     font-weight: 400;
     text-transform: uppercase;
-    margin-left: .5em;
-    margin-top: .15em;
+    margin-left: 0.5em;
+    margin-top: 0.15em;
 
     a {
       color: white;

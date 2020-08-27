@@ -24,10 +24,11 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
             multi: true
         },
     ],
-    template: `<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+    template: `<div class="form-group datetime" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
                     <label *ngIf="label" class="form-control-label">{{ label }}
                         <span *ngIf="control.name && esRequerido" class="requerido"></span>
                     </label>
+                    <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [icon]="hintIcon" (click)="callAction(hintAction)"></div>
                     <div class="input-group d-flex align-items-center">
                         <a *ngIf="showNav" (click)="prev()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover"
                            [title]="makeTooltip('anterior')">
@@ -67,6 +68,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() type: string;
     @Input() label: string;
     @Input() placeholder: string;
+    @Input() hintAction: 'current' | 'nextDay' | 'nextHour' = null;
+    @Input() hintIcon = 'asterisk';
     @Input() disabled = false;
     @Input() readonly = false;
     @Input() skipBy: 'hour' | 'day' | 'month' | 'year' = null;
@@ -74,6 +77,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() debounce = 0;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
     @Input() btnOnly = false;
+
+    hint: string;
 
     public get showInput() {
         return !this.btnOnly;
@@ -133,6 +138,37 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     constructor(private element: ElementRef, private renderer: Renderer) {
         this.placeholder = '';
         this.type = 'datetime';
+    }
+
+    get hintText() {
+        if (this.hintAction === 'current') {
+            return `${moment().format('DD/MM/YYYY HH:mm')}`;
+        } else if (this.hintAction === 'nextDay') {
+            return moment().add(1, 'day').format('DD/MM/YYYY');
+        } else if (this.hintAction === 'nextHour') {
+            return moment().add(1, 'hour').startOf('hour').format('HH:mm');
+        }
+    }
+
+    getFormattedDate(action) {
+        let formattedDate;
+        if (action === 'current') {
+            formattedDate = moment().format(this.format);
+        } else if (action === 'nextDay') {
+            formattedDate = moment().add(1, 'day').format(this.format);
+        } else if (action === 'nextHour') {
+            formattedDate = moment().add(1, 'hour').startOf('hour').format(this.format);
+        }
+        return formattedDate;
+    }
+
+    callAction(action) {
+        this.hintAction = action;
+        const temp = this.getFormattedDate(action);
+
+        this.setElements(temp);
+        this.value = temp;
+        this.onChange(this.value);
     }
 
     public disabledEvent(event: Event) {

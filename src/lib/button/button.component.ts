@@ -5,7 +5,7 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef } fro
     selector: 'plex-button',
     template: `<ng-container *ngIf="type">
                     <button plexRipples style="pointer-events: auto" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
-                        <i *ngIf="icon" class="mdi mdi-{{icon}}" style="pointer-events: none"></i>
+                    <i *ngIf="icon" class="mdi mdi-{{icon}}" style="pointer-events: none"></i>
                         <span *ngIf="label" style="pointer-events: none"> {{label}} </span>
                         <ng-content *ngIf="!icon && !label"></ng-content>
                     </button>
