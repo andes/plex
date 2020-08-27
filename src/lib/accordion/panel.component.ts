@@ -8,7 +8,7 @@ import { PlexAccordionComponent } from './accordion.component';
                     <h5 class="mb-0">
                         <a  *ngIf="tituloPrincipal" class="card-action" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne">
                             <plex-icon type="default" size="xl" [name]="icon"></plex-icon>
-                            <span class="title">
+                            <span class="title ml-1">
                                 {{tituloPrincipal}}
                             </span>
                         </a>

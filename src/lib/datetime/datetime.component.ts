@@ -28,7 +28,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                     <label *ngIf="label" class="form-control-label">{{ label }}
                         <span *ngIf="control.name && esRequerido" class="requerido"></span>
                     </label>
-                    <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [icon]="hintIcon" (click)="callAction(hintAction)"></div>
+                    <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
                     <div class="input-group d-flex align-items-center">
                         <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
 
@@ -72,9 +72,6 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() debounce = 0;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
     @Input() btnOnly = false;
-    @Input() hint: string;
-
-    hint: string;
 
     public get showInput() {
         return !this.btnOnly;

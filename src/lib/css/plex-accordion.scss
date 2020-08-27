@@ -1,4 +1,13 @@
 plex-accordion {
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    plex-bool {
+      label {
+        margin-top: 0;
+      }
+    }
+  }
   .card-action {
     display: flex;
     align-items: flex-start;

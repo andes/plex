@@ -10,6 +10,8 @@ export class HintDirective implements OnInit {
 
     private tooltip: ComponentRef<HintComponent>;
     @Input('hint') content: string | HintComponent;
+
+    // default = Background gris
     @Input() hintType: PlexType = 'default';
     @Input() detach: '' | 'both' | 'right' | 'top' = '';
 
