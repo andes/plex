@@ -4,8 +4,8 @@
  */
 
 $plex-tabs-color-extend: (
-    procedimiento: $red,
-    trastorno: violet,
+    procedimiento: $blue,
+    trastorno: $red,
 ) !default;
 
 plex-tabs {
@@ -28,6 +28,7 @@ plex-tabs {
                 flex: 1;
                 text-align: center;
                 a {
+                    display: inline-block;
                     width: 100%;
                 }
             }
@@ -49,6 +50,8 @@ plex-tabs {
 
                 .nav-link {
                     border: none;
+                    text-align: center;
+
                     span {
                         white-space: nowrap;
                         overflow: hidden;
@@ -83,7 +86,6 @@ plex-tabs {
 
                 .close {
                     margin-left: 1em;
-                    float: none;
                     line-height: 0.9;
                     opacity: 1;
 
