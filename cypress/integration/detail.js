@@ -14,7 +14,7 @@ context('detail', () => {
 
         // cy.eyesCheckWindow('plex-detail - scrool');
 
-        cy.get('plex-layout plex-help').plexButtonIcon('information-variant').click();
+        cy.get('plex-layout plex-help').plexButtonIcon('informacion').click();
 
         cy.eyesCheckWindow('plex-detail - plex-help');
 

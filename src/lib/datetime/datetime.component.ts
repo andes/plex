@@ -28,26 +28,21 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                     <label *ngIf="label" class="form-control-label">{{ label }}
                         <span *ngIf="control.name && esRequerido" class="requerido"></span>
                     </label>
-                    <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [icon]="hintIcon" (click)="callAction(hintAction)"></div>
+                    <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
                     <div class="input-group d-flex align-items-center">
-                        <a *ngIf="showNav" (click)="prev()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover"
-                           [title]="makeTooltip('anterior')">
-                           <i class="mdi mdi-menu-left"></i>
-                        </a>
+                        <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
+
                         <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
                                [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"
                                (change)="disabledEvent($event)" *ngIf="showInput"/>
                         <span class="input-group-btn">
-                            <button class="btn btn-primary btn-{{size}}" tabindex="-1" [disabled]="disabled || readonly">
-                                <i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i>
-                            </button>
+                            <plex-button type="info" [size]="size" [icon]="icon" tabindex="-1" [disabled]="disabled || readonly"></plex-button>
                         </span>
-                        <a *ngIf="showNav" (click)="next()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover" [title]="makeTooltip('siguiente')">
-                            <i class="mdi mdi-menu-right"></i>
-                        </a>
+                        <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabled" [tooltip]="makeTooltip('siguiente')"></plex-button>
                     </div>
                     <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
-                </div>`,
+                </div>
+                `,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private _min: Date;
@@ -77,8 +72,6 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() debounce = 0;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
     @Input() btnOnly = false;
-
-    hint: string;
 
     public get showInput() {
         return !this.btnOnly;
@@ -111,8 +104,15 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         }
     }
 
+
     get showNav(): Boolean {
         return this.skipBy && this.value;
+    }
+
+    get icon() {
+        return this.type === 'date' ? 'calendar' :
+            (this.type === 'time' ? 'clock' :
+                (this.type === 'datetime' ? 'calendar-clock' : 'date'));
     }
 
     // Eventos

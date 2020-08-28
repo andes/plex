@@ -20,14 +20,16 @@ import { hasRequiredValidator } from '../core/validator.functions';
         <!-- Simple text field -->
         <div [hidden]="multiline || html" [ngClass]="{'input-group': prefix || suffix || prefixParent?.children.length > 0}">
 
-        <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
+        <span *ngIf="prefix" class="input-group-addon">
+            <plex-icon type="default" size="md" [name]="prefix"></plex-icon>
+        </span>
         <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
             <ng-content selector="[prefix]"></ng-content>
         </span>
 
         <input #input type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
             [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
-            <i *ngIf="!readonly && !multiline && !html && !isEmpty" class="clear-icon mdi mdi-close-circle" (click)="clearInput()"></i>
+            <plex-icon  *ngIf="!readonly && !multiline && !html && !isEmpty" type="light" size="sm" name="close-circle" class="clear-icon" (click)="clearInput()"></plex-icon>
         </div>
 
         <!-- Multiline -->
@@ -261,7 +263,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             this.qlToolbar.forEach(item => {
                 const qlItem = toolbar.getElementsByClassName(`ql-${item.name}`);
                 if (qlItem.length > 0) {
-                    qlItem[0].innerHTML = `<i class="mdi mdi-${item.icon || item.name}"></i>`;
+                    qlItem[0].innerHTML = `<plex-icon name="${item.icon || item.name}" size="sm" type="default"></plex-icon>`;
                 }
             });
         }

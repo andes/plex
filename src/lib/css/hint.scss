@@ -1,3 +1,7 @@
+plex-hint {
+    // Arregla overlay de bordes
+    position: absolute;
+}
 .hint-container {
     @include position(relative);
     &.detach-both {

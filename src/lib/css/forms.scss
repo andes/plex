@@ -12,7 +12,7 @@ fieldset {
   }
 }
 
-fieldset+fieldset {
+fieldset + fieldset {
   margin-top: $grid-gutter-width-base;
 }
 
@@ -35,6 +35,13 @@ label {
 
 .form-group > label {
   margin-bottom: 5px;
+}
+
+.form-control-lg {
+  padding: 0.8rem;
+}
+.form-control-sm {
+  padding: 0.25rem 0.5rem;
 }
 
 // Placeholder

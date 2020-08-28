@@ -13,9 +13,9 @@ export class TabsDemoComponent implements OnInit {
     public activoDinamico = 0;
     public mostrar = true;
     public tabs = [
-        { label: 'account este es un ejemplo re largo', icon: 'account', color: 'procedimiento' },
-        { label: 'amplifier', icon: 'amplifier', color: 'trastorno' },
-        { label: 'amazon', icon: 'amazon', color: 'default' }
+        { label: 'este es un ejemplo re largo', icon: 'account', color: 'procedimiento' },
+        { label: 'usuario', icon: 'account', color: 'default' },
+        { label: 'semantic tag', icon: 'trastorno', color: 'trastorno' }
     ];
     public contenidoAsync = of([1, 2, 3]).pipe(
         // tslint:disable-next-line:no-console

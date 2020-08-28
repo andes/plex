@@ -10,10 +10,12 @@ export class HintDirective implements OnInit {
 
     private tooltip: ComponentRef<HintComponent>;
     @Input('hint') content: string | HintComponent;
-    @Input() icon = 'help';
+
+    // default = Background gris
     @Input() hintType: PlexType = 'default';
     @Input() detach: '' | 'both' | 'right' | 'top' = '';
 
+    @Input() hintIcon = 'help';
 
     @Input()
     set position(value: 'top' | 'right' | 'bottom' | 'left' | 'above' | 'below') {
@@ -40,9 +42,10 @@ export class HintDirective implements OnInit {
         this.tooltip.instance.hostElement = this.viewContainerRef.element.nativeElement;
         this.tooltip.instance.content = this.content as string;
         this.tooltip.instance.position = this.position as string;
-        this.tooltip.instance.icon = this.icon;
         this.tooltip.instance.hintType = this.hintType;
         this.tooltip.instance.detach = this.detach;
+        this.tooltip.instance.hintIcon = this.hintIcon;
+
     }
 
 }

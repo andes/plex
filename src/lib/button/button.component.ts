@@ -5,8 +5,8 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef } fro
     selector: 'plex-button',
     template: `<ng-container *ngIf="type">
                     <button plexRipples style="pointer-events: auto" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
-                    <i *ngIf="icon" class="mdi mdi-{{icon}}" style="pointer-events: none"></i>
-                        <span *ngIf="label" style="pointer-events: none"> {{label}} </span>
+                        <plex-icon *ngIf="icon" [name]="icon" type="light" [size]="size"></plex-icon>
+                        <span *ngIf="label"> {{label}} </span>
                         <ng-content *ngIf="!icon && !label"></ng-content>
                     </button>
                </ng-container>`,
@@ -15,7 +15,7 @@ export class PlexButtonComponent {
     @Input() label: string;
     @Input() icon: string;
     @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default';
-    @Input() size: 'lg' | 'sm' | 'block';
+    @Input() size: 'md' | 'lg' | 'sm' | 'block' = 'md';
     @Input() validateForm: boolean | NgForm;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
     /**
@@ -26,7 +26,6 @@ export class PlexButtonComponent {
     constructor(@Optional() private parentForm?: NgForm) {
         this.type = 'default';
         this.disabled = false;
-        this.size = null;
     }
 
     @HostListener('click', ['event'])

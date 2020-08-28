@@ -14,8 +14,9 @@
                     <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
                     <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
                         del concepto.</li>
-                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <i
-                           class="mdi mdi-check"></i> para guardar una plantilla individual</li>
+                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <plex-icon
+                                   type="default" size="md" name="check"></plex-icon> para guardar una plantilla
+                        individual</li>
                 </ol>
             </plex-help>
         </plex-title>
@@ -238,11 +239,11 @@
             <p>El siguiente ejemplo muestra el uso de la propiedad <strong>validateForm</strong></p>
             <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false">
             </plex-text>
-            <plex-button label="Guardar formulario" icon="cable-data" validateForm="true" (click)="guardar($event)">
+            <plex-button label="Guardar formulario" validateForm="true" (click)="guardar($event)">
             </plex-button>
         </form>
         <div class="grow">
-            <plex-text [(ngModel)]="field" prefix="<i class='mdi mdi-barcode'></i>"></plex-text>
+            <plex-text [(ngModel)]="field" prefix="barcode"></plex-text>
             <plex-button type="success">HOLA</plex-button>
 
         </div>

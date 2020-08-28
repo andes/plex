@@ -12,7 +12,8 @@ export type PlexVisualizadorItem = FileObject | string;
     selector: 'plex-visualizador',
     template: `
     <div *ngIf="opened" class="lightbox hover" (click)="close()">
-        <i (click)="previous();$event.stopPropagation();" class="mdi mdi-chevron-double-left previous parpadeo"></i>
+        <plex-icon (click)="previous();$event.stopPropagation();" type="info" size="xl" name="chevron-double-left" class="parpadeo"></plex-icon>
+
 
         <img [src]="imageSrc" alt="" *ngIf="isImage" (click)="imageClick();$event.stopPropagation();">
         <a [href]="imageSrc" target="_blank" *ngIf="!isImage" class="adjunto m-1 p-2"
@@ -20,7 +21,7 @@ export type PlexVisualizadorItem = FileObject | string;
             {{ desc }}
         </a>
 
-        <i (click)="next();$event.stopPropagation();" class="mdi mdi-chevron-double-right next parpadeo"></i>
+        <plex-icon (click)="next();$event.stopPropagation();" type="info" size="xl" name="chevron-double-right" class="parpadeo"></plex-icon>
     </div>
     `
 })

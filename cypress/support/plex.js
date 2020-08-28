@@ -88,9 +88,9 @@ Cypress.Commands.add('isSelectedLabel', { prevSubject: 'element' }, (subject, la
 
 Cypress.Commands.add('clearSelect', { prevSubject: 'element' }, (subject, id) => {
     if (!id) {
-        return cy.wrap(subject).find('.mdi-close-circle').click();
+        return cy.wrap(subject).find('.adi-close-circle').click();
     } else {
-        return cy.wrap(subject).find(`.selectize-input .item[data-value="${id}"]`).find('.mdi-close-circle').click();
+        return cy.wrap(subject).find(`.selectize-input .item[data-value="${id}"]`).find('.adi-close-circle').click();
 
     }
 });
@@ -163,9 +163,9 @@ Cypress.Commands.add('plexButtonIcon', { prevSubject: 'optional' }, (subject, ic
     let element;
     if (subject) {
 
-        element = cy.wrap(subject).find(`plex-button i.mdi.mdi-${icon}`).parent();
+        element = cy.wrap(subject).find(`plex-button i.adi.adi-${icon}`).parent();
     } else {
-        element = cy.get(`plex-button i.mdi.mdi-${icon}`).parent();
+        element = cy.get(`plex-button i.adi.adi-${icon}`).parent();
     }
     return element;
 });
@@ -192,7 +192,7 @@ Cypress.Commands.add('plexDatetime', { prevSubject: 'optional' }, (subject, labe
 });
 
 Cypress.Commands.add('iconClick', { prevSubject: 'element' }, (subject, icon) => {
-    return cy.wrap(subject).find(`i.mdi.mdi-${icon}`).click();
+    return cy.wrap(subject).find(`i.adi.adi-${icon}`).click();
 });
 
 Cypress.Commands.add('plexBool', { prevSubject: 'optional' }, (subject, label, checked = false) => {

@@ -3,7 +3,7 @@
 
         <plex-title titulo="plex-help (type ='help')">
             <plex-button size="sm" type="warning" label="acción sensible"></plex-button>
-            <plex-help type="help" titulo="Ayuda de este panel" size="sm">
+            <plex-help type="help" titulo="Ayuda de este panel" size="sm" class="ml-1">
                 <div class="ml-4 mb-4" *plHelp>
                     <label>Organización:</label>
                     prestacion.solicitud.organizacion.nombre
@@ -15,11 +15,10 @@
                 </div>
             </plex-help>
         </plex-title>
-        <h6>El component e <code>&#706;plex-help&#707;</code> en su tipología 'help' se emplea en aquellas situaciones
-            en
-            las que
-            consideramos necesario expandir información para guiar al usuario sobre una acción u elemento que cuya
-            finalidad no se intuye por si misma.</h6>
+        <p class="lead">El componente <em>plex-help, </em> en su tipología 'help' se emplea en aquellas situaciones en
+            las que consideramos necesario expandir
+            información para guiar al usuario sobre una acción u elemento que
+            cuya finalidad no se intuye por si misma.</p>
         <plex-title size="sm" titulo="plex-help (size:'sm')" class="mb-4">
             <plex-help type="help" titulo="size = sm" size="sm">
                 <div class="ml-4 mb-4">
@@ -28,7 +27,7 @@
                 </div>
             </plex-help>
         </plex-title>
-        <p>plex-help (size:'md')</p>
+        <p>plex-help (size:'sm')</p>
         <plex-title size="md" titulo="plex-help (size:'md')" class="mb-4">
             <plex-help type="help" titulo="size = md" size="md">
                 <div class="ml-4 mb-4">
@@ -37,21 +36,13 @@
                 </div>
             </plex-help>
         </plex-title>
-        <p>plex-help (size:'lg')</p>
-        <plex-title size="lg" titulo="plex-help (size:'lg')" class="mb-4">
-            <plex-help type="help" titulo="size = lg" size="lg">
-                <div class="ml-4 mb-4">
-                    <label>Organización:</label>
-                    prestacion.solicitud.organizacion.nombre
-                </div>
-            </plex-help>
-        </plex-title>
-        <p>plex-help (size:'sm')</p>
+        <p>plex-help (size:'md')</p>
+
 
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
 
-        <plex-title titulo="plex-help (type ='info')">
+        <plex-title titulo="plex-help (type ='info')" size="sm">
             <plex-button size="sm" type="success" label="acción satisfactoria"></plex-button>
             <plex-help type="info" class="ml-1" titulo="Información sobre este módulo"
                        subtitulo="A continuación todas las opciones">
@@ -64,8 +55,9 @@
                     <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
                     <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
                         del concepto.</li>
-                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <i
-                           class="mdi mdi-check"></i> para guardar una plantilla individual</li>
+                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <plex-icon
+                                   type="default" size="md" name="check"></plex-icon> para guardar una plantilla
+                        individual</li>
                 </ol>
             </plex-help>
         </plex-title>
@@ -95,8 +87,9 @@
                     <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
                     <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
                         del concepto.</li>
-                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <i
-                           class="mdi mdi-check"></i> para guardar una plantilla individual</li>
+                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <plex-icon
+                                   type="default" size="md" name="check"></plex-icon> para guardar una plantilla
+                        individual</li>
                 </ol>
             </plex-help>
         </plex-title>
