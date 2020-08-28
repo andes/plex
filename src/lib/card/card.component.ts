@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'plex-card',
     template: `
-    <div class="card d-flex p-4 bg-{{ type }}" [ngClass]="{'text-white' : type != 'default'}" [class.selected]="selected">
+    <div class="card bg-{{ type }}" [ngClass]="{'text-white' : type != 'default'}" [class.selected]="selected">
         <ng-content select="img"></ng-content>
         <div class="d-flex" [ngClass]="cssAlign">
             <ng-content select="plex-badge"></ng-content>

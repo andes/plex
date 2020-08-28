@@ -8,7 +8,7 @@
             <div>
                 <plex-title titulo="plex-card align=start" size="sm"></plex-title>
                 <plex-grid type="auto" size="lg">
-                    <plex-card align="start" type="{{ dato.type }}" *ngFor="let dato of datos | slice:0:3"
+                    <plex-card align="start" type="{{ dato.type }}" *ngFor="let dato of datos | slice:0:5"
                                [selected]="dato.selected" (click)="dato.selected = !dato.selected">
                         <plex-badge type="warning">badge</plex-badge>
                         <plex-label size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
@@ -16,7 +16,7 @@
                         </plex-label>
                         <plex-button type="warning" label="aceptar"></plex-button>
                     </plex-card>
-                    <plex-card class="mt-1" align="start" type="dark" *ngFor="let dato of datos | slice:3:4"
+                    <plex-card class="mt-1" align="start" type="dark" *ngFor="let dato of datos | slice:5:6"
                                [selected]="dato.selected" (click)="dato.selected = !dato.selected">
                         <plex-badge type="warning">badge</plex-badge>
                         <plex-label size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"
@@ -28,9 +28,9 @@
             </div>
             <div span="2">
                 <plex-title titulo="plex-card align=center" size="sm"></plex-title>
-                <plex-grid type="auto" cols="3" size="md">
-                    <plex-card align="center" type="default" *ngFor="let agenda of agendas" [selected]="agenda.selected"
-                               (click)="agenda.selected = !agenda.selected">
+                <plex-grid type="auto" cols="2" size="md">
+                    <plex-card align="center" type="default" *ngFor="let agenda of agendas | slice:0:2"
+                               [selected]="agenda.selected" (click)="agenda.selected = !agenda.selected">
                         <plex-badge type="{{ agenda.type }}">{{ agenda.type }}</plex-badge>
                         <plex-badge type="info">{{ agenda.horario }}</plex-badge>
                         <plex-label size="md" direction="column" type="{{ agenda.type }}"
@@ -44,7 +44,7 @@
                 <!-- Calendario -->
                 <plex-title titulo="plex-card: conjunto de celdas" size="sm"></plex-title>
                 <plex-grid type="auto" size="md">
-                    <plex-card align="center" type="default" *ngFor="let celda of calendario | slice:0:20"
+                    <plex-card align="center" type="default" *ngFor="let celda of calendario | slice:0:25"
                                [selected]="celda.selected" (click)="celda.selected = !celda.selected">
                         <plex-badge type="success">{{ celda.turnos }}</plex-badge>
                         <plex-badge type="warning">{{ celda.agendas }}</plex-badge>
