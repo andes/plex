@@ -43,9 +43,9 @@ describe('PlexButtonComponent', () => {
                 `<plex-button icon="pencil"></plex-button>`);
 
             tickAndDetectChanges(fixture);
-            const element = getElement(fixture, 'plex-button i');
+            const element = getElement(fixture, 'plex-button');
             expect(element.nativeElement).toBeDefined();
-            expect(element.nativeElement.getAttribute('class')).toBe('mdi mdi-pencil');
+            expect(element.nativeElement.getAttribute('icon')).toBe('pencil');
         }));
     });
 

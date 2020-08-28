@@ -8,8 +8,8 @@ import { PlexSize } from '../core/plex-size.type';
         <div *ngIf="showed" class="plex-modal" (click)="$event.stopPropagation();backdropClick();">
             <div class="plex-modal-content {{size}}" (click)="$event.stopPropagation();">
                 <div *ngIf="allowClose" class="plex-modal-close" (click)="close();">
-                    <i class="mdi mdi-close">
-                </i></div>
+                    <plex-icon class="close" type="default" size="sm" name="close"></plex-icon>
+                </div>
                 <header>
                     <ng-content select="plex-icon"></ng-content>
                     <ng-content select="plex-modal-title"></ng-content>

@@ -25,8 +25,13 @@ const RegEx_Numero = /^(\d)+$/;
     ],
     template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
                     <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esRequerido" class="requerido"></span></label>
-                    <div [ngClass]="{'input-group': prefix || suffix}">
+                    <div [ngClass]="{'input-group': prefix || suffix || icon}">
                         <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
+
+                        <span *ngIf="icon" class="input-group-addon">
+                            <plex-icon type="default" size="md" [name]="icon"></plex-icon>
+                        </span>
+
                         <input #ref type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (focus)="onFocus()" (focusout)="onFocusout()">
                         <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
                     </div>
@@ -47,6 +52,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     @Input() label: string;
     @Input() prefix: string;
     @Input() suffix: string;
+    @Input() icon: string;
     @Input() readonly = false;
     @Input() disabled = false;
     @Input() placeholder: string;

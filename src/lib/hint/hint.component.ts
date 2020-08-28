@@ -5,7 +5,7 @@ import { PlexType } from '../core/plex-type.type';
     selector: 'plex-hint',
     template: `
         <a href="javascript:void(0)" *ngIf="position && content" class="hint-container" [matTooltip]="content" [matTooltipPosition]="position">
-            <plex-icon class="hint {{ hintType }}" [name]="icon" type="default"></plex-icon>
+            <plex-icon class="hint {{ hintType }}" [name]="hintIcon" type="light"></plex-icon>
         </a>
     `
 })
@@ -15,16 +15,19 @@ export class HintComponent implements OnInit {
     hostElement: HTMLElement;
 
     @Input()
-    hintType: PlexType = 'default';
+    hintType: PlexType;
 
     @Input()
-    icon = 'help';
+    hintIcon = 'help';
 
     @Input()
     content: string;
 
     @Input()
     position = 'above';
+
+    @Input()
+    detach: '' | 'both' | 'right' | 'top';
 
     constructor() { }
 
@@ -36,5 +39,4 @@ export class HintComponent implements OnInit {
     @HostListener('click', ['$event']) onClick() {
         this.hostElement.click();
     }
-
 }

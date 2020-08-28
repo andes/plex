@@ -52,13 +52,10 @@
 // Fonts
 $typoPRO-font-path: "~@andes/plex/src/lib/css/fonts/" !default;
 @import "css/fonts/TypoPRO-SourceSansPro";
-// Icons
-$mdi-font-path: "~@mdi/font/fonts/";
-@import "~@mdi/font/scss/materialdesignicons";
+
 // Misc
 @import "~node-waves/src/scss/waves";
 @import "~sweetalert2/src/sweetalert2";
-@import "~animate.css/animate"; // DEPRECATION WARNING https://github.com/sass/node-sass/issues/2362
 
 // Plex core
 @import "css/layout";
@@ -84,6 +81,7 @@ $mdi-font-path: "~@mdi/font/fonts/";
 @import "css/plex-button";
 @import "css/plex-datetime";
 @import "css/plex-dropdown";
+@import "css/plex-icon";
 @import "css/plex-loader";
 @import "css/plex-radio";
 @import "css/plex-ribbon";

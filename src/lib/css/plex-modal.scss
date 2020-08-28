@@ -1,4 +1,8 @@
-$sizes: (sm: 25vw, md: 50vw, lg:80vw);
+$sizes: (
+    sm: 25vw,
+    md: 50vw,
+    lg: 80vw,
+);
 
 .plex-modal {
     position: fixed;
@@ -13,7 +17,7 @@ $sizes: (sm: 25vw, md: 50vw, lg:80vw);
     justify-content: center;
     align-items: center;
 
-    animation: present-modal .15s ease-in;
+    animation: present-modal 0.15s ease-in;
 
     .plex-modal-close {
         position: relative;
@@ -26,12 +30,12 @@ $sizes: (sm: 25vw, md: 50vw, lg:80vw);
 
     header {
         position: relative;
-        padding: 0 1rem;
+        padding: 1rem;
     }
 
     .plex-modal-content {
         background-color: white;
-        min-width: 455px;
+        min-width: 375px;
         max-width: 90vw;
         margin: auto;
         transition: opacity;
@@ -42,21 +46,26 @@ $sizes: (sm: 25vw, md: 50vw, lg:80vw);
             justify-content: center;
             margin: 10px 0;
             min-height: 25vh;
+            > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+            }
         }
 
         @each $size, $length in $sizes {
-            &.#{$size} { 
+            &.#{$size} {
                 width: $length;
                 @if $size == md {
                     main {
                         max-height: 50vh;
-                        padding: 0 .5rem;
+                        padding: 0 0.5rem;
                         overflow-y: scroll;
                     }
                 }
             }
         }
-        
     }
 
     plex-icon {
@@ -66,6 +75,11 @@ $sizes: (sm: 25vw, md: 50vw, lg:80vw);
 
         i {
             font-size: 4rem;
+        }
+        &[name="close"] {
+            i {
+                font-size: 1rem;
+            }
         }
     }
 
@@ -84,8 +98,6 @@ $sizes: (sm: 25vw, md: 50vw, lg:80vw);
         justify-content: center;
         font-size: 1.5rem;
     }
-
-    
 
     footer {
         display: flex;

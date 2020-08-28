@@ -6,7 +6,7 @@
                     <div class="col-md-6">
                         <form #formulario="ngForm">
                             <plex-select [(ngModel)]="modelo2.select" name="select1" (getData)="loadData($event)"
-                                         label="Select statico" [required]="true">
+                                         label="Select estático" [required]="true">
                             </plex-select>
                             <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmultiple"
                                          (getData)="loadData($event)" label="Múltiple con llamada a la API"
@@ -16,7 +16,7 @@
                             </plex-bool>
 
                             <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmultiple-2"
-                                         (getData)="loadData($event)" label="Disabled plex-select" [disabled]="true">
+                                         (getData)="loadData($event)" label="plex-select disabled" [disabled]="true">
                             </plex-select>
 
                         </form>

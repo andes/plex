@@ -3,10 +3,10 @@
         <form #form="ngForm">
             <div class="row">
                 <div class="col-md-6">
-                    <plex-title size="sm" titulo="Integrado con plex-badge">
+                    <plex-title titulo="Integrado con plex-badge">
                         <plex-badge size="sm" type="info">{{ tModel.fechaDecounce | date: 'dd/MM/yyyy' }}
                             <plex-datetime type="date" [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required
-                                           [btnOnly]="true" size="sm">
+                                           [btnOnly]="true" size="sm" hintAction="current">
                             </plex-datetime>
                         </plex-badge>
                     </plex-title>
@@ -27,7 +27,7 @@
                                    name="hora" (blur)="onBlur()" (focus)="onBlur()" size="sm">
                     </plex-datetime>
 
-                    <plex-datetime label="Ingrese la hora de nacimient2o" type="time" [(ngModel)]="tModel.horados"
+                    <plex-datetime label="Ingrese la hora de nacimiento 2" type="time" [(ngModel)]="tModel.horados"
                                    [min]="horaPlus()" name="horaconmin">
                     </plex-datetime>
 
@@ -48,11 +48,12 @@
                     <pre>{{ tModel | json }}</pre>
                     <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'" size="sm"
                                    [(ngModel)]="tModel.fechaHora" [min]="tModel.minHora" [max]="tModel.maxHora"
-                                   name="horaSkip" required>
+                                   name="horaSkip" required hintAction="nextHour">
                     </plex-datetime>
 
                     <plex-datetime label="Datetime con debounce" name="debounce" type="date"
-                                   [(ngModel)]="tModel.fechaDecounce" (change)="onChange($event)" [debounce]="1000">
+                                   [(ngModel)]="tModel.fechaDecounce" (change)="onChange($event)" [debounce]="1000"
+                                   hintAction="nextDay" hintIcon="chevron-right">
                     </plex-datetime>
 
                     <plex-datetime [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required [btnOnly]="true"

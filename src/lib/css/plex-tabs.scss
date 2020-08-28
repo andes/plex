@@ -2,39 +2,40 @@
 /**
  * Array de colores expandibles de los tabs desde una aplicación externa.
  */
- 
+
 $plex-tabs-color-extend: (
-  procedimiento: $red,
-  trastorno: violet
+    procedimiento: $blue,
+    trastorno: $red,
 ) !default;
 
 plex-tabs {
     width: 100%;
-    
+
     > section:first-child {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         border-bottom: solid 1px black;
-    
+
         .nav-tabs {
             overflow-x: auto;
             overflow-y: hidden;
             width: 100%;
             border: none;
             white-space: nowrap;
-        
+
             &.full .nav-item {
                 flex: 1;
                 text-align: center;
                 a {
+                    display: inline-block;
                     width: 100%;
                 }
             }
             & .icon {
                 max-width: 50px;
             }
-        
+
             .nav-item {
                 margin-bottom: -7px;
                 text-transform: uppercase;
@@ -42,55 +43,56 @@ plex-tabs {
                 border: 1px solid #a5a5a5;
                 border-top-right-radius: 0.25rem;
                 border-top-left-radius: 0.25rem;
-            
+
                 &.active {
                     opacity: 1;
                 }
-                
+
                 .nav-link {
                     border: none;
+                    text-align: center;
+
                     span {
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
                     }
                 }
-        
+
                 a.active {
                     border: 0px none $dark-blue;
-                    font-weight: 600; 
+                    font-weight: 600;
                 }
-        
+
                 &.nav-item-default {
                     background-color: $white;
                     color: $blue;
                     a.active {
                         background-color: $dark-blue;
-                        color: white; 
+                        color: white;
                     }
                 }
-        
+
                 @each $name, $color in $plex-tabs-color-extend {
                     &.nav-item-#{$name} {
-                        background-color: $white; 
-                        color: $color; 
+                        background-color: $white;
+                        color: $color;
                         a.active {
-                            background-color: $color; 
-                            color: white; 
+                            background-color: $color;
+                            color: white;
                         }
                     }
                 }
-        
+
                 .close {
                     margin-left: 1em;
-                    float: none;
                     line-height: 0.9;
                     opacity: 1;
-        
+
                     i {
-                        font-size: .7em;
+                        font-size: 0.7em;
                     }
-        
+
                     &:focus,
                     &:hover {
                         outline: none;
@@ -100,9 +102,11 @@ plex-tabs {
 
             & + div {
                 width: fit-content;
-                
-                plex-button, plex-badge, plex-dropdown {
-                    margin-left: .5rem;
+
+                plex-button,
+                plex-badge,
+                plex-dropdown {
+                    margin-left: 0.5rem;
                 }
             }
         }
@@ -111,7 +115,7 @@ plex-tabs {
 
 // INVERT
 plex-layout-sidebar[type="invert"] {
-    section#tabs  {
+    section#tabs {
         border-bottom: solid 1px white;
     }
 }

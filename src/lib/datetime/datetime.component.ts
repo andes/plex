@@ -24,29 +24,25 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
             multi: true
         },
     ],
-    template: `<div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+    template: `<div class="form-group datetime" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
                     <label *ngIf="label" class="form-control-label">{{ label }}
                         <span *ngIf="control.name && esRequerido" class="requerido"></span>
                     </label>
+                    <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
                     <div class="input-group d-flex align-items-center">
-                        <a *ngIf="showNav" (click)="prev()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover"
-                           [title]="makeTooltip('anterior')">
-                           <i class="mdi mdi-menu-left"></i>
-                        </a>
+                        <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
+
                         <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
                                [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"
                                (change)="disabledEvent($event)" *ngIf="showInput"/>
                         <span class="input-group-btn">
-                            <button class="btn btn-primary btn-{{size}}" tabindex="-1" [disabled]="disabled || readonly">
-                                <i class="mdi" [ngClass]="{'mdi-calendar': type == 'date','mdi-clock': type == 'time', 'mdi-calendar-clock': type == 'datetime'}"></i>
-                            </button>
+                            <plex-button type="info" [size]="size" [icon]="icon" tabindex="-1" [disabled]="disabled || readonly"></plex-button>
                         </span>
-                        <a *ngIf="showNav" (click)="next()" class="btn btn-info btn-{{size}} text-white pl-1 pr-1 hover" [title]="makeTooltip('siguiente')">
-                            <i class="mdi mdi-menu-right"></i>
-                        </a>
+                        <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabled" [tooltip]="makeTooltip('siguiente')"></plex-button>
                     </div>
                     <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
-                </div>`,
+                </div>
+                `,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     private _min: Date;
@@ -67,6 +63,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() type: string;
     @Input() label: string;
     @Input() placeholder: string;
+    @Input() hintAction: 'current' | 'nextDay' | 'nextHour' = null;
+    @Input() hintIcon = 'asterisk';
     @Input() disabled = false;
     @Input() readonly = false;
     @Input() skipBy: 'hour' | 'day' | 'month' | 'year' = null;
@@ -106,8 +104,15 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
         }
     }
 
+
     get showNav(): Boolean {
         return this.skipBy && this.value;
+    }
+
+    get icon() {
+        return this.type === 'date' ? 'calendar' :
+            (this.type === 'time' ? 'clock' :
+                (this.type === 'datetime' ? 'calendar-clock' : 'date'));
     }
 
     // Eventos
@@ -133,6 +138,37 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges {
     constructor(private element: ElementRef, private renderer: Renderer) {
         this.placeholder = '';
         this.type = 'datetime';
+    }
+
+    get hintText() {
+        if (this.hintAction === 'current') {
+            return `${moment().format('DD/MM/YYYY HH:mm')}`;
+        } else if (this.hintAction === 'nextDay') {
+            return moment().add(1, 'day').format('DD/MM/YYYY');
+        } else if (this.hintAction === 'nextHour') {
+            return moment().add(1, 'hour').startOf('hour').format('HH:mm');
+        }
+    }
+
+    getFormattedDate(action) {
+        let formattedDate;
+        if (action === 'current') {
+            formattedDate = moment().format(this.format);
+        } else if (action === 'nextDay') {
+            formattedDate = moment().add(1, 'day').format(this.format);
+        } else if (action === 'nextHour') {
+            formattedDate = moment().add(1, 'hour').startOf('hour').format(this.format);
+        }
+        return formattedDate;
+    }
+
+    callAction(action) {
+        this.hintAction = action;
+        const temp = this.getFormattedDate(action);
+
+        this.setElements(temp);
+        this.value = temp;
+        this.onChange(this.value);
     }
 
     public disabledEvent(event: Event) {

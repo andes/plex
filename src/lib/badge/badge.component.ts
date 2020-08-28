@@ -1,9 +1,11 @@
+import { PlexSize } from './../core/plex-size.type';
+import { PlexType } from './../core/plex-type.type';
 import { Component, Input, ElementRef, ViewChild, OnChanges } from '@angular/core';
 
 @Component({
     selector: 'plex-badge',
     template: `
-        <span #badge class="badge badge-{{ type }} badge-{{ size }}">
+        <span #badgeIcon class="badge badge-{{ type }} badge-{{ size }}">
             <ng-content select="plex-icon"></ng-content>
             <ng-content></ng-content>
         </span>
@@ -14,11 +16,11 @@ import { Component, Input, ElementRef, ViewChild, OnChanges } from '@angular/cor
         `,
 })
 export class PlexBadgeComponent implements OnChanges {
-    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default';
-    @Input() size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'block' = 'md';
+    @Input() type: PlexType;
+    @Input() size: PlexSize = 'md';
     @Input() color: string;
 
-    @ViewChild('badge', { static: true }) el: ElementRef;
+    @ViewChild('badgeIcon', { static: true }) badgeIcon: ElementRef;
 
     @ViewChild('badgeBtn', { static: true }) badgeBtn: ElementRef;
 
@@ -28,7 +30,7 @@ export class PlexBadgeComponent implements OnChanges {
 
     ngOnChanges() {
         if (this.color && this.color.length > 0) {
-            this.el.nativeElement.style.setProperty('--badge-color', this.color);
+            this.badgeIcon.nativeElement.style.setProperty('--badge-color', this.color);
             this.badgeBtn.nativeElement.style.setProperty('--badge-color', this.color);
         }
 

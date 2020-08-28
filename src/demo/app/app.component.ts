@@ -14,15 +14,16 @@ export class AppComponent implements OnInit {
         this.plex.updateTitle('Plex: UI/UX para ANDES');
 
         const menu: DropdownItem[] = [
+            { label: 'Ir al Inicio', icon: 'home', route: '/incio' },
             { label: 'Accordion', icon: 'view-day', route: '/accordion' },
-            { label: 'Bool', icon: 'checkbox-marked-outline', route: '/bool' },
+            { label: 'Bool', icon: 'checkbox-marked', route: '/bool' },
             { label: 'Box', icon: 'selection', route: '/box' },
             { label: 'Button & Badge', icon: 'solid', route: '/button-badge' },
             { label: 'DateTime', icon: 'calendar', route: '/datetime' },
             { label: 'Detail', icon: 'account', route: '/detail' },
             { label: 'Dropdown', icon: 'menu-right', route: '/dropdown' },
             { label: 'Help', icon: 'help-circle', route: '/help' },
-            { label: 'Float', icon: 'numeric', route: '/float' },
+            { label: 'Float', icon: 'decimal', route: '/float' },
             { label: 'Int', icon: 'numeric', route: '/int' },
             { label: 'Item List', icon: 'format-list-checks', route: '/item' },
             { label: 'Label', icon: 'account-circle', route: '/label' },
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit {
             { label: 'Ribbon', icon: 'ribbon', route: '/ribbon' },
             { label: 'Select', icon: 'format-list-bulleted', route: '/select' },
             { label: 'Tabs', icon: 'folder', route: '/tabs' },
-            { label: 'Text', icon: 'alphabetical', route: '/text' },
+            { label: 'Text', icon: 'form-textbox', route: '/text' },
             { label: 'Tooltip & Hint', icon: 'tooltip', route: '/tooltip-hint' },
             { label: 'Wizard', icon: 'auto-fix', route: '/wizard' },
             { label: 'Wrapper', icon: 'view-quilt', route: '/wrapper' },

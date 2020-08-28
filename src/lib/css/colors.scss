@@ -1,11 +1,13 @@
-$states: default primary success info warning danger;
+$states: default primary success info warning danger light dark;
 $colors: (
-  default: $dark-grey,
-  primary: $brand-primary,
-  success: $brand-success,
-  info: $brand-info,
-  warning: $brand-warning,
-  danger: $brand-danger  
+    default: $dark-grey,
+    primary: $brand-primary,
+    success: $brand-success,
+    info: $brand-info,
+    warning: $brand-warning,
+    danger: $brand-danger,
+    light: $light-blue,
+    dark: $dark-blue,
 );
 
 @each $state in $states {

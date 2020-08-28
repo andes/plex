@@ -62,9 +62,11 @@ plex-wrapper  {
         }
     }
 
-    plex-button, plex-bool, plex-dropdown {
-        @include baseInputs;
-        flex: 0 0 0;
+    &> {
+        plex-button, plex-bool, plex-dropdown {
+            @include baseInputs;
+            flex: 0 0 0;
+        }
     }
 
     // Alinear elementos en formulario

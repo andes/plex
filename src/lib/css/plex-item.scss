@@ -9,18 +9,18 @@ plex-list {
         margin: inherit;
         padding-left: 0;
     }
-    
+
     .plex-label {
         line-height: 1rem;
-    
+
         &.sm {
-            font-size: .75rem;
+            font-size: 0.75rem;
         }
-    
+
         &.md {
-            font-size: .9rem;
+            font-size: 0.9rem;
         }
-    
+
         &.lg {
             font-size: 1rem;
         }
@@ -83,7 +83,7 @@ plex-list {
     
     div.item-list-heading {
         display: grid;
-        grid-gap: .25rem;
+        grid-gap: 0.25rem;
         height: 40px;
         max-height: 40px;
 
@@ -93,18 +93,18 @@ plex-list {
             z-index: 10;
         }
 
-        >* {
+        > * {
             display: flex;
             align-items: center;
-            justify-content: flex-start; 
+            justify-content: flex-start;
         }
-    
-        >[checkbox] {
+
+        > [checkbox] {
             max-width: 25px;
             padding: 1.25rem;
             justify-content: center;
         }
-    
+
         [label],
         [badge],
         [button] {
@@ -128,17 +128,17 @@ plex-list {
         box-sizing: border-box;
         width: 100%;
         cursor: pointer;
-        
+
         &:hover {
             box-shadow: inset 0 0 0 2px $blue;
-            background-color: $light-blue!important;
+            background-color: $light-blue !important;
             color: black;
             box-sizing: border-box;
         }
-        
+
         &.selected {
             box-shadow: inset 0 0 0 2px $blue;
-            background-color: $light-blue!important;
+            background-color: $light-blue !important;
             color: black;
             box-sizing: border-box;
         }
@@ -152,8 +152,8 @@ plex-list {
             .elementos-graficos {
                 @include flex;
                 width: max-content;
-        
-                // Se estiliza icono - TODO: Agregar propiedad outline al componente plex-icon                        
+
+                // Se estiliza icono - TODO: Agregar propiedad outline al componente plex-icon
                 > plex-bool {
                     label {
                         margin-top: 0 !important;
@@ -166,35 +166,40 @@ plex-list {
 
             div.item-list {
                 display: grid;
-                grid-gap: .25rem;
+                grid-gap: 0.25rem;
                 height: fit-content;
                 margin: 0.5rem 0;
-                
-                >* {
+
+                > * {
                     display: flex;
                     align-items: flex-start;
                 }
-            
+
                 // Items que componen la lista que no son componentes Angular
                 span,
                 div,
                 img {
                     justify-self: flex-start !important;
                 }
-            
+
                 plex-label {
                     justify-self: flex-start !important;
                     width: auto;
                     min-width: 100px;
                     max-width: 400px;
                 }
-        
+
                 upload-file {
                     display: flex;
                     flex-flow: column-reverse;
                 }
-            
-                plex-select, plex-select, plex-phone, plex-text, plex-float, plex-int {
+
+                plex-select,
+                plex-select,
+                plex-phone,
+                plex-text,
+                plex-float,
+                plex-int {
                     div.form-group {
                         min-width: 135px;
                         width: 100%;
@@ -203,22 +208,22 @@ plex-list {
 
                 plex-datetime {
                     justify-self: flex-start !important;
-                    width: 135px; 
-            
+                    width: 135px;
+
                     input,
                     .btn {
                         padding: 5px;
-                        font-size: .9rem;
+                        font-size: 0.9rem;
                     }
-                }       
+                }
             }
         }
     }
-    
-    .striped>:nth-child(odd)>section.item {
-        background-color: rgba(0, 0, 0, .05);
+
+    .striped > :nth-child(odd) > section.item {
+        background-color: rgba(0, 0, 0, 0.05);
     }
-    
+
     div.botonera {
         display: flex;
         min-width: 25%;
@@ -245,7 +250,7 @@ plex-list {
         .btn,
         .dropdown-item {
             padding: 5px;
-            font-size: .9rem;
+            font-size: 0.9rem;
             background: transparent !important;
         }
 
@@ -286,53 +291,66 @@ plex-list {
         padding-left: 0px;
     }
 
-    // Con icono, sin checkbox
-    .item-list-heading.has-icon {
-        padding-left: 70px;
-    } 
-    
-    // Sin icono, con checkbox
-    .item-list-heading.has-checkbox {
-        padding-left: 40px;
-    } 
-    
-    // Con icono, con checkbox
-    .item-list-heading.has-checkbox.has-icon {
-        padding-left: 105px;
-    } 
+// Con botonera
+.item-list {
+    width: 100%;
+}
 
-    // Directiva responsive
-    plex-list {
-        > div.size-sm {
-            
-            section {
-                .item-list-heading {
-                    display: none!important;
-                    }
-                }
-        
-            section.item {
-                flex-direction: column-reverse;
-                align-items: flex-start;
-        
-                div.item-row {
-                    width: 100%!important;
-                }
-        
-                div.item-list {
-                    margin-top: .5rem;
-                    grid-auto-flow: unset;
-                    // width: 100%!important;
-                }
-        
-                .botonera {
-                    justify-content: space-between!important;
-                    width: 100%;
-                    text-align: left;
-                    & > div {
-                        width: fit-content;
-                    }
+.item-list-heading {
+    width: 75%;
+}
+
+// Sin checkbox, Sin icono
+.item-list {
+    padding-left: 0px;
+}
+
+// Con icono, sin checkbox
+.item-list-heading.has-icon {
+    padding-left: 70px;
+}
+
+// Sin icono, con checkbox
+.item-list-heading.has-checkbox {
+    padding-left: 40px;
+}
+
+// Con icono, con checkbox
+.item-list-heading.has-checkbox.has-icon {
+    padding-left: 105px;
+}
+
+// Directiva responsive
+plex-list {
+    > div.size-sm {
+        section {
+            .item-list-heading {
+                display: none !important;
+            }
+        }
+
+        section.item {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+
+            div.item-row {
+                width: 100% !important;
+            }
+
+            div.item-list {
+                margin-top: 0.5rem;
+                grid-auto-flow: unset;
+                // width: 100%!important;
+            }
+
+            .botonera {
+                justify-content: space-between !important;
+                width: 100%;
+                text-align: left;
+                & > div {
+                    width: fit-content;
                 }
             }
         }
     }
+}

@@ -1,3 +1,12 @@
+# [6.12.0](https://github.com/andes/plex/compare/v6.11.5...v6.12.0) (2020-08-28)
+
+
+### Features
+
+* **hint:** opción "detach" (despega el hint de su contendor) ([#207](https://github.com/andes/plex/issues/207)) ([963d577](https://github.com/andes/plex/commit/963d5773dc17b8e9026ac85d5eed45b0ab66fcf2))
+* **plex-item:** se agregan sizes ([#213](https://github.com/andes/plex/issues/213)) ([42003d9](https://github.com/andes/plex/commit/42003d96cea2da7f178ceb0897b9997399672ecb))
+* plex-icon options ([#189](https://github.com/andes/plex/issues/189)) ([f8980bb](https://github.com/andes/plex/commit/f8980bb5c7f27715f7dbed0bddf8b2c06eb58b9d))
+
 ## [6.11.5](https://github.com/andes/plex/compare/v6.11.4...v6.11.5) (2020-08-24)
 
 
