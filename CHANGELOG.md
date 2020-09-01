@@ -1,3 +1,10 @@
+# [6.13.0](https://github.com/andes/plex/compare/v6.12.0...v6.13.0) (2020-09-01)
+
+
+### Features
+
+* **plex-bool:** comportamiento inline ([#209](https://github.com/andes/plex/issues/209)) ([183f6a5](https://github.com/andes/plex/commit/183f6a59547b11886729b0e0b907f3fc2708f4f1))
+
 # [6.12.0](https://github.com/andes/plex/compare/v6.11.5...v6.12.0) (2020-08-31)
 
 
