@@ -13,7 +13,6 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
     selector: 'plex-datetime',
     template: `
         <div class="form-group" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
-
                     <label *ngIf="label" class="form-control-label">{{ label }}
                         <span *ngIf="control.name && esRequerido" class="requerido"></span>
                     </label>

@@ -108,6 +108,19 @@ Cypress.Commands.add('plexInt', { prevSubject: 'optional' }, (subject, label, te
     return element;
 });
 
+Cypress.Commands.add('plexFloat', { prevSubject: 'optional' }, (subject, label, text = null) => {
+    let element;
+    if (subject) {
+        element = cy.wrap(subject).find(`plex-float[${label}] input`);
+    } else {
+        element = cy.get(`plex-float[${label}] input`);
+    }
+    if (text) {
+        element.type(text);
+    }
+    return element;
+});
+
 Cypress.Commands.add('plexPhone', { prevSubject: 'optional' }, (subject, label, text = null) => {
     let element;
     if (subject) {

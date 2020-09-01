@@ -82,6 +82,9 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
         if (this.control) {
             this.control.valueAccessor = this;
         }
+        if (this.control && this.control.control) {
+            this.control.control.setValidators(this.validate.bind(this) as any);
+        }
         this.placeholder = '';
     }
 

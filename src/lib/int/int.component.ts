@@ -80,6 +80,9 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
         private renderer: Renderer2,
         @Self() @Optional() public control: NgControl,
     ) {
+        if (this.control && this.control.control) {
+            this.control.control.setValidators(this.validate.bind(this) as any);
+        }
         if (this.control) {
             this.control.valueAccessor = this;
         }
