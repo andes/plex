@@ -1,6 +1,6 @@
 // Genera clases genéricas para cualquier elemento
 // $darken-percentage es 15%, seteado en variables.scss
-@mixin generic-factory($front-color: $light-blue, $bg-color: "", $border-color: "none") {
+@mixin generic-factory($front-color: $blue, $bg-color: transparent, $border-color: none) {
     color: $front-color;
     background-color: $bg-color;
     border-color: $border-color;

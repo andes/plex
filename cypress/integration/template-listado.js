@@ -6,7 +6,7 @@ context('template listado', () => {
         cy.visit('/templates/listado-sidebar');
     });
 
-    it('test accordion', () => {
+    it.skip('test accordion', () => {
         cy.eyesCheckWindow('main');
 
         // SE SACO PORQUE PISARON TODA UNA COMPONENTE

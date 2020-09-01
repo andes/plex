@@ -23,5 +23,27 @@ plex-datetime {
         flex-direction: column-reverse;
         right: 0;
         top: 0;
+        .hint-container {
+            &:hover, &:active, &:focus {
+                text-decoration: none;
+            }
+            .hint {
+                padding: 0px 2px;
+            }
+        }
+        plex-icon {
+            padding: 0;
+            i.sm {
+                width: 10px;
+                height: 14px;
+                font-size: 10px;
+                line-height: 0.9;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                margin: 0;
+            }
+        }
     }
 }

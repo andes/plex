@@ -1,6 +1,3 @@
-@import 'node_modules/@angular/material/theming';
-@include mat-core();
-
 // Tema principal
 $primary: mat-palette($mat-blue);
 $accent: mat-palette($mat-blue, A200, A100, A400);
@@ -14,7 +11,7 @@ plex-radio {
 
 // Material design patches
 .mat-radio-label-content {
-  font-family: 'TypoPRO Source Sans Pro';
+  font-family: "TypoPRO Source Sans Pro";
   font-size: 16px;
   font-weight: normal;
 }

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-6">
                 <form>
-                    <h1>Checkbox</h1>
+                    <p class="lead">Checkbox</p>
                     <plex-bool [(ngModel)]="modelo.checkbox" label="¿Está activo?" name="checkbox"></plex-bool>
                 </form>
             </div>
@@ -14,10 +14,11 @@
                 </span>
             </div>
         </div>
+        <hr>
         <div class="row">
             <div class="col-md-6">
                 <form>
-                    <h1>Slider</h1>
+                    <p class="lead">Slider</p>
                     <plex-bool [(ngModel)]="modelo.slide" type="slide" label="¿Está activo?" name="slide"></plex-bool>
                 </form>
             </div>
@@ -28,10 +29,11 @@
                 </span>
             </div>
         </div>
+        <hr>
         <div class="row">
             <div class="col-md-6">
                 <form>
-                    <h1>Slider readonly</h1>
+                    <p class="lead">Slider readonly</p>
                     <plex-bool [(ngModel)]="modelo.slide" [readonly]="true" type="slide" label="¿Está activo?"
                                name="readonly"></plex-bool>
                 </form>
@@ -41,11 +43,40 @@
                 <pre>{{modelo | json}}</pre>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="lead">Labels largos</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <plex-bool type="checkbox" label="ecografía de muestra de anatomía patológica de mama" name="checkbox">
+                </plex-bool>
+            </div>
+            <div class="col-3">
+                <plex-bool type="checkbox" label="ecocardiografía transtorácica focalizada en cuidados intensivos"
+                           name="checkbox">
+                </plex-bool>
+
+
+
+            </div>
+            <div class="col-3">
+                <plex-bool type="checkbox" label="ecocardiografía transtorácica focalizada en cuidados intensivos"
+                           name="checkbox">
+                </plex-bool>
+            </div>
+            <div class="col-3">
+                <plex-bool type="checkbox" label="ecocardiografía intracardíaca transluminal para cardiopatía congénita"
+                           name="checkbox">
+                </plex-bool>
+            </div>
+        </div>
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
         <div class="col-md-6">
             <form>
-                <h1>Checkbox</h1>
+                <p class="lead">Checkbox</p>
                 <plex-bool [(ngModel)]="modelo.checkbox" label="¿Está activo?" name="checkbox"></plex-bool>
             </form>
         </div>

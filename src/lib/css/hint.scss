@@ -24,11 +24,10 @@ plex-hint {
         // $colors definidos en colors.scss
         @each $name, $color in $colors {
             &.#{$name} {
-                @include generic-factory($bg-color: $color);
+                @include generic-factory($front-color: $light-blue, $bg-color: $color);
             }
         }
 
-        color: $light-blue;
         font-family: sans-serif;
         font-size: 12px;
         border-radius: 9px;
