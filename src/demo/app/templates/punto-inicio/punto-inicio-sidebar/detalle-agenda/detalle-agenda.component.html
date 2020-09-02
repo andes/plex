@@ -1,0 +1,36 @@
+<ng-container *ngIf="agenda$ | async as agenda">
+    <plex-options [items]="options">
+
+    </plex-options>
+    <section justify="betweeen" class="w-100 my-4">
+        <plex-button type="info" icon="chevron-left" size="sm"></plex-button>
+        <div class="mx-4 w-100 d-flex justify-content-center">
+
+            <plex-label titulo="{{ agenda.dia}} {{ agenda.fecha }} | {{ agenda.horaInicio }} - {{ agenda.horaFin }} hs."
+                        subtitulo="{{ agenda.tipoPrestaciones }}" icon="account" size="lg" type="info"></plex-label>
+        </div>
+        <plex-button type="info" icon="chevron-right" size="sm"></plex-button>
+    </section>
+    <hr>
+
+    <plex-list>
+        <plex-heading>
+            <b label></b>
+            <b label></b>
+            <b label></b>
+            <b label></b>
+        </plex-heading>
+        <plex-item *ngFor="let turno of agenda.turnos">
+            <plex-label titulo="{{ turno.horaInicio }}" subtitulo="{{ turno.prestacion}} {{ turno.profesional }}">
+            </plex-label>
+            <plex-label titulo="Paciente" subtitulo="{{ turno.paciente }} {{ turno.dni }}"></plex-label>
+            <plex-label titulo="Nro. Carpeta" subtitulo="{{ turno.carpeta }} {{ turno.efector }}"></plex-label>
+            <plex-badge type="success">{{ turno.estado }}</plex-badge>
+            <plex-badge type="info">{{ turno.procedencia }}</plex-badge>
+            <plex-badge *ngIf="turno.prioritario == true" type="danger">prioritario</plex-badge>
+            <plex-button size="sm" type="warning" icon="pencil"></plex-button>
+            <plex-button size="sm" type="info" icon="history"></plex-button>
+            <plex-button size="sm" type="success" icon="documento"></plex-button>
+        </plex-item>
+    </plex-list>
+</ng-container>

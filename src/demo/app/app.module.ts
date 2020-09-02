@@ -12,6 +12,7 @@ import { Plex } from '../../lib/core/service';
 // Services
 import { ServiceDemoSelect } from './select/select.service';
 import { PacienteService } from './templates/service/paciente.service';
+import { AgendaService } from './templates/service/agenda.service';
 
 // Routes
 import { HomeDemoComponent } from './home/home.component';
@@ -51,7 +52,11 @@ import { CardDemoComponent } from './card/card.component';
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
 import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
 import { MainListadoComponent } from './templates/listado-sidebar/main/listado/main-listado.component';
+import { PuntoInicioComponent } from './templates/punto-inicio/punto-inicio.component';
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
+import { PuntoInicioMainComponent } from './templates/punto-inicio/punto-inicio-main/punto-inicio-main.component';
+import { PuntoInicioSidebarComponent } from './templates/punto-inicio/punto-inicio-sidebar/punto-inicio-sidebar.component';
+import { DetalleAgendaComponent } from './templates/punto-inicio/punto-inicio-sidebar/detalle-agenda/detalle-agenda.component';
 import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
 import { HelpDemoComponent } from './help/help.component';
@@ -112,6 +117,10 @@ import { HintDemoComponent } from './directives/componentes/hint/hint.component'
         CardDemoComponent,
         ListadoSidebarComponent,
         SidebarDetalleComponent,
+        PuntoInicioComponent,
+        DetalleAgendaComponent,
+        PuntoInicioMainComponent,
+        PuntoInicioSidebarComponent,
         MainListadoComponent,
         ModalTemplateComponent,
         // Templates genéricos
@@ -147,8 +156,8 @@ import { HintDemoComponent } from './directives/componentes/hint/hint.component'
     providers: [
         appRoutingProviders,
         ServiceDemoSelect,
-        PacienteService
-
+        PacienteService,
+        AgendaService
     ],
     bootstrap: [AppComponent]
 })
