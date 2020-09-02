@@ -1,0 +1,60 @@
+<plex-layout main="{{ sidebarValue }}">
+    <plex-layout-main>
+        <plex-title titulo="RUP | Punto de inicio">
+            <plex-button class="ml-2" type="info">Mapa de camas</plex-button>
+            <plex-button class="ml-2" type="info">Huds</plex-button>
+            <plex-button class="ml-2" type="warning">Inicio Andes</plex-button>
+        </plex-title>
+        <plex-grid cols="4" size="md">
+            <!-- plex-card -->
+            <plex-grid type="" span="1">
+                <plex-card *ngFor="let item of cards" align="start">
+                    <plex-label size="lg" type="default" titulo="{{ item.titulo }}" subtitulo="{{ item.subtitulo }}"
+                                icon="{{ item.icono }}">
+                    </plex-label>
+                    <plex-button type="info" label="{{ item.botones | slice:0:1 }}"></plex-button>
+                    <plex-button type="info" label="{{ item.botones | slice:1:2 }}"></plex-button>
+                </plex-card>
+                <ng-container *ngFor="let item of cards | slice:2:3">
+                    <plex-card size="lg" type="dark" align="center">
+                        <plex-badge type="warning">{{ item.estado }}</plex-badge>
+                        <plex-label size="lg" type="default" titulo="{{ item.fecha }}" subtitulo="{{ item.subtitulo }}">
+                        </plex-label>
+                    </plex-card>
+                </ng-container>
+            </plex-grid>
+            <!-- Listado -->
+            <section span="3">
+                <plex-punto-inicio-main (eventoSidebar)="recibirSidebar($event)">
+                </plex-punto-inicio-main>
+            </section>
+        </plex-grid>
+    </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="{{sidebarValue === 10 ? 'Buscar' : 'Turnos'}}">
+            <plex-button size="sm" type="warning" label="huds paciente"></plex-button>
+            <plex-button size="sm" type="info" label="paciente sin turno"></plex-button>
+            <!--<plex-dropdown size="sm" type="info" label="sin turno" [items]="items"></plex-dropdown>-->
+            <plex-button type="danger" icon="close" size="sm" (click)="contraerSidebar()"></plex-button>
+        </plex-title>
+        <ng-container *ngIf="sidebarValue === 10">
+            <plex-wrapper>
+                <plex-datetime label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
+                </plex-datetime>
+                <plex-select grow="3" [(ngModel)]="modelo1.select" [data]="opciones"
+                             label-field="nombre + ' (' + continente + ')'" label="Seleccione una prestación">
+                </plex-select>
+                <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre">
+                </plex-text>
+            </plex-wrapper>
+            <section justify="center" class="align-items-center h-50">
+                <plex-label size="xl" type="info" titulo="Busca y selecciona un paciente"
+                            subtitulo="prdras ver detalles del registro" icon="magnify" direction="column">
+                </plex-label>
+            </section>
+        </ng-container>
+        <ng-container *ngIf="sidebarValue === 8">
+            <router-outlet></router-outlet>
+        </ng-container>
+    </plex-layout-sidebar>
+</plex-layout>

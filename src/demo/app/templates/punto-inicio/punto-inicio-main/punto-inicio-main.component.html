@@ -1,0 +1,36 @@
+<header>
+    <plex-title size="sm" titulo="Lista de agendas">
+        <plex-radio [(ngModel)]="modelo.radio" [data]="options" name="colores" type="horizontal"></plex-radio>
+        <plex-badge type="info">27/11/2020</plex-badge>
+        <plex-button type="info" icon="filter" size="sm" (click)="mostrarFiltros()"></plex-button>
+    </plex-title>
+    <plex-wrapper *ngIf="filtros === true">
+        <plex-datetime label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
+        </plex-datetime>
+        <plex-select grow="2" [(ngModel)]="modelo1.select" [data]="opciones"
+                     label-field="nombre + ' (' + continente + ')'" label="Seleccione una prestación">
+        </plex-select>
+        <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre">
+        </plex-text>
+    </plex-wrapper>
+</header>
+<plex-list height="60%">
+    <plex-heading>
+        <b></b>
+        <b label></b>
+        <b label></b>
+        <b></b>
+    </plex-heading>
+    <plex-item *ngFor="let agenda of agendas$ | async" (click)="selected(agenda)">
+        <plex-icon name="calendario-tilde" type="success"></plex-icon>
+        <plex-label titulo="{{ agenda.horaInicio }} a {{ agenda.horaFin }}" subtitulo="Duración: {{ duracion }}">
+        </plex-label>
+        <plex-label *ngFor="let profesional of agenda.profesionales" titulo="{{ agenda.tipoPrestaciones }}"
+                    subtitulo="Profesional: {{ profesional.apellido }}, {{ profesional.nombre }}">
+        </plex-label>
+        <plex-badge type="success">{{ agenda.estado }}</plex-badge>
+        <plex-badge *ngFor="let bloque of agenda.bloques" type="info">Pacientes
+            {{ bloque.restantesDelDia }}/{{ bloque.accesoDirectoDelDia }}
+        </plex-badge>
+    </plex-item>
+</plex-list>
