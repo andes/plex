@@ -29,7 +29,8 @@ import { hasRequiredValidator } from '../core/validator.functions';
 
             <input #input type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
                 [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
-            <plex-icon  *ngIf="!readonly && !multiline && !html && !isEmpty" type="light" size="sm" name="close-circle" class="clear-icon" (click)="clearInput()"></plex-icon>
+
+            <plex-icon  *ngIf="!readonly && !multiline && !html && !isEmpty" size="sm" name="close-circle" class="clear-icon" (click)="clearInput()"></plex-icon>
 
             <span #suffixParent [hidden]="suffixParent?.children.length === 0" class="input-group-addon">
                 <ng-content select="[right]"></ng-content>
