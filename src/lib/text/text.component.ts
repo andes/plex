@@ -13,28 +13,33 @@ import { hasRequiredValidator } from '../core/validator.functions';
     <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
 
         <!-- Label -->
-        <label *ngIf="label" class="form-control-label">{{label}}
-        <span *ngIf="control.name && esRequerido" class="requerido"></span>
+        <label *ngIf="label" class="form-control-label">
+            {{label}}
+            <span *ngIf="control.name && esRequerido" class="requerido"></span>
         </label>
 
         <!-- Simple text field -->
-        <div [hidden]="multiline || html" [ngClass]="{'input-group': prefix || suffix || prefixParent?.children.length > 0}">
+        <div [hidden]="multiline || html" [class.input-group]="prefix || suffix || prefixParent?.children.length > 0 || suffixParent?.children.length > 0">
+            <span *ngIf="prefix" class="input-group-addon">
+                <plex-icon type="default" size="md" [name]="prefix"></plex-icon>
+            </span>
+            <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
+                <ng-content select="[left]"></ng-content>
+            </span>
 
-        <span *ngIf="prefix" class="input-group-addon">
-            <plex-icon type="default" size="md" [name]="prefix"></plex-icon>
-        </span>
-        <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
-            <ng-content selector="[prefix]"></ng-content>
-        </span>
-
-        <input #input type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
-            [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
+            <input #input type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
+                [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
             <plex-icon  *ngIf="!readonly && !multiline && !html && !isEmpty" type="light" size="sm" name="close-circle" class="clear-icon" (click)="clearInput()"></plex-icon>
+
+            <span #suffixParent [hidden]="suffixParent?.children.length === 0" class="input-group-addon">
+                <ng-content select="[right]"></ng-content>
+            </span>
         </div>
 
         <!-- Multiline -->
         <textarea [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
-        (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()"></textarea>
+        (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
+        </textarea>
 
         <!-- HTML Editor -->
         <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>

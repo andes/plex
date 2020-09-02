@@ -18,7 +18,9 @@
             <div class="col-md-6">
                 <form>
                     <plex-int label="Ingrese el porcentaje mayor a 10 y menor a 90" [(ngModel)]="tModel.valor"
-                              name="valor" min="10" max="90" suffix="%">
+                              name="valor" min="10" max="90">
+                        <plex-icon name="account" left></plex-icon>
+                        <span right>%</span>
                     </plex-int>
                 </form>
             </div>

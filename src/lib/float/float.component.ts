@@ -25,15 +25,23 @@ const REGEX = /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
             multi: true
         }
     ],
-    template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
-                    <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esRequerido" class="requerido"></span></label>
-                    <div [ngClass]="{'input-group': prefix || suffix}">
-                        <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
-                        <input #ref type="text" class="form-control" [disabled]="disabled" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
-                        <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
-                    </div>
-                    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
-                </div>`,
+    template: `
+         <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
+            <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esRequerido" class="requerido"></span></label>
+            <div [ngClass]="{'input-group': prefix || suffix ||   suffixParent?.children.length > 0 ||  prefixParent?.children.length > 0}">
+                <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
+                <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
+                    <ng-content select="[left]"></ng-content>
+                </span>
+                <input #ref type="text" class="form-control" [disabled]="disabled" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
+                <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
+                <span #suffixParent [hidden]="suffixParent?.children.length === 0" class="input-group-addon">
+                    <ng-content select="[right]"></ng-content>
+                </span>
+            </div>
+            <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
+        </div>
+    `,
 })
 export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
     private lastValue: any = null;
