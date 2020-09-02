@@ -1,5 +1,8 @@
 plex-accordion {
   .card-header {
+    &> div {
+      width: 100%;
+    }
     display: flex;
     align-items: flex-start;
     plex-bool {
