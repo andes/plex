@@ -57,6 +57,9 @@
 $typoPRO-font-path: "~@andes/plex/src/lib/css/fonts/" !default;
 @import "css/fonts/TypoPRO-SourceSansPro";
 
+$mdi-font-path: "~@mdi/font/fonts/";	
+@import "~@mdi/font/scss/materialdesignicons";
+
 // Misc
 @import "~node-waves/src/scss/waves";
 @import "~sweetalert2/src/sweetalert2";
