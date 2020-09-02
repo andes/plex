@@ -1,3 +1,4 @@
+import { PlexSize } from './../core/plex-size.type';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -6,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
         <span align class="d-inline-flex align-items-center ml-1" #container>
             <ng-content></ng-content>
             <button class="btn btn-link btn-lg p-1" (click)="copyToClipboard()" (mouseenter)="copying = true" (mouseleave)="copying = false" title="Copiar valor">
-                <plex-icon *ngIf="!copied || copying" type="info" size="lg" name="clipboard-plus"></plex-icon>
-                <plex-icon *ngIf="copied && !copying" type="info" size="lg" name="clipboard-check"></plex-icon>
+                <plex-icon *ngIf="!copied || copying" type="info" [size]="size" name="clipboard-plus"></plex-icon>
+                <plex-icon *ngIf="copied && !copying" type="info" [size]="size" name="clipboard-check"></plex-icon>
 
             </button>
         </span>
@@ -16,6 +17,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PlexCopyComponent implements OnInit {
 
     @Input() value: string;
+    @Input() size: PlexSize = 'md';
     @Input() type: 'documento' | null = null;
     copied = false;
     copying = false;
