@@ -1,7 +1,7 @@
-import { Component, Input, ContentChild, AfterViewInit, AfterContentInit, AfterContentChecked, ComponentRef, ElementRef, DebugElement, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, ContentChild, AfterContentInit, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { EventEmitter } from 'events';
 import { Subscription } from 'rxjs-compat/Subscription';
+import { PacienteService } from './../../demo/app/templates/service/paciente.service';
 
 /**
  * ATENCION! SI NO SE ESTABLECE FOCO SE MANTIENE FUNCIONALIDAD ANTERIOR.
@@ -40,16 +40,23 @@ import { Subscription } from 'rxjs-compat/Subscription';
                  [class.focused]="foco === 'sidebar'"
                  [class.not-focused]="foco && foco !== 'sidebar'">
                 <ng-content select="plex-layout-sidebar"></ng-content>
-            </div>
+                <span class="resizable-btn-wrapper" *ngIf="resizable === true" draggable="true">
+                    <plex-button size="sm" (dragover)="minimizar($event)" type="info" title="achicar encolumnado" icon="arrow-left"></plex-button>
+                    <plex-button size="sm" (dragover)="maximizar($event)" type="info" title="agrandar encolumnado" icon="arrow-right" ></plex-button>
+                </span>
+                </div>
         </div>
     </section>
     <ng-content select="plex-layout-footer"></ng-content>
   `,
 })
 export class PlexLayoutComponent implements AfterContentInit, OnInit, OnDestroy {
+
     // Compatibility mode
     public maxcolumns = 12;
     @Input() main = 12;
+
+    valor: number;
 
     @ContentChild(RouterOutlet, { static: true }) routerOutlet: RouterOutlet;
 
@@ -60,6 +67,14 @@ export class PlexLayoutComponent implements AfterContentInit, OnInit, OnDestroy 
 
     private subscription1: Subscription;
     private subscription2: Subscription;
+
+
+    constructor(private data: PacienteService) {
+
+        this.data.valorActual.subscribe(valor => this.valor = valor)
+
+    }
+
 
     ngOnInit() {
         if (this.aspect) {
@@ -99,8 +114,40 @@ export class PlexLayoutComponent implements AfterContentInit, OnInit, OnDestroy 
     }
 
 
-    constructor() {
+    // Resizable 
+    //sidebarSize: number;
+    @Input() resizable: boolean = true;
+    sidebarSize: number;
+
+    @Output() calcSidebar = new EventEmitter<number>();
+
+    // funcion en servicio PacienteService
+    calcularSidebar() {
+        this.sidebarSize = this.maxcolumns - this.main;
+        this.calcSidebar.emit(this.sidebarSize);
+        console.log(this.sidebarSize);
     }
 
+    actualizarValor() {
+        this.data.cambiaValor(this.sidebarSize);
+        console.log(this.valor)
+    }
+
+    public maximizar(e) {
+        this.main++;
+        if (this.main > 11) {
+            this.main = 9;
+            this.calcularSidebar();
+            this.actualizarValor();
+        }
+    }
+
+    public minimizar() {
+        if (this.main > 6) {
+            this.main = this.main - 1;
+            this.calcularSidebar();
+            this.actualizarValor();
+        }
+    }
 
 }

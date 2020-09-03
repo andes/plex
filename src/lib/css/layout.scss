@@ -46,6 +46,23 @@ plex-layout {
   height: 100%;
   --heading-background-color: #f2f2f2;
  
+    > section {
+        >div.row {
+            div[class^="col-"] {
+                transition: all 900ms ease;
+                
+                span.resizable-btn-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    left: -1rem;
+                    top: calc(50vh - 5rem);
+                    cursor: col-resize!important;
+                }
+            }
+        }
+    }
+
   .mat-checkbox-inner-container {
     background: white!important;
   } 
