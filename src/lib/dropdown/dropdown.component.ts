@@ -6,7 +6,7 @@ import { DropdownItem } from './dropdown-item.inteface';
     selector: 'plex-dropdown',
     template: ` <div class="dropdown" [ngClass]="{show: open}">
                     <button plexRipples data-toggle="dropdown" class="btn btn-{{type}} {{( 'size' ? 'btn-' + size : '' )}}" [ngClass]="{'dropdown-toggle': label}" type="button" [disabled]="disabled" (click)="toggleMenu(); $event.stopImmediatePropagation();">
-                    <plex-icon *ngIf="icon" type="dark" [name]="icon" [size]="size"></plex-icon>
+                    <plex-icon *ngIf="icon" [name]="icon" [size]="size"></plex-icon>
                     {{label}}
                     </button>
                     <ul class="dropdown-menu" [ngClass]="{'dropdown-menu-right': right, 'dropdown-menu-left': !right}">
