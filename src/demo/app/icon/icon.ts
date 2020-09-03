@@ -300,6 +300,7 @@ export class DemoIconComponent {
         'marcador',
         'marcador-salud',
         'mas',
+        'menos',
         'masculino',
         'oxigeno',
         'oreja',

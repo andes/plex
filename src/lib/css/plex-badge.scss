@@ -63,15 +63,7 @@ plex-badge {
 [class^="label-"] > i {
     margin-right: 5px;
 }
-
-$colors: (
-    warning: $orange,
-    danger: $red,
-    success: $green,
-    info: $blue,
-    default: $dark-grey,
-);
-
+ 
 @each $name, $color in $colors {
     .badge-#{$name} {
         --badge-color: #{$color};

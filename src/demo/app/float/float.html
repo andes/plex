@@ -21,7 +21,8 @@
             <div class="col-md-6">
                 <form>
                     <plex-float label="Ingrese el porcentaje mayor a 10.5 y menor a 90.4" [(ngModel)]="tModel.valor"
-                                name="valor" [min]="10.5" [max]="90.4" suffix="%">
+                                name="valor" [min]="10.5" [max]="90.4">
+                        <span right>USD</span>
                     </plex-float>
                 </form>
             </div>

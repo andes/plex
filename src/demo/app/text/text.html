@@ -3,9 +3,10 @@
         <div class="row">
             <div class="col-md-6">
                 <form>
-                    <plex-text type="text" label="Ingrese su usuario" placeholder="Esta es una ayuda" prefix="account"
+                    <plex-text type="text" label="Ingrese su usuario" placeholder="Esta es una ayuda"
                                [(ngModel)]="templateModel1.usuario" name="usuario" [required]="true" (focus)="onFocus()"
                                (focusout)="onFocusout()">
+                        <plex-icon name="account" left> </plex-icon>
                     </plex-text>
                     <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password"
                                name="password" [required]="true">

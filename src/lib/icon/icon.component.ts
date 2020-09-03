@@ -4,12 +4,12 @@ import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'plex-icon',
-    template: `<i class="{{prefix}} {{prefix}}-{{name}} icon-{{type}} {{ cssSize }}"></i> `,
+    template: `<i class="{{prefix}} {{prefix}}-{{name}} {{cssType}} {{ cssSize }}"></i> `,
 })
 export class PlexIconComponent {
     @Input() prefix = 'adi';
     @Input() name: string;
-    @Input() type: PlexType = 'light';
+    @Input() type: PlexType;
     // Usar números con mdi, valores string con otro prefix
     @Input() size: '18' | '24' | '36' | '48' | PlexSize = 'sm';
 
@@ -17,6 +17,10 @@ export class PlexIconComponent {
 
     get cssSize(): string {
         return `${this.prefix === 'mdi' ? `${this.prefix}-${this.size}px` : this.size}`;
+    }
+
+    get cssType(): string {
+        return this.type ? 'ii-' + this.type : '';
     }
 
 }

@@ -12,8 +12,8 @@ import { PlexAccordionComponent } from './accordion.component';
                                 {{tituloPrincipal}}
                             </span>
                         </a>
-                    <ng-content *ngIf="!tituloPrincipal" select="[plex-accordion-title]"></ng-content>
                     </h5>
+                    <ng-content *ngIf="!tituloPrincipal" select="[plex-accordion-title]"></ng-content>
                     </div>
 
                     <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" [ngClass]="{show: active}">
