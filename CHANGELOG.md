@@ -1,3 +1,10 @@
+# [6.14.0](https://github.com/andes/plex/compare/v6.13.0...v6.14.0) (2020-09-03)
+
+
+### Features
+
+* **icons:** composicion de elementos ([#216](https://github.com/andes/plex/issues/216)) ([749e744](https://github.com/andes/plex/commit/749e7444fad95e0fd60e32b4e963f3093f93e6eb))
+
 # [6.13.0](https://github.com/andes/plex/compare/v6.12.0...v6.13.0) (2020-09-01)
 
 
