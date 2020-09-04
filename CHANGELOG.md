@@ -1,3 +1,10 @@
+# [6.15.0](https://github.com/andes/plex/compare/v6.14.0...v6.15.0) (2020-09-04)
+
+
+### Features
+
+* **manu:** menu multi font icons ([43f60f4](https://github.com/andes/plex/commit/43f60f49188b23a8fd07f1a3414a8fd9dadfa718))
+
 # [6.14.0](https://github.com/andes/plex/compare/v6.13.0...v6.14.0) (2020-09-03)
 
 
