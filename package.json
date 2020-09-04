@@ -44,7 +44,7 @@
         "ngx-infinite-scroll": "^8.0.1",
         "ngx-quill": "^4.0.0",
         "node-waves": "^0.7.5",
-        "quill": "^1.3.6",
+        "quill": "^1.3.7",
         "selectize": "0.12.4",
         "sweetalert2": "^6.6.2",
         "tether-shepherd": "^1.8.1",
