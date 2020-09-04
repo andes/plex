@@ -14,6 +14,13 @@ export interface DropdownItem {
      */
     icon?: string;
     /**
+     * Clase prefix del ícono
+     *
+     * @type {string}
+     * @memberOf DropdownItem
+     */
+    prefix?: string;
+    /**
      * Ruta opción para Angular Router
      *
      * @type {string}

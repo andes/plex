@@ -35,7 +35,18 @@ export class Plex {
      * @memberof Plex
      */
     updateMenu(menu: DropdownItem[]) {
-        this.menu = menu;
+        this.menu = menu.map((item) => {
+            if (item.icon) {
+                const words = item.icon.split(' ');
+                if (words.length > 1) {
+                    item.prefix = words[0];
+                    item.icon = words[1].substr(4);
+                } else {
+                    item.prefix = item.prefix || 'adi';
+                }
+            }
+            return item;
+        });
     }
 
     /**

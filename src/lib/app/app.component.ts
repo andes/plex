@@ -56,14 +56,16 @@ import { Plex } from './../core/service';
                                         <!--Item con router asociado-->
                                         <ng-template [ngIf]="!item.divider && item.route">
                                             <a plexRipples class="dropdown-item" href="#" tabindex="{{i + 1}}" [routerLink]="item.route" routerLinkActive="active">
-                                                <plex-icon *ngIf="item.icon" type="dark" [name]="item.icon"></plex-icon>
-                                                {{item.label}}</a>
+                                                <plex-icon *ngIf="item.icon" type="dark"  [prefix]="item.prefix" [name]="item.icon"></plex-icon>
+                                                {{item.label}}
+                                                </a>
                                         </ng-template>
                                         <!--Item con handler asociado-->
                                         <ng-template [ngIf]="!item.divider && item.handler">
                                             <a plexRipples class="dropdown-item" href="#" tabindex="{{i + 1}}" (click)="item.handler($event); false;">
-                                                <plex-icon *ngIf="item.icon" type="dark" [name]="item.icon"></plex-icon>
-                                                {{item.label}}</a>
+                                                <plex-icon *ngIf="item.icon" type="dark"  [prefix]="item.prefix" [name]="item.icon"></plex-icon>
+                                                {{item.label}}
+                                                </a>
                                         </ng-template>
                                         <!--Divider-->
                                         <ng-template [ngIf]="item.divider">
