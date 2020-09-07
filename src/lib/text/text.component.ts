@@ -269,7 +269,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             this.qlToolbar.forEach(item => {
                 const qlItem = toolbar.getElementsByClassName(`ql-${item.name}`);
                 if (qlItem.length > 0) {
-                    qlItem[0].innerHTML = `<plex-icon name="${item.icon || item.name}" size="sm" type="default"></plex-icon>`;
+                    qlItem[0].innerHTML = `<i class="adi adi-${item.icon || item.name}"></i>`;
                 }
             });
         }
