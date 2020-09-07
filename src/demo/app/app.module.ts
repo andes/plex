@@ -55,6 +55,7 @@ import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
 import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
 import { HelpDemoComponent } from './help/help.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -105,15 +106,15 @@ import { HelpDemoComponent } from './help/help.component';
     imports: [
         BrowserAnimationsModule,
         FormsModule,
-        HttpModule,
-        PlexModule,
+        HttpClientModule,
+        PlexModule.forRoot({ networkLoading: true }),
         routing
     ],
     providers: [
-        Plex,
         appRoutingProviders,
         ServiceDemoSelect,
         PacienteService
+
     ],
     bootstrap: [AppComponent]
 })

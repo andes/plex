@@ -1,7 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { SelectEvent } from './../../../lib/select/select-event.interface';
-
-// Importo un servicio de prueba
 import { ServiceDemoSelect } from './select.service';
 
 @Component({
@@ -20,7 +18,10 @@ export class SelectDemoComponent implements OnInit {
     };
 
 
-    constructor(public servicio: ServiceDemoSelect) { }
+    constructor(
+        public servicio: ServiceDemoSelect
+    ) {
+    }
 
     ngOnInit() {
         // Opciones
@@ -41,15 +42,6 @@ export class SelectDemoComponent implements OnInit {
         }];
 
         this.modelo1.select = this.modelo2.select = this.opciones[1];
-
-        // setTimeout(() => {
-        //     this.modelo2.select = {
-        //         _id: '5821da5ab6f2bac35980c464',
-        //         nombre: 'Arabia Saudita',
-        //         id: '5821da5ab6f2bac35980c464'
-        //     };
-
-        // }, 1000);
     }
 
     loadData(event: SelectEvent) {
