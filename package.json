@@ -1,6 +1,6 @@
 {
     "name": "@andes/plex",
-    "version": "6.15.0",
+    "version": "6.15.3",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/andes/plex.git"
@@ -11,6 +11,7 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build --prod --base-href '/plex/'",
+        "build:test": "ng build --prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
@@ -21,11 +22,12 @@
         "test:cypress": "run-p --race serve cypress",
         "test:cypress:local": "APPLITOOLS_IS_DISABLED=true run-p --race serve cypress",
         "cypress:open": "APPLITOOLS_IS_DISABLED=true cypress open",
-        "commitlint-circle": "commitlint-circle"
+        "commitlint-circle": "commitlint-circle",
+        "web-server": "http-server dist -p 4200 -s --proxy http://localhost:4200?"
     },
     "main": "./dist/index.js",
     "dependencies": {
-        "@andes/icons": "^1.1.1",
+        "@andes/icons": "^1.1.2",
         "@mdi/font": "^5.0.45",
         "@types/intro.js": "^2.4.6",
         "@types/jquery": "^3.3.38",
@@ -36,6 +38,7 @@
         "chart.js": "^2.6.0",
         "core-js": "^2.4.1",
         "hammerjs": "^2.0.8",
+        "http-server": "^0.12.3",
         "intro.js": "^2.9.3",
         "jquery": "^3.3.1",
         "loaders.css": "^0.1.2",

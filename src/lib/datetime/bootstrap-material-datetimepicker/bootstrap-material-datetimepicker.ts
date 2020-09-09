@@ -25,7 +25,7 @@ declare var moment;
             this.element = element;
             this.$element = $(element);
 
-            this.params = { date: true, time: true, format: 'YYYY-MM-DD', minDate: null, maxDate: null, currentDate: null, lang: 'en', weekStart: 0, shortTime: false, clearButton: false, nowButton: false, cancelText: 'Cancel', okText: 'OK', clearText: 'Clear', nowText: 'Now', switchOnClick: false, triggerEvent: 'focus' };
+            this.params = { date: true, time: true, format: 'YYYY-MM-DD', minDate: null, maxDate: null, currentDate: null, lang: 'en', weekStart: 0, shortTime: false, clearButton: false, nowButton: false, cancelText: 'Cancel', okText: 'OK', clearText: 'Clear', nowText: 'Now', switchOnClick: false, triggerEvent: 'click' };
             this.params = ($ as any).fn.extend(this.params, options);
 
             this.name = "dtp_" + this.setName();
@@ -45,7 +45,6 @@ declare var moment;
                               $.data(this, pluginDataName)[options](p);
                         }
                         if (options === 'destroy') {
-                              debugger;
                               // delete $.data(this, pluginDataName);
                         }
                   }
@@ -722,7 +721,6 @@ declare var moment;
                   this.$element.blur();
 
                   this.initDates();
-
                   this.show();
 
                   if (this.params.date) {

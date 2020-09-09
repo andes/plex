@@ -1,3 +1,24 @@
+## [6.15.3](https://github.com/andes/plex/compare/v6.15.2...v6.15.3) (2020-09-09)
+
+
+### Bug Fixes
+
+* **plex-datetiem:** calendar button not tabeable ([698303d](https://github.com/andes/plex/commit/698303df677bb58a05ce880a733d058c4446d8c7))
+
+## [6.15.2](https://github.com/andes/plex/compare/v6.15.1...v6.15.2) (2020-09-09)
+
+
+### Bug Fixes
+
+* **plex-button:** validadcion con enter ([0b14fc5](https://github.com/andes/plex/commit/0b14fc507a15b42d597bd5fb92c69424d40402ca))
+
+## [6.15.1](https://github.com/andes/plex/compare/v6.15.0...v6.15.1) (2020-09-09)
+
+
+### Bug Fixes
+
+* **plex-datetime:** errores de accesibilidad ([#222](https://github.com/andes/plex/issues/222)) ([92e947f](https://github.com/andes/plex/commit/92e947f98b5a34ed6e348ccc7788a41ecf4aabf5))
+
 # [6.15.0](https://github.com/andes/plex/compare/v6.14.0...v6.15.0) (2020-09-04)
 
 
