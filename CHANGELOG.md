@@ -1,3 +1,10 @@
+## [6.15.2](https://github.com/andes/plex/compare/v6.15.1...v6.15.2) (2020-09-09)
+
+
+### Bug Fixes
+
+* **plex-button:** validadcion con enter ([0b14fc5](https://github.com/andes/plex/commit/0b14fc507a15b42d597bd5fb92c69424d40402ca))
+
 ## [6.15.1](https://github.com/andes/plex/compare/v6.15.0...v6.15.1) (2020-09-09)
 
 
