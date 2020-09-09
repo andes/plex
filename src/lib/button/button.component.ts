@@ -4,9 +4,17 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef } fro
 @Component({
     selector: 'plex-button',
     template: `<ng-container *ngIf="type">
-                    <button plexRipples style="pointer-events: auto" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
-                        <plex-icon *ngIf="icon" [name]="icon" type="light" [size]="size"></plex-icon>
-                        <span *ngIf="label"> {{label}} </span>
+                    <button plexRipples style="pointer-events: auto" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" type="button" [disabled]="disabled">
+                        <plex-icon
+                            *ngIf="icon"
+                            [name]="icon"
+                            type="light"
+                            [size]="size"
+                            [style.pointer-events]="disabled ? 'none': null">
+                        </plex-icon>
+                        <span *ngIf="label" [style.pointer-events]="disabled ? 'none': null">
+                            {{ label }}
+                        </span>
                         <ng-content *ngIf="!icon && !label"></ng-content>
                     </button>
                </ng-container>`,
