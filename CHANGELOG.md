@@ -1,3 +1,10 @@
+## [6.15.3](https://github.com/andes/plex/compare/v6.15.2...v6.15.3) (2020-09-09)
+
+
+### Bug Fixes
+
+* **plex-datetiem:** calendar button not tabeable ([698303d](https://github.com/andes/plex/commit/698303df677bb58a05ce880a733d058c4446d8c7))
+
 ## [6.15.2](https://github.com/andes/plex/compare/v6.15.1...v6.15.2) (2020-09-09)
 
 
