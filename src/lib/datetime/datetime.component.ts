@@ -37,7 +37,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                                [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"
                                (change)="disabledEvent($event)" *ngIf="showInput"/>
                         <span class="input-group-btn">
-                            <plex-button role="button" type="info" [size]="size" [icon]="icon" [disabled]="disabled || readonly"></plex-button>
+                            <plex-button tabIndex="-1" type="info" [size]="size" [icon]="icon" [disabled]="disabled || readonly"></plex-button>
                         </span>
                         <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabled" [tooltip]="makeTooltip('siguiente')"></plex-button>
                     </div>
@@ -199,7 +199,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
             time: this.type === 'time' || this.type === 'datetime',
             minDate: this.min,
             maxDate: this.max,
-            triggerEvent: 'click'
+            triggerEvent: 'focus'
         });
 
         this.$button.on('change', (event, date) => {

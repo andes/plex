@@ -5,7 +5,7 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef } fro
     selector: 'plex-button',
     template: `
         <ng-container *ngIf="type">
-                <button plexRipples style="pointer-events: auto" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [type]="role" [disabled]="disabled">
+                <button plexRipples style="pointer-events: auto" [tabIndex]="tabIndex" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
                     <plex-icon
                         *ngIf="icon"
                         [name]="icon"
@@ -22,7 +22,7 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef } fro
     `,
 })
 export class PlexButtonComponent {
-    @Input() role: 'submit' | 'button' = 'submit';
+    @Input() tabIndex: number;
     @Input() label: string;
     @Input() icon: string;
     @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default';
