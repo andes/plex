@@ -45,7 +45,6 @@ declare var moment;
                               $.data(this, pluginDataName)[options](p);
                         }
                         if (options === 'destroy') {
-                              debugger;
                               // delete $.data(this, pluginDataName);
                         }
                   }
@@ -722,7 +721,6 @@ declare var moment;
                   this.$element.blur();
 
                   this.initDates();
-
                   this.show();
 
                   if (this.params.date) {
