@@ -1,3 +1,10 @@
+## [6.15.1](https://github.com/andes/plex/compare/v6.15.0...v6.15.1) (2020-09-09)
+
+
+### Bug Fixes
+
+* **plex-datetime:** errores de accesibilidad ([#222](https://github.com/andes/plex/issues/222)) ([92e947f](https://github.com/andes/plex/commit/92e947f98b5a34ed6e348ccc7788a41ecf4aabf5))
+
 # [6.15.0](https://github.com/andes/plex/compare/v6.14.0...v6.15.0) (2020-09-04)
 
 
