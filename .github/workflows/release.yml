@@ -11,3 +11,4 @@ jobs:
             node-version: '10.x'
       - run: npm run build:doc  
       - run: npm run build
+      - run: npx semantic-release
