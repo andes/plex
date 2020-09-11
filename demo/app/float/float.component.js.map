@@ -1,0 +1,1 @@
+{"version":3,"file":"float.component.js","sourceRoot":"","sources":["float.component.ts"],"names":[],"mappings":";;;;;;;;AAAA,sCAAkD;AAKlD;IAAA;IAOA,CAAC;IAJG,qCAAQ,GAAR;QACI,uBAAuB;QACvB,IAAI,CAAC,MAAM,GAAG,EAAE,KAAK,EAAE,IAAI,EAAE,CAAC;IAClC,CAAC;IANQ,kBAAkB;QAH9B,gBAAS,CAAC;YACP,WAAW,EAAE,YAAY;SAC5B,CAAC;OACW,kBAAkB,CAO9B;IAAD,yBAAC;CAAA,AAPD,IAOC;AAPY,gDAAkB"}

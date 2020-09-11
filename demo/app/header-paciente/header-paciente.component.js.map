@@ -1,0 +1,1 @@
+{"version":3,"file":"header-paciente.component.js","sourceRoot":"","sources":["header-paciente.component.ts"],"names":[],"mappings":";;;;;;;;;;;AAAA,sCAAiD;AAOjD;IAAA;IAEA,CAAC;IADY;QAAR,YAAK,EAAE;;6DAAe;IADd,uBAAuB;QALnC,gBAAS,CAAC;YACP,QAAQ,EAAE,sBAAsB;YAChC,WAAW,EAAE,sBAAsB;YACnC,SAAS,EAAE,CAAC,sBAAsB,CAAC;SACtC,CAAC;OACW,uBAAuB,CAEnC;IAAD,8BAAC;CAAA,AAFD,IAEC;AAFY,0DAAuB"}
