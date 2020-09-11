@@ -28,5 +28,8 @@
         "./src/**/*.ts",
         "./src/**/*.spec.ts",
         "./src/**/*.d.ts"
-    ]
+    ],
+    "angularCompilerOptions": {
+        "enableIvy": false
+    }
 }
