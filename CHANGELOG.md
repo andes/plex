@@ -1,3 +1,10 @@
+## [6.16.1](https://github.com/andes/plex/compare/v6.16.0...v6.16.1) (2020-09-11)
+
+
+### Bug Fixes
+
+* **deploy:** deploy from github actions ([feab617](https://github.com/andes/plex/commit/feab617337ae0034b7d5a1fc1d98d8be161b2bfc))
+
 # [6.16.0](https://github.com/andes/plex/compare/v6.15.3...v6.16.0) (2020-09-11)
 
 
