@@ -1,1 +1,0 @@
-{"version":3,"file":"ribbon.component.js","sourceRoot":"","sources":["ribbon.component.ts"],"names":[],"mappings":";;;;;;;;;;;AAAA,sCAAuD;AAYvD;IAVA;QAWsC,WAAM,GAAG,IAAI,CAAC;IACpD,CAAC;IADqC;QAAjC,kBAAW,CAAC,mBAAmB,CAAC;;uDAAe;IADvC,mBAAmB;QAV/B,gBAAS,CAAC;YACP,WAAW,EAAE,eAAe;YAC5B,MAAM,EAAE,CAAC,wIAMR,CAAC;SACL,CAAC;OACW,mBAAmB,CAE/B;IAAD,0BAAC;CAAA,AAFD,IAEC;AAFY,kDAAmB"}
