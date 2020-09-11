@@ -1,0 +1,114 @@
+@import './variables.scss';
+@mixin cardBackground{
+    plex-badge > span.badge {
+        color: white!important;
+        border-color: white!important;
+    }
+
+    plex-button > button.btn {
+        background: white!important;
+        border: none!important;
+        box-shadow: none!important;
+        color: var(--color-base)!important;
+    
+        &:hover {
+            background: var(--color-baseLight)!important;
+        }
+    }
+}
+
+plex-card {
+    
+    cursor: pointer;
+    box-sizing: border-box;
+
+    .card {
+        display: flex;
+        padding: 1.5rem;    
+    }
+
+    // Estados
+    > .card:hover {
+        color: var(--color-tipo)!important;
+        background-color: var(--color-baseDark)!important;
+        box-shadow: inset 0 0 0 3px var(--color-baseDarker)!important;
+    }   
+    
+    > .card.selected {
+        background-color: var(--color-baseDark)!important;
+        color: var(--color-tipo)!important;
+        box-shadow: inset 0 0 0 3px var(--color-baseDarker)!important;
+        }
+    
+    // Default
+    > div.bg-default {
+    --color-base: white;
+    --color-tipo: #002738;
+    --color-baseDark: #edf8fd;
+    --color-baseDarker: #00a8e0;
+    }
+
+    // Dark
+    > div.bg-dark {
+        --color-base: #002738;
+        --color-tipo: white;
+        --color-baseDark: #00202e;
+        --color-baseDarker: #00a8e0;
+    }
+
+    // Success
+    > div.bg-success {
+        @include cardBackground;
+        --color-baseLight: #c7e79c;
+        --color-base: #8cc63f;
+        --color-tipo: white;
+        --color-baseDark: #70a728;
+        --color-baseDarker: #55801e;
+    }
+
+    // Warning
+    > div.bg-warning {
+        @include cardBackground;
+            --color-baseLight: #fdc189;
+            --color-base: #ff8d22;
+            --color-tipo: white;
+            --color-baseDark: #e47814;
+            --color-baseDarker: #c55f00;
+ 
+        }
+    
+        // Danger
+        > div.bg-danger {
+            @include cardBackground;
+            --color-baseLight: #ffb3a9;
+            --color-base: #dd4b39;
+            --color-tipo: white;
+            --color-baseDark: #b9311f;
+            --color-baseDarker: #a12514;
+ 
+        }
+
+        // Info
+        > div.bg-info {
+            @include cardBackground;
+            --color-baseLight: #c2e6f6;
+            --color-base: #00a8e0;
+            --color-tipo: white;
+            --color-baseDark: #0695c5;
+            --color-baseDarker: #057ea7;
+        }
+
+    // Version invert
+    &[type="dark"] {
+        > div {
+            background-color: $dark-blue;
+        }
+    }
+
+    // Espaciado entre elementos
+    > div > div > plex-badge, plex-button {
+        &:nth-child(n+2) {
+            margin-left: .5rem;
+        }
+    }
+}

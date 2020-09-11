@@ -35,6 +35,7 @@ import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/det
 import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
+import { CardDemoComponent } from './card/card.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -63,6 +64,7 @@ const appRoutes: Routes = [
     { path: 'wizard', component: WizardDemoComponent },
     { path: 'wrapper', component: WrapperDemoComponent },
     { path: 'grid', component: GridDemoComponent },
+    { path: 'card', component: CardDemoComponent },
     { path: 'templates/form', component: TemplateFormComponent },
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },
     { path: 'templates/visualizacion', component: TemplateVisualizacionComponent },

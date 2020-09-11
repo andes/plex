@@ -1,0 +1,94 @@
+<plex-layout main="8">
+    <plex-layout-main>
+        <plex-title titulo="plex-card"></plex-title>
+        <h5>Una <b>plex-card</b> es una envolvente rectangular que aloja otros micro-componentes tales como: plex-badge,
+            plex-label, plex-button (y sus respectivos atributos).</h5>
+        <hr>
+        <plex-grid cols="3">
+            <div>
+                <plex-title titulo="plex-card align=start" size="sm"></plex-title>
+                <plex-grid type="auto" size="lg">
+                    <plex-card align="start" type="{{ dato.type }}" *ngFor="let dato of datos | slice:0:5"
+                               [selected]="dato.selected" (click)="dato.selected = !dato.selected">
+                        <plex-badge type="warning">badge</plex-badge>
+                        <plex-label size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+
+                        </plex-label>
+                        <plex-button type="warning" label="aceptar"></plex-button>
+                    </plex-card>
+                    <plex-card class="mt-1" align="start" type="dark" *ngFor="let dato of datos | slice:5:6"
+                               [selected]="dato.selected" (click)="dato.selected = !dato.selected">
+                        <plex-badge type="warning">badge</plex-badge>
+                        <plex-label size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"
+                                    icon="information-variant">
+                        </plex-label>
+                        <plex-button type="{{ dato.type }}" label="aceptar"></plex-button>
+                    </plex-card>
+                </plex-grid>
+            </div>
+            <div span="2">
+                <plex-title titulo="plex-card align=center" size="sm"></plex-title>
+                <plex-grid type="auto" cols="2" size="md">
+                    <plex-card align="center" type="default" *ngFor="let agenda of agendas | slice:0:2"
+                               [selected]="agenda.selected" (click)="agenda.selected = !agenda.selected">
+                        <plex-badge type="{{ agenda.type }}">{{ agenda.type }}</plex-badge>
+                        <plex-badge type="info">{{ agenda.horario }}</plex-badge>
+                        <plex-label size="md" direction="column" type="{{ agenda.type }}"
+                                    titulo="{{ agenda.profesional }}" subtitulo="{{ agenda.prestacion }}" icon="star">
+                        </plex-label>
+                        <plex-button type="info" icon="eye" size="sm"></plex-button>
+                        <plex-button type="success" icon="plus" size="sm"></plex-button>
+                    </plex-card>
+                </plex-grid>
+                <hr>
+                <!-- Calendario -->
+                <plex-title titulo="plex-card: conjunto de celdas" size="sm"></plex-title>
+                <plex-grid type="auto" size="md">
+                    <plex-card align="center" type="default" *ngFor="let celda of calendario | slice:0:25"
+                               [selected]="celda.selected" (click)="celda.selected = !celda.selected">
+                        <plex-badge type="success">{{ celda.turnos }}</plex-badge>
+                        <plex-badge type="warning">{{ celda.agendas }}</plex-badge>
+                        <plex-label size="lg" titulo="{{ celda.fecha }}" subtitulo="">
+                        </plex-label>
+                        <plex-button type="warning" icon="pencil" size="sm"></plex-button>
+                    </plex-card>
+                </plex-grid>
+            </div>
+        </plex-grid>
+    </plex-layout-main>
+
+    <!-- Sidebar -->
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="atributos y usos"></plex-title>
+        <plex-title titulo="detalle de agendas" size="sm"></plex-title>
+        <plex-grid type="full" size="md">
+            <plex-card align="start" type="" *ngFor="let agenda of agendas">
+                <plex-badge type="{{ agenda.type }}">{{ agenda.turnos }}</plex-badge>
+                <plex-label size="md" direction="row" titulo="{{ agenda.horario }}"
+                            subtitulo="{{ agenda.profesional }}">
+                </plex-label>
+                <plex-button type="warning" label="modificar" size="sm"></plex-button>
+            </plex-card>
+        </plex-grid>
+        <plex-title titulo="plex-card con imagenes" size="sm"></plex-title>
+        <plex-grid type="full" size="md" cols="2">
+            <plex-card align="start" type="" *ngFor="let efector of efectores">
+                <img src="{{ efector.img }}" alt="">
+                <plex-label size="md" direction="row" titulo="{{ efector.nombre }}" subtitulo="{{ efector.localidad }}">
+                </plex-label>
+                <plex-button type="success" icon="hospital" size="sm"></plex-button>
+                <plex-button type="warning" icon="pencil" size="sm"></plex-button>
+                <plex-button type="danger" icon="delete" size="sm"></plex-button>
+            </plex-card>
+        </plex-grid>
+        <hr>
+        <plex-title titulo="grilla de horarios" size="sm"></plex-title>
+        <plex-grid type="full" size="md">
+            <plex-card align="center" type="default" *ngFor="let turno of horarios" [selected]="turno.selected"
+                       (click)="turno.selected = !turno.selected">
+                <plex-label size="md" direction="column" titulo="{{ turno.hora }}">
+                </plex-label>
+            </plex-card>
+        </plex-grid>
+    </plex-layout-sidebar>
+</plex-layout>
