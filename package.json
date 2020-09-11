@@ -10,7 +10,7 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build --prod --base-href '/plex/'",
+        "build": "ng build --prod --base-href '/plex/app/'",
         "build:test": "ng build --prod",
         "test": "ng test",
         "lint": "ng lint",
@@ -23,7 +23,9 @@
         "test:cypress:local": "APPLITOOLS_IS_DISABLED=true run-p --race serve cypress",
         "cypress:open": "APPLITOOLS_IS_DISABLED=true cypress open",
         "commitlint-circle": "commitlint-circle",
-        "web-server": "http-server dist -p 4200 -s --proxy http://localhost:4200?"
+        "web-server": "http-server dist/app -p 4200 -s --proxy http://localhost:4200?",
+        "build:doc": "npx compodoc -p src/lib/tsconfig.json  -d dist/doc/",
+        "publish:doc": "npx gh-pages -d dist"
     },
     "main": "./dist/index.js",
     "dependencies": {
