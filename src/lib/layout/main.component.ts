@@ -1,35 +1,34 @@
-import { Component, Input, ElementRef, AfterViewInit, HostListener } from '@angular/core';
+import { Component, Input, ElementRef, AfterViewInit, HostListener, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'plex-layout-main',
     template: `
-        <div class="plex-box" [ngClass]="{'plex-box-invert': type == 'invert'}">
-          <ng-content select="header"></ng-content>
-          <ng-content select="plex-title[main]"></ng-content>
-        <div class="plex-box-content" [ngClass]="{'scrollbar': scrollBarPresent}">
-              <ng-content></ng-content>
-          </div>
-        </div>
+        <div class="plex-box" [class.plex-box-invert]="type == 'invert'">
+            <ng-content select="header"></ng-content>
+            <ng-content select="plex-title[main]"></ng-content>
+            <div #content class="plex-box-content" >
+                <ng-content></ng-content>
+            </div>
+            </div>
     `,
 })
 export class PlexLayoutMainComponent implements AfterViewInit {
-    @Input() type = '';
-    scrollBarPresent: boolean;
-    content: any;
+    @ViewChild('content', { read: ElementRef, static: false }) content: ElementRef;
 
-    constructor(private el: ElementRef) {
+    @Input() type = '';
+
+    constructor(private render: Renderer2) {
     }
 
     ngAfterViewInit() {
-        this.content = this.el.nativeElement.querySelector('.plex-box-content');
         this.checkScroll();
     }
 
     checkScroll() {
-        if (this.content.scrollHeight > this.content.clientHeight) {
-            this.scrollBarPresent = true;
+        if (this.content.nativeElement.scrollHeight > this.content.nativeElement.clientHeight) {
+            this.render.addClass(this.content.nativeElement, 'scrolbar');
         } else {
-            this.scrollBarPresent = false;
+            this.render.removeClass(this.content.nativeElement, 'scrolbar');
         }
     }
 
