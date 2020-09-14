@@ -146,13 +146,19 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         PlexWizardDirective,
         ResponsiveDirective,
         SpanDirective,
-        TabDirective
+        TabDirective,
+        TooltipContentComponent,
+        HintComponent,
 
-    ],
-    entryComponents: [
+        // EXTRAS - NO CORRER DE ACA
         ValidationMessagesComponent,
         TooltipContentComponent,
+        HintComponent,
+    ],
+    entryComponents: [
+        TooltipContentComponent,
         MatRadioButton,
+        PlexVisualizadorComponent,
         HintComponent
     ],
     exports: [
