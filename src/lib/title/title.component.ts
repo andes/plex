@@ -9,6 +9,10 @@ import { Component, Input, Renderer2 } from '@angular/core';
                 <ng-content></ng-content>
             </div>
         </div>
+        <div>
+            <ng-content select="plex-tabs"></ng-content>
+            <ng-content select="plex-wrapper"></ng-content>
+        </div>
     `
 })
 export class PlexTitleComponent {

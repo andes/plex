@@ -1,0 +1,26 @@
+name: deploy
+on: [workflow_dispatch]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+            node-version: '10.x'
+      - run: npm ci  
+        env: 
+            CYPRESS_INSTALL_BINARY: 0    
+      - run: npm run build:doc  
+      - run: npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+            github_token: ${{ secrets.DEPLOY_TOKEN }}
+            publish_dir: ./dist
+      - name: Release 
+        env:
+            GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release

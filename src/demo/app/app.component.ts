@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
             { label: 'Bool', icon: 'checkbox-marked', route: '/bool' },
             { label: 'Box', icon: 'selection', route: '/box' },
             { label: 'Button & Badge', icon: 'solid', route: '/button-badge' },
+            { label: 'Card', icon: 'card-account-details', route: '/card' },
             { label: 'DateTime', icon: 'calendar', route: '/datetime' },
             { label: 'Detail', icon: 'account', route: '/detail' },
             { label: 'Dropdown', icon: 'menu-right', route: '/dropdown' },

@@ -48,6 +48,7 @@ import { PlexOptionsComponent } from './options/options.component';
 import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
 import { PlexWrapperComponent } from './wrapper/wrapper.component';
 import { PlexGridComponent } from './grid/grid.component';
+import { PlexCardComponent } from './card/card.component';
 
 // Directivas
 import { PlexWizardDirective } from './wizard/wizard.directive';
@@ -76,11 +77,6 @@ import { TabDirective } from './tabs/pl-tab.directive';
 import { Plex } from './core/service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loading.service';
-
-/**
- * Tuve que sacar el array y repetir los modulos.
- * La idea es armar un Modulo por componente a futuro.
- */
 
 @NgModule({
     imports: [
@@ -114,7 +110,6 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         PlexLoaderComponent,
         PlexRibbonComponent,
         PlexScrollComponent,
-        PlexRipplesDirective,
         PlexPhoneComponent,
         PlexDropdownComponent,
         PlexIconComponent,
@@ -123,17 +118,12 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         PlexFooterComponent,
         PlexLayoutMainComponent,
         PlexLayoutSidebarComponent,
-        PlexWizardDirective,
         PlexListComponent,
         PlexItemComponent,
         PlexLabelComponent,
         PlexHeadingComponent,
         PlexTitleComponent,
         TooltipComponent,
-        JustifyDirective,
-        ResponsiveDirective,
-        GrowDirective,
-        SpanDirective,
         PlexHelpComponent,
         PlexModalComponent,
         PlexModalTitleComponent,
@@ -141,25 +131,32 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         PlexDetailComponent,
         PlexOptionsComponent,
         PlexVisualizadorComponent,
-        PreviewDirective,
         NavItemComponent,
         PlexWrapperComponent,
         PlexGridComponent,
-        HintDirective,
+        PlexCardComponent,
+
+        // Directivas
+        GrowDirective,
         HelpDirective,
-        TabDirective,
-        ValidationMessagesComponent,
-        TooltipContentComponent,
-        HintComponent,
+        HintDirective,
+        JustifyDirective,
+        PreviewDirective,
+        PlexRipplesDirective,
+        PlexWizardDirective,
+        ResponsiveDirective,
+        SpanDirective,
+        TabDirective
 
     ],
     entryComponents: [
+        ValidationMessagesComponent,
         TooltipContentComponent,
         MatRadioButton,
-        PlexVisualizadorComponent,
         HintComponent
     ],
     exports: [
+        TooltipContentComponent,
         PlexAppComponent,
         PlexBoxComponent,
         PlexTextComponent,
@@ -177,7 +174,6 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         PlexLoaderComponent,
         PlexRibbonComponent,
         PlexScrollComponent,
-        PlexRipplesDirective,
         PlexPhoneComponent,
         PlexDropdownComponent,
         PlexIconComponent,
@@ -186,17 +182,12 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         PlexFooterComponent,
         PlexLayoutMainComponent,
         PlexLayoutSidebarComponent,
-        PlexWizardDirective,
         PlexListComponent,
         PlexItemComponent,
         PlexLabelComponent,
         PlexHeadingComponent,
         PlexTitleComponent,
         TooltipComponent,
-        JustifyDirective,
-        ResponsiveDirective,
-        GrowDirective,
-        SpanDirective,
         PlexHelpComponent,
         PlexModalComponent,
         PlexModalTitleComponent,
@@ -204,12 +195,21 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         PlexDetailComponent,
         PlexOptionsComponent,
         PlexVisualizadorComponent,
-        PreviewDirective,
         NavItemComponent,
         PlexWrapperComponent,
         PlexGridComponent,
-        HintDirective,
+        PlexCardComponent,
+
+        // Directivas
+        GrowDirective,
         HelpDirective,
+        HintDirective,
+        JustifyDirective,
+        PreviewDirective,
+        PlexRipplesDirective,
+        PlexWizardDirective,
+        ResponsiveDirective,
+        SpanDirective,
         TabDirective,
         MatTooltip
     ]

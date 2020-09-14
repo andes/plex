@@ -45,6 +45,7 @@ import { ItemDemoComponent } from './item-list/item-list.component';
 import { DetailDemoComponent } from './detail/detail.component';
 import { WrapperDemoComponent } from './wrapper/wrapper.component';
 import { GridDemoComponent } from './grid/grid.component';
+import { CardDemoComponent } from './card/card.component';
 
 // Template
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
@@ -95,6 +96,7 @@ import { HttpClientModule } from '@angular/common/http';
         DetailDemoComponent,
         WrapperDemoComponent,
         GridDemoComponent,
+        CardDemoComponent,
         ListadoSidebarComponent,
         SidebarDetalleComponent,
         MainListadoComponent,
