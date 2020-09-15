@@ -1,4 +1,4 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -74,64 +74,9 @@ import { HintComponent } from './hint/hint.component';
 import { HintDirective } from './hint/hint.directive';
 import { HelpDirective } from './help/help.directive';
 import { TabDirective } from './tabs/pl-tab.directive';
-
-const MODULES = [
-    PlexAppComponent,
-    PlexBoxComponent,
-    PlexTextComponent,
-    PlexIntComponent,
-    PlexFloatComponent,
-    PlexButtonComponent,
-    PlexTabsComponent,
-    PlexAccordionComponent,
-    PlexPanelComponent,
-    PlexTabComponent,
-    PlexBoolComponent,
-    PlexRadioComponent,
-    PlexSelectComponent,
-    PlexDateTimeComponent,
-    PlexLoaderComponent,
-    PlexRibbonComponent,
-    PlexScrollComponent,
-    PlexPhoneComponent,
-    PlexDropdownComponent,
-    PlexIconComponent,
-    PlexBadgeComponent,
-    PlexLayoutComponent,
-    PlexFooterComponent,
-    PlexLayoutMainComponent,
-    PlexLayoutSidebarComponent,
-    PlexListComponent,
-    PlexItemComponent,
-    PlexLabelComponent,
-    PlexHeadingComponent,
-    PlexTitleComponent,
-    TooltipComponent,
-    PlexHelpComponent,
-    PlexModalComponent,
-    PlexModalTitleComponent,
-    PlexCopyComponent,
-    PlexDetailComponent,
-    PlexOptionsComponent,
-    PlexVisualizadorComponent,
-    NavItemComponent,
-    PlexWrapperComponent,
-    PlexGridComponent,
-    PlexCardComponent,
-
-    // Directivas
-    GrowDirective,
-    HelpDirective,
-    HintDirective,
-    JustifyDirective,
-    PreviewDirective,
-    PlexRipplesDirective,
-    PlexWizardDirective,
-    ResponsiveDirective,
-    SpanDirective,
-    TabDirective
-    // MatTooltip
-];
+import { Plex } from './core/service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loading.service';
 
 @NgModule({
     imports: [
@@ -148,11 +93,67 @@ const MODULES = [
         SimpleNotificationsModule.forRoot(),
     ],
     declarations: [
-        ...MODULES,
-        ValidationMessagesComponent,
+        PlexAppComponent,
+        PlexBoxComponent,
+        PlexTextComponent,
+        PlexIntComponent,
+        PlexFloatComponent,
+        PlexButtonComponent,
+        PlexTabsComponent,
+        PlexAccordionComponent,
+        PlexPanelComponent,
+        PlexTabComponent,
+        PlexBoolComponent,
+        PlexRadioComponent,
+        PlexSelectComponent,
+        PlexDateTimeComponent,
+        PlexLoaderComponent,
+        PlexRibbonComponent,
+        PlexScrollComponent,
+        PlexPhoneComponent,
+        PlexDropdownComponent,
+        PlexIconComponent,
+        PlexBadgeComponent,
+        PlexLayoutComponent,
+        PlexFooterComponent,
+        PlexLayoutMainComponent,
+        PlexLayoutSidebarComponent,
+        PlexListComponent,
+        PlexItemComponent,
+        PlexLabelComponent,
+        PlexHeadingComponent,
+        PlexTitleComponent,
+        TooltipComponent,
+        PlexHelpComponent,
+        PlexModalComponent,
+        PlexModalTitleComponent,
+        PlexCopyComponent,
+        PlexDetailComponent,
+        PlexOptionsComponent,
+        PlexVisualizadorComponent,
+        NavItemComponent,
+        PlexWrapperComponent,
+        PlexGridComponent,
+        PlexCardComponent,
+
+        // Directivas
+        GrowDirective,
+        HelpDirective,
+        HintDirective,
+        JustifyDirective,
+        PreviewDirective,
+        PlexRipplesDirective,
+        PlexWizardDirective,
+        ResponsiveDirective,
+        SpanDirective,
+        TabDirective,
         TooltipContentComponent,
         HintComponent,
 
+        // EXTRAS - NO CORRER DE ACA
+        ValidationMessagesComponent,
+        TooltipContentComponent,
+        HintComponent,
     ],
     entryComponents: [
         TooltipContentComponent,
@@ -161,13 +162,90 @@ const MODULES = [
         HintComponent
     ],
     exports: [
-        ...MODULES,
+        TooltipContentComponent,
+        PlexAppComponent,
+        PlexBoxComponent,
+        PlexTextComponent,
+        PlexIntComponent,
+        PlexFloatComponent,
+        PlexButtonComponent,
+        PlexTabsComponent,
+        PlexAccordionComponent,
+        PlexPanelComponent,
+        PlexTabComponent,
+        PlexBoolComponent,
+        PlexRadioComponent,
+        PlexSelectComponent,
+        PlexDateTimeComponent,
+        PlexLoaderComponent,
+        PlexRibbonComponent,
+        PlexScrollComponent,
+        PlexPhoneComponent,
+        PlexDropdownComponent,
+        PlexIconComponent,
+        PlexBadgeComponent,
+        PlexLayoutComponent,
+        PlexFooterComponent,
+        PlexLayoutMainComponent,
+        PlexLayoutSidebarComponent,
+        PlexListComponent,
+        PlexItemComponent,
+        PlexLabelComponent,
+        PlexHeadingComponent,
+        PlexTitleComponent,
+        TooltipComponent,
+        PlexHelpComponent,
+        PlexModalComponent,
+        PlexModalTitleComponent,
+        PlexCopyComponent,
+        PlexDetailComponent,
+        PlexOptionsComponent,
+        PlexVisualizadorComponent,
+        NavItemComponent,
+        PlexWrapperComponent,
+        PlexGridComponent,
+        PlexCardComponent,
+
+        // Directivas
+        GrowDirective,
+        HelpDirective,
+        HintDirective,
+        JustifyDirective,
+        PreviewDirective,
+        PlexRipplesDirective,
+        PlexWizardDirective,
+        ResponsiveDirective,
+        SpanDirective,
+        TabDirective,
         MatTooltip
     ]
 })
 export class PlexModule {
+
     constructor() {
-        // Inicializa moment
         configMoment.configureLocale();
     }
+
+
+    static forRoot({ networkLoading }: PlexModuleConfig): ModuleWithProviders {
+        return {
+            ngModule: PlexModule,
+            providers: [
+                Plex,
+                {
+                    provide: NETWORK_LOADING,
+                    useValue: networkLoading
+                },
+                {
+                    provide: HTTP_INTERCEPTORS,
+                    useClass: NetworkLoadingInterceptor,
+                    multi: true,
+                }
+            ]
+        };
+    }
+}
+
+export interface PlexModuleConfig {
+    networkLoading?: boolean;
 }

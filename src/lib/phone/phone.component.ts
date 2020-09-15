@@ -1,8 +1,5 @@
-import {
-    ViewChild, ContentChild, Component, OnInit, Input, AfterViewInit,
-    Output, EventEmitter, forwardRef, ElementRef, Renderer, OnChanges
-} from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
+import { ViewChild, Component, OnInit, Input, AfterViewInit, Output, EventEmitter, ElementRef, Renderer2, Self, Optional } from '@angular/core';
+import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { hasRequiredValidator } from '../core/validator.functions';
 
 const RegEx_Mobile = /^[1-3][0-9]{9}$/;
@@ -10,19 +7,6 @@ const RegEx_Numero = /^(\d)+$/;
 
 @Component({
     selector: 'plex-phone',
-    // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexPhoneComponent),
-            multi: true
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => PlexPhoneComponent),
-            multi: true
-        },
-    ],
     template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
                     <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esRequerido" class="requerido"></span></label>
                     <div [ngClass]="{'input-group': prefix || suffix || icon}">
@@ -40,12 +24,12 @@ const RegEx_Numero = /^(\d)+$/;
 })
 export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     private lastValue: any = null;
-    private renderer: Renderer;
-    @ContentChild(NgControl, { static: true }) control: any;
+    private renderer: Renderer2;
+
     @ViewChild('ref', { static: true }) ref: ElementRef;
 
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Propiedades
@@ -60,7 +44,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
         if (this.renderer) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+            this.ref.nativeElement.focus();
         }
     }
 
@@ -94,7 +78,13 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
         }
     }
 
-    constructor(renderer: Renderer) {
+    constructor(
+        renderer: Renderer2,
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor = this;
+        }
         this.renderer = renderer;
         this.placeholder = '';
     }
@@ -103,13 +93,13 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     ngOnInit() { }
     ngAfterViewInit() {
         if (this.autoFocus) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, 'focus');
+            this.ref.nativeElement.focus();
         }
     }
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        this.renderer.setElementProperty(this.ref.nativeElement, 'value', value);
+        this.renderer.setProperty(this.ref.nativeElement, 'value', value);
     }
 
     public hasDanger() {

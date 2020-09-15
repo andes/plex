@@ -136,7 +136,7 @@ export function triggerKeyEvent(event: string, element: DebugElement, which: num
     template: ``
 })
 class PlexTextTestComponent {
-    @ViewChild(PlexTextComponent, { static: false }) plexText: PlexTextComponent;
+    @ViewChild(PlexTextComponent) plexText: PlexTextComponent;
     text = 'hola';
 
     onChange(_: Event) {

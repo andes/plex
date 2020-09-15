@@ -1,16 +1,8 @@
-import { Component, OnInit, AfterViewInit, Input, forwardRef, Output, EventEmitter } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit, AfterViewInit, Input, Output, EventEmitter, Self, Optional } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
     selector: 'plex-bool',
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexBoolComponent),
-            multi: true,
-        }
-    ],
     template: ` <!-- Slide -->
                 <mat-slide-toggle *ngIf="type == 'slide'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
                     <span *ngIf="label">
@@ -37,7 +29,12 @@ export class PlexBoolComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Funciones privadas
     private onChange = (_: any) => { };
 
-    constructor() {
+    constructor(
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor = this;
+        }
         this.type = 'checkbox';
     }
 

@@ -116,7 +116,7 @@ export function getElementAll(fixture: ComponentFixture<any>, selector: string):
     template: ``
 })
 class PlexOptionsTestComponent {
-    @ViewChild(PlexOptionsComponent, { static: false }) component: PlexOptionsComponent;
+    @ViewChild(PlexOptionsComponent) component: PlexOptionsComponent;
 
     items: IPlexOptionsItems[] = [
         { key: 'a', label: 'A' },

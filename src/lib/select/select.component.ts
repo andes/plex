@@ -1,5 +1,5 @@
-import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit } from '@angular/core';
-import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR, Validators, AbstractControl } from '@angular/forms';
+import { Component, Input, Output, ElementRef, EventEmitter, AfterViewInit, Self, Optional } from '@angular/core';
+import { ControlValueAccessor, NgControl, } from '@angular/forms';
 import { SelectEvent } from './select-event.interface';
 import { hasRequiredValidator } from '../core/validator.functions';
 
@@ -8,14 +8,6 @@ const Selectize = require('selectize/dist/js/standalone/selectize');
 
 @Component({
     selector: 'plex-select',
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexSelectComponent),
-            multi: true,
-        }
-    ],
     template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
                     <label *ngIf="label" class="form-control-label">{{ label }}<span *ngIf="esRequerido" class="requerido"></span></label>
                     <select *ngIf="!multiple" id="{{ uniqueId }}" (change)="onChange($event.target.value)"></select>
@@ -31,10 +23,10 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     private _readonly: boolean;
     private _disabled: boolean;
 
-    @ContentChild(NgControl, { static: false }) control: AbstractControl;
+
     public uniqueId = new Date().valueOf().toString();
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     public hasDanger() {
@@ -102,13 +94,20 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     public onChange = (_: any) => { };
 
     // Constructor
-    constructor(private element: ElementRef) {
+    constructor(
+        private element: ElementRef,
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor = this;
+        }
         this.initRemoveButtonPlugin();
         this.placeholder = '';
         this.multiple = false;
         this.idField = 'id';
         this.labelField = 'nombre';
         this.groupField = 'grupo';
+
     }
 
     private initRemoveButtonPlugin() {

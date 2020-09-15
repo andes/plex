@@ -21,7 +21,7 @@ export class NavItemComponent {
 
     @HostBinding('class.hover') opened = false;
 
-    @ViewChild(PlexHelpComponent, { static: false }) plexHelp;
+    @ViewChild(PlexHelpComponent) plexHelp;
 
     @HostListener('click', ['event'])
     click() {

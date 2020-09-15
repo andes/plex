@@ -1,4 +1,4 @@
-import { Component, Input, Renderer } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 
 @Component({
     selector: 'plex-title',

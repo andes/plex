@@ -1,10 +1,5 @@
-import {
-    ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, ContentChild
-} from '@angular/core';
-import {
-    ControlValueAccessor,
-    NG_VALUE_ACCESSOR, NgControl
-} from '@angular/forms';
+import { ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit, ContentChild, Renderer2, Self, Optional, Inject } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { hasRequiredValidator } from '../core/validator.functions';
 
 @Component({
@@ -48,15 +43,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
         <!-- Validation -->
         <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
     </div>
-    `,
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexTextComponent),
-            multi: true,
-        }
-    ]
+    `
 })
 export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     // private
@@ -82,9 +69,10 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @ViewChild('input', { static: true }) private input: ElementRef;
     @ViewChild('textarea', { static: true }) private textarea: ElementRef;
     @ViewChild('quillEditor', { static: true }) private quillEditor: ElementRef;
-    @ContentChild(NgControl, { static: true }) public control: any;
+    // @ContentChild(NgControl, { static: true }) public control: any;
+
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Propiedades
@@ -121,7 +109,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         // Cada vez que cambia el valor vuelve a setear el foco
         if (this.renderer) {
             const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
-            this.renderer.invokeElementMethod(element, 'focus');
+            element.focus();
         }
     }
 
@@ -148,7 +136,13 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     private changeTimeout = null;
 
-    constructor(private renderer: Renderer) {
+    constructor(
+        private renderer: Renderer2,
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor = this;
+        }
         this.placeholder = '';
         this.password = false;
     }
@@ -163,7 +157,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     ngAfterViewInit() {
         if (this.autoFocus) {
             const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
-            this.renderer.invokeElementMethod(element, 'focus');
+            element.focus();
         }
         if (this.html) {
             this.createToolbarIcons();
@@ -173,7 +167,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Actualización Modelo -> Vista
     writeValue(value: any) {
         const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
-        this.renderer.setElementProperty(element, 'value', typeof value === 'undefined' ? '' : value);
+        this.renderer.setProperty(element, 'value', typeof value === 'undefined' ? '' : value);
         if (this.multiline) {
             this.adjustTextArea();
         } else {
@@ -231,7 +225,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         if (!this.disabled && !this.isEmpty) {
             this.writeValue(null);
             this.onChange(null);
-            this.renderer.invokeElementMethod(this.input.nativeElement, 'focus');
+            this.input.nativeElement.focus();
         }
     }
 

@@ -1,5 +1,5 @@
-import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, OnChanges, OnDestroy } from '@angular/core';
-import { NgControl, NG_VALUE_ACCESSOR, NgForm, NG_VALIDATORS, FormControl, AbstractControl } from '@angular/forms';
+import { Component, OnInit, Input, Output, ElementRef, EventEmitter, AfterViewInit, OnChanges, Self, Optional, OnDestroy } from '@angular/core';
+import { NgControl, FormControl } from '@angular/forms';
 import * as moment from 'moment';
 import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
 
@@ -11,39 +11,27 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
 
 @Component({
     selector: 'plex-datetime',
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => PlexDateTimeComponent),
-            multi: true,
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => PlexDateTimeComponent),
-            multi: true
-        },
-    ],
-    template: `<div class="form-group datetime" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
-                    <label *ngIf="label" class="form-control-label">
-                        {{ label }}
-                        <span *ngIf="control.name && esRequerido" class="requerido"></span>
-                    </label>
-                    <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
-                    <div class="input-group d-flex align-items-center">
-                        <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
+    template: `
+        <div class="form-group datetime" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+            <label *ngIf="label" class="form-control-label">
+                {{ label }}
+                <span *ngIf="control.name && esRequerido" class="requerido"></span>
+            </label>
+            <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
+            <div class="input-group d-flex align-items-center">
+                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
 
-                        <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
-                               [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"
-                               (change)="disabledEvent($event)" *ngIf="showInput"/>
-                        <span class="input-group-btn">
-                            <plex-button tabIndex="-1" type="info" [size]="size" [icon]="icon" [disabled]="disabled || readonly"></plex-button>
-                        </span>
-                        <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabled" [tooltip]="makeTooltip('siguiente')"></plex-button>
-                    </div>
-                    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
-                </div>
-                `,
+                <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
+                        [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"
+                        (change)="disabledEvent($event)" *ngIf="showInput"/>
+                <span class="input-group-btn">
+                    <plex-button tabIndex="-1" type="info" [size]="size" [icon]="icon" [disabled]="disabled || readonly"></plex-button>
+                </span>
+                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabled" [tooltip]="makeTooltip('siguiente')"></plex-button>
+            </div>
+            <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
+        </div>
+        `,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
     private _min: Date;
@@ -54,9 +42,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     private $input: any;
     private changeTimeout = null;
 
-    @ContentChild(NgControl, { static: true }) control: AbstractControl;
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Input properties
@@ -129,6 +116,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     validate(c: FormControl) {
         return this.validateFn(c);
     }
+
     ngOnChanges(changes) {
         // Cuando cambias las cotas, devuelve una nueva función de validación
         if (changes.min || changes.max) {
@@ -139,7 +127,14 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     ngOnDestroy() {
         this.$button.bootstrapMaterialDatePicker('destroy');
     }
-    constructor(private element: ElementRef, private renderer: Renderer) {
+
+    constructor(
+        private element: ElementRef,
+        @Self() @Optional() public control: NgControl
+    ) {
+        if (this.control) {
+            this.control.valueAccessor = this;
+        }
         this.placeholder = '';
         this.type = 'datetime';
     }
@@ -183,6 +178,9 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
+        if (this.control && this.control.control) {
+            this.control.control.setValidators(this.validate.bind(this) as any);
+        }
         this.format = this.dateOrTime();
         this.$input = jQuery('INPUT', this.element.nativeElement.children[0]);
         this.$button = jQuery('BUTTON', this.element.nativeElement.children[0]);

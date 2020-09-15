@@ -93,7 +93,7 @@ export function triggerKeyEvent(event: string, element: DebugElement, which: num
     template: ``
 })
 class PlexButtonTestComponent {
-    @ViewChild(PlexButtonComponent, { static: false }) plexButton: PlexButtonComponent;
+    @ViewChild(PlexButtonComponent) plexButton: PlexButtonComponent;
     text = 'hola';
 
     onChange(_: Event) {

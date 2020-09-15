@@ -15,7 +15,7 @@
             "dom"
         ],
         "mapRoot": "./",
-        "module": "es6",
+        "module": "esnext",
         "moduleResolution": "node",
         "sourceMap": true,
         "target": "es5",
@@ -28,5 +28,8 @@
         "./src/**/*.ts",
         "./src/**/*.spec.ts",
         "./src/**/*.d.ts"
-    ]
+    ],
+    "angularCompilerOptions": {
+        "enableIvy": false
+    }
 }

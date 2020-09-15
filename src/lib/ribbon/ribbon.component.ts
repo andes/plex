@@ -1,4 +1,4 @@
-import { Component, Input, Renderer, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
     selector: 'plex-ribbon',
@@ -17,7 +17,7 @@ export class PlexRibbonComponent {
     @Input() text = 'demo';
     @Input() position: 'top-left' | 'top-right' = 'top-left';
 
-    constructor(renderer: Renderer) {
+    constructor(renderer: Renderer2) {
         this.type = 'info';
     }
 }
