@@ -1,7 +1,13 @@
 <plex-layout main="8">
     <plex-layout-main>
         <plex-title titulo="plex-dropdown">
-            <plex-dropdown label="Dropdown size md" right="false" size="md" type="primary" [items]="items">
+            <plex-dropdown icon="account" type="danger" [right]="true">
+                <plex-grid cols="2">
+                    <plex-bool label="Fecha.Ingreso"></plex-bool>
+                    <plex-bool label="Paciente"></plex-bool>
+                    <plex-bool label="Organizacion"></plex-bool>
+                    <plex-bool label="Profesional"></plex-bool>
+                </plex-grid>
             </plex-dropdown>
         </plex-title>
         <section class="d-flex flex-row justify-content-between w-100 mt-4">
