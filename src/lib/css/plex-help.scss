@@ -1,92 +1,104 @@
 plex-help {
-    $top-open: unset;
-    display: inline-block;
-    color: $dark-blue;
-    &.no-icon {
-        .btn-close {
-            display: none;
+  $top-open: 21px;
+  min-width: 30px;
+  display: inline-block;
+
+  &.no-icon {
+    min-width: 0px !important;
+    .btn-close {
+      display: none;
+    }
+    .card.full {
+      min-width: 50vw;
+      left: unset;
+      color: $dark-blue;
+      background: white;
+    }
+  }
+
+  // Contenido del panel/card
+  .card {
+    display: none;
+    border: 0; // reset
+    border-top: 1px solid darken($light-grey, 15%);
+    border-left: 1px solid darken($light-grey, 15%);
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px 5px 0px $dark-grey;
+
+    &.open {
+      display: flex;
+      flex-direction: column;
+
+      max-height: fit-content;
+      background: var(--heading-background-color);
+
+      z-index: 999;
+      position: absolute;
+      right: 15px;
+      left: 15px;
+    }
+
+    &.full {
+      width: auto;
+      height: auto;
+      min-width: 90%;
+    }
+    &.half {
+      width: 50%;
+      height: auto;
+      left: unset;
+    }
+
+    // @Input() titulo:
+    .card-header {
+      height: 50px;
+    }
+
+    // @Input() subtitulo + ng-content:
+    .card-body {
+      transition: all;
+      &.open {
+        height: auto;
+        .toggle-help {
+          right: 60px;
         }
+      }
+      &.closed {
+        height: 0px;
+      }
+      .list-group-item {
+        background: inherit;
+      }
+    }
+  }
+
+  // Botón que abre/cierra
+  .toggle-help {
+    position: initial;
+    right: 15px;
+    top: $top-open;
+    display: inline-block;
+    margin-bottom: -10px;
+
+    &.closed {
+      display: inline-block;
+      position: relative;
+      top: 0;
+      right: 0;
+    }
+    &.open {
+      top: 0;
+      plex-button {
+        z-index: 999;
+      }
     }
 
     plex-button {
-        top: -30px;
-        z-index: 1000;
+      position: relative;
+      top: 1px;
+      right: 0;
+      display: flex;
+      justify-content: flex-end;
     }
-    // Contenido del panel/card
-    .card {
-        position: absolute;
-        display: none;
-        border: 0; // reset
-
-        &.open {
-            box-sizing: border-box;
-            width: 100%;
-            border-top: 1px solid darken($light-grey, 15%);
-            border-left: 1px solid darken($light-grey, 15%);
-            border-radius: 0.25rem;
-            box-shadow: 2px 2px 5px 0px $dark-grey;
-
-            // Display dinámico (none|flex)
-            display: none;
-            flex-direction: column;
-
-            max-height: fit-content;
-            background: var(--heading-background-color);
-            background: $light-grey;
-
-            right: 0;
-            z-index: 999;
-        }
-
-        &.full {
-            width: 90%;
-            height: auto;
-        }
-        &.half {
-            width: 50%;
-            height: auto;
-        }
-
-        // @Input() titulo:
-        .card-header {
-            height: 50px;
-        }
-
-        // @Input() subtitulo + ng-content:
-        .card-body {
-            transition: all;
-            &.open {
-                height: auto;
-                .toggle-help {
-                    right: 60px;
-                }
-            }
-            &.closed {
-                height: 0px;
-            }
-            .list-group-item {
-                background: inherit;
-            }
-        }
-    }
-
-    // Botón que abre/cierra
-    .toggle-help {
-        position: absolute;
-        right: 0;
-        display: inline-block;
-        box-sizing: border-box;
-
-        height: auto;
-
-        &.closed {
-            display: inline-block;
-            position: relative;
-            top: 0;
-            right: 0;
-        }
-        &.open {
-            left: 15px;
-        }
-    }
+  }
 }

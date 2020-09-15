@@ -4,7 +4,7 @@ import { Component, Input, Renderer2, Output, EventEmitter, ElementRef } from '@
     selector: 'plex-help',
     template: `
     <plex-button class="btn-close" *ngIf="!closed" type="danger" [size]="size" icon="close" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>
-    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" type="info" [size]="size" [icon]="type === 'info'? 'informacion' : 'help'" (click)="toggle();$event.stopImmediatePropagation();">
+    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" type="info" [size]="size" [icon]="icon" (click)="toggle();$event.stopImmediatePropagation();">
     </plex-button>
     <plex-button class="btn-open" *ngIf="content && closed && tituloBoton" type="info" [size]="size" [label]="tituloBoton" (click)="toggle();$event.stopImmediatePropagation();">
     </plex-button>
@@ -38,7 +38,7 @@ export class PlexHelpComponent {
 
     @Input() tituloBoton = '';
 
-    @Input() icon: 'help-circle' | 'informacion' = 'help-circle';
+    @Input() icon = 'help';
 
     @Output() close = new EventEmitter();
 
@@ -56,38 +56,8 @@ export class PlexHelpComponent {
 
     public toggle() {
 
-        const card = this.el.nativeElement.querySelector('.card');
-        const toggle = this.el.nativeElement.querySelector('.toggle-help');
-        const btn = this.el.nativeElement.querySelector('.btn-open');
-
-        // Reset posicionamiento
-        this.renderer.removeStyle(toggle, 'right');
-        this.renderer.removeStyle(toggle, 'top');
-
         this.closed = !this.closed;
         if (!this.closed) {
-
-            let right = window.scrollX;
-            let top = window.scrollY;
-
-            if (btn) {
-                this.renderer.removeStyle(btn, 'top');
-                this.renderer.setStyle(btn, 'display', 'inline-block');
-
-                // Para uso normal, con botón/icon de plex-help
-                const btnRect = btn.getBoundingClientRect();
-                top = btnRect.top - btnRect.height;
-                right += 20;
-
-            } else {
-                // Para uso con nav-item, sin botón/icon de plex-help
-                top += 45;
-                this.renderer.setStyle(card, 'width', '45vw');
-            }
-            // Posicionamiento
-            this.renderer.setStyle(toggle, 'top', `${top}px`);
-            this.renderer.setStyle(toggle, 'right', `${right}px`);
-            this.renderer.setStyle(card, 'display', 'flex');
 
             this.open.emit();
             this.unlisten = this.renderer.listen('document', 'click', (event) => {
