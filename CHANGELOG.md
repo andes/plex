@@ -1,3 +1,45 @@
+# [7.0.0](https://github.com/andes/plex/compare/v6.16.0...v7.0.0) (2020-09-15)
+
+
+### Bug Fixes
+
+* **deploy:** deploy from github actions ([feab617](https://github.com/andes/plex/commit/feab617337ae0034b7d5a1fc1d98d8be161b2bfc))
+
+
+### chore
+
+* **angular:** support angular 9 ([#166](https://github.com/andes/plex/issues/166)) ([efa5fd3](https://github.com/andes/plex/commit/efa5fd3a922eb50a76b7082df5e5d637c097e481))
+
+
+### Features
+
+* **plex-dropdown:** permite agregar contenido dinámico ([#226](https://github.com/andes/plex/issues/226)) ([705d031](https://github.com/andes/plex/commit/705d0314a4e763c83b1e93788c26eb007c9bd029))
+
+
+### BREAKING CHANGES
+
+* **angular:** Soporte para angular 9
+
+* chore(angular): update process
+
+* chore(angular): update 2
+
+* chore(angular): update 3
+
+* fix(text): autofocus nativeElement undefined
+
+* fix(validation): validacion de min y max
+
+* feat(network): loading bar using interceptor
+
+* test(network): testing automatic loader
+
+* feat(dependencia): actualiza package lock
+
+* chore(demo): disable ivy
+
+* fix(tooltip): add in declarations
+
 ## [6.16.1](https://github.com/andes/plex/compare/v6.16.0...v6.16.1) (2020-09-11)
 
 
