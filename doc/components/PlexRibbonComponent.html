@@ -286,6 +286,9 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
+                                    <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Options.html" >Options</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -664,6 +670,9 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
+                                           <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                        </li>
                                        <li class="link">
@@ -715,6 +724,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Options.html" >Options</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -890,7 +902,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer-class.html" target="_blank" >Renderer</a>)</code>
+                            <code>constructor(renderer: Renderer2)</code>
                         </td>
                     </tr>
     
@@ -901,7 +913,7 @@
 
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input, Renderer, OnInit } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input, OnInit, Renderer2 } from &#x27;@angular/core&#x27;;
 
 @Component({
     selector: &#x27;plex-ribbon&#x27;,
@@ -920,7 +932,7 @@ export class PlexRibbonComponent {
     @Input() text &#x3D; &#x27;demo&#x27;;
     @Input() position: &#x27;top-left&#x27; | &#x27;top-right&#x27; &#x3D; &#x27;top-left&#x27;;
 
-    constructor(renderer: Renderer) {
+    constructor(renderer: Renderer2) {
         this.type &#x3D; &#x27;info&#x27;;
     }
 }

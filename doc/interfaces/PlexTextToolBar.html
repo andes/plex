@@ -286,6 +286,9 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
+                                    <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Options.html" >Options</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PlexTextToolBar.html"  class="active" >PlexTextToolBar</a>
@@ -664,6 +670,9 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
+                                           <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                        </li>
                                        <li class="link">
@@ -715,6 +724,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Options.html" >Options</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PlexTextToolBar.html"  class="active" >PlexTextToolBar</a>
@@ -889,13 +901,8 @@
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import {
-    ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, ContentChild
-} from &#x27;@angular/core&#x27;;
-import {
-    ControlValueAccessor,
-    NG_VALUE_ACCESSOR, NgControl
-} from &#x27;@angular/forms&#x27;;
+        <pre><code class="hljs javascript">import { ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit, ContentChild, Renderer2, Self, Optional, Inject } from &#x27;@angular/core&#x27;;
+import { ControlValueAccessor, NgControl } from &#x27;@angular/forms&#x27;;
 import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
 
 @Component({
@@ -939,15 +946,7 @@ import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
         &lt;!-- Validation --&gt;
         &lt;plex-validation-messages *ngIf&#x3D;&quot;hasDanger()&quot; [control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;
     &lt;/div&gt;
-    &#x60;,
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() &#x3D;&gt; PlexTextComponent),
-            multi: true,
-        }
-    ]
+    &#x60;
 })
 export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     // private
@@ -973,9 +972,10 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @ViewChild(&#x27;input&#x27;, { static: true }) private input: ElementRef;
     @ViewChild(&#x27;textarea&#x27;, { static: true }) private textarea: ElementRef;
     @ViewChild(&#x27;quillEditor&#x27;, { static: true }) private quillEditor: ElementRef;
-    @ContentChild(NgControl, { static: true }) public control: any;
+    // @ContentChild(NgControl, { static: true }) public control: any;
+
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Propiedades
@@ -1012,7 +1012,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         // Cada vez que cambia el valor vuelve a setear el foco
         if (this.renderer) {
             const element &#x3D; this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
-            this.renderer.invokeElementMethod(element, &#x27;focus&#x27;);
+            element.focus();
         }
     }
 
@@ -1039,7 +1039,13 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     private changeTimeout &#x3D; null;
 
-    constructor(private renderer: Renderer) {
+    constructor(
+        private renderer: Renderer2,
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor &#x3D; this;
+        }
         this.placeholder &#x3D; &#x27;&#x27;;
         this.password &#x3D; false;
     }
@@ -1054,7 +1060,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     ngAfterViewInit() {
         if (this.autoFocus) {
             const element &#x3D; this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
-            this.renderer.invokeElementMethod(element, &#x27;focus&#x27;);
+            element.focus();
         }
         if (this.html) {
             this.createToolbarIcons();
@@ -1064,7 +1070,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Actualización Modelo -&gt; Vista
     writeValue(value: any) {
         const element &#x3D; this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
-        this.renderer.setElementProperty(element, &#x27;value&#x27;, typeof value &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? &#x27;&#x27; : value);
+        this.renderer.setProperty(element, &#x27;value&#x27;, typeof value &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? &#x27;&#x27; : value);
         if (this.multiline) {
             this.adjustTextArea();
         } else {
@@ -1122,7 +1128,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         if (!this.disabled &amp;&amp; !this.isEmpty) {
             this.writeValue(null);
             this.onChange(null);
-            this.renderer.invokeElementMethod(this.input.nativeElement, &#x27;focus&#x27;);
+            this.input.nativeElement.focus();
         }
     }
 

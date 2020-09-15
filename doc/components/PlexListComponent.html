@@ -286,6 +286,9 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
+                                    <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Options.html" >Options</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -664,6 +670,9 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
+                                           <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                        </li>
                                        <li class="link">
@@ -715,6 +724,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Options.html" >Options</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -1022,7 +1034,7 @@ export class PlexListComponent implements AfterViewInit {
     @Output() scrolled &#x3D; new EventEmitter&lt;void&gt;();
 
     @ContentChildren(PlexItemComponent, { descendants: false }) private plexItems: QueryList&lt;PlexItemComponent&gt;;
-    @ContentChild(PlexHeadingComponent, { static: false }) private plexHeading: PlexHeadingComponent;
+    @ContentChild(PlexHeadingComponent) private plexHeading: PlexHeadingComponent;
 
     constructor() {
 

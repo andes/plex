@@ -286,6 +286,9 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
+                                    <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Options.html" >Options</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -664,6 +670,9 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
+                                           <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                        </li>
                                        <li class="link">
@@ -715,6 +724,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Options.html" >Options</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -813,14 +825,6 @@
 
 
 
-            <tr>
-                <td class="col-md-3">providers</td>
-                <td class="col-md-9">
-                    <code>
-                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
-                    </code>
-                </td>
-            </tr>
 
 
             <tr>
@@ -1018,7 +1022,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(element: any)</code>
+                            <code>constructor(element: any, control: <a href="https://angular.io/docs/ts/latest/api/forms/index/NgControl-class.html" target="_blank" >NgControl</a>)</code>
                         </td>
                     </tr>
     
@@ -1277,7 +1281,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <code>control:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/AbstractControl-class.html" target="_blank" >AbstractControl</a></code>
+                            <code>control:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/NgControl-class.html" target="_blank" >NgControl</a></code>
     </bcode>
                         </td>
                     </tr>
@@ -1396,8 +1400,8 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit } from &#x27;@angular/core&#x27;;
-import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR, Validators, AbstractControl } from &#x27;@angular/forms&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input, Output, ElementRef, EventEmitter, AfterViewInit, Self, Optional } from &#x27;@angular/core&#x27;;
+import { ControlValueAccessor, NgControl, } from &#x27;@angular/forms&#x27;;
 import { SelectEvent } from &#x27;./select-event.interface&#x27;;
 import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
 
@@ -1406,14 +1410,6 @@ const Selectize &#x3D; require(&#x27;selectize/dist/js/standalone/selectize&#x27
 
 @Component({
     selector: &#x27;plex-select&#x27;,
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() &#x3D;&gt; PlexSelectComponent),
-            multi: true,
-        }
-    ],
     template: &#x60; &lt;div class&#x3D;&quot;form-group&quot; [ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;: hasDanger() }&quot;&gt;
                     &lt;label *ngIf&#x3D;&quot;label&quot; class&#x3D;&quot;form-control-label&quot;&gt;{{ label }}&lt;span *ngIf&#x3D;&quot;esRequerido&quot; class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;&lt;/label&gt;
                     &lt;select *ngIf&#x3D;&quot;!multiple&quot; id&#x3D;&quot;{{ uniqueId }}&quot; (change)&#x3D;&quot;onChange($event.target.value)&quot;&gt;&lt;/select&gt;
@@ -1429,10 +1425,10 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     private _readonly: boolean;
     private _disabled: boolean;
 
-    @ContentChild(NgControl, { static: false }) control: AbstractControl;
+
     public uniqueId &#x3D; new Date().valueOf().toString();
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     public hasDanger() {
@@ -1500,13 +1496,20 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     public onChange &#x3D; (_: any) &#x3D;&gt; { };
 
     // Constructor
-    constructor(private element: ElementRef) {
+    constructor(
+        private element: ElementRef,
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor &#x3D; this;
+        }
         this.initRemoveButtonPlugin();
         this.placeholder &#x3D; &#x27;&#x27;;
         this.multiple &#x3D; false;
         this.idField &#x3D; &#x27;id&#x27;;
         this.labelField &#x3D; &#x27;nombre&#x27;;
         this.groupField &#x3D; &#x27;grupo&#x27;;
+
     }
 
     private initRemoveButtonPlugin() {

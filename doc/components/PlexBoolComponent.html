@@ -286,6 +286,9 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
+                                    <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Options.html" >Options</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -664,6 +670,9 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
+                                           <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                        </li>
                                        <li class="link">
@@ -715,6 +724,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Options.html" >Options</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -813,14 +825,6 @@
 
 
 
-            <tr>
-                <td class="col-md-3">providers</td>
-                <td class="col-md-9">
-                    <code>
-                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
-                    </code>
-                </td>
-            </tr>
 
 
             <tr>
@@ -912,7 +916,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor()</code>
+                            <code>constructor(control: <a href="https://angular.io/docs/ts/latest/api/forms/index/NgControl-class.html" target="_blank" >NgControl</a>)</code>
                         </td>
                     </tr>
     
@@ -954,6 +958,21 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b> control</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>control:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/NgControl-class.html" target="_blank" >NgControl</a></code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b><span class="modifier">Private</span> onChange</b>
                         </td>
                     </tr>
@@ -983,19 +1002,11 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, OnInit, AfterViewInit, Input, forwardRef, Output, EventEmitter } from &#x27;@angular/core&#x27;;
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
+            <pre><code class="hljs javascript">import { Component, OnInit, AfterViewInit, Input, Output, EventEmitter, Self, Optional } from &#x27;@angular/core&#x27;;
+import { ControlValueAccessor, NgControl } from &#x27;@angular/forms&#x27;;
 
 @Component({
     selector: &#x27;plex-bool&#x27;,
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() &#x3D;&gt; PlexBoolComponent),
-            multi: true,
-        }
-    ],
     template: &#x60; &lt;!-- Slide --&gt;
                 &lt;mat-slide-toggle *ngIf&#x3D;&quot;type &#x3D;&#x3D; &#x27;slide&#x27;&quot; [(ngModel)]&#x3D;&quot;value&quot; (change)&#x3D;&quot;innerChange()&quot; [disabled]&#x3D;&quot;readonly&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
                     &lt;span *ngIf&#x3D;&quot;label&quot;&gt;
@@ -1022,7 +1033,12 @@ export class PlexBoolComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Funciones privadas
     private onChange &#x3D; (_: any) &#x3D;&gt; { };
 
-    constructor() {
+    constructor(
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor &#x3D; this;
+        }
         this.type &#x3D; &#x27;checkbox&#x27;;
     }
 

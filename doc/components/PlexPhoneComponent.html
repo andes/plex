@@ -286,6 +286,9 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
+                                    <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Options.html" >Options</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -664,6 +670,9 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
+                                           <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                        </li>
                                        <li class="link">
@@ -715,6 +724,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Options.html" >Options</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -813,15 +825,6 @@
 
 
 
-            <tr>
-                <td class="col-md-3">providers</td>
-                <td class="col-md-9">
-                    <code>
-                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
-                        { provide: NG_VALIDATORS, useExisting: , multi:  }
-                    </code>
-                </td>
-            </tr>
 
 
             <tr>
@@ -1009,7 +1012,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer-class.html" target="_blank" >Renderer</a>)</code>
+                            <code>constructor(renderer: Renderer2, control: <a href="https://angular.io/docs/ts/latest/api/forms/index/NgControl-class.html" target="_blank" >NgControl</a>)</code>
                         </td>
                     </tr>
     
@@ -1137,7 +1140,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <code>control:     <code>any</code>
+                            <code>control:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/NgControl-class.html" target="_blank" >NgControl</a></code>
     </bcode>
                         </td>
                     </tr>
@@ -1212,7 +1215,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>renderer:     <code><a href="https://angular.io/docs/ts/latest/api/core/index/Renderer-class.html" target="_blank" >Renderer</a></code>
+                            <span class="modifier-icon fa fa-lock"></span><code>renderer:     <code>Renderer2</code>
     </bcode>
                         </td>
                     </tr>
@@ -1221,11 +1224,8 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import {
-    ViewChild, ContentChild, Component, OnInit, Input, AfterViewInit,
-    Output, EventEmitter, forwardRef, ElementRef, Renderer, OnChanges
-} from &#x27;@angular/core&#x27;;
-import { ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS } from &#x27;@angular/forms&#x27;;
+            <pre><code class="hljs javascript">import { ViewChild, Component, OnInit, Input, AfterViewInit, Output, EventEmitter, ElementRef, Renderer2, Self, Optional } from &#x27;@angular/core&#x27;;
+import { ControlValueAccessor, FormControl, NgControl } from &#x27;@angular/forms&#x27;;
 import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
 
 const RegEx_Mobile &#x3D; /^[1-3][0-9]{9}$/;
@@ -1233,19 +1233,6 @@ const RegEx_Numero &#x3D; /^(\d)+$/;
 
 @Component({
     selector: &#x27;plex-phone&#x27;,
-    // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() &#x3D;&gt; PlexPhoneComponent),
-            multi: true
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() &#x3D;&gt; PlexPhoneComponent),
-            multi: true
-        },
-    ],
     template: &#x60; &lt;div class&#x3D;&quot;form-group&quot; [ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;: hasDanger() }&quot;&gt;
                     &lt;label *ngIf&#x3D;&quot;label&quot; class&#x3D;&quot;form-control-label&quot;&gt;{{label}}&lt;span *ngIf&#x3D;&quot;control.name &amp;&amp; esRequerido&quot; class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;&lt;/label&gt;
                     &lt;div [ngClass]&#x3D;&quot;{&#x27;input-group&#x27;: prefix || suffix || icon}&quot;&gt;
@@ -1263,12 +1250,12 @@ const RegEx_Numero &#x3D; /^(\d)+$/;
 })
 export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     private lastValue: any &#x3D; null;
-    private renderer: Renderer;
-    @ContentChild(NgControl, { static: true }) control: any;
+    private renderer: Renderer2;
+
     @ViewChild(&#x27;ref&#x27;, { static: true }) ref: ElementRef;
 
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Propiedades
@@ -1283,7 +1270,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
         if (this.renderer) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, &#x27;focus&#x27;);
+            this.ref.nativeElement.focus();
         }
     }
 
@@ -1317,7 +1304,13 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
         }
     }
 
-    constructor(renderer: Renderer) {
+    constructor(
+        renderer: Renderer2,
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor &#x3D; this;
+        }
         this.renderer &#x3D; renderer;
         this.placeholder &#x3D; &#x27;&#x27;;
     }
@@ -1326,13 +1319,13 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     ngOnInit() { }
     ngAfterViewInit() {
         if (this.autoFocus) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, &#x27;focus&#x27;);
+            this.ref.nativeElement.focus();
         }
     }
 
     // Actualización Modelo -&gt; Vista
     writeValue(value: any) {
-        this.renderer.setElementProperty(this.ref.nativeElement, &#x27;value&#x27;, value);
+        this.renderer.setProperty(this.ref.nativeElement, &#x27;value&#x27;, value);
     }
 
     public hasDanger() {

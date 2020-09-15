@@ -286,6 +286,9 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
+                                    <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Options.html" >Options</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -664,6 +670,9 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
+                                           <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                        </li>
                                        <li class="link">
@@ -715,6 +724,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Options.html" >Options</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -813,15 +825,6 @@
 
 
 
-            <tr>
-                <td class="col-md-3">providers</td>
-                <td class="col-md-9">
-                    <code>
-                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
-                        { provide: NG_VALIDATORS, useExisting: , multi:  }
-                    </code>
-                </td>
-            </tr>
 
 
             <tr>
@@ -833,7 +836,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&nbsp;datetime&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;(control.dirty&nbsp;||&nbsp;control.touched)&nbsp;&amp;&amp;&nbsp;!control.valid&nbsp;}&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;label&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngIf&#x3D;&quot;hintAction&quot;&nbsp;hint&#x3D;&quot;Seleccionar&nbsp;{{&nbsp;hintText&nbsp;}}&quot;&nbsp;hintType&#x3D;&quot;warning&quot;&nbsp;[hintIcon]&#x3D;&quot;hintIcon&quot;&nbsp;(click)&#x3D;&quot;callAction(hintAction)&quot;&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;input-group&nbsp;d-flex&nbsp;align-items-center&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;showNav&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;menu-left&quot;&nbsp;(click)&#x3D;&quot;prev()&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[tooltip]&#x3D;&quot;makeTooltip(&#x27;anterior&#x27;)&quot;&gt;&lt;/plex-button&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type&#x3D;&quot;text&quot;&nbsp;class&#x3D;&quot;form-control&nbsp;form-control-{{size}}&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[readonly]&#x3D;&quot;readonly&quot;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(blur)&#x3D;&quot;onBlur()&quot;&nbsp;(focus)&#x3D;&quot;onFocus()&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&nbsp;*ngIf&#x3D;&quot;showInput&quot;/&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class&#x3D;&quot;input-group-btn&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;tabIndex&#x3D;&quot;-1&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[icon]&#x3D;&quot;icon&quot;&nbsp;[disabled]&#x3D;&quot;disabled&nbsp;||&nbsp;readonly&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;showNav&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;menu-right&quot;&nbsp;(click)&#x3D;&quot;next()&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[tooltip]&#x3D;&quot;makeTooltip(&#x27;siguiente&#x27;)&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&nbsp;datetime&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;(control.dirty&nbsp;||&nbsp;control.touched)&nbsp;&amp;&amp;&nbsp;!control.valid&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;label&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngIf&#x3D;&quot;hintAction&quot;&nbsp;hint&#x3D;&quot;Seleccionar&nbsp;{{&nbsp;hintText&nbsp;}}&quot;&nbsp;hintType&#x3D;&quot;warning&quot;&nbsp;[hintIcon]&#x3D;&quot;hintIcon&quot;&nbsp;(click)&#x3D;&quot;callAction(hintAction)&quot;&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;input-group&nbsp;d-flex&nbsp;align-items-center&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;showNav&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;menu-left&quot;&nbsp;(click)&#x3D;&quot;prev()&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[tooltip]&#x3D;&quot;makeTooltip(&#x27;anterior&#x27;)&quot;&gt;&lt;/plex-button&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type&#x3D;&quot;text&quot;&nbsp;class&#x3D;&quot;form-control&nbsp;form-control-{{size}}&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[readonly]&#x3D;&quot;readonly&quot;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(blur)&#x3D;&quot;onBlur()&quot;&nbsp;(focus)&#x3D;&quot;onFocus()&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&nbsp;*ngIf&#x3D;&quot;showInput&quot;/&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class&#x3D;&quot;input-group-btn&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;tabIndex&#x3D;&quot;-1&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[icon]&#x3D;&quot;icon&quot;&nbsp;[disabled]&#x3D;&quot;disabled&nbsp;||&nbsp;readonly&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;showNav&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;menu-right&quot;&nbsp;(click)&#x3D;&quot;next()&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[tooltip]&#x3D;&quot;makeTooltip(&#x27;siguiente&#x27;)&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -1118,7 +1121,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(element: any, renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer-class.html" target="_blank" >Renderer</a>)</code>
+                            <code>constructor(element: any, control: <a href="https://angular.io/docs/ts/latest/api/forms/index/NgControl-class.html" target="_blank" >NgControl</a>)</code>
                         </td>
                     </tr>
     
@@ -1540,7 +1543,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <code>control:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/AbstractControl-class.html" target="_blank" >AbstractControl</a></code>
+                            <code>control:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/NgControl-class.html" target="_blank" >NgControl</a></code>
     </bcode>
                         </td>
                     </tr>
@@ -1684,8 +1687,8 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { ContentChild, Component, OnInit, Input, Output, forwardRef, ElementRef, Renderer, EventEmitter, AfterViewInit, OnChanges, OnDestroy } from &#x27;@angular/core&#x27;;
-import { NgControl, NG_VALUE_ACCESSOR, NgForm, NG_VALIDATORS, FormControl, AbstractControl } from &#x27;@angular/forms&#x27;;
+            <pre><code class="hljs javascript">import { Component, OnInit, Input, Output, ElementRef, EventEmitter, AfterViewInit, OnChanges, Self, Optional, OnDestroy } from &#x27;@angular/core&#x27;;
+import { NgControl, FormControl } from &#x27;@angular/forms&#x27;;
 import * as moment from &#x27;moment&#x27;;
 import { dateValidator, hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
 
@@ -1697,39 +1700,27 @@ require(&#x27;./bootstrap-material-datetimepicker/bootstrap-material-datetimepic
 
 @Component({
     selector: &#x27;plex-datetime&#x27;,
-    providers: [
-        // Permite acceder al atributo formControlName/ngModel
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() &#x3D;&gt; PlexDateTimeComponent),
-            multi: true,
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() &#x3D;&gt; PlexDateTimeComponent),
-            multi: true
-        },
-    ],
-    template: &#x60;&lt;div class&#x3D;&quot;form-group datetime&quot; [ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;: (control.dirty || control.touched) &amp;&amp; !control.valid }&quot;&gt;
-                    &lt;label *ngIf&#x3D;&quot;label&quot; class&#x3D;&quot;form-control-label&quot;&gt;
-                        {{ label }}
-                        &lt;span *ngIf&#x3D;&quot;control.name &amp;&amp; esRequerido&quot; class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;
-                    &lt;/label&gt;
-                    &lt;div *ngIf&#x3D;&quot;hintAction&quot; hint&#x3D;&quot;Seleccionar {{ hintText }}&quot; hintType&#x3D;&quot;warning&quot; [hintIcon]&#x3D;&quot;hintIcon&quot; (click)&#x3D;&quot;callAction(hintAction)&quot;&gt;&lt;/div&gt;
-                    &lt;div class&#x3D;&quot;input-group d-flex align-items-center&quot;&gt;
-                        &lt;plex-button *ngIf&#x3D;&quot;showNav&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; icon&#x3D;&quot;menu-left&quot; (click)&#x3D;&quot;prev()&quot; [disabled]&#x3D;&quot;disabled&quot; [tooltip]&#x3D;&quot;makeTooltip(&#x27;anterior&#x27;)&quot;&gt;&lt;/plex-button&gt;
+    template: &#x60;
+        &lt;div class&#x3D;&quot;form-group datetime&quot; [ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;: (control.dirty || control.touched) &amp;&amp; !control.valid }&quot;&gt;
+            &lt;label *ngIf&#x3D;&quot;label&quot; class&#x3D;&quot;form-control-label&quot;&gt;
+                {{ label }}
+                &lt;span *ngIf&#x3D;&quot;control.name &amp;&amp; esRequerido&quot; class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;
+            &lt;/label&gt;
+            &lt;div *ngIf&#x3D;&quot;hintAction&quot; hint&#x3D;&quot;Seleccionar {{ hintText }}&quot; hintType&#x3D;&quot;warning&quot; [hintIcon]&#x3D;&quot;hintIcon&quot; (click)&#x3D;&quot;callAction(hintAction)&quot;&gt;&lt;/div&gt;
+            &lt;div class&#x3D;&quot;input-group d-flex align-items-center&quot;&gt;
+                &lt;plex-button *ngIf&#x3D;&quot;showNav&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; icon&#x3D;&quot;menu-left&quot; (click)&#x3D;&quot;prev()&quot; [disabled]&#x3D;&quot;disabled&quot; [tooltip]&#x3D;&quot;makeTooltip(&#x27;anterior&#x27;)&quot;&gt;&lt;/plex-button&gt;
 
-                        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-{{size}}&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot;
-                               [readonly]&#x3D;&quot;readonly&quot; (input)&#x3D;&quot;onChange($event.target.value)&quot; (blur)&#x3D;&quot;onBlur()&quot; (focus)&#x3D;&quot;onFocus()&quot;
-                               (change)&#x3D;&quot;disabledEvent($event)&quot; *ngIf&#x3D;&quot;showInput&quot;/&gt;
-                        &lt;span class&#x3D;&quot;input-group-btn&quot;&gt;
-                            &lt;plex-button tabIndex&#x3D;&quot;-1&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; [icon]&#x3D;&quot;icon&quot; [disabled]&#x3D;&quot;disabled || readonly&quot;&gt;&lt;/plex-button&gt;
-                        &lt;/span&gt;
-                        &lt;plex-button *ngIf&#x3D;&quot;showNav&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; icon&#x3D;&quot;menu-right&quot; (click)&#x3D;&quot;next()&quot; [disabled]&#x3D;&quot;disabled&quot; [tooltip]&#x3D;&quot;makeTooltip(&#x27;siguiente&#x27;)&quot;&gt;&lt;/plex-button&gt;
-                    &lt;/div&gt;
-                    &lt;plex-validation-messages *ngIf&#x3D;&quot;hasDanger()&quot; [control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;
-                &lt;/div&gt;
-                &#x60;,
+                &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-{{size}}&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot;
+                        [readonly]&#x3D;&quot;readonly&quot; (input)&#x3D;&quot;onChange($event.target.value)&quot; (blur)&#x3D;&quot;onBlur()&quot; (focus)&#x3D;&quot;onFocus()&quot;
+                        (change)&#x3D;&quot;disabledEvent($event)&quot; *ngIf&#x3D;&quot;showInput&quot;/&gt;
+                &lt;span class&#x3D;&quot;input-group-btn&quot;&gt;
+                    &lt;plex-button tabIndex&#x3D;&quot;-1&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; [icon]&#x3D;&quot;icon&quot; [disabled]&#x3D;&quot;disabled || readonly&quot;&gt;&lt;/plex-button&gt;
+                &lt;/span&gt;
+                &lt;plex-button *ngIf&#x3D;&quot;showNav&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; icon&#x3D;&quot;menu-right&quot; (click)&#x3D;&quot;next()&quot; [disabled]&#x3D;&quot;disabled&quot; [tooltip]&#x3D;&quot;makeTooltip(&#x27;siguiente&#x27;)&quot;&gt;&lt;/plex-button&gt;
+            &lt;/div&gt;
+            &lt;plex-validation-messages *ngIf&#x3D;&quot;hasDanger()&quot; [control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;
+        &lt;/div&gt;
+        &#x60;,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
     private _min: Date;
@@ -1740,9 +1731,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     private $input: any;
     private changeTimeout &#x3D; null;
 
-    @ContentChild(NgControl, { static: true }) control: AbstractControl;
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Input properties
@@ -1815,6 +1805,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     validate(c: FormControl) {
         return this.validateFn(c);
     }
+
     ngOnChanges(changes) {
         // Cuando cambias las cotas, devuelve una nueva función de validación
         if (changes.min || changes.max) {
@@ -1825,7 +1816,14 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     ngOnDestroy() {
         this.$button.bootstrapMaterialDatePicker(&#x27;destroy&#x27;);
     }
-    constructor(private element: ElementRef, private renderer: Renderer) {
+
+    constructor(
+        private element: ElementRef,
+        @Self() @Optional() public control: NgControl
+    ) {
+        if (this.control) {
+            this.control.valueAccessor &#x3D; this;
+        }
         this.placeholder &#x3D; &#x27;&#x27;;
         this.type &#x3D; &#x27;datetime&#x27;;
     }
@@ -1869,6 +1867,9 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     // Inicialización
     ngOnInit() { }
     ngAfterViewInit() {
+        if (this.control &amp;&amp; this.control.control) {
+            this.control.control.setValidators(this.validate.bind(this) as any);
+        }
         this.format &#x3D; this.dateOrTime();
         this.$input &#x3D; jQuery(&#x27;INPUT&#x27;, this.element.nativeElement.children[0]);
         this.$button &#x3D; jQuery(&#x27;BUTTON&#x27;, this.element.nativeElement.children[0]);

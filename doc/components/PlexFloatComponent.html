@@ -286,6 +286,9 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
+                                    <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Options.html" >Options</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -664,6 +670,9 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
+                                           <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                        </li>
                                        <li class="link">
@@ -715,6 +724,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Options.html" >Options</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -813,15 +825,6 @@
 
 
 
-            <tr>
-                <td class="col-md-3">providers</td>
-                <td class="col-md-9">
-                    <code>
-                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
-                        { provide: NG_VALIDATORS, useExisting: , multi:  }
-                    </code>
-                </td>
-            </tr>
 
 
             <tr>
@@ -833,7 +836,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-group&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;hasDanger()&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;{{label}}&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;[ngClass]&#x3D;&quot;{&#x27;input-group&#x27;:&nbsp;prefix&nbsp;||&nbsp;suffix&nbsp;||&nbsp;&nbsp;&nbsp;suffixParent?.children.length&nbsp;&gt;&nbsp;0&nbsp;||&nbsp;&nbsp;prefixParent?.children.length&nbsp;&gt;&nbsp;0}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;prefix&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&nbsp;[innerHTML]&#x3D;&quot;prefix&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#prefixParent&nbsp;[hidden]&#x3D;&quot;prefixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[left]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;#ref&nbsp;type&#x3D;&quot;text&quot;&nbsp;class&#x3D;&quot;form-control&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[readonly]&#x3D;&quot;readonly&quot;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;suffix&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&nbsp;[innerHTML]&#x3D;&quot;suffix&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#suffixParent&nbsp;[hidden]&#x3D;&quot;suffixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[right]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;hasDanger()&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;{{label}}&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;[ngClass]&#x3D;&quot;{&#x27;input-group&#x27;:&nbsp;prefix&nbsp;||&nbsp;suffix&nbsp;||&nbsp;&nbsp;&nbsp;suffixParent?.children.length&nbsp;&gt;&nbsp;0&nbsp;||&nbsp;&nbsp;prefixParent?.children.length&nbsp;&gt;&nbsp;0}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;prefix&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&nbsp;[innerHTML]&#x3D;&quot;prefix&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#prefixParent&nbsp;[hidden]&#x3D;&quot;prefixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[left]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;#ref&nbsp;type&#x3D;&quot;text&quot;&nbsp;class&#x3D;&quot;form-control&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[readonly]&#x3D;&quot;readonly&quot;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;suffix&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&nbsp;[innerHTML]&#x3D;&quot;suffix&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#suffixParent&nbsp;[hidden]&#x3D;&quot;suffixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[right]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -998,7 +1001,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer-class.html" target="_blank" >Renderer</a>)</code>
+                            <code>constructor(renderer: Renderer2, control: <a href="https://angular.io/docs/ts/latest/api/forms/index/NgControl-class.html" target="_blank" >NgControl</a>)</code>
                         </td>
                     </tr>
     
@@ -1091,12 +1094,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> control</b>
+                            <b> control</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>control:     <code>any</code>
+                            <code>control:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/NgControl-class.html" target="_blank" >NgControl</a></code>
     </bcode>
                         </td>
                     </tr>
@@ -1166,21 +1169,6 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Private</span> renderer</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>renderer:     <code><a href="https://angular.io/docs/ts/latest/api/core/index/Renderer-class.html" target="_blank" >Renderer</a></code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
                             <b> validateFn</b>
                         </td>
                     </tr>
@@ -1195,13 +1183,9 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import {
-    ViewChild, ContentChild, Component, OnInit,
-    AfterViewInit, Input, Output, EventEmitter, forwardRef, ElementRef, Renderer, OnChanges
-} from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { ViewChild, ContentChild, Component, OnInit, AfterViewInit, Input, Output, EventEmitter, forwardRef, ElementRef, OnChanges, Renderer2, Self, Optional } from &#x27;@angular/core&#x27;;
 import {
-    ControlValueAccessor, FormControl,
-    NgControl, NG_VALUE_ACCESSOR, NG_VALIDATORS
+    ControlValueAccessor, FormControl, NgControl
 } from &#x27;@angular/forms&#x27;;
 import { numberValidator, hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
 
@@ -1209,21 +1193,8 @@ const REGEX &#x3D; /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
 
 @Component({
     selector: &#x27;plex-float&#x27;,
-    // Las siguientes líneas permiten acceder al atributo formControlName/ngModel
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() &#x3D;&gt; PlexFloatComponent),
-            multi: true
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() &#x3D;&gt; PlexFloatComponent),
-            multi: true
-        }
-    ],
     template: &#x60;
-         &lt;div class&#x3D;&quot;form-group&quot; [ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;: hasDanger() }&quot;&gt;
+        &lt;div class&#x3D;&quot;form-group&quot; [ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;: hasDanger() }&quot;&gt;
             &lt;label *ngIf&#x3D;&quot;label&quot; class&#x3D;&quot;form-control-label&quot;&gt;{{label}}&lt;span *ngIf&#x3D;&quot;control.name &amp;&amp; esRequerido&quot; class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;&lt;/label&gt;
             &lt;div [ngClass]&#x3D;&quot;{&#x27;input-group&#x27;: prefix || suffix ||   suffixParent?.children.length &gt; 0 ||  prefixParent?.children.length &gt; 0}&quot;&gt;
                 &lt;span *ngIf&#x3D;&quot;prefix&quot; class&#x3D;&quot;input-group-addon&quot; [innerHTML]&#x3D;&quot;prefix&quot;&gt;&lt;/span&gt;
@@ -1242,11 +1213,11 @@ const REGEX &#x3D; /^\s*(\-)?(\d*|(\d*((,|\.)\d*)))\s*$/;
 })
 export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
     private lastValue: any &#x3D; null;
-    private renderer: Renderer;
+
     @ViewChild(&#x27;ref&#x27;, { static: true }) private ref: ElementRef;
-    @ContentChild(NgControl, { static: true }) public control: any;
+
     public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control);
+        return hasRequiredValidator(this.control as any);
     }
 
     // Propiedades
@@ -1262,7 +1233,7 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
         if (this.renderer) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, &#x27;focus&#x27;);
+            this.ref.nativeElement.focus();
         }
     }
 
@@ -1289,8 +1260,16 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
         }
     }
 
-    constructor(renderer: Renderer) {
-        this.renderer &#x3D; renderer;
+    constructor(
+        private renderer: Renderer2,
+        @Self() @Optional() public control: NgControl,
+    ) {
+        if (this.control) {
+            this.control.valueAccessor &#x3D; this;
+        }
+        if (this.control &amp;&amp; this.control.control) {
+            this.control.control.setValidators(this.validate.bind(this) as any);
+        }
         this.placeholder &#x3D; &#x27;&#x27;;
     }
 
@@ -1298,13 +1277,13 @@ export class PlexFloatComponent implements OnInit, AfterViewInit, ControlValueAc
     ngOnInit() { }
     ngAfterViewInit() {
         if (this.autoFocus) {
-            this.renderer.invokeElementMethod(this.ref.nativeElement, &#x27;focus&#x27;);
+            this.ref.nativeElement.focus();
         }
     }
 
     // Actualización Modelo -&gt; Vista
     writeValue(value: any) {
-        this.renderer.setElementProperty(this.ref.nativeElement, &#x27;value&#x27;, typeof value &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? &#x27;&#x27; : value);
+        this.renderer.setProperty(this.ref.nativeElement, &#x27;value&#x27;, typeof value &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? &#x27;&#x27; : value);
     }
 
     hasDanger() {

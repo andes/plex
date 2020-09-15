@@ -286,6 +286,9 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
+                                    <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Options.html" >Options</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -664,6 +670,9 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
+                                           <a href="../injectables/NetworkLoadingInterceptor.html" >NetworkLoadingInterceptor</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                        </li>
                                        <li class="link">
@@ -715,6 +724,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Options.html" >Options</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PlexModuleConfig.html" >PlexModuleConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PlexTextToolBar.html" >PlexTextToolBar</a>
@@ -824,7 +836,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;dropdown&quot;&nbsp;[ngClass]&#x3D;&quot;{show:&nbsp;open}&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;plexRipples&nbsp;data-toggle&#x3D;&quot;dropdown&quot;&nbsp;class&#x3D;&quot;btn&nbsp;btn-{{type}}&nbsp;{{(&nbsp;&#x27;size&#x27;&nbsp;?&nbsp;&#x27;btn-&#x27;&nbsp;+&nbsp;size&nbsp;:&nbsp;&#x27;&#x27;&nbsp;)}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-toggle&#x27;:&nbsp;label}&quot;&nbsp;type&#x3D;&quot;button&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;(click)&#x3D;&quot;toggleMenu();&nbsp;$event.stopImmediatePropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;icon&quot;&nbsp;[name]&#x3D;&quot;icon&quot;&nbsp;[size]&#x3D;&quot;size&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;class&#x3D;&quot;dropdown-menu&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-menu-right&#x27;:&nbsp;right,&nbsp;&#x27;dropdown-menu-left&#x27;:&nbsp;!right}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;items&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Item&nbsp;con&nbsp;router&nbsp;asociado--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;!item.divider&nbsp;&amp;&amp;&nbsp;item.route&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;plexRipples&nbsp;class&#x3D;&quot;dropdown-item&quot;&nbsp;href&#x3D;&quot;#&quot;&nbsp;[routerLink]&#x3D;&quot;item.route&quot;&nbsp;routerLinkActive&#x3D;&quot;active&quot;&nbsp;(click)&#x3D;&quot;open&#x3D;false&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;item.icon&quot;&nbsp;type&#x3D;&quot;default&quot;&nbsp;[name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label}}&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Item&nbsp;con&nbsp;handler&nbsp;asociado--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;!item.divider&nbsp;&amp;&amp;&nbsp;item.handler&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;plexRipples&nbsp;class&#x3D;&quot;dropdown-item&quot;&nbsp;href&#x3D;&quot;#&quot;&nbsp;(click)&#x3D;&quot;toggleMenu();&nbsp;item.handler($event);&nbsp;false;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;item.icon&quot;&nbsp;type&#x3D;&quot;default&quot;&nbsp;[name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label}}&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Divider--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;item.divider&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;role&#x3D;&quot;separator&quot;&nbsp;class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;dropdown&quot;&nbsp;[ngClass]&#x3D;&quot;{show:&nbsp;open}&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;plexRipples&nbsp;data-toggle&#x3D;&quot;dropdown&quot;&nbsp;class&#x3D;&quot;btn&nbsp;btn-{{type}}&nbsp;{{(&nbsp;&#x27;size&#x27;&nbsp;?&nbsp;&#x27;btn-&#x27;&nbsp;+&nbsp;size&nbsp;:&nbsp;&#x27;&#x27;&nbsp;)}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-toggle&#x27;:&nbsp;label}&quot;&nbsp;type&#x3D;&quot;button&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;(click)&#x3D;&quot;toggleMenu();&nbsp;$event.stopImmediatePropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;icon&quot;&nbsp;[name]&#x3D;&quot;icon&quot;&nbsp;[size]&#x3D;&quot;size&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;class&#x3D;&quot;dropdown-menu&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-menu-right&#x27;:&nbsp;right,&nbsp;&#x27;dropdown-menu-left&#x27;:&nbsp;!right}&quot;&nbsp;*ngIf&#x3D;&quot;items&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;items&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Item&nbsp;con&nbsp;router&nbsp;asociado--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;!item.divider&nbsp;&amp;&amp;&nbsp;item.route&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;plexRipples&nbsp;class&#x3D;&quot;dropdown-item&quot;&nbsp;href&#x3D;&quot;#&quot;&nbsp;[routerLink]&#x3D;&quot;item.route&quot;&nbsp;routerLinkActive&#x3D;&quot;active&quot;&nbsp;(click)&#x3D;&quot;open&#x3D;false&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;item.icon&quot;&nbsp;type&#x3D;&quot;default&quot;&nbsp;[name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label}}&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Item&nbsp;con&nbsp;handler&nbsp;asociado--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;!item.divider&nbsp;&amp;&amp;&nbsp;item.handler&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;plexRipples&nbsp;class&#x3D;&quot;dropdown-item&quot;&nbsp;href&#x3D;&quot;#&quot;&nbsp;(click)&#x3D;&quot;toggleMenu();&nbsp;item.handler($event);&nbsp;false;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;item.icon&quot;&nbsp;type&#x3D;&quot;default&quot;&nbsp;[name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label}}&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Divider--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;item.divider&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;role&#x3D;&quot;separator&quot;&nbsp;class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;dropdown-menu&nbsp;p-2&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-menu-right&#x27;:&nbsp;right,&nbsp;&#x27;dropdown-menu-left&#x27;:&nbsp;!right}&quot;&nbsp;*ngIf&#x3D;&quot;!items&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></td>
             </tr>
 
 
@@ -1065,29 +1077,32 @@ import { DropdownItem } from &#x27;./dropdown-item.inteface&#x27;;
     selector: &#x27;plex-dropdown&#x27;,
     template: &#x60; &lt;div class&#x3D;&quot;dropdown&quot; [ngClass]&#x3D;&quot;{show: open}&quot;&gt;
                     &lt;button plexRipples data-toggle&#x3D;&quot;dropdown&quot; class&#x3D;&quot;btn btn-{{type}} {{( &#x27;size&#x27; ? &#x27;btn-&#x27; + size : &#x27;&#x27; )}}&quot; [ngClass]&#x3D;&quot;{&#x27;dropdown-toggle&#x27;: label}&quot; type&#x3D;&quot;button&quot; [disabled]&#x3D;&quot;disabled&quot; (click)&#x3D;&quot;toggleMenu(); $event.stopImmediatePropagation();&quot;&gt;
-                    &lt;plex-icon *ngIf&#x3D;&quot;icon&quot; [name]&#x3D;&quot;icon&quot; [size]&#x3D;&quot;size&quot;&gt;&lt;/plex-icon&gt;
-                    {{label}}
+                        &lt;plex-icon *ngIf&#x3D;&quot;icon&quot; [name]&#x3D;&quot;icon&quot; [size]&#x3D;&quot;size&quot;&gt;&lt;/plex-icon&gt;
+                        {{label}}
                     &lt;/button&gt;
-                    &lt;ul class&#x3D;&quot;dropdown-menu&quot; [ngClass]&#x3D;&quot;{&#x27;dropdown-menu-right&#x27;: right, &#x27;dropdown-menu-left&#x27;: !right}&quot;&gt;
-                    &lt;li *ngFor&#x3D;&quot;let item of items&quot;&gt;
-                        &lt;!--Item con router asociado--&gt;
-                        &lt;ng-template [ngIf]&#x3D;&quot;!item.divider &amp;&amp; item.route&quot;&gt;
-                        &lt;a plexRipples class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;#&quot; [routerLink]&#x3D;&quot;item.route&quot; routerLinkActive&#x3D;&quot;active&quot; (click)&#x3D;&quot;open&#x3D;false&quot;&gt;
-                            &lt;plex-icon *ngIf&#x3D;&quot;item.icon&quot; type&#x3D;&quot;default&quot; [name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;
-                            {{item.label}}&lt;/a&gt;
-                        &lt;/ng-template&gt;
-                        &lt;!--Item con handler asociado--&gt;
-                        &lt;ng-template [ngIf]&#x3D;&quot;!item.divider &amp;&amp; item.handler&quot;&gt;
-                        &lt;a plexRipples class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;#&quot; (click)&#x3D;&quot;toggleMenu(); item.handler($event); false;&quot;&gt;
-                            &lt;plex-icon *ngIf&#x3D;&quot;item.icon&quot; type&#x3D;&quot;default&quot; [name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;
-                            {{item.label}}&lt;/a&gt;
-                        &lt;/ng-template&gt;
-                        &lt;!--Divider--&gt;
-                        &lt;ng-template [ngIf]&#x3D;&quot;item.divider&quot;&gt;
-                        &lt;div role&#x3D;&quot;separator&quot; class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
-                        &lt;/ng-template&gt;
-                    &lt;/li&gt;
+                    &lt;ul class&#x3D;&quot;dropdown-menu&quot; [ngClass]&#x3D;&quot;{&#x27;dropdown-menu-right&#x27;: right, &#x27;dropdown-menu-left&#x27;: !right}&quot; *ngIf&#x3D;&quot;items&quot;&gt;
+                        &lt;li *ngFor&#x3D;&quot;let item of items&quot;&gt;
+                            &lt;!--Item con router asociado--&gt;
+                            &lt;ng-template [ngIf]&#x3D;&quot;!item.divider &amp;&amp; item.route&quot;&gt;
+                            &lt;a plexRipples class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;#&quot; [routerLink]&#x3D;&quot;item.route&quot; routerLinkActive&#x3D;&quot;active&quot; (click)&#x3D;&quot;open&#x3D;false&quot;&gt;
+                                &lt;plex-icon *ngIf&#x3D;&quot;item.icon&quot; type&#x3D;&quot;default&quot; [name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;
+                                {{item.label}}&lt;/a&gt;
+                            &lt;/ng-template&gt;
+                            &lt;!--Item con handler asociado--&gt;
+                            &lt;ng-template [ngIf]&#x3D;&quot;!item.divider &amp;&amp; item.handler&quot;&gt;
+                            &lt;a plexRipples class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;#&quot; (click)&#x3D;&quot;toggleMenu(); item.handler($event); false;&quot;&gt;
+                                &lt;plex-icon *ngIf&#x3D;&quot;item.icon&quot; type&#x3D;&quot;default&quot; [name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;
+                                {{item.label}}&lt;/a&gt;
+                            &lt;/ng-template&gt;
+                            &lt;!--Divider--&gt;
+                            &lt;ng-template [ngIf]&#x3D;&quot;item.divider&quot;&gt;
+                            &lt;div role&#x3D;&quot;separator&quot; class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+                            &lt;/ng-template&gt;
+                        &lt;/li&gt;
                     &lt;/ul&gt;
+                    &lt;div class&#x3D;&quot;dropdown-menu p-2&quot; [ngClass]&#x3D;&quot;{&#x27;dropdown-menu-right&#x27;: right, &#x27;dropdown-menu-left&#x27;: !right}&quot; *ngIf&#x3D;&quot;!items&quot;&gt;
+                        &lt;ng-content&gt;&lt;/ng-content&gt;
+                    &lt;/div&gt;
                 &lt;/div&gt;&#x60;,
 })
 export class PlexDropdownComponent {
