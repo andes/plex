@@ -61,7 +61,7 @@ plex-layout {
       }
 
     //  Calle izq. del sidebar en responsive
-      > div > div:nth-child(2) {
+      > div > div.focused:nth-child(2) {
         padding-left: 10px;
       } 
   }
