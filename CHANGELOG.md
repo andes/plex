@@ -1,3 +1,10 @@
+## [7.0.1](https://github.com/andes/plex/compare/v7.0.0...v7.0.1) (2020-09-22)
+
+
+### Bug Fixes
+
+* **hint:** mejoras visuales ([#228](https://github.com/andes/plex/issues/228)) ([a1e14a2](https://github.com/andes/plex/commit/a1e14a20fa3f91ddc966d1f1d4231dbfcb7fc7f5))
+
 # [7.0.0](https://github.com/andes/plex/compare/v6.16.0...v7.0.0) (2020-09-15)
 
 
