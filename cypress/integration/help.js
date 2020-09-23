@@ -11,7 +11,7 @@ context('help', () => {
 
     it('Abre y cierra help', () => {
 
-        const helpOpen = cy.get('plex-layout plex-help:first').plexButtonIcon('informacion');
+        const helpOpen = cy.get('plex-layout plex-help:first').plexButtonIcon('help');
         helpOpen.click();
         cy.get('.card-body:first').should('contain.text', 'Organización');
 
@@ -24,7 +24,7 @@ context('help', () => {
 
     it('Falla porque el botón está oculto por otro panel de plex-help', (done) => {
 
-        const helpOpen = cy.get('plex-layout plex-help:first').plexButtonIcon('informacion');
+        const helpOpen = cy.get('plex-layout plex-help:first').plexButtonIcon('help');
         helpOpen.click();
 
         const helpOpenFail = cy.get('plex-layout plex-help').eq(1).plexButtonIcon('help');
