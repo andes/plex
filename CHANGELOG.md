@@ -1,3 +1,10 @@
+## [7.0.2](https://github.com/andes/plex/compare/v7.0.1...v7.0.2) (2020-09-23)
+
+
+### Bug Fixes
+
+* **plex-modal:** se encapsula estilo de header ([#227](https://github.com/andes/plex/issues/227)) ([006c4fa](https://github.com/andes/plex/commit/006c4fac8c246aeb72d631b53652bcca0b310d45))
+
 ## [7.0.1](https://github.com/andes/plex/compare/v7.0.0...v7.0.1) (2020-09-22)
 
 
