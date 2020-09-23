@@ -17,6 +17,7 @@ export class ModalTemplateComponent {
         { id: 'continuidad', label: 'Intervención en el proceso de cuidado del paciente' }
     ];
     public contenido = '';
+    public email = '';
     public motivoSelected = null;
 
     @ViewChildren('modal') modalRefs: QueryList<PlexModalComponent>;

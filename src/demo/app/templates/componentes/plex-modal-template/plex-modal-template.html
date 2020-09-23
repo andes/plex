@@ -58,6 +58,9 @@
                     <form #formulario="ngForm" (close)="notificarAccion(false)">
                         <plex-radio name="motivos" [(ngModel)]="motivoSelected" [data]="motivosAccesoHuds">
                         </plex-radio>
+                        <plex-text email type="email" label="Ingrese su email" [(ngModel)]="email" name="email"
+                                   prefix="email">
+                        </plex-text>
                     </form>
                 </div>
             </main>
