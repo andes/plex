@@ -1,4 +1,4 @@
-import { Component, Input, Renderer2, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, Input, Renderer2, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'plex-help',
@@ -48,7 +48,7 @@ export class PlexHelpComponent {
 
     closed = true;
 
-    constructor(private renderer: Renderer2, private el: ElementRef) { }
+    constructor(private renderer: Renderer2) { }
 
     get content() {
         return (this.icon && this.icon.length > 0) || (this.tituloBoton && this.tituloBoton.length > 0);
