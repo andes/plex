@@ -1,42 +1,47 @@
 <plex-layout>
     <plex-layout-main>
+        <plex-title size="md" titulo="plex-select">
+            <plex-badge type="{{ formulario.valid ? 'success' : 'danger'}}" size="md">
+                Formulario {{ formulario.valid ? 'válido' : 'inválido' }}
+                <plex-icon size="sm" name="{{ formulario.valid ? 'check' : 'close' }}"></plex-icon>
+            </plex-badge>
+        </plex-title>
         <div class="row">
-            <div class="col">
-                <div class="row">
-                    <div class="col-md-6">
-                        <form #formulario="ngForm">
-                            <plex-select [(ngModel)]="modelo2.select" name="select1" (getData)="loadData($event)"
-                                         label="Select estático" [required]="true">
-                            </plex-select>
-                            <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmultiple"
-                                         (getData)="loadData($event)" label="Múltiple con llamada a la API"
-                                         [readonly]="modelo2.soloLectura" [required]="false">
-                            </plex-select>
-                            <plex-bool [(ngModel)]="modelo2.soloLectura" name="soloLectura" label="Sólo lectura">
-                            </plex-bool>
+            <div class="col-md-6">
+                <form #formulario="ngForm">
+                    <plex-bool type="slide" label="Select requerido" name="req" [(ngModel)]="modelo2.required">
+                    </plex-bool>
+                    <plex-select [(ngModel)]="modelo2.select" name="select1" (getData)="loadData($event)"
+                                 label="Select estático" [required]="modelo2.required">
+                    </plex-select>
+                    <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmultiple"
+                                 (getData)="loadData($event)" label="Múltiple con llamada a la API"
+                                 [readonly]="modelo2.soloLectura" placeholder="Ingrese un país">
+                    </plex-select>
+                    <plex-bool [(ngModel)]="modelo2.soloLectura" name="soloLectura" label="Sólo lectura">
+                    </plex-bool>
 
-                            <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmultiple-2"
-                                         (getData)="loadData($event)" label="plex-select disabled" [disabled]="true">
-                            </plex-select>
+                    <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmultiple-2"
+                                 (getData)="loadData($event)" label="plex-select disabled" [disabled]="true"
+                                 required="true" placeholder="deshabilitado">
+                    </plex-select>
 
-                        </form>
-                    </div>
-                    <div class="col-md-6">
-                        <label>Modelo</label>
-                        <pre>{{modelo2 | json}}</pre>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <plex-select [(ngModel)]="modelo1.select" [data]="opciones"
-                                     label-field="nombre + ' (' + continente + ')'" label="Seleccione un país">
-                        </plex-select>
-                    </div>
-                    <div class="col-md-6">
-                        <label>Modelo</label>
-                        <pre>{{modelo1 | json}}</pre>
-                    </div>
-                </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <label>Modelo</label>
+                <pre>{{modelo2 | json}}</pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <plex-select [(ngModel)]="modelo1.select" [data]="opciones"
+                             label-field="nombre + ' (' + continente + ')'" label="Seleccione un país">
+                </plex-select>
+            </div>
+            <div class="col-md-6">
+                <label>Modelo</label>
+                <pre>{{modelo1 | json}}</pre>
             </div>
         </div>
     </plex-layout-main>
