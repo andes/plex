@@ -568,3 +568,20 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
     transform: rotate(359deg);
   }
 }
+
+plex-select {
+  .search-icon-container {
+    position: relative;
+    .search-icon {
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      color: $dark-grey;
+      z-index: 100;
+      font-size: 0.9em;
+      &.disabled {
+        color: #ccc;
+      }
+    }
+  }
+}
