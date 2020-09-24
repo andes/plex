@@ -30,7 +30,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     }
 
     public hasDanger() {
-        return (this.control.dirty || this.control.touched) && !this.control.valid;
+        return (this.control.dirty || this.control.touched) && !this.control.valid && !this.control.disabled;
     }
 
     // Propiedades
