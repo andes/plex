@@ -36,7 +36,7 @@ context('template listado', () => {
 
         cy.eyesCheckWindow('accordion open');
 
-        cy.get('plex-help').plexButtonIcon('help-circle').click();
+        cy.get('plex-help').plexButtonIcon('help').click();
 
         cy.eyesCheckWindow('plex-help open');
 

@@ -6,7 +6,7 @@ import { PlexHelpComponent } from '../help/help.component';
     selector: 'div[nav-item]',
     template: `
         <ng-content select="plex-icon"></ng-content>
-        <plex-help [icon]="null" (close)="onClose()">
+        <plex-help class="no-icon" [icon]="null" (close)="onClose()">
             <div info>
                 <ng-content></ng-content>
             </div>
@@ -27,7 +27,7 @@ export class NavItemComponent {
     click() {
         if (!this.opened) {
             event.stopImmediatePropagation();
-            this.plexHelp.toogle();
+            this.plexHelp.toggle();
             this.opened = true;
         }
     }

@@ -3,45 +3,42 @@ import { Component, Input, Renderer2, Output, EventEmitter } from '@angular/core
 @Component({
     selector: 'plex-help',
     template: `
-    <div class="toggle-{{ type }}" [ngClass]="{'closed': closed, 'open': !closed}">
-        <plex-button *ngIf="!closed" type="danger" [size]="size" icon="close" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
-        <plex-button *ngIf="content && closed && !tituloBoton" type="info" [size]="size" title="{{ title }}" [icon]="type === 'info'? 'informacion' : 'help-circle'" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
-        <plex-button *ngIf="content && closed && tituloBoton" type="info" [size]="size" [label]="tituloBoton" (click)="toogle();$event.stopImmediatePropagation();"></plex-button>
-    </div>
-    <div class="card {{ type }}" [ngClass]="{'open': !closed}" *ngIf="type === 'help'" (click)="$event.stopImmediatePropagation();">
-        <ng-container *ngIf="!closed">
-            <div class="card-header">
-                <h5>{{ titulo }}</h5>
-            </div>
-            <div class="card-body">
-                <ng-content></ng-content>
-            </div>
-        </ng-container>
-    </div>
-    <ng-container *ngIf="!closed && type === 'info'">
-        <div class="jumbotron {{ type }}" [ngClass]="{'open': !closed}" (click)="$event.stopImmediatePropagation();">
-            <h1 class="display-6">{{ titulo }}</h1>
-            <p class="lead" *ngIf="subtitulo"><b>{{ subtitulo }}</b></p>
-            <ng-content select="[info]"></ng-content>
+    <plex-button class="btn-close" *ngIf="!closed" type="danger" [size]="size" icon="close" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>
+    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" type="info" [size]="size" [icon]="icon" (click)="toggle();$event.stopImmediatePropagation();">
+    </plex-button>
+    <plex-button class="btn-open" *ngIf="content && closed && tituloBoton" type="info" [size]="size" [label]="tituloBoton" (click)="toggle();$event.stopImmediatePropagation();">
+    </plex-button>
+    <div class="toggle-help" [ngClass]="{'closed': closed, 'open': !closed}">
+        <div class="card help" [ngClass]="{'open': !closed, 'full': cardSize === 'full', 'half': cardSize === 'half'}" (click)="$event.stopImmediatePropagation();">
+            <ng-container *ngIf="!closed">
+                <div class="card-body m-3">
+                    <plex-title *ngIf="titulo" size="sm" [titulo]="titulo"></plex-title>
+                    <h6 *ngIf="type === 'info' && subtitulo">{{ subtitulo }}</h6>
+                    <ng-content></ng-content>
+                </div>
+            </ng-container>
         </div>
-    </ng-container>
+    </div>
     `
 })
 export class PlexHelpComponent {
 
-    @Input() type: 'info' | 'help' = 'info';
 
     @Input() titulo = '';
 
     @Input() subtitulo: string;
 
-    @Input() size: 'sm' | 'md' | 'lg' = 'sm';
+    @Input() size: 'sm' | 'md' = 'sm';
+
+    @Input() cardSize: 'full' | 'half' = 'full';
 
     @Input() title: string;
 
+    @Input() type: 'info' | 'help' = 'help'; // deprecated
+
     @Input() tituloBoton = '';
 
-    @Input() icon: 'help-circle' | 'informacion' = 'help-circle';
+    @Input() icon = 'help';
 
     @Output() close = new EventEmitter();
 
@@ -57,15 +54,18 @@ export class PlexHelpComponent {
         return (this.icon && this.icon.length > 0) || (this.tituloBoton && this.tituloBoton.length > 0);
     }
 
-    public toogle() {
+    public toggle() {
+
         this.closed = !this.closed;
         if (!this.closed) {
+
             this.open.emit();
             this.unlisten = this.renderer.listen('document', 'click', (event) => {
-                this.toogle();
+                this.toggle();
                 this.unlisten();
             });
         } else {
+
             this.close.emit();
             if (this.unlisten) {
                 this.unlisten();

@@ -1,5 +1,28 @@
 <plex-layout main="8">
     <plex-layout-main>
+        <plex-title size="md" titulo="PLEX LIST">
+            <plex-help type="info">
+                <plex-list height="60%" (scrolled)="onScroll()" size="sm">
+                    <plex-heading>
+                        <b label>Datos importantes</b>
+                        <b label>Parentesco</b>
+                    </plex-heading>
+                    <plex-item *ngFor="let item of lista; let par = even" [selected]="item.selected"
+                               (click)="item.selected = !item.selected">
+                        <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
+                        <plex-icon name="pencil" size="18" type="warning"></plex-icon>
+                        <plex-label [titulo]="item.name" [tituloBold]="par">
+                        </plex-label>
+                        <plex-dropdown icon="dots-vertical" [right]="true" [items]="dropitems">
+                        </plex-dropdown>
+                        <plex-button type="warning" size="sm" icon="clock"></plex-button>
+                        <plex-button type="danger" size="sm" label="Eliminar" (click)="tModelFecha.fechaHora = null">
+                        </plex-button>
+                        <plex-badge type="danger">urgente</plex-badge>
+                    </plex-item>
+                </plex-list>
+            </plex-help>
+        </plex-title>
         <plex-list height="60%" (scrolled)="onScroll()" size="sm">
             <plex-heading>
                 <b label>Datos importantes</b>
@@ -55,6 +78,23 @@
         </plex-list>
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
+        <plex-title size="sm" titulo="Prueba con help">
+            <plex-help titulo="Información sobre este panel" subtitulo="A continuación los pasos a seguir">
+                <ol info class="list-group-flush">
+                    <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li>Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li>Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li>Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
+                        guardar
+                        una plantilla individual</li>
+                </ol>
+            </plex-help>
+        </plex-title>
         <plex-list size="sm">
             <plex-heading [sticky]="true">
                 <b label>1</b>

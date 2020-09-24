@@ -1,106 +1,104 @@
 plex-help {
-    $top-open: 21px;
+  $top-open: 21px;
+  min-width: 30px;
+  display: inline-block;
 
-    .card {
-        display: none;
-        border: 0; // reset
-        border-top: 1px solid darken($light-grey, 15%);
-        border-left: 1px solid darken($light-grey, 15%);
-        border-radius: 0.25rem;
-        box-shadow: 2px 2px 5px 0px $dark-grey;
+  &.no-icon {
+    min-width: 0px !important;
+    .btn-close {
+      display: none;
+    }
+    .card.full {
+      min-width: 50vw;
+      left: unset;
+      color: $dark-blue;
+      background: white;
+    }
+  }
 
-        &.open {
-            display: flex;
-            flex-direction: column;
-            width: auto;
-            height: auto;
-            background: white;
-            z-index: 999;
-            position: absolute;
-            right: 30px;
-            left: 30px;
-        }
-        .card-header {
-            height: 50px;
-        }
-        .card-body {
-            transition: all;
-            &.open {
-                height: auto;
-                .toggle-help {
-                    right: 60px;
-                }
-            }
-            &.closed {
-                height: 0px;
-            }
-        }
+  // Contenido del panel/card
+  .card {
+    display: none;
+    border: 0; // reset
+    border-top: 1px solid darken($light-grey, 15%);
+    border-left: 1px solid darken($light-grey, 15%);
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px 5px 0px $dark-grey;
+
+    &.open {
+      display: flex;
+      flex-direction: column;
+
+      max-height: fit-content;
+      background: var(--heading-background-color);
+
+      z-index: 999;
+      position: absolute;
+      right: 15px;
+      left: 15px;
     }
 
-    .toggle-help,
-    .toggle-info {
-        &.closed {
-            display: inline-block;
-            position: relative;
-            right: 0;
-        }
-        &.open {
-            plex-button {
-                z-index: 999;
-            }
-        }
-        plex-button {
-            position: relative;
-            top: 1px;
-            right: 0;
-            display: flex;
-            justify-content: flex-end;
-        }
+    &.full {
+      width: auto;
+      height: auto;
+      min-width: 90%;
     }
-    .toggle-help,
-    .toggle-info {
-        position: absolute;
-        right: 15px;
-        top: $top-open;
-        &.closed {
-            top: 0;
-        }
+    &.half {
+      width: 50%;
+      height: auto;
+      left: unset;
     }
-    .toggle-help {
-        position: initial;
-        display: inline-block;
-        // min-width: 42px;
+
+    // @Input() titulo:
+    .card-header {
+      height: 50px;
+    }
+
+    // @Input() subtitulo + ng-content:
+    .card-body {
+      transition: all;
+      &.open {
         height: auto;
-        &.open {
-            top: 0;
+        .toggle-help {
+          right: 60px;
         }
+      }
+      &.closed {
+        height: 0px;
+      }
+      .list-group-item {
+        background: inherit;
+      }
+    }
+  }
+
+  // Botón que abre/cierra
+  .toggle-help {
+    position: initial;
+    right: 15px;
+    top: $top-open;
+    display: inline-block;
+    margin-bottom: -10px;
+
+    &.closed {
+      display: inline-block;
+      position: relative;
+      top: 0;
+      right: 0;
+    }
+    &.open {
+      top: 0;
+      plex-button {
+        z-index: 999;
+      }
     }
 
-    .jumbotron {
-        padding: 15px 30px;
-        border-top: 1px solid darken($light-grey, 15%);
-        border-left: 1px solid darken($light-grey, 15%);
-        color: black;
-
-        plex-button {
-            position: absolute;
-            top: -1px;
-            right: 0px;
-        }
-        &.open {
-            position: absolute;
-            right: 15px;
-            top: $top-open;
-            z-index: 998;
-            width: auto;
-            border-radius: 0.25rem;
-            box-shadow: 2px 2px 5px 0px $dark-grey;
-            min-width: 41vw;
-            max-height: 69vh;
-            overflow-y: scroll;
-        }
-        &.closed {
-            height: 0px;
-        }
+    plex-button {
+      position: relative;
+      top: 1px;
+      right: 0;
+      display: flex;
+      justify-content: flex-end;
     }
+  }
 }

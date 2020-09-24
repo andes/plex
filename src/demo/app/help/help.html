@@ -3,7 +3,7 @@
 
         <plex-title titulo="plex-help (type ='help')">
             <plex-button size="sm" type="warning" label="acción sensible"></plex-button>
-            <plex-help type="help" titulo="Ayuda de este panel" size="sm" class="ml-1">
+            <plex-help type="info" titulo="Ayuda de este panel" size="sm">
                 <div class="ml-4 mb-4" *plHelp>
                     <label>Organización:</label>
                     prestacion.solicitud.organizacion.nombre
@@ -15,49 +15,76 @@
                 </div>
             </plex-help>
         </plex-title>
-        <p class="lead">El componente <em>plex-help, </em> en su tipología 'help' se emplea en aquellas situaciones en
-            las que consideramos necesario expandir
-            información para guiar al usuario sobre una acción u elemento que
-            cuya finalidad no se intuye por si misma.</p>
-        <plex-title size="sm" titulo="plex-help (size:'sm')" class="mb-4">
-            <plex-help type="help" titulo="size = sm" size="sm">
-                <div class="ml-4 mb-4">
-                    <label>Organización:</label>
-                    prestacion.solicitud.organizacion.nombre
-                </div>
-            </plex-help>
-        </plex-title>
-        <p>plex-help (size:'sm')</p>
-        <plex-title size="md" titulo="plex-help (size:'md')" class="mb-4">
-            <plex-help type="help" titulo="size = md" size="md">
-                <div class="ml-4 mb-4">
-                    <label>Organización:</label>
-                    prestacion.solicitud.organizacion.nombre
-                </div>
-            </plex-help>
-        </plex-title>
-        <p>plex-help (size:'md')</p>
+        <main role="main" class="inner">
+            <p class="lead">
+                El componente <em>plex-help</em> sirve como una ayuda más o menos amplia sobre un
+                módulo, pantalla o sección.
+            </p>
+            <ul>
+                <li class="list-item">En su tipología 'help', muestra un ícono de ayuda, sin subtítulo. Se usa como
+                    ayuda contextual
+                    de un panel o sección dentro de la pantalla.
+                </li>
+                <li class="list-item">En su tipología 'info', muestra un ícono de información, y opcionalmente puede
+                    mostrar un subtítulo. Se usa como un panel de información general, descriptiva de un módulo o
+                    pantalla.
+                </li>
+            </ul>
+            <hr>
 
+            <plex-title size="sm" titulo="plex-help (cardSize:'half')" class="mb-4">
+                <plex-badge type="info" size="sm">plex-help</plex-badge>
+                <plex-help titulo="size = sm, cardSize = half" size="sm" cardSize="half">
+                    <div class="ml-4 mb-4">
+                        <label>Organización:</label>
+                        prestacion.solicitud.organizacion.nombre
+                    </div>
+                </plex-help>
+            </plex-title>
+            <p>plex-help (cardSize:'half')</p>
+
+            <plex-title size="sm" titulo="plex-help" class="mb-4">
+                <plex-badge type="info" size="sm">plex-help</plex-badge>
+                <plex-help titulo="size = sm" size="sm">
+                    <div class="ml-4 mb-4">
+                        <label>Organización:</label>
+                        prestacion.solicitud.organizacion.nombre
+                    </div>
+                </plex-help>
+            </plex-title>
+            <p>plex-help (size:'sm')</p>
+
+            <plex-title size="sm" titulo="plex-help (cardSize:'half')" class="mb-4">
+                <plex-badge type="info" size="sm">plex-help</plex-badge>
+                <plex-help titulo="size = sm, cardSize = half" size="sm" cardSize="half">
+                    <div class="ml-4 mb-4">
+                        <label>Organización:</label>
+                        prestacion.solicitud.organizacion.nombre
+                    </div>
+                </plex-help>
+            </plex-title>
+            <p>plex-help (cardSize:'half')</p>
+
+        </main>
 
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
 
         <plex-title titulo="plex-help (type ='info')" size="sm">
             <plex-button size="sm" type="success" label="acción satisfactoria"></plex-button>
-            <plex-help type="info" class="ml-1" titulo="Información sobre este módulo"
-                       subtitulo="A continuación todas las opciones">
+            <plex-help titulo="Información sobre este panel" subtitulo="A continuación los pasos a seguir">
                 <ol info class="list-group-flush">
-                    <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
+                    <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
                         (acepta búsquedas
                         parciales)</li>
-                    <li class="list-group-item">Seleccioná el concepto al cual quieras agregar o modificar
+                    <li>Seleccioná el concepto al cual quieras agregar o modificar
                         plantillas</li>
-                    <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
-                    <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
+                    <li>Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li>Opcionalmente podés elegir seleccionar a todos los descendientes
                         del concepto.</li>
-                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <plex-icon
-                                   type="default" size="md" name="check"></plex-icon> para guardar una plantilla
-                        individual</li>
+                    <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
+                        guardar
+                        una plantilla individual</li>
                 </ol>
             </plex-help>
         </plex-title>
@@ -76,21 +103,13 @@
         </h6>
         <plex-title titulo="plex-help con botones" size="sm">
             <plex-button size="sm" type="danger" label="acción peligrosa"></plex-button>
-            <plex-help type="help" class="ml-1" titulo="Información sobre este módulo"
-                       subtitulo="A continuación todas las opciones">
-                <ol info class="list-group-flush">
-                    <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
-                        (acepta búsquedas
-                        parciales)</li>
-                    <li class="list-group-item">Seleccioná el concepto al cual quieras agregar o modificar
-                        plantillas</li>
-                    <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
-                    <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
-                        del concepto.</li>
-                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <plex-icon
-                                   type="default" size="md" name="check"></plex-icon> para guardar una plantilla
-                        individual</li>
-                </ol>
+            <plex-help titulo="Ayuda de este panel (invert automático)"
+                       subtitulo="En este contexto se espera un contenido mas bien breve:">
+                <p>
+                    &mdash;¿Hola? deme el contenido más breve que tenga.<br>
+                    &mdash; ...<br>
+                    &mdash; ¡No, no tan breve!
+                </p>
             </plex-help>
         </plex-title>
 
