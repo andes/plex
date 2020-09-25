@@ -1,7 +1,7 @@
 import { Component, Input, ContentChild, AfterContentInit, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs-compat/Subscription';
-import { PacienteService } from './../../demo/app/templates/service/paciente.service';
+import { BehaviorSubject } from 'rxjs';
 
 /**
  * ATENCION! SI NO SE ESTABLECE FOCO SE MANTIENE FUNCIONALIDAD ANTERIOR.
@@ -40,9 +40,10 @@ import { PacienteService } from './../../demo/app/templates/service/paciente.ser
                  [class.focused]="foco === 'sidebar'"
                  [class.not-focused]="foco && foco !== 'sidebar'">
                 <ng-content select="plex-layout-sidebar"></ng-content>
-                <span class="resizable-btn-wrapper" *ngIf="resizable === true" draggable="true">
-                    <plex-button size="sm" (dragover)="minimizar($event)" type="info" title="achicar encolumnado" icon="arrow-left"></plex-button>
-                    <plex-button size="sm" (dragover)="maximizar($event)" type="info" title="agrandar encolumnado" icon="arrow-right" ></plex-button>
+                <span *ngIf="resizable" class="resizable-btn-wrapper" [class.resizable]="resizable" draggable="true">
+                    <plex-button size="sm" (click)="expandir($event)" (dragover)="expandir($event)" type="link" icon="pico-izquierda"></plex-button>
+                    <hr class="divisor">
+                    <plex-button size="sm" (click)="contraer($event)" (dragover)="contraer($event)" type="link" icon="pico-derecha" ></plex-button>
                 </span>
                 </div>
         </div>
@@ -56,25 +57,24 @@ export class PlexLayoutComponent implements AfterContentInit, OnInit, OnDestroy 
     public maxcolumns = 12;
     @Input() main = 12;
 
-    valor: number;
-
     @ContentChild(RouterOutlet, { static: true }) routerOutlet: RouterOutlet;
 
     @Input() aspect = null;
-
     @Input() foco: 'main' | 'sidebar' = null;
 
+    // Sidebar expandible
+    @Input() resizable: boolean;
+    @Input() min: 2 | 3 | 4 = 3;
+    @Input() max: 6 | 7 | 8 | 9 | 10 = 6;
+    @Input() steps: 0 | 1 | 2 | 3 = 0;
+
+    public sidebarSize = this.maxcolumns - this.main;
 
     private subscription1: Subscription;
     private subscription2: Subscription;
 
-
-    constructor(private data: PacienteService) {
-
-        this.data.valorActual.subscribe(valor => this.valor = valor)
-
+    constructor() {
     }
-
 
     ngOnInit() {
         if (this.aspect) {
@@ -91,6 +91,7 @@ export class PlexLayoutComponent implements AfterContentInit, OnInit, OnDestroy 
             this.subscription2.unsubscribe();
         }
     }
+
     ngAfterContentInit() {
         // MODO MANUAL
         if (!this.aspect) { return; }
@@ -113,41 +114,26 @@ export class PlexLayoutComponent implements AfterContentInit, OnInit, OnDestroy 
         }
     }
 
-
-    // Resizable 
-    //sidebarSize: number;
-    @Input() resizable: boolean = true;
-    sidebarSize: number;
-
-    @Output() calcSidebar = new EventEmitter<number>();
-
-    // funcion en servicio PacienteService
-    calcularSidebar() {
-        this.sidebarSize = this.maxcolumns - this.main;
-        this.calcSidebar.emit(this.sidebarSize);
-        console.log(this.sidebarSize);
-    }
-
-    actualizarValor() {
-        this.data.cambiaValor(this.sidebarSize);
-        console.log(this.valor)
-    }
-
-    public maximizar(e) {
-        this.main++;
-        if (this.main > 11) {
-            this.main = 9;
-            this.calcularSidebar();
-            this.actualizarValor();
+    // Sidebar expandible
+    public contraer(steps) {
+        steps = this.steps;
+        if (this.steps > 0 && this.main < this.max && this.sidebarSize > this.min) {
+            this.main++;
+            this.main = this.main + this.steps - 1;
+        } else {
+            this.sidebarSize = this.min;
+            this.main = this.maxcolumns - this.sidebarSize;
         }
     }
 
-    public minimizar() {
-        if (this.main > 6) {
-            this.main = this.main - 1;
-            this.calcularSidebar();
-            this.actualizarValor();
+    public expandir(max) {
+        if (this.main > max) {
+            this.main = max;
+        }
+
+        /* define el valor maximo del sidebar */
+        if (this.sidebarSize = this.max) {
+            this.main = this.maxcolumns - this.sidebarSize;
         }
     }
-
 }

@@ -51,13 +51,43 @@ plex-layout {
             div[class^="col-"] {
                 transition: all 900ms ease;
                 
+                /* Botonera sidebar expandible */
                 span.resizable-btn-wrapper {
-                    display: flex;
-                    flex-direction: column;
+                    display: none;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
                     position: absolute;
-                    left: -1rem;
+                    left: -2.05rem;
                     top: calc(50vh - 5rem);
+                    background: $light-grey;
+                    box-shadow: 1px 1px 12px 3px $dark-grey;
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    border-radius: 50%;
+                    transform: scale(.6);
                     cursor: col-resize!important;
+                    opacity: .4;
+
+                    &.resizable {
+                        display: flex!important;
+                    }
+
+                    &:hover {
+                        opacity: 1;
+
+                        hr.divisor {
+                            height: 100vh;
+                            transition: height 1s ease;
+                            border: solid 2px $blue;
+                        }
+                    }
+                    
+                    hr.divisor {
+                        height: 2.5rem;
+                        border: dashed 1px $dark-blue;
+                        position: absolute;
+                    }
                 }
             }
         }

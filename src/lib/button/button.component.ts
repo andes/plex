@@ -1,6 +1,5 @@
 import { NgForm } from '@angular/forms';
 import { Component, Input, HostBinding, HostListener, Optional } from '@angular/core';
-import { PacienteService } from './../../demo/app/templates/service/paciente.service';
 
 @Component({
     selector: 'plex-button',
@@ -27,7 +26,7 @@ export class PlexButtonComponent {
     @Input() label: string;
     @Input() icon: string;
     @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default';
-    @Input() size: 'lg' | 'sm' | 'block';
+    @Input() size: 'md' | 'lg' | 'sm' | 'block' = 'md';
     @Input() validateForm: boolean | NgForm;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
     /**
@@ -35,27 +34,10 @@ export class PlexButtonComponent {
      */
     @Input() @HostBinding('style.pointer-events') pointerEvents = 'none';
 
-    // Mapping iconografico
-    main = 12;
-    @Input() sidebarSize: number;
-    valor: number;
-
-    public svgs = false;
-    //public sidebarSize = window.innerWidth;
-
-    constructor(private data: PacienteService, @Optional() private parentForm?: NgForm) {
+    constructor(@Optional() private parentForm?: NgForm) {
         this.type = 'default';
         this.disabled = false;
-        this.size = null;
-
-        this.data.valorActual.subscribe(valor => this.valor = valor)
     }
-
-    valueSidebar() {
-        //this.sidebarSize = $event;
-        console.log(this.sidebarSize)
-    }
-
 
     @HostListener('click', ['event'])
     clickHandler() {
