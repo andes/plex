@@ -836,7 +836,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;toggle-{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;closed&#x27;:&nbsp;closed,&nbsp;&#x27;open&#x27;:&nbsp;!closed}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;!closed&quot;&nbsp;type&#x3D;&quot;danger&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;close&quot;&nbsp;(click)&#x3D;&quot;toogle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;content&nbsp;&amp;&amp;&nbsp;closed&nbsp;&amp;&amp;&nbsp;!tituloBoton&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;title&#x3D;&quot;{{&nbsp;title&nbsp;}}&quot;&nbsp;[icon]&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;info&#x27;?&nbsp;&#x27;informacion&#x27;&nbsp;:&nbsp;&#x27;help-circle&#x27;&quot;&nbsp;(click)&#x3D;&quot;toogle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;content&nbsp;&amp;&amp;&nbsp;closed&nbsp;&amp;&amp;&nbsp;tituloBoton&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[label]&#x3D;&quot;tituloBoton&quot;&nbsp;(click)&#x3D;&quot;toogle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;<br>&lt;/div&gt;<br>&lt;div&nbsp;class&#x3D;&quot;card&nbsp;{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;open&#x27;:&nbsp;!closed}&quot;&nbsp;*ngIf&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;help&#x27;&quot;&nbsp;(click)&#x3D;&quot;$event.stopImmediatePropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngIf&#x3D;&quot;!closed&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card-header&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h5&gt;{{&nbsp;titulo&nbsp;}}&lt;/h5&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card-body&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&lt;/div&gt;<br>&lt;ng-container&nbsp;*ngIf&#x3D;&quot;!closed&nbsp;&amp;&amp;&nbsp;type&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;info&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;jumbotron&nbsp;{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;open&#x27;:&nbsp;!closed}&quot;&nbsp;(click)&#x3D;&quot;$event.stopImmediatePropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&nbsp;class&#x3D;&quot;display-6&quot;&gt;{{&nbsp;titulo&nbsp;}}&lt;/h1&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class&#x3D;&quot;lead&quot;&nbsp;*ngIf&#x3D;&quot;subtitulo&quot;&gt;&lt;b&gt;{{&nbsp;subtitulo&nbsp;}}&lt;/b&gt;&lt;/p&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[info]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/ng-container&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;plex-button&nbsp;class&#x3D;&quot;btn-close&quot;&nbsp;*ngIf&#x3D;&quot;!closed&quot;&nbsp;type&#x3D;&quot;danger&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;close&quot;&nbsp;(click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;<br>&lt;plex-button&nbsp;class&#x3D;&quot;btn-open&quot;&nbsp;*ngIf&#x3D;&quot;content&nbsp;&amp;&amp;&nbsp;closed&nbsp;&amp;&amp;&nbsp;!tituloBoton&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[icon]&#x3D;&quot;icon&quot;&nbsp;(click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;<br>&lt;/plex-button&gt;<br>&lt;plex-button&nbsp;class&#x3D;&quot;btn-open&quot;&nbsp;*ngIf&#x3D;&quot;content&nbsp;&amp;&amp;&nbsp;closed&nbsp;&amp;&amp;&nbsp;tituloBoton&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[label]&#x3D;&quot;tituloBoton&quot;&nbsp;(click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;<br>&lt;/plex-button&gt;<br>&lt;div&nbsp;class&#x3D;&quot;toggle-help&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;closed&#x27;:&nbsp;closed,&nbsp;&#x27;open&#x27;:&nbsp;!closed}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card&nbsp;help&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;open&#x27;:&nbsp;!closed,&nbsp;&#x27;full&#x27;:&nbsp;cardSize&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;full&#x27;,&nbsp;&#x27;half&#x27;:&nbsp;cardSize&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;half&#x27;}&quot;&nbsp;(click)&#x3D;&quot;$event.stopImmediatePropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngIf&#x3D;&quot;!closed&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card-body&nbsp;m-3&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-title&nbsp;*ngIf&#x3D;&quot;titulo&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;[titulo]&#x3D;&quot;titulo&quot;&gt;&lt;/plex-title&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h6&nbsp;*ngIf&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;info&#x27;&nbsp;&amp;&amp;&nbsp;subtitulo&quot;&gt;{{&nbsp;subtitulo&nbsp;}}&lt;/h6&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -851,15 +851,29 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>icon</code>
+                            <code>cardSize</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>&quot;help-circle&quot; | &quot;informacion&quot;</code>
+                                <em>Type:</em>    <code>&quot;full&quot; | &quot;half&quot;</code>
 
                               </p>
                             <p>
-                              <em>Default value: </em><code>help-circle</code>
+                              <em>Default value: </em><code>full</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>icon</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>help</code>
                             </p>
                         </td>
                     </tr>
@@ -873,7 +887,7 @@
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</code>
+                                <em>Type:</em>    <code>&quot;sm&quot; | &quot;md&quot;</code>
 
                               </p>
                             <p>
@@ -947,7 +961,7 @@
 
                               </p>
                             <p>
-                              <em>Default value: </em><code>info</code>
+                              <em>Default value: </em><code>help</code>
                             </p>
                         </td>
                     </tr>
@@ -1005,7 +1019,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> toogle</b>
+                            <b><span class="modifier">Public</span> toggle</b>
                         </td>
                     </tr>
     
@@ -1014,7 +1028,7 @@
                                 <span class="modifier-icon method fa fa-play circle">
                                     <span class="fa fa-circle"></span>
                                 </span>
-                            <code>toogle()</code>
+                            <code>toggle()</code>
                         </td>
                     </tr>
     
@@ -1090,45 +1104,42 @@
 @Component({
     selector: &#x27;plex-help&#x27;,
     template: &#x60;
-    &lt;div class&#x3D;&quot;toggle-{{ type }}&quot; [ngClass]&#x3D;&quot;{&#x27;closed&#x27;: closed, &#x27;open&#x27;: !closed}&quot;&gt;
-        &lt;plex-button *ngIf&#x3D;&quot;!closed&quot; type&#x3D;&quot;danger&quot; [size]&#x3D;&quot;size&quot; icon&#x3D;&quot;close&quot; (click)&#x3D;&quot;toogle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;
-        &lt;plex-button *ngIf&#x3D;&quot;content &amp;&amp; closed &amp;&amp; !tituloBoton&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; title&#x3D;&quot;{{ title }}&quot; [icon]&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;info&#x27;? &#x27;informacion&#x27; : &#x27;help-circle&#x27;&quot; (click)&#x3D;&quot;toogle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;
-        &lt;plex-button *ngIf&#x3D;&quot;content &amp;&amp; closed &amp;&amp; tituloBoton&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; [label]&#x3D;&quot;tituloBoton&quot; (click)&#x3D;&quot;toogle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;card {{ type }}&quot; [ngClass]&#x3D;&quot;{&#x27;open&#x27;: !closed}&quot; *ngIf&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;help&#x27;&quot; (click)&#x3D;&quot;$event.stopImmediatePropagation();&quot;&gt;
-        &lt;ng-container *ngIf&#x3D;&quot;!closed&quot;&gt;
-            &lt;div class&#x3D;&quot;card-header&quot;&gt;
-                &lt;h5&gt;{{ titulo }}&lt;/h5&gt;
-            &lt;/div&gt;
-            &lt;div class&#x3D;&quot;card-body&quot;&gt;
-                &lt;ng-content&gt;&lt;/ng-content&gt;
-            &lt;/div&gt;
-        &lt;/ng-container&gt;
-    &lt;/div&gt;
-    &lt;ng-container *ngIf&#x3D;&quot;!closed &amp;&amp; type &#x3D;&#x3D;&#x3D; &#x27;info&#x27;&quot;&gt;
-        &lt;div class&#x3D;&quot;jumbotron {{ type }}&quot; [ngClass]&#x3D;&quot;{&#x27;open&#x27;: !closed}&quot; (click)&#x3D;&quot;$event.stopImmediatePropagation();&quot;&gt;
-            &lt;h1 class&#x3D;&quot;display-6&quot;&gt;{{ titulo }}&lt;/h1&gt;
-            &lt;p class&#x3D;&quot;lead&quot; *ngIf&#x3D;&quot;subtitulo&quot;&gt;&lt;b&gt;{{ subtitulo }}&lt;/b&gt;&lt;/p&gt;
-            &lt;ng-content select&#x3D;&quot;[info]&quot;&gt;&lt;/ng-content&gt;
+    &lt;plex-button class&#x3D;&quot;btn-close&quot; *ngIf&#x3D;&quot;!closed&quot; type&#x3D;&quot;danger&quot; [size]&#x3D;&quot;size&quot; icon&#x3D;&quot;close&quot; (click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;
+    &lt;plex-button class&#x3D;&quot;btn-open&quot; *ngIf&#x3D;&quot;content &amp;&amp; closed &amp;&amp; !tituloBoton&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; [icon]&#x3D;&quot;icon&quot; (click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;
+    &lt;/plex-button&gt;
+    &lt;plex-button class&#x3D;&quot;btn-open&quot; *ngIf&#x3D;&quot;content &amp;&amp; closed &amp;&amp; tituloBoton&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; [label]&#x3D;&quot;tituloBoton&quot; (click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;
+    &lt;/plex-button&gt;
+    &lt;div class&#x3D;&quot;toggle-help&quot; [ngClass]&#x3D;&quot;{&#x27;closed&#x27;: closed, &#x27;open&#x27;: !closed}&quot;&gt;
+        &lt;div class&#x3D;&quot;card help&quot; [ngClass]&#x3D;&quot;{&#x27;open&#x27;: !closed, &#x27;full&#x27;: cardSize &#x3D;&#x3D;&#x3D; &#x27;full&#x27;, &#x27;half&#x27;: cardSize &#x3D;&#x3D;&#x3D; &#x27;half&#x27;}&quot; (click)&#x3D;&quot;$event.stopImmediatePropagation();&quot;&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;!closed&quot;&gt;
+                &lt;div class&#x3D;&quot;card-body m-3&quot;&gt;
+                    &lt;plex-title *ngIf&#x3D;&quot;titulo&quot; size&#x3D;&quot;sm&quot; [titulo]&#x3D;&quot;titulo&quot;&gt;&lt;/plex-title&gt;
+                    &lt;h6 *ngIf&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;info&#x27; &amp;&amp; subtitulo&quot;&gt;{{ subtitulo }}&lt;/h6&gt;
+                    &lt;ng-content&gt;&lt;/ng-content&gt;
+                &lt;/div&gt;
+            &lt;/ng-container&gt;
         &lt;/div&gt;
-    &lt;/ng-container&gt;
+    &lt;/div&gt;
     &#x60;
 })
 export class PlexHelpComponent {
 
-    @Input() type: &#x27;info&#x27; | &#x27;help&#x27; &#x3D; &#x27;info&#x27;;
 
     @Input() titulo &#x3D; &#x27;&#x27;;
 
     @Input() subtitulo: string;
 
-    @Input() size: &#x27;sm&#x27; | &#x27;md&#x27; | &#x27;lg&#x27; &#x3D; &#x27;sm&#x27;;
+    @Input() size: &#x27;sm&#x27; | &#x27;md&#x27; &#x3D; &#x27;sm&#x27;;
+
+    @Input() cardSize: &#x27;full&#x27; | &#x27;half&#x27; &#x3D; &#x27;full&#x27;;
 
     @Input() title: string;
 
+    @Input() type: &#x27;info&#x27; | &#x27;help&#x27; &#x3D; &#x27;help&#x27;; // deprecated
+
     @Input() tituloBoton &#x3D; &#x27;&#x27;;
 
-    @Input() icon: &#x27;help-circle&#x27; | &#x27;informacion&#x27; &#x3D; &#x27;help-circle&#x27;;
+    @Input() icon &#x3D; &#x27;help&#x27;;
 
     @Output() close &#x3D; new EventEmitter();
 
@@ -1144,15 +1155,18 @@ export class PlexHelpComponent {
         return (this.icon &amp;&amp; this.icon.length &gt; 0) || (this.tituloBoton &amp;&amp; this.tituloBoton.length &gt; 0);
     }
 
-    public toogle() {
+    public toggle() {
+
         this.closed &#x3D; !this.closed;
         if (!this.closed) {
+
             this.open.emit();
             this.unlisten &#x3D; this.renderer.listen(&#x27;document&#x27;, &#x27;click&#x27;, (event) &#x3D;&gt; {
-                this.toogle();
+                this.toggle();
                 this.unlisten();
             });
         } else {
+
             this.close.emit();
             if (this.unlisten) {
                 this.unlisten();

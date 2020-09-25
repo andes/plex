@@ -836,7 +836,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&lt;plex-help&nbsp;[icon]&#x3D;&quot;null&quot;&nbsp;(close)&#x3D;&quot;onClose()&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;info&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/plex-help&gt;<br><br><br></code></td>
+                <td class="col-md-9"><code>&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&lt;plex-help&nbsp;class&#x3D;&quot;no-icon&quot;&nbsp;[icon]&#x3D;&quot;null&quot;&nbsp;(close)&#x3D;&quot;onClose()&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;info&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/plex-help&gt;<br><br><br></code></td>
             </tr>
 
 
@@ -968,7 +968,7 @@ import { PlexHelpComponent } from &#x27;../help/help.component&#x27;;
     selector: &#x27;div[nav-item]&#x27;,
     template: &#x60;
         &lt;ng-content select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;
-        &lt;plex-help [icon]&#x3D;&quot;null&quot; (close)&#x3D;&quot;onClose()&quot;&gt;
+        &lt;plex-help class&#x3D;&quot;no-icon&quot; [icon]&#x3D;&quot;null&quot; (close)&#x3D;&quot;onClose()&quot;&gt;
             &lt;div info&gt;
                 &lt;ng-content&gt;&lt;/ng-content&gt;
             &lt;/div&gt;
@@ -989,7 +989,7 @@ export class NavItemComponent {
     click() {
         if (!this.opened) {
             event.stopImmediatePropagation();
-            this.plexHelp.toogle();
+            this.plexHelp.toggle();
             this.opened &#x3D; true;
         }
     }

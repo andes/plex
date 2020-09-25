@@ -836,7 +836,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;section&nbsp;class&#x3D;&quot;hidden&quot;&nbsp;[class.desplegado]&#x3D;&quot;desplegado&quot;&nbsp;responsive&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;class&#x3D;&quot;btn-toogle&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;*ngIf&#x3D;&quot;hasCollapse&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[icon]&#x3D;&quot;!desplegado&nbsp;?&nbsp;&#x27;chevron-down&#x27;&nbsp;:&nbsp;&#x27;chevron-up&#x27;&quot;&nbsp;(click)&#x3D;&quot;toogle()&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[collapse]&quot;&gt;&lt;/ng-content&gt;<br>&lt;/section&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;section&nbsp;class&#x3D;&quot;hidden&quot;&nbsp;[class.desplegado]&#x3D;&quot;desplegado&quot;&nbsp;responsive&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;class&#x3D;&quot;btn-toggle&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;*ngIf&#x3D;&quot;hasCollapse&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[icon]&#x3D;&quot;!desplegado&nbsp;?&nbsp;&#x27;chevron-down&#x27;&nbsp;:&nbsp;&#x27;chevron-up&#x27;&quot;&nbsp;(click)&#x3D;&quot;toggle()&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[collapse]&quot;&gt;&lt;/ng-content&gt;<br>&lt;/section&gt;<br></code></td>
             </tr>
 
 
@@ -883,13 +883,13 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> toogle</b>
+                            <b> toggle</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-    <code>toogle()</code>
+    <code>toggle()</code>
                         </td>
                     </tr>
     
@@ -957,8 +957,8 @@ import { Plex } from &#x27;../core/service&#x27;;
     selector: &#x27;plex-wrapper&#x27;,
     template: &#x60;
     &lt;section class&#x3D;&quot;hidden&quot; [class.desplegado]&#x3D;&quot;desplegado&quot; responsive&gt;
-        &lt;plex-button class&#x3D;&quot;btn-toogle&quot; type&#x3D;&quot;info&quot; size&#x3D;&quot;sm&quot; *ngIf&#x3D;&quot;hasCollapse&quot;
-            [icon]&#x3D;&quot;!desplegado ? &#x27;chevron-down&#x27; : &#x27;chevron-up&#x27;&quot; (click)&#x3D;&quot;toogle()&quot;&gt;
+        &lt;plex-button class&#x3D;&quot;btn-toggle&quot; type&#x3D;&quot;info&quot; size&#x3D;&quot;sm&quot; *ngIf&#x3D;&quot;hasCollapse&quot;
+            [icon]&#x3D;&quot;!desplegado ? &#x27;chevron-down&#x27; : &#x27;chevron-up&#x27;&quot; (click)&#x3D;&quot;toggle()&quot;&gt;
         &lt;/plex-button&gt;
         &lt;ng-content&gt;&lt;/ng-content&gt;
         &lt;ng-content select&#x3D;&quot;[collapse]&quot;&gt;&lt;/ng-content&gt;
@@ -986,7 +986,7 @@ export class PlexWrapperComponent implements AfterViewInit {
         this.ref.detectChanges();
     }
 
-    toogle() {
+    toggle() {
         this.desplegado &#x3D; !this.desplegado;
         this.change.emit(this.desplegado);
     }

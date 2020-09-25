@@ -836,7 +836,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;plex-box&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;plex-box-invert&#x27;:&nbsp;type&nbsp;&#x3D;&#x3D;&nbsp;&#x27;invert&#x27;}&quot;&gt;<br>&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;header&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-title[main]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;plex-box-content&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;plex-box&quot;&nbsp;[class.plex-box-invert]&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&nbsp;&#x27;invert&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;header&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-title[main]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;#content&nbsp;class&#x3D;&quot;plex-box-content&quot;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -867,7 +867,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor()</code>
+                            <code>constructor(render: Renderer2)</code>
                         </td>
                     </tr>
     
@@ -875,28 +875,117 @@
             </table>
     </section>
 
+    <section>
+        <h3 id="methods">Methods</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> checkScroll</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>checkScroll()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> onResize</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>onResize()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
+    <section>
+        <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> content</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>content:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input, ElementRef, AfterViewInit, HostListener, Renderer2, ViewChild } from &#x27;@angular/core&#x27;;
 
 @Component({
     selector: &#x27;plex-layout-main&#x27;,
     template: &#x60;
-        &lt;div class&#x3D;&quot;plex-box&quot; [ngClass]&#x3D;&quot;{&#x27;plex-box-invert&#x27;: type &#x3D;&#x3D; &#x27;invert&#x27;}&quot;&gt;
-          &lt;ng-content select&#x3D;&quot;header&quot;&gt;&lt;/ng-content&gt;
-          &lt;ng-content select&#x3D;&quot;plex-title[main]&quot;&gt;&lt;/ng-content&gt;
-          &lt;div class&#x3D;&quot;plex-box-content&quot;&gt;
-              &lt;ng-content&gt;&lt;/ng-content&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;plex-box&quot; [class.plex-box-invert]&#x3D;&quot;type &#x3D;&#x3D; &#x27;invert&#x27;&quot;&gt;
+            &lt;ng-content select&#x3D;&quot;header&quot;&gt;&lt;/ng-content&gt;
+            &lt;ng-content select&#x3D;&quot;plex-title[main]&quot;&gt;&lt;/ng-content&gt;
+            &lt;div #content class&#x3D;&quot;plex-box-content&quot; &gt;
+                &lt;ng-content&gt;&lt;/ng-content&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
     &#x60;,
 })
-export class PlexLayoutMainComponent {
-    @Input() type &#x3D; &#x27;&#x27;;
-    constructor() {
+export class PlexLayoutMainComponent implements AfterViewInit {
+    @ViewChild(&#x27;content&#x27;, { read: ElementRef, static: false }) content: ElementRef;
 
+    @Input() type &#x3D; &#x27;&#x27;;
+
+    constructor(private render: Renderer2) {
     }
+
+    ngAfterViewInit() {
+        this.checkScroll();
+    }
+
+    checkScroll() {
+        if (this.content.nativeElement.scrollHeight &gt; this.content.nativeElement.clientHeight) {
+            this.render.addClass(this.content.nativeElement, &#x27;scrolbar&#x27;);
+        } else {
+            this.render.removeClass(this.content.nativeElement, &#x27;scrolbar&#x27;);
+        }
+    }
+
+    @HostListener(&#x27;window:resize&#x27;, [&#x27;event&#x27;])
+    onResize() {
+        this.checkScroll();
+    }
+
 }
 </code></pre>
         </div>
