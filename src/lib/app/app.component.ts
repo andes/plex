@@ -4,7 +4,7 @@ import { Plex } from './../core/service';
 @Component({
     selector: 'plex-app',
     template: ` <!--Navigation Bar-->
-                    <nav [hidden]="!plex.navbarVisible" class="navbar-inverse fixed-top bg-{{type}}">
+                    <nav [hidden]="!plex.navbarVisible" class="navbar-inverse fixed-top bg-{{type}}" responsive>
 
                         <div class="navbar-container">
                             <ng-content select="[navIcon]"></ng-content>
@@ -12,7 +12,7 @@ import { Plex } from './../core/service';
                             <div class="menu-item">
                                 <ng-template #menuItem></ng-template>
                             </div>
-                            <div class="title hidden-md-down">
+                            <div class="title">
                                 <ng-container *ngFor="let item of plex.title; let last = last">
                                     <a *ngIf="item.route" [routerLink]="item.route">{{item.name}}</a>
                                     <span *ngIf="!item.route">{{item.name}}</span>

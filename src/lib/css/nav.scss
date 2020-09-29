@@ -24,6 +24,34 @@ nav {
     height: 50px;
   }
 
+  .loader {
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+
+    .line-loader:before {
+      background: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  .menu-item {
+    float: left;
+  }
+
+  .title {
+    min-width: 50vw;
+    font-size: 1.4em;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-left: 0.5em;
+    margin-top: 0.15em;
+
+    a {
+      color: white;
+    }
+  }
+
   .actions {
     position: absolute;
     right: 0;
@@ -66,25 +94,6 @@ nav {
           top: unset !important;
         }
       }
-    }
-
-    > div.action.hover {
-      background: $dark-blue;
-    }
-
-    > div.action:hover {
-      background: $dark-blue;
-      cursor: pointer;
-
-      .popover {
-        visibility: visible;
-        opacity: 1;
-      }
-    }
-
-    > div.action:focus {
-      outline: none;
-      background: $dark-blue;
     }
 
     // User info
@@ -146,31 +155,66 @@ nav {
     }
   }
 
-  .loader {
-    width: 100vw;
-    position: absolute;
-    bottom: 0;
+  > div.action:focus {
+    outline: none;
+    background: $dark-blue;
+  }
 
-    .line-loader:before {
-      background: rgba(255, 255, 255, 0.6);
+  // User info
+  .userinfo {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    line-height: 15px;
+
+    span:last-child {
+      font-size: 0.7em;
     }
   }
 
-  .menu-item {
-    float: left;
-  }
+  .dropdown .dropdown-menu {
+    max-height: calc(100vh - 64px);
+    overflow-y: scroll;
+    padding-right: 10px;
 
-  .title {
-    min-width: 50vw;
-    font-size: 1.4em;
-    color: white;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-left: 0.5em;
-    margin-top: 0.15em;
+    li {
+      line-height: 1.35;
+    }
 
-    a {
-      color: white;
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #00a8e0;
+      border: 0;
+      border-radius: 0;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: $dark-blue;
+    }
+
+    &::-webkit-scrollbar-thumb:active {
+      background: $dark-blue;
+    }
+
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-track:active,
+    &::-webkit-scrollbar-track:hover {
+      background: $light-grey;
+      border: 0;
+      border-radius: 0;
+    }
+
+    &::-webkit-scrollbar-corner {
+      background: transparent;
     }
   }
 }

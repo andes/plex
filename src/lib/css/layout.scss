@@ -1,139 +1,155 @@
 // Html
 
 html {
-  height: 100% !important;
+    height: 100% !important;
 }
 
 body {
-  font-size: $font-size-sm;
+    font-size: $font-size-sm;
 }
 // Main container
 .content {
-  margin-left: ($grid-gutter-width-base / 3);
-  margin-right: ($grid-gutter-width-base / 2);
-  // height: 100%;
+    margin-left: ($grid-gutter-width-base / 3);
+    margin-right: ($grid-gutter-width-base / 2);
+    // height: 100%;
 
-  > *:not(router-outlet) {
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-  }
+    > *:not(router-outlet) {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
 
-  &.nav-top-margin {
-    height: calc(100vh - 55px) !important;
-    margin-top: 55px;
-  }
-  &.nav-top-no-margin {
-    height: calc(100vh - 10px);
-    margin-top: 10px;
-  }
+    &.nav-top-margin {
+        height: calc(100vh - 55px) !important;
+        margin-top: 55px;
+    }
+    &.nav-top-no-margin {
+        height: calc(100vh - 10px);
+        margin-top: 10px;
+    }
 }
 
 .nav-top {
-  position: relative;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1030;
-  height: var(--nav-bar-height);
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    height: var(--nav-bar-height);
 }
 
-// Plex Layout
-.plex-layout,
-plex-layout {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-  --heading-background-color: #f2f2f2;
- 
-  .mat-checkbox-inner-container {
-    background: white!important;
-  } 
+plex-app:not(.size-sm) {
+    // Plex Layout
+    .plex-layout,
+    plex-layout {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+        --heading-background-color: #f2f2f2;
+        .mat-checkbox-inner-container {
+            background: white !important;
+        }
 
-  section.size-sm {
-      .focused {
-          flex: 0 0 100%;
-          max-width: 100%;
-      }
+        section.size-sm {
+            .focused {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
 
-      .not-focused {
-          display: none;
-      }
+            .not-focused {
+                display: none;
+            }
 
-    //  Calle izq. del sidebar en responsive
-      > div > div:nth-child(2) {
-        padding-left: 10px;
-      } 
-  }
+            //  Calle izq. del sidebar en responsive
+            > div > div:nth-child(2) {
+                padding-left: 10px;
+            }
+        }
 
-  // Footer (se ubica fijo abajo de la pantalla)
-   > plex-layout-footer,
-  > footer {
-    margin-bottom: ($grid-gutter-width-base / 3);
-    padding: ($grid-gutter-width-base / 3);
-    background: white;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  }
+        // Footer (se ubica fijo abajo de la pantalla)
+        > plex-layout-footer,
+        > footer {
+            margin-bottom: ($grid-gutter-width-base / 3);
+            padding: ($grid-gutter-width-base / 3);
+            background: white;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
 
-  > footer[type='invert'] {
-    background: $dark-blue;
-    color: white;
-  }
+        > footer[type="invert"] {
+            background: $dark-blue;
+            color: white;
+        }
 
-  > section,
-  > plex-layout {
-    min-height: 0;
-    flex: 1; // Expande a todo el alto del contenedor
-    margin-bottom: ($grid-gutter-width-base / 3);
+        > section,
+        > plex-layout {
+            min-height: 0;
+            flex: 1; // Expande a todo el alto del contenedor
+            margin-bottom: ($grid-gutter-width-base / 3);
 
-    > .row:first-child {
-      height: 100%;
+            > .row:first-child {
+                height: 100%;
 
-      > [class^="col-"]:first-child,
-      > .col:first-child {
-        padding-right: ($grid-gutter-width-base / 3) !important;
-      }
+                > [class^="col-"]:first-child,
+                > .col:first-child {
+                    padding-right: ($grid-gutter-width-base / 3) !important;
+                }
 
-      > [class^="col-"]:only-child,
-      > .col:only-child {
-        padding-right: ($grid-gutter-width-base / 2) !important;
-      }
+                > [class^="col-"]:only-child,
+                > .col:only-child {
+                    padding-right: ($grid-gutter-width-base / 2) !important;
+                }
+            }
+
+            > .row > .col-12:only-child {
+                plex-layout-main {
+                    .plex-box {
+                        margin-right: -5px !important;
+                    }
+                }
+            }
+        }
+        > section,
+        > plex-layout {
+            > div > div:nth-child(2) {
+                padding-right: ($grid-gutter-width-base / 3) !important;
+                padding-left: 0px;
+            }
+        }
+        > plex-layout-footer,
+        > footer {
+            margin-right: -5px;
+            .row {
+                padding-right: 0px;
+                padding-left: 0px;
+            }
+        }
+    }
+}
+
+// Responsive
+plex-app.size-sm {
+    // Se da mismo padding que a la izquierda
+    [class^="col-"]:only-child {
+        padding-right: 10px;
     }
 
-      > .row
-      > .col-12:only-child {
-        plex-layout-main {
-          .plex-box {
-            margin-right: -5px !important;
-          }
-        }
-      }
-  }
-  > section,
-  > plex-layout {
-    > div > div:nth-child(2) {
-      padding-right:  ($grid-gutter-width-base / 3) !important;
-      padding-left: 0px;
-    } 
-  }
-  plex-layout-footer,
-  footer {
-    margin-right: -5px;
-      .row {
-        padding-right: 0px;
-        padding-left: 0px;
-      }
-  } 
+    // Se quita padding a la derecha
+    .plex-box-content {
+        padding-right: 0;
+    }
+    // Se quita scrollbar de Andes
+    ::-webkit-scrollbar {
+        width: 0 !important;
+    }
 }
 
 // Compatibiidad con layout viejo
 plex-box {
-  .plex-box, plex-box > DIV {
-    margin-right: -5px;
-  }
+    .plex-box,
+    plex-box > DIV {
+        margin-right: -5px;
+    }
 }
-
-
 
 // Page Title & Subtitle
 .page-title {
@@ -157,4 +173,3 @@ plex-box {
         flex-grow: 1;
     }
 }
- 
