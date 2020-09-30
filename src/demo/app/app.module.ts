@@ -35,6 +35,7 @@ import { RibbonDemoComponent } from './ribbon/ribbon.component';
 import { PhoneDemoComponent } from './phone/phone.component';
 import { DropdownDemoComponent } from './dropdown/dropdown.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
+import { TemplateInicioComponent } from './templates/template-inicio';
 import { TemplateFormComponent } from './templates/template-form';
 import { TemplateVisualizacionComponent } from './templates/template-visualizacion';
 import { TemplateBusquedaComponent } from './templates/template-busqueda';
@@ -57,6 +58,15 @@ import { NavbarDemoComponent } from './navbar/navbar';
 import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
 import { HelpDemoComponent } from './help/help.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
+import { MpiListadoComponent } from './templates/modulos/mpi/main/listado/mpi-listado.component';
+import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
+import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
+import { DatosBasicosComponent } from './templates/modulos/mpi/main/alta/datos-basicos/datos-basicos.component';
+import { DatosContactoComponent } from './templates/modulos/mpi/main/alta/datos-contacto/datos-contacto.component';
+import { DatosNotasComponent } from './templates/modulos/mpi/main/alta/datos-notas/datos-notas.component';
+import { DatosRelacionesComponent } from './templates/modulos/mpi/main/alta/datos-relaciones/datos-relaciones.component';
+
 
 @NgModule({
     declarations: [
@@ -86,6 +96,7 @@ import { HttpClientModule } from '@angular/common/http';
         WizardDemoComponent,
         DemoIconComponent,
         TooltipHintDemoComponent,
+        TemplateInicioComponent,
         TemplateFormComponent,
         TemplateVisualizacionComponent,
         TemplateBusquedaComponent,
@@ -100,7 +111,21 @@ import { HttpClientModule } from '@angular/common/http';
         ListadoSidebarComponent,
         SidebarDetalleComponent,
         MainListadoComponent,
-        ModalTemplateComponent
+        ModalTemplateComponent,
+        // Templates genéricos
+        ListadoSidebarComponent,
+        SidebarDetalleComponent,
+        MainListadoComponent,
+        // Maquetado módulos
+        MpiMaquetadoComponent,
+        MpiListadoComponent,
+        MpiDetalleComponent,
+        ModalTemplateComponent,
+        MpiAltaComponent,
+        DatosBasicosComponent,
+        DatosContactoComponent,
+        DatosNotasComponent,
+        DatosRelacionesComponent
     ],
     entryComponents: [
         HeaderPacienteComponent

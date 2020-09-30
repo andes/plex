@@ -1,7 +1,8 @@
 <plex-layout [aspect]="8">
     <plex-layout-main>
         <plex-title size="lg" titulo="Bienvenido a Plex">
-            <plex-help type="help" titulo="Ayuda de este panel" size="sm" title="este es un atributo [title]"
+            <plex-button type="danger" size="md" routerLink="/templates">Volver</plex-button>
+            <plex-help type="info" titulo="Ayuda de este panel" size="md" title="este es un atributo [title]"
                        class="mr-1">
                 <div info>
                     <label>Organización:</label>
@@ -12,7 +13,6 @@
                     prestacion.solicitud.prestacionOrigen
                 </div>
             </plex-help>
-            <plex-button type="success" size="sm" icon="chevron-down" (click)="showModal = true"></plex-button>
         </plex-title>
 
         <plex-wrapper>

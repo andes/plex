@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
             { label: 'Select', icon: 'format-list-bulleted', route: '/select' },
             { label: 'Tabs', icon: 'folder', route: '/tabs' },
             { label: 'Text', icon: 'form-textbox', route: '/text' },
+            { label: 'Templates', icon: 'view-grid', route: '/templates' },
             { label: 'Tooltip & Hint', icon: 'tooltip', route: '/tooltip-hint' },
             { label: 'Wizard', icon: 'auto-fix', route: '/wizard' },
             { label: 'Wrapper', icon: 'view-quilt', route: '/wrapper' },

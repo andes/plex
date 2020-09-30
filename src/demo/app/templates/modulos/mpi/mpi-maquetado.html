@@ -1,0 +1,24 @@
+<plex-layout main="{{ sidebar }}">
+    <plex-layout-main>
+        <header>
+            <plex-title size="lg" titulo="Busqueda de pacientes">
+                <plex-button type="danger" size="md" routerLink="/templates">Volver</plex-button>
+            </plex-title>
+        </header>
+
+        <plex-wrapper>
+            <plex-text label="Buscar paciente"
+                       placeholder="Escanee un documento digital, o escriba un documento / apellido / nombre"
+                       [(ngModel)]="templateModel2.nombre" name="nombre">
+            </plex-text>
+            <plex-button type="info" size="md" (click)="goToAlta()">Nuevo paciente</plex-button>
+        </plex-wrapper>
+        <plex-mpi-listado (enviar)="recibirSidebar($event)">
+
+        </plex-mpi-listado>
+    </plex-layout-main>
+
+    <plex-layout-sidebar type="invert">
+        <router-outlet></router-outlet>
+    </plex-layout-sidebar>
+</plex-layout>

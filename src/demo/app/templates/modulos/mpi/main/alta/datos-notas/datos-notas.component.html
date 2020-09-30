@@ -1,0 +1,20 @@
+<plex-title titulo="notas" size="sm">
+    <plex-button type="info" size="sm" (click)="agregarNota()">agregar nota</plex-button>
+</plex-title>
+
+<plex-wrapper justify *ngIf="nuevaNota === true">
+    <plex-text columns="4" label="" placeholder="Titulo de la nota" [(ngModel)]="templateModel2.nombre" name="nombre">
+    </plex-text>
+    <plex-text columns="4" label="" placeholder="Contenido de la nota" [(ngModel)]="templateModel2.nombre" name="nombre"
+               multiline=true>
+    </plex-text>
+    <plex-button type="success" icon="plus" size="md" justify="end"></plex-button>
+</plex-wrapper>
+<plex-list *ngFor="let nota of notas">
+    <plex-item *ngFor="let nota of notas" class="">
+        <plex-icon name="lapiz-documento"></plex-icon>
+        <plex-label titulo="{{ nota.titulo }}" subtitulo="{{ nota.nota }}"></plex-label>
+        <plex-badge type="info">{{ nota.fecha }}</plex-badge>
+        <plex-button type="danger" size="sm" icon="delete"></plex-button>
+    </plex-item>
+</plex-list>

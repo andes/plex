@@ -1,0 +1,33 @@
+<section class="mt-4" justify>
+    <div>
+        <plex-title titulo="datos de contacto" size="sm">
+            <plex-bool type="checkbox" label="Sin datos de contacto"></plex-bool>
+            <!-- <plex-button type="info" icon="marker" size="sm"></plex-button> -->
+        </plex-title>
+        <plex-wrapper>
+            <plex-select [(ngModel)]="modelo1.select" [data]="opciones3" label-field="nombre" label="Tipo de contacto">
+            </plex-select>
+            <plex-text label="Número" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8" maxlength="8"
+                       [debounce]="1000" (change)="onChange()"></plex-text>
+            <plex-button type="info" icon="plus"></plex-button>
+        </plex-wrapper>
+        <plex-title titulo="datos de domicilio" size="sm" class="mt-2"></plex-title>
+        <plex-wrapper>
+            <plex-select columns="4" [(ngModel)]="modelo1.select" [data]="opciones4" label-field="nombre"
+                         label="Provincia">
+            </plex-select>
+            <plex-select [(ngModel)]="modelo1.select" [data]="opciones5" label-field="nombre" label="Localidad">
+            </plex-select>
+
+            <plex-text columns="auto" label="Dirección" [(ngModel)]="templateModel2.nombre" name="nombre" minlength="8"
+                       maxlength="8" [debounce]="1000" (change)="onChange()"></plex-text>
+            <plex-button type="info" size="md" icon="map-marker"></plex-button>
+        </plex-wrapper>
+    </div>
+    <div class="gmap_canvas map ml-4">
+        <iframe width="100%" height="100%" id="gmap_canvas"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3104.0674669888795!2d-67.97067928455228!3d-38.92243540606072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a309641150551%3A0x2a41a13ceb1b0e00!2sAberturas%20de%20Aluminio%20S.A.!5e0!3m2!1ses-419!2sar!4v1580568124455!5m2!1ses-419!2sar"
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+           href="https://www.easy-ptable.com"></a>
+    </div>
+</section>
