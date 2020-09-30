@@ -22,6 +22,7 @@
         "test:cypress": "run-p --race serve cypress",
         "test:cypress:local": "APPLITOOLS_IS_DISABLED=true run-p --race serve cypress",
         "cypress:open": "APPLITOOLS_IS_DISABLED=true cypress open",
+        "cypress:open:mobile": "APPLITOOLS_IS_DISABLED=true cypress open --config-file cypress-mobile.json",
         "commitlint-circle": "commitlint-circle",
         "web-server": "http-server dist/app -p 4200 -s --proxy http://localhost:4200?",
         "build:doc": "npx compodoc -p src/lib/tsconfig.json  -d dist/doc/",
