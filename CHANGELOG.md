@@ -1,3 +1,10 @@
+# [7.1.0](https://github.com/andes/plex/compare/v7.0.2...v7.1.0) (2020-10-01)
+
+
+### Features
+
+* **template-mpi:** agrega demo de template ([#203](https://github.com/andes/plex/issues/203)) ([e6844fb](https://github.com/andes/plex/commit/e6844fb3fc8a4f2ceb25d4c778d339af4e77cb9a))
+
 ## [7.0.2](https://github.com/andes/plex/compare/v7.0.1...v7.0.2) (2020-09-23)
 
 
