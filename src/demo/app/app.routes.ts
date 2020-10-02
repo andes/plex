@@ -1,3 +1,4 @@
+import { DemoDirectivesComponent } from './directives/directives.component';
 import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -91,6 +92,7 @@ const appRoutes: Routes = [
     { path: 'item', component: ItemDemoComponent },
     { path: 'detail', component: DetailDemoComponent },
     { path: 'icon', component: DemoIconComponent },
+    { path: 'directives', component: DemoDirectivesComponent },
     { path: '**', redirectTo: 'inicio' }
 ];
 

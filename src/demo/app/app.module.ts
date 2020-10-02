@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routing, appRoutingProviders } from './app.routes';
@@ -66,6 +65,7 @@ import { DatosBasicosComponent } from './templates/modulos/mpi/main/alta/datos-b
 import { DatosContactoComponent } from './templates/modulos/mpi/main/alta/datos-contacto/datos-contacto.component';
 import { DatosNotasComponent } from './templates/modulos/mpi/main/alta/datos-notas/datos-notas.component';
 import { DatosRelacionesComponent } from './templates/modulos/mpi/main/alta/datos-relaciones/datos-relaciones.component';
+import { DemoDirectivesComponent } from './directives/directives.component';
 
 
 @NgModule({
@@ -125,7 +125,8 @@ import { DatosRelacionesComponent } from './templates/modulos/mpi/main/alta/dato
         DatosBasicosComponent,
         DatosContactoComponent,
         DatosNotasComponent,
-        DatosRelacionesComponent
+        DatosRelacionesComponent,
+        DemoDirectivesComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
