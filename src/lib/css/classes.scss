@@ -23,3 +23,15 @@
 .no-wrap {
   white-space: nowrap;
 }
+
+// Extiende Transformation en ~/bootstrap7scss/utilities/_text.scss
+
+// .text-lowercase  { text-transform: lowercase !important; }
+// .text-uppercase  { text-transform: uppercase !important; }
+// .text-capitalize { text-transform: capitalize !important; }
+.text-capitalize-first {
+  display: inline-block;
+  &::first-letter {
+    text-transform: capitalize !important;
+  }
+}
