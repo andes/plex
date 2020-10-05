@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Tema principal
 $primary: mat-palette($mat-blue);
 $accent: mat-palette($mat-blue, A200, A100, A400);
@@ -58,5 +60,12 @@ mat-slide-toggle {
 .mat-slide-toggle.mat-disabled .mat-slide-toggle-content > span {
     &:hover {
         @include generic-factory($front-color: $text-dark);
+    }
+}
+
+// INVERT
+plex-layout-sidebar[type="invert"] {
+    .mat-slide-toggle .mat-slide-toggle-bar {
+        background-color: color.scale($color: $blue, $saturation: -80%) !important;
     }
 }
