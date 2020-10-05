@@ -12,6 +12,9 @@ const Selectize = require('selectize/dist/js/standalone/selectize');
                     <label *ngIf="label" class="form-control-label">{{ label }}<span *ngIf="esRequerido" class="requerido"></span></label>
                     <select *ngIf="!multiple" id="{{ uniqueId }}" (change)="onChange($event.target.value)"></select>
                     <select *ngIf="multiple" id="{{ uniqueId }}" multiple (change)="onChange($event.target.value)"></select>
+                    <div *ngIf="multiple" class="search-icon-container">
+                        <plex-icon size="sm" name="form-textbox" class="search-icon" [class.disabled]="control.disabled"></plex-icon>
+                    </div>
                     <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
                 </div>`,
 })
@@ -30,7 +33,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     }
 
     public hasDanger() {
-        return (this.control.dirty || this.control.touched) && !this.control.valid;
+        return (this.control.dirty || this.control.touched) && !this.control.valid && !this.control.disabled;
     }
 
     // Propiedades
@@ -364,7 +367,6 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             }
         }
     }
-
     /**
      * Elimina la propiedad $order que inyecta selectize
      */
