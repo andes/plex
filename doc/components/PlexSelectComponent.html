@@ -836,7 +836,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;hasDanger()&nbsp;}&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;{{&nbsp;label&nbsp;}}&lt;span&nbsp;*ngIf&#x3D;&quot;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;select&nbsp;*ngIf&#x3D;&quot;!multiple&quot;&nbsp;id&#x3D;&quot;{{&nbsp;uniqueId&nbsp;}}&quot;&nbsp;(change)&#x3D;&quot;onChange($event.target.value)&quot;&gt;&lt;/select&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;select&nbsp;*ngIf&#x3D;&quot;multiple&quot;&nbsp;id&#x3D;&quot;{{&nbsp;uniqueId&nbsp;}}&quot;&nbsp;multiple&nbsp;(change)&#x3D;&quot;onChange($event.target.value)&quot;&gt;&lt;/select&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;hasDanger()&nbsp;}&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;{{&nbsp;label&nbsp;}}&lt;span&nbsp;*ngIf&#x3D;&quot;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;select&nbsp;*ngIf&#x3D;&quot;!multiple&quot;&nbsp;id&#x3D;&quot;{{&nbsp;uniqueId&nbsp;}}&quot;&nbsp;(change)&#x3D;&quot;onChange($event.target.value)&quot;&gt;&lt;/select&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;select&nbsp;*ngIf&#x3D;&quot;multiple&quot;&nbsp;id&#x3D;&quot;{{&nbsp;uniqueId&nbsp;}}&quot;&nbsp;multiple&nbsp;(change)&#x3D;&quot;onChange($event.target.value)&quot;&gt;&lt;/select&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngIf&#x3D;&quot;multiple&quot;&nbsp;class&#x3D;&quot;search-icon-container&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;size&#x3D;&quot;sm&quot;&nbsp;name&#x3D;&quot;form-textbox&quot;&nbsp;class&#x3D;&quot;search-icon&quot;&nbsp;[class.disabled]&#x3D;&quot;control.disabled&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></td>
             </tr>
 
 
@@ -1414,6 +1414,9 @@ const Selectize &#x3D; require(&#x27;selectize/dist/js/standalone/selectize&#x27
                     &lt;label *ngIf&#x3D;&quot;label&quot; class&#x3D;&quot;form-control-label&quot;&gt;{{ label }}&lt;span *ngIf&#x3D;&quot;esRequerido&quot; class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;&lt;/label&gt;
                     &lt;select *ngIf&#x3D;&quot;!multiple&quot; id&#x3D;&quot;{{ uniqueId }}&quot; (change)&#x3D;&quot;onChange($event.target.value)&quot;&gt;&lt;/select&gt;
                     &lt;select *ngIf&#x3D;&quot;multiple&quot; id&#x3D;&quot;{{ uniqueId }}&quot; multiple (change)&#x3D;&quot;onChange($event.target.value)&quot;&gt;&lt;/select&gt;
+                    &lt;div *ngIf&#x3D;&quot;multiple&quot; class&#x3D;&quot;search-icon-container&quot;&gt;
+                        &lt;plex-icon size&#x3D;&quot;sm&quot; name&#x3D;&quot;form-textbox&quot; class&#x3D;&quot;search-icon&quot; [class.disabled]&#x3D;&quot;control.disabled&quot;&gt;&lt;/plex-icon&gt;
+                    &lt;/div&gt;
                     &lt;plex-validation-messages *ngIf&#x3D;&quot;hasDanger()&quot; [control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;
                 &lt;/div&gt;&#x60;,
 })
@@ -1432,7 +1435,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     }
 
     public hasDanger() {
-        return (this.control.dirty || this.control.touched) &amp;&amp; !this.control.valid;
+        return (this.control.dirty || this.control.touched) &amp;&amp; !this.control.valid &amp;&amp; !this.control.disabled;
     }
 
     // Propiedades
@@ -1766,7 +1769,6 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             }
         }
     }
-
     /**
      * Elimina la propiedad $order que inyecta selectize
      */
