@@ -1,3 +1,11 @@
+# [7.2.0](https://github.com/andes/plex/compare/v7.1.0...v7.2.0) (2020-10-06)
+
+
+### Features
+
+* **plex-detail:** agrega plex-grid interno ([#229](https://github.com/andes/plex/issues/229)) ([d6877d2](https://github.com/andes/plex/commit/d6877d237385b0ab89ffb900c4f3c71d8ba2962d))
+* **plex-select:** mejora visual modo buscador ([#231](https://github.com/andes/plex/issues/231)) ([96e3851](https://github.com/andes/plex/commit/96e3851ee95537bdc9d3004ec7391e1f5f8e7299))
+
 # [7.1.0](https://github.com/andes/plex/compare/v7.0.2...v7.1.0) (2020-10-01)
 
 
