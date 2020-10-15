@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Links
 plex-list {
     a,
@@ -26,7 +28,7 @@ plex-list {
         &.sm {
             section.item {
                 max-height: 70px;
-                padding: .45rem;
+                padding: 0.45rem;
                 .item-row {
                     box-sizing: border-box;
                     padding: 0 0 0.1rem 0.35rem;
@@ -38,14 +40,15 @@ plex-list {
                                 @include graficos(2rem);
                                 justify-content: center;
                                 border: solid 2px;
-                                display: flex;         
+                                display: flex;
                             }
                         }
                         // Estilos imágenes
-                        img, > svg {
+                        img,
+                        > svg {
                             @include graficos(2rem);
                             object-fit: cover;
-                        } 
+                        }
                     }
                 }
                 .item-list {
@@ -55,28 +58,29 @@ plex-list {
                 }
             }
         }
-    
+
         &.md section.item {
-            padding: .75rem;
+            padding: 0.75rem;
 
             .item-row .elementos-graficos {
-                    plex-icon {
-                        i {
-                            @include graficos(3rem);
-                            justify-content: center;
-                            border: solid 2px;
-                            display: flex;         
-                        }
-                    }
-                    // Estilos imágenes
-                    img, > svg {
+                plex-icon {
+                    i {
                         @include graficos(3rem);
-                        object-fit: cover;
-                    } 
+                        justify-content: center;
+                        border: solid 2px;
+                        display: flex;
+                    }
+                }
+                // Estilos imágenes
+                img,
+                > svg {
+                    @include graficos(3rem);
+                    object-fit: cover;
                 }
             }
+        }
     }
-    
+
     div.item-list-heading {
         display: grid;
         grid-gap: 0.25rem;
@@ -114,9 +118,6 @@ plex-list {
         }
     }
 
-    
-    
-
     section.item {
         display: flex;
         align-items: center;
@@ -135,6 +136,7 @@ plex-list {
                 color: black;
             }
         }
+
         &.selected {
             // border: 2px solid $blue;
             box-sizing: border-box;
@@ -143,12 +145,11 @@ plex-list {
             color: black;
         }
 
-
         .item-row {
             @include flex;
             min-width: 75%;
             width: 100%;
-            
+
             .elementos-graficos {
                 @include flex;
                 width: max-content;
@@ -161,7 +162,6 @@ plex-list {
                         background: transparent;
                     }
                 }
-                
             }
 
             div.item-list {
@@ -221,7 +221,7 @@ plex-list {
     }
 
     .striped > :nth-child(odd) > section.item {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: transparentize($color: $dark-blue, $amount: 0.9);
     }
 
     div.botonera {
@@ -239,7 +239,7 @@ plex-list {
         plex-badge,
         plex-dropdown,
         upload-file {
-            margin: 0 .15rem;
+            margin: 0 0.15rem;
         }
 
         .btn,
@@ -257,55 +257,54 @@ plex-list {
                 border: 0;
                 height: 27px;
             }
-    
+
             plex-dropdown {
                 display: flex;
                 align-items: center;
-        
+
                 .btn,
                 .dropdown-item {
                     padding: 5px;
-                    font-size: .9rem;
+                    font-size: 0.9rem;
                 }
                 .dropdown-item {
                     background: transparent !important;
                 }
-        
+
                 &[icon] {
                     button {
                         padding: 0;
                         border: 0;
                         height: 27px;
                     }
-        
+
                     i {
                         line-height: 28px;
                     }
                 }
             }
-    
         }
     }
 
-
     // Grilla interna
-    .item-list,.item-list-heading {
-        grid-template-columns: repeat(auto-fit, minmax(135px, 1fr))!important;
+    .item-list,
+    .item-list-heading {
+        grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)) !important;
         grid-auto-flow: column;
-    } 
-    
+    }
+
     // Con botonera
     .item-list {
         width: 100%;
     }
-    
+
     .item-list-heading {
         width: 100%;
         &.has-botonera {
             width: 75%;
         }
     }
-    
+
     // Sin checkbox, Sin icono
     .item-list {
         padding-left: 0px;
@@ -353,6 +352,7 @@ plex-list {
         section.item {
             flex-direction: column-reverse;
             align-items: flex-start;
+            justify-content: flex-end;
 
             div.item-row {
                 width: 100% !important;

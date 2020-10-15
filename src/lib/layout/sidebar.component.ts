@@ -1,4 +1,5 @@
-import { Component, Input, ElementRef, HostListener, AfterViewInit, ViewChild, Renderer2 } from '@angular/core';
+import { Component, Input, ElementRef, HostListener, OnInit, AfterViewInit, ViewChild, Renderer2, ContentChildren, QueryList, ChangeDetectorRef } from '@angular/core';
+import { PlexListComponent } from '../item-list/list.component';
 
 @Component({
     selector: 'plex-layout-sidebar',
@@ -6,24 +7,30 @@ import { Component, Input, ElementRef, HostListener, AfterViewInit, ViewChild, R
     <div class="plex-box" [class.plex-box-invert]="type == 'invert'">
         <ng-content select="header"></ng-content>
         <ng-content select="plex-title[main]"></ng-content>
-        <div #content class="plex-box-content"  >
+        <div #content class="plex-box-content">
             <ng-content></ng-content>
         </div>
     </div>
     `,
 })
-export class PlexLayoutSidebarComponent implements AfterViewInit {
+export class PlexLayoutSidebarComponent implements OnInit, AfterViewInit {
     @ViewChild('content', { read: ElementRef, static: false }) content: ElementRef;
     @Input() type = '';
 
-    constructor(private render: Renderer2) {
+    constructor(private render: Renderer2, private ref: ChangeDetectorRef) {
     }
 
-    ngAfterViewInit() {
+    ngOnInit() {
         this.checkScroll();
+
+    }
+
+    ngAfterViewInit(): void {
+        this.ref.detectChanges();
     }
 
     checkScroll() {
+        this.ref.detectChanges();
         if (this.content.nativeElement.scrollHeight > this.content.nativeElement.clientHeight) {
             this.render.addClass(this.content.nativeElement, 'scrolbar');
         } else {

@@ -6,7 +6,7 @@ import { PlexHeadingComponent } from './heading.component';
 @Component({
     selector: 'plex-list',
     template: `
-    <div [class.striped]="striped" [ngClass]="size" responsive
+    <div [class.striped]="striped" [class.inverted]="inverted" [ngClass]="size" responsive
          infiniteScroll [infiniteScrollDistance]="1" (scrolled)="onScroll()" [scrollWindow]="false"
          [style.overflow-y]="styleScroll" [style.height]="height">
         <ng-content></ng-content>
@@ -19,6 +19,8 @@ export class PlexListComponent implements AfterViewInit {
 
     @Input() selectable = true;
 
+    @Input() inverted = false;
+
     @Input() height: string;
 
     @Input() size: PlexSize = 'md';
@@ -30,7 +32,6 @@ export class PlexListComponent implements AfterViewInit {
 
     constructor(
         private ref: ChangeDetectorRef
-
     ) {
 
     }
@@ -46,7 +47,6 @@ export class PlexListComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.ref.detectChanges();
 
         const hayIcono = this.plexItems.some(item => item.hasIcons());
         const hayCheckbox = this.plexItems.some(item => item.hasCheckbox());
@@ -60,6 +60,7 @@ export class PlexListComponent implements AfterViewInit {
             }
         }
         setTimeout(() => {
+            // Deshabilita que sean seleccionables los items (override)
             if (!this.selectable) {
                 this.plexItems.forEach(item => {
                     item.selectable = false;
@@ -67,6 +68,8 @@ export class PlexListComponent implements AfterViewInit {
             }
         }, 0);
 
+        this.ref.detectChanges();
 
     }
+
 }

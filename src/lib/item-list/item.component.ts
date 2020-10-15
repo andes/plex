@@ -1,5 +1,5 @@
 import { map } from 'rxjs/operators';
-import { Component, Input, QueryList, AfterViewInit, ContentChildren, ElementRef, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
+import { Component, Input, QueryList, AfterViewInit, ContentChildren, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { PlexIconComponent } from '../icon/icon.component';
 import { PlexBoolComponent } from '../bool/bool.component';
 import { PlexBadgeComponent } from '../badge/badge.component';

@@ -5,7 +5,6 @@
                 <plex-list height="60%" (scrolled)="onScroll()" size="sm">
                     <plex-heading>
                         <b label>Datos importantes</b>
-                        <b label>Parentesco</b>
                     </plex-heading>
                     <plex-item *ngFor="let item of lista; let par = even" [selected]="item.selected"
                                (click)="item.selected = !item.selected">
@@ -93,19 +92,37 @@
                 </ol>
             </plex-help>
         </plex-title>
-        <plex-list size="sm">
-            <plex-heading [sticky]="true">
+        <plex-list size="sm" [selectable]="false">
+            <!-- <plex-heading>
+                <b label>HOLA</b>
+                <b label>HOLA DE NUEVO</b>
+            </plex-heading> -->
+            <ng-container *ngFor="let item of lista">
+                <plex-item [selectable]="item.selectable">
+                    <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
+                    <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
+                    <plex-button type="danger" size="sm" icon="delete"></plex-button>
+                    <plex-badge type="danger">ausente</plex-badge>
+                    <plex-button type="success" size="sm" icon="check-circle"></plex-button>
+                    <plex-button type="warning" size="sm" icon="clock"></plex-button>
+                </plex-item>
+            </ng-container>
+        </plex-list>
+        <plex-list [selectable]="true">
+            <!-- <plex-heading [sticky]="true">
                 <b label>1</b>
                 <b label>3</b>
-            </plex-heading>
-            <plex-item *ngFor="let item of lista">
-                <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
-                <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
-                <plex-button type="danger" size="sm" icon="delete"></plex-button>
-                <plex-badge type="danger">ausente</plex-badge>
-                <plex-button type="success" size="sm" icon="check-circle"></plex-button>
-                <plex-button type="warning" size="sm" icon="clock"></plex-button>
-            </plex-item>
+            </plex-heading> -->
+            <ng-container *ngFor="let item of lista">
+                <plex-item [selectable]="item.selectable">
+                    <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
+                    <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
+                    <plex-button type="danger" size="sm" icon="delete"></plex-button>
+                    <plex-badge type="danger">ausente</plex-badge>
+                    <plex-button type="success" size="sm" icon="check-circle"></plex-button>
+                    <plex-button type="warning" size="sm" icon="clock"></plex-button>
+                </plex-item>
+            </ng-container>
         </plex-list>
     </plex-layout-sidebar>
 </plex-layout>
