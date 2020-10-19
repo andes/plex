@@ -74,11 +74,19 @@
         </div>
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
-        <div class="col-md-6">
-            <form>
-                <p class="lead">Checkbox</p>
-                <plex-bool [(ngModel)]="modelo.checkbox" label="¿Está activo?" name="checkbox"></plex-bool>
-            </form>
-        </div>
+        <form>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="lead">Checkbox</p>
+                    <plex-bool type="checkbox" [(ngModel)]="modelo.checkbox" label="¿Está activo?" name="checkbox">
+                    </plex-bool>
+                </div>
+                <div class="col-md-6">
+                    <p class="lead">Slide toggle</p>
+                    <plex-bool type="slide" [(ngModel)]="modelo.checkbox" label="¿Está activo?" name="checkbox">
+                    </plex-bool>
+                </div>
+            </div>
+        </form>
     </plex-layout-sidebar>
 </plex-layout>
