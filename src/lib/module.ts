@@ -51,6 +51,7 @@ import { PlexGridComponent } from './grid/grid.component';
 import { PlexCardComponent } from './card/card.component';
 
 // Directivas
+import { AlignedDirective } from './directives/aligned.directive';
 import { PlexWizardDirective } from './wizard/wizard.directive';
 import { GrowDirective } from './directives/grow.directive';
 import { JustifyDirective } from './directives/justify.directive';
@@ -137,6 +138,7 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         PlexCardComponent,
 
         // Directivas
+        AlignedDirective,
         GrowDirective,
         HelpDirective,
         HintDirective,
@@ -208,6 +210,7 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         PlexCardComponent,
 
         // Directivas
+        AlignedDirective,
         GrowDirective,
         HelpDirective,
         HintDirective,
