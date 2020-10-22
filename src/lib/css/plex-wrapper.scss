@@ -28,10 +28,14 @@ plex-wrapper  {
         }
     }
 
-    plex-button.btn-toggle {
+    .btn-toggle {
         position: absolute;
         top: 0;
         right: 0;
+
+        > span {
+            position: absolute;
+        }
     }
 
     label {
