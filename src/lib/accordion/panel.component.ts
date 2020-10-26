@@ -5,15 +5,19 @@ import { PlexAccordionComponent } from './accordion.component';
     selector: 'plex-panel',
     template: ` <div class="card">
                     <div class="card-header" role="tab" id="headingOne" (click)="selectPanel()">
-                    <h5 class="mb-0">
+                    <h5 class="mb-0 hover">
                         <a  *ngIf="tituloPrincipal" class="card-action" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne">
                             <plex-icon type="default" size="xl" [name]="icon"></plex-icon>
                             <span class="title ml-1">
                                 {{tituloPrincipal}}
                             </span>
                         </a>
+                        <a *ngIf="!tituloPrincipal" class="card-action" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne">
+                            <span class="title ml-1">
+                                <ng-content select="[plex-accordion-title]"></ng-content>
+                            </span>
+                        </a>
                     </h5>
-                    <ng-content *ngIf="!tituloPrincipal" select="[plex-accordion-title]"></ng-content>
                     </div>
 
                     <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" [ngClass]="{show: active}">
