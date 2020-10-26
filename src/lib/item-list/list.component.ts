@@ -1,12 +1,12 @@
 import { PlexSize } from './../core/plex-size.type';
-import { Component, Input, Output, EventEmitter, QueryList, ContentChildren, AfterViewInit, ContentChild } from '@angular/core';
+import { Component, Input, Output, EventEmitter, QueryList, ContentChildren, AfterViewInit, ContentChild, ChangeDetectorRef } from '@angular/core';
 import { PlexItemComponent } from './item.component';
 import { PlexHeadingComponent } from './heading.component';
 
 @Component({
     selector: 'plex-list',
     template: `
-    <div [class.striped]="striped" [ngClass]="size" responsive
+    <div [class.striped]="striped" [class.inverted]="inverted" [ngClass]="size" responsive
          infiniteScroll [infiniteScrollDistance]="1" (scrolled)="onScroll()" [scrollWindow]="false"
          [style.overflow-y]="styleScroll" [style.height]="height">
         <ng-content></ng-content>
@@ -17,6 +17,10 @@ export class PlexListComponent implements AfterViewInit {
 
     @Input() striped = true;
 
+    @Input() selectable = true;
+
+    @Input() inverted = false;
+
     @Input() height: string;
 
     @Input() size: PlexSize = 'md';
@@ -26,7 +30,9 @@ export class PlexListComponent implements AfterViewInit {
     @ContentChildren(PlexItemComponent, { descendants: false }) private plexItems: QueryList<PlexItemComponent>;
     @ContentChild(PlexHeadingComponent) private plexHeading: PlexHeadingComponent;
 
-    constructor() {
+    constructor(
+        private ref: ChangeDetectorRef
+    ) {
 
     }
 
@@ -41,6 +47,7 @@ export class PlexListComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
+
         const hayIcono = this.plexItems.some(item => item.hasIcons());
         const hayCheckbox = this.plexItems.some(item => item.hasCheckbox());
         const hayBotonera = this.plexItems.some(item => item.hasBotonera());
@@ -52,5 +59,17 @@ export class PlexListComponent implements AfterViewInit {
                 this.plexHeading.setSticky(true);
             }
         }
+        setTimeout(() => {
+            // Deshabilita que sean seleccionables los items (override)
+            if (!this.selectable) {
+                this.plexItems.forEach(item => {
+                    item.selectable = false;
+                });
+            }
+        }, 0);
+
+        this.ref.detectChanges();
+
     }
+
 }

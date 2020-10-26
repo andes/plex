@@ -8,7 +8,7 @@ import { PlexButtonComponent } from '../button/button.component';
 @Component({
     selector: 'plex-item',
     template: `
-        <section class="item" [class.selected]="selected">
+        <section class="item" [class.selectable]="selectable" [class.selected]="selectable && selected">
             <div class="item-row">
                 <div class="elementos-graficos">
                     <ng-content select="plex-bool"></ng-content>
@@ -26,16 +26,24 @@ import { PlexButtonComponent } from '../button/button.component';
             <div *ngIf="hasBotonera()" class="botonera">
                 <div>
                     <ng-content select="plex-badge"></ng-content>
+                </div>
+                <div>
                     <ng-content select="plex-button"></ng-content>
                     <ng-content select="upload-file"></ng-content>
+                    <ng-content select="plex-dropdown[icon]"></ng-content>
                 </div>
-                <ng-content select="plex-dropdown[icon]"></ng-content>
             </div>
         </section>
     `
 })
 export class PlexItemComponent implements AfterViewInit {
+
+    // Permite :hover y click()
+    @Input() selectable = true;
+
+    // Muestra efecto de selección
     @Input() selected = false;
+
     @ContentChildren(PlexIconComponent, { descendants: false }) plexIcons: QueryList<PlexIconComponent>;
     @ContentChildren(PlexBoolComponent, { descendants: false }) plexBools: QueryList<PlexBoolComponent>;
     @ContentChildren(PlexBadgeComponent, { descendants: false }) plexBadges: QueryList<PlexBadgeComponent>;

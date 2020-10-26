@@ -1,41 +1,41 @@
 // Html
 
 html {
-  height: 100% !important;
+    height: 100% !important;
 }
 
 body {
-  font-size: $font-size-sm;
+    font-size: $font-size-sm;
 }
 // Main container
 .content {
-  margin-left: ($grid-gutter-width-base / 3);
-  margin-right: ($grid-gutter-width-base / 2);
-  // height: 100%;
+    margin-left: ($grid-gutter-width-base / 3);
+    margin-right: ($grid-gutter-width-base / 2);
+    // height: 100%;
 
-  > *:not(router-outlet) {
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-  }
+    > *:not(router-outlet) {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
 
-  &.nav-top-margin {
-    height: calc(100vh - 55px) !important;
-    margin-top: 55px;
-  }
-  &.nav-top-no-margin {
-    height: calc(100vh - 10px);
-    margin-top: 10px;
-  }
+    &.nav-top-margin {
+        height: calc(100vh - 55px) !important;
+        margin-top: 55px;
+    }
+    &.nav-top-no-margin {
+        height: calc(100vh - 10px);
+        margin-top: 10px;
+    }
 }
 
 .nav-top {
-  position: relative;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1030;
-  height: var(--nav-bar-height);
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    height: var(--nav-bar-height);
 }
 
 // Plex Layout
@@ -146,41 +146,39 @@ plex-layout {
         padding-right: ($grid-gutter-width-base / 2) !important;
       }
     }
-
-      > .row
-      > .col-12:only-child {
-        plex-layout-main {
-          .plex-box {
-            margin-right: -5px !important;
-          }
+        > .row > .col-12:only-child {
+            plex-layout-main {
+                .plex-box {
+                    margin-right: -5px !important;
+                }
+            }
         }
-      }
-  }
-  > section,
-  > plex-layout {
-    > div > div:nth-child(2) {
-      padding-right:  ($grid-gutter-width-base / 3) !important;
-      padding-left: 0px;
-    } 
-  }
-  plex-layout-footer,
-  footer {
-    margin-right: -5px;
-      .row {
-        padding-right: 0px;
-        padding-left: 0px;
-      }
-  } 
+    }
+    > section,
+    > plex-layout {
+        > div > div:nth-child(2) {
+            padding-right: ($grid-gutter-width-base / 3) !important;
+            padding-left: 0px;
+        }
+    }
+
+    plex-layout-footer,
+    footer {
+        margin-right: -5px;
+        .row {
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+    }
 }
 
 // Compatibiidad con layout viejo
 plex-box {
-  .plex-box, plex-box > DIV {
-    margin-right: -5px;
-  }
+    .plex-box,
+    plex-box > DIV {
+        margin-right: -5px;
+    }
 }
-
-
 
 // Page Title & Subtitle
 .page-title {
@@ -204,4 +202,3 @@ plex-box {
         flex-grow: 1;
     }
 }
- 
