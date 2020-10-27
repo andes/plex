@@ -1,3 +1,16 @@
+# [7.3.0](https://github.com/andes/plex/compare/v7.2.0...v7.3.0) (2020-10-27)
+
+
+### Bug Fixes
+
+* **plex-bool:** mejora contraste en sidebar invert ([#235](https://github.com/andes/plex/issues/235)) ([d1d4831](https://github.com/andes/plex/commit/d1d48319664ae173c9b8c90d1ad3b69a796c2c3a))
+* **plex-item:** corrige ancho de buttons ([#237](https://github.com/andes/plex/issues/237)) ([e72811d](https://github.com/andes/plex/commit/e72811d758fcf9d310d1e48e87ce5f538009b619))
+
+
+### Features
+
+* **plex-item:** opcional seleccionable ([#212](https://github.com/andes/plex/issues/212)) ([8150029](https://github.com/andes/plex/commit/8150029afce02228f4953700cc968b8d663a3111))
+
 # [7.2.0](https://github.com/andes/plex/compare/v7.1.0...v7.2.0) (2020-10-06)
 
 
