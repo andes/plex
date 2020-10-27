@@ -836,7 +836,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;plex-box&quot;&nbsp;[class.plex-box-invert]&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&nbsp;&#x27;invert&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;header&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-title[main]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;#content&nbsp;class&#x3D;&quot;plex-box-content&quot;&nbsp;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;plex-box&quot;&nbsp;[class.plex-box-invert]&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&nbsp;&#x27;invert&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;header&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-title[main]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;#content&nbsp;class&#x3D;&quot;plex-box-content&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -867,7 +867,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(render: Renderer2)</code>
+                            <code>constructor(render: Renderer2, ref: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank" >ChangeDetectorRef</a>)</code>
                         </td>
                     </tr>
     
@@ -947,7 +947,8 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input, ElementRef, HostListener, AfterViewInit, ViewChild, Renderer2 } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input, ElementRef, HostListener, OnInit, AfterViewInit, ViewChild, Renderer2, ContentChildren, QueryList, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { PlexListComponent } from &#x27;../item-list/list.component&#x27;;
 
 @Component({
     selector: &#x27;plex-layout-sidebar&#x27;,
@@ -955,24 +956,30 @@
     &lt;div class&#x3D;&quot;plex-box&quot; [class.plex-box-invert]&#x3D;&quot;type &#x3D;&#x3D; &#x27;invert&#x27;&quot;&gt;
         &lt;ng-content select&#x3D;&quot;header&quot;&gt;&lt;/ng-content&gt;
         &lt;ng-content select&#x3D;&quot;plex-title[main]&quot;&gt;&lt;/ng-content&gt;
-        &lt;div #content class&#x3D;&quot;plex-box-content&quot;  &gt;
+        &lt;div #content class&#x3D;&quot;plex-box-content&quot;&gt;
             &lt;ng-content&gt;&lt;/ng-content&gt;
         &lt;/div&gt;
     &lt;/div&gt;
     &#x60;,
 })
-export class PlexLayoutSidebarComponent implements AfterViewInit {
+export class PlexLayoutSidebarComponent implements OnInit, AfterViewInit {
     @ViewChild(&#x27;content&#x27;, { read: ElementRef, static: false }) content: ElementRef;
     @Input() type &#x3D; &#x27;&#x27;;
 
-    constructor(private render: Renderer2) {
+    constructor(private render: Renderer2, private ref: ChangeDetectorRef) {
     }
 
-    ngAfterViewInit() {
+    ngOnInit() {
         this.checkScroll();
+
+    }
+
+    ngAfterViewInit(): void {
+        this.ref.detectChanges();
     }
 
     checkScroll() {
+        this.ref.detectChanges();
         if (this.content.nativeElement.scrollHeight &gt; this.content.nativeElement.clientHeight) {
             this.render.addClass(this.content.nativeElement, &#x27;scrolbar&#x27;);
         } else {

@@ -836,7 +836,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;[class.striped]&#x3D;&quot;striped&quot;&nbsp;[ngClass]&#x3D;&quot;size&quot;&nbsp;responsive<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infiniteScroll&nbsp;[infiniteScrollDistance]&#x3D;&quot;1&quot;&nbsp;(scrolled)&#x3D;&quot;onScroll()&quot;&nbsp;[scrollWindow]&#x3D;&quot;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.overflow-y]&#x3D;&quot;styleScroll&quot;&nbsp;[style.height]&#x3D;&quot;height&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;[class.striped]&#x3D;&quot;striped&quot;&nbsp;[class.inverted]&#x3D;&quot;inverted&quot;&nbsp;[ngClass]&#x3D;&quot;size&quot;&nbsp;responsive<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infiniteScroll&nbsp;[infiniteScrollDistance]&#x3D;&quot;1&quot;&nbsp;(scrolled)&#x3D;&quot;onScroll()&quot;&nbsp;[scrollWindow]&#x3D;&quot;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.overflow-y]&#x3D;&quot;styleScroll&quot;&nbsp;[style.height]&#x3D;&quot;height&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -858,6 +858,34 @@
                                 <em>Type:</em>    <code>string</code>
 
                               </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>inverted</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>false</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>selectable</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>true</code>
+                            </p>
                         </td>
                     </tr>
                 </tbody>
@@ -919,7 +947,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor()</code>
+                            <code>constructor(ref: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank" >ChangeDetectorRef</a>)</code>
                         </td>
                     </tr>
     
@@ -1009,14 +1037,14 @@
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
             <pre><code class="hljs javascript">import { PlexSize } from &#x27;./../core/plex-size.type&#x27;;
-import { Component, Input, Output, EventEmitter, QueryList, ContentChildren, AfterViewInit, ContentChild } from &#x27;@angular/core&#x27;;
+import { Component, Input, Output, EventEmitter, QueryList, ContentChildren, AfterViewInit, ContentChild, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
 import { PlexItemComponent } from &#x27;./item.component&#x27;;
 import { PlexHeadingComponent } from &#x27;./heading.component&#x27;;
 
 @Component({
     selector: &#x27;plex-list&#x27;,
     template: &#x60;
-    &lt;div [class.striped]&#x3D;&quot;striped&quot; [ngClass]&#x3D;&quot;size&quot; responsive
+    &lt;div [class.striped]&#x3D;&quot;striped&quot; [class.inverted]&#x3D;&quot;inverted&quot; [ngClass]&#x3D;&quot;size&quot; responsive
          infiniteScroll [infiniteScrollDistance]&#x3D;&quot;1&quot; (scrolled)&#x3D;&quot;onScroll()&quot; [scrollWindow]&#x3D;&quot;false&quot;
          [style.overflow-y]&#x3D;&quot;styleScroll&quot; [style.height]&#x3D;&quot;height&quot;&gt;
         &lt;ng-content&gt;&lt;/ng-content&gt;
@@ -1027,6 +1055,10 @@ export class PlexListComponent implements AfterViewInit {
 
     @Input() striped &#x3D; true;
 
+    @Input() selectable &#x3D; true;
+
+    @Input() inverted &#x3D; false;
+
     @Input() height: string;
 
     @Input() size: PlexSize &#x3D; &#x27;md&#x27;;
@@ -1036,7 +1068,9 @@ export class PlexListComponent implements AfterViewInit {
     @ContentChildren(PlexItemComponent, { descendants: false }) private plexItems: QueryList&lt;PlexItemComponent&gt;;
     @ContentChild(PlexHeadingComponent) private plexHeading: PlexHeadingComponent;
 
-    constructor() {
+    constructor(
+        private ref: ChangeDetectorRef
+    ) {
 
     }
 
@@ -1051,6 +1085,7 @@ export class PlexListComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
+
         const hayIcono &#x3D; this.plexItems.some(item &#x3D;&gt; item.hasIcons());
         const hayCheckbox &#x3D; this.plexItems.some(item &#x3D;&gt; item.hasCheckbox());
         const hayBotonera &#x3D; this.plexItems.some(item &#x3D;&gt; item.hasBotonera());
@@ -1062,7 +1097,19 @@ export class PlexListComponent implements AfterViewInit {
                 this.plexHeading.setSticky(true);
             }
         }
+        setTimeout(() &#x3D;&gt; {
+            // Deshabilita que sean seleccionables los items (override)
+            if (!this.selectable) {
+                this.plexItems.forEach(item &#x3D;&gt; {
+                    item.selectable &#x3D; false;
+                });
+            }
+        }, 0);
+
+        this.ref.detectChanges();
+
     }
+
 }
 </code></pre>
         </div>
