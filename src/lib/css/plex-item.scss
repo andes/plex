@@ -242,9 +242,8 @@ plex-list {
             margin: 0 0.15rem;
         }
 
-        .btn,
-        .dropdown-item {
-            padding: 5px;
+        .dropdown .btn {
+            padding: 0.25rem 0.2rem;
             font-size: 0.9rem;
         }
         .dropdown-item {
@@ -261,14 +260,14 @@ plex-list {
             plex-dropdown {
                 display: flex;
                 align-items: center;
+                justify-content: center;
 
-                .btn,
-                .dropdown-item {
-                    padding: 5px;
-                    font-size: 0.9rem;
-                }
-                .dropdown-item {
+                .dropdown {
                     background: transparent !important;
+                    .btn {
+                        padding: 0.25rem 0.2rem;
+                        font-size: 0.9rem;
+                    }
                 }
 
                 &[icon] {
