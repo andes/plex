@@ -36,6 +36,16 @@ plex-wrapper  {
         > span {
             position: absolute;
         }
+        
+        @keyframes blink {
+            50% {opacity: 0;}
+            100% {opacity: 1;}
+            50% {opacity: 0;}
+        }
+
+        plex-hint {
+            animation: blink ease-in 2s;
+        }
     }
 
     label {

@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, HostListener, Output, EventEmitter, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { Plex } from '../core/service';
+import { Component, Output, EventEmitter, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 @Component({
     selector: 'plex-wrapper',
@@ -10,7 +9,9 @@ import { Plex } from '../core/service';
                 <span *ngIf="filled" detach="top" hint="Hay filtros activos" hintType="warning" hintIcon="plus"></span>
             </div>
         <ng-content></ng-content>
-        <ng-content select="[collapse]"></ng-content>
+        <div (mouseover)="hasFilled()">
+            <ng-content select="[collapse]"></ng-content>
+        </div>
     </section>
 `,
 })
@@ -26,11 +27,9 @@ export class PlexWrapperComponent implements AfterViewInit {
     constructor(
         private elRef: ElementRef,
         private ref: ChangeDetectorRef,
-
     ) {
 
     }
-
 
     ngAfterViewInit() {
         this.hasCollapse = !!this.elRef.nativeElement.querySelector('section [collapse]');
@@ -41,14 +40,8 @@ export class PlexWrapperComponent implements AfterViewInit {
         this.filled = !!this.elRef.nativeElement.querySelector('section [collapse] div.full');
     }
 
-    ngOnInit() {
-        document.onload;
-        this.hasFilled();
-    }
-
     toggle() {
         this.desplegado = !this.desplegado;
         this.change.emit(this.desplegado);
-        this.hasFilled();
     }
 }
