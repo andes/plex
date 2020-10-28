@@ -1,6 +1,6 @@
 plex-accordion {
   .card-header {
-    &> div {
+    & > div {
       width: 100%;
     }
     display: flex;
@@ -14,13 +14,23 @@ plex-accordion {
   .card-action {
     display: flex;
     align-items: flex-start;
-    .title {
+    width: 100%;
+
+    .title,
+    > div {
+      width: 100%;
       margin-left: 0.5rem;
       &:hover,
       :focus {
         color: $blue;
       }
     }
+  }
+  [plex-accordion-title] {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
