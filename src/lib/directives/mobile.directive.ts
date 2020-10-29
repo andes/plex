@@ -39,9 +39,9 @@ export class MobileDirective<T> implements OnDestroy, OnInit {
         if (this.mobile === null) {
             this.mobile = true;
         }
-        const MOBILE_BREKPOINT = '(max-width: 599px)';
-        this.openSubscription = this.breakpointObserver.observe(MOBILE_BREKPOINT).subscribe((states) => {
-            if (states.breakpoints[MOBILE_BREKPOINT]) {
+        const MOBILE_BREAKPOINT = '(max-width: 599px)';
+        this.openSubscription = this.breakpointObserver.observe(MOBILE_BREAKPOINT).subscribe((states) => {
+            if (states.breakpoints[MOBILE_BREAKPOINT]) {
                 if (this.mobile) {
                     this.createView();
                 } else {
