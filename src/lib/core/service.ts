@@ -7,6 +7,7 @@ import { default as swal } from 'sweetalert2';
 import { WizardConfig } from './wizard-config.interface';
 import { PlexTitle } from './plex-title.interface';
 import * as introJs from 'intro.js';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Injectable()
 export class Plex {
@@ -24,7 +25,8 @@ export class Plex {
     constructor(
         private titleService: Title,
         private noficationService: NotificationsService,
-        private componentFactoryResolver: ComponentFactoryResolver
+        private componentFactoryResolver: ComponentFactoryResolver,
+        private breakpointObserver: BreakpointObserver
     ) { }
 
     /**
@@ -395,5 +397,12 @@ export class Plex {
     navVisible(visible: boolean) {
         this.navbarVisible = visible;
         return this.navbarVisible;
+    }
+
+    /**
+     * Determina si estamos en un dispositivo mobile.
+     */
+    isMobile() {
+        return this.breakpointObserver.isMatched('(max-width: 599px)');
     }
 }
