@@ -1,3 +1,10 @@
+## [7.3.1](https://github.com/andes/plex/compare/v7.3.0...v7.3.1) (2020-10-30)
+
+
+### Bug Fixes
+
+* **accordion:** se arregla layout interno ([#239](https://github.com/andes/plex/issues/239)) ([33f5fbb](https://github.com/andes/plex/commit/33f5fbb9c58de2717a82171f3b376b6a6cba436d))
+
 # [7.3.0](https://github.com/andes/plex/compare/v7.2.0...v7.3.0) (2020-10-27)
 
 
