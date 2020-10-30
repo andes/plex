@@ -3,7 +3,7 @@
         <plex-accordion>
             <plex-panel (toggle)="toggle($event)" active="true">
                 <div plex-accordion-title>
-                    Título con elementos html
+                    <div>Título con elementos html</div>
                     <plex-bool [(ngModel)]="test" type="slide" label="¿Está activo?" name="activo"
                                (change)="bool($event)">
                     </plex-bool>
