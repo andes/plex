@@ -18,11 +18,11 @@ import { PlexAccordionComponent } from './accordion.component';
                         </a>
                     </div>
 
-                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" [ngClass]="{show: active}">
-                    <div class="card-block">
-                        <h6 class="box-title-secundario" *ngIf="tituloSecundario">{{tituloSecundario}}</h6>
-                        <ng-content class="box-title-element"></ng-content>
-                    </div>
+                    <div id="collapseOne" class="collapse" [class.show]="active" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="card-block">
+                            <h6 class="box-title-secundario" *ngIf="tituloSecundario">{{tituloSecundario}}</h6>
+                            <ng-content class="box-title-element"></ng-content>
+                        </div>
                     </div>
                 </div>
                 `,

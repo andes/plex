@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 plex-accordion {
   .card-header {
     & > div {
@@ -19,7 +21,6 @@ plex-accordion {
     .title,
     > div {
       width: 100%;
-      margin-left: 0.5rem;
       &:hover,
       :focus {
         color: $blue;
@@ -32,12 +33,29 @@ plex-accordion {
     justify-content: space-between;
     align-items: center;
   }
+
+  @keyframes accordion {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .collapse {
+    opacity: 0;
+    &.show {
+      animation: accordion ease-in-out 0.25s forwards;
+    }
+  }
 }
 
 // Inverted
 plex-layout-sidebar[type="invert"] {
   .card,
   .card-header {
-    border-color: white !important;
+    background-color: transparentize($color: $blue, $amount: 0.9);
+    border-color: transparentize($color: $light-blue, $amount: 0.9);
   }
 }
