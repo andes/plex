@@ -1,60 +1,78 @@
-<plex-layout main=6>
-
-        <plex-layout-main>
-                <plex-title titulo="Usos y atributos"></plex-title>
-                <div class="w-100 h-100 d-flex justify-content-center align-items-center"
-                     *ngFor="let dato of datos | slice:7">
-                        <plex-label icon="arrow-up" type="default" size="xl" direction="column"
-                                    titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
+<plex-layout main="8">
+    <plex-layout-main>
+        <plex-grid cols="3">
+            <section span="2">
+                <plex-title titulo="Texto descriptivo"></plex-title>
+                <div class="h-50 d-flex justify-content-center align-items-center"
+                     *ngFor="let dato of datos | slice:7:8">
+                    <plex-label icon="arrow-up" type="default" size="xl" direction="column" titulo="{{ dato.label }}"
+                                subtitulo="{{ dato.valor }}"></plex-label>
                 </div>
-        </plex-layout-main>
+                <plex-title titulo="Pasos explicativos" size="sm"></plex-title>
+                <div justify="center" class="h-50">
+                    <plex-label *ngFor="let nodo of pasos" type="info" size="lg" direction="column"
+                                titulo="{{ nodo.type }}" subtitulo="{{ nodo.valor }}">
+                        <p dato>{{ nodo.label }}</p>
+                    </plex-label>
+                </div>
+            </section>
+            <section class="ml-4 d-flex flex-column justify-content-betweeen h-100">
+                <plex-title titulo="Cronología"></plex-title>
+                <plex-label *ngFor="let fecha of eventos" type="info" size="md" direction="row"
+                            titulo="{{ fecha.type }}" subtitulo="{{ fecha.valor }}">
+                    <p dato>{{ fecha.label }}</p>
+                </plex-label>
+            </section>
+        </plex-grid>
+    </plex-layout-main>
 
-
-        <plex-layout-sidebar type="invert">
-                <plex-title titulo="Usos y atributos"></plex-title>
-                <plex-title titulo="Size='xl' | direction='column'" size="sm"></plex-title>
-                <section class="plex-grid">
-                        <div *ngFor="let dato of datos | slice:1:5">
-                                <plex-label type="{{ dato.type }}" direction="column" icon="account" size="xl"
-                                            titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
-                                </plex-label>
-                        </div>
-                        <div>
-                                <plex-label type="success" direction="column" size="xl" titulo="Prueba icono"
-                                            subtitulo="Desacoplado">
-                                        <plex-icon type="success" name="account"></plex-icon>
-                                </plex-label>
-                        </div>
-                        <div>
-                                <plex-label type="success" direction="column" size="xl">
-                                        <plex-icon type="success" name="account"></plex-icon>
-                                        Titulo aparte
-                                </plex-label>
-                        </div>
-                </section>
-                <plex-title titulo="Size='lg' | direction='column'" size="sm"></plex-title>
-                <section class="plex-grid">
-                        <div *ngFor="let dato of datos | slice:1:5">
-                                <plex-label size="lg" direction="column" titulo="{{ dato.label }}"
-                                            subtitulo="{{ dato.valor }}">
-                                </plex-label>
-                        </div>
-                </section>
-                <plex-title titulo="Size='md'(default) | direction='row(default)'" size="sm"></plex-title>
-                <section class="plex-grid">
-                        <div *ngFor="let dato of datos | slice:0:4">
-                                <plex-label size="md" titulo="{{ dato.label }}" icon="star"
-                                            subtitulo="{{ dato.valor }}">
-                                </plex-label>
-                        </div>
-                </section>
-                <plex-title titulo="Size='sm' | direction='row(default)'" size="sm"></plex-title>
-                <section class="plex-grid">
-                        <div *ngFor="let dato of datos">
-                                <plex-label size="sm" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
-                                </plex-label>
-                        </div>
-                </section>
-        </plex-layout-sidebar>
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="Atributos"></plex-title>
+        <plex-title titulo="Size='xl' | direction='column'" size="sm"></plex-title>
+        <section class="plex-grid">
+            <div *ngFor="let dato of datos | slice:1:5">
+                <plex-label type="{{ dato.type }}" direction="column" icon="account" size="xl" titulo="{{ dato.label }}"
+                            subtitulo="{{ dato.valor }}">
+                </plex-label>
+            </div>
+            <div>
+                <plex-label type="success" direction="column" size="xl" titulo="Prueba icono" subtitulo="Desacoplado">
+                    <plex-icon type="success" name="account"></plex-icon>
+                </plex-label>
+            </div>
+            <div>
+                <plex-label type="success" direction="column" size="xl">
+                    <plex-icon type="success" name="account"></plex-icon>
+                    Titulo aparte
+                </plex-label>
+            </div>
+        </section>
+        <plex-title titulo="Size='lg' | direction='column'" size="sm"></plex-title>
+        <section class="plex-grid">
+            <div *ngFor="let dato of datos | slice:1:4">
+                <plex-label size="lg" direction="column" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+                </plex-label>
+            </div>
+        </section>
+        <plex-title titulo="Size='md'(default) | direction='row(default)'" size="sm"></plex-title>
+        <section class="plex-grid">
+            <div *ngFor="let dato of datos | slice:0:3">
+                <plex-label size="md" titulo="{{ dato.label }}" icon="star" subtitulo="{{ dato.valor }}">
+                </plex-label>
+            </div>
+        </section>
+        <plex-title titulo="Size='sm' | direction='row(default)'" size="sm"></plex-title>
+        <section class="plex-grid">
+            <div *ngFor="let dato of datos | slice:3:6">
+                <plex-label size="sm" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+                </plex-label>
+            </div>
+        </section>
+        <plex-title titulo="Cronología invert" size="sm"></plex-title>
+        <plex-label *ngFor="let fecha of eventos | slice:0:5" type="info" size="md" direction="row"
+                    titulo="{{ fecha.type }}" subtitulo="{{ fecha.valor }}">
+            <p dato>{{ fecha.label }}</p>
+        </plex-label>
+    </plex-layout-sidebar>
 
 </plex-layout>
