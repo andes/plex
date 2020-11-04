@@ -1,0 +1,53 @@
+<plex-layout main="8">
+    <plex-layout-main>
+
+        <table plex-table>
+            <tr>
+                <th>heading A</th>
+                <th>heading B</th>
+                <th>heading C</th>
+                <th>acciones</th>
+            </tr>
+            <tr *ngFor="let item of datos; let par = even" [class.selectable]="selectable"
+                [class.selected]="selectable && selected">
+                <td>{{ item.label }}</td>
+                <td>{{ item.valor }}</td>
+                <td>
+                    <plex-badge type="{{ item.type }}" icon="pencil">{{ item.type }}</plex-badge>
+                    <plex-badge type="{{ item.type }}" icon="account">{{ item.type }}</plex-badge>
+                    <plex-badge type="{{ item.type }}" icon="star">{{ item.type }}</plex-badge>
+                </td>
+                <td colspan="2">
+                    <plex-button type="warning" icon="pencil"></plex-button>
+                    <plex-button type="info" icon="account"></plex-button>
+                    <plex-button type="success" icon="star"></plex-button>
+                </td>
+            </tr>
+        </table>
+
+    </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+
+        <table plex-table size="sm">
+            <tr>
+                <th>heading A</th>
+                <th>heading B</th>
+                <th>heading C</th>
+                <th>acciones</th>
+            </tr>
+            <tr *ngFor="let item of datos; let par = even" [class.selectable]="selectable"
+                [class.selected]="selectable && selected">
+                <td>Contenido de cada heading</td>
+                <td>Contenido de cada heading</td>
+                <td>Contenido de cada heading</td>
+                <td class="d-flex align-content-center">
+                    <plex-button size="sm" type="warning" icon="pencil"></plex-button>
+                    <plex-button size="sm" type="info" icon="account"></plex-button>
+                    <plex-button size="sm" type="success" icon="star"></plex-button>
+
+                </td>
+            </tr>
+        </table>
+
+    </plex-layout-sidebar>
+</plex-layout>

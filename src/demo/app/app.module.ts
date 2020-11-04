@@ -23,6 +23,7 @@ import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { FontsDemoComponent } from './fonts/fonts.component';
 import { ButtonDemoComponent } from './button/button.component';
+import { TableDemoComponent } from './table/table';
 import { TabsDemoComponent } from './tabs/tabs.component';
 import { AccordionDemoComponent } from './accordion/accordion.component';
 import { SelectDemoComponent } from './select/select.component';
@@ -95,6 +96,7 @@ import { HintDemoComponent } from './directives/componentes/hint/hint.component'
         LoaderDemoComponent,
         RibbonDemoComponent,
         PhoneDemoComponent,
+        TableDemoComponent,
         DropdownDemoComponent,
         WizardDemoComponent,
         DemoIconComponent,

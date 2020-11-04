@@ -1,0 +1,60 @@
+@import './variables.scss';
+
+
+table[plex-table] {
+    width:100%;
+//  color base como variable
+    tr {
+        > th {
+            text-transform: uppercase;
+        }
+
+        &:nth-child(even) {
+            background-color: transparent;
+          }
+    
+        &:nth-child(odd) {
+            background-color: rgba(0, 168, 224, 0.15)!important;
+        }
+
+        &.selectable {
+            cursor: pointer;
+            &:hover {
+                box-sizing: border-box;
+                box-shadow: inset 0 0 0 2px transparentize($color: $blue, $amount: 0.4);
+                background-color: $light-blue !important;
+                color: black;
+            }
+        }
+
+        &.selected {
+            box-sizing: border-box;
+            box-shadow: inset 0 0 0 2px $blue;
+            background-color: $light-blue !important;
+            color: black;
+        }
+    }
+      
+  & th, td {
+    //border: 1px solid black;
+    border-collapse: collapse;
+    padding: 15px;
+    text-align: left;
+
+    &:last-child {
+        display: flex;
+
+        plex-button, plex-badge {
+            align-self: center;
+            margin-left: .25rem;
+        }
+    }
+    }
+
+
+
+    &[size="sm"] {
+        font-size: .8rem;
+    }
+
+}
