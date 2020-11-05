@@ -1,0 +1,39 @@
+<plex-title titulo="Directiva tooltip">
+    <plex-button size="sm" type="danger" tooltipPosition="left"
+                 tooltip="El tooltip es un texto que refuerza la acción a realizar">
+        tooltip
+    </plex-button>
+</plex-title>
+<main role="main" class="inner">
+    <div class="hint-click-test">{{ message }}</div>
+    <p class="lead">La directiva <em>tooltip</em> se usa como una ayuda puntual, a manera de mensaje simple y
+        directo.</p>
+    <div class="outline-dashed-default">
+        &lt;span tooltip="Un texto" tooltipPosition="top | right | bottom | left"&gt;&lt;/span&gt;<br>
+    </div>
+    <hr>
+    <b>Tooltip</b>
+    <ul>
+        <li class="list-item">Se emplea sobre <a class="d-inline-block" href="javascript:void(0)"
+               title="Tooltip con directiva [title] (deprecated)">elementos de acción</a> o elementos
+            iconográficos (por ej.: badges)
+        </li>
+        <li class="list-item">En estado de reposo es <a class="d-inline-block" href="javascript:void(0)"
+               tooltip="Tooltip con directiva [tooltip]">invisible</a>, se activa en el evento onMouseOver</li>
+        <li class="list-item">No es multilínea</li>
+        <li class="list-item">Provee información complementaria acerca de una acción</li>
+        <li class="list-item">Brinda información extendida de un estado o situación</li>
+        <li class="list-item">Opcionalmente se puede indicar su posición (<a href="javascript:void(0)"
+               class="d-inline-block" tooltip="arriba" tooltipPosition="top">arriba</a>, <a href="javascript:void(0)"
+               class="d-inline-block" tooltip="abajo" tooltipPosition="bottom">abajo</a>, <a href="javascript:void(0)"
+               class="d-inline-block" tooltip="izquierda" titlePosition="left">izquierda</a> o <a
+               href="javascript:void(0)" class="d-inline-block" tooltip="derecha" titlePosition="right">derecha</a>)
+        </li>
+        <li class="list-item">Posee un "tip", una pequeña flecha que indica el elemento puntual de referencia
+        </li>
+        <li class="list-item">
+            Para más opciones ver <a href="https://ui.andes.gob.ar/components/tooltip-directive/overview"
+               target="_blank">la documentación oficial de tooltip</a>
+        </li>
+    </ul>
+</main>

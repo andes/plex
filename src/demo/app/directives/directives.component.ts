@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemoDirectivesComponent implements OnInit {
 
-    contenido = 'este es Un TEXTO de prueba';
+    constructor(private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit(): void {
+    }
+
+
+    verDirectiva(id) {
+        this.router.navigate(['directives', 'listado-sidebar', id], { relativeTo: this.route });
     }
 
 }

@@ -54,7 +54,6 @@ import { MainListadoComponent } from './templates/listado-sidebar/main/listado/m
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
 import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
-import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
 import { HelpDemoComponent } from './help/help.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
@@ -66,6 +65,10 @@ import { DatosContactoComponent } from './templates/modulos/mpi/main/alta/datos-
 import { DatosNotasComponent } from './templates/modulos/mpi/main/alta/datos-notas/datos-notas.component';
 import { DatosRelacionesComponent } from './templates/modulos/mpi/main/alta/datos-relaciones/datos-relaciones.component';
 import { DemoDirectivesComponent } from './directives/directives.component';
+import { CaseDemoComponent } from './directives/componentes/case/case.component';
+import { DemoDirectivesSidebarComponent } from './directives/listado-sidebar/directives-sidebar.component';
+import { TooltipDemoComponent } from './directives/componentes/tooltip/tooltip.component';
+import { HintDemoComponent } from './directives/componentes/hint/hint.component';
 
 
 @NgModule({
@@ -95,7 +98,6 @@ import { DemoDirectivesComponent } from './directives/directives.component';
         DropdownDemoComponent,
         WizardDemoComponent,
         DemoIconComponent,
-        TooltipHintDemoComponent,
         TemplateInicioComponent,
         TemplateFormComponent,
         TemplateVisualizacionComponent,
@@ -126,7 +128,11 @@ import { DemoDirectivesComponent } from './directives/directives.component';
         DatosContactoComponent,
         DatosNotasComponent,
         DatosRelacionesComponent,
-        DemoDirectivesComponent
+        DemoDirectivesComponent,
+        DemoDirectivesSidebarComponent,
+        TooltipDemoComponent,
+        HintDemoComponent,
+        CaseDemoComponent
     ],
     entryComponents: [
         HeaderPacienteComponent

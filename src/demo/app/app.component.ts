@@ -38,12 +38,14 @@ export class AppComponent implements OnInit {
             { label: 'Tabs', icon: 'folder', route: '/tabs' },
             { label: 'Text', icon: 'form-textbox', route: '/text' },
             { label: 'Templates', icon: 'view-grid', route: '/templates' },
-            { label: 'Tooltip & Hint', icon: 'tooltip', route: '/tooltip-hint' },
             { label: 'Wizard', icon: 'auto-fix', route: '/wizard' },
             { label: 'Wrapper', icon: 'view-quilt', route: '/wrapper' },
             { label: 'Grid', icon: 'view-grid', route: '/grid' },
-            { divider: true },
-            { label: 'Directivas', icon: 'sign-direction', route: '/directives' },
+            { divider: true, },
+            { label: 'Directivas', icon: 'sign-direction', route: 'directives' },
+            { label: 'Directiva Tooltip', icon: 'tooltip', route: '/directives/listado-sidebar/tooltip' },
+            { label: 'Directiva Hint', icon: 'tooltip', route: '/directives/listado-sidebar/hint' },
+            { label: 'Directiva Case', icon: 'tooltip', route: '/directives/listado-sidebar/case' },
         ];
         this.plex.updateMenu(menu);
         this.plex.updateAppStatus({ API: 'OK' });
