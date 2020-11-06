@@ -13,6 +13,7 @@
     </plex-help>
 </plex-title>
 <main role="main" class="inner">
+    <div class="hint-click-test">{{ message }}</div>
     <p class="lead">La directiva <em>hint</em> se usa como una ayuda contextual avanzada.</p>
     <div class="outline-dashed-default">
         &lt;span hint="Un texto" hintType="&lt;PlexType&gt;" hintIcon="icon" detach="top | right |
@@ -28,12 +29,10 @@
                         hint="círculo arriba" detach="top">
                 detach arriba
             </plex-badge>,
-            <plex-badge class="ml-2
-                        " type="info" hintType="danger" hint="círculo a la derecha" detach="right">
+            <plex-badge class="ml-2" type="info" hintType="danger" hint="círculo a la derecha" detach="right">
                 detach derecha
             </plex-badge>,
-            <plex-badge class="ml-2
-                        " type="info" hintType="danger" hint="círculo arriba y a la derecha" detach="both">
+            <plex-badge class="ml-2" type="info" hintType="danger" hint="círculo arriba y a la derecha" detach="both">
                 detach ambos
             </plex-badge>.</li>
         <li class="list-item">Si el elemento tiene una acción (click), el hint se vuelve clickeable</li>
