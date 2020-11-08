@@ -8,6 +8,13 @@ plex-grid {
     text-transform: capitalize;
     grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
 
+    plex-card {
+        img {
+            object-fit: contain!important;
+            max-height: var(--rowSize);
+        }
+    }
+
     // labels 
     span {	
         white-space: wrap;	
@@ -16,10 +23,9 @@ plex-grid {
     }	
 
     img {
-        object-fit: cover;	
+        object-fit: cover;
         width: 100%;
-        height: fit-content;
-        max-height: var(--rowSize);	
+        height: var(--colSize);
     }
     
     // types

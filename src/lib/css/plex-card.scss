@@ -25,7 +25,8 @@ plex-card {
     .card {
         display: flex;
         padding: 1.5rem;
-        height: 100%;    
+        height: 100%;
+        justify-content: space-between;
     }
 
     // Estados
