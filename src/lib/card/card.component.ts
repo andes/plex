@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
         <div class="d-flex" [ngClass]="cssAlign">
             <ng-content select="plex-badge"></ng-content>
         </div>
+        <ng-content></ng-content>
         <div class="d-flex my-2" [ngClass]="cssAlign">
             <ng-content select="plex-label"></ng-content>
         </div>
