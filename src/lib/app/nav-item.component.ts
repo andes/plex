@@ -17,7 +17,7 @@ import { PlexHelpComponent } from '../help/help.component';
 })
 export class NavItemComponent {
 
-    @HostBinding('class') classList = 'action hidden-md-down';
+    @HostBinding('class') classList = 'action hidden-sm-down';
 
     @HostBinding('class.hover') opened = false;
 

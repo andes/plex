@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Renderer2, ViewChild, ViewContainerRef, ContentChild } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import { Plex } from './../core/service';
 
 @Component({
@@ -12,7 +12,7 @@ import { Plex } from './../core/service';
                             <div class="menu-item">
                                 <ng-template #menuItem></ng-template>
                             </div>
-                            <div class="title hidden-md-down">
+                            <div class="title">
                                 <ng-container *ngFor="let item of plex.title; let last = last">
                                     <a *ngIf="item.route" [routerLink]="item.route">{{item.name}}</a>
                                     <span *ngIf="!item.route">{{item.name}}</span>
@@ -27,7 +27,7 @@ import { Plex } from './../core/service';
                             <ng-content select="[nav-item]"></ng-content>
 
                             <!--App Status-->
-                            <div class="action hidden-md-down">
+                            <div class="action hidden-sm-down">
                                 <plex-icon *ngIf="online" name="cloud-check-outline" type="light" size="lg"></plex-icon>
                                 <plex-icon *ngIf="!online" name="cloud-off-outline" type="danger" size="lg"></plex-icon>
                                 <div class="popover popover-bottom">
@@ -43,7 +43,7 @@ import { Plex } from './../core/service';
                                     </div>
                                 </div>
                             </div>
-                            <div *ngIf="plex.userInfo" class="userinfo hidden-md-down">
+                            <div *ngIf="plex.userInfo" class="userinfo hidden-sm-down">
                                 <div>
                                     <span>{{plex.userInfo.usuario.nombreCompleto}}</span><br><span *ngIf="plex.userInfo.organizacion">{{plex.userInfo.organizacion.nombre}}</span>
                                 </div>
