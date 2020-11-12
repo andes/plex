@@ -849,7 +849,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;section&nbsp;responsive&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;row&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;col-{{&nbsp;main&nbsp;}}&nbsp;h-100&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.focused]&#x3D;&quot;foco&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;main&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.not-focused]&#x3D;&quot;foco&nbsp;&amp;&amp;&nbsp;foco&nbsp;!&#x3D;&#x3D;&nbsp;&#x27;main&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-layout-main&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;col-{{&nbsp;maxcolumns&nbsp;-&nbsp;main&nbsp;}}&nbsp;h-100&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngIf&#x3D;&quot;(main&nbsp;&lt;&nbsp;maxcolumns&nbsp;&amp;&amp;&nbsp;!foco)&nbsp;||&nbsp;!!foco&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[hidden]&#x3D;&quot;main&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;maxcolumns&nbsp;&amp;&amp;&nbsp;foco&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.focused]&#x3D;&quot;foco&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;sidebar&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.not-focused]&#x3D;&quot;foco&nbsp;&amp;&amp;&nbsp;foco&nbsp;!&#x3D;&#x3D;&nbsp;&#x27;sidebar&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-layout-sidebar&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/section&gt;<br>&lt;ng-content&nbsp;select&#x3D;&quot;plex-layout-footer&quot;&gt;&lt;/ng-content&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;section&nbsp;responsive&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;row&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;col-{{&nbsp;main&nbsp;}}&nbsp;h-100&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.focused]&#x3D;&quot;foco&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;main&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.not-focused]&#x3D;&quot;foco&nbsp;&amp;&amp;&nbsp;foco&nbsp;!&#x3D;&#x3D;&nbsp;&#x27;main&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-layout-main&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;col-{{&nbsp;maxcolumns&nbsp;-&nbsp;main&nbsp;}}&nbsp;h-100&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngIf&#x3D;&quot;(main&nbsp;&lt;&nbsp;maxcolumns&nbsp;&amp;&amp;&nbsp;!foco)&nbsp;||&nbsp;!!foco&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[hidden]&#x3D;&quot;main&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;maxcolumns&nbsp;&amp;&amp;&nbsp;foco&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.focused]&#x3D;&quot;foco&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;sidebar&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.not-focused]&#x3D;&quot;foco&nbsp;&amp;&amp;&nbsp;foco&nbsp;!&#x3D;&#x3D;&nbsp;&#x27;sidebar&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-layout-sidebar&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;resizable&quot;&nbsp;class&#x3D;&quot;resizable-btn-wrapper&quot;&nbsp;[class.resizable]&#x3D;&quot;resizable&quot;&nbsp;draggable&#x3D;&quot;true&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;size&#x3D;&quot;sm&quot;&nbsp;(click)&#x3D;&quot;expandir($event)&quot;&nbsp;(dragover)&#x3D;&quot;expandir($event)&quot;&nbsp;type&#x3D;&quot;link&quot;&nbsp;icon&#x3D;&quot;pico-izquierda&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;hr&nbsp;class&#x3D;&quot;divisor&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;size&#x3D;&quot;sm&quot;&nbsp;(click)&#x3D;&quot;contraer($event)&quot;&nbsp;(dragover)&#x3D;&quot;contraer($event)&quot;&nbsp;type&#x3D;&quot;link&quot;&nbsp;icon&#x3D;&quot;pico-derecha&quot;&nbsp;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/section&gt;<br>&lt;ng-content&nbsp;select&#x3D;&quot;plex-layout-footer&quot;&gt;&lt;/ng-content&gt;<br></code></td>
             </tr>
 
 
@@ -900,6 +900,75 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>max</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>6 | 7 | 8 | 9 | 10</code>
+
+                              </p>
+                            <p>
+                              <em>Default value: </em><code>6</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>min</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>2 | 3 | 4</code>
+
+                              </p>
+                            <p>
+                              <em>Default value: </em><code>3</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>resizable</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>boolean</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>steps</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>0 | 2 | 3 | 1</code>
+
+                              </p>
+                            <p>
+                              <em>Default value: </em><code>0</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
 
@@ -917,6 +986,63 @@
             </table>
     </section>
 
+    <section>
+        <h3 id="methods">Methods</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> contraer</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play circle">
+                                    <span class="fa fa-circle"></span>
+                                </span>
+                            <code>contraer()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> expandir</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play circle">
+                                    <span class="fa fa-circle"></span>
+                                </span>
+                            <code>expandir(max: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
     <section>
         <h3 id="inputs">Properties</h3>
@@ -950,6 +1076,21 @@
                     <tr>
                         <td class="col-md-4">
                             <code>routerOutlet:     <code><a href="https://angular.io/docs/ts/latest/api/router/index/RouterOutlet-directive.html" target="_blank" >RouterOutlet</a></code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> sidebarSize</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>sidebarSize:     <code>number</code>
     </bcode>
                         </td>
                     </tr>
@@ -1030,7 +1171,12 @@ import { Subscription } from &#x27;rxjs-compat/Subscription&#x27;;
                  [class.focused]&#x3D;&quot;foco &#x3D;&#x3D;&#x3D; &#x27;sidebar&#x27;&quot;
                  [class.not-focused]&#x3D;&quot;foco &amp;&amp; foco !&#x3D;&#x3D; &#x27;sidebar&#x27;&quot;&gt;
                 &lt;ng-content select&#x3D;&quot;plex-layout-sidebar&quot;&gt;&lt;/ng-content&gt;
-            &lt;/div&gt;
+                &lt;span *ngIf&#x3D;&quot;resizable&quot; class&#x3D;&quot;resizable-btn-wrapper&quot; [class.resizable]&#x3D;&quot;resizable&quot; draggable&#x3D;&quot;true&quot;&gt;
+                    &lt;plex-button size&#x3D;&quot;sm&quot; (click)&#x3D;&quot;expandir($event)&quot; (dragover)&#x3D;&quot;expandir($event)&quot; type&#x3D;&quot;link&quot; icon&#x3D;&quot;pico-izquierda&quot;&gt;&lt;/plex-button&gt;
+                    &lt;hr class&#x3D;&quot;divisor&quot;&gt;
+                    &lt;plex-button size&#x3D;&quot;sm&quot; (click)&#x3D;&quot;contraer($event)&quot; (dragover)&#x3D;&quot;contraer($event)&quot; type&#x3D;&quot;link&quot; icon&#x3D;&quot;pico-derecha&quot; &gt;&lt;/plex-button&gt;
+                &lt;/span&gt;
+                &lt;/div&gt;
         &lt;/div&gt;
     &lt;/section&gt;
     &lt;ng-content select&#x3D;&quot;plex-layout-footer&quot;&gt;&lt;/ng-content&gt;
@@ -1044,12 +1190,21 @@ export class PlexLayoutComponent implements AfterContentInit, OnInit, OnDestroy 
     @ContentChild(RouterOutlet, { static: true }) routerOutlet: RouterOutlet;
 
     @Input() aspect &#x3D; null;
-
     @Input() foco: &#x27;main&#x27; | &#x27;sidebar&#x27; &#x3D; null;
 
+    // Sidebar expandible
+    @Input() resizable: boolean;
+    @Input() min: 2 | 3 | 4 &#x3D; 3;
+    @Input() max: 6 | 7 | 8 | 9 | 10 &#x3D; 6;
+    @Input() steps: 0 | 1 | 2 | 3 &#x3D; 0;
+
+    public sidebarSize &#x3D; this.maxcolumns - this.main;
 
     private subscription1: Subscription;
     private subscription2: Subscription;
+
+    constructor() {
+    }
 
     ngOnInit() {
         if (this.aspect) {
@@ -1066,6 +1221,7 @@ export class PlexLayoutComponent implements AfterContentInit, OnInit, OnDestroy 
             this.subscription2.unsubscribe();
         }
     }
+
     ngAfterContentInit() {
         // MODO MANUAL
         if (!this.aspect) { return; }
@@ -1088,11 +1244,27 @@ export class PlexLayoutComponent implements AfterContentInit, OnInit, OnDestroy 
         }
     }
 
-
-    constructor() {
+    // Sidebar expandible
+    public contraer() {
+        if (this.steps &gt; 0 &amp;&amp; this.main &lt; this.max &amp;&amp; this.sidebarSize &gt; this.min) {
+            this.main++;
+            this.main &#x3D; this.main + this.steps - 1;
+        } else {
+            this.sidebarSize &#x3D; this.min;
+            this.main &#x3D; this.maxcolumns - this.sidebarSize;
+        }
     }
 
+    public expandir(max) {
+        if (this.main &gt; max) {
+            this.main &#x3D; max;
+        }
 
+        /* define el valor maximo del sidebar */
+        if (this.sidebarSize &#x3D; this.max) {
+            this.main &#x3D; this.maxcolumns - this.sidebarSize;
+        }
+    }
 }
 </code></pre>
         </div>
