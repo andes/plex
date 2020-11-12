@@ -1,3 +1,15 @@
+# [7.4.0](https://github.com/andes/plex/compare/v7.3.1...v7.4.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* **plex-grid/plex-card:** ajusta celdas, extiende elementos en card  ([#246](https://github.com/andes/plex/issues/246)) ([32d3a28](https://github.com/andes/plex/commit/32d3a28460daf98d444451b02e92fb19d9a79cfa))
+
+
+### Features
+
+* **plex-layout:** unifica funcionalidad + estilizado ([#245](https://github.com/andes/plex/issues/245)) ([ef33357](https://github.com/andes/plex/commit/ef33357530eac84b85d0a705fe9a0c3a3fff8b62))
+
 ## [7.3.1](https://github.com/andes/plex/compare/v7.3.0...v7.3.1) (2020-10-30)
 
 
