@@ -1,0 +1,17 @@
+@mixin cardBackground{
+    plex-badge > span.badge {
+        color: white!important;
+        border-color: white!important;
+    }
+
+    plex-button > button.btn {
+        background: white!important;
+        border: none!important;
+        box-shadow: none!important;
+        color: var(--color-base)!important;
+    
+        &:hover {
+            background: var(--color-baseLight)!important;
+        }
+    }
+}

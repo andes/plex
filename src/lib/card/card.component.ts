@@ -5,17 +5,19 @@ import { Component, Input } from '@angular/core';
     template: `
     <div class="card bg-{{ type }}" [ngClass]="{'text-white' : type != 'default'}" [class.selected]="selected">
         <ng-content select="img"></ng-content>
+        <ng-content select="plex-icon"></ng-content>
         <div class="d-flex" [ngClass]="cssAlign">
             <ng-content select="plex-badge"></ng-content>
         </div>
-        <ng-content></ng-content>
-        <div class="d-flex my-2" [ngClass]="cssAlign">
+        <div class="d-flex mt-2" [ngClass]="cssAlign">
             <ng-content select="plex-label"></ng-content>
         </div>
-        <div class="d-flex" [ngClass]="cssAlign">
+        <div class="d-flex flex-column mt-2" [ngClass]="cssAlign">
+            <ng-content></ng-content>
+        </div>
+        <div class="d-flex mt-2" [ngClass]="cssAlign">
             <ng-content select="plex-button"></ng-content>
         </div>
-            <ng-content select="plex-bool"></ng-content>
     </div>
     `,
 })
@@ -30,6 +32,10 @@ export class PlexCardComponent {
     }
 
     get cssAlign() {
-        return this.align === 'start' ? 'justify-content-start' : 'justify-content-center';
+        if (this.align === 'center') {
+            return 'justify-content-center';
+        } else {
+            return this.align === 'start' ? 'justify-content-start' : 'justify-content-end';
+        }
     }
 }
