@@ -57,9 +57,9 @@ import { JustifyDirective } from './directives/justify.directive';
 import { PreviewDirective } from './visualizador/preview.directive';
 import { ResponsiveDirective } from './directives/responsive.directive';
 import { SpanDirective } from './directives/span.directive';
+import { CaseDirective } from './directives/case.directive';
 
 // Third party
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule, MatRadioButton } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -146,6 +146,7 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         PlexWizardDirective,
         ResponsiveDirective,
         SpanDirective,
+        CaseDirective,
         TabDirective,
         TooltipContentComponent,
         HintComponent,
@@ -211,6 +212,7 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         HelpDirective,
         HintDirective,
         JustifyDirective,
+        CaseDirective,
         PreviewDirective,
         PlexRipplesDirective,
         PlexWizardDirective,

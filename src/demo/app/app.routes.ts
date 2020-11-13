@@ -1,4 +1,3 @@
-import { TooltipHintDemoComponent } from './tooltip-hint/tooltip-hint.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeDemoComponent } from './home/home.component';
@@ -40,6 +39,11 @@ import { CardDemoComponent } from './card/card.component';
 import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
 import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
 import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
+import { DemoDirectivesComponent } from './directives/directives.component';
+import { DemoDirectivesSidebarComponent } from './directives/listado-sidebar/directives-sidebar.component';
+import { TooltipDemoComponent } from './directives/componentes/tooltip/tooltip.component';
+import { HintDemoComponent } from './directives/componentes/hint/hint.component';
+import { CaseDemoComponent } from './directives/componentes/case/case.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -64,7 +68,6 @@ const appRoutes: Routes = [
     { path: 'ribbon', component: RibbonDemoComponent },
     { path: 'phone', component: PhoneDemoComponent },
     { path: 'dropdown', component: DropdownDemoComponent },
-    { path: 'tooltip-hint', component: TooltipHintDemoComponent },
     { path: 'wizard', component: WizardDemoComponent },
     { path: 'wrapper', component: WrapperDemoComponent },
     { path: 'grid', component: GridDemoComponent },
@@ -91,6 +94,15 @@ const appRoutes: Routes = [
     { path: 'item', component: ItemDemoComponent },
     { path: 'detail', component: DetailDemoComponent },
     { path: 'icon', component: DemoIconComponent },
+    { path: 'directives', redirectTo: 'directives/listado-sidebar/tooltip' },
+    {
+        path: 'directives/listado-sidebar', component: DemoDirectivesSidebarComponent,
+        children: [
+            { path: 'tooltip', component: TooltipDemoComponent },
+            { path: 'hint', component: HintDemoComponent },
+            { path: 'case', component: CaseDemoComponent },
+        ]
+    },
     { path: '**', redirectTo: 'inicio' }
 ];
 

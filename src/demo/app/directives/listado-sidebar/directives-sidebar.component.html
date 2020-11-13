@@ -1,0 +1,16 @@
+<plex-layout main="4">
+    <plex-layout-main>
+        <plex-title titulo="Directivas PLEX"></plex-title>
+        <div class="main">
+            <p class="lead">Las directivas...</p>
+            <plex-list size="sm">
+                <plex-item (click)="verDirectiva('tooltip')">Tooltip [tooltip]</plex-item>
+                <plex-item (click)="verDirectiva('hint')">Hint [hint]</plex-item>
+                <plex-item (click)="verDirectiva('case')">Case [case]</plex-item>
+            </plex-list>
+        </div>
+    </plex-layout-main>
+    <plex-layout-sidebar>
+        <router-outlet></router-outlet>
+    </plex-layout-sidebar>
+</plex-layout>
