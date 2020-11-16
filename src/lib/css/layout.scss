@@ -66,8 +66,8 @@ plex-layout {
         }
     }
 
-    > section {
-        >div.row {
+    &[resizable="true"] > section {
+        > div.row {
             div[class^="col-"] {
                 transition: all 900ms ease;
                 
