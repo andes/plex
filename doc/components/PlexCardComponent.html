@@ -237,6 +237,12 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
+                                    <a href="../directives/AlignedDirective.html" >AlignedDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../directives/CaseDirective.html" >CaseDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/GrowDirective.html" >GrowDirective</a>
                                 </li>
                                 <li class="link">
@@ -621,6 +627,12 @@
                                        id="directives-links"
                    >
                                        <li class="link">
+                                           <a href="../directives/AlignedDirective.html" >AlignedDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../directives/CaseDirective.html" >CaseDirective</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../directives/GrowDirective.html" >GrowDirective</a>
                                        </li>
                                        <li class="link">
@@ -836,7 +848,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;card&nbsp;bg-{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;text-white&#x27;&nbsp;:&nbsp;type&nbsp;!&#x3D;&nbsp;&#x27;default&#x27;}&quot;&nbsp;[class.selected]&#x3D;&quot;selected&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;img&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;my-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-label&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-bool&quot;&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;card&nbsp;bg-{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;text-white&#x27;&nbsp;:&nbsp;type&nbsp;!&#x3D;&nbsp;&#x27;default&#x27;}&quot;&nbsp;[class.selected]&#x3D;&quot;selected&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;img&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-label&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;flex-column&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -944,7 +956,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <code>cssAlign:     <code>&quot;justify-content-start&quot; | &quot;justify-content-center&quot;</code>
+                            <code>cssAlign:     <code>&quot;justify-content-center&quot; | &quot;justify-content-start&quot; | &quot;justify-content-end&quot;</code>
     </bcode>
                         </td>
                     </tr>
@@ -960,17 +972,19 @@
     template: &#x60;
     &lt;div class&#x3D;&quot;card bg-{{ type }}&quot; [ngClass]&#x3D;&quot;{&#x27;text-white&#x27; : type !&#x3D; &#x27;default&#x27;}&quot; [class.selected]&#x3D;&quot;selected&quot;&gt;
         &lt;ng-content select&#x3D;&quot;img&quot;&gt;&lt;/ng-content&gt;
+        &lt;ng-content select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;
         &lt;div class&#x3D;&quot;d-flex&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
             &lt;ng-content select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;
         &lt;/div&gt;
-        &lt;ng-content&gt;&lt;/ng-content&gt;
-        &lt;div class&#x3D;&quot;d-flex my-2&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
+        &lt;div class&#x3D;&quot;d-flex mt-2&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
             &lt;ng-content select&#x3D;&quot;plex-label&quot;&gt;&lt;/ng-content&gt;
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;d-flex&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
+        &lt;div class&#x3D;&quot;d-flex flex-column mt-2&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
+            &lt;ng-content&gt;&lt;/ng-content&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;d-flex mt-2&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
             &lt;ng-content select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;
         &lt;/div&gt;
-            &lt;ng-content select&#x3D;&quot;plex-bool&quot;&gt;&lt;/ng-content&gt;
     &lt;/div&gt;
     &#x60;,
 })
@@ -985,7 +999,11 @@ export class PlexCardComponent {
     }
 
     get cssAlign() {
-        return this.align &#x3D;&#x3D;&#x3D; &#x27;start&#x27; ? &#x27;justify-content-start&#x27; : &#x27;justify-content-center&#x27;;
+        if (this.align &#x3D;&#x3D;&#x3D; &#x27;center&#x27;) {
+            return &#x27;justify-content-center&#x27;;
+        } else {
+            return this.align &#x3D;&#x3D;&#x3D; &#x27;start&#x27; ? &#x27;justify-content-start&#x27; : &#x27;justify-content-end&#x27;;
+        }
     }
 }
 </code></pre>

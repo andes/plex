@@ -240,7 +240,7 @@
                                     <a href="../directives/AlignedDirective.html" >AlignedDirective</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../directives/CaseDirective.html" >CaseDirective</a>
+                                    <a href="../directives/CaseDirective.html"  class="active" >CaseDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/GrowDirective.html" >GrowDirective</a>
@@ -249,7 +249,7 @@
                                     <a href="../directives/HelpDirective.html" >HelpDirective</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../directives/HintDirective.html"  class="active" >HintDirective</a>
+                                    <a href="../directives/HintDirective.html" >HintDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/JustifyDirective.html" >JustifyDirective</a>
@@ -630,7 +630,7 @@
                                            <a href="../directives/AlignedDirective.html" >AlignedDirective</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../directives/CaseDirective.html" >CaseDirective</a>
+                                           <a href="../directives/CaseDirective.html"  class="active" >CaseDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/GrowDirective.html" >GrowDirective</a>
@@ -639,7 +639,7 @@
                                            <a href="../directives/HelpDirective.html" >HelpDirective</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../directives/HintDirective.html"  class="active" >HintDirective</a>
+                                           <a href="../directives/HintDirective.html" >HintDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/JustifyDirective.html" >JustifyDirective</a>
@@ -801,7 +801,7 @@
 
 <ol class="breadcrumb">
   <li>Directives</li>
-  <li>HintDirective</li>
+  <li>CaseDirective</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -819,7 +819,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/lib/hint/hint.directive.ts</code>
+            <code>src/lib/directives/case.directive.ts</code>
         </p>
 
 
@@ -831,7 +831,7 @@
 
                     <tr>
                         <td class="col-md-3">selector</td>
-                        <td class="col-md-9"><code>[hint], [position:has(hint)], [icon:has(hint)], [detach:has(hint)]</code></td>
+                        <td class="col-md-9"><code>[case]</code></td>
                     </tr>
 
                 </tbody>
@@ -844,71 +844,16 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-2">
-                                    <code>detach</code>
+                                    <code>case</code>
                                 </td>
                                 <td class="col-md-10">
                                       <p>
-                                        <em>Type:</em>    <code>&quot;&quot; | &quot;both&quot; | &quot;right&quot; | &quot;top&quot;</code>
-
-                                      </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-2">
-                                    <code>hint</code>
-                                </td>
-                                <td class="col-md-10">
-                                      <p>
-                                        <em>Type:</em>    <code>string | HintComponent</code>
-
-                                      </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-2">
-                                    <code>hintIcon</code>
-                                </td>
-                                <td class="col-md-10">
-                                    <p>
-                                      <em>Default value: </em><code>help</code>
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-2">
-                                    <code>hintType</code>
-                                </td>
-                                <td class="col-md-10">
-                                      <p>
-                                        <em>Type:</em>    <code><a href="../injectables/Plex.html" target="_self" >PlexType</a></code>
+                                        <em>Type:</em>    <code>&quot;lowercase&quot; | &quot;uppercase&quot; | &quot;capitalize&quot; | &quot;capitalize-first&quot; | &quot;none&quot;</code>
 
                                       </p>
                                     <p>
-                                      <em>Default value: </em><code>default</code>
+                                      <em>Default value: </em><code>none</code>
                                     </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-2">
-                                    <code>position</code>
-                                </td>
-                                <td class="col-md-10">
                                 </td>
                             </tr>
                         </tbody>
@@ -916,19 +861,6 @@
             </section>
 
 
-            <section>
-                <h3 id="constructor">Constructor</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>constructor(viewContainerRef: <a href="https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html" target="_blank" >ViewContainerRef</a>, resolver: <a href="https://angular.io/docs/ts/latest/api/core/index/ComponentFactoryResolver-class.html" target="_blank" >ComponentFactoryResolver</a>, cdr: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank" >ChangeDetectorRef</a>)</code>
-                                </td>
-                            </tr>
-            
-                        </tbody>
-                    </table>
-            </section>
 
 
             <section>
@@ -937,12 +869,57 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> tooltip</b>
+                                    <b> capitalize</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>tooltip:     <code>ComponentRef&lt;HintComponent&gt;</code>
+                                    <code>capitalize:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> capitalizeFirst</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>capitalizeFirst:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> lowercase</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>lowercase:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> uppercase</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>uppercase:     <code>boolean</code>
             </bcode>
                                 </td>
                             </tr>
@@ -952,55 +929,32 @@
 
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { Directive, ComponentRef, ViewContainerRef, ComponentFactoryResolver, Input, OnInit, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
-import { HintComponent } from &#x27;./hint.component&#x27;;
-import { PlexType } from &#x27;../core/plex-type.type&#x27;;
+        <pre><code class="hljs javascript">import { Directive, HostBinding, Input } from &#x27;@angular/core&#x27;;
 
 @Directive({
-    // tslint:disable-next-line:directive-selector
-    selector: &#x27;[hint], [position:has(hint)], [icon:has(hint)], [detach:has(hint)]&#x27;,
+    // tslint:disable-next-line: directive-selector
+    selector: &#x27;[case]&#x27;
 })
-export class HintDirective implements OnInit {
+export class CaseDirective {
 
-    private tooltip: ComponentRef&lt;HintComponent&gt;;
-    @Input(&#x27;hint&#x27;) content: string | HintComponent;
+    @Input() case: &#x27;lowercase&#x27; | &#x27;uppercase&#x27; | &#x27;capitalize&#x27; | &#x27;capitalize-first&#x27; | &#x27;none&#x27; &#x3D; &#x27;none&#x27;;
 
-    // default &#x3D; Background gris
-    @Input() hintType: PlexType &#x3D; &#x27;default&#x27;;
-    @Input() detach: &#x27;&#x27; | &#x27;both&#x27; | &#x27;right&#x27; | &#x27;top&#x27; &#x3D; &#x27;&#x27;;
-
-    @Input() hintIcon &#x3D; &#x27;help&#x27;;
-
-    @Input()
-    set position(value: &#x27;top&#x27; | &#x27;right&#x27; | &#x27;bottom&#x27; | &#x27;left&#x27; | &#x27;above&#x27; | &#x27;below&#x27;) {
-        if (value &#x3D;&#x3D;&#x3D; &#x27;top&#x27;) {
-            this.position &#x3D; &#x27;above&#x27;;
-        }
-        if (value &#x3D;&#x3D;&#x3D; &#x27;bottom&#x27;) {
-            this.position &#x3D; &#x27;below&#x27;;
-        }
+    @HostBinding(&#x27;class.text-lowercase&#x27;) get lowercase() {
+        return this.case &#x3D;&#x3D;&#x3D; &#x27;lowercase&#x27;;
     }
 
-    constructor(
-        private viewContainerRef: ViewContainerRef,
-        private resolver: ComponentFactoryResolver,
-        private cdr: ChangeDetectorRef
-    ) {
+    @HostBinding(&#x27;class.text-uppercase&#x27;) get uppercase() {
+        return this.case &#x3D;&#x3D;&#x3D; &#x27;uppercase&#x27;;
     }
 
-    ngOnInit(): void {
-        this.cdr.detectChanges();
-
-        const factory &#x3D; this.resolver.resolveComponentFactory(HintComponent);
-        this.tooltip &#x3D; this.viewContainerRef.createComponent(factory);
-        this.tooltip.instance.hostElement &#x3D; this.viewContainerRef.element.nativeElement;
-        this.tooltip.instance.content &#x3D; this.content as string;
-        this.tooltip.instance.position &#x3D; this.position as string;
-        this.tooltip.instance.hintType &#x3D; this.hintType;
-        this.tooltip.instance.detach &#x3D; this.detach;
-        this.tooltip.instance.hintIcon &#x3D; this.hintIcon;
-
+    @HostBinding(&#x27;class.text-capitalize&#x27;) get capitalize() {
+        return this.case &#x3D;&#x3D;&#x3D; &#x27;capitalize&#x27;;
     }
+
+    @HostBinding(&#x27;class.text-capitalize-first&#x27;) get capitalizeFirst() {
+        return this.case &#x3D;&#x3D;&#x3D; &#x27;capitalize-first&#x27;;
+    }
+
 
 }
 </code></pre>
