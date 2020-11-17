@@ -1,3 +1,16 @@
+# [7.5.0](https://github.com/andes/plex/compare/v7.4.0...v7.5.0) (2020-11-17)
+
+
+### Bug Fixes
+
+* **layout/card:** restringe animation, reordena contenido  ([#249](https://github.com/andes/plex/issues/249)) ([129ef2f](https://github.com/andes/plex/commit/129ef2f077531d306363ae5c2a3e6aa00284e024))
+
+
+### Features
+
+* **aligned:** crea directiva ([#236](https://github.com/andes/plex/issues/236)) ([9a788f5](https://github.com/andes/plex/commit/9a788f56238598aefeffffb0fa3b6d67270f46a1))
+* **responsive:** tests header y nav principal ([#233](https://github.com/andes/plex/issues/233)) ([061b21d](https://github.com/andes/plex/commit/061b21d03308f5d95a8a7e9b3561c9eaf3c6c025))
+
 # [7.4.0](https://github.com/andes/plex/compare/v7.3.1...v7.4.0) (2020-11-12)
 
 
