@@ -255,6 +255,9 @@
                                     <a href="../directives/JustifyDirective.html" >JustifyDirective</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../directives/MobileDirective.html" >MobileDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/PlexRipplesDirective.html" >PlexRipplesDirective</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/NotificationEvent.html" >NotificationEvent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
@@ -645,6 +651,9 @@
                                            <a href="../directives/JustifyDirective.html" >JustifyDirective</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../directives/MobileDirective.html" >MobileDirective</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../directives/PlexRipplesDirective.html" >PlexRipplesDirective</a>
                                        </li>
                                        <li class="link">
@@ -727,6 +736,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/NotificationEvent.html" >NotificationEvent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
@@ -830,7 +842,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(titleService: <a href="https://angular.io/docs/ts/latest/api/platform-browser/index/Title-class.html" target="_blank" >Title</a>, noficationService: <a href="../injectables/NotificationsService.html" >NotificationsService</a>, componentFactoryResolver: <a href="https://angular.io/docs/ts/latest/api/core/index/ComponentFactoryResolver-class.html" target="_blank" >ComponentFactoryResolver</a>)</code>
+                                    <code>constructor(titleService: <a href="https://angular.io/docs/ts/latest/api/platform-browser/index/Title-class.html" target="_blank" >Title</a>, noficationService: <a href="../injectables/NotificationsService.html" >NotificationsService</a>, componentFactoryResolver: <a href="https://angular.io/docs/ts/latest/api/core/index/ComponentFactoryResolver-class.html" target="_blank" >ComponentFactoryResolver</a>, breakpointObserver: BreakpointObserver)</code>
                                 </td>
                             </tr>
             
@@ -1566,6 +1578,32 @@
                             </tr>
                         </tbody>
                     </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> isMobile</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>isMobile()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Determina si estamos en un dispositivo mobile.</p>
+            </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
             </section>
 
             <section>
@@ -1709,6 +1747,7 @@ import { default as swal } from &#x27;sweetalert2&#x27;;
 import { WizardConfig } from &#x27;./wizard-config.interface&#x27;;
 import { PlexTitle } from &#x27;./plex-title.interface&#x27;;
 import * as introJs from &#x27;intro.js&#x27;;
+import { BreakpointObserver } from &#x27;@angular/cdk/layout&#x27;;
 
 @Injectable()
 export class Plex {
@@ -1726,7 +1765,8 @@ export class Plex {
     constructor(
         private titleService: Title,
         private noficationService: NotificationsService,
-        private componentFactoryResolver: ComponentFactoryResolver
+        private componentFactoryResolver: ComponentFactoryResolver,
+        private breakpointObserver: BreakpointObserver
     ) { }
 
     /**
@@ -2097,6 +2137,13 @@ export class Plex {
     navVisible(visible: boolean) {
         this.navbarVisible &#x3D; visible;
         return this.navbarVisible;
+    }
+
+    /**
+     * Determina si estamos en un dispositivo mobile.
+     */
+    isMobile() {
+        return this.breakpointObserver.isMatched(&#x27;(max-width: 599px)&#x27;);
     }
 }
 </code></pre>

@@ -255,6 +255,9 @@
                                     <a href="../directives/JustifyDirective.html" >JustifyDirective</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../directives/MobileDirective.html" >MobileDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/PlexRipplesDirective.html" >PlexRipplesDirective</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/NotificationEvent.html" >NotificationEvent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
@@ -645,6 +651,9 @@
                                            <a href="../directives/JustifyDirective.html" >JustifyDirective</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../directives/MobileDirective.html" >MobileDirective</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../directives/PlexRipplesDirective.html" >PlexRipplesDirective</a>
                                        </li>
                                        <li class="link">
@@ -727,6 +736,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/NotificationEvent.html" >NotificationEvent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
@@ -848,7 +860,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;section&nbsp;justify&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;#container&nbsp;class&#x3D;&quot;nav&nbsp;nav-tabs&quot;&nbsp;[ngClass]&#x3D;&quot;size&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;*ngFor&#x3D;&quot;let&nbsp;tab&nbsp;of&nbsp;tabs&quot;&nbsp;(click)&#x3D;&quot;selectTab(tab)&quot;&nbsp;class&#x3D;&quot;nav-item&nbsp;nav-item-{{tab.color}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;active&#x27;:&nbsp;tab.active,&nbsp;&#x27;icon&#x27;:&nbsp;tab.icon&nbsp;&amp;&amp;&nbsp;!tab.label}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class&#x3D;&quot;nav-link&quot;&nbsp;[ngClass]&#x3D;&quot;{active:&nbsp;tab.active}&quot;&nbsp;plexRipples&nbsp;onclick&#x3D;&quot;return&nbsp;false&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;tab.icon&quot;&nbsp;[name]&#x3D;&quot;tab.icon&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;[type]&#x3D;&quot;tab.color&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;tab.label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;tab.label&nbsp;&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;*ngIf&#x3D;&quot;tab.allowClose&quot;&nbsp;type&#x3D;&quot;button&quot;&nbsp;class&#x3D;&quot;close&quot;&nbsp;(click)&#x3D;&quot;closeTab(tab)&quot;&gt;&lt;i&nbsp;class&#x3D;&quot;mdi&nbsp;mdi-close&quot;&gt;&lt;/i&gt;&lt;/button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;justify&#x3D;&quot;end&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-dropdown&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-help&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br><br></code></td>
+                <td class="col-md-9"><code>&lt;section&nbsp;justify&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;#container&nbsp;class&#x3D;&quot;nav&nbsp;nav-tabs&quot;&nbsp;[ngClass]&#x3D;&quot;size&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;*ngFor&#x3D;&quot;let&nbsp;tab&nbsp;of&nbsp;tabs&quot;&nbsp;(click)&#x3D;&quot;selectTab(tab,&nbsp;$event)&quot;&nbsp;(auxclick)&#x3D;&quot;closeTab(tab,&nbsp;$event)&quot;&nbsp;class&#x3D;&quot;nav-item&nbsp;nav-item-{{tab.color}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;active&#x27;:&nbsp;tab.active,&nbsp;&#x27;icon&#x27;:&nbsp;tab.icon&nbsp;&amp;&amp;&nbsp;!tab.label}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class&#x3D;&quot;nav-link&quot;&nbsp;[ngClass]&#x3D;&quot;{active:&nbsp;tab.active}&quot;&nbsp;plexRipples&nbsp;onclick&#x3D;&quot;return&nbsp;false&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;tab.icon&quot;&nbsp;[name]&#x3D;&quot;tab.icon&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;[type]&#x3D;&quot;tab.color&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;tab.label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;tab.label&nbsp;&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;*ngIf&#x3D;&quot;tab.allowClose&quot;&nbsp;type&#x3D;&quot;button&quot;&nbsp;class&#x3D;&quot;close&quot;&nbsp;(click)&#x3D;&quot;closeTab(tab)&quot;&gt;&lt;i&nbsp;class&#x3D;&quot;mdi&nbsp;mdi-close&quot;&gt;&lt;/i&gt;&lt;/button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;justify&#x3D;&quot;end&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-dropdown&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-help&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br><br></code></td>
             </tr>
 
 
@@ -981,7 +993,7 @@
     
                     <tr>
                         <td class="col-md-4">
-    <code>closeTab(tab: <a href="../injectables/Plex.html" >PlexTabComponent</a>)</code>
+    <code>closeTab(tab: <a href="../injectables/Plex.html" >PlexTabComponent</a>, $event: any)</code>
                         </td>
                     </tr>
     
@@ -1101,7 +1113,7 @@ import { PlexTabComponent } from &#x27;./tab.component&#x27;;
     selector: &#x27;plex-tabs&#x27;,
     template: &#x60; &lt;section justify&gt;
                     &lt;ul #container class&#x3D;&quot;nav nav-tabs&quot; [ngClass]&#x3D;&quot;size&quot;&gt;
-                        &lt;li *ngFor&#x3D;&quot;let tab of tabs&quot; (click)&#x3D;&quot;selectTab(tab)&quot; class&#x3D;&quot;nav-item nav-item-{{tab.color}}&quot; [ngClass]&#x3D;&quot;{&#x27;active&#x27;: tab.active, &#x27;icon&#x27;: tab.icon &amp;&amp; !tab.label}&quot;&gt;
+                        &lt;li *ngFor&#x3D;&quot;let tab of tabs&quot; (click)&#x3D;&quot;selectTab(tab, $event)&quot; (auxclick)&#x3D;&quot;closeTab(tab, $event)&quot; class&#x3D;&quot;nav-item nav-item-{{tab.color}}&quot; [ngClass]&#x3D;&quot;{&#x27;active&#x27;: tab.active, &#x27;icon&#x27;: tab.icon &amp;&amp; !tab.label}&quot;&gt;
                             &lt;a class&#x3D;&quot;nav-link&quot; [ngClass]&#x3D;&quot;{active: tab.active}&quot; plexRipples onclick&#x3D;&quot;return false&quot;&gt;
                                 &lt;plex-icon *ngIf&#x3D;&quot;tab.icon&quot; [name]&#x3D;&quot;tab.icon&quot; size&#x3D;&quot;sm&quot; [type]&#x3D;&quot;tab.color&quot;&gt;&lt;/plex-icon&gt;
                                 &lt;span *ngIf&#x3D;&quot;tab.label&quot;&gt;
@@ -1163,8 +1175,10 @@ export class PlexTabsComponent implements AfterContentInit {
         });
     }
 
-    closeTab(tab: PlexTabComponent) {
-        this.close.emit(this.tabs.indexOf(tab));
+    closeTab(tab: PlexTabComponent, $event &#x3D; null) {
+        if (!$event || ($event.button &#x3D;&#x3D;&#x3D; 1 &amp;&amp; tab.allowClose)) {
+            this.close.emit(this.tabs.indexOf(tab));
+        }
     }
 
     private doActiveTab(index: number) {
@@ -1176,14 +1190,16 @@ export class PlexTabsComponent implements AfterContentInit {
         });
         if (this.tabs.length) {
             const tab &#x3D; this.tabs[Math.min(this.tabs.length - 1, index)];
-            tab.active &#x3D; true;
-            this.change.emit(this._activeIndex);
-            tab.toggle.emit(true);
+            if (tab) {
+                tab.active &#x3D; true;
+                this.change.emit(this._activeIndex);
+                tab.toggle.emit(true);
+                // Focus tab header
+                const tabHeader &#x3D; this.container.nativeElement.children[this._activeIndex];
+                if (tabHeader) {
+                    tabHeader.scrollIntoViewIfNeeded ? tabHeader.scrollIntoViewIfNeeded() : tabHeader.scrollIntoView();
+                }
 
-            // Focus tab header
-            const tabHeader &#x3D; this.container.nativeElement.children[this._activeIndex];
-            if (tabHeader) {
-                tabHeader.scrollIntoViewIfNeeded ? tabHeader.scrollIntoViewIfNeeded() : tabHeader.scrollIntoView();
             }
         }
     }

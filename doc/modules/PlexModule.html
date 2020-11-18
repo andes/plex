@@ -255,6 +255,9 @@
                                     <a href="../directives/JustifyDirective.html" >JustifyDirective</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../directives/MobileDirective.html" >MobileDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/PlexRipplesDirective.html" >PlexRipplesDirective</a>
                                 </li>
                                 <li class="link">
@@ -337,6 +340,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/NotificationEvent.html" >NotificationEvent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
@@ -645,6 +651,9 @@
                                            <a href="../directives/JustifyDirective.html" >JustifyDirective</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../directives/MobileDirective.html" >MobileDirective</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../directives/PlexRipplesDirective.html" >PlexRipplesDirective</a>
                                        </li>
                                        <li class="link">
@@ -727,6 +736,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/NotificationEvent.html" >NotificationEvent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ObserveContext.html" >ObserveContext</a>
@@ -1005,6 +1017,9 @@
                                 <a href="../components/HintComponent.html">HintComponent</a>
                             </li>
                             <li class="list-group-item">
+                                <a href="../directives/MobileDirective.html">MobileDirective</a>
+                            </li>
+                            <li class="list-group-item">
                                 <a href="../components/ValidationMessagesComponent.html">ValidationMessagesComponent</a>
                             </li>
                             <li class="list-group-item">
@@ -1183,6 +1198,9 @@
                             <li class="list-group-item">
                                     <a href="../s/MatTooltip.html" >MatTooltip</a>
                             </li>
+                            <li class="list-group-item">
+                                    <a href="../directives/MobileDirective.html" >MobileDirective</a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -1269,6 +1287,7 @@ import { TabDirective } from &#x27;./tabs/pl-tab.directive&#x27;;
 import { Plex } from &#x27;./core/service&#x27;;
 import { HTTP_INTERCEPTORS } from &#x27;@angular/common/http&#x27;;
 import { NetworkLoadingInterceptor, NETWORK_LOADING } from &#x27;./core/network-loading.service&#x27;;
+import { MobileDirective } from &#x27;./directives/mobile.directive&#x27;;
 
 @NgModule({
     imports: [
@@ -1343,6 +1362,7 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from &#x27;./core/network-
         TabDirective,
         TooltipContentComponent,
         HintComponent,
+        MobileDirective,
 
         // EXTRAS - NO CORRER DE ACA
         ValidationMessagesComponent,
@@ -1413,7 +1433,8 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from &#x27;./core/network-
         ResponsiveDirective,
         SpanDirective,
         TabDirective,
-        MatTooltip
+        MatTooltip,
+        MobileDirective
     ]
 })
 export class PlexModule {

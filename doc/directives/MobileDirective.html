@@ -196,7 +196,7 @@
                                     <a href="../components/PlexSelectComponent.html" >PlexSelectComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/PlexTabComponent.html"  class="active" >PlexTabComponent</a>
+                                    <a href="../components/PlexTabComponent.html" >PlexTabComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/PlexTabsComponent.html" >PlexTabsComponent</a>
@@ -255,7 +255,7 @@
                                     <a href="../directives/JustifyDirective.html" >JustifyDirective</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../directives/MobileDirective.html" >MobileDirective</a>
+                                    <a href="../directives/MobileDirective.html"  class="active" >MobileDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/PlexRipplesDirective.html" >PlexRipplesDirective</a>
@@ -592,7 +592,7 @@
                                            <a href="../components/PlexSelectComponent.html" >PlexSelectComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/PlexTabComponent.html"  class="active" >PlexTabComponent</a>
+                                           <a href="../components/PlexTabComponent.html" >PlexTabComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/PlexTabsComponent.html" >PlexTabsComponent</a>
@@ -651,7 +651,7 @@
                                            <a href="../directives/JustifyDirective.html" >JustifyDirective</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../directives/MobileDirective.html" >MobileDirective</a>
+                                           <a href="../directives/MobileDirective.html"  class="active" >MobileDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/PlexRipplesDirective.html" >PlexRipplesDirective</a>
@@ -806,194 +806,276 @@
                    
                    </nav>
                </div>
-               <div class="content component">
+               <div class="content directive">
                    <div class="content-data">
 
 
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>PlexTabComponent</li>
+  <li>Directives</li>
+  <li>MobileDirective</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+    </li>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+    </li>
+</ul>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="infos">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/lib/directives/mobile.directive.ts</code>
+        </p>
 
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/lib/tabs/tab.component.ts</code>
-</p>
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Directiva Mobile para evitar el render de elementos en dispositivos mobiles o viceversa.<br>Funciona como un *ngIf, el elemento no se crea directamente.</p>
 
+            </p>
 
+            <p class="comment">
+                <h3>Example</h3>
+            </p>
+            <div class="io-description">
+                        <div>
+                            <pre><code class="hljs html">&lt;plex-button *mobile&gt;&lt;/plex-button&gt;</code></pre>
+                        </div>
+            </div>
 
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>plex-tab</code></td>
-            </tr>
-
-
-
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;ng-content&nbsp;*ngIf&#x3D;&#x27;active&#x27;&gt;&lt;/ng-content&gt;</code></td>
-            </tr>
-
-
-
-        </tbody>
-    </table>
-</section>
-
-    <section>
-        <h3 id="inputs">Inputs</h3>
-            <table class="table table-sm table-bordered">
+        <section>
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover">
                 <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>active</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>boolean</code>
 
-                              </p>
-                        </td>
+                    <tr>
+                        <td class="col-md-3">selector</td>
+                        <td class="col-md-9"><code>[mobile]</code></td>
                     </tr>
+
                 </tbody>
             </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>allowClose</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>boolean</code>
+        </section>
 
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>color</code>
-                        </td>
-                        <td class="col-md-10">
-                            <p>
-                              <em>Default value: </em><code>default</code>
-                            </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>icon</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>label</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
-
-    <section>
-        <h3 id="outputs">Outputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>toggle</code>
-                        </td>
-                        <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
-
-
-
+            <section>
+                <h3 id="inputs">Inputs</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-2">
+                                    <code>mobile</code>
+                                </td>
+                                <td class="col-md-10">
+                                    <div><p>Determina si se muestra el elemento en mobile o no.</p>
 </div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+                                    <p>
+                                      <em>Default value: </em><code>true</code>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
-@Component({
-    selector: &#x27;plex-tab&#x27;,
-    template: &#x60;&lt;ng-content *ngIf&#x3D;&#x27;active&#x27;&gt;&lt;/ng-content&gt;&#x60;,
+
+            <section>
+                <h3 id="constructor">Constructor</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>constructor(view: <a href="https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html" target="_blank" >ViewContainerRef</a>, nextRef: TemplateRef<ObserveContext<T>>, breakpointObserver: BreakpointObserver)</code>
+                                </td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
+            </section>
+
+            <section>
+                <h3 id="methods">Methods</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> createView</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock">
+                                            <span class="fa fa-lock"></span>
+                                        </span>
+                                    <code>createView()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> cleanView</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock">
+                                            <span class="fa fa-lock"></span>
+                                        </span>
+                                    <code>cleanView()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> openSubscription</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>openSubscription:     <code>Subscription</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> viewRef</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>viewRef:     <code>EmbeddedViewRef&lt;any&gt;</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+
+    </div>
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre><code class="hljs javascript">import { BreakpointObserver } from &#x27;@angular/cdk/layout&#x27;;
+import { Directive, TemplateRef, ViewContainerRef, OnDestroy, OnInit, Input, DebugElement, EmbeddedViewRef } from &#x27;@angular/core&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+
+/**
+ * Directiva Mobile para evitar el render de elementos en dispositivos mobiles o viceversa.
+ * Funciona como un *ngIf, el elemento no se crea directamente.
+ *
+ * @example
+ * &lt;plex-button *mobile&gt;&lt;/plex-button&gt;
+ *
+ */
+@Directive({
+    // tslint:disable-next-line:directive-selector
+    selector: &#x27;[mobile]&#x27;
 })
-export class PlexTabComponent {
+export class MobileDirective&lt;T&gt; implements OnDestroy, OnInit {
+    private openSubscription: Subscription;
+    private viewRef: EmbeddedViewRef&lt;any&gt; &#x3D; null;
 
-    @Input() label: string;
+    /**
+     * Determina si se muestra el elemento en mobile o no.
+     * @default true
+     */
+    @Input() mobile &#x3D; true;
 
-    @Input() icon: string;
+    constructor(
+        private view: ViewContainerRef,
+        private nextRef: TemplateRef&lt;ObserveContext&lt;T&gt;&gt;,
+        private breakpointObserver: BreakpointObserver
+    ) { }
 
-    @Input() active: boolean;
 
-    @Input() allowClose: boolean;
+    ngOnDestroy() {
+        this.openSubscription.unsubscribe();
+    }
 
-    @Input() color &#x3D; &#x27;default&#x27;;
+    ngOnInit() {
+        if (this.mobile &#x3D;&#x3D;&#x3D; null) {
+            this.mobile &#x3D; true;
+        }
+        const MOBILE_BREAKPOINT &#x3D; &#x27;(max-width: 599px)&#x27;;
+        this.openSubscription &#x3D; this.breakpointObserver.observe(MOBILE_BREAKPOINT).subscribe((states) &#x3D;&gt; {
+            if (states.breakpoints[MOBILE_BREAKPOINT]) {
+                if (this.mobile) {
+                    this.createView();
+                } else {
+                    this.cleanView();
+                }
+            } else {
+                if (!this.mobile) {
+                    this.createView();
+                } else {
+                    this.cleanView();
+                }
+            }
+        });
+    }
 
-    @Output() toggle &#x3D; new EventEmitter&lt;boolean&gt;();
+    private createView() {
+        if (!this.viewRef) {
+            this.viewRef &#x3D; this.view.createEmbeddedView(this.nextRef);
+        }
+    }
+
+    private cleanView() {
+        if (this.viewRef) {
+            this.view.clear();
+            this.viewRef.destroy();
+            this.viewRef &#x3D; null;
+        }
+    }
 
 }
+
+interface ObserveContext&lt;T&gt; {
+    $implicit: T;
+    observe: T;
+}
 </code></pre>
-        </div>
     </div>
-
-
+</div>
 
 
 
