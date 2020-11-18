@@ -78,6 +78,7 @@ import { TabDirective } from './tabs/pl-tab.directive';
 import { Plex } from './core/service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loading.service';
+import { MobileDirective } from './directives/mobile.directive';
 
 @NgModule({
     imports: [
@@ -152,6 +153,7 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         TabDirective,
         TooltipContentComponent,
         HintComponent,
+        MobileDirective,
 
         // EXTRAS - NO CORRER DE ACA
         ValidationMessagesComponent,
@@ -222,7 +224,8 @@ import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loadi
         ResponsiveDirective,
         SpanDirective,
         TabDirective,
-        MatTooltip
+        MatTooltip,
+        MobileDirective
     ]
 })
 export class PlexModule {
