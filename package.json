@@ -30,7 +30,7 @@
     },
     "main": "./dist/index.js",
     "dependencies": {
-        "@andes/icons": "^1.1.2",
+        "@andes/icons": "^1.1.10",
         "@mdi/font": "^5.0.45",
         "@types/intro.js": "^2.4.6",
         "@types/jquery": "^3.3.38",
