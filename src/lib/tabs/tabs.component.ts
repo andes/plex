@@ -5,7 +5,7 @@ import { PlexTabComponent } from './tab.component';
     selector: 'plex-tabs',
     template: ` <section justify>
                     <ul #container class="nav nav-tabs" [ngClass]="size">
-                        <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{'active': tab.active, 'icon': tab.icon && !tab.label}">
+                        <li *ngFor="let tab of tabs" (click)="selectTab(tab, $event)" (auxclick)="closeTab(tab, $event)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{'active': tab.active, 'icon': tab.icon && !tab.label}">
                             <a class="nav-link" [ngClass]="{active: tab.active}" plexRipples onclick="return false">
                                 <plex-icon *ngIf="tab.icon" [name]="tab.icon" size="sm" [type]="tab.color"></plex-icon>
                                 <span *ngIf="tab.label">
@@ -67,8 +67,10 @@ export class PlexTabsComponent implements AfterContentInit {
         });
     }
 
-    closeTab(tab: PlexTabComponent) {
-        this.close.emit(this.tabs.indexOf(tab));
+    closeTab(tab: PlexTabComponent, $event = null) {
+        if (!$event || ($event.button === 1 && tab.allowClose)) {
+            this.close.emit(this.tabs.indexOf(tab));
+        }
     }
 
     private doActiveTab(index: number) {
@@ -80,14 +82,16 @@ export class PlexTabsComponent implements AfterContentInit {
         });
         if (this.tabs.length) {
             const tab = this.tabs[Math.min(this.tabs.length - 1, index)];
-            tab.active = true;
-            this.change.emit(this._activeIndex);
-            tab.toggle.emit(true);
+            if (tab) {
+                tab.active = true;
+                this.change.emit(this._activeIndex);
+                tab.toggle.emit(true);
+                // Focus tab header
+                const tabHeader = this.container.nativeElement.children[this._activeIndex];
+                if (tabHeader) {
+                    tabHeader.scrollIntoViewIfNeeded ? tabHeader.scrollIntoViewIfNeeded() : tabHeader.scrollIntoView();
+                }
 
-            // Focus tab header
-            const tabHeader = this.container.nativeElement.children[this._activeIndex];
-            if (tabHeader) {
-                tabHeader.scrollIntoViewIfNeeded ? tabHeader.scrollIntoViewIfNeeded() : tabHeader.scrollIntoView();
             }
         }
     }
