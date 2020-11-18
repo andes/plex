@@ -1,3 +1,12 @@
+# [7.6.0](https://github.com/andes/plex/compare/v7.5.0...v7.6.0) (2020-11-18)
+
+
+### Features
+
+* **responsive:** mobile directive ([#240](https://github.com/andes/plex/issues/240)) ([9249054](https://github.com/andes/plex/commit/9249054367105b10daeca78060f356db37e2f713))
+* **tab:** close tab with mouse wheel ([#247](https://github.com/andes/plex/issues/247)) ([481f81b](https://github.com/andes/plex/commit/481f81b9c908eb041d2815f9ff1b91c6a181a4c9))
+* **tooltip:** se incrementa opacity de contenedor ([#248](https://github.com/andes/plex/issues/248)) ([b9b2a4e](https://github.com/andes/plex/commit/b9b2a4e0d64aa4a35a943d4349476e4c0d3bcd97))
+
 # [7.5.0](https://github.com/andes/plex/compare/v7.4.0...v7.5.0) (2020-11-17)
 
 
