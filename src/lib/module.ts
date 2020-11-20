@@ -11,6 +11,7 @@ import { PlexTextComponent } from './text/text.component';
 import { PlexIntComponent } from './int/int.component';
 import { PlexFloatComponent } from './float/float.component';
 import { PlexButtonComponent } from './button/button.component';
+import { PlexTableComponent } from './table/table.component';
 import { PlexTabsComponent } from './tabs/tabs.component';
 import { PlexTabComponent } from './tabs/tab.component';
 import { PlexAccordionComponent } from './accordion/accordion.component';
@@ -101,6 +102,7 @@ import { MobileDirective } from './directives/mobile.directive';
         PlexIntComponent,
         PlexFloatComponent,
         PlexButtonComponent,
+        PlexTableComponent,
         PlexTabsComponent,
         PlexAccordionComponent,
         PlexPanelComponent,
@@ -177,6 +179,7 @@ import { MobileDirective } from './directives/mobile.directive';
         PlexTabsComponent,
         PlexAccordionComponent,
         PlexPanelComponent,
+        PlexTableComponent,
         PlexTabComponent,
         PlexBoolComponent,
         PlexRadioComponent,

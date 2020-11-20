@@ -1,60 +1,90 @@
 @import './variables.scss';
 
+plex-table {
 
-table[plex-table] {
-    width:100%;
-//  color base como variable
-    tr {
-        > th {
-            text-transform: uppercase;
-        }
-
-        &:nth-child(even) {
-            background-color: transparent;
-          }
-    
-        &:nth-child(odd) {
-            background-color: rgba(0, 168, 224, 0.15)!important;
-        }
-
-        &.selectable {
-            cursor: pointer;
-            &:hover {
-                box-sizing: border-box;
-                box-shadow: inset 0 0 0 2px transparentize($color: $blue, $amount: 0.4);
-                background-color: $light-blue !important;
-                color: black;
-            }
-        }
-
-        &.selected {
-            box-sizing: border-box;
-            box-shadow: inset 0 0 0 2px $blue;
-            background-color: $light-blue !important;
-            color: black;
-        }
-    }
-      
-  & th, td {
-    //border: 1px solid black;
-    border-collapse: collapse;
-    padding: 15px;
-    text-align: left;
-
-    &:last-child {
-        display: flex;
-
+    plex-title {
         plex-button, plex-badge {
-            align-self: center;
             margin-left: .25rem;
         }
     }
-    }
-
-
-
-    &[size="sm"] {
-        font-size: .8rem;
-    }
-
 }
+        table[plex-table] {
+            width:100%;
+            position: relative;
+        //  color base como variable
+            tr {
+        
+                &:first-child {
+                    &[sticky] {
+                        position: sticky;
+                        top: 0;
+                        z-index: 10;  
+                    }
+                }
+        
+                > th {
+                    text-transform: uppercase;
+                    &.sortable {
+                        &:hover {
+                        text-decoration: underline !important;
+                        cursor: pointer;
+                    }
+                    }
+                    
+                }
+        
+                &:nth-child(odd) {
+                    background-color: rgba(0, 39, 56, 0.1);
+                }
+        
+                &.selectable {
+                    cursor: pointer;
+                    &:hover {
+                        box-sizing: border-box;
+                        box-shadow: inset 0 0 0 2px transparentize($color: $blue, $amount: 0.4);
+                        background-color: $light-blue !important;
+                        color: black;
+                    }
+                }
+        
+                &.selected {
+                    box-sizing: border-box;
+                    box-shadow: inset 0 0 0 2px $blue;
+                    background-color: $light-blue !important;
+                    color: black;
+                }
+            }
+              
+          & th, td {
+            //border: 1px solid black;
+            border-collapse: collapse;
+            padding: 15px;
+            text-align: left;
+        
+            &:last-child {
+                display: flex;
+                justify-content: flex-end;
+        
+                plex-button, plex-badge, plex-dropdown {
+                    align-self: center;
+                    margin-left: .25rem;
+                }
+            }
+            }
+        
+            &[size="sm"] {
+                font-size: .8rem;
+            }
+        }
+        
+            // Sidebar 
+            plex-layout-sidebar {
+                table[plex-table] {
+            
+                    tr {
+                        &:nth-child(odd) {
+                            background-color: rgba(0, 168, 224, 0.15)!important;
+                        }
+                    }
+                }
+            }
