@@ -8,12 +8,12 @@
             </form>
         </div>
         <div class="col-md-6">
-                <form>
-                    <h1>Radio vertical</h1>
-                    <plex-text [(ngModel)]="modelo.texto" label="Selecciona un color" name="tewtewrw">
-                    </plex-text>
-                </form>
-            </div>
+            <form>
+                <h1>Radio vertical</h1>
+                <plex-text [(ngModel)]="modelo.texto" label="Selecciona un color" name="tewtewrw">
+                </plex-text>
+            </form>
+        </div>
         <!-- <div class="col-md-6" *ngIf="modelo">
             <label>Modelo</label>
             <pre>{{modelo | json}}</pre>
@@ -22,8 +22,19 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <h1>Radio horizontal</h1>
-                <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores" type="horizontal" [required]="true">
+                <h3>Radio horizontal</h3>
+                <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores" type="horizontal"
+                            [required]="true">
+                </plex-radio>
+
+                <h3>Checkbox Mulitple </h3>
+                <plex-radio [(ngModel)]="modelo.mulit" multiple="true" [data]="opciones" name="colores2"
+                            type="horizontal" [required]="true">
+                </plex-radio>
+
+                <h3>Checkbox Mulitple Vertical </h3>
+                <plex-radio [(ngModel)]="modelo.mulit" multiple="true" [data]="opciones" name="colores3"
+                            [required]="true">
                 </plex-radio>
             </form>
         </div>

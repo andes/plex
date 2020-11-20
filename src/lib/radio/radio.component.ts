@@ -9,11 +9,27 @@ import { hasRequiredValidator } from '../core/validator.functions';
                 <label *ngIf="label" class="form-control-label">{{label}}
                     <span *ngIf="control.name && esRequerido" class="requerido"></span>
                 </label>
-                <mat-radio-group [(ngModel)]="value">
-                    <mat-radio-button *ngFor="let item of data" [value]="item.id" [disabled]="readonly" (change)="radioChange($event)" [ngClass]="{'d-block': type == 'vertical'}">
-                        {{item.label || item.text}}
-                     </mat-radio-button>
-                 </mat-radio-group>
+                <ng-container *ngIf="!multiple">
+                    <mat-radio-group [(ngModel)]="value">
+                        <mat-radio-button *ngFor="let item of data" [value]="item[keyField]" [disabled]="readonly" (change)="radioChange($event)" [class.d-block]="type == 'vertical'">
+                            {{ item[labelField] || item.text }}
+                         </mat-radio-button>
+                     </mat-radio-group>
+                </ng-container>
+                <ng-container *ngIf="multiple">
+                    <mat-checkbox *ngFor="let item of data"
+                                  [disabled]="readonly"
+                                  [(ngModel)]="multipleCheck[item[keyField]]"
+                                  (click)="$event.stopPropagation()"
+                                  (change)="multipleChange()"
+                                  [class.d-block]="type == 'vertical'"
+                                  [class.ml-2]="type == 'horizontal'"
+                    >
+                        <span>
+                            {{ item[labelField] }}
+                        </span>
+                    </mat-checkbox>
+                </ng-container>
                  <!-- Validation -->
                  <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
                </div>
@@ -21,6 +37,8 @@ import { hasRequiredValidator } from '../core/validator.functions';
 })
 export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     public value: any;
+
+    public multipleCheck = {};
 
     public get esRequerido(): boolean {
         return hasRequiredValidator(this.control as any);
@@ -34,10 +52,20 @@ export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAc
         }
     }
     // Propiedad públicas
+    @Input() keyField = 'id';
+
+    @Input() labelField = 'label';
+
     @Input() data: any[];
+
     @Input() label: string;
+
     @Input() readonly: boolean;
+
+    @Input() multiple = false;
+
     @Input() type: 'vertical' | 'horizontal' = 'vertical';
+
     @Output() change = new EventEmitter();
 
     // Funciones privadas
@@ -51,7 +79,12 @@ export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAc
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        this.value = value;
+        if (this.multiple && Array.isArray(value)) {
+            this.multipleCheck = {};
+            value.forEach(item => this.multipleCheck[item[this.keyField]] = true);
+        } else {
+            this.value = value;
+        }
     }
 
     // Actualización Vista -> Modelo
@@ -68,5 +101,10 @@ export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAc
     radioChange(event) {
         this.control.control.markAsTouched();
         this.onChange(event.value);
+    }
+
+    multipleChange() {
+        const checked = this.data.filter(item => this.multipleCheck[item[this.keyField]]);
+        this.onChange(checked);
     }
 }
