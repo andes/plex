@@ -81,7 +81,7 @@ export class PlexItemComponent implements AfterViewInit {
 
 
         this.ref.detectChanges();
-        if (this.hasColors) {
+        if (this.hasColors()) {
             this.item.nativeElement.style.setProperty('--item-border-color', this.colors.border);
             this.item.nativeElement.style.setProperty('--item-border-color-hover', this.colors.hover);
             this.item.nativeElement.style.setProperty('--item-bg-color', this.colors.background);
