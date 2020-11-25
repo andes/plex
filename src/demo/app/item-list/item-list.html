@@ -27,8 +27,8 @@
                 <b label>Datos importantes</b>
                 <b label>Parentesco</b>
             </plex-heading>
-            <plex-item *ngFor="let item of lista; let par = even" [selected]="item.selected"
-                       (click)="item.selected = !item.selected">
+            <plex-item [colors]="prioridad(i)" *ngFor="let item of lista; let par = even; let i = index"
+                       [selected]="item.selected" (click)="item.selected = !item.selected">
                 <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
                 <plex-icon name="pencil" size="18" type="warning"></plex-icon>
                 <plex-label [titulo]="item.name" [tituloBold]="par">

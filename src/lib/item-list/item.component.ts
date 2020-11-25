@@ -8,7 +8,7 @@ import { PlexButtonComponent } from '../button/button.component';
 @Component({
     selector: 'plex-item',
     template: `
-        <section #item class="item" [class.custom-colors]="colors" [class.selectable]="selectable" [class.selected]="selectable && selected">
+        <section #item class="item" [class.custom-colors]="hasColors" [class.selectable]="selectable" [class.selected]="selectable && selected">
             <div class="item-row">
                 <div class="elementos-graficos">
                     <ng-content select="plex-bool"></ng-content>
@@ -36,7 +36,7 @@ import { PlexButtonComponent } from '../button/button.component';
         </section>
     `
 })
-export class PlexItemComponent implements AfterViewInit, OnChanges {
+export class PlexItemComponent implements AfterViewInit {
 
     // Permite :hover y click()
     @Input() selectable = true;
@@ -69,6 +69,10 @@ export class PlexItemComponent implements AfterViewInit, OnChanges {
         return this.plexButtons.length > 0 || this.plexBadges.length > 0;
     }
 
+    hasColors() {
+        return this.colors && this.colors.border && this.colors.hover && this.colors.background;
+    }
+
     ngAfterViewInit() {
         this.imgs = !!this.elRef.nativeElement.querySelector('img');
 
@@ -77,14 +81,11 @@ export class PlexItemComponent implements AfterViewInit, OnChanges {
 
 
         this.ref.detectChanges();
-        if (this.colors && this.colors.border && this.colors.hover && this.colors.background) {
+        if (this.hasColors) {
             this.item.nativeElement.style.setProperty('--item-border-color', this.colors.border);
             this.item.nativeElement.style.setProperty('--item-border-color-hover', this.colors.hover);
             this.item.nativeElement.style.setProperty('--item-bg-color', this.colors.background);
         }
-    }
-
-    ngOnChanges() {
     }
 
     constructor(
