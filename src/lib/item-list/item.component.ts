@@ -1,5 +1,5 @@
 import { map } from 'rxjs/operators';
-import { Component, Input, QueryList, AfterViewInit, ContentChildren, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, QueryList, AfterViewInit, ContentChildren, ElementRef, ChangeDetectorRef, ViewChild, OnChanges } from '@angular/core';
 import { PlexIconComponent } from '../icon/icon.component';
 import { PlexBoolComponent } from '../bool/bool.component';
 import { PlexBadgeComponent } from '../badge/badge.component';
@@ -8,7 +8,7 @@ import { PlexButtonComponent } from '../button/button.component';
 @Component({
     selector: 'plex-item',
     template: `
-        <section class="item" [class.selectable]="selectable" [class.selected]="selectable && selected">
+        <section #item class="item" [class.custom-colors]="colors" [class.selectable]="selectable" [class.selected]="selectable && selected">
             <div class="item-row">
                 <div class="elementos-graficos">
                     <ng-content select="plex-bool"></ng-content>
@@ -36,7 +36,7 @@ import { PlexButtonComponent } from '../button/button.component';
         </section>
     `
 })
-export class PlexItemComponent implements AfterViewInit {
+export class PlexItemComponent implements AfterViewInit, OnChanges {
 
     // Permite :hover y click()
     @Input() selectable = true;
@@ -44,10 +44,15 @@ export class PlexItemComponent implements AfterViewInit {
     // Muestra efecto de selección
     @Input() selected = false;
 
+    @Input() colors: any = {};
+
     @ContentChildren(PlexIconComponent, { descendants: false }) plexIcons: QueryList<PlexIconComponent>;
     @ContentChildren(PlexBoolComponent, { descendants: false }) plexBools: QueryList<PlexBoolComponent>;
     @ContentChildren(PlexBadgeComponent, { descendants: false }) plexBadges: QueryList<PlexBadgeComponent>;
     @ContentChildren(PlexButtonComponent, { descendants: false }) plexButtons: QueryList<PlexButtonComponent>;
+
+    @ViewChild('item', { static: true }) item: ElementRef;
+
 
     public imgs = false;
     public svgs = false;
@@ -70,7 +75,16 @@ export class PlexItemComponent implements AfterViewInit {
         const elementos = this.elRef.nativeElement.querySelectorAll('.item-list > svg');
         this.svgs = elementos.length > 0;
 
+
         this.ref.detectChanges();
+        if (this.colors && this.colors.border && this.colors.hover && this.colors.background) {
+            this.item.nativeElement.style.setProperty('--item-border-color', this.colors.border);
+            this.item.nativeElement.style.setProperty('--item-border-color-hover', this.colors.hover);
+            this.item.nativeElement.style.setProperty('--item-bg-color', this.colors.background);
+        }
+    }
+
+    ngOnChanges() {
     }
 
     constructor(
