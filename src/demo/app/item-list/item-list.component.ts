@@ -64,6 +64,28 @@ export class ItemDemoComponent implements OnInit {
     public tModel: any;
     tModelFecha: { fechaHora: any; fecha: any; hora: any; horados: any; disabled: boolean; min: Date; minHora: any; maxHora: any; };
 
+    // #2C7F00 #C6B300 #B70B0B #02111C
+    coloresPrioridadBaja = {
+        border: '#b0cfa0',
+        hover: '#80b266',
+        background: '#e9f2e5'
+    };
+    coloresPrioridadMedia = {
+        border: '#d5c743',
+        hover: '#C6B300',
+        background: '#f8f5de'
+    };
+    coloresPrioridadAlta = {
+        border: '#e4a4a4',
+        hover: '#B70B0B',
+        background: '#f8e6e6'
+    };
+    coloresPrioridadEspecial = {
+        border: '#7a6f93',
+        hover: '#02111C',
+        background: '#dddae3'
+    };
+
     ngOnInit() {
         // Template-Form1 model
         this.tModel = { valor: null };
@@ -130,6 +152,18 @@ export class ItemDemoComponent implements OnInit {
         this.lista.push({ name: 'MAS ITEMS' } as any);
         this.lista.push({ name: 'MAS ITEMS' } as any);
         this.lista.push({ name: 'MAS ITEMS' } as any);
+    }
+
+    prioridad(i) {
+        if (i < 3) {
+            return this.coloresPrioridadBaja;
+        } else if (i >= 3 && i < 6) {
+            return this.coloresPrioridadMedia;
+        } else if (i >= 6 && i < 9) {
+            return this.coloresPrioridadAlta;
+        } else if (i >= 9 && i < 12) {
+            return this.coloresPrioridadEspecial;
+        }
     }
 
 }
