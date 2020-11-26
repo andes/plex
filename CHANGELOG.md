@@ -1,3 +1,10 @@
+# [7.7.0](https://github.com/andes/plex/compare/v7.6.0...v7.7.0) (2020-11-26)
+
+
+### Features
+
+* **plex-radio:** permite multiple seleccion ([#250](https://github.com/andes/plex/issues/250)) ([bf27e86](https://github.com/andes/plex/commit/bf27e866cb5989fe77bf65a65779dfbc5f947b2a))
+
 # [7.6.0](https://github.com/andes/plex/compare/v7.5.0...v7.6.0) (2020-11-18)
 
 
