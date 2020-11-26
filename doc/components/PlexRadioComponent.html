@@ -860,7 +860,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;(control.dirty&nbsp;||&nbsp;control.touched)&nbsp;&amp;&amp;&nbsp;!control.valid&nbsp;}&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;{{label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mat-radio-group&nbsp;[(ngModel)]&#x3D;&quot;value&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mat-radio-button&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;data&quot;&nbsp;[value]&#x3D;&quot;item.id&quot;&nbsp;[disabled]&#x3D;&quot;readonly&quot;&nbsp;(change)&#x3D;&quot;radioChange($event)&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;d-block&#x27;:&nbsp;type&nbsp;&#x3D;&#x3D;&nbsp;&#x27;vertical&#x27;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label&nbsp;||&nbsp;item.text}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mat-radio-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mat-radio-group&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Validation&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;(control.dirty&nbsp;||&nbsp;control.touched)&nbsp;&amp;&amp;&nbsp;!control.valid&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;(control.dirty&nbsp;||&nbsp;control.touched)&nbsp;&amp;&amp;&nbsp;!control.valid&nbsp;}&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;{{label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngIf&#x3D;&quot;!multiple&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mat-radio-group&nbsp;[(ngModel)]&#x3D;&quot;value&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mat-radio-button&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;data&quot;&nbsp;[value]&#x3D;&quot;item[keyField]&quot;&nbsp;[disabled]&#x3D;&quot;readonly&quot;&nbsp;(change)&#x3D;&quot;radioChange($event)&quot;&nbsp;[class.d-block]&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&nbsp;&#x27;vertical&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;item[labelField]&nbsp;||&nbsp;item.text&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mat-radio-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mat-radio-group&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngIf&#x3D;&quot;multiple&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mat-checkbox&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;data&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[disabled]&#x3D;&quot;readonly&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[(ngModel)]&#x3D;&quot;multipleCheck[item[keyField]]&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;$event.stopPropagation()&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(change)&#x3D;&quot;multipleChange()&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.d-block]&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&nbsp;&#x27;vertical&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.ml-2]&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&nbsp;&#x27;horizontal&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;item[labelField]&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mat-checkbox&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Validation&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;(control.dirty&nbsp;||&nbsp;control.touched)&nbsp;&amp;&amp;&nbsp;!control.valid&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -890,6 +890,20 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <code>keyField</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>id</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
                             <code>label</code>
                         </td>
                         <td class="col-md-10">
@@ -897,6 +911,34 @@
                                 <em>Type:</em>    <code>string</code>
 
                               </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>labelField</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>label</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>multiple</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>false</code>
+                            </p>
                         </td>
                     </tr>
                 </tbody>
@@ -993,6 +1035,30 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> multipleChange</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>multipleChange()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
@@ -1022,6 +1088,21 @@
                     <tr>
                         <td class="col-md-4">
                             <span class="modifier-icon fa fa-circle"></span><code>esRequerido:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> multipleCheck</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>multipleCheck:     <code>{}</code>
     </bcode>
                         </td>
                     </tr>
@@ -1071,11 +1152,27 @@ import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
                 &lt;label *ngIf&#x3D;&quot;label&quot; class&#x3D;&quot;form-control-label&quot;&gt;{{label}}
                     &lt;span *ngIf&#x3D;&quot;control.name &amp;&amp; esRequerido&quot; class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;
                 &lt;/label&gt;
-                &lt;mat-radio-group [(ngModel)]&#x3D;&quot;value&quot;&gt;
-                    &lt;mat-radio-button *ngFor&#x3D;&quot;let item of data&quot; [value]&#x3D;&quot;item.id&quot; [disabled]&#x3D;&quot;readonly&quot; (change)&#x3D;&quot;radioChange($event)&quot; [ngClass]&#x3D;&quot;{&#x27;d-block&#x27;: type &#x3D;&#x3D; &#x27;vertical&#x27;}&quot;&gt;
-                        {{item.label || item.text}}
-                     &lt;/mat-radio-button&gt;
-                 &lt;/mat-radio-group&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;!multiple&quot;&gt;
+                    &lt;mat-radio-group [(ngModel)]&#x3D;&quot;value&quot;&gt;
+                        &lt;mat-radio-button *ngFor&#x3D;&quot;let item of data&quot; [value]&#x3D;&quot;item[keyField]&quot; [disabled]&#x3D;&quot;readonly&quot; (change)&#x3D;&quot;radioChange($event)&quot; [class.d-block]&#x3D;&quot;type &#x3D;&#x3D; &#x27;vertical&#x27;&quot;&gt;
+                            {{ item[labelField] || item.text }}
+                         &lt;/mat-radio-button&gt;
+                     &lt;/mat-radio-group&gt;
+                &lt;/ng-container&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;multiple&quot;&gt;
+                    &lt;mat-checkbox *ngFor&#x3D;&quot;let item of data&quot;
+                                  [disabled]&#x3D;&quot;readonly&quot;
+                                  [(ngModel)]&#x3D;&quot;multipleCheck[item[keyField]]&quot;
+                                  (click)&#x3D;&quot;$event.stopPropagation()&quot;
+                                  (change)&#x3D;&quot;multipleChange()&quot;
+                                  [class.d-block]&#x3D;&quot;type &#x3D;&#x3D; &#x27;vertical&#x27;&quot;
+                                  [class.ml-2]&#x3D;&quot;type &#x3D;&#x3D; &#x27;horizontal&#x27;&quot;
+                    &gt;
+                        &lt;span&gt;
+                            {{ item[labelField] }}
+                        &lt;/span&gt;
+                    &lt;/mat-checkbox&gt;
+                &lt;/ng-container&gt;
                  &lt;!-- Validation --&gt;
                  &lt;plex-validation-messages *ngIf&#x3D;&quot;(control.dirty || control.touched) &amp;&amp; !control.valid&quot; [control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;
                &lt;/div&gt;
@@ -1083,6 +1180,8 @@ import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
 })
 export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     public value: any;
+
+    public multipleCheck &#x3D; {};
 
     public get esRequerido(): boolean {
         return hasRequiredValidator(this.control as any);
@@ -1096,10 +1195,20 @@ export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAc
         }
     }
     // Propiedad públicas
+    @Input() keyField &#x3D; &#x27;id&#x27;;
+
+    @Input() labelField &#x3D; &#x27;label&#x27;;
+
     @Input() data: any[];
+
     @Input() label: string;
+
     @Input() readonly: boolean;
+
+    @Input() multiple &#x3D; false;
+
     @Input() type: &#x27;vertical&#x27; | &#x27;horizontal&#x27; &#x3D; &#x27;vertical&#x27;;
+
     @Output() change &#x3D; new EventEmitter();
 
     // Funciones privadas
@@ -1113,7 +1222,12 @@ export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAc
 
     // Actualización Modelo -&gt; Vista
     writeValue(value: any) {
-        this.value &#x3D; value;
+        if (this.multiple &amp;&amp; Array.isArray(value)) {
+            this.multipleCheck &#x3D; {};
+            value.forEach(item &#x3D;&gt; this.multipleCheck[item[this.keyField]] &#x3D; true);
+        } else {
+            this.value &#x3D; value;
+        }
     }
 
     // Actualización Vista -&gt; Modelo
@@ -1130,6 +1244,11 @@ export class PlexRadioComponent implements OnInit, AfterViewInit, ControlValueAc
     radioChange(event) {
         this.control.control.markAsTouched();
         this.onChange(event.value);
+    }
+
+    multipleChange() {
+        const checked &#x3D; this.data.filter(item &#x3D;&gt; this.multipleCheck[item[this.keyField]]);
+        this.onChange(checked);
     }
 }
 </code></pre>
