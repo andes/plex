@@ -7,6 +7,7 @@ plex-grid {
     margin-top: .5rem;	
     text-transform: capitalize;
     grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
+    grid-gap: .5rem;
 
     plex-card {
         img {
@@ -50,24 +51,46 @@ plex-grid {
             grid-template-columns: repeat(4, 1fr)!important;
     }
 
-    // sizes
-    //size=sm     
-    &[size=sm] {	
-        --colSize: 3.5rem;
-        --rowSize: 3.5rem;
-    }	
-            
-    &[size=md] {
-        --colSize: 7rem;
-        --rowSize: 7rem;
+    &[cols="5"] {
+            grid-template-columns: repeat(5, 1fr)!important;	
     }
 
-    //size=lg 
-    &[size=lg] {	
-        --colSize: 14rem;
-        --rowSize: 14rem;
+    &[cols="6"] {
+            grid-template-columns: repeat(6, 1fr)!important;
+    }
+
+    // sizes
+    &[size=xs] {	
+        --colSize: 2.5rem;
+        --rowSize: 2.5rem;
+    }
+    
+    &[size=sm] {	
+        --colSize: 5rem;
+        --rowSize: 5rem;
     }	
+    
+    &[size=md] {
+        --colSize: 7.5rem;
+        --rowSize: 7.5rem;
+    }
+    
+    &[size=lg] {
+        --colSize: 10rem;
+        --rowSize: 10rem;
+    }
+    
+    &[size=xl] {	
+        --colSize: 15rem;
+        --rowSize: 15rem;
+    }	
+
+    // gaps
+    &[noGap] {
+        grid-gap: 0!important;
+    }
 } 
+
 
 // directiva span
 .grid-column-auto {
@@ -82,6 +105,12 @@ plex-grid {
 .grid-column-span-4 {
     grid-column: span 4;
 }
+.grid-column-span-3 {
+    grid-column: span 5;
+}
+.grid-column-span-4 {
+    grid-column: span 6;
+}
 .grid-column-span-full {
     grid-column: 100%;
-}	
+}

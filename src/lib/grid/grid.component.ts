@@ -14,9 +14,9 @@ export class PlexGridComponent implements AfterViewChecked {
      * Propiedades desde CSS
      *
      * type= auto|fill
-     * size= sm|md|lg
-     * cols= 2|3|4
-     * span= 2|3|4
+     * size= xs|sm|md|lg|xl
+     * cols= 2|3|4|5|6
+     * span= 2|3|4|5|6
      *
      */
 
