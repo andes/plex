@@ -1,72 +1,20 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <plex-table titulo="Título de la tabla" titleSize="md" [columns]="columns">
-            <plex-badge type="info" icon="star">este badge</plex-badge>
-            <plex-button size="sm" type="success" icon="plus"></plex-button>
-            <table plex-table>
-                <tr sticky>
-                    <ng-container *ngFor="let column of columns">
-                        <th *ngIf="column.key" class="sortable" (click)="sortTable('fechaNacimiento')">
-                            {{ column.label }}
-                            <span *ngIf="sortBy === 'fechaNacimiento'">
-                                <plex-icon *ngIf="sortOrder === 'desc'" name="chevron-down"></plex-icon>
-                                <plex-icon *ngIf="sortOrder === 'asc'" name="chevron-up"></plex-icon>
-                            </span>
-                        </th>
-                    </ng-container>
-                    <th *ngIf="botonera">Acciones/botonera
-                    </th>
-                </tr>
-                <ng-container *ngFor="let column of columns">
-                    <tr [class.selectable]="selectable" [class.selected]="selectable && selected">
-                        <ng-container *ngFor="let column of columns; let par = even">
-                            <td *ngIf="column.key">{{ column.label }}</td>
-                        </ng-container>
-                        <td *ngIf="botonera">
-                            <plex-badge type="warning" icon="pencil">Badge</plex-badge>
-                            <plex-badge type="info" icon="account">Badge</plex-badge>
-                            <plex-badge type="success" icon="star">Badge</plex-badge>
-                            <plex-button size="sm" type="warning" icon="pencil"></plex-button>
-                            <plex-button size="sm" type="info" icon="account"></plex-button>
-                            <plex-button size="sm" type="success" icon="star"></plex-button>
-                        </td>
-                    </tr>
-                </ng-container>
-            </table>
+        <plex-table [columns]="columns" #table>
+            <plex-title titulo="HOLA">
+                <plex-table-columns [selected]="colsVisibles"></plex-table-columns>
+            </plex-title>
+
+            <tr *ngFor="let item of (data$ | plSort:table | async)">
+                <td *plTableCol="'col-1'">{{ item.nombre }}</td>
+                <td *plTableCol="'col-2'"> {{ item.apellido }}</td>
+                <td *plTableCol="'col-3'"> {{item.documento}}</td>
+                <td *plTableCol="'col-4'">{{item.fecha | date}}</td>
+                <td *plTableCol="'col-5'">{{item.ciudad}}</td>
+            </tr>
         </plex-table>
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
-        <plex-table titulo="Título de la tabla" titleSize="sm" [columns]="columns">
-            <plex-badge type="info" icon="star">este badge</plex-badge>
-            <plex-button size="sm" type="success" icon="plus"></plex-button>
-            <table plex-table>
-                <tr sticky>
-                    <ng-container *ngFor="let column of columns | slice:0:2">
-                        <th *ngIf="column.key" class="sortable" (click)="sortTable('fechaNacimiento')">
-                            {{ column.label }}
-                            <span *ngIf="sortBy === 'fechaNacimiento'">
-                                <plex-icon *ngIf="sortOrder === 'desc'" name="chevron-down"></plex-icon>
-                                <plex-icon *ngIf="sortOrder === 'asc'" name="chevron-up"></plex-icon>
-                            </span>
-                        </th>
-                    </ng-container>
-                    <th *ngIf="botonera">Acciones/botonera
-                    </th>
-                </tr>
-                <ng-container *ngFor="let column of columns">
-                    <tr [class.selectable]="selectable" [class.selected]="selectable && selected">
-                        <ng-container *ngFor="let column of columns | slice:0:2 ; let par = even">
-                            <td *ngIf="column.key">{{ column.label }}</td>
-                        </ng-container>
-                        <td *ngIf="botonera">
-                            <plex-badge type="warning" icon="pencil">Badge</plex-badge>
-                            <plex-badge type="info" icon="account">Badge</plex-badge>
-                            <plex-button size="sm" type="warning" icon="pencil"></plex-button>
-                            <plex-button size="sm" type="info" icon="account"></plex-button>
-                        </td>
-                    </tr>
-                </ng-container>
-            </table>
-        </plex-table>
+
     </plex-layout-sidebar>
 </plex-layout>

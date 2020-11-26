@@ -80,6 +80,9 @@ import { Plex } from './core/service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loading.service';
 import { MobileDirective } from './directives/mobile.directive';
+import { PlexTableColumnsComponent } from './table/table-column-dropdown.component';
+import { PlexTableColDirective } from './table/display-column.directive';
+import { PlexTableSortPipe } from './table/table-sort.pipe';
 
 @NgModule({
     imports: [
@@ -139,6 +142,9 @@ import { MobileDirective } from './directives/mobile.directive';
         PlexWrapperComponent,
         PlexGridComponent,
         PlexCardComponent,
+        PlexTableColumnsComponent,
+        PlexTableColDirective,
+        PlexTableSortPipe,
 
         // Directivas
         AlignedDirective,
@@ -213,6 +219,8 @@ import { MobileDirective } from './directives/mobile.directive';
         PlexWrapperComponent,
         PlexGridComponent,
         PlexCardComponent,
+        PlexTableColumnsComponent,
+        PlexTableSortPipe,
 
         // Directivas
         AlignedDirective,
@@ -228,7 +236,8 @@ import { MobileDirective } from './directives/mobile.directive';
         SpanDirective,
         TabDirective,
         MatTooltip,
-        MobileDirective
+        MobileDirective,
+        PlexTableColDirective
     ]
 })
 export class PlexModule {

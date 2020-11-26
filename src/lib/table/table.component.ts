@@ -1,46 +1,102 @@
-import { Component, OnInit, Input, HostListener, Output, EventEmitter, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Plex } from '../core/service';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { BehaviorSubject, NEVER, Observable } from 'rxjs';
+import { PlexTableColumnsComponent } from './table-column-dropdown.component';
 
 export interface IPlexTableColumns {
-    key: boolean;
+    key: string;
     label: string;
+    sorteable?: boolean;
+    opcional?: boolean;
+    width?: string | number;
+    sort?: (a: any, b: any) => number;
 }
 
 @Component({
     selector: 'plex-table',
     template: `
     <section class="d-flex flex-column">
-        <plex-title main size="{{ titleSize }}" titulo="{{ titulo }}">
-            <ng-content></ng-content>
-            <ng-content select="plex-badge"></ng-content>
-            <plex-dropdown icon="format-list-checks" type="info" size="sm" class="d-inline-block ml-1" [right]="true">
-                <plex-grid cols="3">
+        <ng-content select="plex-title"></ng-content>
+        <table>
+            <thead>
+                <tr sticky *ngIf="_sort | async as sortData">
                     <ng-container *ngFor="let column of columns">
-                        <plex-bool label="{{ column.label }}" [(ngModel)]="column.key">
-                        </plex-bool>
+                        <th  [class.sortable]="column.sorteable" [style.width]="column.width" (click)="onColumnClick(column)" *ngIf="displayColumns[column.key] || !column.opcional">
+                            {{ column.label }}
+                            <span *ngIf="sortData.sortBy === column.key">
+                                <plex-icon *ngIf="sortData.sortOrder === 'DESC'" name="chevron-down"></plex-icon>
+                                <plex-icon *ngIf="sortData.sortOrder === 'ASC'" name="chevron-up"></plex-icon>
+                            </span>
+                        </th>
                     </ng-container>
-                </plex-grid>
-            </plex-dropdown>
-            <ng-content select="plex-button"></ng-content>
-            <ng-content select="plex-info"></ng-content>
-        </plex-title>
-        <ng-content select="table"></ng-content>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-content select="tr"></ng-content>
+            </tbody>
+        </table>
     </section>
-`,
+    `
 })
 
-export class PlexTableComponent {
+export class PlexTableComponent implements OnChanges {
 
-    @Input() titleSize: string;
-    @Input() titulo: string;
     @Input() columns: IPlexTableColumns[];
 
-    public columnsModulo = new BehaviorSubject<IPlexTableColumns>({} as any);
+    @Input() sortBy: string;
 
-    constructor(
+    @Input() sortOrder: string;
 
-    ) {
+    @Output() sort = new EventEmitter<IPlexTableColumns>();
 
+    _sort = new BehaviorSubject<{ sortBy?: string, sortOrder?: 'DESC' | 'ASC' }>({});
+
+
+    columns$ = new BehaviorSubject<IPlexTableColumns[]>([]);
+
+    displayColumns: { [key: string]: boolean } = {};
+
+    displayColumns$ = new BehaviorSubject<{ [key: string]: boolean }>({});
+
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.columns) {
+            this.columns$.next(changes.columns.currentValue);
+        }
+
+        if (changes.sortBy || changes.sortOrder) {
+            this._sort.next({
+                sortBy: changes.sortBy.currentValue,
+                sortOrder: changes.sortOrder.currentValue
+            });
+        }
+    }
+
+    onColumnClick(column: IPlexTableColumns) {
+        this.sort.emit(column);
+        const data = this._sort.getValue();
+
+        if (data.sortBy === column.key) {
+            this._sort.next({
+                sortBy: column.key,
+                sortOrder: data.sortOrder === 'ASC' ? 'DESC' : 'ASC'
+            });
+        } else {
+            this._sort.next({
+                sortBy: column.key,
+                sortOrder: 'ASC'
+            });
+        }
+
+    }
+
+    setColumnHandler(plexTableColumn: PlexTableColumnsComponent) {
+        plexTableColumn.change.subscribe(cols => {
+            this.displayColumns = cols;
+            this.displayColumns$.next(cols);
+        });
+    }
+
+    displayColumnBuffer(): Observable<any> {
+        return this.displayColumns$.asObservable();
     }
 }

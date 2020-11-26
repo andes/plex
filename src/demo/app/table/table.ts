@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { of } from 'rxjs';
 import { PacienteService } from '../templates/service/paciente.service';
 
 @Component({
@@ -6,6 +7,22 @@ import { PacienteService } from '../templates/service/paciente.service';
 })
 
 export class TableDemoComponent {
+
+    data$ = of([
+        { nombre: 'andres', documento: '34934522', apellido: 'botta', fecha: new Date(2021, 0, 0), ciudad: 'rosario' },
+        { nombre: 'mariano', documento: '10000000', apellido: 'santarelli', fecha: new Date(2020, 0, 0), ciudad: 'buenos aires' },
+        { nombre: 'julio', documento: '20000000', apellido: 'botcho', fecha: new Date(2024, 0, 0), ciudad: 'mar del plata' },
+        { nombre: 'gabo', documento: '15000000', apellido: 'cancelierie', fecha: new Date(1990, 0, 0), ciudad: 'pinamar' }
+    ]);
+
+    colsVisibles = {
+        'col-1': true,
+        'col-2': true,
+        'col-3': true,
+        'col-4': true,
+        'col-5': true,
+
+    };
 
     // Permite :hover y click()
     @Input() selectable = true;
@@ -19,24 +36,39 @@ export class TableDemoComponent {
 
     public columns = [
         {
-            key: true,
+            key: 'col-1',
             label: 'columna 1',
+            sorteable: true,
+            opcional: false,
+            sort: (a: any, b: any) => a.nombre.localeCompare(b.nombre)
         },
         {
-            key: true,
+            key: 'col-2',
             label: 'columna 2',
+            sorteable: true,
+            opcional: true,
+            sort: (a: any, b: any) => a.apellido.localeCompare(b.apellido)
         },
         {
-            key: true,
+            key: 'col-3',
             label: 'columna 3',
+            sorteable: true,
+            opcional: true,
+            sort: (a: any, b: any) => a.documento.localeCompare(b.documento)
         },
         {
-            key: true,
+            key: 'col-4',
             label: 'columna 4',
+            sorteable: true,
+            opcional: true,
+            sort: (a: any, b: any) => a.fecha.getTime() - b.fecha.getTime()
         },
         {
-            key: true,
+            key: 'col-5',
             label: 'columna 5',
+            sorteable: true,
+            opcional: true,
+            sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad)
         }
     ];
 
@@ -57,7 +89,7 @@ export class TableDemoComponent {
 
 
     toggleColumns() {
-        //this.pacienteService.columnsMapa.next(this.columns);
+        // this.pacienteService.columnsMapa.next(this.columns);
     }
 
     sortTable(event: string) {
