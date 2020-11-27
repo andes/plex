@@ -44,7 +44,7 @@ export class PlexItemComponent implements AfterViewInit {
     // Muestra efecto de selección
     @Input() selected = false;
 
-    @Input() colors: any = {};
+    @Input() colors: any;
 
     @ContentChildren(PlexIconComponent, { descendants: false }) plexIcons: QueryList<PlexIconComponent>;
     @ContentChildren(PlexBoolComponent, { descendants: false }) plexBools: QueryList<PlexBoolComponent>;
@@ -79,13 +79,12 @@ export class PlexItemComponent implements AfterViewInit {
         const elementos = this.elRef.nativeElement.querySelectorAll('.item-list > svg');
         this.svgs = elementos.length > 0;
 
-
-        this.ref.detectChanges();
         if (this.hasColors()) {
             this.item.nativeElement.style.setProperty('--item-border-color', this.colors.border);
             this.item.nativeElement.style.setProperty('--item-border-color-hover', this.colors.hover);
             this.item.nativeElement.style.setProperty('--item-bg-color', this.colors.background);
         }
+        this.ref.detectChanges();
     }
 
     constructor(
