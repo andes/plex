@@ -39,7 +39,7 @@
             </section>
             <section span="3" class="ml-4">
                 <plex-title titulo="Multiline"></plex-title>
-                <plex-grid cols="2">
+                <plex-grid type="full" size="md">
                     <plex-text label="Escriba la biografía de su vida" multiline="true" name="multi"
                                [(ngModel)]="prueba" (change)="cambio()">
                     </plex-text>
@@ -50,10 +50,10 @@
                 </plex-grid>
 
                 <plex-title titulo="HTML Editor"></plex-title>
-                <plex-grid cols="2">
+                <plex-grid type="full">
                     <form>
                         <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido1"
-                                   [html]="true" [readonly]="false" [qlToolbar]="qlToolbar">
+                                   [html]="true" [readonly]="false" [height]="'100px'" [qlToolbar]="qlToolbar">
                         </plex-text>
                     </form>
                     <div>
@@ -62,11 +62,11 @@
                     </div>
                 </plex-grid>
 
-                <plex-title titulo="HTML Editor con height = 300"></plex-title>
-                <plex-grid cols="2">
+                <plex-title titulo="HTML Editor con height = 200"></plex-title>
+                <plex-grid type="full" size="md">
                     <form>
                         <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido2"
-                                   [html]="true" [height]="'300px'" [readonly]="false">
+                                   [html]="true" [height]="'200px'" [readonly]="false">
                         </plex-text>
                     </form>
                     <div>
