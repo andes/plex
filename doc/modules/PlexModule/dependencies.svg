@@ -24,6 +24,10 @@
 <title>cluster_PlexModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 10539,-268 10539,-70 8,-70"/>
 </g>
+<g id="clust62" class="cluster">
+<title>cluster_PlexModule_exports</title>
+<polygon fill="none" stroke="black" points="651,-208 651,-260 9539,-260 9539,-208 651,-208"/>
+</g>
 <g id="clust2" class="cluster">
 <title>cluster_PlexModule_declarations</title>
 <polygon fill="none" stroke="black" points="1599,-78 1599,-130 10531,-130 10531,-78 1599,-78"/>
@@ -31,10 +35,6 @@
 <g id="clust61" class="cluster">
 <title>cluster_PlexModule_imports</title>
 <polygon fill="none" stroke="black" points="16,-78 16,-130 1591,-130 1591,-78 16,-78"/>
-</g>
-<g id="clust62" class="cluster">
-<title>cluster_PlexModule_exports</title>
-<polygon fill="none" stroke="black" points="651,-208 651,-260 9539,-260 9539,-208 651,-208"/>
 </g>
 <!-- PlexAppComponent -->
 <g id="node1" class="node">
