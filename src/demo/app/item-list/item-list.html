@@ -1,7 +1,23 @@
 <plex-layout main="8">
     <plex-layout-main>
         <plex-title size="md" titulo="PLEX LIST">
-            <plex-help type="info">
+            <plex-radio [(ngModel)]="modeloRadio.radio" name="color1" [data]="[{id: 1}]"
+                        (change)="ordenarLista('baja')">
+            </plex-radio>
+            <div class="baja"></div>
+            <plex-radio [(ngModel)]="modeloRadio.radio" name="color2" [data]="[{id: 2}]"
+                        (change)="ordenarLista('media')">
+            </plex-radio>
+            <div class="media"></div>
+            <plex-radio [(ngModel)]="modeloRadio.radio" name="color3" [data]="[{id: 3}]"
+                        (change)="ordenarLista('alta')">
+            </plex-radio>
+            <div class="alta"></div>
+            <plex-radio [(ngModel)]="modeloRadio.radio" name="color4" [data]="[{id: 4}]"
+                        (change)="ordenarLista('especial')">
+            </plex-radio>
+            <div class="especial"></div>
+            <!-- <plex-help type="info">
                 <plex-list height="60%" (scrolled)="onScroll()" size="sm">
                     <plex-heading>
                         <b label>Datos importantes</b>
@@ -20,14 +36,13 @@
                         <plex-badge type="danger">urgente</plex-badge>
                     </plex-item>
                 </plex-list>
-            </plex-help>
+            </plex-help> -->
         </plex-title>
-        <plex-list height="60%" (scrolled)="onScroll()" size="sm">
+        <plex-list height="60%" size="sm" [striped]="false">
             <plex-heading>
                 <b label>Datos importantes</b>
-                <b label>Parentesco</b>
             </plex-heading>
-            <plex-item [colors]="prioridad(i)" *ngFor="let item of lista; let par = even; let i = index"
+            <plex-item [colors]="item.colores" *ngFor="let item of lista; let par = even; let i = index"
                        [selected]="item.selected" (click)="item.selected = !item.selected">
                 <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
                 <plex-icon name="pencil" size="18" type="warning"></plex-icon>
@@ -74,6 +89,8 @@
             </plex-item>
         </plex-list>
     </plex-layout-main>
+
+    <!-- SIDEBAR -->
     <plex-layout-sidebar type="invert">
         <plex-title size="sm" titulo="Prueba con help">
             <plex-help titulo="Información sobre este panel" subtitulo="A continuación los pasos a seguir">
@@ -93,12 +110,10 @@
             </plex-help>
         </plex-title>
         <plex-list size="sm" [selectable]="false">
-            <!-- <plex-heading>
-                <b label>HOLA</b>
-                <b label>HOLA DE NUEVO</b>
-            </plex-heading> -->
             <ng-container *ngFor="let item of lista">
-                <plex-item [selectable]="item.selectable">
+                <plex-item [colors]="item.colores" [selectable]="item.selectable">
+                    <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
+
                     <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
                     <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
                     <plex-button type="danger" size="sm" icon="delete"></plex-button>
@@ -109,10 +124,6 @@
             </ng-container>
         </plex-list>
         <plex-list [selectable]="true">
-            <!-- <plex-heading [sticky]="true">
-                <b label>1</b>
-                <b label>3</b>
-            </plex-heading> -->
             <ng-container *ngFor="let item of lista">
                 <plex-item [selectable]="item.selectable">
                     <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
