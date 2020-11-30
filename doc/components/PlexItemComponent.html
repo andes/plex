@@ -860,7 +860,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;section&nbsp;class&#x3D;&quot;item&quot;&nbsp;[class.selectable]&#x3D;&quot;selectable&quot;&nbsp;[class.selected]&#x3D;&quot;selectable&nbsp;&amp;&amp;&nbsp;selected&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;item-row&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;elementos-graficos&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-bool&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;img&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;svg&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;item-list&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.has-icon]&#x3D;&quot;plexIcons?.length&nbsp;&gt;&nbsp;0&nbsp;||&nbsp;imgs&nbsp;||&nbsp;svgs&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.has-checkbox]&#x3D;&quot;plexBools?.length&nbsp;&gt;&nbsp;0&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngIf&#x3D;&quot;hasBotonera()&quot;&nbsp;class&#x3D;&quot;botonera&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;upload-file&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-dropdown[icon]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/section&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;section&nbsp;#item&nbsp;class&#x3D;&quot;item&quot;&nbsp;[class.custom-colors]&#x3D;&quot;hasColors&quot;&nbsp;[class.selectable]&#x3D;&quot;selectable&quot;&nbsp;[class.selected]&#x3D;&quot;selectable&nbsp;&amp;&amp;&nbsp;selected&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;item-row&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;elementos-graficos&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-bool&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;img&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;svg&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;item-list&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.has-icon]&#x3D;&quot;plexIcons?.length&nbsp;&gt;&nbsp;0&nbsp;||&nbsp;imgs&nbsp;||&nbsp;svgs&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.has-checkbox]&#x3D;&quot;plexBools?.length&nbsp;&gt;&nbsp;0&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngIf&#x3D;&quot;hasBotonera()&quot;&nbsp;class&#x3D;&quot;botonera&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;upload-file&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-dropdown[icon]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/section&gt;<br></code></td>
             </tr>
 
 
@@ -871,6 +871,21 @@
 
     <section>
         <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>colors</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>any</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -990,6 +1005,30 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> hasColors</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>hasColors()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
@@ -1012,6 +1051,21 @@
                                 <i>Default value: </i><code>false</code>
                             </td>
                         </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> item</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>item:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -1098,7 +1152,7 @@
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
             <pre><code class="hljs javascript">import { map } from &#x27;rxjs/operators&#x27;;
-import { Component, Input, QueryList, AfterViewInit, ContentChildren, ElementRef, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { Component, Input, QueryList, AfterViewInit, ContentChildren, ElementRef, ChangeDetectorRef, ViewChild, OnChanges } from &#x27;@angular/core&#x27;;
 import { PlexIconComponent } from &#x27;../icon/icon.component&#x27;;
 import { PlexBoolComponent } from &#x27;../bool/bool.component&#x27;;
 import { PlexBadgeComponent } from &#x27;../badge/badge.component&#x27;;
@@ -1107,7 +1161,7 @@ import { PlexButtonComponent } from &#x27;../button/button.component&#x27;;
 @Component({
     selector: &#x27;plex-item&#x27;,
     template: &#x60;
-        &lt;section class&#x3D;&quot;item&quot; [class.selectable]&#x3D;&quot;selectable&quot; [class.selected]&#x3D;&quot;selectable &amp;&amp; selected&quot;&gt;
+        &lt;section #item class&#x3D;&quot;item&quot; [class.custom-colors]&#x3D;&quot;hasColors&quot; [class.selectable]&#x3D;&quot;selectable&quot; [class.selected]&#x3D;&quot;selectable &amp;&amp; selected&quot;&gt;
             &lt;div class&#x3D;&quot;item-row&quot;&gt;
                 &lt;div class&#x3D;&quot;elementos-graficos&quot;&gt;
                     &lt;ng-content select&#x3D;&quot;plex-bool&quot;&gt;&lt;/ng-content&gt;
@@ -1143,10 +1197,15 @@ export class PlexItemComponent implements AfterViewInit {
     // Muestra efecto de selección
     @Input() selected &#x3D; false;
 
+    @Input() colors: any;
+
     @ContentChildren(PlexIconComponent, { descendants: false }) plexIcons: QueryList&lt;PlexIconComponent&gt;;
     @ContentChildren(PlexBoolComponent, { descendants: false }) plexBools: QueryList&lt;PlexBoolComponent&gt;;
     @ContentChildren(PlexBadgeComponent, { descendants: false }) plexBadges: QueryList&lt;PlexBadgeComponent&gt;;
     @ContentChildren(PlexButtonComponent, { descendants: false }) plexButtons: QueryList&lt;PlexButtonComponent&gt;;
+
+    @ViewChild(&#x27;item&#x27;, { static: true }) item: ElementRef;
+
 
     public imgs &#x3D; false;
     public svgs &#x3D; false;
@@ -1163,12 +1222,21 @@ export class PlexItemComponent implements AfterViewInit {
         return this.plexButtons.length &gt; 0 || this.plexBadges.length &gt; 0;
     }
 
+    hasColors() {
+        return this.colors &amp;&amp; this.colors.border &amp;&amp; this.colors.hover &amp;&amp; this.colors.background;
+    }
+
     ngAfterViewInit() {
         this.imgs &#x3D; !!this.elRef.nativeElement.querySelector(&#x27;img&#x27;);
 
         const elementos &#x3D; this.elRef.nativeElement.querySelectorAll(&#x27;.item-list &gt; svg&#x27;);
         this.svgs &#x3D; elementos.length &gt; 0;
 
+        if (this.hasColors()) {
+            this.item.nativeElement.style.setProperty(&#x27;--item-border-color&#x27;, this.colors.border);
+            this.item.nativeElement.style.setProperty(&#x27;--item-border-color-hover&#x27;, this.colors.hover);
+            this.item.nativeElement.style.setProperty(&#x27;--item-bg-color&#x27;, this.colors.background);
+        }
         this.ref.detectChanges();
     }
 
