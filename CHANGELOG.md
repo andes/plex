@@ -1,3 +1,10 @@
+# [7.8.0](https://github.com/andes/plex/compare/v7.7.0...v7.8.0) (2020-11-30)
+
+
+### Features
+
+* **plex-item:** type properties  ([#254](https://github.com/andes/plex/issues/254)) ([0ad1b56](https://github.com/andes/plex/commit/0ad1b56c64af618654b2173a687149fbd435f689))
+
 # [7.7.0](https://github.com/andes/plex/compare/v7.6.0...v7.7.0) (2020-11-26)
 
 
