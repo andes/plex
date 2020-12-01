@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { of } from 'rxjs';
-import { PacienteService } from '../templates/service/paciente.service';
 
 @Component({
     templateUrl: 'table.html',
@@ -12,6 +11,26 @@ export class TableDemoComponent {
         { nombre: 'andres', documento: '34934522', apellido: 'botta', fecha: new Date(2021, 0, 0), ciudad: 'rosario' },
         { nombre: 'mariano', documento: '10000000', apellido: 'santarelli', fecha: new Date(2020, 0, 0), ciudad: 'buenos aires' },
         { nombre: 'julio', documento: '20000000', apellido: 'botcho', fecha: new Date(2024, 0, 0), ciudad: 'mar del plata' },
+        { nombre: 'gabo', documento: '15000000', apellido: 'cancelierie', fecha: new Date(1990, 0, 0), ciudad: 'pinamar' },
+        { nombre: 'andres', documento: '34934522', apellido: 'botta', fecha: new Date(2021, 0, 0), ciudad: 'rosario' },
+        { nombre: 'mariano', documento: '10000000', apellido: 'santarelli', fecha: new Date(2020, 0, 0), ciudad: 'buenos aires' },
+        { nombre: 'julio', documento: '20000000', apellido: 'botcho', fecha: new Date(2024, 0, 0), ciudad: 'mar del plata' },
+        { nombre: 'gabo', documento: '15000000', apellido: 'cancelierie', fecha: new Date(1990, 0, 0), ciudad: 'pinamar' },
+        { nombre: 'andres', documento: '34934522', apellido: 'botta', fecha: new Date(2021, 0, 0), ciudad: 'rosario' },
+        { nombre: 'mariano', documento: '10000000', apellido: 'santarelli', fecha: new Date(2020, 0, 0), ciudad: 'buenos aires' },
+        { nombre: 'julio', documento: '20000000', apellido: 'botcho', fecha: new Date(2024, 0, 0), ciudad: 'mar del plata' },
+        { nombre: 'gabo', documento: '15000000', apellido: 'cancelierie', fecha: new Date(1990, 0, 0), ciudad: 'pinamar' },
+        { nombre: 'andres', documento: '34934522', apellido: 'botta', fecha: new Date(2021, 0, 0), ciudad: 'rosario' },
+        { nombre: 'mariano', documento: '10000000', apellido: 'santarelli', fecha: new Date(2020, 0, 0), ciudad: 'buenos aires' },
+        { nombre: 'julio', documento: '20000000', apellido: 'botcho', fecha: new Date(2024, 0, 0), ciudad: 'mar del plata' },
+        { nombre: 'gabo', documento: '15000000', apellido: 'cancelierie', fecha: new Date(1990, 0, 0), ciudad: 'pinamar' },
+        { nombre: 'andres', documento: '34934522', apellido: 'botta', fecha: new Date(2021, 0, 0), ciudad: 'rosario' },
+        { nombre: 'mariano', documento: '10000000', apellido: 'santarelli', fecha: new Date(2020, 0, 0), ciudad: 'buenos aires' },
+        { nombre: 'julio', documento: '20000000', apellido: 'botcho', fecha: new Date(2024, 0, 0), ciudad: 'mar del plata' },
+        { nombre: 'gabo', documento: '15000000', apellido: 'cancelierie', fecha: new Date(1990, 0, 0), ciudad: 'pinamar' },
+        { nombre: 'andres', documento: '34934522', apellido: 'botta', fecha: new Date(2021, 0, 0), ciudad: 'rosario' },
+        { nombre: 'mariano', documento: '10000000', apellido: 'santarelli', fecha: new Date(2020, 0, 0), ciudad: 'buenos aires' },
+        { nombre: 'julio', documento: '20000000', apellido: 'botcho', fecha: new Date(2024, 0, 0), ciudad: 'mar del plata' },
         { nombre: 'gabo', documento: '15000000', apellido: 'cancelierie', fecha: new Date(1990, 0, 0), ciudad: 'pinamar' }
     ]);
 
@@ -19,9 +38,9 @@ export class TableDemoComponent {
         'col-1': true,
         'col-2': true,
         'col-3': true,
-        'col-4': true,
-        'col-5': true,
-
+        'col-4': false,
+        'col-5': false,
+        'col-6': true,
     };
 
     // Permite :hover y click()
@@ -69,6 +88,13 @@ export class TableDemoComponent {
             sorteable: true,
             opcional: true,
             sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad)
+        },
+        {
+            key: 'col-6',
+            label: 'columna 6',
+            sorteable: true,
+            opcional: true,
+            sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad)
         }
     ];
 
@@ -84,22 +110,6 @@ export class TableDemoComponent {
     ];
 
     constructor(
-        public pacienteService: PacienteService,
     ) { }
 
-
-    toggleColumns() {
-        // this.pacienteService.columnsMapa.next(this.columns);
-    }
-
-    sortTable(event: string) {
-        if (this.sortBy === event) {
-            this.sortOrder = (this.sortOrder === 'asc') ? 'desc' : 'asc';
-            this.pacienteService.sortOrder.next(this.sortOrder);
-        } else {
-            this.sortBy = event;
-            this.pacienteService.sortBy.next(event);
-            this.pacienteService.sortOrder.next('desc');
-        }
-    }
 }

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
-import { BehaviorSubject, NEVER, Observable } from 'rxjs';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { PlexTableColumnsComponent } from './table-column-dropdown.component';
 
 export interface IPlexTableColumns {
@@ -18,9 +18,9 @@ export interface IPlexTableColumns {
         <ng-content select="plex-title"></ng-content>
         <table>
             <thead>
-                <tr sticky *ngIf="_sort | async as sortData">
+                <tr *ngIf="_sort | async as sortData">
                     <ng-container *ngFor="let column of columns">
-                        <th  [class.sortable]="column.sorteable" [style.width]="column.width" (click)="onColumnClick(column)" *ngIf="displayColumns[column.key] || !column.opcional">
+                        <th [class.sortable]="column.sorteable" [style.width]="column.width" (click)="onColumnClick(column)" *ngIf="displayColumns[column.key] || !column.opcional">
                             {{ column.label }}
                             <span *ngIf="sortData.sortBy === column.key">
                                 <plex-icon *ngIf="sortData.sortOrder === 'DESC'" name="chevron-down"></plex-icon>

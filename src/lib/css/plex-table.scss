@@ -4,48 +4,45 @@ plex-table {
     table  {
         width:100%;
         position: relative;
-        //  color base como variable
-        tr {
-    
-            &:first-child {
-                &[sticky] {
-                    position: sticky;
-                    top: 0;
-                    z-index: 10;  
-                }
-            }
-    
-            > th {
-                text-transform: uppercase;
-                &.sortable {
-                    &:hover {
-                        text-decoration: underline !important;
-                        cursor: pointer;
-                    }
-                }
                 
+        th {
+            text-transform: uppercase;
+            position: sticky!important;
+            top: 0!important;
+            z-index: 10!important;
+            height: fit-content;
+            background-color: rgba(255, 255, 255, 0.65)!important;
+
+            &.sortable {
+
+                &:hover {
+                    text-decoration: underline !important;
+                    cursor: pointer;
+                }
             }
-    
+        }
+
+        tr {
             &:nth-child(odd) {
                 background-color: rgba(0, 39, 56, 0.1);
             }
-    
-            &.selectable {
-                cursor: pointer;
-                &:hover {
-                    box-sizing: border-box;
-                    box-shadow: inset 0 0 0 2px transparentize($color: $blue, $amount: 0.4);
-                    background-color: $light-blue !important;
-                    color: black;
-                }
-            }
-    
-            &.selected {
+        }
+
+        &.selectable {
+            cursor: pointer;
+            &:hover {
                 box-sizing: border-box;
-                box-shadow: inset 0 0 0 2px $blue;
+                box-shadow: inset 0 0 0 2px transparentize($color: $blue, $amount: 0.4);
                 background-color: $light-blue !important;
                 color: black;
             }
+        }
+
+        &.selected {
+            box-sizing: border-box;
+            box-shadow: inset 0 0 0 2px $blue;
+            background-color: $light-blue !important;
+            color: black;
         }
             
         & th, td {
@@ -57,6 +54,7 @@ plex-table {
         &:last-child {
             display: flex;
             justify-content: flex-end;
+            text-align: right;
     
             plex-button, plex-badge, plex-dropdown {
                 align-self: center;
@@ -73,10 +71,15 @@ plex-table {
 // Sidebar 
 plex-layout-sidebar {
     table {
+        thead {
+            th {
+                background-color: rgba(0, 39, 56, 0.65)!important;
+            }
+        }
 
         tr {
             &:nth-child(odd) {
-                background-color: rgba(0, 168, 224, 0.15)!important;
+                background-color: rgba(0, 168, 224, 0.1)!important;
             }
         }
     }
