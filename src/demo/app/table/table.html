@@ -1,6 +1,6 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <plex-table [columns]="columns" #table>
+        <plex-table [columns]="columns" #table="plTable">
             <plex-title titulo="HOLA">
                 <plex-table-columns [selected]="colsVisibles">
                 </plex-table-columns>
@@ -23,12 +23,12 @@
         </plex-table>
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
-        <plex-table [columns]="columns" #table>
+        <plex-table [columns]="columns" #table2="plTable">
             <plex-title main titulo="HOLA">
                 <plex-table-columns [selected]="colsVisibles"></plex-table-columns>
             </plex-title>
 
-            <tr *ngFor="let item of (data$ | plSort:table | async)">
+            <tr *ngFor="let item of (data$ | plSort:table2 | async)">
                 <td *plTableCol="'col-1'">{{ item.nombre }}</td>
                 <td *plTableCol="'col-2'"> {{ item.apellido }}</td>
                 <td *plTableCol="'col-3'"> {{item.documento}}</td>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPlexTableColumns, PlexTableComponent } from './table.component';
+import { PlexColumnDirective } from './columns.directive';
+import { IPlexColumnDisplay, IPlexTableColumns } from './table.interfaces';
 
 
 @Component({
@@ -18,21 +19,21 @@ import { IPlexTableColumns, PlexTableComponent } from './table.component';
 })
 export class PlexTableColumnsComponent implements OnChanges {
 
-    @Input() selected: { [key: string]: boolean } = {};
+    @Input() selected: IPlexColumnDisplay = {};
 
-    @Output() change = new EventEmitter<{ [key: string]: boolean }>();
+    @Output() change = new EventEmitter<IPlexColumnDisplay>();
 
-    estadoColumnas: { [key: string]: boolean } = {};
+    estadoColumnas: IPlexColumnDisplay = {};
 
 
     columns$: Observable<IPlexTableColumns[]>;
 
     constructor(
-        public table: PlexTableComponent
+        public table: PlexColumnDirective
     ) {
 
         if (this.table) {
-            this.columns$ = this.table.columns$.asObservable();
+            this.columns$ = this.table.columns$;
             this.table.setColumnHandler(this);
         }
 

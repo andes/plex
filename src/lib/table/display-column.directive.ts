@@ -1,4 +1,5 @@
 import { Directive, EmbeddedViewRef, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { PlexColumnDirective } from './columns.directive';
 import { PlexTableComponent } from './table.component';
 
 @Directive({
@@ -12,7 +13,7 @@ export class PlexTableColDirective<T> implements OnInit {
     private viewRef: EmbeddedViewRef<any> = null;
 
     constructor(
-        private table: PlexTableComponent,
+        private table: PlexColumnDirective,
         private view: ViewContainerRef,
         private nextRef: TemplateRef<ObserveContext<T>>,
     ) {
@@ -20,7 +21,7 @@ export class PlexTableColDirective<T> implements OnInit {
     }
 
     ngOnInit() {
-        this.table.displayColumnBuffer().subscribe((cols) => {
+        this.table.displayColumns$.subscribe((cols) => {
             if (cols[this.name]) {
                 this.createView();
             } else {

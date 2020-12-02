@@ -83,6 +83,7 @@ import { MobileDirective } from './directives/mobile.directive';
 import { PlexTableColumnsComponent } from './table/table-column-dropdown.component';
 import { PlexTableColDirective } from './table/display-column.directive';
 import { PlexTableSortPipe } from './table/table-sort.pipe';
+import { PlexColumnDirective } from './table/columns.directive';
 
 @NgModule({
     imports: [
@@ -145,6 +146,7 @@ import { PlexTableSortPipe } from './table/table-sort.pipe';
         PlexTableColumnsComponent,
         PlexTableColDirective,
         PlexTableSortPipe,
+        PlexColumnDirective,
 
         // Directivas
         AlignedDirective,
@@ -237,7 +239,8 @@ import { PlexTableSortPipe } from './table/table-sort.pipe';
         TabDirective,
         MatTooltip,
         MobileDirective,
-        PlexTableColDirective
+        PlexTableColDirective,
+        PlexColumnDirective,
     ]
 })
 export class PlexModule {
