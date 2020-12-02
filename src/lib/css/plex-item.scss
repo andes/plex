@@ -116,6 +116,13 @@ plex-list {
         [button] {
             text-align: right;
         }
+
+        .sortable {
+            &:hover {
+                text-decoration: underline !important;
+                cursor: pointer;
+            }
+        }
     }
 
     section.item {

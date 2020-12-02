@@ -23,7 +23,7 @@
         </plex-table>
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
-        <plex-table [columns]="columns" #table2="plTable">
+        <!-- <plex-table [columns]="columns" #table2="plTable">
             <plex-title main titulo="HOLA">
                 <plex-table-columns [selected]="colsVisibles"></plex-table-columns>
             </plex-title>
@@ -32,6 +32,8 @@
                 <td *plTableCol="'col-1'">{{ item.nombre }}</td>
                 <td *plTableCol="'col-2'"> {{ item.apellido }}</td>
                 <td *plTableCol="'col-3'"> {{item.documento}}</td>
+                <td *plTableCol="'col-4'">{{item.fecha | date}}</td>
+                <td *plTableCol="'col-5'">{{item.ciudad}}</td>
                 <td *plTableCol="'col-6'">
                     <plex-badge *ngIf="item.selected" type="success">{{ item.selected | json}}
                     </plex-badge>
@@ -39,6 +41,34 @@
                     <plex-button type="warning" icon="pencil" size="sm"></plex-button>
                 </td>
             </tr>
-        </plex-table>
+        </plex-table> -->
+
+        <plex-list [columns]="columns" #table2="plTable">
+            <plex-title main titulo="HOLA">
+                <plex-table-columns [selected]="colsVisibles"></plex-table-columns>
+            </plex-title>
+
+            <plex-item *ngFor="let item of (data$ | plSort:table2 | async)">
+                <plex-label *plTableCol="'col-1'">
+                    {{item.nombre }}
+                </plex-label>
+                <plex-label *plTableCol="'col-2'">
+                    {{item.apellido }}
+                </plex-label>
+                <plex-label *plTableCol="'col-3'">
+                    {{item.documento }}
+                </plex-label>
+                <plex-label *plTableCol="'col-4'">
+                    {{item.fecha | date }}
+                </plex-label>
+                <plex-label *plTableCol="'col-5'">
+                    {{item.ciudad }}
+                </plex-label>
+                <plex-badge type="info" *plTableCol="'col-6'">{{ item.fecha | date}}</plex-badge>
+                <plex-button type="warning" icon="pencil" size="sm" *plTableCol="'col-6'"></plex-button>
+            </plex-item>
+
+
+        </plex-list>
     </plex-layout-sidebar>
 </plex-layout>

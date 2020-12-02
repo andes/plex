@@ -1,8 +1,7 @@
-import { Injectable, Pipe, PipeTransform } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { Pipe, PipeTransform } from '@angular/core';
+import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PlexColumnDirective } from './columns.directive';
-import { IPlexTableColumns } from './table.interfaces';
 
 @Pipe({
     name: 'plSort'
@@ -28,7 +27,6 @@ export class PlexTableSortPipe implements PipeTransform {
                     const factor = sortOrder === 'ASC' ? 1 : -1;
                     return sortFn(a, b) * factor;
                 });
-                return listado;
             })
         );
 
