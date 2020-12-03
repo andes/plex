@@ -1,3 +1,20 @@
+# [7.9.0](https://github.com/andes/plex/compare/v7.8.0...v7.9.0) (2020-12-03)
+
+
+### Bug Fixes
+
+* **plex-grid:** corrige valores cols fijas ([23aa6a8](https://github.com/andes/plex/commit/23aa6a885937486ea9bfe1e1c2aca7ec89152e65))
+* **plex-text:** mejora visualización invert ([#253](https://github.com/andes/plex/issues/253)) ([9d2a613](https://github.com/andes/plex/commit/9d2a613186aea5ad11d48ddf0f777ba906e52753))
+
+
+### Features
+
+* **plex-grid:** extiende sizes y agrega noGap ([842894f](https://github.com/andes/plex/commit/842894fc465b7abe57a1a3226369ff562f41d184))
+* **plex-label:** permite caracteres en lugar de icono ([16d3053](https://github.com/andes/plex/commit/16d3053445765e5f55f1dd246cf9b6f90e1cf408))
+* **wrapper:** agrega input activeFilters ([f22361b](https://github.com/andes/plex/commit/f22361b2de1844256fad263695c9f81057234953))
+* **wrapper:** cambia evento y agrega animacion ([4d0024e](https://github.com/andes/plex/commit/4d0024e27885908a381bc18510edd06f63138395))
+* **wrapper:** hint al haber filtros activos ([88e22dc](https://github.com/andes/plex/commit/88e22dc9c177f320da95dbf51e29b06dac6e1296))
+
 # [7.8.0](https://github.com/andes/plex/compare/v7.7.0...v7.8.0) (2020-11-30)
 
 
