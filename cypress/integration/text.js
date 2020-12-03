@@ -81,9 +81,9 @@ context('<plex-text>', () => {
         cy.plexTextArea('name="contenido1"', '<strong>Este\nTexto\nEstá\nEn negrita</strong>')
         cy.get('.ql-container.ql-snow .ql-editor p').should('have', '<strong>');
 
-        // HTML Editor con height = 500
+        // HTML Editor con height = 200
         cy.plexTextArea('name="contenido2"').find('.ql-container.ql-snow').should(($el) => {
-            expect($el).to.have.css('height', '500px');
+            expect($el).to.have.css('height', '200px');
         })
     });
 
