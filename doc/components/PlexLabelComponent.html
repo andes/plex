@@ -860,7 +860,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;plex-label&nbsp;{{&nbsp;size&nbsp;}}&nbsp;d-flex&nbsp;flex-{{direction}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&nbsp;&#x27;align-items-center&#x27;:&nbsp;direction&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;column&#x27;&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;icon&quot;&nbsp;name&#x3D;&quot;{{icon}}&quot;&nbsp;class&#x3D;&quot;text-{{&nbsp;type&nbsp;}}&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;flex-column&quot;&nbsp;[ngClass]&#x3D;&quot;{&nbsp;&#x27;align-items-center&nbsp;mt-2&#x27;:&nbsp;direction&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;column&#x27;&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;titulo&quot;&nbsp;class&#x3D;&quot;text-{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;font-weight-bold&#x27;:&nbsp;tituloBold}&quot;&gt;{{&nbsp;titulo&nbsp;}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;small&nbsp;*ngIf&#x3D;&quot;titulo&nbsp;&amp;&amp;&nbsp;subtitulo&quot;&gt;{{&nbsp;subtitulo&nbsp;}}&lt;/small&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;*ngIf&#x3D;&quot;!titulo&nbsp;&amp;&amp;&nbsp;!subtitulo&quot;&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;plex-label&nbsp;{{&nbsp;size&nbsp;}}&nbsp;d-flex&nbsp;flex-{{direction}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&nbsp;&#x27;align-items-center&#x27;:&nbsp;direction&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;column&#x27;&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;icon&nbsp;&amp;&amp;&nbsp;!datos&quot;&nbsp;name&#x3D;&quot;{{icon}}&quot;&nbsp;class&#x3D;&quot;text-{{&nbsp;type&nbsp;}}&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[dato]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;flex-column&quot;&nbsp;[ngClass]&#x3D;&quot;direction&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;column&#x27;&nbsp;?&nbsp;&#x27;align-items-center&nbsp;mt-2&nbsp;px-4&#x27;&nbsp;:&nbsp;&#x27;&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;titulo&quot;&nbsp;class&#x3D;&quot;text-{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;font-weight-bold&#x27;:&nbsp;tituloBold}&quot;&gt;{{&nbsp;titulo&nbsp;}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;small&nbsp;*ngIf&#x3D;&quot;titulo&nbsp;&amp;&amp;&nbsp;subtitulo&quot;&nbsp;class&#x3D;&quot;&quot;&gt;{{&nbsp;subtitulo&nbsp;}}&lt;/small&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;*ngIf&#x3D;&quot;!titulo&nbsp;&amp;&amp;&nbsp;!subtitulo&quot;&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -871,6 +871,21 @@
 
     <section>
         <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>dato</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>string</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -990,7 +1005,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor()</code>
+                            <code>constructor(datRef: any)</code>
                         </td>
                     </tr>
     
@@ -999,36 +1014,65 @@
     </section>
 
 
+    <section>
+        <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> datos</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>datos:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+    </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input, ElementRef, AfterViewInit } from &#x27;@angular/core&#x27;;
 
 @Component({
     selector: &#x27;plex-label&#x27;,
     template: &#x60;
-        &lt;div class&#x3D;&quot;plex-label {{ size }} d-flex flex-{{direction}}&quot; [ngClass]&#x3D;&quot;{ &#x27;align-items-center&#x27;: direction &#x3D;&#x3D;&#x3D; &#x27;column&#x27; }&quot;&gt;
-            &lt;plex-icon *ngIf&#x3D;&quot;icon&quot; name&#x3D;&quot;{{icon}}&quot; class&#x3D;&quot;text-{{ type }}&quot;&gt;&lt;/plex-icon&gt;
-            &lt;ng-content select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;
-
-            &lt;div class&#x3D;&quot;d-flex flex-column&quot; [ngClass]&#x3D;&quot;{ &#x27;align-items-center mt-2&#x27;: direction &#x3D;&#x3D;&#x3D; &#x27;column&#x27; }&quot;&gt;
-                &lt;span *ngIf&#x3D;&quot;titulo&quot; class&#x3D;&quot;text-{{ type }}&quot; [ngClass]&#x3D;&quot;{&#x27;font-weight-bold&#x27;: tituloBold}&quot;&gt;{{ titulo }}&lt;/span&gt;
-                &lt;small *ngIf&#x3D;&quot;titulo &amp;&amp; subtitulo&quot;&gt;{{ subtitulo }}&lt;/small&gt;
-            &lt;/div&gt;
-            &lt;ng-content *ngIf&#x3D;&quot;!titulo &amp;&amp; !subtitulo&quot;&gt;&lt;/ng-content&gt;
-        &lt;/div&gt;
+    &lt;div class&#x3D;&quot;plex-label {{ size }} d-flex flex-{{direction}}&quot; [ngClass]&#x3D;&quot;{ &#x27;align-items-center&#x27;: direction &#x3D;&#x3D;&#x3D; &#x27;column&#x27; }&quot;&gt;
+    &lt;plex-icon *ngIf&#x3D;&quot;icon &amp;&amp; !datos&quot; name&#x3D;&quot;{{icon}}&quot; class&#x3D;&quot;text-{{ type }}&quot;&gt;&lt;/plex-icon&gt;
+    &lt;ng-content select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;
+    &lt;ng-content select&#x3D;&quot;[dato]&quot;&gt;&lt;/ng-content&gt;
+    &lt;div class&#x3D;&quot;d-flex flex-column&quot; [ngClass]&#x3D;&quot;direction &#x3D;&#x3D;&#x3D; &#x27;column&#x27; ? &#x27;align-items-center mt-2 px-4&#x27; : &#x27;&#x27;&quot;&gt;
+        &lt;span *ngIf&#x3D;&quot;titulo&quot; class&#x3D;&quot;text-{{ type }}&quot; [ngClass]&#x3D;&quot;{&#x27;font-weight-bold&#x27;: tituloBold}&quot;&gt;{{ titulo }}&lt;/span&gt;
+        &lt;small *ngIf&#x3D;&quot;titulo &amp;&amp; subtitulo&quot; class&#x3D;&quot;&quot;&gt;{{ subtitulo }}&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;ng-content *ngIf&#x3D;&quot;!titulo &amp;&amp; !subtitulo&quot;&gt;&lt;/ng-content&gt;
+&lt;/div&gt;
     &#x60;
 })
-export class PlexLabelComponent {
+export class PlexLabelComponent implements AfterViewInit {
     @Input() titulo: string;
     @Input() tituloBold &#x3D; true;
     @Input() subtitulo: string;
     @Input() size: &#x27;sm&#x27; | &#x27;md&#x27; | &#x27;lg&#x27; | &#x27;xl&#x27; &#x3D; &#x27;md&#x27;;
     @Input() icon: string;
+    @Input() dato: string;
     @Input() direction: &#x27;column&#x27; | &#x27;row&#x27; &#x3D; &#x27;row&#x27;;
     @Input() type: &#x27;success&#x27; | &#x27;info&#x27; | &#x27;warning&#x27; | &#x27;danger&#x27; | &#x27;default&#x27;;
 
-    constructor() {
+    public datos &#x3D; false;
+
+    ngAfterViewInit() {
+        this.datos &#x3D; !!this.datRef.nativeElement.querySelector(&#x27;[dato]&#x27;);
     }
+
+    constructor(private datRef: ElementRef) { }
 }
 </code></pre>
         </div>
