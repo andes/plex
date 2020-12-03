@@ -56,7 +56,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     public quill = {
         toolbar: {
             container: [
-                ['bold', 'italic', 'underline'],
+                ['bold', 'italic', 'underline', 'link'],
                 [{ list: 'ordered' }, { list: 'bullet' }],
                 [{ size: ['small', false, 'large', 'huge'] }],
                 [{ align: [] }],

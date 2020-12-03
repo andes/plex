@@ -1,7 +1,8 @@
-<plex-layout>
+<plex-layout main="9">
     <plex-layout-main>
-        <div class="row">
-            <div class="col-md-6">
+        <plex-grid cols="4">
+            <section>
+                <plex-title titulo="formulario"></plex-title>
                 <form>
                     <plex-text type="text" label="Ingrese su usuario" placeholder="Esta es una ayuda"
                                [(ngModel)]="templateModel1.usuario" name="usuario" [required]="true" (focus)="onFocus()"
@@ -20,71 +21,72 @@
                     <plex-text label="Ingrese un nombre con formato correcto" [(ngModel)]="templateModel1.patron"
                                pattern="[a-zA-ZáâèéêíóùúüñÁÈÉÍÙÚÛÜ ']+" name="patron">
                     </plex-text>
-                    <small>Patrón:
-                        <pre>a-zA-ZáâèéêíóùúüñÁÈÉÍÙÚÛÜ </pre>
-                    </small>
+                    <plex-title size="sm" titulo="Patrón"></plex-title>
+                    <pre>a-zA-ZáâèéêíóùúüñÁÈÉÍÙÚÛÜ </pre>
                 </form>
-            </div>
-            <div class="col-md-6">
-                <label>Modelo</label>
+
+                <plex-title size="sm" titulo="modelo"></plex-title>
                 <pre>{{templateModel1 | json}}</pre>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
                 <form>
                     <plex-text label="Ingrese un texto de min 10 y max 15 chars / debounce 1000ms (1s)"
                                [(ngModel)]="templateModel2.nombre" name="nombre" minlength="10" maxlength="15"
                                [debounce]="1000" (change)="onChange()">
                     </plex-text>
                 </form>
-            </div>
-            <div class="col-md-6">
-                <label>Modelo</label>
+
+                <plex-title size="sm" titulo="modelo"></plex-title>
                 <pre>{{templateModel2 | json}}</pre>
-            </div>
-        </div>
-
-        <h3>Multiline</h3>
-        <div class="row">
-            <div class="col-md-6">
-                <plex-text label="Escriba la biografía de su vida" multiline="true" name="multi" [(ngModel)]="prueba"
-                           (change)="cambio()">
-                </plex-text>
-            </div>
-            <div class="col-md-6">
-                <pre>{{prueba | json}}</pre>
-            </div>
-        </div>
-
-        <h3>HTML Editor</h3>
-        <div class="row">
-            <div class="col-md-6">
-                <form>
-                    <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido1"
-                               [html]="true" [readonly]="false" [qlToolbar]="qlToolbar">
+            </section>
+            <section span="3" class="ml-4">
+                <plex-title titulo="Multiline"></plex-title>
+                <plex-grid type="full" size="md">
+                    <plex-text label="Escriba la biografía de su vida" multiline="true" name="multi"
+                               [(ngModel)]="prueba" (change)="cambio()">
                     </plex-text>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <label>Modelo</label>
-                <pre>{{richText | json}}</pre>
-            </div>
-        </div>
+                    <div>
+                        <plex-title size="sm" titulo="modelo"></plex-title>
+                        <pre>{{prueba | json}}</pre>
+                    </div>
+                </plex-grid>
 
-        <h3>HTML Editor con height = 500</h3>
-        <div class="row">
-            <div class="col-md-6">
-                <form>
-                    <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido2"
-                               [html]="true" [height]="'500px'" [readonly]="false">
-                    </plex-text>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <label>Modelo</label>
-                <pre>{{richText | json}}</pre>
-            </div>
-        </div>
+                <plex-title titulo="HTML Editor"></plex-title>
+                <plex-grid type="full">
+                    <form>
+                        <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido1"
+                                   [html]="true" [readonly]="false" [height]="'100px'" [qlToolbar]="qlToolbar">
+                        </plex-text>
+                    </form>
+                    <div>
+                        <plex-title size="sm" titulo="modelo"></plex-title>
+                        <pre>{{richText | json}}</pre>
+                    </div>
+                </plex-grid>
+
+                <plex-title titulo="HTML Editor con height = 200"></plex-title>
+                <plex-grid type="full" size="md">
+                    <form>
+                        <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido2"
+                                   [html]="true" [height]="'200px'" [readonly]="false">
+                        </plex-text>
+                    </form>
+                    <div>
+                        <plex-title size="sm" titulo="modelo"></plex-title>
+                        <pre>{{richText | json}}</pre>
+                    </div>
+                </plex-grid>
+            </section>
+        </plex-grid>
+
     </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="plex-text [height]='300px'"></plex-title>
+        <form>
+            <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido2" [html]="true"
+                       [height]="'300px'" [readonly]="false">
+            </plex-text>
+        </form>
+        <hr>
+        <plex-title size="sm" titulo="modelo"></plex-title>
+        <pre class="text-white">{{richText | json}}</pre>
+    </plex-layout-sidebar>
 </plex-layout>

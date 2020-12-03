@@ -1683,3 +1683,16 @@
 .ql-container.ql-snow {
   border: 1px solid #ccc;
 }
+
+// INVERT
+plex-layout-sidebar[type="invert"] {
+    .ql-toolbar.ql-snow {
+        background-color: #eee;
+    }
+
+    .ql-editor {
+        background-color: white;
+        box-shadow: inset 0 0 10px #aaa;
+        color: black;
+    }
+}
