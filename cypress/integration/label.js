@@ -14,11 +14,9 @@ context('label', () => {
 
         cy.get('small:first');
 
-        cy.get('plex-layout-sidebar plex-title:nth(2)');
+        cy.get('plex-layout plex-title:nth(2)').should('contain.text', 'Cronología');
 
-        cy.get('plex-label:nth(1) plex-icon + div > span').should('contain.text', 'documento');
-
-        cy.get('small:nth(1)').should('contain.text', '29.879.253');
+        cy.get('p[dato]:nth(3)').should('contain.text', '27/11/2020');
 
         cy.eyesCheckWindow('plex-label');
 
