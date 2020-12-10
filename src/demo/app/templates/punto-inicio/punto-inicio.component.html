@@ -1,13 +1,13 @@
-<plex-layout main="{{ sidebarValue }}">
+<plex-layout main="{{ sidebarValue }}" resizable="true">
     <plex-layout-main>
-        <plex-title titulo="RUP | Punto de inicio">
+        <plex-title titulo="RUP | Punto de inicio" main>
             <plex-button class="ml-2" type="info">Mapa de camas</plex-button>
             <plex-button class="ml-2" type="info">Huds</plex-button>
             <plex-button class="ml-2" type="warning">Inicio Andes</plex-button>
         </plex-title>
         <plex-grid cols="4" size="md">
             <!-- plex-card -->
-            <plex-grid type="" span="1">
+            <plex-grid type="" span="1" class="align-self-start">
                 <plex-card *ngFor="let item of cards" align="start">
                     <plex-label size="lg" type="default" titulo="{{ item.titulo }}" subtitulo="{{ item.subtitulo }}"
                                 icon="{{ item.icono }}">
