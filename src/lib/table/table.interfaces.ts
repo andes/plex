@@ -4,6 +4,7 @@ export interface IPlexTableColumns {
     sorteable?: boolean;
     opcional?: boolean;
     width?: string | number;
+    right?: boolean;
     sort?: (a: any, b: any) => number;
 }
 

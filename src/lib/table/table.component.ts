@@ -15,7 +15,12 @@ import { IPlexColumnDisplay, IPlexSortData, IPlexTableColumns } from './table.in
             <thead *ngIf="vm$ | async as vm">
                 <tr >
                     <ng-container *ngFor="let column of vm.columns">
-                        <th [class.sortable]="column.sorteable" [style.width]="column.width" (click)="onColumnClick(column)" *ngIf="vm.displayColumns[column.key] || !column.opcional">
+                        <th [class.sortable]="column.sorteable"
+                            [style.width]="column.width"
+                            (click)="onColumnClick(column)"
+                            *ngIf="vm.displayColumns[column.key] || !column.opcional"
+                            [class.column-right]="column.right"
+                            >
                             {{ column.label }}
                             <span *ngIf="vm.sortData.sortBy === column.key">
                                 <plex-icon *ngIf="vm.sortData.sortOrder === 'DESC'" name="chevron-down"></plex-icon>

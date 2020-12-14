@@ -1,6 +1,6 @@
-import { Directive, EmbeddedViewRef, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, EmbeddedViewRef, Input, OnInit, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
+import { combineLatest } from 'rxjs';
 import { PlexColumnDirective } from './columns.directive';
-import { PlexTableComponent } from './table.component';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
@@ -15,24 +15,32 @@ export class PlexTableColDirective<T> implements OnInit {
     constructor(
         private table: PlexColumnDirective,
         private view: ViewContainerRef,
+        private render: Renderer2,
         private nextRef: TemplateRef<ObserveContext<T>>,
     ) {
 
     }
 
     ngOnInit() {
-        this.table.displayColumns$.subscribe((cols) => {
+        combineLatest([
+            this.table.columns$,
+            this.table.displayColumns$
+        ]).subscribe(([definitions, cols]) => {
+            const colDef = definitions.find(item => item.key === this.name);
             if (cols[this.name]) {
-                this.createView();
+                this.createView(colDef.right);
             } else {
                 this.cleanView();
             }
         });
     }
 
-    private createView() {
+    private createView(right: boolean) {
         if (!this.viewRef) {
             this.viewRef = this.view.createEmbeddedView(this.nextRef);
+            if (right) {
+                this.render.addClass(this.viewRef.rootNodes[0], 'column-right');
+            }
         }
     }
 

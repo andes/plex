@@ -87,14 +87,15 @@ export class TableDemoComponent {
             label: 'columna 5',
             sorteable: true,
             opcional: true,
-            sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad)
+            sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad),
         },
         {
             key: 'col-6',
             label: 'columna 6',
             sorteable: true,
             opcional: true,
-            sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad)
+            sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad),
+            right: true
         }
     ];
 
