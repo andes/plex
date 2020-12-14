@@ -42,11 +42,15 @@ plex-help {
       width: auto;
       height: auto;
       min-width: 90%;
+      overflow-y: scroll;
+      max-height: 70vh;
     }
     &.half {
       width: 50%;
       height: auto;
       left: unset;
+      overflow-y: scroll;
+      max-height: 70vh;
     }
 
     // @Input() titulo:
