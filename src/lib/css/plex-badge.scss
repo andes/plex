@@ -7,6 +7,11 @@
     text-transform: uppercase;
     border-color: var(--badge-color);
     color: var(--badge-color);
+    // ANDES rounded
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
 
     plex-icon i {
         font-size: 20px;
@@ -40,6 +45,13 @@ plex-badge {
 
 .badge {
     @extend %baseBadge;
+
+    &.badge-btn {
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+        border-bottom-right-radius: 0px!important;
+        border-top-right-radius: 0px!important;
+    }
 }
 
 .btn-badge {

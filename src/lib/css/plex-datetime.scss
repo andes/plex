@@ -11,6 +11,14 @@ plex-datetime {
     }
     .input-group-btn {
         font-size: inherit;
+
+        .btn {
+            border-bottom-left-radius: 0px;
+            border-top-left-radius: 0px;
+            border-bottom-right-radius: 15px!important;
+            border-top-right-radius: 15px!important;
+            margin: 0!important;
+        }
     }
 
     plex-hint {
