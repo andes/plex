@@ -1,7 +1,6 @@
 import { Component, Input, ContentChild, AfterViewInit, AfterContentInit, AfterContentChecked, ComponentRef, ElementRef, DebugElement, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { EventEmitter } from 'events';
-import { Subscription } from 'rxjs-compat/Subscription';
+import { Subscription } from 'rxjs';
 
 /**
  * ATENCION! SI NO SE ESTABLECE FOCO SE MANTIENE FUNCIONALIDAD ANTERIOR.
