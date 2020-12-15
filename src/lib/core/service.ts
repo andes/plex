@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { Injectable, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';

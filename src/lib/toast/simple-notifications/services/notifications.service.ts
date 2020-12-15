@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { NotificationEvent } from '../interfaces/notification-event.type';
 import { Notification } from '../interfaces/notification.type';
 import { Icons, defaultIcons } from '../interfaces/icons';
@@ -21,7 +21,7 @@ export class NotificationsService {
         return this.emitter;
     }
 
-  //// Access methods
+    //// Access methods
     success(title: string, content?: string, override?: any) {
         return this.set({ title, content: content || '', type: 'success', icon: this.icons.success, override }, true);
     }
@@ -46,17 +46,17 @@ export class NotificationsService {
         return this.set({ title, content: content || '', type: 'bare', icon: 'bare', override }, true);
     }
 
-  // With type method
+    // With type method
     create(title: string, content = '', type = 'success', override?: any) {
         return this.set({ title, content, type, icon: 'bare', override }, true);
     }
 
-  // HTML Notification method
+    // HTML Notification method
     html(html: any, type = 'success', override?: any) {
         return this.set({ html, type, icon: 'bare', override }, true);
     }
 
-  // Remove all notifications method
+    // Remove all notifications method
     remove(id?: string) {
         if (id) {
             this.emitter.next({ command: 'clean', id });
