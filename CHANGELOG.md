@@ -1,3 +1,11 @@
+## [7.9.1](https://github.com/andes/plex/compare/v7.9.0...v7.9.1) (2020-12-15)
+
+
+### Bug Fixes
+
+* **accordion:** se mejora look and feel en invert ([#242](https://github.com/andes/plex/issues/242)) ([5356760](https://github.com/andes/plex/commit/5356760c9336a1b133c550198526fdb9326a30d1))
+* **plex-help:** scroll si hay contenido extenso ([#256](https://github.com/andes/plex/issues/256)) ([2605c02](https://github.com/andes/plex/commit/2605c02c4b77581e79a8d608f0924b3687544499))
+
 # [7.9.0](https://github.com/andes/plex/compare/v7.8.0...v7.9.0) (2020-12-03)
 
 
