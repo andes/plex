@@ -1146,7 +1146,7 @@
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
         <pre><code class="hljs javascript">import { Injectable, EventEmitter } from &#x27;@angular/core&#x27;;
-import { Subject } from &#x27;rxjs/Subject&#x27;;
+import { Subject } from &#x27;rxjs&#x27;;
 import { NotificationEvent } from &#x27;../interfaces/notification-event.type&#x27;;
 import { Notification } from &#x27;../interfaces/notification.type&#x27;;
 import { Icons, defaultIcons } from &#x27;../interfaces/icons&#x27;;
@@ -1168,7 +1168,7 @@ export class NotificationsService {
         return this.emitter;
     }
 
-  //// Access methods
+    //// Access methods
     success(title: string, content?: string, override?: any) {
         return this.set({ title, content: content || &#x27;&#x27;, type: &#x27;success&#x27;, icon: this.icons.success, override }, true);
     }
@@ -1193,17 +1193,17 @@ export class NotificationsService {
         return this.set({ title, content: content || &#x27;&#x27;, type: &#x27;bare&#x27;, icon: &#x27;bare&#x27;, override }, true);
     }
 
-  // With type method
+    // With type method
     create(title: string, content &#x3D; &#x27;&#x27;, type &#x3D; &#x27;success&#x27;, override?: any) {
         return this.set({ title, content, type, icon: &#x27;bare&#x27;, override }, true);
     }
 
-  // HTML Notification method
+    // HTML Notification method
     html(html: any, type &#x3D; &#x27;success&#x27;, override?: any) {
         return this.set({ html, type, icon: &#x27;bare&#x27;, override }, true);
     }
 
-  // Remove all notifications method
+    // Remove all notifications method
     remove(id?: string) {
         if (id) {
             this.emitter.next({ command: &#x27;clean&#x27;, id });
