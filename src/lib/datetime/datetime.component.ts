@@ -107,6 +107,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     @Output() change = new EventEmitter();
     @Output() blur = new EventEmitter();
     @Output() focus = new EventEmitter();
+    @Output() typing = new EventEmitter();
 
     // Funciones públicas
     public onChange = (_: any) => { };
@@ -246,6 +247,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
                     value
                 });
             }, this.debounce);
+            this.typing.emit();
         };
     }
 

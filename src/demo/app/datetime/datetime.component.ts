@@ -42,7 +42,9 @@ export class DateTimeDemoComponent implements OnInit {
     onBlur() {
     }
 
-    onChange(date) {
+    onType() {
+    }
 
+    onChange(date) {
     }
 }
