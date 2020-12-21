@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Injectable, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
@@ -17,6 +17,10 @@ export class Plex {
     public userInfo: any;
     public navbarVisible = true;
 
+    /**
+     * Cuenta los POST, PATCH, PUT, DELETE
+     */
+    public networkCounter = new BehaviorSubject(0);
     /**
      * Contiene el título y breadcrumb que se muestran en el navbar
      */
@@ -404,5 +408,17 @@ export class Plex {
      */
     isMobile() {
         return this.breakpointObserver.isMatched('(max-width: 599px)');
+    }
+
+    updateNetwork(action: 'inc' | 'dec') {
+        const count = this.networkCounter.getValue();
+        if (action === 'inc') {
+            this.networkCounter.next(count + 1);
+        } else {
+            if (count > 0) {
+                this.networkCounter.next(count - 1);
+            }
+
+        }
     }
 }

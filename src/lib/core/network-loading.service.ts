@@ -21,6 +21,10 @@ export class NetworkLoadingInterceptor implements HttpInterceptor {
             return next.handle(req);
         }
 
+        if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(req.method)) {
+            this.plex.updateNetwork('inc');
+        }
+
         this.plex.showLoader();
 
         this.count++;
@@ -30,6 +34,10 @@ export class NetworkLoadingInterceptor implements HttpInterceptor {
                 this.count--;
 
                 this.plex.hideLoader();
+
+                if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(req.method)) {
+                    this.plex.updateNetwork('dec');
+                }
             })
         );
     }

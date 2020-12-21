@@ -6,6 +6,7 @@ import { Component, DebugElement, Type, ViewChild } from '@angular/core';
 import { PlexDateTimeComponent } from './datetime.component';
 import { PlexModule } from '../module';
 import { FormsModule } from '@angular/forms';
+import { Plex } from '../core/service';
 
 describe('PlexDateTimeComponent', () => {
     describe('input simple text', () => {
@@ -161,7 +162,8 @@ function createTestingModule<T>(cmp: Type<T>, template: string): ComponentFixtur
 
     TestBed.configureTestingModule({
         imports: [BrowserModule, PlexModule, FormsModule],
-        declarations: [cmp]
+        declarations: [cmp],
+        providers: [Plex]
     })
         .overrideComponent(cmp, {
             set: {
