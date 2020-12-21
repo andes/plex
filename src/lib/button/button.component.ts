@@ -1,5 +1,8 @@
 import { NgForm } from '@angular/forms';
-import { Component, Input, HostBinding, HostListener, Optional, forwardRef } from '@angular/core';
+import { Component, Input, HostBinding, HostListener, Optional, forwardRef, OnInit, OnDestroy } from '@angular/core';
+import { Plex } from '../core/service';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'plex-button',
@@ -21,7 +24,7 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef } fro
             </ng-container>
     `,
 })
-export class PlexButtonComponent {
+export class PlexButtonComponent implements OnInit, OnDestroy {
     @Input() tabIndex: number;
     @Input() label: string;
     @Input() icon: string;
@@ -29,14 +32,33 @@ export class PlexButtonComponent {
     @Input() size: 'md' | 'lg' | 'sm' | 'block' = 'md';
     @Input() validateForm: boolean | NgForm;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
+    @Input() autodisabled = false;
     /**
      * Previene el problema del click bubbling. Ver template para más usos de pointer-events
      */
     @Input() @HostBinding('style.pointer-events') pointerEvents = 'none';
 
-    constructor(@Optional() private parentForm?: NgForm) {
+    private onDestroy$ = new Subject();
+
+    constructor(
+        public plex: Plex,
+        @Optional() private parentForm?: NgForm
+    ) {
         this.type = 'default';
         this.disabled = false;
+    }
+
+    ngOnInit() {
+        if (this.autodisabled) {
+            this.plex.networkCounter.pipe(takeUntil(this.onDestroy$)).subscribe((n) => {
+                this.disabled = n > 0;
+            });
+        }
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     @HostListener('click', ['event'])

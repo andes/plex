@@ -4,12 +4,12 @@
         <hr>
 
         <plex-title size="sm" titulo="Tipos"></plex-title>
-        <plex-button label="Default" (click)="onClick()"></plex-button>
+        <plex-button label="Default" (click)="onClick()" [autodisabled]="true"></plex-button>
         <plex-button label="Info" type="info"></plex-button>
         <plex-button label="Danger" type="danger"></plex-button>
         <plex-button label="Warning" type="warning"></plex-button>
         <plex-button label="Success" type="success"></plex-button>
-        <plex-button label="Link" type="link"></plex-button>
+        <plex-button label="Link" type="link" [autodisabled]="true"></plex-button>
         <hr>
         <plex-title size="sm" titulo="Estados"></plex-title>
         <plex-button label="Deshabilitado" [disabled]="true" (click)="onDisabledClick()"></plex-button>
