@@ -53,7 +53,7 @@
 
                     <plex-datetime label="Datetime con debounce" name="debounce" type="date"
                                    [(ngModel)]="tModel.fechaDecounce" (change)="onChange($event)" [debounce]="1000"
-                                   hintAction="nextDay" hintIcon="chevron-right">
+                                   hintAction="nextDay" hintIcon="chevron-right" (typing)="onType()">
                     </plex-datetime>
 
                     <plex-datetime [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required [btnOnly]="true"
