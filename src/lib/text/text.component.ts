@@ -117,6 +117,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Output() change = new EventEmitter();
     @Output() focus = new EventEmitter();
     @Output() focusout = new EventEmitter();
+    @Output() typing = new EventEmitter();
 
     public onFocus() {
         this.focus.emit();
@@ -213,6 +214,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
                     value
                 });
             }, this.debounce);
+            this.typing.emit();
         };
     }
 
