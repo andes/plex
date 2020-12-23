@@ -1128,6 +1128,19 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>typing</code>
+                        </td>
+                        <td class="col-md-10">
+                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
@@ -1651,6 +1664,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Output() change &#x3D; new EventEmitter();
     @Output() focus &#x3D; new EventEmitter();
     @Output() focusout &#x3D; new EventEmitter();
+    @Output() typing &#x3D; new EventEmitter();
 
     public onFocus() {
         this.focus.emit();
@@ -1747,6 +1761,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
                     value
                 });
             }, this.debounce);
+            this.typing.emit();
         };
     }
 

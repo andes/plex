@@ -875,6 +875,20 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <code>autodisabled</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>false</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
                             <code>disabled</code>
                         </td>
                         <td class="col-md-10">
@@ -1004,7 +1018,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(parentForm: <a href="https://angular.io/docs/ts/latest/api/forms/index/NgForm-directive.html" target="_blank" >NgForm</a>)</code>
+                            <code>constructor(plex: <a href="../injectables/Plex.html" >Plex</a>, parentForm: <a href="https://angular.io/docs/ts/latest/api/forms/index/NgForm-directive.html" target="_blank" >NgForm</a>)</code>
                         </td>
                     </tr>
     
@@ -1040,10 +1054,46 @@
             </table>
     </section>
 
+    <section>
+        <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> onDestroy$</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>onDestroy$:     <code>Subject&lt;{}&gt;</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> plex</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>plex:     <code><a href="../injectables/Plex.html" target="_self" >Plex</a></code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
             <pre><code class="hljs javascript">import { NgForm } from &#x27;@angular/forms&#x27;;
-import { Component, Input, HostBinding, HostListener, Optional, forwardRef } from &#x27;@angular/core&#x27;;
+import { Component, Input, HostBinding, HostListener, Optional, forwardRef, OnInit, OnDestroy } from &#x27;@angular/core&#x27;;
+import { Plex } from &#x27;../core/service&#x27;;
+import { BehaviorSubject, Subject } from &#x27;rxjs&#x27;;
+import { takeUntil } from &#x27;rxjs/operators&#x27;;
 
 @Component({
     selector: &#x27;plex-button&#x27;,
@@ -1065,7 +1115,7 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef } fro
             &lt;/ng-container&gt;
     &#x60;,
 })
-export class PlexButtonComponent {
+export class PlexButtonComponent implements OnInit, OnDestroy {
     @Input() tabIndex: number;
     @Input() label: string;
     @Input() icon: string;
@@ -1073,14 +1123,33 @@ export class PlexButtonComponent {
     @Input() size: &#x27;md&#x27; | &#x27;lg&#x27; | &#x27;sm&#x27; | &#x27;block&#x27; &#x3D; &#x27;md&#x27;;
     @Input() validateForm: boolean | NgForm;
     @Input() @HostBinding(&#x27;attr.disabled&#x27;) disabled: boolean;
+    @Input() autodisabled &#x3D; false;
     /**
      * Previene el problema del click bubbling. Ver template para más usos de pointer-events
      */
     @Input() @HostBinding(&#x27;style.pointer-events&#x27;) pointerEvents &#x3D; &#x27;none&#x27;;
 
-    constructor(@Optional() private parentForm?: NgForm) {
+    private onDestroy$ &#x3D; new Subject();
+
+    constructor(
+        public plex: Plex,
+        @Optional() private parentForm?: NgForm
+    ) {
         this.type &#x3D; &#x27;default&#x27;;
         this.disabled &#x3D; false;
+    }
+
+    ngOnInit() {
+        if (this.autodisabled) {
+            this.plex.networkCounter.pipe(takeUntil(this.onDestroy$)).subscribe((n) &#x3D;&gt; {
+                this.disabled &#x3D; n &gt; 0;
+            });
+        }
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     @HostListener(&#x27;click&#x27;, [&#x27;event&#x27;])

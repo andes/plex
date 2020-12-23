@@ -1137,6 +1137,19 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>typing</code>
+                        </td>
+                        <td class="col-md-10">
+                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
@@ -1820,6 +1833,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     @Output() change &#x3D; new EventEmitter();
     @Output() blur &#x3D; new EventEmitter();
     @Output() focus &#x3D; new EventEmitter();
+    @Output() typing &#x3D; new EventEmitter();
 
     // Funciones públicas
     public onChange &#x3D; (_: any) &#x3D;&gt; { };
@@ -1959,6 +1973,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
                     value
                 });
             }, this.debounce);
+            this.typing.emit();
         };
     }
 

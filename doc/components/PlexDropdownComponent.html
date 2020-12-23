@@ -860,7 +860,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;dropdown&quot;&nbsp;[ngClass]&#x3D;&quot;{show:&nbsp;open}&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;plexRipples&nbsp;data-toggle&#x3D;&quot;dropdown&quot;&nbsp;class&#x3D;&quot;btn&nbsp;btn-{{type}}&nbsp;{{(&nbsp;&#x27;size&#x27;&nbsp;?&nbsp;&#x27;btn-&#x27;&nbsp;+&nbsp;size&nbsp;:&nbsp;&#x27;&#x27;&nbsp;)}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-toggle&#x27;:&nbsp;label}&quot;&nbsp;type&#x3D;&quot;button&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;(click)&#x3D;&quot;toggleMenu();&nbsp;$event.stopImmediatePropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;icon&quot;&nbsp;[name]&#x3D;&quot;icon&quot;&nbsp;[size]&#x3D;&quot;size&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;class&#x3D;&quot;dropdown-menu&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-menu-right&#x27;:&nbsp;right,&nbsp;&#x27;dropdown-menu-left&#x27;:&nbsp;!right}&quot;&nbsp;*ngIf&#x3D;&quot;items&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;items&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Item&nbsp;con&nbsp;router&nbsp;asociado--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;!item.divider&nbsp;&amp;&amp;&nbsp;item.route&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;plexRipples&nbsp;class&#x3D;&quot;dropdown-item&quot;&nbsp;href&#x3D;&quot;#&quot;&nbsp;[routerLink]&#x3D;&quot;item.route&quot;&nbsp;routerLinkActive&#x3D;&quot;active&quot;&nbsp;(click)&#x3D;&quot;open&#x3D;false&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;item.icon&quot;&nbsp;type&#x3D;&quot;default&quot;&nbsp;[name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label}}&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Item&nbsp;con&nbsp;handler&nbsp;asociado--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;!item.divider&nbsp;&amp;&amp;&nbsp;item.handler&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;plexRipples&nbsp;class&#x3D;&quot;dropdown-item&quot;&nbsp;href&#x3D;&quot;#&quot;&nbsp;(click)&#x3D;&quot;toggleMenu();&nbsp;item.handler($event);&nbsp;false;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;item.icon&quot;&nbsp;type&#x3D;&quot;default&quot;&nbsp;[name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label}}&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Divider--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;item.divider&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;role&#x3D;&quot;separator&quot;&nbsp;class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;dropdown-menu&nbsp;p-2&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-menu-right&#x27;:&nbsp;right,&nbsp;&#x27;dropdown-menu-left&#x27;:&nbsp;!right}&quot;&nbsp;*ngIf&#x3D;&quot;!items&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;dropdown&quot;&nbsp;[ngClass]&#x3D;&quot;{show:&nbsp;open}&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;plexRipples&nbsp;data-toggle&#x3D;&quot;dropdown&quot;&nbsp;class&#x3D;&quot;btn&nbsp;btn-{{type}}&nbsp;{{(&nbsp;&#x27;size&#x27;&nbsp;?&nbsp;&#x27;btn-&#x27;&nbsp;+&nbsp;size&nbsp;:&nbsp;&#x27;&#x27;&nbsp;)}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-toggle&#x27;:&nbsp;label}&quot;&nbsp;type&#x3D;&quot;button&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;(click)&#x3D;&quot;toggleMenu();&nbsp;$event.stopImmediatePropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;icon&quot;&nbsp;[name]&#x3D;&quot;icon&quot;&nbsp;[size]&#x3D;&quot;size&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;class&#x3D;&quot;dropdown-menu&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-menu-right&#x27;:&nbsp;right,&nbsp;&#x27;dropdown-menu-left&#x27;:&nbsp;!right}&quot;&nbsp;*ngIf&#x3D;&quot;items&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;items&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Item&nbsp;con&nbsp;router&nbsp;asociado--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;!item.divider&nbsp;&amp;&amp;&nbsp;item.route&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;plexRipples&nbsp;class&#x3D;&quot;dropdown-item&quot;&nbsp;href&#x3D;&quot;#&quot;&nbsp;[routerLink]&#x3D;&quot;item.route&quot;&nbsp;routerLinkActive&#x3D;&quot;active&quot;&nbsp;(click)&#x3D;&quot;open&#x3D;false&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;item.icon&quot;&nbsp;type&#x3D;&quot;default&quot;&nbsp;[name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Item&nbsp;con&nbsp;handler&nbsp;asociado--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;!item.divider&nbsp;&amp;&amp;&nbsp;item.handler&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;plexRipples&nbsp;class&#x3D;&quot;dropdown-item&quot;&nbsp;href&#x3D;&quot;#&quot;&nbsp;(click)&#x3D;&quot;toggleMenu();&nbsp;item.handler($event);&nbsp;false;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;item.icon&quot;&nbsp;type&#x3D;&quot;default&quot;&nbsp;[name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Divider--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;item.divider&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;role&#x3D;&quot;separator&quot;&nbsp;class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;dropdown-menu&nbsp;p-2&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;dropdown-menu-right&#x27;:&nbsp;right,&nbsp;&#x27;dropdown-menu-left&#x27;:&nbsp;!right}&quot;&nbsp;*ngIf&#x3D;&quot;!items&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></td>
             </tr>
 
 
@@ -871,6 +871,20 @@
 
     <section>
         <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>autodisabled</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>false</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -1064,6 +1078,21 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b><span class="modifier">Private</span> onDestroy$</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>onDestroy$:     <code>Subject&lt;{}&gt;</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b> plex</b>
                         </td>
                     </tr>
@@ -1093,7 +1122,9 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input, HostBinding, Renderer2, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input, HostBinding, Renderer2, Output, EventEmitter, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { Subject } from &#x27;rxjs&#x27;;
+import { takeUntil } from &#x27;rxjs/operators&#x27;;
 import { Plex } from &#x27;../../lib/core/service&#x27;;
 import { DropdownItem } from &#x27;./dropdown-item.inteface&#x27;;
 
@@ -1108,19 +1139,21 @@ import { DropdownItem } from &#x27;./dropdown-item.inteface&#x27;;
                         &lt;li *ngFor&#x3D;&quot;let item of items&quot;&gt;
                             &lt;!--Item con router asociado--&gt;
                             &lt;ng-template [ngIf]&#x3D;&quot;!item.divider &amp;&amp; item.route&quot;&gt;
-                            &lt;a plexRipples class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;#&quot; [routerLink]&#x3D;&quot;item.route&quot; routerLinkActive&#x3D;&quot;active&quot; (click)&#x3D;&quot;open&#x3D;false&quot;&gt;
-                                &lt;plex-icon *ngIf&#x3D;&quot;item.icon&quot; type&#x3D;&quot;default&quot; [name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;
-                                {{item.label}}&lt;/a&gt;
+                                &lt;a plexRipples class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;#&quot; [routerLink]&#x3D;&quot;item.route&quot; routerLinkActive&#x3D;&quot;active&quot; (click)&#x3D;&quot;open&#x3D;false&quot;&gt;
+                                    &lt;plex-icon *ngIf&#x3D;&quot;item.icon&quot; type&#x3D;&quot;default&quot; [name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;
+                                    {{item.label}}
+                                &lt;/a&gt;
                             &lt;/ng-template&gt;
                             &lt;!--Item con handler asociado--&gt;
                             &lt;ng-template [ngIf]&#x3D;&quot;!item.divider &amp;&amp; item.handler&quot;&gt;
-                            &lt;a plexRipples class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;#&quot; (click)&#x3D;&quot;toggleMenu(); item.handler($event); false;&quot;&gt;
-                                &lt;plex-icon *ngIf&#x3D;&quot;item.icon&quot; type&#x3D;&quot;default&quot; [name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;
-                                {{item.label}}&lt;/a&gt;
+                                &lt;a plexRipples class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;#&quot; (click)&#x3D;&quot;toggleMenu(); item.handler($event); false;&quot;&gt;
+                                    &lt;plex-icon *ngIf&#x3D;&quot;item.icon&quot; type&#x3D;&quot;default&quot; [name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;
+                                    {{item.label}}
+                                &lt;/a&gt;
                             &lt;/ng-template&gt;
                             &lt;!--Divider--&gt;
                             &lt;ng-template [ngIf]&#x3D;&quot;item.divider&quot;&gt;
-                            &lt;div role&#x3D;&quot;separator&quot; class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+                                &lt;div role&#x3D;&quot;separator&quot; class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
                             &lt;/ng-template&gt;
                         &lt;/li&gt;
                     &lt;/ul&gt;
@@ -1129,7 +1162,7 @@ import { DropdownItem } from &#x27;./dropdown-item.inteface&#x27;;
                     &lt;/div&gt;
                 &lt;/div&gt;&#x60;,
 })
-export class PlexDropdownComponent {
+export class PlexDropdownComponent implements OnInit, OnDestroy {
     @Input() label: string;
     @Input() icon: string;
     @Input() open: boolean;
@@ -1138,16 +1171,36 @@ export class PlexDropdownComponent {
     @Input() right: boolean;
     @Input() size: &#x27;sm&#x27; | &#x27;md&#x27; | &#x27;lg&#x27; | &#x27;block&#x27; &#x3D; &#x27;md&#x27;;
     @Input() @HostBinding(&#x27;attr.disabled&#x27;) disabled: boolean;
+    @Input() autodisabled &#x3D; false;
+
 
     @Output() onOpen: EventEmitter&lt;void&gt; &#x3D; new EventEmitter();
 
     private unlisten: Function;
+    private onDestroy$ &#x3D; new Subject();
 
-    constructor(public plex: Plex, private renderer: Renderer2) {
+
+    constructor(
+        public plex: Plex,
+        private renderer: Renderer2
+    ) {
         this.open &#x3D; false;
         this.disabled &#x3D; false;
         this.type &#x3D; &#x27;secondary&#x27;;
         this.right &#x3D; false;
+    }
+
+    ngOnInit() {
+        if (this.autodisabled) {
+            this.plex.networkCounter.pipe(takeUntil(this.onDestroy$)).subscribe((n) &#x3D;&gt; {
+                this.disabled &#x3D; n &gt; 0;
+            });
+        }
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     public toggleMenu() {

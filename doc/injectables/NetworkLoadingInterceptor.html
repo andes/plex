@@ -926,6 +926,10 @@ export class NetworkLoadingInterceptor implements HttpInterceptor {
             return next.handle(req);
         }
 
+        if ([&#x27;POST&#x27;, &#x27;PUT&#x27;, &#x27;PATCH&#x27;, &#x27;DELETE&#x27;].includes(req.method)) {
+            this.plex.updateNetwork(&#x27;inc&#x27;);
+        }
+
         this.plex.showLoader();
 
         this.count++;
@@ -935,6 +939,10 @@ export class NetworkLoadingInterceptor implements HttpInterceptor {
                 this.count--;
 
                 this.plex.hideLoader();
+
+                if ([&#x27;POST&#x27;, &#x27;PUT&#x27;, &#x27;PATCH&#x27;, &#x27;DELETE&#x27;].includes(req.method)) {
+                    this.plex.updateNetwork(&#x27;dec&#x27;);
+                }
             })
         );
     }

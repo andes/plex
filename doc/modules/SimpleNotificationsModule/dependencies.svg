@@ -24,13 +24,13 @@
 <title>cluster_SimpleNotificationsModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 622,-268 622,-70 8,-70"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_SimpleNotificationsModule_declarations</title>
-<polygon fill="none" stroke="black" points="152,-78 152,-130 614,-130 614,-78 152,-78"/>
-</g>
 <g id="clust7" class="cluster">
 <title>cluster_SimpleNotificationsModule_exports</title>
 <polygon fill="none" stroke="black" points="149,-208 149,-260 363,-260 363,-208 149,-208"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_SimpleNotificationsModule_declarations</title>
+<polygon fill="none" stroke="black" points="152,-78 152,-130 614,-130 614,-78 152,-78"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_SimpleNotificationsModule_imports</title>
