@@ -1,3 +1,13 @@
+# [7.10.0](https://github.com/andes/plex/compare/v7.9.1...v7.10.0) (2020-12-23)
+
+
+### Features
+
+* **plex-button:** autodisabled prop ([a18b4f5](https://github.com/andes/plex/commit/a18b4f5b60f5f72b57c1ed52bd8ba157cd6edf86))
+* **plex-datetime:** event typing ([460b2b3](https://github.com/andes/plex/commit/460b2b373b8e98802138507db7f06be4394cb071))
+* **plex-dropdown:** autodisabled ([cc64c3f](https://github.com/andes/plex/commit/cc64c3f5fe1a6833a5a988e77cf0e31a6c7bad3f))
+* **plex-text:** event typing ([766ea54](https://github.com/andes/plex/commit/766ea547114272f79d14ad5c1569b0ae4aeb0095))
+
 ## [7.9.1](https://github.com/andes/plex/compare/v7.9.0...v7.9.1) (2020-12-15)
 
 
