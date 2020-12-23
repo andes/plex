@@ -1,4 +1,6 @@
-import { Component, Input, HostBinding, Renderer2, Output, EventEmitter } from '@angular/core';
+import { Component, Input, HostBinding, Renderer2, Output, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Plex } from '../../lib/core/service';
 import { DropdownItem } from './dropdown-item.inteface';
 
@@ -13,19 +15,21 @@ import { DropdownItem } from './dropdown-item.inteface';
                         <li *ngFor="let item of items">
                             <!--Item con router asociado-->
                             <ng-template [ngIf]="!item.divider && item.route">
-                            <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active" (click)="open=false">
-                                <plex-icon *ngIf="item.icon" type="default" [name]="item.icon"></plex-icon>
-                                {{item.label}}</a>
+                                <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active" (click)="open=false">
+                                    <plex-icon *ngIf="item.icon" type="default" [name]="item.icon"></plex-icon>
+                                    {{item.label}}
+                                </a>
                             </ng-template>
                             <!--Item con handler asociado-->
                             <ng-template [ngIf]="!item.divider && item.handler">
-                            <a plexRipples class="dropdown-item" href="#" (click)="toggleMenu(); item.handler($event); false;">
-                                <plex-icon *ngIf="item.icon" type="default" [name]="item.icon"></plex-icon>
-                                {{item.label}}</a>
+                                <a plexRipples class="dropdown-item" href="#" (click)="toggleMenu(); item.handler($event); false;">
+                                    <plex-icon *ngIf="item.icon" type="default" [name]="item.icon"></plex-icon>
+                                    {{item.label}}
+                                </a>
                             </ng-template>
                             <!--Divider-->
                             <ng-template [ngIf]="item.divider">
-                            <div role="separator" class="dropdown-divider"></div>
+                                <div role="separator" class="dropdown-divider"></div>
                             </ng-template>
                         </li>
                     </ul>
@@ -34,7 +38,7 @@ import { DropdownItem } from './dropdown-item.inteface';
                     </div>
                 </div>`,
 })
-export class PlexDropdownComponent {
+export class PlexDropdownComponent implements OnInit, OnDestroy {
     @Input() label: string;
     @Input() icon: string;
     @Input() open: boolean;
@@ -43,16 +47,36 @@ export class PlexDropdownComponent {
     @Input() right: boolean;
     @Input() size: 'sm' | 'md' | 'lg' | 'block' = 'md';
     @Input() @HostBinding('attr.disabled') disabled: boolean;
+    @Input() autodisabled = false;
+
 
     @Output() onOpen: EventEmitter<void> = new EventEmitter();
 
     private unlisten: Function;
+    private onDestroy$ = new Subject();
 
-    constructor(public plex: Plex, private renderer: Renderer2) {
+
+    constructor(
+        public plex: Plex,
+        private renderer: Renderer2
+    ) {
         this.open = false;
         this.disabled = false;
         this.type = 'secondary';
         this.right = false;
+    }
+
+    ngOnInit() {
+        if (this.autodisabled) {
+            this.plex.networkCounter.pipe(takeUntil(this.onDestroy$)).subscribe((n) => {
+                this.disabled = n > 0;
+            });
+        }
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     public toggleMenu() {
