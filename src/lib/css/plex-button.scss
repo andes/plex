@@ -35,3 +35,35 @@ $btn-padding-y-sm: 0.32rem;
     // line-height: ensure proper height of button next to small input
     @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-xs, $btn-border-radius-sm);
 }
+
+.size-sm {
+    button {
+        &.fab {
+            border-radius: 50%;
+            //height: var(--btnWidth);
+            width: 65px;
+            height: 65px;
+            box-shadow: 0 0 10px  rgba(0,0,0,0.3);
+            position: absolute;
+            right: 2.5rem;
+            top: 80%;
+            z-index: 9999;
+
+            span {
+                display: none;
+            }
+    
+            &.btn-sm {
+                --btnWidth: 34px;
+            }
+    
+            &.btn-md {
+                --btnWidth: 50px;
+            }
+    
+            &.btn-lg {
+                --btnWidth: 66px;
+            }
+        }
+    }
+}

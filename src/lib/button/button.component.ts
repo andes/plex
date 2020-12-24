@@ -1,14 +1,14 @@
 import { NgForm } from '@angular/forms';
 import { Component, Input, HostBinding, HostListener, Optional, forwardRef, OnInit, OnDestroy } from '@angular/core';
 import { Plex } from '../core/service';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'plex-button',
     template: `
         <ng-container *ngIf="type">
-                <button plexRipples style="pointer-events: auto" [tabIndex]="tabIndex" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
+                <button plexRipples style="pointer-events: auto" [tabIndex]="tabIndex" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled" [class.fab]="fab">
                     <plex-icon
                         *ngIf="icon"
                         [name]="icon"
@@ -33,6 +33,7 @@ export class PlexButtonComponent implements OnInit, OnDestroy {
     @Input() validateForm: boolean | NgForm;
     @Input() @HostBinding('attr.disabled') disabled: boolean;
     @Input() autodisabled = false;
+    @Input() fab: boolean;
     /**
      * Previene el problema del click bubbling. Ver template para más usos de pointer-events
      */
