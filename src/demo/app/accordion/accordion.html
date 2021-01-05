@@ -17,6 +17,10 @@
             </plex-panel>
             <plex-panel icon="history" tituloPrincipal="Título con ícono">
                 SEGUNDO PANEL
+                <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmultiple"
+                             (getData)="loadData($event)" label="Múltiple con llamada a la API"
+                             [readonly]="modelo2.soloLectura" placeholder="Ingrese un país">
+                </plex-select>
             </plex-panel>
             <plex-panel icon="youtube" tituloPrincipal="Video embebido" tituloSecundario="Psychocandy!">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/iFp7W3PoNPI?ecver=1" frameborder="0"
