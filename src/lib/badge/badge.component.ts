@@ -12,6 +12,7 @@ import { Component, Input, ElementRef, ViewChild, OnChanges } from '@angular/cor
         <span #badgeBtn class="btn-badge btn-badge-{{ type }}">
             <ng-content select="plex-button"></ng-content>
             <ng-content select="plex-datetime"></ng-content>
+            <ng-content select="span[dato]"></ng-content>
         </span>
         `,
 })
