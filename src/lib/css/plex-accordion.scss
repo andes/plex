@@ -47,6 +47,7 @@ plex-accordion {
     opacity: 0;
     &.show {
       animation: accordion ease-in-out 0.25s forwards;
+      z-index: 1;
     }
   }
 }
