@@ -1,3 +1,15 @@
+# [7.11.0](https://github.com/andes/plex/compare/v7.10.0...v7.11.0) (2021-01-06)
+
+
+### Bug Fixes
+
+* **plex-accordion:** resuelve superposicion de plex-select ([330644a](https://github.com/andes/plex/commit/330644aa7fe996ba811b16fcd6c1eee3ff082fd4))
+
+
+### Features
+
+* **plex-badge:** agrega atributo label ([ec4ea92](https://github.com/andes/plex/commit/ec4ea920120e8f8e7dabbdebeed737f9e50fe30b))
+
 # [7.10.0](https://github.com/andes/plex/compare/v7.9.1...v7.10.0) (2020-12-23)
 
 
