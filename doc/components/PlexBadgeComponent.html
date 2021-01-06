@@ -860,7 +860,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;span&nbsp;#badgeIcon&nbsp;class&#x3D;&quot;badge&nbsp;badge-{{&nbsp;type&nbsp;}}&nbsp;badge-{{&nbsp;size&nbsp;}}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&lt;/span&gt;<br>&lt;span&nbsp;#badgeBtn&nbsp;class&#x3D;&quot;btn-badge&nbsp;btn-badge-{{&nbsp;type&nbsp;}}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-datetime&quot;&gt;&lt;/ng-content&gt;<br>&lt;/span&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;span&nbsp;#badgeIcon&nbsp;class&#x3D;&quot;badge&nbsp;badge-{{&nbsp;type&nbsp;}}&nbsp;badge-{{&nbsp;size&nbsp;}}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&lt;/span&gt;<br>&lt;span&nbsp;#badgeBtn&nbsp;class&#x3D;&quot;btn-badge&nbsp;btn-badge-{{&nbsp;type&nbsp;}}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-datetime&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;span[dato]&quot;&gt;&lt;/ng-content&gt;<br>&lt;/span&gt;<br></code></td>
             </tr>
 
 
@@ -986,6 +986,7 @@ import { Component, Input, ElementRef, ViewChild, OnChanges } from &#x27;@angula
         &lt;span #badgeBtn class&#x3D;&quot;btn-badge btn-badge-{{ type }}&quot;&gt;
             &lt;ng-content select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;
             &lt;ng-content select&#x3D;&quot;plex-datetime&quot;&gt;&lt;/ng-content&gt;
+            &lt;ng-content select&#x3D;&quot;span[dato]&quot;&gt;&lt;/ng-content&gt;
         &lt;/span&gt;
         &#x60;,
 })
