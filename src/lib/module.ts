@@ -11,6 +11,7 @@ import { PlexTextComponent } from './text/text.component';
 import { PlexIntComponent } from './int/int.component';
 import { PlexFloatComponent } from './float/float.component';
 import { PlexButtonComponent } from './button/button.component';
+import { PlexTableComponent } from './table/table.component';
 import { PlexTabsComponent } from './tabs/tabs.component';
 import { PlexTabComponent } from './tabs/tab.component';
 import { PlexAccordionComponent } from './accordion/accordion.component';
@@ -79,6 +80,10 @@ import { Plex } from './core/service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NetworkLoadingInterceptor, NETWORK_LOADING } from './core/network-loading.service';
 import { MobileDirective } from './directives/mobile.directive';
+import { PlexTableColumnsComponent } from './table/table-column-dropdown.component';
+import { PlexTableColDirective } from './table/display-column.directive';
+import { PlexTableSortPipe } from './table/table-sort.pipe';
+import { PlexColumnDirective } from './table/columns.directive';
 
 @NgModule({
     imports: [
@@ -101,6 +106,7 @@ import { MobileDirective } from './directives/mobile.directive';
         PlexIntComponent,
         PlexFloatComponent,
         PlexButtonComponent,
+        PlexTableComponent,
         PlexTabsComponent,
         PlexAccordionComponent,
         PlexPanelComponent,
@@ -137,6 +143,10 @@ import { MobileDirective } from './directives/mobile.directive';
         PlexWrapperComponent,
         PlexGridComponent,
         PlexCardComponent,
+        PlexTableColumnsComponent,
+        PlexTableColDirective,
+        PlexTableSortPipe,
+        PlexColumnDirective,
 
         // Directivas
         AlignedDirective,
@@ -177,6 +187,7 @@ import { MobileDirective } from './directives/mobile.directive';
         PlexTabsComponent,
         PlexAccordionComponent,
         PlexPanelComponent,
+        PlexTableComponent,
         PlexTabComponent,
         PlexBoolComponent,
         PlexRadioComponent,
@@ -210,6 +221,8 @@ import { MobileDirective } from './directives/mobile.directive';
         PlexWrapperComponent,
         PlexGridComponent,
         PlexCardComponent,
+        PlexTableColumnsComponent,
+        PlexTableSortPipe,
 
         // Directivas
         AlignedDirective,
@@ -225,7 +238,9 @@ import { MobileDirective } from './directives/mobile.directive';
         SpanDirective,
         TabDirective,
         MatTooltip,
-        MobileDirective
+        MobileDirective,
+        PlexTableColDirective,
+        PlexColumnDirective,
     ]
 })
 export class PlexModule {

@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Paciente } from './paciente';
 import { PACIENTES } from './mock-pacientes';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+export interface MapaCamaListadoColumns {
+    key: boolean;
+    value: string;
+}
 
 @Injectable()
 
 export class PacienteService {
-
+    public columnsMapa = new BehaviorSubject<MapaCamaListadoColumns[]>({} as any);
+    public sortBy = new BehaviorSubject<string>(null);
+    public sortOrder = new BehaviorSubject<string>(null);
     constructor() {
     }
 

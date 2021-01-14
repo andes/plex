@@ -10,6 +10,7 @@ import { RadioDemoComponent } from './radio/radio.component';
 import { IntDemoComponent } from './int/int.component';
 import { FloatDemoComponent } from './float/float.component';
 import { ButtonDemoComponent } from './button/button.component';
+import { TableDemoComponent } from './table/table';
 import { TabsDemoComponent } from './tabs/tabs.component';
 import { AccordionDemoComponent } from './accordion/accordion.component';
 import { SelectDemoComponent } from './select/select.component';
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
     { path: 'select', component: SelectDemoComponent },
     { path: 'label', component: LabelDemoComponent },
     { path: 'loader', component: LoaderDemoComponent },
+    { path: 'table', component: TableDemoComponent },
     { path: 'ribbon', component: RibbonDemoComponent },
     { path: 'phone', component: PhoneDemoComponent },
     { path: 'dropdown', component: DropdownDemoComponent },
