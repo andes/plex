@@ -97,7 +97,7 @@
                                     <a href="../components/PlexAccordionComponent.html" >PlexAccordionComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/PlexAppComponent.html"  class="active" >PlexAppComponent</a>
+                                    <a href="../components/PlexAppComponent.html" >PlexAppComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/PlexBadgeComponent.html" >PlexBadgeComponent</a>
@@ -264,7 +264,7 @@
                                     <a href="../directives/MobileDirective.html" >MobileDirective</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../directives/PlexColumnDirective.html" >PlexColumnDirective</a>
+                                    <a href="../directives/PlexColumnDirective.html"  class="active" >PlexColumnDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/PlexRipplesDirective.html" >PlexRipplesDirective</a>
@@ -520,7 +520,7 @@
                                            <a href="../components/PlexAccordionComponent.html" >PlexAccordionComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/PlexAppComponent.html"  class="active" >PlexAppComponent</a>
+                                           <a href="../components/PlexAppComponent.html" >PlexAppComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/PlexBadgeComponent.html" >PlexBadgeComponent</a>
@@ -687,7 +687,7 @@
                                            <a href="../directives/MobileDirective.html" >MobileDirective</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../directives/PlexColumnDirective.html" >PlexColumnDirective</a>
+                                           <a href="../directives/PlexColumnDirective.html"  class="active" >PlexColumnDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/PlexRipplesDirective.html" >PlexRipplesDirective</a>
@@ -860,487 +860,358 @@
                    
                    </nav>
                </div>
-               <div class="content component">
+               <div class="content directive">
                    <div class="content-data">
 
 
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>PlexAppComponent</li>
+  <li>Directives</li>
+  <li>PlexColumnDirective</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+    </li>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+    </li>
+</ul>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/lib/app/app.component.ts</code>
-</p>
-
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="infos">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/lib/table/columns.directive.ts</code>
+        </p>
 
 
 
-
-
-
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>plex-app</code></td>
-            </tr>
-
-
-
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;!--Navigation&nbsp;Bar--&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;nav&nbsp;[hidden]&#x3D;&quot;!plex.navbarVisible&quot;&nbsp;class&#x3D;&quot;navbar-inverse&nbsp;fixed-top&nbsp;bg-{{type}}&quot;&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;navbar-container&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[navIcon]&quot;&gt;&lt;/ng-content&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;menu-item&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;#menuItem&gt;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;title&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;plex.title;&nbsp;let&nbsp;last&nbsp;&#x3D;&nbsp;last&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;*ngIf&#x3D;&quot;item.route&quot;&nbsp;[routerLink]&#x3D;&quot;item.route&quot;&gt;{{item.name}}&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;!item.route&quot;&gt;{{item.name}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;!last&quot;&gt;&nbsp;/&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;actions&quot;&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Novedades&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[nav-item]&quot;&gt;&lt;/ng-content&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--App&nbsp;Status--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;action&nbsp;hidden-sm-down&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;online&quot;&nbsp;name&#x3D;&quot;cloud-check-outline&quot;&nbsp;type&#x3D;&quot;light&quot;&nbsp;size&#x3D;&quot;lg&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;!online&quot;&nbsp;name&#x3D;&quot;cloud-off-outline&quot;&nbsp;type&#x3D;&quot;danger&quot;&nbsp;size&#x3D;&quot;lg&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;popover&nbsp;popover-bottom&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;*ngIf&#x3D;&quot;online&quot;&nbsp;class&#x3D;&quot;popover-title&nbsp;bg-success&nbsp;text-white&nbsp;text-center&quot;&gt;Conectividad&nbsp;OK&lt;/h3&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;*ngIf&#x3D;&quot;!online&quot;&nbsp;class&#x3D;&quot;popover-title&nbsp;bg-danger&nbsp;text-white&nbsp;text-center&quot;&gt;Problemas&nbsp;con&nbsp;la&nbsp;conectividad&lt;/h3&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;popover-content&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;*ngIf&#x3D;&quot;online&quot;&gt;El&nbsp;servicio&nbsp;ANDES&nbsp;funciona&nbsp;correctamente&lt;/p&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;*ngIf&#x3D;&quot;!online&quot;&gt;El&nbsp;servicio&nbsp;ANDES&nbsp;no&nbsp;está&nbsp;disponible&lt;/p&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;canvas&nbsp;baseChart&nbsp;[datasets]&#x3D;&quot;chart.dataset&quot;&nbsp;[labels]&#x3D;&quot;chart.labels&quot;&nbsp;[options]&#x3D;&quot;chart.options&quot;&nbsp;[colors]&#x3D;&quot;chart.colors&quot;&nbsp;[legend]&#x3D;&quot;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[chartType]&#x3D;&quot;&#x27;line&#x27;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/canvas&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngIf&#x3D;&quot;plex.userInfo&quot;&nbsp;class&#x3D;&quot;userinfo&nbsp;hidden-sm-down&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;{{plex.userInfo.usuario.nombreCompleto}}&lt;/span&gt;&lt;br&gt;&lt;span&nbsp;*ngIf&#x3D;&quot;plex.userInfo.organizacion&quot;&gt;{{plex.userInfo.organizacion.nombre}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Menu--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;role&#x3D;&quot;button&quot;&nbsp;*ngIf&#x3D;&quot;plex.menu&nbsp;&amp;&amp;&nbsp;plex.menu.length&quot;&nbsp;class&#x3D;&quot;action&nbsp;dropdown&quot;&nbsp;tabindex&#x3D;&quot;1&quot;&nbsp;[ngClass]&#x3D;&quot;{show:&nbsp;menuOpen}&quot;&nbsp;(click)&#x3D;&quot;toggleMenu();&nbsp;$event.stopImmediatePropagation();&quot;&nbsp;(keyup)&#x3D;&quot;onMenuKeyup($event)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;type&#x3D;&quot;light&quot;&nbsp;size&#x3D;&quot;xl&quot;&nbsp;name&#x3D;&quot;menu&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;class&#x3D;&quot;dropdown-menu&nbsp;dropdown-menu-right&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;plex.menu;&nbsp;let&nbsp;i&nbsp;&#x3D;&nbsp;index&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Item&nbsp;con&nbsp;router&nbsp;asociado--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;!item.divider&nbsp;&amp;&amp;&nbsp;item.route&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;plexRipples&nbsp;class&#x3D;&quot;dropdown-item&quot;&nbsp;href&#x3D;&quot;#&quot;&nbsp;tabindex&#x3D;&quot;{{i&nbsp;+&nbsp;1}}&quot;&nbsp;[routerLink]&#x3D;&quot;item.route&quot;&nbsp;routerLinkActive&#x3D;&quot;active&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;item.icon&quot;&nbsp;type&#x3D;&quot;dark&quot;&nbsp;&nbsp;[prefix]&#x3D;&quot;item.prefix&quot;&nbsp;[name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Item&nbsp;con&nbsp;handler&nbsp;asociado--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;!item.divider&nbsp;&amp;&amp;&nbsp;item.handler&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;plexRipples&nbsp;class&#x3D;&quot;dropdown-item&quot;&nbsp;href&#x3D;&quot;#&quot;&nbsp;tabindex&#x3D;&quot;{{i&nbsp;+&nbsp;1}}&quot;&nbsp;(click)&#x3D;&quot;item.handler($event);&nbsp;false;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;item.icon&quot;&nbsp;type&#x3D;&quot;dark&quot;&nbsp;&nbsp;[prefix]&#x3D;&quot;item.prefix&quot;&nbsp;[name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Divider--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template&nbsp;[ngIf]&#x3D;&quot;item.divider&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;role&#x3D;&quot;separator&quot;&nbsp;class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-template&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-loader&nbsp;*ngIf&#x3D;&quot;plex.loaderCount&nbsp;&gt;&nbsp;0&quot;&nbsp;class&#x3D;&quot;loader&quot;&nbsp;type&#x3D;&quot;linear&quot;&gt;&lt;/plex-loader&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/nav&gt;<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Componente&nbsp;de&nbsp;notificaciones&nbsp;Toast&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;simple-notifications&gt;&lt;/simple-notifications&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Componente&nbsp;que&nbsp;muestra&nbsp;un&nbsp;ribbon&nbsp;indicando&nbsp;si&nbsp;se&nbsp;está&nbsp;en&nbsp;un&nbsp;entorno&nbsp;de&nbsp;desarrollo/demo&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-ribbon&quot;&gt;&lt;/ng-content&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Contenedor&nbsp;principal--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;content&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;nav-top-margin&#x27;:&nbsp;plex.navbarVisible,&nbsp;&#x27;nav-top-no-margin&#x27;:&nbsp;!plex.navbarVisible}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;router-outlet&gt;&lt;/router-outlet&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></td>
-            </tr>
-
-
-
-        </tbody>
-    </table>
-</section>
-
-    <section>
-        <h3 id="inputs">Inputs</h3>
-            <table class="table table-sm table-bordered">
+        <section>
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover">
                 <tbody>
+
                     <tr>
-                        <td class="col-md-2">
-                            <code>type</code>
-                        </td>
-                        <td class="col-md-10">
-                            <p>
-                              <em>Default value: </em><code>inverse</code>
-                            </p>
-                        </td>
+                        <td class="col-md-3">selector</td>
+                        <td class="col-md-9"><code>[columns]</code></td>
                     </tr>
+
                 </tbody>
             </table>
-    </section>
+        </section>
+
+            <section>
+                <h3 id="inputs">Inputs</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-2">
+                                    <code>columns</code>
+                                </td>
+                                <td class="col-md-10">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-2">
+                                    <code>sortBy</code>
+                                </td>
+                                <td class="col-md-10">
+                                      <p>
+                                        <em>Type:</em>    <code>string</code>
+
+                                      </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-2">
+                                    <code>sortOrder</code>
+                                </td>
+                                <td class="col-md-10">
+                                      <p>
+                                        <em>Type:</em>    <code>string</code>
+
+                                      </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
 
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(plex: <a href="../injectables/Plex.html" >Plex</a>, renderer: Renderer2)</code>
-                        </td>
-                    </tr>
-    
-                </tbody>
-            </table>
-    </section>
 
-    <section>
-        <h3 id="methods">Methods</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> initAppStatusCheck</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play lock">
-                                    <span class="fa fa-lock"></span>
-                                </span>
-                            <code>initAppStatusCheck()</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> toggleMenu</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play circle">
-                                    <span class="fa fa-circle"></span>
-                                </span>
-                            <code>toggleMenu()</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> onMenuKeyup</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>onMenuKeyup($event: any)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
+            <section>
+                <h3 id="methods">Methods</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> setColumnHandler</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>setColumnHandler(plexTableColumn: <a href="../injectables/Plex.html" >PlexTableColumnsComponent</a>)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> onColumnClick</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>onColumnClick(column: <a href="../injectables/Plex.html" >IPlexTableColumns</a>)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
-    <section>
-        <h3 id="inputs">Properties</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> chart</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>chart:     <code>{ maxPoints: number; dataset: { data: any[]; }[]; labels: any[]; options: { scales: { yAxes: { di...</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> loginOpen</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>loginOpen:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>false</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> menuOpen</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>menuOpen:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>false</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> online</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>online:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>true</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> plex</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>plex:     <code><a href="../injectables/Plex.html" target="_self" >Plex</a></code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> unlisten</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>unlisten:     <code>Function</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> viewContainerRef</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>viewContainerRef:     <code><a href="https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html" target="_blank" >ViewContainerRef</a></code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
-</div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, OnInit, Input, Renderer2, ViewChild, ViewContainerRef } from &#x27;@angular/core&#x27;;
-import { Plex } from &#x27;./../core/service&#x27;;
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> _columns</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_columns:     <code><a href="../injectables/Plex.html" target="_self" >BehaviorSubject&lt;IPlexTableColumns[]&gt;</a></code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> _displayColumns</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_displayColumns:     <code><a href="../injectables/Plex.html" target="_self" >BehaviorSubject&lt;IPlexColumnDisplay&gt;</a></code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> _sort</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_sort:     <code><a href="../injectables/Plex.html" target="_self" >BehaviorSubject&lt;IPlexSortData&gt;</a></code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> columns$</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-circle"></span><code>columns$:     <code><a href="../injectables/Plex.html" target="_self" >Observable&lt;IPlexTableColumns[]&gt;</a></code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> displayColumns$</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-circle"></span><code>displayColumns$:     <code><a href="../injectables/Plex.html" target="_self" >Observable&lt;IPlexColumnDisplay&gt;</a></code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> sort$</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-circle"></span><code>sort$:     <code><a href="../injectables/Plex.html" target="_self" >Observable&lt;IPlexSortData&gt;</a></code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> sub</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>sub:     <code>Subscription</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> vm$</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-circle"></span><code>vm$:     <code>Observable&lt;{ columns: any; displayColumns: any; sortData: any; }&gt;</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
-@Component({
-    selector: &#x27;plex-app&#x27;,
-    template: &#x60; &lt;!--Navigation Bar--&gt;
-                    &lt;nav [hidden]&#x3D;&quot;!plex.navbarVisible&quot; class&#x3D;&quot;navbar-inverse fixed-top bg-{{type}}&quot;&gt;
+    </div>
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre><code class="hljs javascript">import { Directive, EmbeddedViewRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef, ViewContainerRef } from &#x27;@angular/core&#x27;;
+import { BehaviorSubject, combineLatest, Observable, Subscription } from &#x27;rxjs&#x27;;
+import { map } from &#x27;rxjs/operators&#x27;;
+import { PlexTableColumnsComponent } from &#x27;./table-column-dropdown.component&#x27;;
+import { IPlexColumnDisplay, IPlexSortData, IPlexTableColumns } from &#x27;./table.interfaces&#x27;;
 
-                        &lt;div class&#x3D;&quot;navbar-container&quot;&gt;
-                            &lt;ng-content select&#x3D;&quot;[navIcon]&quot;&gt;&lt;/ng-content&gt;
-
-                            &lt;div class&#x3D;&quot;menu-item&quot;&gt;
-                                &lt;ng-template #menuItem&gt;&lt;/ng-template&gt;
-                            &lt;/div&gt;
-                            &lt;div class&#x3D;&quot;title&quot;&gt;
-                                &lt;ng-container *ngFor&#x3D;&quot;let item of plex.title; let last &#x3D; last&quot;&gt;
-                                    &lt;a *ngIf&#x3D;&quot;item.route&quot; [routerLink]&#x3D;&quot;item.route&quot;&gt;{{item.name}}&lt;/a&gt;
-                                    &lt;span *ngIf&#x3D;&quot;!item.route&quot;&gt;{{item.name}}&lt;/span&gt;
-                                    &lt;span *ngIf&#x3D;&quot;!last&quot;&gt; / &lt;/span&gt;
-                                &lt;/ng-container&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-
-                        &lt;div class&#x3D;&quot;actions&quot;&gt;
-
-                            &lt;!-- Novedades --&gt;
-                            &lt;ng-content select&#x3D;&quot;[nav-item]&quot;&gt;&lt;/ng-content&gt;
-
-                            &lt;!--App Status--&gt;
-                            &lt;div class&#x3D;&quot;action hidden-sm-down&quot;&gt;
-                                &lt;plex-icon *ngIf&#x3D;&quot;online&quot; name&#x3D;&quot;cloud-check-outline&quot; type&#x3D;&quot;light&quot; size&#x3D;&quot;lg&quot;&gt;&lt;/plex-icon&gt;
-                                &lt;plex-icon *ngIf&#x3D;&quot;!online&quot; name&#x3D;&quot;cloud-off-outline&quot; type&#x3D;&quot;danger&quot; size&#x3D;&quot;lg&quot;&gt;&lt;/plex-icon&gt;
-                                &lt;div class&#x3D;&quot;popover popover-bottom&quot;&gt;
-                                    &lt;h3 *ngIf&#x3D;&quot;online&quot; class&#x3D;&quot;popover-title bg-success text-white text-center&quot;&gt;Conectividad OK&lt;/h3&gt;
-                                    &lt;h3 *ngIf&#x3D;&quot;!online&quot; class&#x3D;&quot;popover-title bg-danger text-white text-center&quot;&gt;Problemas con la conectividad&lt;/h3&gt;
-
-                                    &lt;div class&#x3D;&quot;popover-content&quot;&gt;
-                                        &lt;p *ngIf&#x3D;&quot;online&quot;&gt;El servicio ANDES funciona correctamente&lt;/p&gt;
-                                        &lt;p *ngIf&#x3D;&quot;!online&quot;&gt;El servicio ANDES no está disponible&lt;/p&gt;
-                                        &lt;canvas baseChart [datasets]&#x3D;&quot;chart.dataset&quot; [labels]&#x3D;&quot;chart.labels&quot; [options]&#x3D;&quot;chart.options&quot; [colors]&#x3D;&quot;chart.colors&quot; [legend]&#x3D;&quot;false&quot;
-                                            [chartType]&#x3D;&quot;&#x27;line&#x27;&quot;&gt;
-                                        &lt;/canvas&gt;
-                                    &lt;/div&gt;
-                                &lt;/div&gt;
-                            &lt;/div&gt;
-                            &lt;div *ngIf&#x3D;&quot;plex.userInfo&quot; class&#x3D;&quot;userinfo hidden-sm-down&quot;&gt;
-                                &lt;div&gt;
-                                    &lt;span&gt;{{plex.userInfo.usuario.nombreCompleto}}&lt;/span&gt;&lt;br&gt;&lt;span *ngIf&#x3D;&quot;plex.userInfo.organizacion&quot;&gt;{{plex.userInfo.organizacion.nombre}}&lt;/span&gt;
-                                &lt;/div&gt;
-                            &lt;/div&gt;
-                            &lt;!--Menu--&gt;
-                            &lt;div role&#x3D;&quot;button&quot; *ngIf&#x3D;&quot;plex.menu &amp;&amp; plex.menu.length&quot; class&#x3D;&quot;action dropdown&quot; tabindex&#x3D;&quot;1&quot; [ngClass]&#x3D;&quot;{show: menuOpen}&quot; (click)&#x3D;&quot;toggleMenu(); $event.stopImmediatePropagation();&quot; (keyup)&#x3D;&quot;onMenuKeyup($event)&quot;&gt;
-                                &lt;plex-icon type&#x3D;&quot;light&quot; size&#x3D;&quot;xl&quot; name&#x3D;&quot;menu&quot;&gt;&lt;/plex-icon&gt;
-                                &lt;ul class&#x3D;&quot;dropdown-menu dropdown-menu-right&quot;&gt;
-                                    &lt;li *ngFor&#x3D;&quot;let item of plex.menu; let i &#x3D; index&quot;&gt;
-                                        &lt;!--Item con router asociado--&gt;
-                                        &lt;ng-template [ngIf]&#x3D;&quot;!item.divider &amp;&amp; item.route&quot;&gt;
-                                            &lt;a plexRipples class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;#&quot; tabindex&#x3D;&quot;{{i + 1}}&quot; [routerLink]&#x3D;&quot;item.route&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
-                                                &lt;plex-icon *ngIf&#x3D;&quot;item.icon&quot; type&#x3D;&quot;dark&quot;  [prefix]&#x3D;&quot;item.prefix&quot; [name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;
-                                                {{item.label}}
-                                                &lt;/a&gt;
-                                        &lt;/ng-template&gt;
-                                        &lt;!--Item con handler asociado--&gt;
-                                        &lt;ng-template [ngIf]&#x3D;&quot;!item.divider &amp;&amp; item.handler&quot;&gt;
-                                            &lt;a plexRipples class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;#&quot; tabindex&#x3D;&quot;{{i + 1}}&quot; (click)&#x3D;&quot;item.handler($event); false;&quot;&gt;
-                                                &lt;plex-icon *ngIf&#x3D;&quot;item.icon&quot; type&#x3D;&quot;dark&quot;  [prefix]&#x3D;&quot;item.prefix&quot; [name]&#x3D;&quot;item.icon&quot;&gt;&lt;/plex-icon&gt;
-                                                {{item.label}}
-                                                &lt;/a&gt;
-                                        &lt;/ng-template&gt;
-                                        &lt;!--Divider--&gt;
-                                        &lt;ng-template [ngIf]&#x3D;&quot;item.divider&quot;&gt;
-                                            &lt;div role&#x3D;&quot;separator&quot; class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
-                                        &lt;/ng-template&gt;
-                                    &lt;/li&gt;
-                                &lt;/ul&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;plex-loader *ngIf&#x3D;&quot;plex.loaderCount &gt; 0&quot; class&#x3D;&quot;loader&quot; type&#x3D;&quot;linear&quot;&gt;&lt;/plex-loader&gt;
-                    &lt;/nav&gt;
-
-
-                &lt;!-- Componente de notificaciones Toast --&gt;
-                &lt;simple-notifications&gt;&lt;/simple-notifications&gt;
-
-                &lt;!-- Componente que muestra un ribbon indicando si se está en un entorno de desarrollo/demo --&gt;
-                &lt;ng-content select&#x3D;&quot;plex-ribbon&quot;&gt;&lt;/ng-content&gt;
-
-                &lt;!--Contenedor principal--&gt;
-                &lt;div class&#x3D;&quot;content&quot; [ngClass]&#x3D;&quot;{&#x27;nav-top-margin&#x27;: plex.navbarVisible, &#x27;nav-top-no-margin&#x27;: !plex.navbarVisible}&quot;&gt;
-                    &lt;router-outlet&gt;&lt;/router-outlet&gt;
-                &lt;/div&gt;&#x60;,
+@Directive({
+    // tslint:disable-next-line:directive-selector
+    selector: &#x27;[columns]&#x27;,
+    exportAs: &#x27;plTable&#x27;
 })
-export class PlexAppComponent implements OnInit {
-    private unlisten: Function;
-    // Referencia al DOM para injectar una componente de forma dinámica
-    @ViewChild(&#x27;menuItem&#x27;, { static: true, read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
+export class PlexColumnDirective implements OnChanges, OnDestroy {
+    private _columns &#x3D; new BehaviorSubject&lt;IPlexTableColumns[]&gt;(null);
 
-    @Input() type &#x3D; &#x27;inverse&#x27;;
-    public loginOpen &#x3D; false;
-    public menuOpen &#x3D; false;
-    public online &#x3D; true;
-    public chart &#x3D; {
-        maxPoints: 10,
-        dataset: [{ data: [] }],
-        labels: [],
-        options: {
-            // responsive: true,
-            scales: {
-                yAxes: [{
-                    display: false,
-                    gridLines: {
-                        display: false
-                    },
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            },
-            tooltips: {
-                enabled: false,
-            }
-        },
-        colors: [{ pointBackgroundColor: &#x27;grey&#x27; }]
-    };
+    public columns$ &#x3D; this._columns.asObservable();
 
-    private initAppStatusCheck() {
-        this.plex.appStatus.subscribe((value) &#x3D;&gt; {
-            this.online &#x3D; value.API &#x3D;&#x3D;&#x3D; &#x27;OK&#x27;;
-            this.chart.dataset &#x3D; this.chart.dataset.slice();
-            this.chart.dataset[0].data &#x3D; this.chart.dataset[0].data.splice(1);
-            this.chart.dataset[0].data.push(this.online ? 1 : 0);
+    private _displayColumns &#x3D; new BehaviorSubject&lt;IPlexColumnDisplay&gt;({});
+
+    public displayColumns$ &#x3D; this._displayColumns.asObservable();
+
+    private _sort &#x3D; new BehaviorSubject&lt;IPlexSortData&gt;({});
+
+    public sort$ &#x3D; this._sort.asObservable();
+
+    private sub: Subscription;
+
+    public vm$ &#x3D; combineLatest([
+        this.columns$,
+        this.displayColumns$,
+        this.sort$
+    ]).pipe(
+        map(([columns, displayColumns, sortData]) &#x3D;&gt; ({ columns, displayColumns, sortData }))
+    );
+
+    @Input() set columns(value) {
+        this._columns.next(value);
+    }
+
+    @Input() sortBy: string;
+
+    @Input() sortOrder: string;
+
+    setColumnHandler(plexTableColumn: PlexTableColumnsComponent) {
+        this.sub &#x3D; plexTableColumn.change.subscribe(cols &#x3D;&gt; {
+            this._displayColumns.next(cols);
         });
     }
 
-    constructor(public plex: Plex, private renderer: Renderer2) {
-        this.initAppStatusCheck();
+    ngOnDestroy() {
+        if (this.sub) {
+            this.sub.unsubscribe();
+        }
     }
 
-    ngOnInit() {
-        this.plex.setViewContainerRef(this.viewContainerRef);
-
-        // Genera N labels vacíos
-        this.chart.labels &#x3D; [];
-        for (let i &#x3D; 0; i &lt; this.chart.maxPoints; i++) {
-            this.chart.labels.push(&#x27;&#x27;);
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.sortBy || changes.sortOrder) {
+            this._sort.next({
+                sortBy: changes.sortBy.currentValue,
+                sortOrder: changes.sortOrder.currentValue
+            });
         }
-        // Inicializa todo el dataset en 1 (&#x3D; &#x27;Ok&#x27;)
-        for (let i &#x3D; 0; i &lt; this.chart.maxPoints; i++) {
-            this.chart.dataset[0].data.push(1);
-        }
-
     }
 
-    public toggleMenu() {
-        this.menuOpen &#x3D; !this.menuOpen;
-        if (this.menuOpen) {
-            this.unlisten &#x3D; this.renderer.listen(&#x27;document&#x27;, &#x27;click&#x27;, (event) &#x3D;&gt; {
-                this.toggleMenu();
-                this.unlisten();
+    onColumnClick(column: IPlexTableColumns) {
+        const data &#x3D; this._sort.getValue();
+
+        if (data.sortBy &#x3D;&#x3D;&#x3D; column.key) {
+            this._sort.next({
+                sortBy: column.key,
+                sortOrder: data.sortOrder &#x3D;&#x3D;&#x3D; &#x27;ASC&#x27; ? &#x27;DESC&#x27; : &#x27;ASC&#x27;
             });
         } else {
-            if (this.unlisten) {
-                this.unlisten();
-            }
+            this._sort.next({
+                sortBy: column.key,
+                sortOrder: &#x27;ASC&#x27;
+            });
         }
-    }
 
-    onMenuKeyup($event) {
-        if ($event.keyCode &#x3D;&#x3D;&#x3D; 32 || $event.keyCode &#x3D;&#x3D;&#x3D; 13) {
-            this.toggleMenu();
-        }
     }
 }
 </code></pre>
-        </div>
     </div>
-
-
+</div>
 
 
 
