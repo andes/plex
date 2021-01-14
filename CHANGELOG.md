@@ -1,3 +1,10 @@
+# [7.12.0](https://github.com/andes/plex/compare/v7.11.0...v7.12.0) (2021-01-14)
+
+
+### Features
+
+* **plex-table:** nueva table ([#255](https://github.com/andes/plex/issues/255)) ([38b261c](https://github.com/andes/plex/commit/38b261c4e957d0f914d830fc46184bb681f694b0))
+
 # [7.11.0](https://github.com/andes/plex/compare/v7.10.0...v7.11.0) (2021-01-06)
 
 
