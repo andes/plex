@@ -7,7 +7,7 @@
             </plex-title>
 
             <tr *ngFor="let item of (data$ | plSort:table | async)" [class.selected]="item.selected"
-                (click)="item.selected = !item.selected">
+                (click)="item.selected = !item.selected" [class.selectable]="selectable">
                 <td *plTableCol="'col-1'">{{item.nombre }}</td>
                 <td *plTableCol="'col-2'">{{ item.apellido }}</td>
                 <td *plTableCol="'col-3'">{{item.documento}}</td>
