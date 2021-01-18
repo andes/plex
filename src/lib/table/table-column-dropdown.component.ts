@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
+import { first, tap } from 'rxjs/operators';
 import { PlexColumnDirective } from './columns.directive';
 import { IPlexColumnDisplay, IPlexTableColumns } from './table.interfaces';
 
@@ -17,9 +18,9 @@ import { IPlexColumnDisplay, IPlexTableColumns } from './table.interfaces';
         </plex-dropdown>
     `,
 })
-export class PlexTableColumnsComponent implements OnChanges {
+export class PlexTableColumnsComponent implements OnChanges, OnInit {
 
-    @Input() selected: IPlexColumnDisplay = {};
+    @Input() selected: IPlexColumnDisplay = null;
 
     @Output() change = new EventEmitter<IPlexColumnDisplay>();
 
@@ -37,6 +38,20 @@ export class PlexTableColumnsComponent implements OnChanges {
             this.table.setColumnHandler(this);
         }
 
+    }
+
+    ngOnInit() {
+        if (!this.selected) {
+            this.columns$.pipe(
+                first(),
+                tap(cols => {
+                    cols.forEach(col => {
+                        this.estadoColumnas[col.key] = true;
+                    });
+                    this.change.emit({ ...this.estadoColumnas });
+                })
+            ).subscribe();
+        }
     }
 
     ngOnChanges(changes: SimpleChanges) {
