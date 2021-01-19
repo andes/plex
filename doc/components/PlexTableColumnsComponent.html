@@ -1051,8 +1051,9 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
+import { first, tap } from &#x27;rxjs/operators&#x27;;
 import { PlexColumnDirective } from &#x27;./columns.directive&#x27;;
 import { IPlexColumnDisplay, IPlexTableColumns } from &#x27;./table.interfaces&#x27;;
 
@@ -1070,9 +1071,9 @@ import { IPlexColumnDisplay, IPlexTableColumns } from &#x27;./table.interfaces&#
         &lt;/plex-dropdown&gt;
     &#x60;,
 })
-export class PlexTableColumnsComponent implements OnChanges {
+export class PlexTableColumnsComponent implements OnChanges, OnInit {
 
-    @Input() selected: IPlexColumnDisplay &#x3D; {};
+    @Input() selected: IPlexColumnDisplay &#x3D; null;
 
     @Output() change &#x3D; new EventEmitter&lt;IPlexColumnDisplay&gt;();
 
@@ -1090,6 +1091,20 @@ export class PlexTableColumnsComponent implements OnChanges {
             this.table.setColumnHandler(this);
         }
 
+    }
+
+    ngOnInit() {
+        if (!this.selected) {
+            this.columns$.pipe(
+                first(),
+                tap(cols &#x3D;&gt; {
+                    cols.forEach(col &#x3D;&gt; {
+                        this.estadoColumnas[col.key] &#x3D; true;
+                    });
+                    this.change.emit({ ...this.estadoColumnas });
+                })
+            ).subscribe();
+        }
     }
 
     ngOnChanges(changes: SimpleChanges) {
