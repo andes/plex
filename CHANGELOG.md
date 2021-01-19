@@ -1,3 +1,10 @@
+## [7.12.1](https://github.com/andes/plex/compare/v7.12.0...v7.12.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* **plex-table:** corrige clases selected/selectable ([#262](https://github.com/andes/plex/issues/262)) ([783b4e8](https://github.com/andes/plex/commit/783b4e8f353ea691747b197f106f42c12258b6e9))
+
 # [7.12.0](https://github.com/andes/plex/compare/v7.11.0...v7.12.0) (2021-01-14)
 
 
