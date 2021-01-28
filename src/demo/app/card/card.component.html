@@ -62,8 +62,10 @@
         <plex-title titulo="atributos y usos"></plex-title>
         <plex-title titulo="detalle de agendas" size="sm"></plex-title>
         <plex-grid type="full" size="md">
-            <plex-card align="start" type="" *ngFor="let agenda of agendas">
-                <plex-badge type="{{ agenda.type }}">{{ agenda.turnos }}</plex-badge>
+            <plex-card align="start" type="" *ngFor="let agenda of agendas"
+                       [ngClass]="{'disabled' : agenda.turnos === 'sin turnos'}">
+                <plex-badge type="{{ agenda.type }}">{{
+                    agenda.turnos }}</plex-badge>
                 <plex-label size="md" direction="row" titulo="{{ agenda.horario }}"
                             subtitulo="{{ agenda.profesional }}">
                 </plex-label>
