@@ -35,3 +35,11 @@
     text-transform: capitalize !important;
   }
 }
+
+.disabled {
+    pointer-events: none!important;
+    user-select: none!important;
+    opacity: .5!important;
+    filter: grayscale(100%)!important;
+    cursor: not-allowed!important;
+}
