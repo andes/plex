@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnChanges } from '@angular/core';
 
 @Component({
     selector: 'plex-card',
@@ -22,7 +22,7 @@ import { Component, Input, ViewChild, ElementRef } from '@angular/core';
     `,
 })
 
-export class PlexCardComponent {
+export class PlexCardComponent implements OnChanges {
     @Input() selected = false;
     @Input() align: 'start' | 'end' | 'center' = 'center';
     @Input() size: 'xs' | 'md' | 'lg' | 'block' = 'md';
