@@ -8,18 +8,19 @@
             <div>
                 <plex-title titulo="plex-card align=start" size="sm"></plex-title>
                 <plex-grid type="auto" size="lg">
-                    <plex-card align="start" type="{{ dato.type }}" *ngFor="let dato of datos | slice:0:5"
-                               [selected]="dato.selected" (click)="dato.selected = !dato.selected">
+                    <plex-card [color]="color" align="start" type="{{ dato.type }}"
+                               *ngFor="let dato of datos | slice:0:6" [selected]="dato.selected"
+                               (click)="dato.selected = !dato.selected">
                         <plex-badge type="warning">badge</plex-badge>
                         <plex-label size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
 
                         </plex-label>
                         <plex-button type="warning" label="aceptar"></plex-button>
                     </plex-card>
-                    <plex-card class="mt-1" align="start" type="dark" *ngFor="let dato of datos | slice:5:6"
+                    <plex-card span="2" class="mt-1" align="center" type="dark" *ngFor="let dato of datos | slice:6:7"
                                [selected]="dato.selected" (click)="dato.selected = !dato.selected">
                         <plex-badge type="warning">badge</plex-badge>
-                        <plex-label size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"
+                        <plex-label direction="column" size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"
                                     icon="information-variant">
                         </plex-label>
                         <plex-button type="{{ dato.type }}" label="aceptar"></plex-button>

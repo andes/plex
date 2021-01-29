@@ -27,45 +27,61 @@ plex-card {
         background-color: var(--color-baseDark)!important;
         color: var(--color-tipo)!important;
         box-shadow: inset 0 0 0 3px var(--color-baseDarker)!important;
+    }
+    
+    //Custom color
+    >div.card {
+        &.bg-custom {
+            @include cardBackground;
+            background-color: var(--card-color);
+            --color-tipo: white;
+            --color-base: var(--card-color);
+            --color-baseLight: white;
+            --color-baseDark: var(--card-color);
+            
+            &:hover, &.selected {
+                box-shadow: inset 0 0 0 3px $blue!important;                            
+                filter: brightness(0.85);
+            }
+            }
         }
     
-    // Default
-    > div.bg-default {
-    --color-base: white;
-    --color-tipo: #002738;
-    --color-baseDark: #edf8fd;
-    --color-baseDarker: #00a8e0;
-    }
-
-    // Dark
-    > div.bg-dark {
-        --color-base: #002738;
-        --color-tipo: white;
-        --color-baseDark: #00202e;
+        // Default
+        > div.bg-default {
+        --color-base: white;
+        --color-tipo: #002738;
+        --color-baseDark: #edf8fd;
         --color-baseDarker: #00a8e0;
-    }
+        }
 
-    // Success
-    > div.bg-success {
-        @include cardBackground;
-        --color-baseLight: #c7e79c;
-        --color-base: #8cc63f;
-        --color-tipo: white;
-        --color-baseDark: #70a728;
-        --color-baseDarker: #55801e;
-    }
+        // Dark
+        > div.bg-dark {
+            --color-base: #002738;
+            --color-tipo: white;
+            --color-baseDark: #00202e;
+            --color-baseDarker: #00a8e0;
+        }
 
-    // Warning
-    > div.bg-warning {
-        @include cardBackground;
+        // Success
+        > div.bg-success {
+            @include cardBackground;
+            --color-baseLight: #c7e79c;
+            --color-base: #8cc63f;
+            --color-tipo: white;
+            --color-baseDark: #70a728;
+            --color-baseDarker: #55801e;
+        }
+
+        // Warning
+        > div.bg-warning {
+            @include cardBackground;
             --color-baseLight: #fdc189;
             --color-base: #ff8d22;
             --color-tipo: white;
             --color-baseDark: #e47814;
             --color-baseDarker: #c55f00;
- 
         }
-    
+
         // Danger
         > div.bg-danger {
             @include cardBackground;
@@ -74,7 +90,6 @@ plex-card {
             --color-tipo: white;
             --color-baseDark: #b9311f;
             --color-baseDarker: #a12514;
- 
         }
 
         // Info
