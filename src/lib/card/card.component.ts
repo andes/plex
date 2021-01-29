@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
     selector: 'plex-card',
     template: `
-    <div class="card bg-{{ type }}" [ngClass]="{'text-white' : type != 'default'}" [class.selected]="selected">
+    <div #cardColor class="card bg-{{ type }}" [ngClass]="{'text-white' : type != 'default'}" [class.selected]="selected">
         <ng-content select="img"></ng-content>
         <ng-content select="plex-icon"></ng-content>
         <div class="d-flex" [ngClass]="cssAlign">
@@ -26,7 +26,10 @@ export class PlexCardComponent {
     @Input() selected = false;
     @Input() align: 'start' | 'end' | 'center' = 'center';
     @Input() size: 'xs' | 'md' | 'lg' | 'block' = 'md';
-    @Input() type: 'success' | 'warning' | 'danger' | 'dark' | 'default' = 'default';
+    @Input() type: 'success' | 'warning' | 'danger' | 'dark' | 'custom' | 'default' = 'default';
+    @Input() color: string;
+
+    @ViewChild('cardColor', { static: true }) cardColor: ElementRef;
 
     constructor() {
     }
@@ -36,6 +39,12 @@ export class PlexCardComponent {
             return 'justify-content-center';
         } else {
             return this.align === 'start' ? 'justify-content-start' : 'justify-content-end';
+        }
+    }
+
+    ngOnChanges() {
+        if (this.color && this.color.length > 0) {
+            this.cardColor.nativeElement.style.setProperty('--card-color', this.color);
         }
     }
 }
