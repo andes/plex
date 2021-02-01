@@ -59,6 +59,30 @@ plex-grid {
             grid-template-columns: repeat(6, 1fr)!important;
     }
 
+    &[cols="7"] {
+            grid-template-columns: repeat(7, 1fr)!important;	
+    }
+
+    &[cols="8"] {
+            grid-template-columns: repeat(8, 1fr)!important;	
+    }
+
+    &[cols="9"] {
+            grid-template-columns: repeat(9, 1fr)!important;
+    }
+
+    &[cols="10"] {
+            grid-template-columns: repeat(10, 1fr)!important;	
+    }
+
+    &[cols="11"] {
+            grid-template-columns: repeat(11, 1fr)!important;
+    }
+
+    &[cols="12"] {
+            grid-template-columns: repeat(12, 1fr)!important;
+    }
+
     // sizes
     &[size=xs] {	
         --colSize: 2.5rem;
@@ -91,7 +115,6 @@ plex-grid {
     }
 } 
 
-
 // directiva span
 .grid-column-auto {
     grid-column: auto;
@@ -110,6 +133,24 @@ plex-grid {
 }
 .grid-column-span-6 {
     grid-column: span 6;
+}
+.grid-column-span-7 {
+    grid-column: span 7;
+}
+.grid-column-span-8 {
+    grid-column: span 8;
+}
+.grid-column-span-9 {
+    grid-column: span 9;
+}
+.grid-column-span-10 {
+    grid-column: span 10;
+}
+.grid-column-span-11 {
+    grid-column: span 11;
+}
+.grid-column-span-12 {
+    grid-column: span 12;
 }
 .grid-column-span-full {
     grid-column: 100%;

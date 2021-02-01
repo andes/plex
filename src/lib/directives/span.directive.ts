@@ -5,7 +5,7 @@ import { Directive, Input, HostBinding } from '@angular/core';
     selector: '[span]'
 })
 export class SpanDirective {
-    @Input() span: 'auto' | '1' | '2' | '3' | '4' | 'full' = 'auto';
+    @Input() span: 'auto' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12' | 'full' = 'auto';
 
     @HostBinding('class.grid-column-full') get full() {
         return this.span === 'full';
@@ -29,5 +29,37 @@ export class SpanDirective {
 
     @HostBinding('class.grid-column-span-4') get span4() {
         return this.span === '4';
+    }
+
+    @HostBinding('class.grid-column-span-5') get span5() {
+        return this.span === '5';
+    }
+
+    @HostBinding('class.grid-column-span-6') get span6() {
+        return this.span === '6';
+    }
+
+    @HostBinding('class.grid-column-span-7') get span7() {
+        return this.span === '7';
+    }
+
+    @HostBinding('class.grid-column-span-8') get span8() {
+        return this.span === '8';
+    }
+
+    @HostBinding('class.grid-column-span-9') get span9() {
+        return this.span === '9';
+    }
+
+    @HostBinding('class.grid-column-span-10') get span10() {
+        return this.span === '10';
+    }
+
+    @HostBinding('class.grid-column-span-11') get span11() {
+        return this.span === '11';
+    }
+
+    @HostBinding('class.grid-column-span-12') get span12() {
+        return this.span === '12';
     }
 }
