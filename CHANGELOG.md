@@ -1,3 +1,13 @@
+# [7.13.0](https://github.com/andes/plex/compare/v7.12.1...v7.13.0) (2021-02-03)
+
+
+### Features
+
+* **classes:** agrega clase global disabled ([c3d9a1b](https://github.com/andes/plex/commit/c3d9a1b09f9c2dc632f980470546b716dc8567f5))
+* **plex-card:** permite custom colors ([6727d99](https://github.com/andes/plex/commit/6727d99bfc949f6bb8ed68f9d6ed57f9b3f62195))
+* **plex-card:** permite custom colors ([41d6abe](https://github.com/andes/plex/commit/41d6abe4f1697d8c77d562d4283030db052cf593))
+* **plex-grid:** extiende encolumnado y spanDirective ([7a22d4f](https://github.com/andes/plex/commit/7a22d4fd405749f492c5b7b14513761c27345ff6))
+
 ## [7.12.1](https://github.com/andes/plex/compare/v7.12.0...v7.12.1) (2021-01-19)
 
 
