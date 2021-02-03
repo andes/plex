@@ -914,7 +914,7 @@
                                 </td>
                                 <td class="col-md-10">
                                       <p>
-                                        <em>Type:</em>    <code>&quot;auto&quot; | &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | &quot;full&quot;</code>
+                                        <em>Type:</em>    <code>&quot;auto&quot; | &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | &quot;5&quot; | &quot;6&quot; | &quot;7&quot; | &quot;8&quot; | &quot;9&quot; | &quot;10&quot; | &quot;11&quot; | &quot;12&quot; | &quot;full&quot;</code>
 
                                       </p>
                                     <p>
@@ -980,6 +980,51 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <b> span10</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>span10:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> span11</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>span11:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> span12</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>span12:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <b> span2</b>
                                 </td>
                             </tr>
@@ -1021,6 +1066,81 @@
                             </tr>
                         </tbody>
                     </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> span5</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>span5:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> span6</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>span6:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> span7</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>span7:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> span8</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>span8:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> span9</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>span9:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
             </section>
 
     </div>
@@ -1032,7 +1152,7 @@
     selector: &#x27;[span]&#x27;
 })
 export class SpanDirective {
-    @Input() span: &#x27;auto&#x27; | &#x27;1&#x27; | &#x27;2&#x27; | &#x27;3&#x27; | &#x27;4&#x27; | &#x27;full&#x27; &#x3D; &#x27;auto&#x27;;
+    @Input() span: &#x27;auto&#x27; | &#x27;1&#x27; | &#x27;2&#x27; | &#x27;3&#x27; | &#x27;4&#x27; | &#x27;5&#x27; | &#x27;6&#x27; | &#x27;7&#x27; | &#x27;8&#x27; | &#x27;9&#x27; | &#x27;10&#x27; | &#x27;11&#x27; | &#x27;12&#x27; | &#x27;full&#x27; &#x3D; &#x27;auto&#x27;;
 
     @HostBinding(&#x27;class.grid-column-full&#x27;) get full() {
         return this.span &#x3D;&#x3D;&#x3D; &#x27;full&#x27;;
@@ -1056,6 +1176,38 @@ export class SpanDirective {
 
     @HostBinding(&#x27;class.grid-column-span-4&#x27;) get span4() {
         return this.span &#x3D;&#x3D;&#x3D; &#x27;4&#x27;;
+    }
+
+    @HostBinding(&#x27;class.grid-column-span-5&#x27;) get span5() {
+        return this.span &#x3D;&#x3D;&#x3D; &#x27;5&#x27;;
+    }
+
+    @HostBinding(&#x27;class.grid-column-span-6&#x27;) get span6() {
+        return this.span &#x3D;&#x3D;&#x3D; &#x27;6&#x27;;
+    }
+
+    @HostBinding(&#x27;class.grid-column-span-7&#x27;) get span7() {
+        return this.span &#x3D;&#x3D;&#x3D; &#x27;7&#x27;;
+    }
+
+    @HostBinding(&#x27;class.grid-column-span-8&#x27;) get span8() {
+        return this.span &#x3D;&#x3D;&#x3D; &#x27;8&#x27;;
+    }
+
+    @HostBinding(&#x27;class.grid-column-span-9&#x27;) get span9() {
+        return this.span &#x3D;&#x3D;&#x3D; &#x27;9&#x27;;
+    }
+
+    @HostBinding(&#x27;class.grid-column-span-10&#x27;) get span10() {
+        return this.span &#x3D;&#x3D;&#x3D; &#x27;10&#x27;;
+    }
+
+    @HostBinding(&#x27;class.grid-column-span-11&#x27;) get span11() {
+        return this.span &#x3D;&#x3D;&#x3D; &#x27;11&#x27;;
+    }
+
+    @HostBinding(&#x27;class.grid-column-span-12&#x27;) get span12() {
+        return this.span &#x3D;&#x3D;&#x3D; &#x27;12&#x27;;
     }
 }
 </code></pre>

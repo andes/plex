@@ -914,7 +914,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;card&nbsp;bg-{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;text-white&#x27;&nbsp;:&nbsp;type&nbsp;!&#x3D;&nbsp;&#x27;default&#x27;}&quot;&nbsp;[class.selected]&#x3D;&quot;selected&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;img&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-label&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;flex-column&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;#cardColor&nbsp;class&#x3D;&quot;card&nbsp;bg-{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;text-white&#x27;&nbsp;:&nbsp;type&nbsp;!&#x3D;&nbsp;&#x27;default&#x27;}&quot;&nbsp;[class.selected]&#x3D;&quot;selected&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;img&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-label&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;flex-column&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -939,6 +939,21 @@
                             <p>
                               <em>Default value: </em><code>center</code>
                             </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>color</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>string</code>
+
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -983,7 +998,7 @@
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>&quot;success&quot; | &quot;warning&quot; | &quot;danger&quot; | &quot;dark&quot; | &quot;default&quot;</code>
+                                <em>Type:</em>    <code>&quot;success&quot; | &quot;warning&quot; | &quot;danger&quot; | &quot;dark&quot; | &quot;custom&quot; | &quot;default&quot;</code>
 
                               </p>
                             <p>
@@ -1017,6 +1032,21 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b> cardColor</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>cardColor:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b> cssAlign</b>
                         </td>
                     </tr>
@@ -1031,12 +1061,12 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input, ViewChild, ElementRef, OnChanges } from &#x27;@angular/core&#x27;;
 
 @Component({
     selector: &#x27;plex-card&#x27;,
     template: &#x60;
-    &lt;div class&#x3D;&quot;card bg-{{ type }}&quot; [ngClass]&#x3D;&quot;{&#x27;text-white&#x27; : type !&#x3D; &#x27;default&#x27;}&quot; [class.selected]&#x3D;&quot;selected&quot;&gt;
+    &lt;div #cardColor class&#x3D;&quot;card bg-{{ type }}&quot; [ngClass]&#x3D;&quot;{&#x27;text-white&#x27; : type !&#x3D; &#x27;default&#x27;}&quot; [class.selected]&#x3D;&quot;selected&quot;&gt;
         &lt;ng-content select&#x3D;&quot;img&quot;&gt;&lt;/ng-content&gt;
         &lt;ng-content select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;
         &lt;div class&#x3D;&quot;d-flex&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
@@ -1055,11 +1085,14 @@
     &#x60;,
 })
 
-export class PlexCardComponent {
+export class PlexCardComponent implements OnChanges {
     @Input() selected &#x3D; false;
     @Input() align: &#x27;start&#x27; | &#x27;end&#x27; | &#x27;center&#x27; &#x3D; &#x27;center&#x27;;
     @Input() size: &#x27;xs&#x27; | &#x27;md&#x27; | &#x27;lg&#x27; | &#x27;block&#x27; &#x3D; &#x27;md&#x27;;
-    @Input() type: &#x27;success&#x27; | &#x27;warning&#x27; | &#x27;danger&#x27; | &#x27;dark&#x27; | &#x27;default&#x27; &#x3D; &#x27;default&#x27;;
+    @Input() type: &#x27;success&#x27; | &#x27;warning&#x27; | &#x27;danger&#x27; | &#x27;dark&#x27; | &#x27;custom&#x27; | &#x27;default&#x27; &#x3D; &#x27;default&#x27;;
+    @Input() color: string;
+
+    @ViewChild(&#x27;cardColor&#x27;, { static: true }) cardColor: ElementRef;
 
     constructor() {
     }
@@ -1069,6 +1102,12 @@ export class PlexCardComponent {
             return &#x27;justify-content-center&#x27;;
         } else {
             return this.align &#x3D;&#x3D;&#x3D; &#x27;start&#x27; ? &#x27;justify-content-start&#x27; : &#x27;justify-content-end&#x27;;
+        }
+    }
+
+    ngOnChanges() {
+        if (this.color &amp;&amp; this.color.length &gt; 0) {
+            this.cardColor.nativeElement.style.setProperty(&#x27;--card-color&#x27;, this.color);
         }
     }
 }
