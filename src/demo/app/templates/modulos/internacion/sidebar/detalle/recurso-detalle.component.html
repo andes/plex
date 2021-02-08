@@ -1,0 +1,34 @@
+<plex-title titulo="datos de cama">
+    <plex-button type="danger" size="sm" icon="close" routerLink="/templates/internacion"></plex-button>
+</plex-title>
+<ng-container *ngIf="cama$ | async as cama">
+    <plex-detail direction="row">
+        <plex-icon name="cama"></plex-icon>
+        <plex-badge size="xs" type="{{ cama.estado === 'disponible' ? 'success' : 'warning' }}">{{ cama.estado }}
+        </plex-badge>
+        <div title>{{ cama.nombre }}</div>
+        <div subtitle>{{ cama.sector }}</div>
+        <plex-label titulo="Unidad organizativa" subtitulo="{{ cama.organizacion }}"></plex-label>
+        <plex-label titulo="Especialidad" subtitulo="{{ cama.especialidad }}"></plex-label>
+        <plex-label titulo="Sector" subtitulo="{{ cama.sector }}"></plex-label>
+        <plex-label titulo="Tipo de cama" subtitulo="{{ cama.tipo }}"></plex-label>
+        <plex-label titulo="Equipamiento" subtitulo="{{ cama.equipamiento.respirador }}"></plex-label>
+    </plex-detail>
+    <plex-title titulo="Datos del paciente" size="sm">
+        <plex-button size="sm" type="warning" icon="pencil"></plex-button>
+    </plex-title>
+    <plex-detail direction="row">
+        <img src="{{ cama.paciente.foto }}" alt="">
+        <plex-badge size="xs" type="{{ cama.paciente.estado === 'validado' ? 'success' : 'warning' }}">{{
+            cama.paciente.estado }}
+        </plex-badge>
+        <div title>{{ cama.paciente.nombre }}</div>
+        <div subtitle>{{ cama.paciente.documento }}</div>
+        <plex-label titulo="Fecha de Nacimiento" subtitulo="{{ cama.paciente.fechaNacimiento }}"></plex-label>
+        <plex-label titulo="CUIL" subtitulo="{{ cama.paciente.cuil }}"></plex-label>
+        <plex-label titulo="Edad" subtitulo="{{ cama.paciente.edad }}"></plex-label>
+        <plex-label titulo="Sexo" subtitulo="{{ cama.paciente.sexo }}"></plex-label>
+        <plex-label titulo="Género" subtitulo="{{ cama.paciente.genero }}"></plex-label>
+        <plex-label titulo="Financiador" subtitulo="{{ cama.paciente.financiador }}"></plex-label>
+    </plex-detail>
+</ng-container>

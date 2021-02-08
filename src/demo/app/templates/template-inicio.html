@@ -6,22 +6,30 @@
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
         <plex-grid class="h-100" justify="center" type="full" cols="2" size="lg">
-            <div class="card p-4 w-25" justify="center">
+            <plex-card align="center" size="md" type="dark">
                 <plex-label direction="column" size="lg" titulo="Templates por tipología"
                             subtitulo="ABMs, Asistenciales, Exploratorios" icon="view-quilt">
                 </plex-label>
                 <plex-button class="mt-4" type="info" size="md" label="Navegar template ABM"
                              routerLink="/templates/listado-sidebar">
                 </plex-button>
-            </div>
-            <div class="card p-4 w-25" justify="center">
+            </plex-card>
+            <plex-card align="center" size="md" type="dark">
                 <plex-label direction="column" size="lg" titulo="Templates por módulo" subtitulo="MPI, TOP, CITAS"
                             icon="view-grid">
                 </plex-label>
-                <plex-button class="mt-4" type="info" size="md" label="Navegar template MPI"
+                <plex-button class="mt-4" type="info" size="md" label="Maquetado de MPI"
                              routerLink="/templates/mpi-maquetado">
                 </plex-button>
-            </div>
+            </plex-card>
+            <plex-card align="center" size="md" type="dark">
+                <plex-label direction="column" size="lg" titulo="Templates por módulo" subtitulo="MPI, TOP, CITAS"
+                            icon="view-grid">
+                </plex-label>
+                <plex-button class="mt-4" type="info" size="md" label="Navegar template Internacion"
+                             routerLink="/templates/internacion">
+                </plex-button>
+            </plex-card>
         </plex-grid>
 
     </plex-layout-sidebar>

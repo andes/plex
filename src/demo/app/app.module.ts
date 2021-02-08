@@ -70,6 +70,10 @@ import { CaseDemoComponent } from './directives/componentes/case/case.component'
 import { DemoDirectivesSidebarComponent } from './directives/listado-sidebar/directives-sidebar.component';
 import { TooltipDemoComponent } from './directives/componentes/tooltip/tooltip.component';
 import { HintDemoComponent } from './directives/componentes/hint/hint.component';
+import { CamaService } from './templates/service/cama.service';
+import { InternacionComponent } from './templates/modulos/internacion/internacion';
+import { RecursosListadoComponent } from './templates/modulos/internacion/listado/recursos-listado.component';
+import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar/detalle/recurso-detalle.component';
 
 
 @NgModule({
@@ -134,7 +138,10 @@ import { HintDemoComponent } from './directives/componentes/hint/hint.component'
         DemoDirectivesSidebarComponent,
         TooltipDemoComponent,
         HintDemoComponent,
-        CaseDemoComponent
+        CaseDemoComponent,
+        InternacionComponent,
+        RecursosListadoComponent,
+        RecursoDetalleComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
@@ -149,7 +156,8 @@ import { HintDemoComponent } from './directives/componentes/hint/hint.component'
     providers: [
         appRoutingProviders,
         ServiceDemoSelect,
-        PacienteService
+        PacienteService,
+        CamaService
 
     ],
     bootstrap: [AppComponent]

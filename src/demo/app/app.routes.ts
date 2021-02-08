@@ -45,6 +45,9 @@ import { DemoDirectivesSidebarComponent } from './directives/listado-sidebar/dir
 import { TooltipDemoComponent } from './directives/componentes/tooltip/tooltip.component';
 import { HintDemoComponent } from './directives/componentes/hint/hint.component';
 import { CaseDemoComponent } from './directives/componentes/case/case.component';
+import { InternacionComponent } from './templates/modulos/internacion/internacion';
+import { RecursosListadoComponent } from './templates/modulos/internacion/listado/recursos-listado.component';
+import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar/detalle/recurso-detalle.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -90,6 +93,12 @@ const appRoutes: Routes = [
         path: 'templates/mpi-maquetado', component: MpiMaquetadoComponent,
         children: [
             { path: ':id', component: MpiDetalleComponent },
+        ]
+    },
+    {
+        path: 'templates/internacion', component: InternacionComponent,
+        children: [
+            { path: ':id', component: RecursoDetalleComponent },
         ]
     },
 
