@@ -1,0 +1,45 @@
+<plex-title titulo="Listado de recursos">
+    <plex-button type="success" size="sm" label="nuevo recurso" class="ml-2"></plex-button>
+    <plex-button type="info" size="sm" icon="format-list-checks" class="ml-2"></plex-button>
+    <plex-button type="info" size="sm" icon="view-grid" class="ml-2"></plex-button>
+    <plex-dropdown type="info" size="sm" icon="camara-foto" class="ml-2" [items]="items2"></plex-dropdown>
+    <plex-button type="info" size="sm" icon="clock" class="ml-2 mr-3"></plex-button>
+</plex-title>
+<plex-accordion *ngFor="let organizacion of organizaciones">
+    <plex-panel>
+        <div plex-accordion-title justify>
+            <section class="w-50">
+                <plex-label size="lg" case="capitalize" titulo="{{ organizacion.nombre }}"
+                            subtitulo="{{ organizacion.espacios }}" icon="hospital">
+                </plex-label>
+            </section>
+            <section justify="end" class="w-50">
+                <plex-dropdown type="info" size="sm" label="generar censo" [items]="items"></plex-dropdown>
+                <plex-button type="info" size="sm" icon="impresora" class="ml-2"></plex-button>
+            </section>
+        </div>
+        <plex-title titulo="{{ organizacion.espacios | slice:0:1 }}" size="md"></plex-title>
+        <plex-grid size="md" type="full">
+            <plex-card *ngFor="let cama of camas$ | async" selectable="true" (click)="selected(cama)" align="center">
+                <plex-badge type="{{ cama.estado === 'ocupada' ? 'warning' : 'success'}}">{{ cama.estado}}
+                </plex-badge>
+                <plex-icon size="xl" type="{{ cama.estado === 'ocupada' ? 'warning' : 'success'}}"
+                           name="{{ cama.estado === 'ocupada' ? 'cama-paciente' : 'cama'}}"></plex-icon>
+                <plex-label size="lg" titulo="{{ cama.nombre }}" subtitulo="{{ cama.sector }}"></plex-label>
+                <plex-button size="sm" type="{{ cama.estado === 'ocupada' ? 'danger' : 'success'}}"
+                             icon="{{ cama.estado === 'ocupada' ? 'menos' : 'mas'}}"></plex-button>
+                <plex-button size="sm" type="warning" icon="pencil"></plex-button>
+            </plex-card>
+        </plex-grid>
+        <plex-title titulo="{{ organizacion.espacios | slice:1:2 }}" size="md"></plex-title>
+        <plex-grid size="md" type="full">
+            <plex-card *ngFor="let cama of camas$ | async" selectable="true" (click)="selected(cama)" align="center">
+                <plex-badge type="{{ cama.estado === 'ocupada' ? 'warning' : 'success'}}">{{ cama.estado}}
+                </plex-badge>
+                <plex-icon size="xl" type="{{ cama.estado === 'ocupada' ? 'warning' : 'success'}}"
+                           name="{{ cama.estado === 'ocupada' ? 'cama-paciente' : 'cama'}}"></plex-icon>
+                <plex-label size="lg" titulo="{{ cama.nombre }}" subtitulo="{{ cama.sector }}"></plex-label>
+            </plex-card>
+        </plex-grid>
+    </plex-panel>
+</plex-accordion>

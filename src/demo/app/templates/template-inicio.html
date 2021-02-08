@@ -5,23 +5,16 @@
         </section>
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
+
         <plex-grid class="h-100" justify="center" type="full" cols="2" size="lg">
-            <div class="card p-4 w-25" justify="center">
-                <plex-label direction="column" size="lg" titulo="Templates por tipología"
-                            subtitulo="ABMs, Asistenciales, Exploratorios" icon="view-quilt">
+            <plex-card *ngFor="let temp of templates" mode="{{ temp.mode }}" selectable="true" type="{{ temp.type }}"
+                       (click)="irTemplate(temp.url)" aligned="center" size="md">
+                <plex-label direction="column" size="lg" titulo="{{ temp.titulo }}" subtitulo="{{ temp.subtitulo }}"
+                            icon="{{ temp.icon }}">
                 </plex-label>
-                <plex-button class="mt-4" type="info" size="md" label="Navegar template ABM"
-                             routerLink="/templates/listado-sidebar">
+                <plex-button class="mt-4" type="info" size="md" label="Navegar template" routerLink="{{ temp.url }}">
                 </plex-button>
-            </div>
-            <div class="card p-4 w-25" justify="center">
-                <plex-label direction="column" size="lg" titulo="Templates por módulo" subtitulo="MPI, TOP, CITAS"
-                            icon="view-grid">
-                </plex-label>
-                <plex-button class="mt-4" type="info" size="md" label="Navegar template MPI"
-                             routerLink="/templates/mpi-maquetado">
-                </plex-button>
-            </div>
+            </plex-card>
         </plex-grid>
 
     </plex-layout-sidebar>
