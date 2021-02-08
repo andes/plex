@@ -3,7 +3,7 @@ import { AgendaService } from './../../service/agenda.service';
 import { Agenda } from './../../service/agenda';
 import { Plex } from './../../../../../lib/core/service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs-compat';
+import { Observable } from 'rxjs';
 import { EventEmitter, Output } from '@angular/core';
 
 @Component({
