@@ -90,7 +90,7 @@
         "@types/node": "^12.11.1",
         "codelyzer": "^5.1.2",
         "commitlint-circle": "^1.0.0",
-        "cypress": "^4.6.0",
+        "cypress": "^6.5.0",
         "gh-pages": "^2.2.0",
         "husky": "^4.2.3",
         "jasmine-core": "^3.5.0",
