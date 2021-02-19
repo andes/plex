@@ -99,7 +99,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
 
     // Actualización Modelo -> Vista
     writeValue(value: any) {
-        this.renderer.setProperty(this.ref.nativeElement, 'value', value);
+        this.renderer.setProperty(this.ref.nativeElement, 'value', typeof value === 'undefined' ? '' : value);
     }
 
     public hasDanger() {
