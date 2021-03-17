@@ -26,6 +26,19 @@ plex-wrapper  {
                 width: 100%;
             }
         }
+
+        // Alinea elementos en formulario
+        > plex-bool {
+            display: flex;
+            align-items: center;
+            justify-content: center;        
+        }
+        
+        > plex-button, plex-dropdown, plex-radio {
+            display: flex;
+            align-items: flex-end;
+        }
+
     }
 
     .btn-toggle {
@@ -83,27 +96,15 @@ plex-wrapper  {
         }
     }
 
-    // Alinea elementos en formulario
-    plex-bool {
-        display: flex;
-        align-items: center;
-        justify-content: center;        
-    }
-    
-    plex-button, plex-dropdown, plex-radio {
-        display: flex;
-        align-items: flex-end;
-    }
-
     // Componentes de ancho variable
     @media screen and (max-width: 768px) {
-        // Para que los elementos con directiva 'columns' no restringan la grilla
+        // Para que los elementos con directiva 'grow' no restringan la grilla
         plex-datetime, plex-phone, plex-text, plex-float {
             flex: 1!important;
         }
     }
     
-    // Directiva Columns
+    // Directiva Grow
     .grow-auto {
         flex: auto;
     }
