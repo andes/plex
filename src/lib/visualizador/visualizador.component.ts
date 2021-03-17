@@ -11,7 +11,7 @@ export type PlexVisualizadorItem = FileObject | string;
 @Component({
     selector: 'plex-visualizador',
     template: `
-    <div *ngIf="opened" class="lightbox hover" (click)="close()">
+    <div *ngIf="opened" class="lightbox hover" (click)="close()" justify>
         <plex-icon (click)="previous();$event.stopPropagation();" type="info" size="xl" name="chevron-double-left" class="parpadeo"></plex-icon>
 
 
