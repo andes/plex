@@ -1,6 +1,6 @@
 <plex-layout main="8">
     <plex-layout-main>
-        <plex-table [columns]="columns" #table="plTable">
+        <plex-table [columns]="columns" #table="plTable" (scroll)="onScroll()" [offset]="0">
             <plex-title titulo="HOLA">
                 <plex-table-columns>
                 </plex-table-columns>

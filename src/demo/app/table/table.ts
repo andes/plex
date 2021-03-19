@@ -113,4 +113,9 @@ export class TableDemoComponent {
     constructor(
     ) { }
 
+
+    onScroll() {
+        // tslint:disable-next-line:no-console
+        console.log('VIRTUAL SCROLL');
+    }
 }

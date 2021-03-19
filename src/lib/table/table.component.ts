@@ -1,15 +1,16 @@
-import { Component, EventEmitter, Input, OnChanges, Optional, Output, Self, SimpleChanges } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
+import { Observable } from 'rxjs';
 import { PlexColumnDirective } from './columns.directive';
-import { PlexTableColumnsComponent } from './table-column-dropdown.component';
-import { IPlexColumnDisplay, IPlexSortData, IPlexTableColumns } from './table.interfaces';
+import { IPlexTableColumns } from './table.interfaces';
 
 
 @Component({
     selector: 'plex-table',
     template: `
-    <section class="d-flex flex-column">
+    <section class="d-flex flex-column"
+             infiniteScroll [infiniteScrollDistance]="1" (scrolled)="onScroll()" [scrollWindow]="false"
+             [style.overflow-y]="_height ? 'scroll' : null" [style.height]="_height"
+    >
         <ng-content select="plex-title"></ng-content>
         <table>
             <thead *ngIf="vm$ | async as vm">
@@ -30,7 +31,7 @@ import { IPlexColumnDisplay, IPlexSortData, IPlexTableColumns } from './table.in
                     </ng-container>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 <ng-content select="tr"></ng-content>
             </tbody>
         </table>
@@ -40,7 +41,33 @@ import { IPlexColumnDisplay, IPlexSortData, IPlexTableColumns } from './table.in
 
 export class PlexTableComponent {
 
+    /**
+     * Variable auxiliar para calcular la altura del elemento
+     * @ignore
+     */
+
+    public _height: string;
+
+    /**
+     * Indica la altura del listado respecto a su contenedor
+     */
+
+    @Input() set height(value: number) {
+        this._height = value + 'px';
+    }
+
+    /**
+     * Cantidad de pixeles a reducir de la pantalla completa.
+     */
+    @Input() set offset(value: number) {
+        if (typeof value === 'number') {
+            this._height = `calc(100% - ${value}px)`;
+        }
+    }
+
     @Output() sort = new EventEmitter<IPlexTableColumns>();
+
+    @Output() scroll = new EventEmitter<void>();
 
     public vm$: Observable<any>;
 
@@ -56,5 +83,9 @@ export class PlexTableComponent {
     onColumnClick(column: IPlexTableColumns) {
         this.plexColumns.onColumnClick(column);
         this.sort.emit(column);
+    }
+
+    public onScroll() {
+        this.scroll.emit();
     }
 }
