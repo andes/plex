@@ -84,6 +84,7 @@ import { PlexTableColumnsComponent } from './table/table-column-dropdown.compone
 import { PlexTableColDirective } from './table/display-column.directive';
 import { PlexTableSortPipe } from './table/table-sort.pipe';
 import { PlexColumnDirective } from './table/columns.directive';
+import { PlexVisualizadorService } from './core/plex-visualizador.service';
 
 @NgModule({
     imports: [
@@ -255,6 +256,7 @@ export class PlexModule {
             ngModule: PlexModule,
             providers: [
                 Plex,
+                PlexVisualizadorService,
                 {
                     provide: NETWORK_LOADING,
                     useValue: networkLoading

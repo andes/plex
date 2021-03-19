@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
+import { PlexVisualizadorService } from '../core/plex-visualizador.service';
 import { Plex } from './../core/service';
 
 @Component({
@@ -82,6 +83,16 @@ import { Plex } from './../core/service';
                 <!-- Componente de notificaciones Toast -->
                 <simple-notifications></simple-notifications>
 
+                <ng-container *ngIf="plexVisualizador.state$ | async as files">
+                    <plex-visualizador
+                        [opened]="true"
+                        [files]="files.documentos"
+                        [index]="files.index"
+                        (closed)="plexVisualizador.close()"
+                        (click)="plexVisualizador.click()">
+                    </plex-visualizador>
+                </ng-container>
+
                 <!-- Componente que muestra un ribbon indicando si se está en un entorno de desarrollo/demo -->
                 <ng-content select="plex-ribbon"></ng-content>
 
@@ -132,7 +143,11 @@ export class PlexAppComponent implements OnInit {
         });
     }
 
-    constructor(public plex: Plex, private renderer: Renderer2) {
+    constructor(
+        public plex: Plex,
+        private renderer: Renderer2,
+        public plexVisualizador: PlexVisualizadorService
+    ) {
         this.initAppStatusCheck();
     }
 
