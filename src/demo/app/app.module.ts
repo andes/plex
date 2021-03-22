@@ -149,8 +149,7 @@ import { HintDemoComponent } from './directives/componentes/hint/hint.component'
     providers: [
         appRoutingProviders,
         ServiceDemoSelect,
-        PacienteService
-
+        PacienteService,
     ],
     bootstrap: [AppComponent]
 })
