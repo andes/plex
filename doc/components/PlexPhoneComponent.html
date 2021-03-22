@@ -316,6 +316,9 @@
                                     <a href="../injectables/Plex.html" >Plex</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/PlexVisualizadorService.html" >PlexVisualizadorService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PushNotificationsService.html" >PushNotificationsService</a>
                                 </li>
                         </ul>
@@ -737,6 +740,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/Plex.html" >Plex</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PlexVisualizadorService.html" >PlexVisualizadorService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PushNotificationsService.html" >PushNotificationsService</a>
@@ -1403,7 +1409,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
 
     // Actualización Modelo -&gt; Vista
     writeValue(value: any) {
-        this.renderer.setProperty(this.ref.nativeElement, &#x27;value&#x27;, value);
+        this.renderer.setProperty(this.ref.nativeElement, &#x27;value&#x27;, typeof value &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? &#x27;&#x27; : value);
     }
 
     public hasDanger() {

@@ -316,6 +316,9 @@
                                     <a href="../injectables/Plex.html" >Plex</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/PlexVisualizadorService.html" >PlexVisualizadorService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PushNotificationsService.html" >PushNotificationsService</a>
                                 </li>
                         </ul>
@@ -739,6 +742,9 @@
                                            <a href="../injectables/Plex.html" >Plex</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/PlexVisualizadorService.html" >PlexVisualizadorService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/PushNotificationsService.html" >PushNotificationsService</a>
                                        </li>
                                </ul>
@@ -914,7 +920,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;*ngIf&#x3D;&quot;opened&quot;&nbsp;class&#x3D;&quot;lightbox&nbsp;hover&quot;&nbsp;(click)&#x3D;&quot;close()&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;(click)&#x3D;&quot;previous();$event.stopPropagation();&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;size&#x3D;&quot;xl&quot;&nbsp;name&#x3D;&quot;chevron-double-left&quot;&nbsp;class&#x3D;&quot;parpadeo&quot;&gt;&lt;/plex-icon&gt;<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;[src]&#x3D;&quot;imageSrc&quot;&nbsp;alt&#x3D;&quot;&quot;&nbsp;*ngIf&#x3D;&quot;isImage&quot;&nbsp;(click)&#x3D;&quot;imageClick();$event.stopPropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;[href]&#x3D;&quot;imageSrc&quot;&nbsp;target&#x3D;&quot;_blank&quot;&nbsp;*ngIf&#x3D;&quot;!isImage&quot;&nbsp;class&#x3D;&quot;adjunto&nbsp;m-1&nbsp;p-2&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;imageClick();$event.stopPropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;desc&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;(click)&#x3D;&quot;next();$event.stopPropagation();&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;size&#x3D;&quot;xl&quot;&nbsp;name&#x3D;&quot;chevron-double-right&quot;&nbsp;class&#x3D;&quot;parpadeo&quot;&gt;&lt;/plex-icon&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;*ngIf&#x3D;&quot;opened&quot;&nbsp;class&#x3D;&quot;lightbox&nbsp;hover&quot;&nbsp;(click)&#x3D;&quot;close()&quot;&nbsp;justify&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;(click)&#x3D;&quot;previous();$event.stopPropagation();&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;size&#x3D;&quot;xl&quot;&nbsp;name&#x3D;&quot;chevron-double-left&quot;&nbsp;class&#x3D;&quot;parpadeo&quot;&gt;&lt;/plex-icon&gt;<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;[src]&#x3D;&quot;imageSrc&quot;&nbsp;alt&#x3D;&quot;&quot;&nbsp;*ngIf&#x3D;&quot;isImage&quot;&nbsp;(click)&#x3D;&quot;imageClick();$event.stopPropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;[href]&#x3D;&quot;imageSrc&quot;&nbsp;target&#x3D;&quot;_blank&quot;&nbsp;*ngIf&#x3D;&quot;!isImage&quot;&nbsp;class&#x3D;&quot;adjunto&nbsp;m-1&nbsp;p-2&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;imageClick();$event.stopPropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;desc&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;(click)&#x3D;&quot;next();$event.stopPropagation();&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;size&#x3D;&quot;xl&quot;&nbsp;name&#x3D;&quot;chevron-double-right&quot;&nbsp;class&#x3D;&quot;parpadeo&quot;&gt;&lt;/plex-icon&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -938,6 +944,34 @@
                                 <em>Type:</em>    <code><a href="../injectables/Plex.html" target="_self" >PlexVisualizadorItem[]</a></code>
 
                               </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>index</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>0</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>opened</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>false</code>
+                            </p>
                         </td>
                     </tr>
                 </tbody>
@@ -1281,26 +1315,6 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> index</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>index:     <code>number</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>0</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
                             <b> isImage</b>
                         </td>
                     </tr>
@@ -1310,26 +1324,6 @@
     </bcode>
                         </td>
                     </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> opened</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>opened:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>false</code>
-                            </td>
-                        </tr>
                 </tbody>
             </table>
     </section>
@@ -1348,7 +1342,7 @@ export type PlexVisualizadorItem &#x3D; FileObject | string;
 @Component({
     selector: &#x27;plex-visualizador&#x27;,
     template: &#x60;
-    &lt;div *ngIf&#x3D;&quot;opened&quot; class&#x3D;&quot;lightbox hover&quot; (click)&#x3D;&quot;close()&quot;&gt;
+    &lt;div *ngIf&#x3D;&quot;opened&quot; class&#x3D;&quot;lightbox hover&quot; (click)&#x3D;&quot;close()&quot; justify&gt;
         &lt;plex-icon (click)&#x3D;&quot;previous();$event.stopPropagation();&quot; type&#x3D;&quot;info&quot; size&#x3D;&quot;xl&quot; name&#x3D;&quot;chevron-double-left&quot; class&#x3D;&quot;parpadeo&quot;&gt;&lt;/plex-icon&gt;
 
 
@@ -1389,9 +1383,9 @@ export class PlexVisualizadorComponent {
 
     @Output() click &#x3D; new EventEmitter&lt;any&gt;();
 
-    public opened &#x3D; false;
+    @Input() public opened &#x3D; false;
 
-    public index &#x3D; 0;
+    @Input() public index &#x3D; 0;
 
     private imagenes &#x3D; [&#x27;bmp&#x27;, &#x27;jpg&#x27;, &#x27;jpeg&#x27;, &#x27;gif&#x27;, &#x27;png&#x27;, &#x27;tif&#x27;, &#x27;tiff&#x27;, &#x27;raw&#x27;];
 

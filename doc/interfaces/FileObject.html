@@ -316,6 +316,9 @@
                                     <a href="../injectables/Plex.html" >Plex</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/PlexVisualizadorService.html" >PlexVisualizadorService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PushNotificationsService.html" >PushNotificationsService</a>
                                 </li>
                         </ul>
@@ -739,6 +742,9 @@
                                            <a href="../injectables/Plex.html" >Plex</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/PlexVisualizadorService.html" >PlexVisualizadorService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/PushNotificationsService.html" >PushNotificationsService</a>
                                        </li>
                                </ul>
@@ -966,7 +972,7 @@ export type PlexVisualizadorItem &#x3D; FileObject | string;
 @Component({
     selector: &#x27;plex-visualizador&#x27;,
     template: &#x60;
-    &lt;div *ngIf&#x3D;&quot;opened&quot; class&#x3D;&quot;lightbox hover&quot; (click)&#x3D;&quot;close()&quot;&gt;
+    &lt;div *ngIf&#x3D;&quot;opened&quot; class&#x3D;&quot;lightbox hover&quot; (click)&#x3D;&quot;close()&quot; justify&gt;
         &lt;plex-icon (click)&#x3D;&quot;previous();$event.stopPropagation();&quot; type&#x3D;&quot;info&quot; size&#x3D;&quot;xl&quot; name&#x3D;&quot;chevron-double-left&quot; class&#x3D;&quot;parpadeo&quot;&gt;&lt;/plex-icon&gt;
 
 
@@ -1007,9 +1013,9 @@ export class PlexVisualizadorComponent {
 
     @Output() click &#x3D; new EventEmitter&lt;any&gt;();
 
-    public opened &#x3D; false;
+    @Input() public opened &#x3D; false;
 
-    public index &#x3D; 0;
+    @Input() public index &#x3D; 0;
 
     private imagenes &#x3D; [&#x27;bmp&#x27;, &#x27;jpg&#x27;, &#x27;jpeg&#x27;, &#x27;gif&#x27;, &#x27;png&#x27;, &#x27;tif&#x27;, &#x27;tiff&#x27;, &#x27;raw&#x27;];
 

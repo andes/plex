@@ -282,7 +282,7 @@
                                     <a href="../directives/ResponsiveDirective.html" >ResponsiveDirective</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../directives/SpanDirective.html"  class="active" >SpanDirective</a>
+                                    <a href="../directives/SpanDirective.html" >SpanDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/TabDirective.html" >TabDirective</a>
@@ -316,7 +316,7 @@
                                     <a href="../injectables/Plex.html" >Plex</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/PlexVisualizadorService.html" >PlexVisualizadorService</a>
+                                    <a href="../injectables/PlexVisualizadorService.html"  class="active" >PlexVisualizadorService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/PushNotificationsService.html" >PushNotificationsService</a>
@@ -708,7 +708,7 @@
                                            <a href="../directives/ResponsiveDirective.html" >ResponsiveDirective</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../directives/SpanDirective.html"  class="active" >SpanDirective</a>
+                                           <a href="../directives/SpanDirective.html" >SpanDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/TabDirective.html" >TabDirective</a>
@@ -742,7 +742,7 @@
                                            <a href="../injectables/Plex.html" >Plex</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/PlexVisualizadorService.html" >PlexVisualizadorService</a>
+                                           <a href="../injectables/PlexVisualizadorService.html"  class="active" >PlexVisualizadorService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PushNotificationsService.html" >PushNotificationsService</a>
@@ -866,14 +866,15 @@
                    
                    </nav>
                </div>
-               <div class="content directive">
+               <div class="content injectable">
                    <div class="content-data">
 
 
 
+
 <ol class="breadcrumb">
-  <li>Directives</li>
-  <li>SpanDirective</li>
+  <li>Injectables</li>
+  <li>PlexVisualizadorService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -891,49 +892,114 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/lib/directives/span.directive.ts</code>
+            <code>src/lib/core/plex-visualizador.service.ts</code>
         </p>
 
 
 
-        <section>
-            <h3>Metadata</h3>
-            <table class="table table-sm table-hover">
-                <tbody>
-
-                    <tr>
-                        <td class="col-md-3">selector</td>
-                        <td class="col-md-9"><code>[span]</code></td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </section>
-
             <section>
-                <h3 id="inputs">Inputs</h3>
+                <h3 id="methods">Methods</h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
-                                <td class="col-md-2">
-                                    <code>span</code>
+                                <td class="col-md-4">
+                                    <b> open</b>
                                 </td>
-                                <td class="col-md-10">
-                                      <p>
-                                        <em>Type:</em>    <code>&quot;auto&quot; | &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | &quot;5&quot; | &quot;6&quot; | &quot;7&quot; | &quot;8&quot; | &quot;9&quot; | &quot;10&quot; | &quot;11&quot; | &quot;12&quot; | &quot;full&quot;</code>
-
-                                      </p>
-                                    <p>
-                                      <em>Default value: </em><code>auto</code>
-                                    </p>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>open(files: <a href="../injectables/Plex.html" >PlexVisualizadorItem[]</a>, index: number)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Abre plex-visualizador</p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>files</b>
+                                                            </div>
+                                                            <div>
+                                                                <p>Archivos a renderizar</p>
+            
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>index</b>
+                                                            </div>
+                                                            <div>
+                                                                <p>Indice a mostrar</p>
+            
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> close</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>close()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> click</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>click()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
             </section>
-
-
-
 
             <section>
                 <h3 id="inputs">Properties</h3>
@@ -941,12 +1007,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> auto</b>
+                                    <b><span class="modifier">Public</span> click$</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>auto:     <code>boolean</code>
+                                    <span class="modifier-icon fa fa-circle"></span><code>click$:     <code>Subject&lt;void&gt;</code>
             </bcode>
                                 </td>
                             </tr>
@@ -956,12 +1022,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> full</b>
+                                    <b><span class="modifier">Public</span> close$</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>full:     <code>boolean</code>
+                                    <span class="modifier-icon fa fa-circle"></span><code>close$:     <code>Subject&lt;void&gt;</code>
             </bcode>
                                 </td>
                             </tr>
@@ -971,255 +1037,60 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> span1</b>
+                                    <b><span class="modifier">Public</span> state$</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>span1:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span10</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span10:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span11</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span11:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span12</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span12:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span2</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span2:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span3</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span3:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span4</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span4:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span5</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span5:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span6</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span6:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span7</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span7:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span8</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span8:     <code>boolean</code>
-            </bcode>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> span9</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>span9:     <code>boolean</code>
+                                    <span class="modifier-icon fa fa-circle"></span><code>state$:     <code><a href="../injectables/Plex.html" target="_self" >Subject&lt;{ documentos: PlexVisualizadorItem[]; index: number; }&gt;</a></code>
             </bcode>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
             </section>
-
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { Directive, Input, HostBinding } from &#x27;@angular/core&#x27;;
+        <pre><code class="hljs javascript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Subject } from &#x27;rxjs&#x27;;
+import { PlexVisualizadorItem } from &#x27;../visualizador/visualizador.component&#x27;;
 
-@Directive({
-    // tslint:disable-next-line:directive-selector
-    selector: &#x27;[span]&#x27;
-})
-export class SpanDirective {
-    @Input() span: &#x27;auto&#x27; | &#x27;1&#x27; | &#x27;2&#x27; | &#x27;3&#x27; | &#x27;4&#x27; | &#x27;5&#x27; | &#x27;6&#x27; | &#x27;7&#x27; | &#x27;8&#x27; | &#x27;9&#x27; | &#x27;10&#x27; | &#x27;11&#x27; | &#x27;12&#x27; | &#x27;full&#x27; &#x3D; &#x27;auto&#x27;;
+@Injectable()
+export class PlexVisualizadorService {
 
-    @HostBinding(&#x27;class.grid-column-full&#x27;) get full() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;full&#x27;;
+    public state$ &#x3D; new Subject&lt;{ documentos: PlexVisualizadorItem[], index: number }&gt;();
+
+    public close$: Subject&lt;void&gt;;
+
+    public click$: Subject&lt;void&gt;;
+
+    /**
+     * Abre plex-visualizador
+     * @param files Archivos a renderizar
+     * @param index Indice a mostrar
+     */
+    open(files: PlexVisualizadorItem[], index: number &#x3D; 0) {
+        this.state$.next({ documentos: files, index });
+
+        this.close$ &#x3D; new Subject();
+        this.click$ &#x3D; new Subject();
     }
 
-    @HostBinding(&#x27;class.grid-column-auto&#x27;) get auto() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;auto&#x27;;
+    close() {
+        this.state$.next(null);
+        this.close$.next();
+        this.close$.complete();
+        this.click$.complete();
     }
 
-    @HostBinding(&#x27;class.grid-column-span-1&#x27;) get span1() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;1&#x27;;
+    click() {
+        this.click$.next();
     }
 
-    @HostBinding(&#x27;class.grid-column-span-2&#x27;) get span2() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;2&#x27;;
-    }
-
-    @HostBinding(&#x27;class.grid-column-span-3&#x27;) get span3() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;3&#x27;;
-    }
-
-    @HostBinding(&#x27;class.grid-column-span-4&#x27;) get span4() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;4&#x27;;
-    }
-
-    @HostBinding(&#x27;class.grid-column-span-5&#x27;) get span5() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;5&#x27;;
-    }
-
-    @HostBinding(&#x27;class.grid-column-span-6&#x27;) get span6() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;6&#x27;;
-    }
-
-    @HostBinding(&#x27;class.grid-column-span-7&#x27;) get span7() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;7&#x27;;
-    }
-
-    @HostBinding(&#x27;class.grid-column-span-8&#x27;) get span8() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;8&#x27;;
-    }
-
-    @HostBinding(&#x27;class.grid-column-span-9&#x27;) get span9() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;9&#x27;;
-    }
-
-    @HostBinding(&#x27;class.grid-column-span-10&#x27;) get span10() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;10&#x27;;
-    }
-
-    @HostBinding(&#x27;class.grid-column-span-11&#x27;) get span11() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;11&#x27;;
-    }
-
-    @HostBinding(&#x27;class.grid-column-span-12&#x27;) get span12() {
-        return this.span &#x3D;&#x3D;&#x3D; &#x27;12&#x27;;
-    }
 }
 </code></pre>
     </div>
 </div>
-
 
 
 

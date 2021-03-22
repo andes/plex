@@ -316,6 +316,9 @@
                                     <a href="../injectables/Plex.html" >Plex</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/PlexVisualizadorService.html" >PlexVisualizadorService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PushNotificationsService.html" >PushNotificationsService</a>
                                 </li>
                         </ul>
@@ -737,6 +740,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/Plex.html" >Plex</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PlexVisualizadorService.html" >PlexVisualizadorService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PushNotificationsService.html" >PushNotificationsService</a>
@@ -1377,6 +1383,7 @@ import { PlexTableColumnsComponent } from &#x27;./table/table-column-dropdown.co
 import { PlexTableColDirective } from &#x27;./table/display-column.directive&#x27;;
 import { PlexTableSortPipe } from &#x27;./table/table-sort.pipe&#x27;;
 import { PlexColumnDirective } from &#x27;./table/columns.directive&#x27;;
+import { PlexVisualizadorService } from &#x27;./core/plex-visualizador.service&#x27;;
 
 @NgModule({
     imports: [
@@ -1548,6 +1555,7 @@ export class PlexModule {
             ngModule: PlexModule,
             providers: [
                 Plex,
+                PlexVisualizadorService,
                 {
                     provide: NETWORK_LOADING,
                     useValue: networkLoading
