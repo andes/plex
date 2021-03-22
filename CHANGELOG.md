@@ -1,3 +1,10 @@
+## [7.14.1](https://github.com/andes/plex/compare/v7.14.0...v7.14.1) (2021-03-22)
+
+
+### Bug Fixes
+
+* **plex-visualizador:** exporta servicio ([6c5adad](https://github.com/andes/plex/commit/6c5adad698c3242daada9707c243e25d1a92b674))
+
 # [7.14.0](https://github.com/andes/plex/compare/v7.13.0...v7.14.0) (2021-03-22)
 
 
