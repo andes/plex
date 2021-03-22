@@ -1,4 +1,5 @@
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
+import { PlexVisualizadorService } from '../../../lib/core/plex-visualizador.service';
 import { Plex } from '../../../lib/core/service';
 import { HeaderPacienteComponent } from '../header-paciente/header-paciente.component';
 
@@ -11,14 +12,24 @@ export class HomeDemoComponent implements OnInit {
     public data = [];
     documento = '45979360';
 
-    constructor(public plex: Plex, private ref: ChangeDetectorRef) {
+    constructor(
+        public plex: Plex,
+        private ref: ChangeDetectorRef,
+        public plexVisualizador: PlexVisualizadorService
+    ) {
         this.plex.updateTitle('Bienvenido a Plex');
         this.loadData();
     }
 
     ngOnInit() {
         this.ref.detectChanges();
+
     }
+
+    openVisualizador() {
+        this.plexVisualizador.open(this.imagenes, 3);
+    }
+
     public imagenes = [
         'https://www.prodapt.com/wp-content/uploads/user-icon.png',
         { url: 'https://someurl.to.pdf', ext: 'pdf' },

@@ -21,9 +21,8 @@
             </plex-help>
         </plex-title>
         <div justify="end">
-            <plex-button type="success" label="Restaurar usuario" size="sm" (click)="viewer.open(1)">
+            <plex-button type="success" label="Restaurar usuario" size="sm" (click)="openVisualizador()">
             </plex-button>
-            <plex-visualizador [files]="imagenes" #viewer (click)="viewer.close()"></plex-visualizador>
         </div>
         <div class="row mt-3">
             <div class="col">

@@ -52,9 +52,9 @@ export class PlexVisualizadorComponent {
 
     @Output() click = new EventEmitter<any>();
 
-    public opened = false;
+    @Input() public opened = false;
 
-    public index = 0;
+    @Input() public index = 0;
 
     private imagenes = ['bmp', 'jpg', 'jpeg', 'gif', 'png', 'tif', 'tiff', 'raw'];
 
