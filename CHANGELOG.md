@@ -1,3 +1,18 @@
+# [7.14.0](https://github.com/andes/plex/compare/v7.13.0...v7.14.0) (2021-03-22)
+
+
+### Bug Fixes
+
+* **plex-phone:** evita "undefined" sin model ([#266](https://github.com/andes/plex/issues/266)) ([0ee7d1a](https://github.com/andes/plex/commit/0ee7d1ab6caab29ca4254aa5dc7ce15be3ab9018))
+* **plex-visualizador:** corrige posicion flechas prev/next ([#268](https://github.com/andes/plex/issues/268)) ([197fe1e](https://github.com/andes/plex/commit/197fe1ea0f932e5823e47e9de57cf78cd88ad2ad))
+* **plex-wrapper:** corrige herencia indeseada de propiedades ([#267](https://github.com/andes/plex/issues/267)) ([8d47eb8](https://github.com/andes/plex/commit/8d47eb89fe7f15bcc93783840783091cdeedcb26))
+
+
+### Features
+
+* **table:** implementa infinite scroll ([#269](https://github.com/andes/plex/issues/269)) ([638aaea](https://github.com/andes/plex/commit/638aaea9a183499f21abd538672fae7057ef4f98))
+* **visualizador:** injecta el visualizador de forma global ([#270](https://github.com/andes/plex/issues/270)) ([0103ceb](https://github.com/andes/plex/commit/0103ceb38ef7f4ece6b9359c029950449546876d))
+
 # [7.13.0](https://github.com/andes/plex/compare/v7.12.1...v7.13.0) (2021-02-03)
 
 
