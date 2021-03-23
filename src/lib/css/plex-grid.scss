@@ -1,117 +1,124 @@
-plex-grid {	
-    display: grid;	
-    grid-gap: .5rem;	
-    grid-auto-flow: dense; 	
-    flex: 1 20em;	
-    align-self: center;	
-    margin-top: .5rem;	
-    text-transform: capitalize;
-    grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
-    grid-gap: .5rem;
-
-    plex-card {
-        img {
-            object-fit: contain!important;
-            max-height: var(--rowSize);
+plex-grid {
+   > section {
+        display: grid;	
+        grid-gap: .5rem;	
+        grid-auto-flow: dense; 	
+        flex: 1 20em;	
+        align-self: center;	
+        margin-top: .5rem;	
+        text-transform: capitalize;
+        grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
+        grid-gap: .5rem;
+    
+        plex-card {
+            img {
+                object-fit: contain!important;
+                max-height: var(--rowSize);
+            }
         }
-    }
-
-    // labels 
-    span {	
-        white-space: wrap;	
-        text-overflow: ellipsis;	
-        overflow: hidden;	
-    }	
-
-    img {
-        object-fit: cover;
-        width: 100%;
-        height: var(--colSize);
-    }
     
-    // types
-    &[type=full] {
-        --type: auto-fit;
-    }
+        // labels 
+        span {	
+            white-space: wrap;	
+            text-overflow: ellipsis;	
+            overflow: hidden;	
+        }	
     
-    &[type=auto] {
-        --type: auto-fill;
-    }
-
-    // columnas fijas
-    &[cols="2"] {
-            grid-template-columns: repeat(2, 1fr)!important;	
-    }
-
-    &[cols="3"] {
-            grid-template-columns: repeat(3, 1fr)!important;	
-    }
-
-    &[cols="4"] {
-            grid-template-columns: repeat(4, 1fr)!important;
-    }
-
-    &[cols="5"] {
-            grid-template-columns: repeat(5, 1fr)!important;	
-    }
-
-    &[cols="6"] {
-            grid-template-columns: repeat(6, 1fr)!important;
-    }
-
-    &[cols="7"] {
-            grid-template-columns: repeat(7, 1fr)!important;	
-    }
-
-    &[cols="8"] {
-            grid-template-columns: repeat(8, 1fr)!important;	
-    }
-
-    &[cols="9"] {
-            grid-template-columns: repeat(9, 1fr)!important;
-    }
-
-    &[cols="10"] {
-            grid-template-columns: repeat(10, 1fr)!important;	
-    }
-
-    &[cols="11"] {
-            grid-template-columns: repeat(11, 1fr)!important;
-    }
-
-    &[cols="12"] {
-            grid-template-columns: repeat(12, 1fr)!important;
-    }
-
-    // sizes
-    &[size=xs] {	
-        --colSize: 2.5rem;
-        --rowSize: 2.5rem;
-    }
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: var(--colSize);
+        }
+        
+        // types
+        &.type-full {
+            --type: auto-fit;
+        }
+        
+        &.type-auto {
+            --type: auto-fill;
+        }
     
-    &[size=sm] {	
-        --colSize: 5rem;
-        --rowSize: 5rem;
-    }	
+        // columnas fijas
+        &.cols-2 {
+                grid-template-columns: repeat(2, 1fr)!important;	
+        }
     
-    &[size=md] {
-        --colSize: 7.5rem;
-        --rowSize: 7.5rem;
-    }
+        &.cols-3 {
+                grid-template-columns: repeat(3, 1fr)!important;	
+        }
     
-    &[size=lg] {
-        --colSize: 10rem;
-        --rowSize: 10rem;
-    }
+        &.cols-4 {
+                grid-template-columns: repeat(4, 1fr)!important;
+        }
     
-    &[size=xl] {	
-        --colSize: 15rem;
-        --rowSize: 15rem;
-    }	
-
-    // gaps
-    &[noGap] {
-        grid-gap: 0!important;
+        &.cols-5 {
+                grid-template-columns: repeat(5, 1fr)!important;	
+        }
+    
+        &.cols-6 {
+                grid-template-columns: repeat(6, 1fr)!important;
+        }
+    
+        &.cols-7 {
+                grid-template-columns: repeat(7, 1fr)!important;	
+        }
+    
+        &.cols-8 {
+                grid-template-columns: repeat(8, 1fr)!important;	
+        }
+    
+        &.cols-9 {
+                grid-template-columns: repeat(9, 1fr)!important;
+        }
+    
+        &.cols-10 {
+                grid-template-columns: repeat(10, 1fr)!important;	
+        }
+    
+        &.cols-11 {
+                grid-template-columns: repeat(11, 1fr)!important;
+        }
+    
+        &.cols-12 {
+                grid-template-columns: repeat(12, 1fr)!important;
+        }
+    
+        // sizes
+        &.size-xs {	
+            --colSize: 2.5rem;
+            --rowSize: 2.5rem;
+        }
+        
+        &.size-sm {	
+            --colSize: 5rem;
+            --rowSize: 5rem;
+        }	
+        
+        &.size-md {
+            --colSize: 7.5rem;
+            --rowSize: 7.5rem;
+        }
+        
+        &.size-lg {
+            --colSize: 10rem;
+            --rowSize: 10rem;
+        }
+        
+        &.size-xl {	
+            --colSize: 15rem;
+            --rowSize: 15rem;
+        }	
+        
+        &.size-auto {	
+            --colSize: auto;
+            --rowSize: auto;
+        }	
+    
+        // gaps
+        &[noGap] {
+            grid-gap: 0!important;
+        }
     }
 } 
 
