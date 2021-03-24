@@ -4,7 +4,7 @@ import { PlexLabelComponent } from '../label/label.component';
 @Component({
     selector: 'plex-grid',
     template: `
-            <section class="cols-{{ cols }} grid-column-span-{{ span }} size-{{ size }} type-{{ type }}" responsive>
+            <section responsive class="cols-{{ cols }} size-{{ size }} type-{{ type }} cols-sm-{{ colSm }} cols-md-{{ colMd }} cols-lg-{{ colLg }}">
                <ng-content></ng-content>
             </section>
     `,
@@ -16,8 +16,6 @@ export class PlexGridComponent implements AfterViewChecked {
     @Input() size: 'auto' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'auto';
 
     @Input() cols: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
-    @Input() span: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
-
 
     @Input() colSm: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
     @Input() colMd: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
