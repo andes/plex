@@ -6,7 +6,6 @@ plex-grid {
         flex: 1 20em;	
         align-self: center;	
         margin-top: .5rem;	
-        text-transform: capitalize;
         grid-template-columns: repeat(var(--type), minmax(var(--colSize), 1fr));	
         grid-gap: .5rem;
     
@@ -40,51 +39,16 @@ plex-grid {
         }
     
         // columnas fijas
-        &.cols-2 {
-                grid-template-columns: repeat(2, 1fr)!important;	
+        $columns: 1 2 3 4 5 6 7 8 9 10 11 12;
+
+        @each $col in $columns {
+            $i: index($columns, $col);
+            &.cols-#{$col} { 
+                grid-template-columns: repeat($i, 1fr);	
+            }
         }
-    
-        &.cols-3 {
-                grid-template-columns: repeat(3, 1fr)!important;	
-        }
-    
-        &.cols-4 {
-                grid-template-columns: repeat(4, 1fr)!important;
-        }
-    
-        &.cols-5 {
-                grid-template-columns: repeat(5, 1fr)!important;	
-        }
-    
-        &.cols-6 {
-                grid-template-columns: repeat(6, 1fr)!important;
-        }
-    
-        &.cols-7 {
-                grid-template-columns: repeat(7, 1fr)!important;	
-        }
-    
-        &.cols-8 {
-                grid-template-columns: repeat(8, 1fr)!important;	
-        }
-    
-        &.cols-9 {
-                grid-template-columns: repeat(9, 1fr)!important;
-        }
-    
-        &.cols-10 {
-                grid-template-columns: repeat(10, 1fr)!important;	
-        }
-    
-        &.cols-11 {
-                grid-template-columns: repeat(11, 1fr)!important;
-        }
-    
-        &.cols-12 {
-                grid-template-columns: repeat(12, 1fr)!important;
-        }
-    
-        // sizes
+                 
+        // sizes 
         &.size-xs {	
             --colSize: 2.5rem;
             --rowSize: 2.5rem;
@@ -119,46 +83,53 @@ plex-grid {
         &[noGap] {
             grid-gap: 0!important;
         }
-    }
-} 
 
-// directiva span
-.grid-column-auto {
-    grid-column: auto;
+        // Encolumnado responsive manual
+        &.size-sm {
+
+            @each $col in $columns {
+                $i: index($columns, $col);
+                &.cols-sm-#{$col} { 
+                    grid-template-columns: repeat($i, 1fr)!important;	
+                }
+            }
+        }
+
+        &.size-md {
+
+            @each $col in $columns {
+                $i: index($columns, $col);
+                &.cols-md-#{$col} { 
+                    grid-template-columns: repeat($i, 1fr)!important;	
+                }
+            }
+        }
+
+        &.size-lg {
+
+            @each $col in $columns {
+                $i: index($columns, $col);
+                &.cols-lg-#{$col} { 
+                    grid-template-columns: repeat($i, 1fr)!important;	
+                }
+            }
+        }
+
+    }
 }
-.grid-column-span-2 {
-    grid-column: span 2;
-}
-.grid-column-span-3 {
-    grid-column: span 3;
-}
-.grid-column-span-4 {
-    grid-column: span 4;
-}
-.grid-column-span-5 {
-    grid-column: span 5;
-}
-.grid-column-span-6 {
-    grid-column: span 6;
-}
-.grid-column-span-7 {
-    grid-column: span 7;
-}
-.grid-column-span-8 {
-    grid-column: span 8;
-}
-.grid-column-span-9 {
-    grid-column: span 9;
-}
-.grid-column-span-10 {
-    grid-column: span 10;
-}
-.grid-column-span-11 {
-    grid-column: span 11;
-}
-.grid-column-span-12 {
-    grid-column: span 12;
-}
-.grid-column-span-full {
-    grid-column: 100%;
-}
+    // directiva span
+    $columns: 1 2 3 4 5 6 7 8 9 10 11 12;
+
+    @each $span in $columns {
+    $i: index($columns, $span);
+        .grid-column-span-#{$span} { 
+        grid-column: span $i;
+        }       
+        .grid-column-auto {
+            grid-column: auto;
+        }
+        .grid-column-full {
+            grid-column: 100%;
+        }
+    }
+
