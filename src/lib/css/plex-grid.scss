@@ -1,5 +1,4 @@
 plex-grid {
-   > section {
         display: grid;	
         grid-gap: .5rem;	
         grid-auto-flow: dense; 	
@@ -30,11 +29,11 @@ plex-grid {
         }
         
         // types
-        &.type-full {
+        &[type=full] {
             --type: auto-fit;
         }
         
-        &.type-auto {
+        &[type=auto] {
             --type: auto-fill;
         }
     
@@ -43,38 +42,38 @@ plex-grid {
 
         @each $col in $columns {
             $i: index($columns, $col);
-            &.cols-#{$col} { 
+            &[cols="#{$col}"] { 
                 grid-template-columns: repeat($i, 1fr);	
             }
         }
                  
         // sizes 
-        &.size-xs {	
+        &[size=xs] {	
             --colSize: 2.5rem;
             --rowSize: 2.5rem;
         }
         
-        &.size-sm {	
+        &[size=sm] {	
             --colSize: 5rem;
             --rowSize: 5rem;
         }	
         
-        &.size-md {
+        &[size=md] {
             --colSize: 7.5rem;
             --rowSize: 7.5rem;
         }
         
-        &.size-lg {
+        &[size=lg] {
             --colSize: 10rem;
             --rowSize: 10rem;
         }
         
-        &.size-xl {	
+        &[size=xl] {	
             --colSize: 15rem;
             --rowSize: 15rem;
         }	
         
-        &.size-auto {	
+        &[size=auto] {	
             --colSize: auto;
             --rowSize: auto;
         }	
@@ -84,52 +83,48 @@ plex-grid {
             grid-gap: 0!important;
         }
 
+        // Directiva span
+        $columns: 1 2 3 4 5 6 7 8 9 10 11 12;
+    
+        @each $span in $columns {
+        $i: index($columns, $span);
+            [span="#{$span}"] { 
+            grid-column: span $i;
+            }       
+            [span=auto] {
+                grid-column: auto;
+            }
+            [span=full] {
+                grid-column: 100%;
+            }
+        }
+        
         // Encolumnado responsive manual
         &.size-sm {
-
             @each $col in $columns {
                 $i: index($columns, $col);
-                &.cols-sm-#{$col} { 
+                &[colsSm="#{$col}"] { 
                     grid-template-columns: repeat($i, 1fr)!important;	
                 }
             }
         }
 
         &.size-md {
-
             @each $col in $columns {
                 $i: index($columns, $col);
-                &.cols-md-#{$col} { 
+                &[colsMd="#{$col}"] { 
                     grid-template-columns: repeat($i, 1fr)!important;	
                 }
             }
         }
 
         &.size-lg {
-
             @each $col in $columns {
                 $i: index($columns, $col);
-                &.cols-lg-#{$col} { 
+                &[colsLg="#{$col}"] { 
                     grid-template-columns: repeat($i, 1fr)!important;	
                 }
             }
         }
-
     }
-}
-    // directiva span
-    $columns: 1 2 3 4 5 6 7 8 9 10 11 12;
-
-    @each $span in $columns {
-    $i: index($columns, $span);
-        .grid-column-span-#{$span} { 
-        grid-column: span $i;
-        }       
-        .grid-column-auto {
-            grid-column: auto;
-        }
-        .grid-column-full {
-            grid-column: 100%;
-        }
-    }
-
+    
