@@ -5,35 +5,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GridDemoComponent {
 
-    img = [
-        {
-            url: 'https://images.unsplash.com/photo-1560582861-45078880e48e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1550831107-1553da8c8464?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-    ];
-
     datos = [
-        { label: 'edad', valor: '41 años', type: 'success' },
-        { label: 'documento', valor: '29.879.253', type: 'info' },
-        { label: 'sexo', valor: 'Masculino', type: 'default' },
-        { label: 'efector', valor: 'Hospital Provincial de Neuquen Castro Rendon', type: 'warning' },
-        { label: 'fecha de nacimiento', valor: '14 de Julio de 1953', type: 'success' },
-        { label: 'CUIL', valor: '20-16879253-5', type: 'warning' },
-        { label: 'nota', valor: 'Donec quam felis, ultricies nec, pellentesque eu, pretium quis. Lorem ipsum sonnet.', type: 'warning' },
-        { label: 'Comience buscando un paciente en la barra superior', valor: 'Ingrese al menos tres caracteres. Si la búsqueda no arroja el resultado esperado, presione el botón "Paciente Nuevo"', type: 'warning' }
+        { label: '1', valor: 'mobile: una columna (todo el ancho)', type: 'success', color: '#00bcb4' },
+        { label: '2', valor: 'tablet: grilla de dos columnas', type: 'info', color: '#EA1E79' },
+        { label: '3', valor: 'desktop: grilla de tres columnas', type: 'default', color: '#92278e' },
+        { label: '4', valor: 'texto secundario', type: 'warning', color: '#062837' },
+        { label: '5', valor: 'texto secundario', type: 'success', color: '#0070cc' },
+        { label: '6', valor: 'texto secundario', type: 'warning', color: '#66DFFF' },
+        { label: '7', valor: 'texto secundario', type: 'warning', color: '#a0a0a0' },
+        { label: '8', valor: 'texto secundario', type: 'warning', color: '#b9c512' }
     ];
 }

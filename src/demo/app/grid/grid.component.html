@@ -1,53 +1,98 @@
-<plex-layout main="8">
+<plex-layout main="8" resizable="true" min="4" max="8" [steps]="2">
     <plex-layout-main>
-        <plex-title titulo="plex-grid"></plex-title>
-        <h6>Plex-grid es un envolvente que tiene como objetivo organizar y distribuir elementos en una reticula</h6>
-        <plex-title titulo="atributo 'cols' (columnas fijas) | cols= '2' | '3' | '4' | '5' | '6'" size="md">
+        <plex-title main titulo="plex-grid">
+            <plex-wrapper>
+                <h6>Plex-grid es un envolvente que tiene como objetivo organizar y distribuir elementos en una reticula
+                </h6>
+            </plex-wrapper>
         </plex-title>
-        <plex-grid type="auto" size="md" cols="2">
-            <plex-card direction="column" type="info" align="center" *ngFor="let dato of datos | slice:1:3">
-                <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
-                </plex-label>
-            </plex-card>
+        <!-- Sizes -->
+        <plex-grid cols="2" size="auto">
+            <div>
+                <section>
+                    <plex-title titulo="size='xs'" size="sm"></plex-title>
+                    <plex-grid type="auto" size="xs">
+                        <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                                   *ngFor="let dato of datos | slice:0:1">
+                            <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                            </plex-label>
+                        </plex-card>
+                    </plex-grid>
+                </section>
+                <section>
+                    <plex-title titulo="size='sm'" size="sm"></plex-title>
+                    <plex-grid type="auto" size="sm">
+                        <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                                   *ngFor="let dato of datos | slice:1:2">
+                            <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                            </plex-label>
+                        </plex-card>
+                    </plex-grid>
+                </section>
+                <section>
+                    <plex-title titulo="size='md'" size="sm"></plex-title>
+                    <plex-grid type="auto" size="md">
+                        <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                                   *ngFor="let dato of datos | slice:2:3">
+                            <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                            </plex-label>
+                        </plex-card>
+                    </plex-grid>
+                </section>
+            </div>
+            <div>
+                <section>
+                    <plex-title titulo="size='lg'" size="sm"></plex-title>
+                    <plex-grid type="auto" size="lg">
+                        <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                                   *ngFor="let dato of datos | slice:3:4">
+                            <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                            </plex-label>
+                        </plex-card>
+                    </plex-grid>
+                </section>
+                <section>
+                    <plex-title titulo="size='xl'" size="sm"></plex-title>
+                    <plex-grid type="auto" size="xl">
+                        <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                                   *ngFor="let dato of datos | slice:4:5">
+                            <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                            </plex-label>
+                        </plex-card>
+                    </plex-grid>
+                </section>
+            </div>
         </plex-grid>
-        <plex-grid type="auto" size="md" cols="3">
-            <plex-card direction="column" type="info" align="center" *ngFor="let dato of datos | slice:2:5">
-                <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
-                </plex-label>
-            </plex-card>
-        </plex-grid>
-        <plex-grid cols="2">
-            <section>
-                <plex-title titulo="plex-grid size='xs'" size="sm"></plex-title>
-                <plex-grid type="full" size="xs">
-                    <img *ngFor="let img of img" src="{{ img.url }}" alt="">
-                </plex-grid>
-                <plex-title titulo="plex-grid size='sm'" size="sm"></plex-title>
-                <plex-grid type="full" size="sm">
-                    <img *ngFor="let img of img  | slice:2:5" src="{{ img.url }}" alt="">
-                </plex-grid>
-                <plex-title titulo="plex-grid size='md'" size="sm"></plex-title>
-                <plex-grid type="full" size="md">
-                    <img *ngFor="let img of img | slice:1:4" src="{{ img.url }}" alt="">
+        <div>
+            <!-- Encolumnado manual -->
+            <section class="mt-4">
+                <plex-title titulo="Encolumnado manual: colsSm | colsMd | colsLg (expandir sidebar!)" size="sm">
+                </plex-title>
+                <plex-grid responsive type="full" size="md" cols="3" colsSm="1" colsMd="2" colsLg="3">
+                    <plex-card direction="column" type="info" align="center" *ngFor="let dato of datos | slice:0:3">
+                        <plex-label size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
+                        </plex-label>
+                    </plex-card>
                 </plex-grid>
             </section>
-            <section>
-                <plex-title titulo="plex-grid size='lg'" size="sm"></plex-title>
-                <plex-grid type="full" size="lg">
-                    <img *ngFor="let img of img | slice:0:2" src="{{ img.url }}" alt="">
+            <!-- Columnas fijas -->
+            <section class="mt-4">
+                <plex-title titulo="atributo 'cols' (columnas fijas) | cols= '2' | ... | '12'" size="sm">
+                </plex-title>
+                <plex-grid type="auto" size="md" cols="2">
+                    <plex-card direction="column" type="info" align="center" *ngFor="let dato of datos | slice:0:2">
+                        <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                        </plex-label>
+                    </plex-card>
                 </plex-grid>
-                <plex-title titulo="plex-grid [noGap] (grilla sin espacios)" size="sm"></plex-title>
-                <plex-grid noGap type="full" size="md">
-                    <img *ngFor="let img of img | slice:1:3" src="{{ img.url }}" alt="">
+                <plex-grid type="auto" size="md" cols="3">
+                    <plex-card direction="column" type="info" align="center" *ngFor="let dato of datos | slice:2:5">
+                        <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                        </plex-label>
+                    </plex-card>
                 </plex-grid>
             </section>
-            <section span="2">
-                <plex-title titulo="plex-grid size='xl'" size="sm"></plex-title>
-                <plex-grid type="full" size="xl">
-                    <img *ngFor="let img of img | slice:3:5" src="{{ img.url }}" alt="">
-                </plex-grid>
-            </section>
-        </plex-grid>
+        </div>
     </plex-layout-main>
 
     <!-- Sidebar -->
@@ -56,35 +101,48 @@
         <plex-title titulo="plex-grid type='full'" size="sm"></plex-title>
         <h6>La propiedad 'full' genera que las celdas que integran la grilla ocupen todo el espacio disponible.</h6>
         <plex-grid type="full" size="sm">
-            <img *ngFor="let img of img | slice:0:4" src="{{ img.url }}" alt="">
+            <plex-card direction="column" type="warning" align="center" *ngFor="let dato of datos | slice:0:3">
+                <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                </plex-label>
+            </plex-card>
         </plex-grid>
         <plex-title titulo="plex-grid type='auto'" size="sm"></plex-title>
         <h6>La propiedad 'auto' implica que las celdas que componen la grilla mantengan su aspecto original.</h6>
         <plex-grid type="auto" size="sm">
-            <img *ngFor="let img of img | slice:0:3" src="{{ img.url }}" alt="">
+            <plex-card direction="column" type="warning" align="center" *ngFor="let dato of datos | slice:0:3">
+                <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                </plex-label>
+            </plex-card>
         </plex-grid>
+        <!-- plex-labels engrillados -->
         <plex-title titulo="plex-grid utilizado con labels" size="sm"></plex-title>
         <plex-grid type="full" size="sm">
-            <div *ngFor="let dato of datos | slice:0:3">
-                <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
-                </plex-label>
-            </div>
+            <plex-label size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"
+                        *ngFor="let dato of datos | slice:0:3">
+            </plex-label>
         </plex-grid>
-        <plex-title titulo="Directiva span = '2' | '3' | '4' | '5' | '6'" size="sm"></plex-title>
+        <!-- Directiva span -->
+        <plex-title titulo="Directiva span = '2' | ... | '12'" size="sm"></plex-title>
         <h6>Es aplicable a los elementos que integran el plex-grid. El valor asignado determina la cantidad de columnas
             que ocupa el elemento.</h6>
-        <plex-grid type="auto" size="md">
-            <img span=2
-                 src="https://images.unsplash.com/photo-1560582861-45078880e48e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&full=crop&w=500&q=60"
-                 alt="">
-            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&full=crop&w=500&q=60"
-                 alt="">
-            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&full=crop&w=500&q=60"
-                 alt="">
-            <img src="https://images.unsplash.com/photo-1560582861-45078880e48e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&full=crop&w=500&q=60"
-                 alt="">
-            <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&full=crop&w=500&q=60"
-                 alt="">
+        <plex-grid cols="3" size="md" *ngFor="let dato of datos | slice:0:1">
+            <plex-card span="2" direction="column" type="custom" color="{{ dato.color }}" align="center">
+                <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                </plex-label>
+            </plex-card>
+            <plex-card direction="column" type="info" align="center">
+                <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                </plex-label>
+            </plex-card>
+        </plex-grid>
+        <!-- sin calles -->
+        <plex-title titulo="plex-grid [noGap] (grilla sin espacios)" size="sm"></plex-title>
+        <plex-grid gap="true" type="auto" size="md">
+            <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                       *ngFor="let dato of datos | slice:0:3">
+                <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
+                </plex-label>
+            </plex-card>
         </plex-grid>
     </plex-layout-sidebar>
 </plex-layout>
