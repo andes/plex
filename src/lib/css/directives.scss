@@ -1,0 +1,12 @@
+// DIRECTIVAS
+
+// ALIGNED
+// alturas de contenedor
+$heights: 5 10 12 15 20 25 30 35 40 45 50 60 75;
+
+@each $h in $heights {
+    $i: index($heights, $h);
+    [vheight="#{$h}"] { 
+        height: calc(100% - #{$h}vh);
+    }
+}

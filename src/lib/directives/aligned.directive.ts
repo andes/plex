@@ -5,9 +5,10 @@ import { Directive, Input, HostBinding } from '@angular/core';
     selector: '[aligned]'
 })
 export class AlignedDirective {
-    @Input() aligned: 'start' | 'end' | 'center' = 'center';
+    @Input() aligned: 'start' | 'end' | 'center' | 'middle' = 'middle';
 
     @HostBinding('class.d-flex') flex = true;
+    @HostBinding('class.justify-content-center') flex2 = true;
 
     @HostBinding('class.align-items-start') get start() {
         return this.aligned === 'start';
