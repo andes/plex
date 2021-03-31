@@ -40,11 +40,11 @@ import { CardDemoComponent } from './card/card.component';
 import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
 import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
 import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
-import { DemoDirectivesComponent } from './directives/directives.component';
 import { DemoDirectivesSidebarComponent } from './directives/listado-sidebar/directives-sidebar.component';
 import { TooltipDemoComponent } from './directives/componentes/tooltip/tooltip.component';
 import { HintDemoComponent } from './directives/componentes/hint/hint.component';
 import { CaseDemoComponent } from './directives/componentes/case/case.component';
+import { AlignedDemoComponent } from './directives/componentes/aligned/aligned.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -100,6 +100,7 @@ const appRoutes: Routes = [
     {
         path: 'directives/listado-sidebar', component: DemoDirectivesSidebarComponent,
         children: [
+            { path: 'aligned', component: AlignedDemoComponent },
             { path: 'tooltip', component: TooltipDemoComponent },
             { path: 'hint', component: HintDemoComponent },
             { path: 'case', component: CaseDemoComponent },

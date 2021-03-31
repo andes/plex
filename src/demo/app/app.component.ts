@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
             { label: 'Grid', icon: 'view-grid', route: '/grid' },
             { divider: true, },
             { label: 'Directivas', icon: 'sign-direction', route: 'directives' },
+            { label: 'Directiva Aligned', icon: 'vector-difference', route: '/directives/listado-sidebar/aligned' },
             { label: 'Directiva Tooltip', icon: 'tooltip', route: '/directives/listado-sidebar/tooltip' },
             { label: 'Directiva Hint', icon: 'tooltip', route: '/directives/listado-sidebar/hint' },
             { label: 'Directiva Case', icon: 'tooltip', route: '/directives/listado-sidebar/case' },
