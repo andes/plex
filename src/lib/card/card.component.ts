@@ -3,7 +3,7 @@ import { Component, Input, ViewChild, ElementRef, OnChanges } from '@angular/cor
 @Component({
     selector: 'plex-card',
     template: `
-    <div #cardColor class="card bg-{{ type }}" [ngClass]="{'text-white' : type != 'default'}" [class.selected]="selected">
+    <div #cardColor class="card bg-{{ styled }}-{{ type }}" [ngClass]="{ 'text-white' : type === 'dark', 'selectable' : selectable }" [class.selected]="selected">
         <ng-content select="img"></ng-content>
         <ng-content select="plex-icon"></ng-content>
         <div class="d-flex" [ngClass]="cssAlign">
@@ -25,8 +25,11 @@ import { Component, Input, ViewChild, ElementRef, OnChanges } from '@angular/cor
 export class PlexCardComponent implements OnChanges {
     @Input() selected = false;
     @Input() aligned: 'start' | 'end' | 'center' = 'center';
+    @Input() selectable = false;
+    @Input() align: 'start' | 'end' | 'center' = 'center';
     @Input() size: 'xs' | 'md' | 'lg' | 'block' = 'md';
-    @Input() type: 'success' | 'warning' | 'danger' | 'dark' | 'custom' | 'default' = 'default';
+    @Input() type: 'info' | 'success' | 'warning' | 'danger' | 'dark' | 'custom' | 'default' = 'default';
+    @Input() styled: 'filled' | 'outlined' = 'outlined';
     @Input() color: string;
 
     @ViewChild('cardColor', { static: true }) cardColor: ElementRef;

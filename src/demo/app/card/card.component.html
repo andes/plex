@@ -25,6 +25,15 @@
                         </plex-label>
                         <plex-button type="{{ dato.type }}" label="aceptar"></plex-button>
                     </plex-card>
+                    <plex-card selectable="true" span="2" class="mt-1" align="center" styled="filled" type="dark"
+                               *ngFor="let dato of datos | slice:6:7" [selected]="dato.selected"
+                               (click)="dato.selected = !dato.selected">
+                        <plex-badge type="warning">badge</plex-badge>
+                        <plex-label direction="column" size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"
+                                    icon="information-variant">
+                        </plex-label>
+                        <plex-button type="{{ dato.type }}" label="aceptar"></plex-button>
+                    </plex-card>
                 </plex-grid>
             </div>
             <div span="2">

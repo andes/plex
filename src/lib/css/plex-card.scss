@@ -2,8 +2,10 @@
 @import './mixins/cardBackground.scss';
 
 plex-card {
-    cursor: pointer;
     box-sizing: border-box;
+    &[selectable] {
+        cursor: pointer;
+    }
 
     .card {
         display: flex;
@@ -13,6 +15,7 @@ plex-card {
         
         > img, > plex-icon {
             margin-bottom: .75rem;
+            object-fit: cover!important;
         }
 
         div {
@@ -25,19 +28,6 @@ plex-card {
         }
     }
     
-    // Estados
-    > .card:hover {
-        color: var(--color-tipo)!important;
-        background-color: var(--color-baseDark)!important;
-        box-shadow: inset 0 0 0 3px var(--color-baseDarker)!important;
-    }   
-    
-    > .card.selected {
-        background-color: var(--color-baseDark)!important;
-        color: var(--color-tipo)!important;
-        box-shadow: inset 0 0 0 3px var(--color-baseDarker)!important;
-    }
-    
     //Custom color
     >div.card {
         &.bg-custom {
@@ -47,42 +37,115 @@ plex-card {
             --color-base: var(--card-color);
             --color-baseLight: white;
             --color-baseDark: var(--card-color);
-            
+        &.selectable {
             &:hover, &.selected {
                 box-shadow: inset 0 0 0 3px $blue!important;                            
                 filter: brightness(0.85);
+                }            
             }
+        }
+    }
+
+    // SUCCESS
+    @mixin filledCardHover {   
+        &.selectable {
+            &:hover, &.selected {
+                box-shadow: inset 0 0 0 3px var(--color-baseDarker)!important;
+                background-color: var(--color-baseDark)!important;
+                color: var(--color-tipo)!important;              
             }
+        }
+    }
+
+    @mixin outlinedCardHover {   
+        &.selectable {
+            &:hover, &.selected {
+                box-shadow: inset 0 0 0 3px var(--color-baseDark)!important;
+                background-color: var(--color-baseLight)!important;
+                color: var(---color-tipo)!important;              
+            }
+        }
+    }
+
+    > div {
+        // DEFAULT
+        // filled
+        &.bg-filled-default {
+            --color-baseLight: #d9f4ff;
+            --color-base: white;
+            --color-tipo: #002738;
+            --color-baseDark: #00a8e0;
+            --color-baseDarker: #00a8e0;
+            
+            @include cardBackground;
+            background-color: var(--color-base)!important;
+            @include filledCardHover;
+        }
+        
+        // outlined
+        &.bg-outlined-default {
+            --color-baseLight: #d9f4ff;
+            --color-base: white;
+            --color-tipo: #002738;
+            --color-baseDark: #00a8e0;
+            --color-baseDarker: #00a8e0;
+            
+            box-shadow: inset 0 0 0 2px var(--color-base);
+            @include outlinedCardHover;
         }
     
-        // Default
-        > div.bg-default {
-        --color-base: white;
-        --color-tipo: #002738;
-        --color-baseDark: #edf8fd;
-        --color-baseDarker: #00a8e0;
-        }
-
-        // Dark
-        > div.bg-dark {
+        // DARK
+        // filled
+        &.bg-filled-dark {
             --color-base: #002738;
             --color-tipo: white;
             --color-baseDark: #00202e;
             --color-baseDarker: #00a8e0;
+                        
+            @include cardBackground;
+            background-color: var(--color-base)!important;
+            @include filledCardHover;
+        }
+        
+        // outlined
+        &.bg-outlined-dark {
+            --color-base: #002738;
+            --color-tipo: white;
+            --color-baseDark: #00202e;
+            --color-baseDarker: #00a8e0;
+            
+            box-shadow: inset 0 0 0 2px var(--color-base);
+            @include outlinedCardHover;
         }
 
-        // Success
-        > div.bg-success {
-            @include cardBackground;
+        // SUCCESS
+        // filled
+        &.bg-filled-success {
             --color-baseLight: #c7e79c;
             --color-base: #8cc63f;
             --color-tipo: white;
             --color-baseDark: #70a728;
             --color-baseDarker: #55801e;
+
+            @include cardBackground;
+            background-color: var(--color-base)!important;
+            @include filledCardHover;
+        }
+
+        // outlined
+        &.bg-outlined-success {
+            --color-baseLight: #e9fad1;
+            --color-base: #8cc63f;
+            --color-tipo: white;
+            --color-baseDark: #70a728;
+            --color-baseDarker: #55801e;
+
+            box-shadow: inset 0 0 0 2px var(--color-base);
+            @include outlinedCardHover;
         }
 
         // Warning
-        > div.bg-warning {
+        &.bg-filled-warning {
             @include cardBackground;
             --color-baseLight: #fdc189;
             --color-base: #ff8d22;
@@ -90,9 +153,21 @@ plex-card {
             --color-baseDark: #e47814;
             --color-baseDarker: #c55f00;
         }
+        
+        // outlined
+        &.bg-outlined-warning {
+            --color-baseLight: #fdc189;
+            --color-base: #ff8d22;
+            --color-tipo: white;
+            --color-baseDark: #e47814;
+            --color-baseDarker: #c55f00;
 
+            box-shadow: inset 0 0 0 2px var(--color-base);
+            @include outlinedCardHover;
+        }
+            
         // Danger
-        > div.bg-danger {
+        &.bg-filled-danger {
             @include cardBackground;
             --color-baseLight: #ffb3a9;
             --color-base: #dd4b39;
@@ -100,9 +175,21 @@ plex-card {
             --color-baseDark: #b9311f;
             --color-baseDarker: #a12514;
         }
+        
+        // outlined
+        &.bg-outlined-danger {
+            --color-baseLight: #ffb3a9;
+            --color-base: #dd4b39;
+            --color-tipo: white;
+            --color-baseDark: #b9311f;
+            --color-baseDarker: #a12514;
 
+            box-shadow: inset 0 0 0 2px var(--color-base);
+            @include outlinedCardHover;
+        }
+    
         // Info
-        > div.bg-info {
+        &.bg-filled-info {
             @include cardBackground;
             --color-baseLight: #c2e6f6;
             --color-base: #00a8e0;
@@ -110,6 +197,19 @@ plex-card {
             --color-baseDark: #0695c5;
             --color-baseDarker: #057ea7;
         }
+        
+        // outlined
+        &.bg-outlined-info {
+            --color-baseLight: #c2e6f6;
+            --color-base: #00a8e0;
+            --color-tipo: white;
+            --color-baseDark: #0695c5;
+            --color-baseDarker: #057ea7;
+
+            box-shadow: inset 0 0 0 2px var(--color-base);
+            @include outlinedCardHover;
+        }
+    }
 
     // Version invert
     &[type="dark"] {
