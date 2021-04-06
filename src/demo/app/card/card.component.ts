@@ -8,13 +8,13 @@ export class CardDemoComponent {
     color = '#92278e';
 
     datos = [
-        { label: 'Funcionar como botones destacados en una interfaz', valor: 'Por ejemplo en puntos de inicio', type: 'default' },
-        { label: 'Representar opciones seleccionables', valor: 'Usuarios, organizaciones, items propios de un módulo', type: 'success' },
-        { label: 'Enriquecer las celdas de una grilla', valor: 'Por este motivo se combina con el componente plex-grid', type: 'info' },
-        { label: 'Card Warning', valor: 'Es un elemento seleccionable', type: 'warning' },
-        { label: 'Card Danger', valor: 'Es un elemento seleccionable', type: 'danger' },
-        { label: 'Card custom', valor: 'El color se define mediante el atributo [color]', type: 'custom' },
-        { label: 'Definir bloques de información destacada', valor: 'Recomendable la tipología "invert"', type: 'custom' },
+        { label: 'Funcionar como botones destacados en una interfaz', valor: 'Por ejemplo en puntos de inicio', type: 'default', style: 'filled' },
+        { label: 'Representar opciones seleccionables', valor: 'Usuarios, organizaciones, items propios de un módulo', type: 'success', style: 'filled' },
+        { label: 'Enriquecer las celdas de una grilla', valor: 'Por este motivo se combina con el componente plex-grid', type: 'info', style: 'filled' },
+        { label: 'Card Warning', valor: 'Es un elemento seleccionable', type: 'warning', style: 'filled' },
+        { label: 'Card Danger', valor: 'Es un elemento seleccionable', type: 'danger', style: 'filled' },
+        { label: 'Card custom', valor: 'El color se define mediante el atributo [color]', type: 'custom', style: 'filled' },
+        { label: 'Definir bloques de información destacada', valor: 'Recomendable la tipología "invert"', type: 'success', style: 'filled' },
     ];
 
     agendas = [

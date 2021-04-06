@@ -36,6 +36,8 @@
   }
 }
 
+/* IMPORTANTE */
+/*  Al utilizar esta clase, asegurarse que sea acompañada por el atributo [disabled] o alguna condición que no permita interacción alguna */
 .disabled {
     pointer-events: none!important;
     user-select: none!important;

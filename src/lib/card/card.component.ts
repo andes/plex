@@ -3,7 +3,7 @@ import { Component, Input, ViewChild, ElementRef, OnChanges } from '@angular/cor
 @Component({
     selector: 'plex-card',
     template: `
-    <div #cardColor class="card bg-{{ styled }}-{{ type }}" [ngClass]="{ 'text-white' : type === 'dark', 'selectable' : selectable }" [class.selected]="selected">
+    <div #cardColor class="card bg-{{ styled }}-{{ type }}" [ngClass]="{ 'selectable' : selectable }" [class.selected]="selected">
         <ng-content select="img"></ng-content>
         <ng-content select="plex-icon"></ng-content>
         <div class="d-flex" [ngClass]="cssAlign">
@@ -48,6 +48,10 @@ export class PlexCardComponent implements OnChanges {
     ngOnChanges() {
         if (this.color && this.color.length > 0) {
             this.cardColor.nativeElement.style.setProperty('--card-color', this.color);
+        }
+
+        if (this.color && this.color.length > 0 && this.styled === 'outlined') {
+            this.cardColor.nativeElement.style.setProperty('--card-color', this.color + '20');
         }
     }
 }
