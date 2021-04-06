@@ -68,7 +68,7 @@ plex-layout {
 
     &[resizable="true"] > section {
         > div.row {
-            div[class^="col-"] {
+            > div[class*="col-"] {
                 transition: all 900ms ease;
                 
                 /* Botonera sidebar expandible */
