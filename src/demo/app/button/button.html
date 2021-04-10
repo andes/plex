@@ -5,7 +5,7 @@
 
         <plex-title size="sm" titulo="Tipos"></plex-title>
         <plex-button label="Default" (click)="onClick()" [autodisabled]="true"></plex-button>
-        <plex-button label="Info" type="info"></plex-button>
+        <plex-button label="Info" ariaLabel="soy un boton type info" type="info"></plex-button>
         <plex-button label="Danger" type="danger"></plex-button>
         <plex-button label="Warning" type="warning"></plex-button>
         <plex-button label="Success" type="success"></plex-button>
@@ -25,8 +25,8 @@
         <hr>
         <plex-title size="sm" titulo="Grupos"></plex-title>
         <div class="btn-group">
-            <plex-button type="success" icon="account"></plex-button>
-            <plex-button type="danger" icon="clock"></plex-button>
+            <plex-button type="success" icon="account" ariaLabel="boton que valida una operación"></plex-button>
+            <plex-button type="danger" icon="clock" ariaLabel="boton que ejecuta una acción sensible"></plex-button>
         </div>
         <hr>
         <plex-title size="sm" titulo="Validación de formularios"></plex-title>

@@ -8,7 +8,7 @@ import { takeUntil } from 'rxjs/operators';
     selector: 'plex-button',
     template: `
         <ng-container *ngIf="type">
-                <button plexRipples style="pointer-events: auto" [tabIndex]="tabIndex" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
+                <button plexRipples style="pointer-events: auto" [tabIndex]="tabIndex" [attr.aria-label]="ariaLabel" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
                     <plex-icon
                         *ngIf="icon"
                         [name]="icon"
@@ -26,6 +26,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class PlexButtonComponent implements OnInit, OnDestroy {
     @Input() tabIndex: number;
+    @Input() ariaLabel: string;
     @Input() label: string;
     @Input() icon: string;
     @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default';
