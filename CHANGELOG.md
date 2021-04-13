@@ -1,3 +1,10 @@
+# [7.15.0](https://github.com/andes/plex/compare/v7.14.1...v7.15.0) (2021-04-13)
+
+
+### Features
+
+* **plex-button:** agrega atributo aria-label ([0110636](https://github.com/andes/plex/commit/011063619852ac013c4ad83dcbed210d9ce29b35))
+
 ## [7.14.1](https://github.com/andes/plex/compare/v7.14.0...v7.14.1) (2021-03-22)
 
 
