@@ -281,6 +281,21 @@ plex-list {
         background-color: transparentize($color: $dark-blue, $amount: 0.9) !important;
     }
 
+    // Wrapea badges en responsive
+    > div.size-sm {
+        div.botonera {
+            > div {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: flex-end;
+
+                &:last-child {
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+
     div.botonera {
         display: flex;
         min-width: 25%;
