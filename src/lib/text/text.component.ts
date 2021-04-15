@@ -31,13 +31,16 @@ import { hasRequiredValidator } from '../core/validator.functions';
                 <ng-content select="[right]"></ng-content>
             </span>
         </div>
+        <div *ngIf="type === 'password'">
+            <small id="{{ariaLabelledby?.id}}">
+                {{ ariaLabelledby?.label }}
+            </small>
+        </div>
 
         <!-- Multiline -->
         <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html"  [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
         (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
         </textarea>
-
-
 
         <!-- HTML Editor -->
         <quill-editor #quillEditor [attr.aria-label]="textLabel" [attr.aria-hidden]="multiline || !html" [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
