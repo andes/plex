@@ -1,4 +1,4 @@
-import { ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit, ContentChild, Renderer2, Self, Optional, Inject } from '@angular/core';
+import { ViewChild, Component, OnInit, Input, Output, ElementRef, EventEmitter, AfterViewInit, Renderer2, Self, Optional } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { hasRequiredValidator } from '../core/validator.functions';
 
@@ -14,7 +14,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
         </label>
 
         <!-- Simple text field -->
-        <div [hidden]="multiline || html" [class.input-group]="prefix || suffix || prefixParent?.children.length > 0 || suffixParent?.children.length > 0">
+        <div [attr.aria-hidden]="multiline || html" [hidden]="multiline || html" [class.input-group]="prefix || suffix || prefixParent?.children.length > 0 || suffixParent?.children.length > 0">
             <span *ngIf="prefix" class="input-group-addon">
                 <plex-icon type="default" size="md" [name]="prefix"></plex-icon>
             </span>
@@ -22,7 +22,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
                 <ng-content select="[left]"></ng-content>
             </span>
 
-            <input #input type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
+            <input #input [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
                 [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
 
             <plex-icon  *ngIf="!readonly && !multiline && !html && !isEmpty" size="sm" name="close-circle" class="clear-icon" (click)="clearInput()"></plex-icon>
@@ -31,14 +31,21 @@ import { hasRequiredValidator } from '../core/validator.functions';
                 <ng-content select="[right]"></ng-content>
             </span>
         </div>
+        <div *ngIf="type === 'password'">
+            <small id="{{ariaLabelledby?.id}}">
+                {{ ariaLabelledby?.label }}
+            </small>
+        </div>
 
         <!-- Multiline -->
-        <textarea [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+        <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html"  [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
         (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
         </textarea>
 
+        
+
         <!-- HTML Editor -->
-        <quill-editor #quillEditor [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
+        <quill-editor #quillEditor [attr.aria-label]="textLabel" [attr.aria-hidden]="multiline || !html" [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
 
         <!-- Validation -->
         <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
@@ -78,6 +85,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Propiedades
     @Input() type: 'text' | 'password' | 'email' = 'text';
     @Input() label: string;
+    @Input() ariaLabel: string;
+    @Input() ariaLabelledby: any = { id: `password${Math.floor(Math.random() * 100000)}`, label: 'Sólo caracteres alfanuméricos, sin espacios.' };
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
     @Input() placeholder: string;
     @Input() prefix: string;
@@ -153,6 +162,12 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         if (this.html) {
             this.prepareQuillToolbar();
         }
+        // if (this.type === 'password') {
+        //     this.ariaLabelledby = {
+        //         id: `password-${Math.random() * 10000}`,
+        //         label: this.ariaLabel
+        //     }
+        // }
     }
 
     ngAfterViewInit() {
@@ -270,6 +285,20 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             });
         }
     }
+
+    get textLabel() {
+        // ARIA no permite aria-label en passwords (sólo aria-labelledby)
+        if (this.type !== 'password') {
+            return this.ariaLabel ? this.ariaLabel : this.label;
+        } else {
+            return null;
+        }
+    }
+
+    get passwordLabel() {
+        return this.type === 'password' ? this.ariaLabelledby.id : null;
+    }
+
 }
 
 export interface PlexTextToolBar {
