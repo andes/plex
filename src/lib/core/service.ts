@@ -1,6 +1,7 @@
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Injectable, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { TitleCasePipe } from '@angular/common';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
 import { default as swal } from 'sweetalert2';
@@ -30,7 +31,8 @@ export class Plex {
         private titleService: Title,
         private noficationService: NotificationsService,
         private componentFactoryResolver: ComponentFactoryResolver,
-        private breakpointObserver: BreakpointObserver
+        private breakpointObserver: BreakpointObserver,
+        private titlecasePipe: TitleCasePipe
     ) { }
 
     /**
@@ -70,7 +72,8 @@ export class Plex {
                 } else {
                     this.title = title as PlexTitle[];
                 }
-                this.titleService.setTitle(this.title[this.title.length - 1].name);
+                const name = this.titlecasePipe.transform(this.title[this.title.length - 1].name);
+                this.titleService.setTitle(name);
             } else {
                 this.titleService.setTitle('');
                 this.title = null;
