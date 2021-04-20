@@ -74,8 +74,11 @@ plex-box > DIV {
     }
 
     plex-modal {
-        :not(plex-button *) {
-            color: #292b2c;
+        color: initial !important;
+        plex-list {
+            section.item.selectable:hover {
+                color: #292b2c;
+            }
         }
     }
 
