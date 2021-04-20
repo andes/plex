@@ -73,14 +73,19 @@ plex-box > DIV {
         background: rgba(255, 255, 255, 0.1);
     }
 
+    plex-modal {
+        :not(plex-button *) {
+            color: #292b2c;
+        }
+    }
+
     plex-list {
         section.item {
-            background-color: transparentize($color: $blue, $amount: 0.9) !important;
+            background-color: transparentize($color: $blue, $amount: 0.9);
 
             &.selectable {
                 &:hover {
-                    box-shadow: inset 0 0 0 2px transparentize($color: $blue, $amount: 0.6) !important;
-                    background-color: rgba($blue, 0.2) !important;
+                    box-shadow: inset 0 0 0 2px transparentize($color: $blue, $amount: 0.6);
                     color: $light-blue;
                 }
             }

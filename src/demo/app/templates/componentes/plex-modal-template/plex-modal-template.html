@@ -1,22 +1,22 @@
-<plex-layout>
+<plex-layout main="9">
     <plex-layout-main>
         <plex-title titulo="Ventanas Modales">
             <plex-badge type="danger">
-                Modal md (50% ancho) con Formulario
+                md (50% ancho) con Formulario
                 <plex-button icon="eye" (click)="openModal(0)">
                 </plex-button>
             </plex-badge>
             <plex-badge type="warning" class="ml-2">
-                Modal md con texto largo
+                md con texto largo
                 <plex-button icon="eye" (click)="openModal(1)">
                 </plex-button>
             </plex-badge>
             <plex-badge type="success" class="ml-2">
-                Modal sm (25% ancho)
+                sm (25% ancho)
                 <plex-button icon="eye" (click)="openModal(2)"></plex-button>
             </plex-badge>
             <plex-badge type="info" class="ml-2">
-                Modal lg (80% ancho)
+                lg (80% ancho)
                 <plex-button icon="eye" (click)="openModal(3)"></plex-button>
             </plex-badge>
         </plex-title>
@@ -136,11 +136,11 @@
                 <div>
                     <plex-title size="sm" titulo="Con mayor funcionalidad"></plex-title>
                     Ya que además de permitir estilos
-                    <u class="text-warning hover" title="tengo complejos">más complejos</u>, puede<br>
+                    <u class="text-warning hover" tooltip="tengo complejos">más complejos</u>, puede
                     contener formularios y otros componentes
                     <div class="mt-2">
                         <b>
-                            Este modal se puede cerrar con la tecla ESC, con la cruz en la esquina superior derecha, o
+                            Este modal se puede cerrar con el botón "Aceptar", con la tecla ESC, con la cruz en la esquina superior derecha, o
                             haciendo click fuera del mismo.
                         </b>
                     </div>
@@ -167,4 +167,32 @@
         </plex-modal>
 
     </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-title size="md" titulo="Modal en sidebar">
+            <plex-button icon="eye" type="info" size="sm" (click)="openModal(4)"></plex-button>
+        </plex-title>
+        <plex-modal size="sm" #modal [startOpen]="false" (closed)="notificarAccion(false)">
+            <plex-modal-title type="info">Modal dentro de un plex-sidebar invert</plex-modal-title>
+            <main>
+                <p>
+                    Un componente que abarca toda la pantalla o el foco de la misma, como un modal o un alert, nunca deben heredar estilos del contendor.
+                </p>
+                <plex-list size="sm" class="w-100">
+                    <plex-item>
+                        <plex-label>PACIENTE 1</plex-label>
+                    </plex-item>
+                    <hr>
+                    <plex-item>
+                        <plex-label>PACIENTE 2</plex-label>
+                    </plex-item>
+                </plex-list>
+            </main>
+            <plex-button modal left type="danger" (click)="closeModal(4)">
+                CANCELAR
+            </plex-button>
+            <plex-button modal right type="success" (click)="closeModal(4)">
+                ACEPTAR
+            </plex-button>
+        </plex-modal>
+    </plex-layout-sidebar>
 </plex-layout>
