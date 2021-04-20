@@ -5,12 +5,20 @@ context('<plex-text>', () => {
     before(() => {
         cy.eyesOpen({ appName: 'PLEX', testName: 'text' });
         cy.visit('/text');
+        cy.injectAxe();
         cy.eyesCheckWindow('start - text');
     });
     after(() => {
         cy.eyesCheckWindow('end - text');
         cy.eyesClose();
-    })
+    });
+
+    it.skip('No tiene problemas de A11y en la carga inicial', () => {
+        // Test de pantalla inicial
+        cy.checkA11y(null, {
+            includedImpacts: ['critical']
+        });
+      })
 
     it('plex-text type="text"', () => {
 
