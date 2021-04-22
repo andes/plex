@@ -4,14 +4,14 @@ import { PlexTabComponent } from './tab.component';
 @Component({
     selector: 'plex-tabs',
     template: ` <section justify>
-                    <ul #container class="nav nav-tabs" [ngClass]="size">
-                        <li *ngFor="let tab of tabs" (click)="selectTab(tab, $event)" (auxclick)="closeTab(tab, $event)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{'active': tab.active, 'icon': tab.icon && !tab.label}">
-                            <a class="nav-link" [ngClass]="{active: tab.active}" plexRipples onclick="return false">
+                    <ul role="tablist" #container class="nav nav-tabs" [ngClass]="size" >
+                        <li role="presentation" *ngFor="let tab of tabs" (keydown.enter)="selectTab(tab, $event)" (click)="selectTab(tab, $event)" (auxclick)="closeTab(tab, $event)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{'active': tab.active, 'icon': tab.icon && !tab.label}">
+                            <a tabindex="0" role="tab" attr.aria-selected="{{ tab.active }}" attr.aria-label="{{ tab.label }}" class="nav-link" [ngClass]="{active: tab.active}" plexRipples onclick="return false">
                                 <plex-icon *ngIf="tab.icon" [name]="tab.icon" size="sm" [type]="tab.color"></plex-icon>
                                 <span *ngIf="tab.label">
                                     {{ tab.label  }}
                                 </span>
-                                <button *ngIf="tab.allowClose" type="button" class="close" (click)="closeTab(tab)"><i class="mdi mdi-close"></i></button>
+                                <button *ngIf="tab.allowClose" attr.aria-label="cerrar pestaña" type="button" class="close" (click)="closeTab(tab)"><i class="mdi mdi-close"></i></button>
                             </a>
                         </li>
                     </ul>
@@ -70,6 +70,13 @@ export class PlexTabsComponent implements AfterContentInit {
     closeTab(tab: PlexTabComponent, $event = null) {
         if (!$event || ($event.button === 1 && tab.allowClose)) {
             this.close.emit(this.tabs.indexOf(tab));
+        }
+    }
+
+    // Accesibilidad
+    onKeydown(event) {
+        if (event.key === "enter") {
+            this.doActiveTab(event);
         }
     }
 
