@@ -12,7 +12,7 @@
                 <section>
                     <plex-title titulo="size='xs'" size="sm"></plex-title>
                     <plex-grid type="auto" size="xs">
-                        <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                        <plex-card direction="column" type="custom" color="{{ dato.color }}" aligned="center"
                                    *ngFor="let dato of datos | slice:0:1">
                             <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                             </plex-label>
@@ -22,7 +22,7 @@
                 <section>
                     <plex-title titulo="size='sm'" size="sm"></plex-title>
                     <plex-grid type="auto" size="sm">
-                        <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                        <plex-card direction="column" type="custom" color="{{ dato.color }}" aligned="center"
                                    *ngFor="let dato of datos | slice:1:2">
                             <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                             </plex-label>
@@ -32,7 +32,7 @@
                 <section>
                     <plex-title titulo="size='md'" size="sm"></plex-title>
                     <plex-grid type="auto" size="md">
-                        <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                        <plex-card direction="column" type="custom" color="{{ dato.color }}" aligned="center"
                                    *ngFor="let dato of datos | slice:2:3">
                             <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                             </plex-label>
@@ -44,7 +44,7 @@
                 <section>
                     <plex-title titulo="size='lg'" size="sm"></plex-title>
                     <plex-grid type="auto" size="lg">
-                        <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                        <plex-card direction="column" type="custom" color="{{ dato.color }}" aligned="center"
                                    *ngFor="let dato of datos | slice:3:4">
                             <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                             </plex-label>
@@ -54,7 +54,7 @@
                 <section>
                     <plex-title titulo="size='xl'" size="sm"></plex-title>
                     <plex-grid type="auto" size="xl">
-                        <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+                        <plex-card direction="column" type="custom" color="{{ dato.color }}" aligned="center"
                                    *ngFor="let dato of datos | slice:4:5">
                             <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                             </plex-label>
@@ -69,7 +69,7 @@
                 <plex-title titulo="Encolumnado manual: colsSm | colsMd | colsLg (expandir sidebar!)" size="sm">
                 </plex-title>
                 <plex-grid responsive type="full" size="md" cols="3" colsSm="1" colsMd="2" colsLg="3">
-                    <plex-card direction="column" type="info" align="center" *ngFor="let dato of datos | slice:0:3">
+                    <plex-card direction="column" type="info" aligned="center" *ngFor="let dato of datos | slice:0:3">
                         <plex-label size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">
                         </plex-label>
                     </plex-card>
@@ -80,13 +80,13 @@
                 <plex-title titulo="atributo 'cols' (columnas fijas) | cols= '2' | ... | '12'" size="sm">
                 </plex-title>
                 <plex-grid type="auto" size="md" cols="2">
-                    <plex-card direction="column" type="info" align="center" *ngFor="let dato of datos | slice:0:2">
+                    <plex-card direction="column" type="info" aligned="center" *ngFor="let dato of datos | slice:0:2">
                         <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                         </plex-label>
                     </plex-card>
                 </plex-grid>
                 <plex-grid type="auto" size="md" cols="3">
-                    <plex-card direction="column" type="info" align="center" *ngFor="let dato of datos | slice:2:5">
+                    <plex-card direction="column" type="info" aligned="center" *ngFor="let dato of datos | slice:2:5">
                         <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                         </plex-label>
                     </plex-card>
@@ -101,7 +101,7 @@
         <plex-title titulo="plex-grid type='full'" size="sm"></plex-title>
         <h6>La propiedad 'full' genera que las celdas que integran la grilla ocupen todo el espacio disponible.</h6>
         <plex-grid type="full" size="sm">
-            <plex-card direction="column" type="warning" align="center" *ngFor="let dato of datos | slice:0:3">
+            <plex-card direction="column" type="warning" aligned="center" *ngFor="let dato of datos | slice:0:3">
                 <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                 </plex-label>
             </plex-card>
@@ -109,7 +109,7 @@
         <plex-title titulo="plex-grid type='auto'" size="sm"></plex-title>
         <h6>La propiedad 'auto' implica que las celdas que componen la grilla mantengan su aspecto original.</h6>
         <plex-grid type="auto" size="sm">
-            <plex-card direction="column" type="warning" align="center" *ngFor="let dato of datos | slice:0:3">
+            <plex-card direction="column" type="warning" aligned="center" *ngFor="let dato of datos | slice:0:3">
                 <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                 </plex-label>
             </plex-card>
@@ -126,11 +126,11 @@
         <h6>Es aplicable a los elementos que integran el plex-grid. El valor asignado determina la cantidad de columnas
             que ocupa el elemento.</h6>
         <plex-grid cols="3" size="md" *ngFor="let dato of datos | slice:0:1">
-            <plex-card span="2" direction="column" type="custom" color="{{ dato.color }}" align="center">
+            <plex-card span="2" direction="column" type="custom" color="{{ dato.color }}" aligned="center">
                 <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                 </plex-label>
             </plex-card>
-            <plex-card direction="column" type="info" align="center">
+            <plex-card direction="column" type="info" aligned="center">
                 <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                 </plex-label>
             </plex-card>
@@ -138,7 +138,7 @@
         <!-- sin calles -->
         <plex-title titulo="plex-grid [noGap] (grilla sin espacios)" size="sm"></plex-title>
         <plex-grid gap="true" type="auto" size="md">
-            <plex-card direction="column" type="custom" color="{{ dato.color }}" align="center"
+            <plex-card direction="column" type="custom" color="{{ dato.color }}" aligned="center"
                        *ngFor="let dato of datos | slice:0:3">
                 <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
                 </plex-label>

@@ -14,6 +14,15 @@ plex-card {
         > img, > plex-icon {
             margin-bottom: .75rem;
         }
+
+        div {
+            &.text-start {
+                text-align: left;
+            }
+            &.text-end {
+                text-align: right;
+            }
+        }
     }
     
     // Estados

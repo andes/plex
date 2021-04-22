@@ -52,7 +52,7 @@ import { PlexGridComponent } from './grid/grid.component';
 import { PlexCardComponent } from './card/card.component';
 
 // Directivas
-import { AlignedDirective } from './directives/aligned.directive';
+import { AlignDirective } from './directives/align.directive';
 import { PlexWizardDirective } from './wizard/wizard.directive';
 import { GrowDirective } from './directives/grow.directive';
 import { JustifyDirective } from './directives/justify.directive';
@@ -150,7 +150,7 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         PlexColumnDirective,
 
         // Directivas
-        AlignedDirective,
+        AlignDirective,
         GrowDirective,
         HelpDirective,
         HintDirective,
@@ -226,7 +226,7 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         PlexTableSortPipe,
 
         // Directivas
-        AlignedDirective,
+        AlignDirective,
         GrowDirective,
         HelpDirective,
         HintDirective,
