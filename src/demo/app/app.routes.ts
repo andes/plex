@@ -44,7 +44,7 @@ import { DemoDirectivesSidebarComponent } from './directives/listado-sidebar/dir
 import { TooltipDemoComponent } from './directives/componentes/tooltip/tooltip.component';
 import { HintDemoComponent } from './directives/componentes/hint/hint.component';
 import { CaseDemoComponent } from './directives/componentes/case/case.component';
-import { AlignedDemoComponent } from './directives/componentes/aligned/aligned.component';
+import { AlignDemoComponent } from './directives/componentes/align/align.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -100,7 +100,7 @@ const appRoutes: Routes = [
     {
         path: 'directives/listado-sidebar', component: DemoDirectivesSidebarComponent,
         children: [
-            { path: 'aligned', component: AlignedDemoComponent },
+            { path: 'align', component: AlignDemoComponent },
             { path: 'tooltip', component: TooltipDemoComponent },
             { path: 'hint', component: HintDemoComponent },
             { path: 'case', component: CaseDemoComponent },

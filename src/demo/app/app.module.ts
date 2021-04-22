@@ -70,7 +70,7 @@ import { CaseDemoComponent } from './directives/componentes/case/case.component'
 import { DemoDirectivesSidebarComponent } from './directives/listado-sidebar/directives-sidebar.component';
 import { TooltipDemoComponent } from './directives/componentes/tooltip/tooltip.component';
 import { HintDemoComponent } from './directives/componentes/hint/hint.component';
-import { AlignedDemoComponent } from './directives/componentes/aligned/aligned.component';
+import { AlignDemoComponent } from './directives/componentes/align/align.component';
 
 
 @NgModule({
@@ -136,7 +136,7 @@ import { AlignedDemoComponent } from './directives/componentes/aligned/aligned.c
         TooltipDemoComponent,
         HintDemoComponent,
         CaseDemoComponent,
-        AlignedDemoComponent
+        AlignDemoComponent
     ],
     entryComponents: [
         HeaderPacienteComponent

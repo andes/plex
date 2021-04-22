@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: './aligned.html'
+    templateUrl: './align.html'
 })
-export class AlignedDemoComponent {
+export class AlignDemoComponent {
 
     constructor() { }
 
