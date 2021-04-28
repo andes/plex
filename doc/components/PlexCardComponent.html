@@ -243,7 +243,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/AlignedDirective.html" >AlignedDirective</a>
+                                    <a href="../directives/AlignDirective.html" >AlignDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/CaseDirective.html" >CaseDirective</a>
@@ -669,7 +669,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/AlignedDirective.html" >AlignedDirective</a>
+                                           <a href="../directives/AlignDirective.html" >AlignDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/CaseDirective.html" >CaseDirective</a>
@@ -920,7 +920,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;#cardColor&nbsp;class&#x3D;&quot;card&nbsp;bg-{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;text-white&#x27;&nbsp;:&nbsp;type&nbsp;!&#x3D;&nbsp;&#x27;default&#x27;}&quot;&nbsp;[class.selected]&#x3D;&quot;selected&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;img&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-label&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;flex-column&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;#cardColor&nbsp;class&#x3D;&quot;card&nbsp;bg-{{&nbsp;type&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;text-white&#x27;&nbsp;:&nbsp;type&nbsp;!&#x3D;&nbsp;&#x27;default&#x27;}&quot;&nbsp;[class.selected]&#x3D;&quot;selected&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;img&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-icon&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;mt-2&nbsp;text-{{&nbsp;aligned&nbsp;}}&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-label&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;flex-column&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&nbsp;mt-2&quot;&nbsp;[ngClass]&#x3D;&quot;cssAlign&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -935,7 +935,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>align</code>
+                            <code>aligned</code>
                         </td>
                         <td class="col-md-10">
                               <p>
@@ -1078,7 +1078,7 @@
         &lt;div class&#x3D;&quot;d-flex&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
             &lt;ng-content select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;d-flex mt-2&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
+        &lt;div class&#x3D;&quot;d-flex mt-2 text-{{ aligned }}&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
             &lt;ng-content select&#x3D;&quot;plex-label&quot;&gt;&lt;/ng-content&gt;
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;d-flex flex-column mt-2&quot; [ngClass]&#x3D;&quot;cssAlign&quot;&gt;
@@ -1093,7 +1093,7 @@
 
 export class PlexCardComponent implements OnChanges {
     @Input() selected &#x3D; false;
-    @Input() align: &#x27;start&#x27; | &#x27;end&#x27; | &#x27;center&#x27; &#x3D; &#x27;center&#x27;;
+    @Input() aligned: &#x27;start&#x27; | &#x27;end&#x27; | &#x27;center&#x27; &#x3D; &#x27;center&#x27;;
     @Input() size: &#x27;xs&#x27; | &#x27;md&#x27; | &#x27;lg&#x27; | &#x27;block&#x27; &#x3D; &#x27;md&#x27;;
     @Input() type: &#x27;success&#x27; | &#x27;warning&#x27; | &#x27;danger&#x27; | &#x27;dark&#x27; | &#x27;custom&#x27; | &#x27;default&#x27; &#x3D; &#x27;default&#x27;;
     @Input() color: string;
@@ -1104,10 +1104,10 @@ export class PlexCardComponent implements OnChanges {
     }
 
     get cssAlign() {
-        if (this.align &#x3D;&#x3D;&#x3D; &#x27;center&#x27;) {
+        if (this.aligned &#x3D;&#x3D;&#x3D; &#x27;center&#x27;) {
             return &#x27;justify-content-center&#x27;;
         } else {
-            return this.align &#x3D;&#x3D;&#x3D; &#x27;start&#x27; ? &#x27;justify-content-start&#x27; : &#x27;justify-content-end&#x27;;
+            return this.aligned &#x3D;&#x3D;&#x3D; &#x27;start&#x27; ? &#x27;justify-content-start&#x27; : &#x27;justify-content-end&#x27;;
         }
     }
 

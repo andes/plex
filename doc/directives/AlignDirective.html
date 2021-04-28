@@ -243,7 +243,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/AlignedDirective.html"  class="active" >AlignedDirective</a>
+                                    <a href="../directives/AlignDirective.html"  class="active" >AlignDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/CaseDirective.html" >CaseDirective</a>
@@ -669,7 +669,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/AlignedDirective.html"  class="active" >AlignedDirective</a>
+                                           <a href="../directives/AlignDirective.html"  class="active" >AlignDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/CaseDirective.html" >CaseDirective</a>
@@ -873,7 +873,7 @@
 
 <ol class="breadcrumb">
   <li>Directives</li>
-  <li>AlignedDirective</li>
+  <li>AlignDirective</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -891,7 +891,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/lib/directives/aligned.directive.ts</code>
+            <code>src/lib/directives/align.directive.ts</code>
         </p>
 
 
@@ -903,7 +903,7 @@
 
                     <tr>
                         <td class="col-md-3">selector</td>
-                        <td class="col-md-9"><code>[aligned]</code></td>
+                        <td class="col-md-9"><code>[align]</code></td>
                     </tr>
 
                 </tbody>
@@ -916,15 +916,15 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-2">
-                                    <code>aligned</code>
+                                    <code>align</code>
                                 </td>
                                 <td class="col-md-10">
                                       <p>
-                                        <em>Type:</em>    <code>&quot;start&quot; | &quot;end&quot; | &quot;center&quot;</code>
+                                        <em>Type:</em>    <code>&quot;start&quot; | &quot;end&quot; | &quot;center&quot; | &quot;middle&quot;</code>
 
                                       </p>
                                     <p>
-                                      <em>Default value: </em><code>center</code>
+                                      <em>Default value: </em><code>middle</code>
                                     </p>
                                 </td>
                             </tr>
@@ -991,6 +991,26 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <b> flex2</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>flex2:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value: </i><code>true</code>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <b> start</b>
                                 </td>
                             </tr>
@@ -1010,23 +1030,25 @@
 
 @Directive({
     // tslint:disable-next-line:directive-selector
-    selector: &#x27;[aligned]&#x27;
+    selector: &#x27;[align]&#x27;
 })
-export class AlignedDirective {
-    @Input() aligned: &#x27;start&#x27; | &#x27;end&#x27; | &#x27;center&#x27; &#x3D; &#x27;center&#x27;;
+export class AlignDirective {
+    @Input() align: &#x27;start&#x27; | &#x27;end&#x27; | &#x27;center&#x27; | &#x27;middle&#x27; &#x3D; &#x27;middle&#x27;;
 
+    // TODO: reveer convivencia de clases con directiva &#x27;justify&#x27;
     @HostBinding(&#x27;class.d-flex&#x27;) flex &#x3D; true;
+    @HostBinding(&#x27;class.justify-content-center&#x27;) flex2 &#x3D; true;
 
     @HostBinding(&#x27;class.align-items-start&#x27;) get start() {
-        return this.aligned &#x3D;&#x3D;&#x3D; &#x27;start&#x27;;
+        return this.align &#x3D;&#x3D;&#x3D; &#x27;start&#x27;;
     }
 
     @HostBinding(&#x27;class.align-items-end&#x27;) get end() {
-        return this.aligned &#x3D;&#x3D;&#x3D; &#x27;end&#x27;;
+        return this.align &#x3D;&#x3D;&#x3D; &#x27;end&#x27;;
     }
 
     @HostBinding(&#x27;class.align-items-center&#x27;) get center() {
-        return !this.aligned || this.aligned &#x3D;&#x3D;&#x3D; &#x27;center&#x27;;
+        return !this.align || this.align &#x3D;&#x3D;&#x3D; &#x27;center&#x27;;
     }
 }
 </code></pre>

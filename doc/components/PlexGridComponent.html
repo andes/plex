@@ -243,7 +243,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/AlignedDirective.html" >AlignedDirective</a>
+                                    <a href="../directives/AlignDirective.html" >AlignDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/CaseDirective.html" >CaseDirective</a>
@@ -669,7 +669,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/AlignedDirective.html" >AlignedDirective</a>
+                                           <a href="../directives/AlignDirective.html" >AlignDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/CaseDirective.html" >CaseDirective</a>
@@ -964,7 +964,7 @@
                     <tr>
                         <td class="col-md-4">
                             <div class="io-description"><p>Propiedades desde CSS</p>
-    <p>type= auto|fill<br>size= xs|sm|md|lg|xl<br>cols= 2|3|4|5|6<br>span= 2|3|4|5|6</p>
+    <p>type= auto|full<br>size= xs|sm|md|lg|xl<br>cols= 1|2|3|4|5|6|7|8|9|10|11|12<br>span= 1|2|3|4|5|6|7|8|9|10|11|12<br>ENCOLUMNADO RESPONSIVE MANUAL(Funciona con directiva RESPONSIVE)<br>colsSm= 1|2|3|4|5|6|7|8|9|10|11|12<br>colsMd= 1|2|3|4|5|6|7|8|9|10|11|12<br>colsLg= 1|2|3|4|5|6|7|8|9|10|11|12</p>
     </div>
                         </td>
                     </tr>
@@ -994,7 +994,7 @@ import { PlexLabelComponent } from &#x27;../label/label.component&#x27;;
 @Component({
     selector: &#x27;plex-grid&#x27;,
     template: &#x60;
-            &lt;ng-content&gt;&lt;/ng-content&gt;
+               &lt;ng-content&gt;&lt;/ng-content&gt;
     &#x60;,
 })
 
@@ -1003,10 +1003,14 @@ export class PlexGridComponent implements AfterViewChecked {
     /**
      * Propiedades desde CSS
      *
-     * type&#x3D; auto|fill
+     * type&#x3D; auto|full
      * size&#x3D; xs|sm|md|lg|xl
-     * cols&#x3D; 2|3|4|5|6
-     * span&#x3D; 2|3|4|5|6
+     * cols&#x3D; 1|2|3|4|5|6|7|8|9|10|11|12
+     * span&#x3D; 1|2|3|4|5|6|7|8|9|10|11|12
+     * ENCOLUMNADO RESPONSIVE MANUAL(Funciona con directiva RESPONSIVE)
+     * colsSm&#x3D; 1|2|3|4|5|6|7|8|9|10|11|12
+     * colsMd&#x3D; 1|2|3|4|5|6|7|8|9|10|11|12
+     * colsLg&#x3D; 1|2|3|4|5|6|7|8|9|10|11|12
      *
      */
 

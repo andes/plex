@@ -243,7 +243,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/AlignedDirective.html" >AlignedDirective</a>
+                                    <a href="../directives/AlignDirective.html" >AlignDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/CaseDirective.html" >CaseDirective</a>
@@ -669,7 +669,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/AlignedDirective.html" >AlignedDirective</a>
+                                           <a href="../directives/AlignDirective.html" >AlignDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/CaseDirective.html" >CaseDirective</a>
@@ -902,7 +902,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(titleService: <a href="https://angular.io/docs/ts/latest/api/platform-browser/index/Title-class.html" target="_blank" >Title</a>, noficationService: <a href="../injectables/NotificationsService.html" >NotificationsService</a>, componentFactoryResolver: <a href="https://angular.io/docs/ts/latest/api/core/index/ComponentFactoryResolver-class.html" target="_blank" >ComponentFactoryResolver</a>, breakpointObserver: BreakpointObserver)</code>
+                                    <code>constructor(titleService: <a href="https://angular.io/docs/ts/latest/api/platform-browser/index/Title-class.html" target="_blank" >Title</a>, noficationService: <a href="../injectables/NotificationsService.html" >NotificationsService</a>, componentFactoryResolver: <a href="https://angular.io/docs/ts/latest/api/core/index/ComponentFactoryResolver-class.html" target="_blank" >ComponentFactoryResolver</a>, breakpointObserver: BreakpointObserver, titlecasePipe: TitleCasePipe)</code>
                                 </td>
                             </tr>
             
@@ -1846,6 +1846,7 @@
         <pre><code class="hljs javascript">import { BehaviorSubject, Subject } from &#x27;rxjs&#x27;;
 import { Injectable, ViewContainerRef, ComponentFactoryResolver } from &#x27;@angular/core&#x27;;
 import { Title } from &#x27;@angular/platform-browser&#x27;;
+import { TitleCasePipe } from &#x27;@angular/common&#x27;;
 import { DropdownItem } from &#x27;./../dropdown/dropdown-item.inteface&#x27;;
 import { NotificationsService } from &#x27;./../toast/simple-notifications/services/notifications.service&#x27;;
 import { default as swal } from &#x27;sweetalert2&#x27;;
@@ -1875,7 +1876,8 @@ export class Plex {
         private titleService: Title,
         private noficationService: NotificationsService,
         private componentFactoryResolver: ComponentFactoryResolver,
-        private breakpointObserver: BreakpointObserver
+        private breakpointObserver: BreakpointObserver,
+        private titlecasePipe: TitleCasePipe
     ) { }
 
     /**
@@ -1915,7 +1917,8 @@ export class Plex {
                 } else {
                     this.title &#x3D; title as PlexTitle[];
                 }
-                this.titleService.setTitle(this.title[this.title.length - 1].name);
+                const name &#x3D; this.titlecasePipe.transform(this.title[this.title.length - 1].name);
+                this.titleService.setTitle(name);
             } else {
                 this.titleService.setTitle(&#x27;&#x27;);
                 this.title &#x3D; null;
