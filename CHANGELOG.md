@@ -1,3 +1,20 @@
+# [7.16.0](https://github.com/andes/plex/compare/v7.15.0...v7.16.0) (2021-04-28)
+
+
+### Bug Fixes
+
+* **plex-modal:** se evita herencia desde invert ([#280](https://github.com/andes/plex/issues/280)) ([59ac7b2](https://github.com/andes/plex/commit/59ac7b249c4afee9ee8c0a59f50c2b6ecc0c8b7b))
+
+
+### Features
+
+* **align:** corrige demo ([8fde244](https://github.com/andes/plex/commit/8fde244e72c8d39ed939e31da85d24b4fb3c7db6))
+* **aligned:** permite setear altura contenedor con calc ([2efa0b6](https://github.com/andes/plex/commit/2efa0b6f8040cef86d482b9d9b6dadd6ce1a783c))
+* **plex-grid:** agrega mixins + encolumnado manual ([6332030](https://github.com/andes/plex/commit/63320308a42f7235add4ae878588b66ba0887c49))
+* **plex-grid:** agrega size auto y breakpoints ([7d5ef84](https://github.com/andes/plex/commit/7d5ef84dacda9ce05f2180bbfff193a2b96a7275))
+* **plex-grid:** modifica clase size + demo ([f6e1897](https://github.com/andes/plex/commit/f6e1897e2f6584492a19e3afa782451549445ce1))
+* **title:** aplica TitleCasePipe ([#271](https://github.com/andes/plex/issues/271)) ([5946b74](https://github.com/andes/plex/commit/5946b740039174b5595cef735cab3e86b802c116))
+
 # [7.15.0](https://github.com/andes/plex/compare/v7.14.1...v7.15.0) (2021-04-13)
 
 
