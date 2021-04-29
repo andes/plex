@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+// Define at the top of the spec file or just import it
+
+// Log de problemas de accesibilidad en consola
+Cypress.Commands.add('terminalLog', (violations) => {
+    cy.task(
+      'log',
+      `${violations.length} problema${violations.length === 1 ? '' : 's'} de accessibilidad detectado${violations.length === 1 ? '' : 's'} `
+    );
+    // pluck specific keys to keep the table readable
+    const violationData = violations.map(
+      ({ id, impact, description, nodes }) => ({
+        id,
+        impact,
+        description,
+        nodes: nodes.length
+      })
+    );
+  
+    cy.task('table', violationData);
+  });
+
