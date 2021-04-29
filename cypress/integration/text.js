@@ -5,31 +5,38 @@ context('<plex-text>', () => {
     before(() => {
         cy.eyesOpen({ appName: 'PLEX', testName: 'text' });
         cy.visit('/text');
-        cy.injectAxe();
         cy.eyesCheckWindow('start - text');
+        cy.injectAxe();
     });
     after(() => {
         cy.eyesCheckWindow('end - text');
         cy.eyesClose();
     });
 
-    it.skip('No tiene problemas de A11y en la carga inicial', () => {
-        // Test de pantalla inicial
-        cy.checkA11y(null, {
-            includedImpacts: ['critical']
-        });
-      })
+    it('Listado de problemas de Accesibilidad en la carga inicial', () => {
+        cy.log('Nota: se excluye a quill-editor');
 
-    it('plex-text type="text"', () => {
+        // Test de pantalla inicial, se saltea quill-editor porque tiene problemas de accesibilidad internos
+        cy.checkA11y({exclude: ['quill-editor']}, null, cy.terminalLog, true);
+    });
+
+    it('plex-text type="text", "Ingrese su usuario"', () => {
+
+        cy.plexText('name="usuario"', 'Max Ernst').should('not.have', '.form-control-feedback');
+        cy.plexText('name="usuario"').clear();
 
         // Input normal con FOCUS
-        cy.plexText('name="usuario"').click().should('have.value', 'FOCUSED');
+        cy.plexText('name="usuario"').click().should('have.value', '');
         // Se borra el input
         cy.plexText('name="usuario"').clear();
         // Se comprueba que el mensaje está visible
-        cy.plexText('name="usuario"').get('.form-control-feedback').should('contain', 'Valor requerido');
+        cy.plexText('name="usuario"').get('.form-control-feedback').should('contain', 'FOCUSED');
         // Se ingresa valor válido
         cy.plexText('name="usuario"', 'Max Ernst').should('not.have', '.form-control-feedback');
+
+        // Accesibilidad
+        cy.checkA11y('plex-text[name=usuario]', null, cy.terminalLog);
+
     });
 
     it('plex-text type="email"', () => {
@@ -47,7 +54,7 @@ context('<plex-text>', () => {
 
         // Texto que NO coincide con el patrón
         cy.plexText('name="patron"', 'ASD 123456789').should('have', '.form-control-feedback');
-        cy.plexText('name="patron"').get('.form-control-feedback').should('contain', 'Formato incorrecto');
+        cy.plexText('name="patron"').get('.form-control-feedback').should('contain', 'Error: el nombre no coincide con el patrón');
 
         // Texto que SI coincide con el patrón
         cy.plexText('name="patron"').clear();
