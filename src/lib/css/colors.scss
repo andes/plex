@@ -25,3 +25,9 @@ $colors: (
         padding: ($grid-gutter-width-base / 2);
     }
 }
+
+// Mensajes de error
+.has-danger .form-control-label,
+.has-danger .form-control-feedback {
+    color: #a83829 !important;
+}
