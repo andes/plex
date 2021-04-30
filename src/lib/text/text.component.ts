@@ -31,11 +31,6 @@ import { hasRequiredValidator } from '../core/validator.functions';
                 <ng-content select="[right]"></ng-content>
             </span>
         </div>
-        <div *ngIf="type === 'password'">
-            <small id="{{ariaLabelledby?.id}}">
-                {{ ariaLabelledby?.label }}
-            </small>
-        </div>
 
         <!-- Multiline -->
         <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html"  [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
@@ -83,7 +78,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() type: 'text' | 'password' | 'email' = 'text';
     @Input() label: string;
     @Input() ariaLabel: string;
-    @Input() ariaLabelledby: any = { id: `password${Math.floor(Math.random() * 100000)}`, label: 'Sólo caracteres alfanuméricos, sin espacios.' };
     @Input() ariaDescribedby: any = { id: `error${Math.floor(Math.random() * 100000)}` };
     @Input() mensaje: string;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
@@ -161,12 +155,9 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         if (this.html) {
             this.prepareQuillToolbar();
         }
-        // if (this.type === 'password') {
-        //     this.ariaLabelledby = {
-        //         id: `password-${Math.random() * 10000}`,
-        //         label: this.ariaLabel
-        //     }
-        // }
+        if (this.type === 'password') {
+            this.mensaje = 'Ingrese caracteres alfanuméricos, sin espacios.';
+        }
     }
 
     ngAfterViewInit() {
@@ -295,7 +286,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
 
     get passwordLabel() {
-        return this.type === 'password' ? this.ariaLabelledby.id : null;
+        return this.type === 'password' ? this.ariaDescribedby.id : null;
     }
 
 }
