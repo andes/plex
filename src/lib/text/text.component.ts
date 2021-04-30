@@ -31,11 +31,6 @@ import { hasRequiredValidator } from '../core/validator.functions';
                 <ng-content select="[right]"></ng-content>
             </span>
         </div>
-        <div *ngIf="type === 'password'">
-            <small id="{{ariaLabelledby?.id}}">
-                {{ ariaLabelledby?.label }}
-            </small>
-        </div>
 
         <!-- Multiline -->
         <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html"  [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
@@ -48,7 +43,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
         <quill-editor #quillEditor [attr.aria-label]="textLabel" [attr.aria-hidden]="multiline || !html" [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
 
         <!-- Validation -->
-        <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
+        <plex-validation-messages id="{{ariaLabelledby?.id}}" *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
     </div>
     `
 })
