@@ -7,8 +7,8 @@
         </plex-title>
         <plex-grid cols="4" size="md">
             <!-- plex-card -->
-            <plex-grid type="" span="1">
-                <plex-card *ngFor="let item of cards" align="start">
+            <plex-grid type="" span="1" class="align-self-start">
+                <plex-card *ngFor="let item of cards" aligned="start">
                     <plex-label size="lg" type="default" titulo="{{ item.titulo }}" subtitulo="{{ item.subtitulo }}"
                                 icon="{{ item.icono }}">
                     </plex-label>
@@ -16,7 +16,7 @@
                     <plex-button type="info" label="{{ item.botones | slice:1:2 }}"></plex-button>
                 </plex-card>
                 <ng-container *ngFor="let item of cards | slice:2:3">
-                    <plex-card size="lg" type="dark" align="center">
+                    <plex-card size="lg" type="dark" aligned="center">
                         <plex-badge type="warning">{{ item.estado }}</plex-badge>
                         <plex-label size="lg" type="default" titulo="{{ item.fecha }}" subtitulo="{{ item.subtitulo }}">
                         </plex-label>
