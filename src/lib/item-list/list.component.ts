@@ -24,6 +24,20 @@ import { IPlexTableColumns } from '../table/table.interfaces';
                             <plex-icon *ngIf="vm.sortData.sortOrder === 'ASC'" name="chevron-up"></plex-icon>
                         </span>
                     </b>
+
+                    <ng-container *ngIf="vm.filters[column.key]">
+
+                                    <plex-dropdown size="sm" icon="format-list-checks" type="link" right="true" class="filtros">
+
+                                    <plex-radio   multiple="true" [data]="vm.filters[column.key]"
+                                        type="vertical" name="cacho" [(ngModel)]="plexRadioValue[column.key]" (change)="onFilterChange(column.key, $event)" >
+                                    </plex-radio>
+
+
+                                    </plex-dropdown>
+
+                            </ng-container>
+
                 </ng-container>
             </plex-heading>
         </ng-container>
@@ -53,6 +67,12 @@ export class PlexListComponent implements AfterViewInit {
     @ContentChild(PlexHeadingComponent) private plexHeading: PlexHeadingComponent;
 
     public vm$: Observable<any>;
+
+    /**
+     * plex-radio no se puede usar sin ngModel, así que esta esta variable dummy.
+     * @ignore
+     */
+    plexRadioValue = {};
 
     constructor(
         @Optional() @Self() private plexColumns: PlexColumnDirective,
@@ -105,4 +125,19 @@ export class PlexListComponent implements AfterViewInit {
         this.sort.emit(column);
     }
 
+    onFilterChange(column, $event) {
+        const { value } = $event;
+        const keys = value.map(v => v.id);
+
+        const filtros = this.plexColumns._filtrosSeleccionados.getValue();
+
+        if (keys.length > 0) {
+            filtros[column] = keys;
+        } else {
+            delete filtros[column];
+        }
+
+        this.plexColumns._filtrosSeleccionados.next(filtros);
+
+    }
 }
