@@ -6,6 +6,7 @@ export interface IPlexTableColumns {
     width?: string | number;
     right?: boolean;
     sort?: (a: any, b: any) => number;
+    filterBy?: (a: any) => any;
 }
 
 export interface IPlexSortData {

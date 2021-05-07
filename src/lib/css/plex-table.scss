@@ -75,6 +75,17 @@ plex-table {
         &[size="sm"] {
             font-size: .8rem;
         }
+
+        .filtros {
+            .dropdown {
+                display: inline-block;
+
+                .dropdown-menu {
+                    max-height: 300px;
+                    overflow-y: scroll;
+                }
+            }
+        }
     }
 }
 // Sidebar 

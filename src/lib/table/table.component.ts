@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
+import { Component, EventEmitter, Input, Optional, Output, Self, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PlexColumnDirective } from './columns.directive';
 import { IPlexTableColumns } from './table.interfaces';
@@ -27,6 +27,22 @@ import { IPlexTableColumns } from './table.interfaces';
                                 <plex-icon *ngIf="vm.sortData.sortOrder === 'DESC'" name="chevron-down"></plex-icon>
                                 <plex-icon *ngIf="vm.sortData.sortOrder === 'ASC'" name="chevron-up"></plex-icon>
                             </span>
+
+                            <ng-container *ngIf="vm.filters[column.key]">
+
+                                    <plex-dropdown size="sm" icon="format-list-checks" type="link" right="true" class="filtros">
+
+                                    <plex-radio   multiple="true" [data]="vm.filters[column.key]"
+                                        type="vertical" name="cacho" [(ngModel)]="plexRadioValue[column.key]" (change)="onFilterChange(column.key, $event)" >
+                                    </plex-radio>
+
+
+                                    </plex-dropdown>
+
+                            </ng-container>
+
+
+
                         </th>
                     </ng-container>
                 </tr>
@@ -40,6 +56,12 @@ import { IPlexTableColumns } from './table.interfaces';
 })
 
 export class PlexTableComponent {
+
+    /**
+     * plex-radio no se puede usar sin ngModel, así que esta esta variable dummy.
+     * @ignore
+     */
+    plexRadioValue = {};
 
     /**
      * Variable auxiliar para calcular la altura del elemento
@@ -87,5 +109,21 @@ export class PlexTableComponent {
 
     public onScroll() {
         this.scroll.emit();
+    }
+
+    onFilterChange(column, $event) {
+        const { value } = $event;
+        const keys = value.map(v => v.id);
+
+        const filtros = this.plexColumns._filtrosSeleccionados.getValue();
+
+        if (keys.length > 0) {
+            filtros[column] = keys;
+        } else {
+            delete filtros[column];
+        }
+
+        this.plexColumns._filtrosSeleccionados.next(filtros);
+
     }
 }
