@@ -86,6 +86,7 @@ plex-list {
         grid-gap: 0.25rem;
         height: 40px;
         max-height: 40px;
+        font-weight: bold;
 
         &.sticky {
             position: sticky;
@@ -118,9 +119,34 @@ plex-list {
         }
 
         .sortable {
+            position: relative;
+
+            .list-label {
+                &:hover {
+                    text-decoration: underline !important;
+                    cursor: pointer;
+                }
+                > span {
+                    position: absolute;
+                    top: 10px;
+                }
+            }
+            plex-dropdown {
+                display: none;
+            }
             &:hover {
-                text-decoration: underline !important;
-                cursor: pointer;
+                plex-dropdown {
+                    display: inline;
+                    position: relative;
+                    left: 12px;
+                    .btn-sm {
+                        padding: 0rem;
+                        color: $blue;
+                        &:hover {
+                            color: $light-blue;
+                        }
+                    }
+                }
             }
         }
     }

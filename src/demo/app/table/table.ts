@@ -56,14 +56,14 @@ export class TableDemoComponent {
     public columns = [
         {
             key: 'col-1',
-            label: 'columna 1',
+            label: 'col 1',
             sorteable: true,
             opcional: false,
             sort: (a: any, b: any) => a.nombre.localeCompare(b.nombre)
         },
         {
             key: 'col-2',
-            label: 'columna 2',
+            label: 'col 2',
             sorteable: true,
             opcional: true,
             sort: (a: any, b: any) => a.apellido.localeCompare(b.apellido),
@@ -71,7 +71,7 @@ export class TableDemoComponent {
         },
         {
             key: 'col-3',
-            label: 'columna 3',
+            label: 'col 3',
             sorteable: true,
             opcional: true,
             sort: (a: any, b: any) => a.documento.localeCompare(b.documento),
@@ -80,21 +80,21 @@ export class TableDemoComponent {
         },
         {
             key: 'col-4',
-            label: 'columna 4',
+            label: 'col 4',
             sorteable: true,
             opcional: true,
             sort: (a: any, b: any) => a.fecha.getTime() - b.fecha.getTime()
         },
         {
             key: 'col-5',
-            label: 'columna 5',
+            label: 'col 5',
             sorteable: true,
             opcional: true,
             sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad),
         },
         {
             key: 'col-6',
-            label: 'columna 6',
+            label: 'col 6',
             sorteable: true,
             opcional: true,
             sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad),
