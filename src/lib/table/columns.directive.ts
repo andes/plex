@@ -22,14 +22,24 @@ export class PlexColumnDirective implements OnChanges, OnDestroy {
 
     public sort$ = this._sort.asObservable();
 
+    public _filters = new BehaviorSubject({});
+
+    public filters$ = this._filters.asObservable();
+
+    public _filtrosSeleccionados = new BehaviorSubject({});
+
+    public filtrosSeleccionados$ = this._filtrosSeleccionados.asObservable();
+
+
     private sub: Subscription;
 
     public vm$ = combineLatest([
         this.columns$,
         this.displayColumns$,
-        this.sort$
+        this.sort$,
+        this.filters$
     ]).pipe(
-        map(([columns, displayColumns, sortData]) => ({ columns, displayColumns, sortData }))
+        map(([columns, displayColumns, sortData, filters]) => ({ columns, displayColumns, sortData, filters }))
     );
 
     @Input() set columns(value) {

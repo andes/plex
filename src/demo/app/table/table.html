@@ -1,29 +1,29 @@
-<plex-layout main="8">
-    <plex-layout-main>
-        <plex-table [columns]="columns" #table="plTable" (scroll)="onScroll()" [offset]="0">
-            <plex-title titulo="HOLA">
-                <plex-table-columns>
-                </plex-table-columns>
-            </plex-title>
+<plex-layout main="6">
+  <plex-layout-main>
+    <plex-table [columns]="columns" #table="plTable" (scroll)="onScroll()" [offset]="0">
+      <plex-title titulo="HOLA">
+        <plex-table-columns>
+        </plex-table-columns>
+      </plex-title>
 
-            <tr *ngFor="let item of (data$ | plSort:table | async)" [class.selected]="item.selected"
-                (click)="item.selected = !item.selected" [class.selectable]="selectable">
-                <td *plTableCol="'col-1'">{{item.nombre }}</td>
-                <td *plTableCol="'col-2'">{{ item.apellido }}</td>
-                <td *plTableCol="'col-3'">{{item.documento}}</td>
-                <td *plTableCol="'col-4'">{{item.fecha | date}}</td>
-                <td *plTableCol="'col-5'">{{item.ciudad}}</td>
-                <td *plTableCol="'col-6'">
-                    <plex-badge *ngIf="item.selected" type="success">{{ item.selected | json}}
-                    </plex-badge>
-                    <plex-badge type="info">{{ item.fecha | date}}</plex-badge>
-                    <plex-button type="warning" icon="pencil" size="sm"></plex-button>
-                </td>
-            </tr>
-        </plex-table>
-    </plex-layout-main>
-    <plex-layout-sidebar type="invert">
-        <!-- <plex-table [columns]="columns" #table2="plTable">
+      <tr *ngFor="let item of (data$ | plSort:table | async)" [class.selected]="item.selected"
+          (click)="item.selected = !item.selected" [class.selectable]="selectable">
+        <td *plTableCol="'col-1'">{{item.nombre }}</td>
+        <td *plTableCol="'col-2'">{{ item.apellido }}</td>
+        <td *plTableCol="'col-3'">{{item.documento}}</td>
+        <td *plTableCol="'col-4'">{{item.fecha | date}}</td>
+        <td *plTableCol="'col-5'">{{item.ciudad}}</td>
+        <td *plTableCol="'col-6'">
+          <plex-badge *ngIf="item.selected" type="success">{{ item.selected | json}}
+          </plex-badge>
+          <plex-badge type="info">{{ item.fecha | date}}</plex-badge>
+          <plex-button type="warning" icon="pencil" size="sm"></plex-button>
+        </td>
+      </tr>
+    </plex-table>
+  </plex-layout-main>
+  <plex-layout-sidebar type="invert">
+    <!-- <plex-table [columns]="columns" #table2="plTable">
             <plex-title main titulo="HOLA">
                 <plex-table-columns [selected]="colsVisibles"></plex-table-columns>
             </plex-title>
@@ -43,32 +43,32 @@
             </tr>
         </plex-table> -->
 
-        <plex-list [columns]="columns" #table2="plTable">
-            <plex-title main titulo="HOLA">
-                <plex-table-columns [selected]="colsVisibles"></plex-table-columns>
-            </plex-title>
+    <plex-list [columns]="columns" #table2="plTable">
+      <plex-title main titulo="HOLA">
+        <plex-table-columns [selected]="colsVisibles"></plex-table-columns>
+      </plex-title>
 
-            <plex-item *ngFor="let item of (data$ | plSort:table2 | async)">
-                <plex-label *plTableCol="'col-1'">
-                    {{item.nombre }}
-                </plex-label>
-                <plex-label *plTableCol="'col-2'">
-                    {{item.apellido }}
-                </plex-label>
-                <plex-label *plTableCol="'col-3'">
-                    {{item.documento }}
-                </plex-label>
-                <plex-label *plTableCol="'col-4'">
-                    {{item.fecha | date }}
-                </plex-label>
-                <plex-label *plTableCol="'col-5'">
-                    {{item.ciudad }}
-                </plex-label>
-                <plex-badge type="info" *plTableCol="'col-6'">{{ item.fecha | date}}</plex-badge>
-                <plex-button type="warning" icon="pencil" size="sm" *plTableCol="'col-6'"></plex-button>
-            </plex-item>
+      <plex-item *ngFor="let item of (data$ | plSort:table2 | async)">
+        <plex-label *plTableCol="'col-1'">
+          {{item.nombre }}
+        </plex-label>
+        <plex-label *plTableCol="'col-2'">
+          {{item.apellido }}
+        </plex-label>
+        <plex-label *plTableCol="'col-3'">
+          {{item.documento }}
+        </plex-label>
+        <plex-label *plTableCol="'col-4'">
+          {{item.fecha | date }}
+        </plex-label>
+        <plex-label *plTableCol="'col-5'">
+          {{item.ciudad }}
+        </plex-label>
+        <plex-badge type="info" *plTableCol="'col-6'">{{ item.fecha | date}}</plex-badge>
+        <plex-button type="warning" icon="pencil" size="sm" *plTableCol="'col-6'"></plex-button>
+      </plex-item>
 
 
-        </plex-list>
-    </plex-layout-sidebar>
+    </plex-list>
+  </plex-layout-sidebar>
 </plex-layout>

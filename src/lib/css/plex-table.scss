@@ -1,30 +1,42 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 plex-table {
-    table  {
-        width:100%;
+    table {
+        width: 100%;
         position: relative;
-                
+
         th {
             text-transform: uppercase;
-            position: sticky!important;
-            top: 0!important;
-            z-index: 10!important;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 10 !important;
             height: fit-content;
-            background-color: rgba(255, 255, 255, 0.5)!important;
+            background-color: rgba(255, 255, 255, 0.5) !important;
 
             &.sortable {
-
-                &:hover {
-                    text-decoration: underline !important;
-                    cursor: pointer;
+                .th-label {
+                    &:hover {
+                        text-decoration: underline !important;
+                        cursor: pointer;
+                    }
+                    > span {
+                        position: absolute;
+                        top: 15px;
+                    }
                 }
-
-                > span {
-                    position: absolute;
-                    top: 15px;
+            }
+            plex-dropdown {
+                display: none;
+            }
+            &:hover {
+                plex-dropdown {
+                    display: inline;
+                    position: relative;
+                    left: 12px;
+                    .btn-sm {
+                        padding: 0rem;
+                    }
                 }
-
             }
         }
 
@@ -38,7 +50,7 @@ plex-table {
                     color: black;
                 }
             }
-    
+
             &.selected {
                 box-sizing: border-box;
                 box-shadow: inset 0 0 0 2px $blue;
@@ -49,13 +61,14 @@ plex-table {
                 background-color: rgba(0, 39, 56, 0.1);
             }
         }
-            
-        & th, td {
-        //border: 1px solid black;
-        border-collapse: collapse;
-        padding: 15px;
-        text-align: left;
-    
+
+        & th,
+        td {
+            //border: 1px solid black;
+            border-collapse: collapse;
+            padding: 15px;
+            text-align: left;
+
             &.column-right {
                 display: flex;
                 justify-content: flex-end;
@@ -64,34 +77,45 @@ plex-table {
                 > span {
                     right: 0;
                 }
-        
-                plex-button, plex-badge, plex-dropdown {
+
+                plex-button,
+                plex-badge,
+                plex-dropdown {
                     align-self: center;
-                    margin-left: .25rem;
+                    margin-left: 0.25rem;
                 }
             }
         }
-    
+
         &[size="sm"] {
-            font-size: .8rem;
+            font-size: 0.8rem;
+        }
+
+        .filtros {
+            .dropdown {
+                display: inline-block;
+
+                .dropdown-menu {
+                    max-height: 300px;
+                    overflow-y: scroll;
+                }
+            }
         }
     }
 }
-// Sidebar 
+// Sidebar
 plex-layout-sidebar {
     table {
         thead {
             th {
-                background-color: rgba(0, 39, 56, 0.5)!important;
+                background-color: rgba(0, 39, 56, 0.5) !important;
             }
         }
 
         tr {
             &:nth-child(odd) {
-                background-color: rgba(0, 168, 224, 0.1)!important;
+                background-color: rgba(0, 168, 224, 0.1) !important;
             }
         }
     }
 }
-
-            
