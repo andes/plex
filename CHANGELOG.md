@@ -1,3 +1,15 @@
+# [7.17.0](https://github.com/andes/plex/compare/v7.16.0...v7.17.0) (2021-05-12)
+
+
+### Bug Fixes
+
+* **plex-layout:** corrige restricción de clases ([de0361f](https://github.com/andes/plex/commit/de0361fbd13acf788593384bd319eae12b14a3d4))
+
+
+### Features
+
+* **plex-table:** filtros automaticos ([#282](https://github.com/andes/plex/issues/282)) ([090e642](https://github.com/andes/plex/commit/090e6429def8dc3562d58d25c2be9ad919fd0272))
+
 # [7.16.0](https://github.com/andes/plex/compare/v7.15.0...v7.16.0) (2021-04-28)
 
 
