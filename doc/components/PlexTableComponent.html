@@ -920,7 +920,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;section&nbsp;class&#x3D;&quot;d-flex&nbsp;flex-column&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infiniteScroll&nbsp;[infiniteScrollDistance]&#x3D;&quot;1&quot;&nbsp;(scrolled)&#x3D;&quot;onScroll()&quot;&nbsp;[scrollWindow]&#x3D;&quot;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.overflow-y]&#x3D;&quot;_height&nbsp;?&nbsp;&#x27;scroll&#x27;&nbsp;:&nbsp;null&quot;&nbsp;[style.height]&#x3D;&quot;_height&quot;<br>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-title&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&nbsp;*ngIf&#x3D;&quot;vm$&nbsp;|&nbsp;async&nbsp;as&nbsp;vm&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngFor&#x3D;&quot;let&nbsp;column&nbsp;of&nbsp;vm.columns&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&nbsp;[class.sortable]&#x3D;&quot;column.sorteable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.width]&#x3D;&quot;column.width&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;onColumnClick(column)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngIf&#x3D;&quot;vm.displayColumns[column.key]&nbsp;||&nbsp;!column.opcional&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.column-right]&#x3D;&quot;column.right&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;column.label&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortBy&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;column.key&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortOrder&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;DESC&#x27;&quot;&nbsp;name&#x3D;&quot;chevron-down&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortOrder&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;ASC&#x27;&quot;&nbsp;name&#x3D;&quot;chevron-up&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/th&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/thead&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;tr&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tbody&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>&lt;/section&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;section&nbsp;class&#x3D;&quot;d-flex&nbsp;flex-column&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infiniteScroll&nbsp;[infiniteScrollDistance]&#x3D;&quot;1&quot;&nbsp;(scrolled)&#x3D;&quot;onScroll()&quot;&nbsp;[scrollWindow]&#x3D;&quot;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.overflow-y]&#x3D;&quot;_height&nbsp;?&nbsp;&#x27;scroll&#x27;&nbsp;:&nbsp;null&quot;&nbsp;[style.height]&#x3D;&quot;_height&quot;<br>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-title&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&nbsp;*ngIf&#x3D;&quot;vm$&nbsp;|&nbsp;async&nbsp;as&nbsp;vm&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngFor&#x3D;&quot;let&nbsp;column&nbsp;of&nbsp;vm.columns&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&nbsp;[class.sortable]&#x3D;&quot;column.sorteable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.width]&#x3D;&quot;column.width&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;onColumnClick(column)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngIf&#x3D;&quot;vm.displayColumns[column.key]&nbsp;||&nbsp;!column.opcional&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.column-right]&#x3D;&quot;column.right&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;d-flex&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;th-label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;column.label&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortBy&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;column.key&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortOrder&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;DESC&#x27;&quot;&nbsp;name&#x3D;&quot;chevron-down&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortOrder&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;ASC&#x27;&quot;&nbsp;name&#x3D;&quot;chevron-up&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngIf&#x3D;&quot;vm.filters[column.key]&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-dropdown&nbsp;size&#x3D;&quot;sm&quot;&nbsp;icon&#x3D;&quot;format-list-checks&quot;&nbsp;type&#x3D;&quot;link&quot;&nbsp;right&#x3D;&quot;true&quot;&nbsp;class&#x3D;&quot;filtros&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-radio&nbsp;&nbsp;&nbsp;multiple&#x3D;&quot;true&quot;&nbsp;[data]&#x3D;&quot;vm.filters[column.key]&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&#x3D;&quot;vertical&quot;&nbsp;name&#x3D;&quot;cacho&quot;&nbsp;[(ngModel)]&#x3D;&quot;plexRadioValue[column.key]&quot;&nbsp;(change)&#x3D;&quot;onFilterChange(column.key,&nbsp;$event)&quot;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-radio&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-dropdown&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/th&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/thead&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;tr&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tbody&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>&lt;/section&gt;<br></code></td>
             </tr>
 
 
@@ -1056,6 +1056,30 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> onFilterChange</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>onFilterChange(column: any, $event: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
@@ -1085,6 +1109,27 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b> plexRadioValue</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>plexRadioValue:     <code>{}</code>
+    </bcode>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>plex-radio no se puede usar sin ngModel, así que esta esta variable dummy.</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b><span class="modifier">Public</span> vm$</b>
                         </td>
                     </tr>
@@ -1099,7 +1144,7 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, EventEmitter, Input, Optional, Output, Self } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, EventEmitter, Input, Optional, Output, Self, ViewEncapsulation } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { PlexColumnDirective } from &#x27;./columns.directive&#x27;;
 import { IPlexTableColumns } from &#x27;./table.interfaces&#x27;;
@@ -1123,11 +1168,22 @@ import { IPlexTableColumns } from &#x27;./table.interfaces&#x27;;
                             *ngIf&#x3D;&quot;vm.displayColumns[column.key] || !column.opcional&quot;
                             [class.column-right]&#x3D;&quot;column.right&quot;
                             &gt;
-                            {{ column.label }}
-                            &lt;span *ngIf&#x3D;&quot;vm.sortData.sortBy &#x3D;&#x3D;&#x3D; column.key&quot;&gt;
-                                &lt;plex-icon *ngIf&#x3D;&quot;vm.sortData.sortOrder &#x3D;&#x3D;&#x3D; &#x27;DESC&#x27;&quot; name&#x3D;&quot;chevron-down&quot;&gt;&lt;/plex-icon&gt;
-                                &lt;plex-icon *ngIf&#x3D;&quot;vm.sortData.sortOrder &#x3D;&#x3D;&#x3D; &#x27;ASC&#x27;&quot; name&#x3D;&quot;chevron-up&quot;&gt;&lt;/plex-icon&gt;
-                            &lt;/span&gt;
+                            &lt;div class&#x3D;&quot;d-flex&quot;&gt;
+                                &lt;div class&#x3D;&quot;th-label&quot;&gt;
+                                    {{ column.label }}
+                                    &lt;span *ngIf&#x3D;&quot;vm.sortData.sortBy &#x3D;&#x3D;&#x3D; column.key&quot;&gt;
+                                        &lt;plex-icon *ngIf&#x3D;&quot;vm.sortData.sortOrder &#x3D;&#x3D;&#x3D; &#x27;DESC&#x27;&quot; name&#x3D;&quot;chevron-down&quot;&gt;&lt;/plex-icon&gt;
+                                        &lt;plex-icon *ngIf&#x3D;&quot;vm.sortData.sortOrder &#x3D;&#x3D;&#x3D; &#x27;ASC&#x27;&quot; name&#x3D;&quot;chevron-up&quot;&gt;&lt;/plex-icon&gt;
+                                    &lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;ng-container *ngIf&#x3D;&quot;vm.filters[column.key]&quot;&gt;
+                                    &lt;plex-dropdown size&#x3D;&quot;sm&quot; icon&#x3D;&quot;format-list-checks&quot; type&#x3D;&quot;link&quot; right&#x3D;&quot;true&quot; class&#x3D;&quot;filtros&quot;&gt;
+                                    &lt;plex-radio   multiple&#x3D;&quot;true&quot; [data]&#x3D;&quot;vm.filters[column.key]&quot;
+                                        type&#x3D;&quot;vertical&quot; name&#x3D;&quot;cacho&quot; [(ngModel)]&#x3D;&quot;plexRadioValue[column.key]&quot; (change)&#x3D;&quot;onFilterChange(column.key, $event)&quot; &gt;
+                                    &lt;/plex-radio&gt;
+                                    &lt;/plex-dropdown&gt;
+                                &lt;/ng-container&gt;
+                            &lt;/div&gt;
                         &lt;/th&gt;
                     &lt;/ng-container&gt;
                 &lt;/tr&gt;
@@ -1141,6 +1197,12 @@ import { IPlexTableColumns } from &#x27;./table.interfaces&#x27;;
 })
 
 export class PlexTableComponent {
+
+    /**
+     * plex-radio no se puede usar sin ngModel, así que esta esta variable dummy.
+     * @ignore
+     */
+    plexRadioValue &#x3D; {};
 
     /**
      * Variable auxiliar para calcular la altura del elemento
@@ -1188,6 +1250,22 @@ export class PlexTableComponent {
 
     public onScroll() {
         this.scroll.emit();
+    }
+
+    onFilterChange(column, $event) {
+        const { value } &#x3D; $event;
+        const keys &#x3D; value.map(v &#x3D;&gt; v.id);
+
+        const filtros &#x3D; this.plexColumns._filtrosSeleccionados.getValue();
+
+        if (keys.length &gt; 0) {
+            filtros[column] &#x3D; keys;
+        } else {
+            delete filtros[column];
+        }
+
+        this.plexColumns._filtrosSeleccionados.next(filtros);
+
     }
 }
 </code></pre>

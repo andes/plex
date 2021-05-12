@@ -1045,6 +1045,36 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> _filters</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-circle"></span><code>_filters:     <code>BehaviorSubject&lt;{}&gt;</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> _filtrosSeleccionados</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-circle"></span><code>_filtrosSeleccionados:     <code>BehaviorSubject&lt;{}&gt;</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <b><span class="modifier">Private</span> _sort</b>
                                 </td>
                             </tr>
@@ -1090,6 +1120,36 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> filters$</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-circle"></span><code>filters$:     <code>Observable&lt;{}&gt;</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> filtrosSeleccionados$</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-circle"></span><code>filtrosSeleccionados$:     <code>Observable&lt;{}&gt;</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <b><span class="modifier">Public</span> sort$</b>
                                 </td>
                             </tr>
@@ -1125,7 +1185,7 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-circle"></span><code>vm$:     <code>Observable&lt;{ columns: any; displayColumns: any; sortData: any; }&gt;</code>
+                                    <span class="modifier-icon fa fa-circle"></span><code>vm$:     <code>Observable&lt;{ columns: any; displayColumns: any; sortData: any; filters: any; }&gt;</code>
             </bcode>
                                 </td>
                             </tr>
@@ -1159,14 +1219,24 @@ export class PlexColumnDirective implements OnChanges, OnDestroy {
 
     public sort$ &#x3D; this._sort.asObservable();
 
+    public _filters &#x3D; new BehaviorSubject({});
+
+    public filters$ &#x3D; this._filters.asObservable();
+
+    public _filtrosSeleccionados &#x3D; new BehaviorSubject({});
+
+    public filtrosSeleccionados$ &#x3D; this._filtrosSeleccionados.asObservable();
+
+
     private sub: Subscription;
 
     public vm$ &#x3D; combineLatest([
         this.columns$,
         this.displayColumns$,
-        this.sort$
+        this.sort$,
+        this.filters$
     ]).pipe(
-        map(([columns, displayColumns, sortData]) &#x3D;&gt; ({ columns, displayColumns, sortData }))
+        map(([columns, displayColumns, sortData, filters]) &#x3D;&gt; ({ columns, displayColumns, sortData, filters }))
     );
 
     @Input() set columns(value) {

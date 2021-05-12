@@ -904,19 +904,69 @@
 import { combineLatest, Observable } from &#x27;rxjs&#x27;;
 import { map } from &#x27;rxjs/operators&#x27;;
 import { PlexColumnDirective } from &#x27;./columns.directive&#x27;;
+import { IPlexTableColumns } from &#x27;./table.interfaces&#x27;;
 
 @Pipe({
     name: &#x27;plSort&#x27;
 })
 export class PlexTableSortPipe implements PipeTransform {
 
+    calcularFiltros(plexTable: PlexColumnDirective, columns: IPlexTableColumns[], listado: any[]) {
+        const cols &#x3D; {};
+        columns.forEach(columnDef &#x3D;&gt; {
+            if (columnDef.filterBy) {
+
+                cols[columnDef.key] &#x3D; Object.keys(
+                    listado.reduce(
+                        (acc, curr) &#x3D;&gt; {
+                            const k &#x3D; columnDef.filterBy(curr);
+                            acc[k] &#x3D; true;
+                            return acc;
+                        },
+                        {}
+                    )
+                ).map(k &#x3D;&gt; ({ id: k, label: k }));
+
+            }
+        });
+
+        plexTable._filters.next(cols);
+    }
+
+
+    filtrarListado(columns: IPlexTableColumns[], filtros: any, listado: any[]) {
+        Object.keys(filtros).forEach(k &#x3D;&gt; {
+            const keys &#x3D; filtros[k];
+            const colDef &#x3D; columns.find(item &#x3D;&gt; item.key &#x3D;&#x3D;&#x3D; k);
+
+            listado &#x3D; listado.filter(item &#x3D;&gt; {
+
+                const computed &#x3D; colDef.filterBy(item);
+
+                return keys.includes(computed);
+
+            });
+
+
+        });
+
+        return listado;
+    }
+
     transform(value: Observable&lt;any[]&gt;, plexTable: PlexColumnDirective) {
         return combineLatest([
             plexTable.columns$,
             value,
             plexTable.sort$,
+            plexTable.filtrosSeleccionados$
         ]).pipe(
-            map(([columns, listado, sortData]) &#x3D;&gt; {
+            map(([columns, listado, sortData, filtros]) &#x3D;&gt; {
+
+                this.calcularFiltros(plexTable, columns, listado);
+
+                listado &#x3D; this.filtrarListado(columns, filtros, listado);
+
+
                 const { sortBy, sortOrder } &#x3D; sortData;
                 if (!sortBy) {
                     return listado;

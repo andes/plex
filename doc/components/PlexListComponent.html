@@ -920,7 +920,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;ng-content&nbsp;select&#x3D;&quot;plex-title&quot;&gt;&lt;/ng-content&gt;<br>&lt;div&nbsp;[class.striped]&#x3D;&quot;striped&quot;&nbsp;[class.inverted]&#x3D;&quot;inverted&quot;&nbsp;[ngClass]&#x3D;&quot;size&quot;&nbsp;responsive<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infiniteScroll&nbsp;[infiniteScrollDistance]&#x3D;&quot;1&quot;&nbsp;(scrolled)&#x3D;&quot;onScroll()&quot;&nbsp;[scrollWindow]&#x3D;&quot;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.overflow-y]&#x3D;&quot;styleScroll&quot;&nbsp;[style.height]&#x3D;&quot;height&quot;&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngIf&#x3D;&quot;vm$&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-heading&nbsp;*ngIf&#x3D;&quot;vm$&nbsp;&nbsp;&amp;&amp;&nbsp;vm$&nbsp;|&nbsp;async&nbsp;as&nbsp;vm&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngFor&#x3D;&quot;let&nbsp;column&nbsp;of&nbsp;vm.columns&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&nbsp;label&nbsp;[class.sortable]&#x3D;&quot;column.sorteable&quot;&nbsp;[style.width]&#x3D;&quot;column.width&quot;&nbsp;(click)&#x3D;&quot;onColumnClick(column)&quot;&nbsp;*ngIf&#x3D;&quot;vm.displayColumns[column.key]&nbsp;||&nbsp;!column.opcional&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;column.label&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortBy&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;column.key&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortOrder&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;DESC&#x27;&quot;&nbsp;name&#x3D;&quot;chevron-down&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortOrder&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;ASC&#x27;&quot;&nbsp;name&#x3D;&quot;chevron-up&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/b&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-heading&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;ng-content&nbsp;select&#x3D;&quot;plex-title&quot;&gt;&lt;/ng-content&gt;<br>&lt;div&nbsp;[class.striped]&#x3D;&quot;striped&quot;&nbsp;[class.inverted]&#x3D;&quot;inverted&quot;&nbsp;[ngClass]&#x3D;&quot;size&quot;&nbsp;responsive<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infiniteScroll&nbsp;[infiniteScrollDistance]&#x3D;&quot;1&quot;&nbsp;(scrolled)&#x3D;&quot;onScroll()&quot;&nbsp;[scrollWindow]&#x3D;&quot;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.overflow-y]&#x3D;&quot;styleScroll&quot;&nbsp;[style.height]&#x3D;&quot;height&quot;&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngIf&#x3D;&quot;vm$&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-heading&nbsp;*ngIf&#x3D;&quot;vm$&nbsp;&nbsp;&amp;&amp;&nbsp;vm$&nbsp;|&nbsp;async&nbsp;as&nbsp;vm&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngFor&#x3D;&quot;let&nbsp;column&nbsp;of&nbsp;vm.columns&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;label&nbsp;[class.sortable]&#x3D;&quot;column.sorteable&quot;&nbsp;[style.width]&#x3D;&quot;column.width&quot;&nbsp;(click)&#x3D;&quot;onColumnClick(column)&quot;&nbsp;*ngIf&#x3D;&quot;vm.displayColumns[column.key]&nbsp;||&nbsp;!column.opcional&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;list-label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;column.label&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortBy&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;column.key&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortOrder&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;DESC&#x27;&quot;&nbsp;name&#x3D;&quot;chevron-down&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;vm.sortData.sortOrder&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;ASC&#x27;&quot;&nbsp;name&#x3D;&quot;chevron-up&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngIf&#x3D;&quot;vm.filters[column.key]&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-dropdown&nbsp;size&#x3D;&quot;sm&quot;&nbsp;icon&#x3D;&quot;format-list-checks&quot;&nbsp;type&#x3D;&quot;link&quot;&nbsp;right&#x3D;&quot;true&quot;&nbsp;class&#x3D;&quot;filtros&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-radio&nbsp;&nbsp;&nbsp;multiple&#x3D;&quot;true&quot;&nbsp;[data]&#x3D;&quot;vm.filters[column.key]&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&#x3D;&quot;vertical&quot;&nbsp;name&#x3D;&quot;cacho&quot;&nbsp;[(ngModel)]&#x3D;&quot;plexRadioValue[column.key]&quot;&nbsp;(change)&#x3D;&quot;onFilterChange(column.key,&nbsp;$event)&quot;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-radio&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-dropdown&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-heading&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -1105,6 +1105,30 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> onFilterChange</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>onFilterChange(column: any, $event: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
@@ -1135,6 +1159,27 @@
                         <td class="col-md-4">
                             <span class="modifier-icon fa fa-lock"></span><code>plexItems:     <code><a href="../injectables/Plex.html" target="_self" >QueryList&lt;PlexItemComponent&gt;</a></code>
     </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> plexRadioValue</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>plexRadioValue:     <code>{}</code>
+    </bcode>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>plex-radio no se puede usar sin ngModel, así que esta esta variable dummy.</p>
+    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1191,13 +1236,22 @@ import { IPlexTableColumns } from &#x27;../table/table.interfaces&#x27;;
          &lt;ng-container *ngIf&#x3D;&quot;vm$&quot;&gt;
             &lt;plex-heading *ngIf&#x3D;&quot;vm$  &amp;&amp; vm$ | async as vm&quot;&gt;
                 &lt;ng-container *ngFor&#x3D;&quot;let column of vm.columns&quot;&gt;
-                    &lt;b label [class.sortable]&#x3D;&quot;column.sorteable&quot; [style.width]&#x3D;&quot;column.width&quot; (click)&#x3D;&quot;onColumnClick(column)&quot; *ngIf&#x3D;&quot;vm.displayColumns[column.key] || !column.opcional&quot;&gt;
-                        {{ column.label }}
-                        &lt;span *ngIf&#x3D;&quot;vm.sortData.sortBy &#x3D;&#x3D;&#x3D; column.key&quot;&gt;
-                            &lt;plex-icon *ngIf&#x3D;&quot;vm.sortData.sortOrder &#x3D;&#x3D;&#x3D; &#x27;DESC&#x27;&quot; name&#x3D;&quot;chevron-down&quot;&gt;&lt;/plex-icon&gt;
-                            &lt;plex-icon *ngIf&#x3D;&quot;vm.sortData.sortOrder &#x3D;&#x3D;&#x3D; &#x27;ASC&#x27;&quot; name&#x3D;&quot;chevron-up&quot;&gt;&lt;/plex-icon&gt;
-                        &lt;/span&gt;
-                    &lt;/b&gt;
+                    &lt;div label [class.sortable]&#x3D;&quot;column.sorteable&quot; [style.width]&#x3D;&quot;column.width&quot; (click)&#x3D;&quot;onColumnClick(column)&quot; *ngIf&#x3D;&quot;vm.displayColumns[column.key] || !column.opcional&quot;&gt;
+                        &lt;div class&#x3D;&quot;list-label&quot;&gt;
+                            {{ column.label }}
+                            &lt;span *ngIf&#x3D;&quot;vm.sortData.sortBy &#x3D;&#x3D;&#x3D; column.key&quot;&gt;
+                                &lt;plex-icon *ngIf&#x3D;&quot;vm.sortData.sortOrder &#x3D;&#x3D;&#x3D; &#x27;DESC&#x27;&quot; name&#x3D;&quot;chevron-down&quot;&gt;&lt;/plex-icon&gt;
+                                &lt;plex-icon *ngIf&#x3D;&quot;vm.sortData.sortOrder &#x3D;&#x3D;&#x3D; &#x27;ASC&#x27;&quot; name&#x3D;&quot;chevron-up&quot;&gt;&lt;/plex-icon&gt;
+                            &lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;vm.filters[column.key]&quot;&gt;
+                            &lt;plex-dropdown size&#x3D;&quot;sm&quot; icon&#x3D;&quot;format-list-checks&quot; type&#x3D;&quot;link&quot; right&#x3D;&quot;true&quot; class&#x3D;&quot;filtros&quot;&gt;
+                            &lt;plex-radio   multiple&#x3D;&quot;true&quot; [data]&#x3D;&quot;vm.filters[column.key]&quot;
+                                type&#x3D;&quot;vertical&quot; name&#x3D;&quot;cacho&quot; [(ngModel)]&#x3D;&quot;plexRadioValue[column.key]&quot; (change)&#x3D;&quot;onFilterChange(column.key, $event)&quot; &gt;
+                            &lt;/plex-radio&gt;
+                            &lt;/plex-dropdown&gt;
+                        &lt;/ng-container&gt;
+                    &lt;/div&gt;
                 &lt;/ng-container&gt;
             &lt;/plex-heading&gt;
         &lt;/ng-container&gt;
@@ -1227,6 +1281,12 @@ export class PlexListComponent implements AfterViewInit {
     @ContentChild(PlexHeadingComponent) private plexHeading: PlexHeadingComponent;
 
     public vm$: Observable&lt;any&gt;;
+
+    /**
+     * plex-radio no se puede usar sin ngModel, así que esta esta variable dummy.
+     * @ignore
+     */
+    plexRadioValue &#x3D; {};
 
     constructor(
         @Optional() @Self() private plexColumns: PlexColumnDirective,
@@ -1279,6 +1339,21 @@ export class PlexListComponent implements AfterViewInit {
         this.sort.emit(column);
     }
 
+    onFilterChange(column, $event) {
+        const { value } &#x3D; $event;
+        const keys &#x3D; value.map(v &#x3D;&gt; v.id);
+
+        const filtros &#x3D; this.plexColumns._filtrosSeleccionados.getValue();
+
+        if (keys.length &gt; 0) {
+            filtros[column] &#x3D; keys;
+        } else {
+            delete filtros[column];
+        }
+
+        this.plexColumns._filtrosSeleccionados.next(filtros);
+
+    }
 }
 </code></pre>
         </div>
