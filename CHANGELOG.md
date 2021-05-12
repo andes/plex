@@ -1,3 +1,10 @@
+## [7.17.1](https://github.com/andes/plex/compare/v7.17.0...v7.17.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* **plex-table:** remove right properties ([8ee6909](https://github.com/andes/plex/commit/8ee6909c3e9a63cb1ca703f80c42ea0ee6d1961f))
+
 # [7.17.0](https://github.com/andes/plex/compare/v7.16.0...v7.17.0) (2021-05-12)
 
 
