@@ -16,7 +16,7 @@ import { IPlexTableColumns } from '../table/table.interfaces';
 
          <ng-container *ngIf="vm$">
             <plex-heading *ngIf="vm$  && vm$ | async as vm">
-                <ng-container *ngFor="let column of vm.columns">
+                <ng-container *ngFor="let column of vm.columns; let i = index">
                     <div label [class.sortable]="column.sorteable" [style.width]="column.width" (click)="onColumnClick(column)" *ngIf="vm.displayColumns[column.key] || !column.opcional">
                         <div class="list-label">
                             {{ column.label }}
@@ -26,7 +26,7 @@ import { IPlexTableColumns } from '../table/table.interfaces';
                             </span>
                         </div>
                         <ng-container *ngIf="vm.filters[column.key]">
-                            <plex-dropdown size="sm" icon="format-list-checks" type="link" class="filtros">
+                            <plex-dropdown size="sm" icon="format-list-checks" type="link" class="filtros" [right]="i === vm.columns.length - 1">
                                 <plex-radio   multiple="true" [data]="vm.filters[column.key]"
                                     type="vertical" name="cacho" [(ngModel)]="plexRadioValue[column.key]" (change)="onFilterChange(column.key, $event)" >
                                 </plex-radio>
