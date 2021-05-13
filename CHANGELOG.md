@@ -1,3 +1,10 @@
+## [7.17.3](https://github.com/andes/plex/compare/v7.17.2...v7.17.3) (2021-05-13)
+
+
+### Bug Fixes
+
+* **plex-table:** ordena items ([1ef3414](https://github.com/andes/plex/commit/1ef34142b5475bc8d40334d3ed12c1a40d405eb5))
+
 ## [7.17.2](https://github.com/andes/plex/compare/v7.17.1...v7.17.2) (2021-05-13)
 
 
