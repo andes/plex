@@ -3,7 +3,7 @@ import { Component, Input, ViewChild, ElementRef, OnChanges } from '@angular/cor
 @Component({
     selector: 'plex-card',
     template: `
-    <div #cardColor class="card bg-{{ styled }}-{{ type }}" [ngClass]="{ 'selectable' : selectable }" [class.selected]="selected">
+    <div #cardColor class="card bg-{{ mode }}-{{ type }}" [ngClass]="{ 'selectable' : selectable }" [class.selected]="selected">
         <ng-content select="img"></ng-content>
         <ng-content select="plex-icon"></ng-content>
         <div class="d-flex" [ngClass]="cssAlign">
@@ -29,7 +29,7 @@ export class PlexCardComponent implements OnChanges {
     @Input() align: 'start' | 'end' | 'center' = 'center';
     @Input() size: 'xs' | 'md' | 'lg' | 'block' = 'md';
     @Input() type: 'info' | 'success' | 'warning' | 'danger' | 'dark' | 'custom' | 'default' = 'default';
-    @Input() styled: 'filled' | 'outlined' = 'outlined';
+    @Input() mode: 'filled' | 'outlined' = 'outlined';
     @Input() color: string;
 
     @ViewChild('cardColor', { static: true }) cardColor: ElementRef;
@@ -50,7 +50,7 @@ export class PlexCardComponent implements OnChanges {
             this.cardColor.nativeElement.style.setProperty('--card-color', this.color);
         }
 
-        if (this.color && this.color.length > 0 && this.styled === 'outlined') {
+        if (this.color && this.color.length > 0 && this.mode === 'outlined') {
             this.cardColor.nativeElement.style.setProperty('--card-color', this.color + '20');
         }
     }
