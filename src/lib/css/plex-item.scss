@@ -118,6 +118,8 @@ plex-list {
             text-align: right;
         }
 
+        
+
         .sortable {
             position: relative;
 
@@ -131,9 +133,20 @@ plex-list {
                     top: 10px;
                 }
             }
+
             plex-dropdown {
                 display: none;
             }
+ 
+            .dropdown {
+                display: inline-block;
+
+                .dropdown-menu {
+                    max-height: 300px;
+                    overflow-y: scroll;
+                }
+            } 
+
             &:hover {
                 plex-dropdown {
                     display: inline;

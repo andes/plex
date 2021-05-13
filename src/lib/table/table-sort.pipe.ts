@@ -23,7 +23,7 @@ export class PlexTableSortPipe implements PipeTransform {
                         },
                         {}
                     )
-                ).map(k => ({ id: k, label: k }));
+                ).sort((a, b) => a.localeCompare(b)).map(k => ({ id: k, label: k }));
 
             }
         });
