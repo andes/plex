@@ -80,7 +80,7 @@
         </plex-grid>
         <!-- Type Dark (invert) -->
         <plex-grid cols="2">
-            <plex-card selectable="true" class="mt-1" align="center" type="dark" styled="filled"
+            <plex-card selectable="true" class="mt-1" align="center" type="dark" mode="filled"
                        *ngFor="let dato of datos | slice:6:7" [selected]="dato.selected"
                        (click)="dato.selected = !dato.selected">
                 <plex-badge type="warning">badge</plex-badge>
@@ -89,7 +89,7 @@
                 </plex-label>
                 <plex-button type="{{ dato.type }}" label="aceptar"></plex-button>
             </plex-card>
-            <plex-card selectable="true" class="mt-1" align="center" styled="outlined" type="dark"
+            <plex-card selectable="true" class="mt-1" align="center" mode="outlined" type="dark"
                        *ngFor="let dato of datos | slice:6:7" [selected]="dato.selected"
                        (click)="dato.selected = !dato.selected">
                 <plex-badge type="warning">badge</plex-badge>
