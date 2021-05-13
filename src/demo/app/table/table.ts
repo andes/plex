@@ -97,8 +97,9 @@ export class TableDemoComponent {
             label: 'col 6',
             sorteable: true,
             opcional: true,
+            right: true,
             sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad),
-            right: true
+            filterBy: (a) => a.fecha.getTime()
         }
     ];
 

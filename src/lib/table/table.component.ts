@@ -15,7 +15,7 @@ import { IPlexTableColumns } from './table.interfaces';
         <table>
             <thead *ngIf="vm$ | async as vm">
                 <tr >
-                    <ng-container *ngFor="let column of vm.columns">
+                    <ng-container *ngFor="let column of vm.columns; let i = index">
                         <th [class.sortable]="column.sorteable"
                             [style.width]="column.width"
                             (click)="onColumnClick(column)"
@@ -31,9 +31,9 @@ import { IPlexTableColumns } from './table.interfaces';
                                     </span>
                                 </div>
                                 <ng-container *ngIf="vm.filters[column.key]">
-                                    <plex-dropdown size="sm" icon="format-list-checks" type="link" class="filtros">
+                                    <plex-dropdown size="sm" icon="format-list-checks" type="link" right="true" class="filtros" [right]="i === vm.columns.length - 1">
                                         <plex-radio   multiple="true" [data]="vm.filters[column.key]"
-                                            type="vertical" name="cacho" [(ngModel)]="plexRadioValue[column.key]" (change)="onFilterChange(column.key, $event)" >
+                                            type="vertical" name="cacho" [(ngModel)]="plexRadioValue[column.key]" (change)="onFilterChange(column.key, $event)">
                                         </plex-radio>
                                     </plex-dropdown>
                                 </ng-container>
