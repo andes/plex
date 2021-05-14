@@ -16,7 +16,7 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
                 <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
                     <ng-content select="[left]"></ng-content>
                 </span>
-                <input #ref type="text" class="form-control" [disabled]="disabled" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
+                <input [attr.aria-label]="intLabel" #ref type="text" class="form-control" [disabled]="disabled" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
                 <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
                 <span #suffixParent [hidden]="suffixParent?.children.length === 0" class="input-group-addon">
                     <ng-content select="[right]"></ng-content>
@@ -37,6 +37,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
 
     // Propiedades
     @Input() label: string;
+    @Input() ariaLabel: string;
     @Input() prefix: string;
     @Input() suffix: string;
     @Input() placeholder: string;
@@ -129,5 +130,9 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
                 value: val
             });
         };
+    }
+
+    get intLabel() {
+        return this.ariaLabel ? this.ariaLabel : this.label;
     }
 }

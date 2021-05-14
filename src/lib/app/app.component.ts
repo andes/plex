@@ -50,7 +50,7 @@ import { Plex } from './../core/service';
                                 </div>
                             </div>
                             <!--Menu-->
-                            <div role="button" *ngIf="plex.menu && plex.menu.length" class="action dropdown" tabindex="1" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();" (keyup)="onMenuKeyup($event)">
+                            <div role="navigation" aria-label="Menú principal" *ngIf="plex.menu && plex.menu.length" class="action dropdown" tabindex="1" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();" (keyup)="onMenuKeyup($event)">
                                 <plex-icon type="light" size="xl" name="menu"></plex-icon>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li *ngFor="let item of plex.menu; let i = index">
@@ -97,7 +97,7 @@ import { Plex } from './../core/service';
                 <ng-content select="plex-ribbon"></ng-content>
 
                 <!--Contenedor principal-->
-                <div class="content" [ngClass]="{'nav-top-margin': plex.navbarVisible, 'nav-top-no-margin': !plex.navbarVisible}">
+                <div role="main" class="content" [ngClass]="{'nav-top-margin': plex.navbarVisible, 'nav-top-no-margin': !plex.navbarVisible}">
                     <router-outlet></router-outlet>
                 </div>`,
 })
