@@ -920,7 +920,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;hasDanger()&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;{{label}}&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;[ngClass]&#x3D;&quot;{&#x27;input-group&#x27;:&nbsp;prefix&nbsp;||&nbsp;suffix&nbsp;||&nbsp;prefixParent?.children.length&nbsp;&gt;&nbsp;0&nbsp;||&nbsp;suffixParent?.children.length&nbsp;&gt;&nbsp;0}&nbsp;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;prefix&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&nbsp;[innerHTML]&#x3D;&quot;prefix&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#prefixParent&nbsp;[hidden]&#x3D;&quot;prefixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[left]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;#ref&nbsp;type&#x3D;&quot;text&quot;&nbsp;class&#x3D;&quot;form-control&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[readonly]&#x3D;&quot;readonly&quot;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;suffix&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&nbsp;[innerHTML]&#x3D;&quot;suffix&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#suffixParent&nbsp;[hidden]&#x3D;&quot;suffixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[right]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;hasDanger()&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;{{label}}&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;[ngClass]&#x3D;&quot;{&#x27;input-group&#x27;:&nbsp;prefix&nbsp;||&nbsp;suffix&nbsp;||&nbsp;prefixParent?.children.length&nbsp;&gt;&nbsp;0&nbsp;||&nbsp;suffixParent?.children.length&nbsp;&gt;&nbsp;0}&nbsp;&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;prefix&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&nbsp;[innerHTML]&#x3D;&quot;prefix&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#prefixParent&nbsp;[hidden]&#x3D;&quot;prefixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[left]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;[attr.aria-label]&#x3D;&quot;intLabel&quot;&nbsp;#ref&nbsp;type&#x3D;&quot;text&quot;&nbsp;class&#x3D;&quot;form-control&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[readonly]&#x3D;&quot;readonly&quot;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;suffix&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&nbsp;[innerHTML]&#x3D;&quot;suffix&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#suffixParent&nbsp;[hidden]&#x3D;&quot;suffixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[right]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -931,6 +931,21 @@
 
     <section>
         <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>ariaLabel</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>string</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -1208,6 +1223,21 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b> intLabel</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>intLabel:     <code>string</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b><span class="modifier">Private</span> lastValue</b>
                         </td>
                     </tr>
@@ -1285,7 +1315,7 @@ const REGEX &#x3D; /^\s*(\-)?(\d*)\s*$/;
                 &lt;span #prefixParent [hidden]&#x3D;&quot;prefixParent?.children.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;input-group-addon&quot;&gt;
                     &lt;ng-content select&#x3D;&quot;[left]&quot;&gt;&lt;/ng-content&gt;
                 &lt;/span&gt;
-                &lt;input #ref type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [disabled]&#x3D;&quot;disabled&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot; [readonly]&#x3D;&quot;readonly&quot; (input)&#x3D;&quot;onChange($event.target.value)&quot; (change)&#x3D;&quot;disabledEvent($event)&quot;&gt;
+                &lt;input [attr.aria-label]&#x3D;&quot;intLabel&quot; #ref type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [disabled]&#x3D;&quot;disabled&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot; [readonly]&#x3D;&quot;readonly&quot; (input)&#x3D;&quot;onChange($event.target.value)&quot; (change)&#x3D;&quot;disabledEvent($event)&quot;&gt;
                 &lt;span *ngIf&#x3D;&quot;suffix&quot; class&#x3D;&quot;input-group-addon&quot; [innerHTML]&#x3D;&quot;suffix&quot;&gt;&lt;/span&gt;
                 &lt;span #suffixParent [hidden]&#x3D;&quot;suffixParent?.children.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;input-group-addon&quot;&gt;
                     &lt;ng-content select&#x3D;&quot;[right]&quot;&gt;&lt;/ng-content&gt;
@@ -1306,6 +1336,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
 
     // Propiedades
     @Input() label: string;
+    @Input() ariaLabel: string;
     @Input() prefix: string;
     @Input() suffix: string;
     @Input() placeholder: string;
@@ -1398,6 +1429,10 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
                 value: val
             });
         };
+    }
+
+    get intLabel() {
+        return this.ariaLabel ? this.ariaLabel : this.label;
     }
 }
 </code></pre>

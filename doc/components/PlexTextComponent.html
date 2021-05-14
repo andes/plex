@@ -920,7 +920,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;hasDanger()&nbsp;}&quot;&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Label&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/label&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Simple&nbsp;text&nbsp;field&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;[hidden]&#x3D;&quot;multiline&nbsp;||&nbsp;html&quot;&nbsp;[class.input-group]&#x3D;&quot;prefix&nbsp;||&nbsp;suffix&nbsp;||&nbsp;prefixParent?.children.length&nbsp;&gt;&nbsp;0&nbsp;||&nbsp;suffixParent?.children.length&nbsp;&gt;&nbsp;0&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;prefix&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;type&#x3D;&quot;default&quot;&nbsp;size&#x3D;&quot;md&quot;&nbsp;[name]&#x3D;&quot;prefix&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#prefixParent&nbsp;[hidden]&#x3D;&quot;prefixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[left]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;#input&nbsp;type&#x3D;&quot;{{type}}&quot;&nbsp;class&#x3D;&quot;form-control&nbsp;form-control-{{size}}&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[readonly]&#x3D;&quot;readonly&quot;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&nbsp;(focus)&#x3D;&quot;onFocus()&quot;&nbsp;(focusout)&#x3D;&quot;onFocusout()&quot;&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;&nbsp;*ngIf&#x3D;&quot;!readonly&nbsp;&amp;&amp;&nbsp;!multiline&nbsp;&amp;&amp;&nbsp;!html&nbsp;&amp;&amp;&nbsp;!isEmpty&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;name&#x3D;&quot;close-circle&quot;&nbsp;class&#x3D;&quot;clear-icon&quot;&nbsp;(click)&#x3D;&quot;clearInput()&quot;&gt;&lt;/plex-icon&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#suffixParent&nbsp;[hidden]&#x3D;&quot;suffixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[right]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Multiline&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea&nbsp;[hidden]&#x3D;&quot;!multiline&nbsp;||&nbsp;html&quot;&nbsp;#textarea&nbsp;class&#x3D;&quot;form-control&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[readonly]&#x3D;&quot;readonly&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&nbsp;(focus)&#x3D;&quot;onFocus()&quot;&nbsp;(focusout)&#x3D;&quot;onFocusout()&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/textarea&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;HTML&nbsp;Editor&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;quill-editor&nbsp;#quillEditor&nbsp;[hidden]&#x3D;&quot;multiline&nbsp;||&nbsp;!html&quot;&nbsp;[modules]&#x3D;&quot;quill&quot;&nbsp;[style]&#x3D;&quot;quillStyle&quot;&nbsp;[readOnly]&#x3D;&quot;readonly&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;(onContentChanged)&#x3D;&quot;onChange($event.html)&quot;&gt;&lt;/quill-editor&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Validation&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;hasDanger()&nbsp;}&quot;&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Label&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{label}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/label&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Simple&nbsp;text&nbsp;field&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;[attr.aria-hidden]&#x3D;&quot;multiline&nbsp;||&nbsp;html&quot;&nbsp;[hidden]&#x3D;&quot;multiline&nbsp;||&nbsp;html&quot;&nbsp;[class.input-group]&#x3D;&quot;prefix&nbsp;||&nbsp;suffix&nbsp;||&nbsp;prefixParent?.children.length&nbsp;&gt;&nbsp;0&nbsp;||&nbsp;suffixParent?.children.length&nbsp;&gt;&nbsp;0&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;prefix&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;type&#x3D;&quot;default&quot;&nbsp;size&#x3D;&quot;md&quot;&nbsp;[name]&#x3D;&quot;prefix&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#prefixParent&nbsp;[hidden]&#x3D;&quot;prefixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[left]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;#input&nbsp;[attr.aria-label]&#x3D;&quot;textLabel&quot;&nbsp;[attr.aria-labelledby]&#x3D;&quot;passwordLabel&quot;&nbsp;type&#x3D;&quot;{{type}}&quot;&nbsp;class&#x3D;&quot;form-control&nbsp;form-control-{{size}}&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[readonly]&#x3D;&quot;readonly&quot;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&nbsp;(focus)&#x3D;&quot;onFocus()&quot;&nbsp;(focusout)&#x3D;&quot;onFocusout()&quot;&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;&nbsp;*ngIf&#x3D;&quot;!readonly&nbsp;&amp;&amp;&nbsp;!multiline&nbsp;&amp;&amp;&nbsp;!html&nbsp;&amp;&amp;&nbsp;!isEmpty&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;name&#x3D;&quot;close-circle&quot;&nbsp;class&#x3D;&quot;clear-icon&quot;&nbsp;(click)&#x3D;&quot;clearInput()&quot;&gt;&lt;/plex-icon&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;#suffixParent&nbsp;[hidden]&#x3D;&quot;suffixParent?.children.length&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;0&quot;&nbsp;class&#x3D;&quot;input-group-addon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;[right]&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Multiline&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea&nbsp;[attr.aria-label]&#x3D;&quot;textLabel&quot;&nbsp;[attr.aria-labelledby]&#x3D;&quot;passwordLabel&quot;&nbsp;[attr.aria-hidden]&#x3D;&quot;!multiline&nbsp;||&nbsp;html&quot;&nbsp;&nbsp;[hidden]&#x3D;&quot;!multiline&nbsp;||&nbsp;html&quot;&nbsp;#textarea&nbsp;class&#x3D;&quot;form-control&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[readonly]&#x3D;&quot;readonly&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&nbsp;(focus)&#x3D;&quot;onFocus()&quot;&nbsp;(focusout)&#x3D;&quot;onFocusout()&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/textarea&gt;<br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;HTML&nbsp;Editor&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;quill-editor&nbsp;#quillEditor&nbsp;[attr.aria-label]&#x3D;&quot;textLabel&quot;&nbsp;[attr.aria-hidden]&#x3D;&quot;multiline&nbsp;||&nbsp;!html&quot;&nbsp;[hidden]&#x3D;&quot;multiline&nbsp;||&nbsp;!html&quot;&nbsp;[modules]&#x3D;&quot;quill&quot;&nbsp;[style]&#x3D;&quot;quillStyle&quot;&nbsp;[readOnly]&#x3D;&quot;readonly&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;(onContentChanged)&#x3D;&quot;onChange($event.html)&quot;&gt;&lt;/quill-editor&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Validation&nbsp;--&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;id&#x3D;&quot;{{ariaLabelledby?.id}}&quot;&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -931,6 +931,36 @@
 
     <section>
         <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>ariaLabel</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>string</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>ariaLabelledby</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>any</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -1546,6 +1576,21 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b> passwordLabel</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>passwordLabel:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b><span class="modifier">Public</span> quill</b>
                         </td>
                     </tr>
@@ -1602,10 +1647,25 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> textLabel</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>textLabel:     <code>string</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { ViewChild, Component, OnInit, Input, Output, forwardRef, ElementRef, EventEmitter, AfterViewInit, ContentChild, Renderer2, Self, Optional, Inject } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { ViewChild, Component, OnInit, Input, Output, ElementRef, EventEmitter, AfterViewInit, Renderer2, Self, Optional } from &#x27;@angular/core&#x27;;
 import { ControlValueAccessor, NgControl } from &#x27;@angular/forms&#x27;;
 import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
 
@@ -1621,7 +1681,7 @@ import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
         &lt;/label&gt;
 
         &lt;!-- Simple text field --&gt;
-        &lt;div [hidden]&#x3D;&quot;multiline || html&quot; [class.input-group]&#x3D;&quot;prefix || suffix || prefixParent?.children.length &gt; 0 || suffixParent?.children.length &gt; 0&quot;&gt;
+        &lt;div [attr.aria-hidden]&#x3D;&quot;multiline || html&quot; [hidden]&#x3D;&quot;multiline || html&quot; [class.input-group]&#x3D;&quot;prefix || suffix || prefixParent?.children.length &gt; 0 || suffixParent?.children.length &gt; 0&quot;&gt;
             &lt;span *ngIf&#x3D;&quot;prefix&quot; class&#x3D;&quot;input-group-addon&quot;&gt;
                 &lt;plex-icon type&#x3D;&quot;default&quot; size&#x3D;&quot;md&quot; [name]&#x3D;&quot;prefix&quot;&gt;&lt;/plex-icon&gt;
             &lt;/span&gt;
@@ -1629,7 +1689,7 @@ import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
                 &lt;ng-content select&#x3D;&quot;[left]&quot;&gt;&lt;/ng-content&gt;
             &lt;/span&gt;
 
-            &lt;input #input type&#x3D;&quot;{{type}}&quot; class&#x3D;&quot;form-control form-control-{{size}}&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot;
+            &lt;input #input [attr.aria-label]&#x3D;&quot;textLabel&quot; [attr.aria-labelledby]&#x3D;&quot;passwordLabel&quot; type&#x3D;&quot;{{type}}&quot; class&#x3D;&quot;form-control form-control-{{size}}&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot;
                 [readonly]&#x3D;&quot;readonly&quot; (input)&#x3D;&quot;onChange($event.target.value)&quot; (change)&#x3D;&quot;disabledEvent($event)&quot; (focus)&#x3D;&quot;onFocus()&quot; (focusout)&#x3D;&quot;onFocusout()&quot;&gt;
 
             &lt;plex-icon  *ngIf&#x3D;&quot;!readonly &amp;&amp; !multiline &amp;&amp; !html &amp;&amp; !isEmpty&quot; size&#x3D;&quot;sm&quot; name&#x3D;&quot;close-circle&quot; class&#x3D;&quot;clear-icon&quot; (click)&#x3D;&quot;clearInput()&quot;&gt;&lt;/plex-icon&gt;
@@ -1640,15 +1700,17 @@ import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
         &lt;/div&gt;
 
         &lt;!-- Multiline --&gt;
-        &lt;textarea [hidden]&#x3D;&quot;!multiline || html&quot; #textarea class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot; [readonly]&#x3D;&quot;readonly&quot;
+        &lt;textarea [attr.aria-label]&#x3D;&quot;textLabel&quot; [attr.aria-labelledby]&#x3D;&quot;passwordLabel&quot; [attr.aria-hidden]&#x3D;&quot;!multiline || html&quot;  [hidden]&#x3D;&quot;!multiline || html&quot; #textarea class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot; [readonly]&#x3D;&quot;readonly&quot;
         (input)&#x3D;&quot;onChange($event.target.value)&quot; (change)&#x3D;&quot;disabledEvent($event)&quot; (focus)&#x3D;&quot;onFocus()&quot; (focusout)&#x3D;&quot;onFocusout()&quot;&gt;
         &lt;/textarea&gt;
 
+
+
         &lt;!-- HTML Editor --&gt;
-        &lt;quill-editor #quillEditor [hidden]&#x3D;&quot;multiline || !html&quot; [modules]&#x3D;&quot;quill&quot; [style]&#x3D;&quot;quillStyle&quot; [readOnly]&#x3D;&quot;readonly&quot; [placeholder]&#x3D;&quot;placeholder&quot; (onContentChanged)&#x3D;&quot;onChange($event.html)&quot;&gt;&lt;/quill-editor&gt;
+        &lt;quill-editor #quillEditor [attr.aria-label]&#x3D;&quot;textLabel&quot; [attr.aria-hidden]&#x3D;&quot;multiline || !html&quot; [hidden]&#x3D;&quot;multiline || !html&quot; [modules]&#x3D;&quot;quill&quot; [style]&#x3D;&quot;quillStyle&quot; [readOnly]&#x3D;&quot;readonly&quot; [placeholder]&#x3D;&quot;placeholder&quot; (onContentChanged)&#x3D;&quot;onChange($event.html)&quot;&gt;&lt;/quill-editor&gt;
 
         &lt;!-- Validation --&gt;
-        &lt;plex-validation-messages *ngIf&#x3D;&quot;hasDanger()&quot; [control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;
+        &lt;plex-validation-messages id&#x3D;&quot;{{ariaLabelledby?.id}}&quot; *ngIf&#x3D;&quot;hasDanger()&quot; [control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;
     &lt;/div&gt;
     &#x60;
 })
@@ -1685,6 +1747,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     // Propiedades
     @Input() type: &#x27;text&#x27; | &#x27;password&#x27; | &#x27;email&#x27; &#x3D; &#x27;text&#x27;;
     @Input() label: string;
+    @Input() ariaLabel: string;
+    @Input() ariaLabelledby: any &#x3D; { id: &#x60;password${Math.floor(Math.random() * 100000)}&#x60;, label: &#x27;Sólo caracteres alfanuméricos, sin espacios.&#x27; };
     @Input() size: &#x27;sm&#x27; | &#x27;md&#x27; | &#x27;lg&#x27; &#x3D; &#x27;md&#x27;;
     @Input() placeholder: string;
     @Input() prefix: string;
@@ -1760,6 +1824,12 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         if (this.html) {
             this.prepareQuillToolbar();
         }
+        // if (this.type &#x3D;&#x3D;&#x3D; &#x27;password&#x27;) {
+        //     this.ariaLabelledby &#x3D; {
+        //         id: &#x60;password-${Math.random() * 10000}&#x60;,
+        //         label: this.ariaLabel
+        //     }
+        // }
     }
 
     ngAfterViewInit() {
@@ -1877,6 +1947,20 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             });
         }
     }
+
+    get textLabel() {
+        // ARIA no permite aria-label en passwords (sólo aria-labelledby)
+        if (this.type !&#x3D;&#x3D; &#x27;password&#x27;) {
+            return this.ariaLabel ? this.ariaLabel : this.label;
+        } else {
+            return null;
+        }
+    }
+
+    get passwordLabel() {
+        return this.type &#x3D;&#x3D;&#x3D; &#x27;password&#x27; ? this.ariaLabelledby.id : null;
+    }
+
 }
 
 export interface PlexTextToolBar {

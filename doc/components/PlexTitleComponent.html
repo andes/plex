@@ -920,7 +920,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;plex-title&nbsp;d-flex&nbsp;flex-row&nbsp;justify-content-between&nbsp;align-items-center&quot;&nbsp;responsive&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;plex-title-label&nbsp;{{&nbsp;size&nbsp;}}&quot;&gt;&nbsp;{{&nbsp;titulo&nbsp;}}&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;title-content&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-tabs&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-wrapper&quot;&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;role&#x3D;&quot;heading&quot;&nbsp;[attr.aria-level]&#x3D;&quot;ariaLevel&quot;&nbsp;class&#x3D;&quot;plex-title&nbsp;d-flex&nbsp;flex-row&nbsp;justify-content-between&nbsp;align-items-center&quot;&nbsp;responsive&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;plex-title-label&nbsp;{{&nbsp;size&nbsp;}}&quot;&gt;&nbsp;{{&nbsp;titulo&nbsp;}}&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;title-content&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-tabs&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-wrapper&quot;&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -982,14 +982,32 @@
     </section>
 
 
+    <section>
+        <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> ariaLevel</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>ariaLevel:     <code>1 | 2 | 3</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input, Renderer2 } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
 
 @Component({
     selector: &#x27;plex-title&#x27;,
     template: &#x60;
-        &lt;div class&#x3D;&quot;plex-title d-flex flex-row justify-content-between align-items-center&quot; responsive&gt;
+        &lt;div role&#x3D;&quot;heading&quot; [attr.aria-level]&#x3D;&quot;ariaLevel&quot; class&#x3D;&quot;plex-title d-flex flex-row justify-content-between align-items-center&quot; responsive&gt;
             &lt;div class&#x3D;&quot;plex-title-label {{ size }}&quot;&gt; {{ titulo }} &lt;/div&gt;
             &lt;div class&#x3D;&quot;title-content&quot;&gt;
                 &lt;ng-content&gt;&lt;/ng-content&gt;
@@ -1004,6 +1022,11 @@
 export class PlexTitleComponent {
     @Input() titulo: string;
     @Input() size: &#x27;sm&#x27; | &#x27;md&#x27; | &#x27;xl&#x27; | &#x27;lg&#x27; &#x3D; &#x27;lg&#x27;;
+
+    // Asigna un aria-level al heading según su tamaño
+    get ariaLevel() {
+        return (this.size &#x3D;&#x3D;&#x3D; &#x27;xl&#x27; || this.size &#x3D;&#x3D;&#x3D; &#x27;lg&#x27;) ? 1 : (this.size &#x3D;&#x3D;&#x3D; &#x27;md&#x27; ? 2 : 3);
+    }
 
     constructor() {
 
