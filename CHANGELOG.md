@@ -1,3 +1,17 @@
+# [7.18.0](https://github.com/andes/plex/compare/v7.17.3...v7.18.0) (2021-05-14)
+
+
+### Bug Fixes
+
+* **plex-item:** badge con wrap en responsive ([44d3c6b](https://github.com/andes/plex/commit/44d3c6b0e7fb3bb19394f06baf691f0dbd12bd0f))
+
+
+### Features
+
+* **plex-card:** agrega version outlined ([bd05de4](https://github.com/andes/plex/commit/bd05de45e9f5779db1934ef529567daa9a0a50a0))
+* **plex-card:** outlined + optimiza uso de colores ([2f86f32](https://github.com/andes/plex/commit/2f86f32e2df587cdb29c2dfb289d823468ae9feb))
+* **plex-card:** renombra attr styled por mode ([978924f](https://github.com/andes/plex/commit/978924fec57c23d9ee24ececd1cf1009c64c428a))
+
 ## [7.17.3](https://github.com/andes/plex/compare/v7.17.2...v7.17.3) (2021-05-13)
 
 
