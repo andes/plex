@@ -24,9 +24,11 @@
                 </plex-tab>
                 <plex-dropdown label="hola" size="sm" [items]="items" right="false">
                 </plex-dropdown>
-                <plex-button type="info" size="sm" title="anterior" icon="chevron-left" (click)="previous()">
+                <plex-button type="info" size="sm" title="anterior" icon="chevron-left"
+                             ariaLabel="navegar tab hacia la izquierda" (click)="previous()">
                 </plex-button>
-                <plex-button type="info" size="sm" title="siguiente" icon="chevron-right" (click)="next()">
+                <plex-button type="info" size="sm" title="siguiente" icon="chevron-right"
+                             ariaLabel="navegar tab hacia la derecha" (click)="next()">
                 </plex-button>
             </plex-tabs>
         </section>
@@ -83,7 +85,8 @@
                     <b>Tercera pestaña.</b>Generalmente utilizado como panel para listados de historiales.
                 </div>
             </plex-tab>
-            <plex-button type="danger" size="sm" icon="close" title="prueba sidebar"></plex-button>
+            <plex-button type="danger" size="sm" icon="close" ariaLabel="cerrar panel lateral" title="prueba sidebar">
+            </plex-button>
         </plex-tabs>
     </plex-layout-sidebar>
 </plex-layout>

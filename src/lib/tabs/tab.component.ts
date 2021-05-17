@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'plex-tab',
-    template: `<div tabindex="0" role="tabpanel" id="{{ label }}" attr.aria-labelledby="{{ label }}">
+    template: `<div tabindex="0" role="tabpanel">
                     <ng-content *ngIf='active'></ng-content>
                 </div>`,
 })
