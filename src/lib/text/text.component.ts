@@ -33,14 +33,14 @@ import { hasRequiredValidator } from '../core/validator.functions';
         </div>
 
         <!-- Multiline -->
-        <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html"  [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+        <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html" [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
         (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
         </textarea>
 
         <!-- HTML Editor -->
         <quill-editor #quillEditor [attr.aria-label]="textLabel" [attr.aria-hidden]="multiline || !html" [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
 
-        <!-- Validation -->
+        <!-- Validación / Descripción ARIA -->
         <plex-validation-messages [mensaje]="mensaje" id="{{ ariaDescribedby.id }}" *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
     </div>
     `
@@ -78,7 +78,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() type: 'text' | 'password' | 'email' = 'text';
     @Input() label: string;
     @Input() ariaLabel: string;
-    @Input() ariaDescribedby: any = { id: `error${Math.floor(Math.random() * 100000)}` };
+    @Input() ariaDescribedby: any = { id: `label${Math.floor(Math.random() * 100000)}` };
     @Input() mensaje: string;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
     @Input() placeholder: string;
