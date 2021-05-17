@@ -5,7 +5,7 @@ import { Component, Output, Input, EventEmitter, ElementRef, AfterViewInit, Chan
     template: `
     <section class="hidden" [class.desplegado]="desplegado" responsive>
         <div class="btn-toggle">
-            <plex-button type="info" size="sm" *ngIf="hasCollapse" [icon]="!desplegado ? 'chevron-down' : 'chevron-up'" (click)="toggle()"></plex-button>
+            <plex-button type="info" size="sm" *ngIf="hasCollapse" [icon]="!desplegado ? 'chevron-down' : 'chevron-up'" (click)="toggle()" ariaLabel="desplegar más filtros"></plex-button>
             <span *ngIf="activeFilters && !desplegado" detach="top" hint="Hay filtros activos" hintType="warning" hintIcon="plus"></span>
         </div>
         <ng-content></ng-content>

@@ -19,7 +19,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
             </label>
             <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
             <div class="input-group d-flex align-items-center">
-                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
+                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')" [ariaLabel]="makeTooltip('anterior')"></plex-button>
 
                 <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
                         [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"
@@ -27,7 +27,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                 <span class="input-group-btn">
                     <plex-button tabIndex="-1" type="info" [size]="size" [icon]="icon" [disabled]="disabled || readonly"></plex-button>
                 </span>
-                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabled" [tooltip]="makeTooltip('siguiente')"></plex-button>
+                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabled" [tooltip]="makeTooltip('siguiente')" [ariaLabel]="makeTooltip('siguiente')"></plex-button>
             </div>
             <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
         </div>

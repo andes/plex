@@ -3,8 +3,8 @@ import { Component, Input, Renderer2, Output, EventEmitter } from '@angular/core
 @Component({
     selector: 'plex-help',
     template: `
-    <plex-button class="btn-close" *ngIf="!closed" type="danger" [size]="size" icon="close" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>
-    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" type="info" [size]="size" [icon]="icon" (click)="toggle();$event.stopImmediatePropagation();">
+    <plex-button class="btn-close" *ngIf="!closed" type="danger" [size]="size" icon="close" (click)="toggle();$event.stopImmediatePropagation();" ariaLabel="cerrar panel informativo"></plex-button>
+    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" type="info" [size]="size" [icon]="icon" (click)="toggle();$event.stopImmediatePropagation();" ariaLabel="abril panel informativo">
     </plex-button>
     <plex-button class="btn-open" *ngIf="content && closed && tituloBoton" type="info" [size]="size" [label]="tituloBoton" (click)="toggle();$event.stopImmediatePropagation();">
     </plex-button>

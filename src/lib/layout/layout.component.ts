@@ -40,9 +40,9 @@ import { Subscription } from 'rxjs';
                  [class.not-focused]="foco && foco !== 'sidebar'">
                 <ng-content select="plex-layout-sidebar"></ng-content>
                 <span *ngIf="resizable" class="resizable-btn-wrapper" [class.resizable]="resizable" draggable="true">
-                    <plex-button size="sm" (click)="expandir($event)" (dragover)="expandir($event)" type="link" icon="pico-izquierda"></plex-button>
+                    <plex-button size="sm" (click)="expandir($event)" (dragover)="expandir($event)" type="link" icon="pico-izquierda" ariaLabel="desplegar panel lateral"></plex-button>
                     <hr class="divisor">
-                    <plex-button size="sm" (click)="contraer($event)" (dragover)="contraer($event)" type="link" icon="pico-derecha" ></plex-button>
+                    <plex-button size="sm" (click)="contraer($event)" (dragover)="contraer($event)" type="link" icon="pico-derecha" ariaLabel="replegar panel lateral"></plex-button>
                 </span>
                 </div>
         </div>
