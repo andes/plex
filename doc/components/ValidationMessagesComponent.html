@@ -920,7 +920,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.required&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Valor&nbsp;requerido&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.format&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Formato&nbsp;incorrecto&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.pattern&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Formato&nbsp;incorrecto&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.email&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Formato&nbsp;incorrecto&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.min&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;El&nbsp;valor&nbsp;debe&nbsp;ser&nbsp;mayor&nbsp;a&nbsp;{{control.errors.min.limit}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.max&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;El&nbsp;valor&nbsp;debe&nbsp;ser&nbsp;menor&nbsp;a&nbsp;{{control.errors.max.limit}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.minlength&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Debe&nbsp;ingresar&nbsp;un&nbsp;mínimo&nbsp;de&nbsp;{{control.errors.minlength.requiredLength}}&nbsp;caracteres&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.maxlength&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Puede&nbsp;ingresar&nbsp;un&nbsp;máximo&nbsp;de&nbsp;{{control.errors.maxlength.requiredLength}}&nbsp;caracteres&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.required&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;!mensaje&quot;&gt;Valor&nbsp;requerido&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;mensaje&quot;&gt;{{&nbsp;mensaje&nbsp;}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.format&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;!mensaje&quot;&gt;Formato&nbsp;incorrecto&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;mensaje&quot;&gt;{{&nbsp;mensaje&nbsp;}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.pattern&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;!mensaje&quot;&gt;Formato&nbsp;incorrecto&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;mensaje&quot;&gt;{{&nbsp;mensaje&nbsp;}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.email&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;!mensaje&quot;&gt;Formato&nbsp;incorrecto&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;mensaje&quot;&gt;{{&nbsp;mensaje&nbsp;}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.min&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;!mensaje&quot;&gt;El&nbsp;valor&nbsp;debe&nbsp;ser&nbsp;mayor&nbsp;a&nbsp;{{control.errors.min.limit}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;mensaje&quot;&gt;{{&nbsp;mensaje&nbsp;}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.max&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;!mensaje&quot;&gt;El&nbsp;valor&nbsp;debe&nbsp;ser&nbsp;menor&nbsp;a&nbsp;{{control.errors.max.limit}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;mensaje&quot;&gt;{{&nbsp;mensaje&nbsp;}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.minlength&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;!mensaje&quot;&gt;Debe&nbsp;ingresar&nbsp;un&nbsp;mínimo&nbsp;de&nbsp;{{control.errors.minlength.requiredLength}}&nbsp;caracteres&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;mensaje&quot;&gt;{{&nbsp;mensaje&nbsp;}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;form-control-feedback&quot;&nbsp;*ngIf&#x3D;&quot;control.errors&nbsp;&amp;&amp;&nbsp;control.errors.maxlength&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;!mensaje&quot;&gt;Puede&nbsp;ingresar&nbsp;un&nbsp;máximo&nbsp;de&nbsp;{{control.errors.maxlength.requiredLength}}&nbsp;caracteres&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;mensaje&quot;&gt;{{&nbsp;mensaje&nbsp;}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></td>
             </tr>
 
 
@@ -940,6 +940,21 @@
                         <td class="col-md-10">
                               <p>
                                 <em>Type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/forms/index/FormControl-class.html" target="_blank" >FormControl</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>mensaje</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>string</code>
 
                               </p>
                         </td>
@@ -972,31 +987,41 @@ import { FormControl } from &#x27;@angular/forms&#x27;;
 @Component({
     selector: &#x27;plex-validation-messages&#x27;,
     template: &#x60; &lt;div class&#x3D;&quot;form-control-feedback&quot; *ngIf&#x3D;&quot;control.errors &amp;&amp; control.errors.required&quot;&gt;
-                    &lt;span&gt;Valor requerido&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;!mensaje&quot;&gt;Valor requerido&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;mensaje&quot;&gt;{{ mensaje }}&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;div class&#x3D;&quot;form-control-feedback&quot; *ngIf&#x3D;&quot;control.errors &amp;&amp; control.errors.format&quot;&gt;
-                    &lt;span&gt;Formato incorrecto&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;!mensaje&quot;&gt;Formato incorrecto&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;mensaje&quot;&gt;{{ mensaje }}&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;div class&#x3D;&quot;form-control-feedback&quot; *ngIf&#x3D;&quot;control.errors &amp;&amp; control.errors.pattern&quot;&gt;
-                    &lt;span&gt;Formato incorrecto&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;!mensaje&quot;&gt;Formato incorrecto&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;mensaje&quot;&gt;{{ mensaje }}&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;div class&#x3D;&quot;form-control-feedback&quot; *ngIf&#x3D;&quot;control.errors &amp;&amp; control.errors.email&quot;&gt;
-                    &lt;span&gt;Formato incorrecto&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;!mensaje&quot;&gt;Formato incorrecto&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;mensaje&quot;&gt;{{ mensaje }}&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;div class&#x3D;&quot;form-control-feedback&quot; *ngIf&#x3D;&quot;control.errors &amp;&amp; control.errors.min&quot;&gt;
-                    &lt;span&gt;El valor debe ser mayor a {{control.errors.min.limit}}&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;!mensaje&quot;&gt;El valor debe ser mayor a {{control.errors.min.limit}}&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;mensaje&quot;&gt;{{ mensaje }}&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;div class&#x3D;&quot;form-control-feedback&quot; *ngIf&#x3D;&quot;control.errors &amp;&amp; control.errors.max&quot;&gt;
-                    &lt;span&gt;El valor debe ser menor a {{control.errors.max.limit}}&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;!mensaje&quot;&gt;El valor debe ser menor a {{control.errors.max.limit}}&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;mensaje&quot;&gt;{{ mensaje }}&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;div class&#x3D;&quot;form-control-feedback&quot; *ngIf&#x3D;&quot;control.errors &amp;&amp; control.errors.minlength&quot;&gt;
-                    &lt;span&gt;Debe ingresar un mínimo de {{control.errors.minlength.requiredLength}} caracteres&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;!mensaje&quot;&gt;Debe ingresar un mínimo de {{control.errors.minlength.requiredLength}} caracteres&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;mensaje&quot;&gt;{{ mensaje }}&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;div class&#x3D;&quot;form-control-feedback&quot; *ngIf&#x3D;&quot;control.errors &amp;&amp; control.errors.maxlength&quot;&gt;
-                    &lt;span&gt;Puede ingresar un máximo de {{control.errors.maxlength.requiredLength}} caracteres&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;!mensaje&quot;&gt;Puede ingresar un máximo de {{control.errors.maxlength.requiredLength}} caracteres&lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;mensaje&quot;&gt;{{ mensaje }}&lt;/span&gt;
                 &lt;/div&gt;&#x60;})
+
 export class ValidationMessagesComponent {
     @Input() control: FormControl;
+    @Input() mensaje: string;
 
     constructor() { }
 }

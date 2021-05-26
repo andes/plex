@@ -1009,7 +1009,7 @@ import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
                 &lt;ng-content select&#x3D;&quot;[left]&quot;&gt;&lt;/ng-content&gt;
             &lt;/span&gt;
 
-            &lt;input #input [attr.aria-label]&#x3D;&quot;textLabel&quot; [attr.aria-labelledby]&#x3D;&quot;passwordLabel&quot; type&#x3D;&quot;{{type}}&quot; class&#x3D;&quot;form-control form-control-{{size}}&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot;
+            &lt;input #input [attr.aria-label]&#x3D;&quot;textLabel&quot; [attr.aria-labelledby]&#x3D;&quot;passwordLabel&quot; [attr.aria-describedby]&#x3D;&quot;ariaDescribedby.id&quot; type&#x3D;&quot;{{type}}&quot; class&#x3D;&quot;form-control form-control-{{size}}&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot;
                 [readonly]&#x3D;&quot;readonly&quot; (input)&#x3D;&quot;onChange($event.target.value)&quot; (change)&#x3D;&quot;disabledEvent($event)&quot; (focus)&#x3D;&quot;onFocus()&quot; (focusout)&#x3D;&quot;onFocusout()&quot;&gt;
 
             &lt;plex-icon  *ngIf&#x3D;&quot;!readonly &amp;&amp; !multiline &amp;&amp; !html &amp;&amp; !isEmpty&quot; size&#x3D;&quot;sm&quot; name&#x3D;&quot;close-circle&quot; class&#x3D;&quot;clear-icon&quot; (click)&#x3D;&quot;clearInput()&quot;&gt;&lt;/plex-icon&gt;
@@ -1020,17 +1020,15 @@ import { hasRequiredValidator } from &#x27;../core/validator.functions&#x27;;
         &lt;/div&gt;
 
         &lt;!-- Multiline --&gt;
-        &lt;textarea [attr.aria-label]&#x3D;&quot;textLabel&quot; [attr.aria-labelledby]&#x3D;&quot;passwordLabel&quot; [attr.aria-hidden]&#x3D;&quot;!multiline || html&quot;  [hidden]&#x3D;&quot;!multiline || html&quot; #textarea class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot; [readonly]&#x3D;&quot;readonly&quot;
+        &lt;textarea [attr.aria-label]&#x3D;&quot;textLabel&quot; [attr.aria-labelledby]&#x3D;&quot;passwordLabel&quot; [attr.aria-hidden]&#x3D;&quot;!multiline || html&quot; [hidden]&#x3D;&quot;!multiline || html&quot; #textarea class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot; [readonly]&#x3D;&quot;readonly&quot;
         (input)&#x3D;&quot;onChange($event.target.value)&quot; (change)&#x3D;&quot;disabledEvent($event)&quot; (focus)&#x3D;&quot;onFocus()&quot; (focusout)&#x3D;&quot;onFocusout()&quot;&gt;
         &lt;/textarea&gt;
-
-
 
         &lt;!-- HTML Editor --&gt;
         &lt;quill-editor #quillEditor [attr.aria-label]&#x3D;&quot;textLabel&quot; [attr.aria-hidden]&#x3D;&quot;multiline || !html&quot; [hidden]&#x3D;&quot;multiline || !html&quot; [modules]&#x3D;&quot;quill&quot; [style]&#x3D;&quot;quillStyle&quot; [readOnly]&#x3D;&quot;readonly&quot; [placeholder]&#x3D;&quot;placeholder&quot; (onContentChanged)&#x3D;&quot;onChange($event.html)&quot;&gt;&lt;/quill-editor&gt;
 
-        &lt;!-- Validation --&gt;
-        &lt;plex-validation-messages id&#x3D;&quot;{{ariaLabelledby?.id}}&quot; *ngIf&#x3D;&quot;hasDanger()&quot; [control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;
+        &lt;!-- Validación / Descripción ARIA --&gt;
+        &lt;plex-validation-messages [mensaje]&#x3D;&quot;mensaje&quot; id&#x3D;&quot;{{ ariaDescribedby.id }}&quot; *ngIf&#x3D;&quot;hasDanger()&quot; [control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;
     &lt;/div&gt;
     &#x60;
 })
@@ -1058,7 +1056,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @ViewChild(&#x27;input&#x27;, { static: true }) private input: ElementRef;
     @ViewChild(&#x27;textarea&#x27;, { static: true }) private textarea: ElementRef;
     @ViewChild(&#x27;quillEditor&#x27;, { static: true }) private quillEditor: ElementRef;
-    // @ContentChild(NgControl, { static: true }) public control: any;
 
     public get esRequerido(): boolean {
         return hasRequiredValidator(this.control as any);
@@ -1068,7 +1065,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() type: &#x27;text&#x27; | &#x27;password&#x27; | &#x27;email&#x27; &#x3D; &#x27;text&#x27;;
     @Input() label: string;
     @Input() ariaLabel: string;
-    @Input() ariaLabelledby: any &#x3D; { id: &#x60;password${Math.floor(Math.random() * 100000)}&#x60;, label: &#x27;Sólo caracteres alfanuméricos, sin espacios.&#x27; };
+    @Input() ariaDescribedby: any &#x3D; { id: &#x60;label${Math.floor(Math.random() * 100000)}&#x60; };
+    @Input() mensaje: string;
     @Input() size: &#x27;sm&#x27; | &#x27;md&#x27; | &#x27;lg&#x27; &#x3D; &#x27;md&#x27;;
     @Input() placeholder: string;
     @Input() prefix: string;
@@ -1144,12 +1142,9 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         if (this.html) {
             this.prepareQuillToolbar();
         }
-        // if (this.type &#x3D;&#x3D;&#x3D; &#x27;password&#x27;) {
-        //     this.ariaLabelledby &#x3D; {
-        //         id: &#x60;password-${Math.random() * 10000}&#x60;,
-        //         label: this.ariaLabel
-        //     }
-        // }
+        if (this.type &#x3D;&#x3D;&#x3D; &#x27;password&#x27;) {
+            this.mensaje &#x3D; &#x27;Ingrese caracteres alfanuméricos, sin espacios.&#x27;;
+        }
     }
 
     ngAfterViewInit() {
@@ -1278,7 +1273,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
 
     get passwordLabel() {
-        return this.type &#x3D;&#x3D;&#x3D; &#x27;password&#x27; ? this.ariaLabelledby.id : null;
+        return this.type &#x3D;&#x3D;&#x3D; &#x27;password&#x27; ? this.ariaDescribedby.id : null;
     }
 
 }
