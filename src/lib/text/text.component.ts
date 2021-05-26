@@ -22,7 +22,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
                 <ng-content select="[left]"></ng-content>
             </span>
 
-            <input #input [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
+            <input #input [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-describedby]="ariaDescribedby.id" type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
                 [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
 
             <plex-icon  *ngIf="!readonly && !multiline && !html && !isEmpty" size="sm" name="close-circle" class="clear-icon" (click)="clearInput()"></plex-icon>
@@ -33,17 +33,15 @@ import { hasRequiredValidator } from '../core/validator.functions';
         </div>
 
         <!-- Multiline -->
-        <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html"  [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+        <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html" [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
         (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
         </textarea>
-
-
 
         <!-- HTML Editor -->
         <quill-editor #quillEditor [attr.aria-label]="textLabel" [attr.aria-hidden]="multiline || !html" [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
 
-        <!-- Validation -->
-        <plex-validation-messages id="{{ariaLabelledby?.id}}" *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
+        <!-- Validación / Descripción ARIA -->
+        <plex-validation-messages [mensaje]="mensaje" id="{{ ariaDescribedby.id }}" *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
     </div>
     `
 })
@@ -71,7 +69,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @ViewChild('input', { static: true }) private input: ElementRef;
     @ViewChild('textarea', { static: true }) private textarea: ElementRef;
     @ViewChild('quillEditor', { static: true }) private quillEditor: ElementRef;
-    // @ContentChild(NgControl, { static: true }) public control: any;
 
     public get esRequerido(): boolean {
         return hasRequiredValidator(this.control as any);
@@ -81,7 +78,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() type: 'text' | 'password' | 'email' = 'text';
     @Input() label: string;
     @Input() ariaLabel: string;
-    @Input() ariaLabelledby: any = { id: `password${Math.floor(Math.random() * 100000)}`, label: 'Sólo caracteres alfanuméricos, sin espacios.' };
+    @Input() ariaDescribedby: any = { id: `label${Math.floor(Math.random() * 100000)}` };
+    @Input() mensaje: string;
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
     @Input() placeholder: string;
     @Input() prefix: string;
@@ -157,12 +155,9 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         if (this.html) {
             this.prepareQuillToolbar();
         }
-        // if (this.type === 'password') {
-        //     this.ariaLabelledby = {
-        //         id: `password-${Math.random() * 10000}`,
-        //         label: this.ariaLabel
-        //     }
-        // }
+        if (this.type === 'password') {
+            this.mensaje = 'Ingrese caracteres alfanuméricos, sin espacios.';
+        }
     }
 
     ngAfterViewInit() {
@@ -291,7 +286,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
 
     get passwordLabel() {
-        return this.type === 'password' ? this.ariaLabelledby.id : null;
+        return this.type === 'password' ? this.ariaDescribedby.id : null;
     }
 
 }

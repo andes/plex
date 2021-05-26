@@ -26,16 +26,16 @@ export class TextDemoComponent implements OnInit {
     constructor(private plex: Plex) { }
 
     onFocus() {
-        this.templateModel1.usuario = 'FOCUSED';
+        this.templateModel1.mensaje = 'FOCUSED';
     }
 
     onFocusout() {
-        this.templateModel1.usuario = '';
+        this.templateModel1.mensaje = 'FOCUS OUT: Debe ingresar su usuario (número de documento)';
     }
 
     ngOnInit() {
         // Template-Form1 model
-        this.templateModel1 = { nombre: null };
+        this.templateModel1 = { nombre: null, mensaje: 'Atención: debe ingresar su usuario (número de documento)' };
 
         // Template-Form2 model
         this.templateModel2 = { nombre: null, min: 10, max: 15 };

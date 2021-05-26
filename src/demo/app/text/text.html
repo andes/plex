@@ -1,92 +1,93 @@
 <plex-layout main="9">
-    <plex-layout-main>
-        <plex-grid cols="4">
-            <section>
-                <plex-title titulo="formulario"></plex-title>
-                <form>
-                    <plex-text type="text" label="Ingrese su usuario" placeholder="Esta es una ayuda"
-                               [(ngModel)]="templateModel1.usuario" name="usuario" [required]="true" (focus)="onFocus()"
-                               (focusout)="onFocusout()">
-                        <plex-icon name="account" left> </plex-icon>
-                    </plex-text>
-                    <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password"
-                               name="password" [required]="true">
-                    </plex-text>
-                    <plex-text email type="email" label="Ingrese su email" [(ngModel)]="templateModel1.email"
-                               name="email" prefix="email">
-                    </plex-text>
-                    <plex-text label="Ingrese su usuario" [(ngModel)]="templateModel1.usuario" name="usuario"
-                               [readonly]="true" prefix="account">
-                    </plex-text>
-                    <plex-text label="Ingrese un nombre con formato correcto" [(ngModel)]="templateModel1.patron"
-                               pattern="[a-zA-ZáâèéêíóùúüñÁÈÉÍÙÚÛÜ ']+" name="patron">
-                    </plex-text>
-                    <plex-title size="sm" titulo="Patrón"></plex-title>
-                    <pre>a-zA-ZáâèéêíóùúüñÁÈÉÍÙÚÛÜ </pre>
-                </form>
+  <plex-layout-main>
+    <plex-grid cols="4">
+      <section span="1">
+        <plex-title titulo="formulario"></plex-title>
+        <form>
+          <plex-text type="text" label="Ingrese su usuario" placeholder="Esta es una ayuda"
+                     [(ngModel)]="templateModel1.usuario" name="usuario" [required]="true" (focus)="onFocus()"
+                     (focusout)="onFocusout()" [mensaje]="templateModel1.mensaje">
+            <plex-icon name="account" left> </plex-icon>
+          </plex-text>
+          <plex-text label="Ingrese su contraseña" password="true" [(ngModel)]="templateModel1.password" name="password"
+                     [required]="true">
+          </plex-text>
+          <plex-text email type="email" label="Ingrese su email" [(ngModel)]="templateModel1.email" name="email"
+                     prefix="email">
+          </plex-text>
+          <plex-text label="Ingrese su usuario" [(ngModel)]="templateModel1.usuario" name="usuario2" [readonly]="true"
+                     prefix="account" mensaje="Este mensaje no se ve nunca porque el campo es readonly">
+          </plex-text>
+          <plex-text label="Ingrese un nombre con formato correcto" [(ngModel)]="templateModel1.patron"
+                     pattern="[a-zA-ZáâèéêíóùúüñÁÈÉÍÙÚÛÜ ']+" name="patron"
+                     mensaje="Error: el nombre no coincide con el patrón">
+          </plex-text>
+          <plex-title size="sm" titulo="Patrón"></plex-title>
+          <pre>a-zA-ZáâèéêíóùúüñÁÈÉÍÙÚÛÜ </pre>
+        </form>
 
-                <plex-title size="sm" titulo="modelo"></plex-title>
-                <pre>{{templateModel1 | json}}</pre>
-                <form>
-                    <plex-text label="Ingrese un texto de min 10 y max 15 chars / debounce 1000ms (1s)"
-                               [(ngModel)]="templateModel2.nombre" name="nombre" minlength="10" maxlength="15"
-                               [debounce]="1000" (change)="onChange()">
-                    </plex-text>
-                </form>
+        <plex-title size="sm" titulo="modelo"></plex-title>
+        <pre>{{templateModel1 | json}}</pre>
+        <form>
+          <plex-text label="Ingrese un texto de min 10 y max 15 chars / debounce 1000ms (1s)"
+                     [(ngModel)]="templateModel2.nombre" name="nombre" minlength="10" maxlength="15" [debounce]="1000"
+                     (change)="onChange()">
+          </plex-text>
+        </form>
 
-                <plex-title size="sm" titulo="modelo"></plex-title>
-                <pre>{{templateModel2 | json}}</pre>
-            </section>
-            <section span="3" class="ml-4">
-                <plex-title titulo="Multiline"></plex-title>
-                <plex-grid type="full" size="md">
-                    <plex-text label="Escriba la biografía de su vida" multiline="true" name="multi"
-                               [(ngModel)]="prueba" (change)="cambio()">
-                    </plex-text>
-                    <div>
-                        <plex-title size="sm" titulo="modelo"></plex-title>
-                        <pre>{{prueba | json}}</pre>
-                    </div>
-                </plex-grid>
-
-                <plex-title titulo="HTML Editor"></plex-title>
-                <plex-grid type="full">
-                    <form>
-                        <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido1"
-                                   [html]="true" [readonly]="false" [height]="'100px'" [qlToolbar]="qlToolbar">
-                        </plex-text>
-                    </form>
-                    <div>
-                        <plex-title size="sm" titulo="modelo"></plex-title>
-                        <pre>{{richText | json}}</pre>
-                    </div>
-                </plex-grid>
-
-                <plex-title titulo="HTML Editor con height = 200"></plex-title>
-                <plex-grid type="full" size="md">
-                    <form>
-                        <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido2"
-                                   [html]="true" [height]="'200px'" [readonly]="false">
-                        </plex-text>
-                    </form>
-                    <div>
-                        <plex-title size="sm" titulo="modelo"></plex-title>
-                        <pre>{{richText | json}}</pre>
-                    </div>
-                </plex-grid>
-            </section>
+        <plex-title size="sm" titulo="modelo"></plex-title>
+        <pre>{{templateModel2 | json}}</pre>
+      </section>
+      <section span="3" class="ml-4">
+        <plex-title titulo="Multiline"></plex-title>
+        <plex-grid type="full" size="md">
+          <plex-text label="Escriba la biografía de su vida" multiline="true" name="multi" [(ngModel)]="prueba"
+                     (change)="cambio()">
+          </plex-text>
+          <div>
+            <plex-title size="sm" titulo="modelo"></plex-title>
+            <pre>{{prueba | json}}</pre>
+          </div>
         </plex-grid>
 
-    </plex-layout-main>
-    <plex-layout-sidebar type="invert">
-        <plex-title titulo="plex-text [height]='300px'"></plex-title>
-        <form>
-            <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido2" [html]="true"
-                       [height]="'300px'" [readonly]="false">
+        <plex-title titulo="HTML Editor"></plex-title>
+        <plex-grid type="full">
+          <form>
+            <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido1" [html]="true"
+                       [readonly]="false" [height]="'100px'" [qlToolbar]="qlToolbar">
             </plex-text>
-        </form>
-        <hr>
-        <plex-title size="sm" titulo="modelo"></plex-title>
-        <pre class="text-white">{{richText | json}}</pre>
-    </plex-layout-sidebar>
+          </form>
+          <div>
+            <plex-title size="sm" titulo="modelo"></plex-title>
+            <pre>{{richText | json}}</pre>
+          </div>
+        </plex-grid>
+
+        <plex-title titulo="HTML Editor con height = 200"></plex-title>
+        <plex-grid type="full" size="md">
+          <form>
+            <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido2" [html]="true"
+                       [height]="'200px'" [readonly]="false">
+            </plex-text>
+          </form>
+          <div>
+            <plex-title size="sm" titulo="modelo"></plex-title>
+            <pre>{{richText | json}}</pre>
+          </div>
+        </plex-grid>
+      </section>
+    </plex-grid>
+
+  </plex-layout-main>
+  <plex-layout-sidebar type="invert">
+    <plex-title titulo="plex-text [height]='300px'"></plex-title>
+    <form>
+      <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido2" [html]="true"
+                 [height]="'300px'" [readonly]="false">
+      </plex-text>
+    </form>
+    <hr>
+    <plex-title size="sm" titulo="modelo"></plex-title>
+    <pre class="text-white">{{richText | json}}</pre>
+  </plex-layout-sidebar>
 </plex-layout>
