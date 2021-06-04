@@ -1,12 +1,12 @@
 /// <reference types="Cypress" />
 
-context('select', () => {
+context('<plex-select>', () => {
     before(() => {
         cy.eyesOpen({ appName: 'PLEX', testName: 'select' });
         cy.visit('/select');
     });
 
-    it('test accordion', () => {
+    it('Casos de selección simple y búsqueda', () => {
 
         cy.server();
         cy.route('GET', '**/api/core/tm/paises?nombre=brasil', [{

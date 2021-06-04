@@ -15,7 +15,7 @@ context('directive hint', () => {
         cy.get('#cdk-describedby-message-container div').eq(0).should('contain', hintText);
     });
 
-    it.only('hint directive click', () => {
+    it('hint directive click', () => {
         cy.get('plex-hint').eq(0).find('span').focus().trigger('click', { force: true });
         cy.get('div.hint-click-test').should('contain', '¿Cuántos clicks fallidos hace uno en la vida?');
     });
