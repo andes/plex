@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routing, appRoutingProviders } from './app.routes';
@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 
 // Plex
 import { PlexModule } from '../../lib/module';
-import { Plex } from '../../lib/core/service';
 
 // Services
 import { ServiceDemoSelect } from './select/select.service';
@@ -40,6 +39,7 @@ import { TemplateFormComponent } from './templates/template-form';
 import { TemplateVisualizacionComponent } from './templates/template-visualizacion';
 import { TemplateBusquedaComponent } from './templates/template-busqueda';
 import { TemplateBotoneraSidebarComponent } from './templates/template-form-sidebar';
+import { TemplateFormReactivoComponent } from './templates/form-reactivo/form-reactivo.component';
 import { FechaPipe } from './templates/fecha.pipe';
 import { HeaderPacienteComponent } from './header-paciente/header-paciente.component';
 import { ItemDemoComponent } from './item-list/item-list.component';
@@ -106,6 +106,7 @@ import { AlignDemoComponent } from './directives/componentes/align/align.compone
         TemplateVisualizacionComponent,
         TemplateBusquedaComponent,
         TemplateBotoneraSidebarComponent,
+        TemplateFormReactivoComponent,
         FechaPipe,
         HeaderPacienteComponent,
         ItemDemoComponent,
@@ -144,6 +145,7 @@ import { AlignDemoComponent } from './directives/componentes/align/align.compone
     imports: [
         BrowserAnimationsModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpClientModule,
         PlexModule.forRoot({ networkLoading: true }),
         routing

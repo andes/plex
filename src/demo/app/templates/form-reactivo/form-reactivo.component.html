@@ -1,0 +1,63 @@
+<plex-layout main="8">
+  <plex-layout-main>
+    <plex-title titulo="Formulario Reactivo"></plex-title>
+    <main justify="center">
+      <form [formGroup]="formReactivo" #form="ngForm">
+        <plex-label titulo="Número de documento"></plex-label>
+        <div justify="center">
+          <div class="campo-hint" [hint]="textoDocumento" hintType="info" hintIcon="help" detach="top">
+            <plex-int name="documento" formControlName="documento" mensaje="Debe ingresar un DNI">
+            </plex-int>
+          </div>
+        </div>
+        <plex-label titulo="Seleccione sexo">
+        </plex-label>
+        <div justify="center">
+          <div [hint]="textoTramite" hintType="info" hintIcon="help" detach="top">
+            <plex-select name="sexo" [data]="opcionesSexo" formControlName="sexo">
+            </plex-select>
+          </div>
+        </div>
+        <plex-label titulo="Número de trámite">
+        </plex-label>
+        <div justify="center">
+          <div [hint]="textoTramite" hintType="info" hintIcon="help" detach="top">
+            <plex-int name="num_tramite" formControlName="tramite"></plex-int>
+          </div>
+        </div>
+        <plex-label titulo="Número de celular"></plex-label>
+        <div justify="center">
+          <div [hint]="textoCelular" hintType="info" hintIcon="help" detach="top">
+            <plex-int name="num_celular" formControlName="celular">
+            </plex-int>
+          </div>
+        </div>
+        <plex-label titulo="Email"></plex-label>
+        <div justify="center">
+
+          <div [hint]="textoEmail" hintType="info" hintIcon="help" detach="top">
+            <plex-text name="email" formControlName="email" mensaje="Debe ingresar un e-mail válido"
+                       (keyup)="trimEmail($event.target.value)">
+            </plex-text>
+          </div>
+        </div>
+        <div justify="center" class="mt-3">
+          <plex-button type="info" name="enviar" size="md" [disabled]="formReactivo.invalid"
+                       hint="Este botón se habilita cuando el formulario sea válido" hintType="info" hintIcon="help"
+                       detach="top">
+            Registrarme
+          </plex-button>
+        </div>
+      </form>
+    </main>
+  </plex-layout-main>
+  <plex-layout-sidebar>
+    <plex-title size="sm" titulo="Validación"></plex-title>
+    <main *ngIf="formReactivo">
+      <plex-badge type="{{ formReactivo.valid ? 'success' : 'danger'}}" size="md">
+        Formulario {{ formReactivo.valid ? 'válido' : 'inválido' }}
+        <plex-icon size="sm" name="{{ formReactivo.valid ? 'check' : 'close' }}"></plex-icon>
+      </plex-badge>
+    </main>
+  </plex-layout-sidebar>
+</plex-layout>

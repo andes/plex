@@ -10,10 +10,10 @@ $selectize-line-height: 18px !default;
 
 $selectize-color-text: #303030 !default;
 $selectize-color-border: rgba(0, 0, 0, 0.15) !default;
-$selectize-color-highlight: rgba(125,168,208,0.2) !default;
+$selectize-color-highlight: rgba(125, 168, 208, 0.2) !default;
 $selectize-color-input: white !default;
 $selectize-color-input-full: $selectize-color-input !default;
-$selectize-color-disabled: #eceeef !default; 
+$selectize-color-disabled: #eceeef !default;
 $selectize-color-item: #f2f2f2 !default;
 $selectize-color-item-text: $selectize-color-text !default;
 $selectize-color-item-border: #d0d0d0 !default;
@@ -25,14 +25,19 @@ $selectize-color-dropdown-border: $selectize-color-border !default;
 $selectize-color-dropdown-border-top: #f0f0f0 !default;
 $selectize-color-dropdown-item-active: #f5fafd !default;
 $selectize-color-dropdown-item-active-text: #495c68 !default;
-$selectize-color-dropdown-item-create-text: rgba(red($selectize-color-text), green($selectize-color-text), blue($selectize-color-text), 0.5) !default;
+$selectize-color-dropdown-item-create-text: rgba(
+  red($selectize-color-text),
+  green($selectize-color-text),
+  blue($selectize-color-text),
+  0.5
+) !default;
 $selectize-color-dropdown-item-create-active-text: $selectize-color-dropdown-item-active-text !default;
 $selectize-color-optgroup: $selectize-color-dropdown !default;
 $selectize-color-optgroup-text: $selectize-color-text !default;
 $selectize-lighten-disabled-item: 30% !default;
 $selectize-lighten-disabled-item-text: 30% !default;
 $selectize-lighten-disabled-item-border: 30% !default;
-$selectize-opacity-disabled: .5 !default;
+$selectize-opacity-disabled: 0.5 !default;
 
 $selectize-shadow-input: inset 0 1px 1px rgba(black, 0.1) !default;
 $selectize-shadow-input-focus: inset 0 1px 2px rgba(black, 0.15) !default;
@@ -60,27 +65,27 @@ $selectize-caret-margin: 0 2px 0 0 !default;
 $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
 
 // mixins
-@mixin selectize-border-radius ($radii) {
+@mixin selectize-border-radius($radii) {
   -webkit-border-radius: $radii;
   -moz-border-radius: $radii;
   border-radius: $radii;
 }
-@mixin selectize-unselectable () {
+@mixin selectize-unselectable() {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-@mixin selectize-box-shadow ($shadow) {
+@mixin selectize-box-shadow($shadow) {
   -webkit-box-shadow: $shadow;
   box-shadow: $shadow;
 }
-@mixin selectize-box-sizing ($type: border-box) {
+@mixin selectize-box-sizing($type: border-box) {
   -webkit-box-sizing: $type;
   -moz-box-sizing: $type;
   box-sizing: $type;
 }
-@mixin selectize-vertical-gradient ($color-top, $color-bottom) {
+@mixin selectize-vertical-gradient($color-top, $color-bottom) {
   background-color: mix($color-top, $color-bottom, 60%);
   background-image: -moz-linear-gradient(top, $color-top, $color-bottom); // FF 3.6+
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($color-top), to($color-bottom)); // Safari 4+, Chrome 2+
@@ -88,7 +93,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
   background-image: -o-linear-gradient(top, $color-top, $color-bottom); // Opera 11.10
   background-image: linear-gradient(to bottom, $color-top, $color-bottom); // Standard, IE10
   background-repeat: repeat-x;
-  filter:  "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{argb($color-top)}', endColorstr='#{argb($color-bottom)}', GradientType=0)"; // IE9 and down
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{argb($color-top)}', endColorstr='#{argb($color-bottom)}', GradientType=0)"; // IE9 and down
 }
 
 .selectize-control {
@@ -119,14 +124,15 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
   width: 100%;
   position: relative;
   z-index: 1;
-  @include selectize-box-sizing (border-box);
-  @include selectize-box-shadow ($selectize-shadow-input);
-  @include selectize-border-radius ($selectize-border-radius);
+  @include selectize-box-sizing(border-box);
+  @include selectize-box-shadow($selectize-shadow-input);
+  @include selectize-border-radius($selectize-border-radius);
 
   .selectize-control.multi &.has-items {
     $padding-x: $selectize-padding-x;
     $padding-top: $selectize-padding-y - $selectize-padding-item-y - $selectize-width-item-border;
-    $padding-bottom: $selectize-padding-y - $selectize-padding-item-y - $selectize-margin-item-y - $selectize-width-item-border;
+    $padding-bottom: $selectize-padding-y - $selectize-padding-item-y - $selectize-margin-item-y -
+      $selectize-width-item-border;
     padding: $padding-top $padding-x $padding-bottom;
   }
 
@@ -140,11 +146,11 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
   }
 
   &.focus {
-    @include selectize-box-shadow ($selectize-shadow-input-focus);
+    @include selectize-box-shadow($selectize-shadow-input-focus);
   }
 
   &.dropdown-active {
-    @include selectize-border-radius ($selectize-border-radius $selectize-border-radius 0 0);
+    @include selectize-border-radius($selectize-border-radius $selectize-border-radius 0 0);
   }
 
   > * {
@@ -179,7 +185,8 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
     &.active {
       color: lighten(desaturate($selectize-color-item-text, 100%), $selectize-lighten-disabled-item-text);
       background: lighten(desaturate($selectize-color-item, 100%), $selectize-lighten-disabled-item);
-      border: $selectize-width-item-border solid lighten(desaturate($selectize-color-item-border, 100%), $selectize-lighten-disabled-item-border);
+      border: $selectize-width-item-border solid
+        lighten(desaturate($selectize-color-item-border, 100%), $selectize-lighten-disabled-item-border);
     }
   }
 
@@ -198,7 +205,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
     background: none !important;
     line-height: inherit !important;
     -webkit-user-select: auto !important;
-    @include selectize-box-shadow (none !important);
+    @include selectize-box-shadow(none !important);
 
     &:focus {
       outline: none !important;
@@ -212,13 +219,13 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
 }
 
 .selectize-input::after {
-  content: ' ';
+  content: " ";
   display: block;
   clear: left;
 }
 
 .selectize-input.dropdown-active::before {
-  content: ' ';
+  content: " ";
   display: block;
   position: absolute;
   background: $selectize-color-dropdown-border-top;
@@ -235,9 +242,9 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
   background: $selectize-color-dropdown;
   margin: -1px 0 0;
   border-top: 0 none;
-  @include selectize-box-sizing (border-box);
-  @include selectize-box-shadow (0 1px 3px rgba(black, 0.1));
-  @include selectize-border-radius (0 0 $selectize-border-radius $selectize-border-radius);
+  @include selectize-box-sizing(border-box);
+  @include selectize-box-shadow(0 1px 3px rgba(black, 0.1));
+  @include selectize-border-radius(0 0 $selectize-border-radius $selectize-border-radius);
 
   [data-selectable] {
     cursor: pointer;
@@ -245,7 +252,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
 
     .highlight {
       background: $selectize-color-highlight;
-      @include selectize-border-radius (1px);
+      @include selectize-border-radius(1px);
     }
   }
 
@@ -288,6 +295,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
   &,
   input {
     cursor: pointer;
+    width: 100% !important;
   }
 
   &.input-active,
@@ -296,7 +304,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
   }
 
   &:after {
-    content: ' ';
+    content: " ";
     display: block;
     position: absolute;
     top: 50%;
@@ -335,11 +343,11 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
 // PLUGINS/REMOVE_BUTTON.SCSS
 .selectize-control {
   .remove-button {
-    opacity: .5;
-    font-size: .9em;
+    opacity: 0.5;
+    font-size: 0.9em;
     color: $dark-grey;
     text-decoration: none;
-    margin-left: .5em;
+    margin-left: 0.5em;
 
     &:hover {
       color: black;
@@ -391,7 +399,7 @@ $selectize-font-size: inherit !default;
 $selectize-line-height: $line-height-computed !default;
 
 $selectize-color-text: $text-color !default;
-$selectize-color-highlight: rgba(255,237,40,0.4) !default;
+$selectize-color-highlight: rgba(255, 237, 40, 0.4) !default;
 $selectize-color-input: $input-bg !default;
 $selectize-color-input-full: $input-bg !default;
 $selectize-color-input-error: $state-danger-text !default;
@@ -410,11 +418,12 @@ $selectize-color-dropdown-border-top: mix($input-border, $input-bg, 0.8) !defaul
 $selectize-color-dropdown-item-active: $dropdown-link-hover-bg !default;
 $selectize-color-dropdown-item-active-text: $dropdown-link-hover-color !default;
 $selectize-color-dropdown-item-create-active-text: $dropdown-link-hover-color !default;
-$selectize-opacity-disabled: .5 !default;
+$selectize-opacity-disabled: 0.5 !default;
 $selectize-shadow-input: none !default;
 $selectize-shadow-input-focus: inset 0 1px 2px rgba(black, 0.15) !default;
-$selectize-shadow-input-error: inset 0 1px 1px rgba(black, .075) !default;
-$selectize-shadow-input-error-focus: inset 0 1px 1px rgba(black, .075), 0 0 6px lighten($selectize-color-input-error, 20%) !default;
+$selectize-shadow-input-error: inset 0 1px 1px rgba(black, 0.075) !default;
+$selectize-shadow-input-error-focus: inset 0 1px 1px rgba(black, 0.075),
+  0 0 6px lighten($selectize-color-input-error, 20%) !default;
 $selectize-border: 1px solid $input-border !default;
 $selectize-border-radius: $input-border-radius !default;
 
@@ -443,7 +452,7 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
   // // border: 1px solid $dropdown-fallback-border;
   // // border: 1px solid $dropdown-border;
   // @include selectize-border-radius ($border-radius-base);
-  @include selectize-box-shadow (0 6px 12px rgba(black, .175));
+  @include selectize-box-shadow(0 6px 12px rgba(black, 0.175));
 }
 
 .selectize-dropdown {
@@ -457,7 +466,7 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
   }
 
   .optgroup:before {
-    content: ' ';
+    content: " ";
     display: block;
     @include nav-divider;
     margin-left: $selectize-padding-dropdown-item-x * -1;
@@ -477,7 +486,7 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
   min-height: $input-height;
 
   &.dropdown-active {
-    @include selectize-border-radius ($selectize-border-radius);
+    @include selectize-border-radius($selectize-border-radius);
   }
 
   &.dropdown-active::before {
@@ -486,20 +495,20 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
 
   &.focus {
     $color: $input-border-focus;
-    $color-rgba: rgba(red($color), green($color), blue($color), .6);
+    $color-rgba: rgba(red($color), green($color), blue($color), 0.6);
     border-color: $color;
     outline: 0;
-    @include selectize-box-shadow ("inset 0 1px 1px rgba(black, .075), 0 0 8px #{$color-rgba}");
+    @include selectize-box-shadow("inset 0 1px 1px rgba(black, .075), 0 0 8px #{$color-rgba}");
   }
 }
 
 .has-danger .selectize-input {
   border-color: $selectize-color-input-error;
-  @include selectize-box-shadow ($selectize-shadow-input-error);
+  @include selectize-box-shadow($selectize-shadow-input-error);
 
   &:focus {
     border-color: $selectize-color-input-error-focus;
-    @include selectize-box-shadow ($selectize-shadow-input-error-focus);
+    @include selectize-box-shadow($selectize-shadow-input-error-focus);
   }
 }
 
@@ -511,7 +520,7 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
     }
 
     .selectize-input > div {
-      @include selectize-border-radius ($selectize-border-radius - 1px);
+      @include selectize-border-radius($selectize-border-radius - 1px);
     }
   }
 }
@@ -522,8 +531,8 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
   border: none;
   background: none;
   line-height: 0;
-  @include selectize-box-shadow (none);
-  @include selectize-border-radius (0);
+  @include selectize-box-shadow(none);
+  @include selectize-border-radius(0);
 }
 
 // Loading

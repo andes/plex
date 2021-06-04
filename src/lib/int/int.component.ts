@@ -1,6 +1,6 @@
 import { ViewChild, Component, OnInit, Input, AfterViewInit, Output, EventEmitter, ElementRef, ContentChild, OnChanges, Renderer2, Self, Optional } from '@angular/core';
 import {
-    ControlValueAccessor, FormControl, NgControl
+    ControlValueAccessor, FormControl, NgControl, NG_VALUE_ACCESSOR
 } from '@angular/forms';
 import { numberValidator, hasRequiredValidator } from '../core/validator.functions';
 
@@ -9,7 +9,7 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
 @Component({
     selector: 'plex-int',
     template: `
-        <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
+        <div class="form-group" [ngClass]="{'has-danger': hasDanger() }" [formGroup]="">
             <label *ngIf="label" class="form-control-label">{{label}}<span *ngIf="control.name && esRequerido" class="requerido"></span></label>
             <div [ngClass]="{'input-group': prefix || suffix || prefixParent?.children.length > 0 || suffixParent?.children.length > 0} ">
                 <span *ngIf="prefix" class="input-group-addon" [innerHTML]="prefix"></span>
@@ -22,9 +22,16 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
                     <ng-content select="[right]"></ng-content>
                 </span>
             </div>
-            <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
+            <plex-validation-messages *ngIf="hasDanger()" [control]="control" [mensaje]="mensaje"></plex-validation-messages>
         </div>
     `,
+    // providers: [
+    //     {
+    //         provide: NG_VALUE_ACCESSOR,
+    //         useExisting: PlexIntComponent,
+    //         multi: true
+    //     },
+    // ]
 })
 export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
     private lastValue: any = null;
@@ -32,6 +39,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     @ViewChild('ref', { static: true }) private ref: ElementRef;
 
     public get esRequerido(): boolean {
+        console.log(this.control);
         return hasRequiredValidator(this.control as any);
     }
 
@@ -45,6 +53,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     @Input() readonly = false;
     @Input() min: number;
     @Input() max: number;
+    @Input() mensaje: string;
 
     @Input()
     set autoFocus(value: any) {
@@ -58,7 +67,8 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     @Output() change = new EventEmitter();
 
     // Funciones públicas
-    public onChange = (_: any) => { };
+    onChange;
+    onTouched;
 
     public disabledEvent(event: Event) {
         event.stopImmediatePropagation();
@@ -82,7 +92,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
         @Self() @Optional() public control: NgControl,
     ) {
         if (this.control && this.control.control) {
-            this.control.control.setValidators(this.validate.bind(this) as any);
+            this.control.control.setValidators([this.validate.bind(this) as any]);
         }
         if (this.control) {
             this.control.valueAccessor = this;

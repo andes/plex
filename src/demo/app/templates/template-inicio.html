@@ -1,28 +1,36 @@
 <plex-layout main="1">
-    <plex-layout-main>
-        <section class="h-100" justify="center">
-            <img class="w-100 mx-4" src="https://avatars1.githubusercontent.com/u/21106637?s=200&v=4" alt="">
-        </section>
-    </plex-layout-main>
-    <plex-layout-sidebar type="invert">
-        <plex-grid class="h-100" justify="center" type="full" cols="2" size="lg">
-            <div class="card p-4 w-25" justify="center">
-                <plex-label direction="column" size="lg" titulo="Templates por tipología"
-                            subtitulo="ABMs, Asistenciales, Exploratorios" icon="view-quilt">
-                </plex-label>
-                <plex-button class="mt-4" type="info" size="md" label="Navegar template ABM"
-                             routerLink="/templates/listado-sidebar">
-                </plex-button>
-            </div>
-            <div class="card p-4 w-25" justify="center">
-                <plex-label direction="column" size="lg" titulo="Templates por módulo" subtitulo="MPI, TOP, CITAS"
-                            icon="view-grid">
-                </plex-label>
-                <plex-button class="mt-4" type="info" size="md" label="Navegar template MPI"
-                             routerLink="/templates/mpi-maquetado">
-                </plex-button>
-            </div>
-        </plex-grid>
+  <plex-layout-main>
+    <section class="h-100" justify="center">
+      <img class="w-100 mx-4" src="https://avatars1.githubusercontent.com/u/21106637?s=200&v=4" alt="">
+    </section>
+  </plex-layout-main>
+  <plex-layout-sidebar type="invert">
+    <plex-grid class="h-100" justify="center" type="full" cols="2" size="lg">
+      <div class="card p-4 w-25" justify="center">
+        <plex-label direction="column" size="lg" titulo="Templates por tipología"
+                    subtitulo="ABMs, Asistenciales, Exploratorios" icon="view-quilt">
+        </plex-label>
+        <plex-button class="mt-4" type="info" size="md" label="Navegar template ABM"
+                     routerLink="/templates/listado-sidebar">
+        </plex-button>
+      </div>
+      <div class="card p-4 w-25" justify="center">
+        <plex-label direction="column" size="lg" titulo="Templates por módulo" subtitulo="MPI, TOP, CITAS"
+                    icon="view-grid">
+        </plex-label>
+        <plex-button class="mt-4" type="info" size="md" label="Navegar template MPI"
+                     routerLink="/templates/mpi-maquetado">
+        </plex-button>
+      </div>
+      <div class="card p-4 w-25" justify="center">
+        <plex-label direction="column" size="lg" titulo="Templates de Formulario"
+                    subtitulo="Forms reactivos y no reactivos" icon="view-grid">
+        </plex-label>
+        <plex-button class="mt-4" type="info" size="md" label="Navegar template Form reactivo"
+                     routerLink="/templates/form-reactivo">
+        </plex-button>
+      </div>
+    </plex-grid>
 
-    </plex-layout-sidebar>
+  </plex-layout-sidebar>
 </plex-layout>

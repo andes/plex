@@ -29,6 +29,7 @@ import { TemplateFormComponent } from './templates/template-form';
 import { TemplateVisualizacionComponent } from './templates/template-visualizacion';
 import { TemplateBusquedaComponent } from './templates/template-busqueda';
 import { TemplateBotoneraSidebarComponent } from './templates/template-form-sidebar';
+import { TemplateFormReactivoComponent } from './templates/form-reactivo/form-reactivo.component';
 import { ItemDemoComponent } from './item-list/item-list.component';
 import { DetailDemoComponent } from './detail/detail.component';
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
@@ -92,6 +93,7 @@ const appRoutes: Routes = [
             { path: ':id', component: MpiDetalleComponent },
         ]
     },
+    { path: 'templates/form-reactivo', component: TemplateFormReactivoComponent },
 
     { path: 'item', component: ItemDemoComponent },
     { path: 'detail', component: DetailDemoComponent },
