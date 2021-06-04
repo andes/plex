@@ -5,8 +5,8 @@ import { PlexType } from '../core/plex-type.type';
 @Component({
     selector: 'plex-hint',
     template: `
-        <span #matTooltip="matTooltip" tabindex="0" *ngIf="position && content" class="hint-container detach-{{detach}}" 
-        [matTooltip]="content" [matTooltipPosition]="position" (click)="showTooltip()">
+        <span #matTooltip="matTooltip" tabindex="0" *ngIf="position && content" class="hint-container detach-{{detach}}"
+            [matTooltip]="content" [matTooltipPosition]="position" (click)="showTooltip()">
             <plex-icon class="hint {{ hintType }}" [name]="hintIcon" size="xs" type="light"></plex-icon>
         </span>
     `
