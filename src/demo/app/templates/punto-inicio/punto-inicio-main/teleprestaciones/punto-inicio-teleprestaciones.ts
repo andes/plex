@@ -1,22 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { EventEmitter, Output } from '@angular/core';
 
 // Servicios y modelo
-import { Agenda } from '../service/agenda';
-import { MenuService } from '../service/menu.service';
-import { Menu } from '../service/menu';
-import { Paciente } from '../service/paciente';
-import { Plex } from './../../../../lib/core/service';
-import { EventEmitter, Output } from '@angular/core';
-import { Solicitud } from '../service/solicitud';
-import { SolicitudService } from '../service/solicitud.service'
+import { Plex } from './../../../../../../lib/core/service';
+import { Solicitud } from '../../../service/solicitud';
+import { SolicitudService } from '../../../service/solicitud.service'
 
 @Component({
-    selector: 'plex-punto-inicio',
-    templateUrl: './punto-inicio.component.html',
-    styleUrls: ['./punto-inicio.component.scss']
+    selector: 'plex-teleprestaciones',
+    templateUrl: './punto-inicio-teleprestaciones.html',
 })
-export class PuntoInicioComponent implements OnInit {
+
+export class TeleprestacionesComponent implements OnInit {
 
     sidebarValue = 9;
     @Output() eventoSidebar = new EventEmitter<number>();
@@ -35,22 +31,20 @@ export class PuntoInicioComponent implements OnInit {
 
     public showModal = false;
 
-    // public listadoPaciente: Paciente[];
-    pacientes$: Observable<Paciente[]>;
-    agendas$: Observable<Agenda[]>;
     solicitudes$: Observable<Solicitud[]>;
-    menu$: Observable<Menu[]>;
     foco = 'main';
     public prueba = '';
     public cambio = '';
 
     constructor(
-        private menuService: MenuService,
         private solicitudService: SolicitudService,
         private plex: Plex,
     ) { }
 
     ngOnInit() {
+        this.solicitudes$ = this.solicitudService.getSolicitudes();
+        this.plex.navbarVisible = false;
+
         // plex-datetime
         this.tModel = {
             fechaHora: null,
@@ -63,9 +57,6 @@ export class PuntoInicioComponent implements OnInit {
             maxHora: moment().add(180, 'minutes'),
             fechaDecounce: new Date(1970, 0, 1),
         };
-        this.menu$ = this.menuService.getMenues();
-        this.solicitudes$ = this.solicitudService.getSolicitudes();
-        this.plex.navbarVisible = false;
 
         // plex-phone
         // plex-float

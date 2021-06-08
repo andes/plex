@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AgendaService } from './../../service/agenda.service';
 import { Agenda } from './../../service/agenda';
+import { PacienteService } from './../../service/paciente.service';
+import { Paciente } from './../../service/paciente';
 import { Plex } from './../../../../../lib/core/service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -17,6 +19,7 @@ export class PuntoInicioMainComponent implements OnInit {
     @Output() eventoSidebar = new EventEmitter<number>();
 
     agendas$: Observable<Agenda[]>;
+    pacientes$: Observable<Paciente[]>;
     selectedId: string;
 
     public duracion = '1 hs. 34 min.';
@@ -52,9 +55,9 @@ export class PuntoInicioMainComponent implements OnInit {
         this.plex.info('success', 'Este cartel se demoro un segundo en aparecer después de escribir.');
     }
 
-
     constructor(
         private agendaService: AgendaService,
+        private pacienteService: PacienteService,
         private router: Router,
     ) { }
 
@@ -115,6 +118,7 @@ export class PuntoInicioMainComponent implements OnInit {
         this.modelo = { checkbox: false, slide: false };
 
         this.agendas$ = this.agendaService.getAgendas();
+        this.pacientes$ = this.pacienteService.getPacientes();
     }
 
     enviarSidebar() {
@@ -124,6 +128,12 @@ export class PuntoInicioMainComponent implements OnInit {
 
     selected(agenda) {
         this.selectedId = agenda.id;
+        this.router.navigate(['templates', 'punto-inicio', this.selectedId]);
+        this.enviarSidebar();
+    }
+
+    selectedPaciente(paciente) {
+        this.selectedId = paciente.id;
         this.router.navigate(['templates', 'punto-inicio', this.selectedId]);
         this.enviarSidebar();
     }

@@ -2,3 +2,10 @@ $typoPRO-font-path: '../lib/css/fonts/';
 @import '../lib/styles.scss';
 // Templates
 @import '../demo/app/templates/templates.scss';
+
+div[slider] {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 300px;
+    width: 30vw;
+}

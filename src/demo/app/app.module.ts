@@ -13,6 +13,8 @@ import { Plex } from '../../lib/core/service';
 import { ServiceDemoSelect } from './select/select.service';
 import { PacienteService } from './templates/service/paciente.service';
 import { AgendaService } from './templates/service/agenda.service';
+import { MenuService } from './templates/service/menu.service';
+import { SolicitudService } from './templates/service/solicitud.service';
 
 // Routes
 import { HomeDemoComponent } from './home/home.component';
@@ -82,6 +84,7 @@ import { InternacionComponent } from './templates/modulos/internacion/internacio
 import { RecursosListadoComponent } from './templates/modulos/internacion/listado/recursos-listado.component';
 import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar/detalle/recurso-detalle.component';
 
+import { TeleprestacionesComponent } from './templates/punto-inicio/punto-inicio-main/teleprestaciones/punto-inicio-teleprestaciones';
 
 @NgModule({
     declarations: [
@@ -154,7 +157,8 @@ import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar
         AlignDemoComponent,
         InternacionComponent,
         RecursosListadoComponent,
-        RecursoDetalleComponent
+        RecursoDetalleComponent,
+        TeleprestacionesComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
@@ -171,7 +175,9 @@ import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar
         ServiceDemoSelect,
         PacienteService,
         CamaService,
-        AgendaService
+        AgendaService,
+        MenuService,
+        SolicitudService
     ],
     bootstrap: [AppComponent]
 })

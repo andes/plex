@@ -1,43 +1,69 @@
-<plex-layout main="{{ sidebarValue }}">
+<plex-layout main="{{ sidebarValue }}" resizable="true" [min]="2" [max]="8" [steps]="2">
     <plex-layout-main>
-        <plex-title titulo="RUP | Punto de inicio">
-            <plex-button class="ml-2" type="info">Mapa de camas</plex-button>
-            <plex-button class="ml-2" type="info">Huds</plex-button>
-            <plex-button class="ml-2" type="warning">Inicio Andes</plex-button>
-        </plex-title>
-        <plex-grid cols="4" size="md">
-            <!-- plex-card -->
-            <plex-grid type="" span="1" class="align-self-start">
-                <plex-card *ngFor="let item of cards" aligned="start">
-                    <plex-label size="lg" type="default" titulo="{{ item.titulo }}" subtitulo="{{ item.subtitulo }}"
-                                icon="{{ item.icono }}">
+        <header>
+            <!-- Cabezal -->
+            <section span="12" justify class="bg-info">
+                <div class="ml-3 my-2">
+                    <plex-label icon="medico" size="xl" type="default" titulo="Bienvenido Walter"
+                                subtitulo="¿cómo será tu jornada laboral hoy?">
                     </plex-label>
-                    <plex-button type="info" label="{{ item.botones | slice:0:1 }}"></plex-button>
-                    <plex-button type="info" label="{{ item.botones | slice:1:2 }}"></plex-button>
-                </plex-card>
-                <ng-container *ngFor="let item of cards | slice:2:3">
-                    <plex-card size="lg" type="dark" aligned="center">
-                        <plex-badge type="warning">{{ item.estado }}</plex-badge>
-                        <plex-label size="lg" type="default" titulo="{{ item.fecha }}" subtitulo="{{ item.subtitulo }}">
-                        </plex-label>
-                    </plex-card>
-                </ng-container>
-            </plex-grid>
-            <!-- Listado -->
-            <section span="3">
-                <plex-punto-inicio-main (eventoSidebar)="recibirSidebar($event)">
-                </plex-punto-inicio-main>
+                </div>
+                <div>
+                    <plex-button class="ml-2" type="info">Mapa de camas</plex-button>
+                    <plex-button class="ml-2" type="info">Huds</plex-button>
+                    <plex-button class="ml-2" type="info">Inicio Andes</plex-button>
+                </div>
             </section>
+        </header>
+        <plex-grid cols="12" type="auto">
+
+            <!-- Menu Lateral -->
+            <plex-grid span="1" id="menu-vertical" class="d-flex align-self-start flex-column h-75 pt-3" justify
+                       size="xs">
+                <section class="d-flex flex-column" justify>
+                    <plex-label *ngFor="let card of menu$ | async" icon="{{ card.icono }}" type="" size="md"
+                                direction="column" class="color-{{ card.semanticTag}}" titulo="" subtitulo=""
+                                [routerLink]="[{ outlets: { listado: [card.path] } }]" tooltip="{{ card.path }}"
+                                tooltipPosition="right">
+                    </plex-label>
+                </section>
+                <section class="d-flex flex-column" justify>
+                    <plex-label icon="logo-youtube" size="md" direction="column" class="" titulo="" subtitulo=""
+                                routerLink="" tooltip="" tooltipPosition="right">
+                    </plex-label>
+                    <plex-label icon="-herramienta" size="md" direction="column" class="" titulo="" subtitulo=""
+                                routerLink="" tooltip="" tooltipPosition="right">
+                    </plex-label>
+                    <plex-label icon="salida" size="md" direction="column" class="" titulo="" subtitulo="" routerLink=""
+                                tooltip="" tooltipPosition="right">
+                    </plex-label>
+                </section>
+            </plex-grid>
+            <plex-grid span="11" cols="3" class="align-self-start mr-2">
+                <!-- Teleprestaciones -->
+                <section span="1" class="align-self-start mr-2">
+                    <plex-teleprestaciones>
+
+                    </plex-teleprestaciones>
+                </section>
+
+                <!-- Listado -->
+                <section span="2">
+                    <plex-punto-inicio-main (eventoSidebar)="recibirSidebar($event)">
+                    </plex-punto-inicio-main>
+                </section>
+            </plex-grid>
         </plex-grid>
+
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
-        <plex-title titulo="{{sidebarValue === 10 ? 'Buscar' : 'Turnos'}}">
+        <plex-title titulo="Buscar">
             <plex-button size="sm" type="warning" label="huds paciente"></plex-button>
             <plex-button size="sm" type="info" label="paciente sin turno"></plex-button>
             <!--<plex-dropdown size="sm" type="info" label="sin turno" [items]="items"></plex-dropdown>-->
             <plex-button type="danger" icon="close" size="sm" (click)="contraerSidebar()"></plex-button>
         </plex-title>
-        <ng-container *ngIf="sidebarValue === 10">
+        <ng-container>
             <plex-wrapper>
                 <plex-datetime label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
                 </plex-datetime>
