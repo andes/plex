@@ -5,7 +5,7 @@ import { EventEmitter, Output } from '@angular/core';
 // Servicios y modelo
 import { Plex } from './../../../../../../lib/core/service';
 import { Solicitud } from '../../../service/solicitud';
-import { SolicitudService } from '../../../service/solicitud.service'
+import { SolicitudService } from '../../../service/solicitud.service';
 
 @Component({
     selector: 'plex-teleprestaciones',
@@ -58,7 +58,6 @@ export class TeleprestacionesComponent implements OnInit {
             fechaDecounce: new Date(1970, 0, 1),
         };
 
-        // plex-phone
         // plex-float
         this.tModel = { valor: null };
 
@@ -102,7 +101,6 @@ export class TeleprestacionesComponent implements OnInit {
 
     recibirSidebar($event) {
         this.sidebarValue = $event;
-        console.log(this.sidebarValue);
     }
 
     contraerSidebar() {

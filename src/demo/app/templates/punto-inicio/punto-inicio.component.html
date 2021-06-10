@@ -18,26 +18,41 @@
         <plex-grid cols="12" type="auto">
 
             <!-- Menu Lateral -->
-            <plex-grid span="1" id="menu-vertical" class="d-flex align-self-start flex-column h-75 pt-3" justify
-                       size="xs">
-                <section class="d-flex flex-column" justify>
-                    <plex-label *ngFor="let card of menu$ | async" icon="{{ card.icono }}" type="" size="md"
-                                direction="column" class="color-{{ card.semanticTag}}" titulo="" subtitulo=""
-                                [routerLink]="[{ outlets: { listado: [card.path] } }]" tooltip="{{ card.path }}"
-                                tooltipPosition="right">
-                    </plex-label>
-                </section>
-                <section class="d-flex flex-column" justify>
-                    <plex-label icon="logo-youtube" size="md" direction="column" class="" titulo="" subtitulo=""
-                                routerLink="" tooltip="" tooltipPosition="right">
-                    </plex-label>
-                    <plex-label icon="-herramienta" size="md" direction="column" class="" titulo="" subtitulo=""
-                                routerLink="" tooltip="" tooltipPosition="right">
-                    </plex-label>
-                    <plex-label icon="salida" size="md" direction="column" class="" titulo="" subtitulo="" routerLink=""
-                                tooltip="" tooltipPosition="right">
-                    </plex-label>
-                </section>
+            <plex-grid span="1" class="d-flex align-self-start flex-column" justify size="xs">
+
+                <plex-mininav>
+                    <div superiores class="plex-minivav-container">
+                        <plex-mininav-item *ngFor="let card of menu$ | async">
+                            <plex-label icon="{{ card.icono }}" type="" size="md" direction="column"
+                                        class="color-{{ card.semanticTag}}" titulo="Titulo" subtitulo=""
+                                        [routerLink]="[{ outlets: { listado: [card.path] } }]" tooltip="{{ card.path }}"
+                                        tooltipPosition="right">
+                            </plex-label>
+                        </plex-mininav-item>
+                    </div>
+                    <div inferiores class="plex-minivav-container">
+                        <plex-mininav-item>
+                            <plex-label icon="logo-youtube" type="" size="md" direction="column" class=""
+                                        titulo="Titulo" subtitulo="" tooltip="" tooltipPosition="right">
+                            </plex-label>
+                        </plex-mininav-item>
+                    </div>
+                </plex-mininav>
+                <!--
+                    <section class="d-flex flex-column" justify>
+
+                    </section>
+                    <section class="d-flex flex-column" justify>
+                        <plex-label icon="logo-youtube" size="md" direction="column" class="" titulo="" subtitulo=""
+                                    routerLink="" tooltip="" tooltipPosition="right">
+                        </plex-label>
+                        <plex-label icon="-herramienta" size="md" direction="column" class="" titulo="" subtitulo=""
+                                    routerLink="" tooltip="" tooltipPosition="right">
+                        </plex-label>
+                        <plex-label icon="salida" size="md" direction="column" class="" titulo="" subtitulo="" routerLink=""
+                                    tooltip="" tooltipPosition="right">
+                        </plex-label>
+                    </section>-->
             </plex-grid>
             <plex-grid span="11" cols="3" class="align-self-start mr-2">
                 <!-- Teleprestaciones -->

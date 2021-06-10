@@ -71,4 +71,4 @@ export const MENU: Menu[] = [
         color: '#0070cc',
         outlet: 'listado',
     },
-]
+];

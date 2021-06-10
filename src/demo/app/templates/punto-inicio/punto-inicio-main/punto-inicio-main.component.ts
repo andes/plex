@@ -76,7 +76,6 @@ export class PuntoInicioMainComponent implements OnInit {
             fechaDecounce: new Date(1970, 0, 1),
         };
 
-        // plex-phone
         // plex-float
         this.tModel = { valor: null };
 
@@ -90,7 +89,7 @@ export class PuntoInicioMainComponent implements OnInit {
                 label: 'mías',
                 key: 2,
             },
-        ]
+        ];
 
         // plex-select
         this.opciones = [{

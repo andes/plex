@@ -9,13 +9,14 @@ import { Paciente } from '../service/paciente';
 import { Plex } from './../../../../lib/core/service';
 import { EventEmitter, Output } from '@angular/core';
 import { Solicitud } from '../service/solicitud';
-import { SolicitudService } from '../service/solicitud.service'
+import { SolicitudService } from '../service/solicitud.service';
 
 @Component({
     selector: 'plex-punto-inicio',
     templateUrl: './punto-inicio.component.html',
     styleUrls: ['./punto-inicio.component.scss']
 })
+
 export class PuntoInicioComponent implements OnInit {
 
     sidebarValue = 9;
@@ -67,7 +68,6 @@ export class PuntoInicioComponent implements OnInit {
         this.solicitudes$ = this.solicitudService.getSolicitudes();
         this.plex.navbarVisible = false;
 
-        // plex-phone
         // plex-float
         this.tModel = { valor: null };
 
@@ -111,7 +111,6 @@ export class PuntoInicioComponent implements OnInit {
 
     recibirSidebar($event) {
         this.sidebarValue = $event;
-        console.log(this.sidebarValue);
     }
 
     contraerSidebar() {
