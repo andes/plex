@@ -7,6 +7,9 @@ plex-accordion {
     }
     display: flex;
     align-items: flex-start;
+    span {
+      display: flex;
+    }
     plex-bool {
       label {
         margin-top: 0;

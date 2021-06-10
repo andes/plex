@@ -11,7 +11,7 @@
     plex-icon i {
         font-size: 20px;
         overflow: hidden;
-        line-height: 0 !important;
+        line-height: 0.1 !important;
         height: 0;
         position: relative;
         top: 1px;
@@ -63,7 +63,7 @@ plex-badge {
 [class^="label-"] > i {
     margin-right: 5px;
 }
- 
+
 @each $name, $color in $colors {
     .badge-#{$name} {
         --badge-color: #{$color};
