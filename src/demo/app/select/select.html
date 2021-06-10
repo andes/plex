@@ -12,7 +12,7 @@
                     <plex-bool type="slide" label="Select requerido" name="req" [(ngModel)]="modelo2.required">
                     </plex-bool>
                     <plex-select [(ngModel)]="modelo2.select" name="select1" (getData)="loadData($event)"
-                                 label="Select estático" [required]="modelo2.required">
+                                 label="Select estático" [required]="modelo2.required" [allowOther]="true">
                     </plex-select>
                     <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmultiple"
                                  (getData)="loadData($event)" label="Múltiple con llamada a la API"

@@ -44,6 +44,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     @Input() labelField: string; // Puede ser un solo campo o una expresión tipo ('string' + campo + 'string' + campo + ...)
     @Input() groupField: string;
     @Input() closeAfterSelect = false;
+    @Input() allowOther = false;
 
     @Input()
     set data(value: any[]) {
@@ -249,16 +250,34 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             openOnFocus: this.hasStaticData,
             closeAfterSelect: this.closeAfterSelect,
             preload: !this.hasStaticData,
+            createOnBlur: false,
+            persist: false,
+            create: this.allowOther && ((input) => {
+                const n = {
+                    [this.idField]: input,
+                    [this.labelField]: input,
+                    other: true
+                };
+                this.data.push(n);
+                return n;
+            }),
             // dropdownParent: 'body',
             render: {
-                option: (item, escape) => '<div class=\'option\'>' + escape(this.renderOption(item, this.labelField)) + '</div>',
+                option: (item, escape) => `<div class="option"> ${escape(this.renderOption(item, this.labelField))} </div>`,
                 item: (item, escape) => {
                     if (this.multiple) {
-                        return '<div class=\'item\'>' + escape(this.renderOption(item, this.labelField)) + '</div>';
+                        return `<div class="item"> ${escape(this.renderOption(item, this.labelField))}</div>`;
                     } else {
-                        return '<div class=\'item\'>' + escape(this.renderOption(item, this.labelField)) + '</div>';
+                        return `<div class="item"> ${escape(this.renderOption(item, this.labelField))}</div>`;
                     }
                 },
+                option_create: (item, escape) => {
+                    if (this.selectize.currentResults.items.length) {
+                        return null;
+                    }
+                    return `<div class="create"> Agregar <strong> ${escape(item.input)} <strong> </div>`;
+
+                }
             },
             load: this.hasStaticData ? null : (query: string, callback: any) => {
                 // Esta función se ejecuta si preload = true o cuando el usuario escribe en el combo
@@ -272,6 +291,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 });
             },
             onChange: (value) => {
+
                 // Busca en la lista de items un valor que coincida con la clave
                 if (this.multiple) {
                     let result = [];
