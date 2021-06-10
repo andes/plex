@@ -1,3 +1,10 @@
+## [7.18.1](https://github.com/andes/plex/compare/v7.18.0...v7.18.1) (2021-06-10)
+
+
+### Bug Fixes
+
+* **accordion-icon:** icon que desaparece dentro de span ([#288](https://github.com/andes/plex/issues/288)) ([3a2d15c](https://github.com/andes/plex/commit/3a2d15c9a533fa1dee89152cc5f37dd7639580d2))
+
 # [7.18.0](https://github.com/andes/plex/compare/v7.17.3...v7.18.0) (2021-05-14)
 
 
