@@ -18,41 +18,19 @@
         <plex-grid cols="12" type="auto">
 
             <!-- Menu Lateral -->
-            <plex-grid span="1" class="d-flex align-self-start flex-column" justify size="xs">
-
+            <plex-grid span="1" class="d-flex align-self-start">
+                <!-- Mininav -->
                 <plex-mininav>
-                    <div superiores class="plex-minivav-container">
-                        <plex-mininav-item *ngFor="let card of menu$ | async">
-                            <plex-label icon="{{ card.icono }}" type="" size="md" direction="column"
-                                        class="color-{{ card.semanticTag}}" titulo="Titulo" subtitulo=""
-                                        [routerLink]="[{ outlets: { listado: [card.path] } }]" tooltip="{{ card.path }}"
-                                        tooltipPosition="right">
-                            </plex-label>
+                    <ul superiores>
+                        <plex-mininav-item *ngFor="let item of menu$ | async" target="{{ item.path }}"
+                                           titulo="{{ item.nombre }}" icono="{{ item.icono }}">
                         </plex-mininav-item>
-                    </div>
-                    <div inferiores class="plex-minivav-container">
-                        <plex-mininav-item>
-                            <plex-label icon="logo-youtube" type="" size="md" direction="column" class=""
-                                        titulo="Titulo" subtitulo="" tooltip="" tooltipPosition="right">
-                            </plex-label>
-                        </plex-mininav-item>
-                    </div>
+                    </ul>
+                    <ul inferiores>
+                        <plex-mininav-item titulo="" target="" icono="logo-youtube"></plex-mininav-item>
+                    </ul>
                 </plex-mininav>
-                <!--
-                    <section class="d-flex flex-column" justify>
 
-                    </section>
-                    <section class="d-flex flex-column" justify>
-                        <plex-label icon="logo-youtube" size="md" direction="column" class="" titulo="" subtitulo=""
-                                    routerLink="" tooltip="" tooltipPosition="right">
-                        </plex-label>
-                        <plex-label icon="-herramienta" size="md" direction="column" class="" titulo="" subtitulo=""
-                                    routerLink="" tooltip="" tooltipPosition="right">
-                        </plex-label>
-                        <plex-label icon="salida" size="md" direction="column" class="" titulo="" subtitulo="" routerLink=""
-                                    tooltip="" tooltipPosition="right">
-                        </plex-label>
-                    </section>-->
             </plex-grid>
             <plex-grid span="11" cols="3" class="align-self-start mr-2">
                 <!-- Teleprestaciones -->
@@ -63,7 +41,7 @@
                 </section>
 
                 <!-- Listado -->
-                <section span="2">
+                <section span="2" id="ancla">
                     <plex-punto-inicio-main (eventoSidebar)="recibirSidebar($event)">
                     </plex-punto-inicio-main>
                 </section>
@@ -72,13 +50,75 @@
 
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
-        <plex-title titulo="Buscar">
-            <plex-button size="sm" type="warning" label="huds paciente"></plex-button>
-            <plex-button size="sm" type="info" label="paciente sin turno"></plex-button>
-            <!--<plex-dropdown size="sm" type="info" label="sin turno" [items]="items"></plex-dropdown>-->
+
+        <plex-title titulo="Buscar" main>
+            <plex-button size="sm" type="link" label="anchors/querySelector" routerLink="" fragment="ancla">
+            </plex-button>
             <plex-button type="danger" icon="close" size="sm" (click)="contraerSidebar()"></plex-button>
         </plex-title>
-        <ng-container>
+
+        <!-- Mininav -->
+        <plex-mininav [color]="color">
+            <ul superiores>
+                <plex-mininav-item *ngFor="let item of menu$ | async" target="target" titulo="{{ item.nombre }}"
+                                   icono="{{ item.icono }}">
+                </plex-mininav-item>
+            </ul>
+            <ul inferiores>
+                <plex-mininav-item titulo="" target="target" icono="logo-youtube"></plex-mininav-item>
+            </ul>
+        </plex-mininav>
+
+        <plex-title size="sm" titulo="subtitulo 1"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title size="sm" titulo="subtitulo 2"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title size="sm" titulo="subtitulo 1"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title size="sm" titulo="subtitulo 2"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title id="target" size="sm" titulo="id=target"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title #ancla size="sm" titulo="#ancla"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title #target size="sm" titulo="Target"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title id="ancla" name="target" size="sm" titulo="Ancla"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+
+        <ng-container *ngIf="sidebarValue === 10">
             <plex-wrapper>
                 <plex-datetime label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
                 </plex-datetime>
@@ -88,7 +128,7 @@
                 <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre">
                 </plex-text>
             </plex-wrapper>
-            <section justify="center" class="align-items-center h-50">
+            <section aligned="center" vHeight="30">
                 <plex-label size="xl" type="info" titulo="Busca y selecciona un paciente"
                             subtitulo="prdras ver detalles del registro" icon="magnify" direction="column">
                 </plex-label>

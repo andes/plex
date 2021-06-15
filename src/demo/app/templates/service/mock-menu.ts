@@ -7,7 +7,7 @@ export const MENU: Menu[] = [
         tipo: 'info',
         semanticTag: 'solicitud',
         icono: 'historial',
-        path: 'miHuds',
+        path: 'ancla',
         color: '#0070cc',
         outlet: 'listado',
     },

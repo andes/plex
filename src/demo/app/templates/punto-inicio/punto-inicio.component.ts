@@ -22,6 +22,18 @@ export class PuntoInicioComponent implements OnInit {
     sidebarValue = 9;
     @Output() eventoSidebar = new EventEmitter<number>();
 
+    vHeight = 200;
+    color = "#6a0dad"
+
+    items = [
+        {
+            opcion: 'paciente fuera de agenda',
+        },
+        {
+            opcion: 'paciente autocitado',
+        },
+    ]
+
     public tModel: any;
     public opciones: any[];
     public modelo1 = { select: null };

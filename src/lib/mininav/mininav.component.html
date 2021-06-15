@@ -1,12 +1,16 @@
-<section class="plex-mininav">
-    <ng-content select="plex-detail"></ng-content>
-    <ng-content select="plex-button"></ng-content>
+<section #miniNav [class.expanded]="expanded">
+    <div>
+        <ng-content></ng-content>
+    </div>
+    <nav class="plex-mininav-container">
+        <ng-content select="ul[superiores]"></ng-content>
+        <ng-content select="ul[inferiores]"></ng-content>
+    </nav>
+
+    <!-- expand button -->
+    <span *ngIf="resizable === true" class="nav-resizable-btn-wrapper" [class.resizable]="resizable" draggable="true">
+        <hr class="divisor">
+        <plex-button size="sm" (click)="expandir()" type="link" icon="{{expanded ? 'pico-izquierda' : 'pico-derecha'}}">
+        </plex-button>
+    </span>
 </section>
-<nav class="plex-mininav-container">
-    <ul>
-        <ng-content select="div[superiores]"></ng-content>
-    </ul>
-    <ul>
-        <ng-content select="div[inferiores]"></ng-content>
-    </ul>
-</nav>

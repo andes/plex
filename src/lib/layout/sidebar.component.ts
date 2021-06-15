@@ -1,5 +1,4 @@
-import { Component, Input, ElementRef, HostListener, OnInit, AfterViewInit, ViewChild, Renderer2, ContentChildren, QueryList, ChangeDetectorRef } from '@angular/core';
-import { PlexListComponent } from '../item-list/list.component';
+import { Component, Input, ElementRef, HostListener, OnInit, AfterViewInit, ViewChild, Renderer2, ChangeDetectorRef } from '@angular/core';
 
 @Component({
     selector: 'plex-layout-sidebar',
@@ -8,7 +7,10 @@ import { PlexListComponent } from '../item-list/list.component';
         <ng-content select="header"></ng-content>
         <ng-content select="plex-title[main]"></ng-content>
         <div #content class="plex-box-content">
-            <ng-content></ng-content>
+            <ng-content select="plex-mininav"></ng-content>
+            <div class="plex-content">
+                <ng-content></ng-content>
+            </div>
         </div>
     </div>
     `,
