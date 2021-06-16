@@ -10,7 +10,7 @@ context('label', () => {
 
         cy.get('plex-layout plex-title:first');
 
-        cy.get('plex-label:first plex-icon + div > span').should('contain.text', 'Comience buscando un paciente en la barra superior');
+        cy.get('plex-label:first plex-icon + div > p').should('contain.text', 'Comience buscando un paciente en la barra superior');
 
         cy.get('small:first');
 

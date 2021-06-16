@@ -9,9 +9,13 @@
         border: none!important;
         box-shadow: none!important;
         color: var(--color-base)!important;
-    
+        
         &:hover {
             background: var(--color-baseLight)!important;
+        }
+        
+        &:focus {
+            border: solid 2px var(--color-baseDark)!important;
         }
     }
 }

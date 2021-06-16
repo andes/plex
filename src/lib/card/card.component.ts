@@ -3,7 +3,7 @@ import { Component, Input, ViewChild, ElementRef, OnChanges } from '@angular/cor
 @Component({
     selector: 'plex-card',
     template: `
-    <div #cardColor class="card bg-{{ mode }}-{{ type }}" [ngClass]="{ 'selectable' : selectable }" [class.selected]="selected">
+    <div tabindex="0" #cardColor class="card bg-{{ mode }}-{{ type }}" [ngClass]="{ 'selectable' : selectable }" [class.selected]="selected">
         <ng-content select="img"></ng-content>
         <ng-content select="plex-icon"></ng-content>
         <div class="d-flex" [ngClass]="cssAlign">
