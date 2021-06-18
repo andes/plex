@@ -86,6 +86,7 @@ import { PlexTableSortPipe } from './table/table-sort.pipe';
 import { PlexColumnDirective } from './table/columns.directive';
 import { AccordionDirective } from './accordion/pl-accordion.directive';
 import { PlexVisualizadorService } from './core/plex-visualizador.service';
+import { PlexSliderComponent } from './slider/slider.component';
 
 @NgModule({
     imports: [
@@ -149,6 +150,7 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         PlexTableColDirective,
         PlexTableSortPipe,
         PlexColumnDirective,
+        PlexSliderComponent,
 
         // Directivas
         AlignDirective,
@@ -226,6 +228,7 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         PlexCardComponent,
         PlexTableColumnsComponent,
         PlexTableSortPipe,
+        PlexSliderComponent,
 
         // Directivas
         AlignDirective,

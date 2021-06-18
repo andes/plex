@@ -1,0 +1,17 @@
+<section id="scroll" #gridContainer (click)="setWidth()" (scroll)="scrollEnd($event)">
+
+    <plex-grid type="full" size="md">
+        <ng-content></ng-content>
+    </plex-grid>
+
+    <div class="plex-slider-controls">
+        <plex-button prev icon="chevron-left" (click)="prevSlide()" type="info" size="sm">
+        </plex-button>
+        <!--<div #dotsContainer id="dotsContainer" class="plex-dots-container">
+        </div>-->
+        <plex-button next label="+ {{ itemsRestantes - 1 | number: '1.0-0' }}" (click)="nextSlide()" type="info"
+                     size="sm">
+        </plex-button>
+    </div>
+
+</section>
