@@ -1,4 +1,5 @@
 import { Component, Input, ViewChildren, QueryList, AfterContentInit, AfterViewChecked, ContentChildren, ElementRef, Renderer2 } from '@angular/core';
+import { PlexSize } from '../core/plex-size.type';
 import { PlexLabelComponent } from '../label/label.component';
 
 @Component({
@@ -26,7 +27,7 @@ export class PlexGridComponent implements AfterViewChecked {
 
     @ContentChildren(PlexLabelComponent) plexLabels: QueryList<PlexLabelComponent>;
     @ContentChildren(PlexLabelComponent, { read: ElementRef }) plexLabelsElement: QueryList<ElementRef>;
-
+    @Input() size: PlexSize;
     constructor(private render: Renderer2) {
     }
 

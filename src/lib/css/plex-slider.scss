@@ -45,6 +45,11 @@ plex-slider {
                 &:hover {
                     opacity: 1;
                 }
+
+                &[next] {
+                    position: absolute;
+                    right: 0;
+                }
             }
 
             // dots

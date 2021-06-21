@@ -1,5 +1,5 @@
-import { Component, ElementRef, ContentChildren, ViewChild, AfterViewInit, QueryList, HostListener, Output, OnInit } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, ElementRef, ContentChildren, ViewChild, AfterViewInit, QueryList, OnInit, Input, HostListener } from '@angular/core';
+import { PlexSize } from './../core/plex-size.type';
 import { PlexGridComponent } from '../grid/grid.component';
 
 export interface FileObject {
@@ -20,7 +20,7 @@ export class PlexSliderComponent implements AfterViewInit, OnInit {
     @ContentChildren(PlexGridComponent) plexGrid: QueryList<PlexGridComponent>;
     @ViewChild('gridContainer', { static: true }) gridContainer: ElementRef;
     @ViewChild('dotsContainer', { static: true }) dotsContainer: ElementRef;
-
+    @Input() size: PlexSize = 'md';
     @HostListener("scroll", ['$event'])
 
     public items: number;
@@ -29,6 +29,7 @@ export class PlexSliderComponent implements AfterViewInit, OnInit {
     public gridHeight: number;
     public gridWidth: number;
     public totalWidth: number;
+    public scrollStop = false;
 
     createDot() {
         const dot = document.createElement('span');
@@ -51,12 +52,8 @@ export class PlexSliderComponent implements AfterViewInit, OnInit {
 
     // calcula ancho total del plex-grid
     setGridWidth() {
-        const gridWidth = this.elRef.nativeElement.querySelector('plex-grid');
-        this.totalWidth = gridWidth.offsetWidth;
-    }
-
-    scrollEnd($event: Event) {
-
+        const gridWidth = this.gridContainer.nativeElement.scrollWidth;
+        this.totalWidth = gridWidth;
     }
 
     getRestantes() {
@@ -84,6 +81,10 @@ export class PlexSliderComponent implements AfterViewInit, OnInit {
         }
     }
 
+    constructor(
+        private elRef: ElementRef,
+    ) { }
+
     ngOnInit() {
 
         setTimeout(() => {
@@ -96,15 +97,20 @@ export class PlexSliderComponent implements AfterViewInit, OnInit {
         }, 500);
     }
 
-    constructor(
-        private elRef: ElementRef,
-    ) { }
-
     prevSlide() {
-        this.gridContainer.nativeElement.scrollLeft -= this.itemSize;
+        this.gridContainer.nativeElement.scrollLeft = 0;
     }
 
     nextSlide() {
-        document.querySelector('section#scroll').scrollLeft += this.itemSize;
+        document.querySelector('section#scroll').scrollLeft += this.itemSize * 2;
+    }
+
+    onScroll($event: Event) {
+        let actualScroll = this.gridContainer.nativeElement.scrollLeft * this.itemSize;
+        if (actualScroll > this.gridWidth) {
+            this.scrollStop = true;
+        } else {
+            this.scrollStop = false;
+        }
     }
 }
