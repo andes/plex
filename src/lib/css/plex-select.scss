@@ -1,3 +1,4 @@
+@import './variables.scss';
 // Importados desde https://github.com/herschel666/selectize-scss
 
 // SELECTIZE.SCSS
@@ -267,15 +268,14 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
   .active {
     background-color: $selectize-color-dropdown-item-active;
     color: $selectize-color-dropdown-item-active-text;
-
-    &.create {
-      color: $selectize-color-dropdown-item-create-active-text;
     }
-  }
-
-  .create {
-    color: $selectize-color-dropdown-item-create-text;
-  }
+    p {
+        margin-bottom: 0;
+        
+        &.create {
+        color: $blue;
+        }
+    }
 }
 
 .selectize-dropdown-content {

@@ -275,7 +275,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                     if (this.selectize.currentResults.items.length) {
                         return null;
                     }
-                    return `<div class="create"> Agregar <strong> ${escape(item.input)} <strong> </div>`;
+                    return `<p class="create">No figura en el listado, deseo agregar <strong> ${escape(item.input)} </strong> de todos modos.</p>`;
 
                 }
             },
