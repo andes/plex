@@ -47,6 +47,7 @@ import { DetailDemoComponent } from './detail/detail.component';
 import { WrapperDemoComponent } from './wrapper/wrapper.component';
 import { GridDemoComponent } from './grid/grid.component';
 import { CardDemoComponent } from './card/card.component';
+import { SliderDemoComponent } from './slider/slider.component';
 
 // Template
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
@@ -117,6 +118,7 @@ import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar
         WrapperDemoComponent,
         GridDemoComponent,
         CardDemoComponent,
+        SliderDemoComponent,
         ListadoSidebarComponent,
         SidebarDetalleComponent,
         MainListadoComponent,

@@ -50,6 +50,7 @@ import { PlexVisualizadorComponent } from './visualizador/visualizador.component
 import { PlexWrapperComponent } from './wrapper/wrapper.component';
 import { PlexGridComponent } from './grid/grid.component';
 import { PlexCardComponent } from './card/card.component';
+import { PlexSliderComponent } from './slider/slider.component';
 
 // Directivas
 import { AlignDirective } from './directives/align.directive';
@@ -86,7 +87,6 @@ import { PlexTableSortPipe } from './table/table-sort.pipe';
 import { PlexColumnDirective } from './table/columns.directive';
 import { AccordionDirective } from './accordion/pl-accordion.directive';
 import { PlexVisualizadorService } from './core/plex-visualizador.service';
-import { PlexSliderComponent } from './slider/slider.component';
 
 @NgModule({
     imports: [

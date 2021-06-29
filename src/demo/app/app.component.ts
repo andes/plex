@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
             { label: 'Wizard', icon: 'auto-fix', route: '/wizard' },
             { label: 'Wrapper', icon: 'view-quilt', route: '/wrapper' },
             { label: 'Grid', icon: 'view-grid', route: '/grid' },
+            { label: 'Slider', icon: 'interaccion', route: '/slider' },
             { divider: true, },
             { label: 'Directivas', icon: 'sign-direction', route: 'directives' },
             { label: 'Directiva Align', icon: 'vector-difference', route: '/directives/listado-sidebar/align' },

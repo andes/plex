@@ -1,4 +1,4 @@
-import { Component, ElementRef, ContentChildren, ViewChild, AfterViewInit, QueryList, OnInit, Input, HostListener } from '@angular/core';
+import { Component, ElementRef, ContentChildren, ViewChild, AfterViewInit, QueryList, Input, ChangeDetectorRef } from '@angular/core';
 import { PlexSize } from './../core/plex-size.type';
 import { PlexGridComponent } from '../grid/grid.component';
 
@@ -11,17 +11,31 @@ export type PlexVisualizadorItem = FileObject | string;
 
 @Component({
     selector: 'plex-slider',
-    templateUrl: './slider.component.html',
+    template: `<section id="scroll" #gridContainer (scroll)="onScroll()">
+                <plex-grid type="full" [size]="size">
+                    <ng-content></ng-content>
+                </plex-grid>
+
+                <!-- Navegación -->
+                <span prev class="btn-container" [ngClass]="{'disabled': onScrolling === false}">
+                    <plex-button icon="chevron-left" type="info" size="md" (click)="prevSlide()">
+                    </plex-button>
+                </span>
+                <span next class="btn-container" *ngIf="itemsRestantes > 0">
+                    <plex-button label="+ {{ itemsRestantes - 1 | number: '1.0-0' }}" type="info" size="md" tooltipPosition="left" (click)="nextSlide()" [ngClass]="{'disabled': scrollStop === true}" [disabled]="scrollStop === true">
+                    </plex-button>
+                </span>
+                <div #dotsContainer id="dotsContainer" class="plex-dots-wrapper"></div>
+            </section>`,
 })
 
 
-export class PlexSliderComponent implements AfterViewInit, OnInit {
+export class PlexSliderComponent implements AfterViewInit {
 
     @ContentChildren(PlexGridComponent) plexGrid: QueryList<PlexGridComponent>;
     @ViewChild('gridContainer', { static: true }) gridContainer: ElementRef;
     @ViewChild('dotsContainer', { static: true }) dotsContainer: ElementRef;
     @Input() size: PlexSize = 'md';
-    @HostListener("scroll", ['$event'])
 
     public items: number;
     public itemSize: number;
@@ -30,12 +44,40 @@ export class PlexSliderComponent implements AfterViewInit, OnInit {
     public gridWidth: number;
     public totalWidth: number;
     public scrollStop = false;
+    public onScrolling = false;
+    public dots;
 
-    createDot() {
-        const dot = document.createElement('span');
-        dot.className = 'plex-dot';
-        const dotContainer = this.dotsContainer.nativeElement;
-        dotContainer.appendChild(dot);
+    constructor(
+        private elRef: ElementRef,
+        private ref: ChangeDetectorRef
+    ) { }
+
+
+    ngAfterViewInit(): void {
+
+        // obtengo cantidad de elementos en slider
+        const elementos = this.elRef.nativeElement.querySelectorAll('plex-card');
+        this.items = elementos.length + 1;
+
+        // define custom para el ancho del contenido del slider
+        if (this.items > 0) {
+            this.gridContainer.nativeElement.style.setProperty('--item-length', this.items);
+
+            // genera dots
+            let i;
+            for (i = 1; i < this.items; i++) {
+                this.createDot();
+            }
+        }
+
+        this.getRestantes();
+        this.setWidth();
+        this.gridContainer.nativeElement.style.setProperty('--grid-width', this.gridWidth + 'px');
+
+        this.setHeight();
+        this.gridContainer.nativeElement.style.setProperty('--grid-height', this.gridHeight + 'px');
+
+        this.ref.detectChanges();
     }
 
     // calcula y define alto de contendor
@@ -57,60 +99,50 @@ export class PlexSliderComponent implements AfterViewInit, OnInit {
     }
 
     getRestantes() {
-        this.setGridWidth()
+        this.setGridWidth();
         this.setWidth();
         this.itemSize = this.totalWidth / this.items;
-        let offsetWidth = this.totalWidth - this.gridWidth;
+        const offsetWidth = this.totalWidth - this.gridWidth;
         this.itemsRestantes = offsetWidth / this.itemSize;
     }
 
-    ngAfterViewInit(): void {
-        // obtengo cantidad de elementos en slider
-        const elementos = this.elRef.nativeElement.querySelectorAll('plex-card');
-        this.items = elementos.length + 1;
-
-        // define custom para el ancho del contenido del slider
-        if (this.items > 0) {
-            this.gridContainer.nativeElement.style.setProperty('--item-length', this.items);
-
-            // genera dots
-            let i;
-            for (i = 1; i < this.items; i++) {
-                this.createDot();
-            }
-        }
+    // Puntitos para navegación
+    createDot() {
+        const dot = document.createElement('span');
+        dot.className = 'plex-dot';
+        const dotContainer = this.dotsContainer.nativeElement;
+        dotContainer.appendChild(dot);
     }
 
-    constructor(
-        private elRef: ElementRef,
-    ) { }
-
-    ngOnInit() {
-
-        setTimeout(() => {
-            this.getRestantes();
-            this.setWidth();
-            this.gridContainer.nativeElement.style.setProperty('--grid-width', this.gridWidth + 'px');
-
-            this.setHeight();
-            this.gridContainer.nativeElement.style.setProperty('--grid-height', this.gridHeight + 'px');
-        }, 500);
+    // En desuso hasta resolver funcionalidad
+    activeDots() {
+        const dot = document.getElementsByClassName('plex-dot');
+        dot[0].className = dot[0].className.replace('plex-dot', 'plex-dot active');
     }
 
     prevSlide() {
-        this.gridContainer.nativeElement.scrollLeft = 0;
+        this.gridContainer.nativeElement.scrollLeft -= this.itemSize * 2;
     }
 
     nextSlide() {
-        document.querySelector('section#scroll').scrollLeft += this.itemSize * 2;
+        this.gridContainer.nativeElement.scrollLeft += this.itemSize * 2;
     }
 
-    onScroll($event: Event) {
-        let actualScroll = this.gridContainer.nativeElement.scrollLeft * this.itemSize;
-        if (actualScroll > this.gridWidth) {
+    onScroll() {
+        const finalScroll = this.totalWidth;
+        const currentScroll = this.gridContainer.nativeElement.scrollLeft + this.totalWidth / 2;
+
+        if (currentScroll > this.totalWidth / 2) {
+            this.onScrolling = true;
+        } else {
+            this.onScrolling = false;
+        }
+
+        if (currentScroll > finalScroll) {
             this.scrollStop = true;
         } else {
             this.scrollStop = false;
         }
     }
+
 }
