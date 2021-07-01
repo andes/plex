@@ -85,6 +85,9 @@ plex-slider {
                 margin: 0 5px;
                 opacity: .5;
                 transition: background-color .5s ease-out;
+                &.active {
+                    background-color: red;
+                }
             }
         }
 

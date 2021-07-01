@@ -17,15 +17,25 @@ export type PlexVisualizadorItem = FileObject | string;
                 </plex-grid>
 
                 <!-- Navegación -->
-                <span prev class="btn-container" [ngClass]="{'disabled': onScrolling === false}">
+                <span prev class="btn-container" [class.disabled]="!onScrolling">
                     <plex-button icon="chevron-left" type="info" size="md" (click)="prevSlide()">
                     </plex-button>
                 </span>
                 <span next class="btn-container" *ngIf="itemsRestantes > 0">
-                    <plex-button label="+ {{ itemsRestantes - 1 | number: '1.0-0' }}" type="info" size="md" tooltipPosition="left" (click)="nextSlide()" [ngClass]="{'disabled': scrollStop === true}" [disabled]="scrollStop === true">
+                    <plex-button label="+ {{ itemsRestantes - 1 | number: '1.0-0' }}"
+                                 type="info" size="md"
+                                 tooltipPosition="left"
+                                 (click)="nextSlide()"
+                                 [class.disabled]="scrollStop"
+                                 [disabled]="scrollStop === true">
                     </plex-button>
                 </span>
-                <div #dotsContainer id="dotsContainer" class="plex-dots-wrapper"></div>
+                <div #dotsContainer   class="plex-dots-wrapper">
+                    <span *ngFor="let t of dotsCount; let $index = index;" class="plex-dot" (click)="onDotClick($index)"
+                        [ngClass]="{ 'active':  startIndex <= $index && $index <= endIndex }">
+
+                    </span>
+                </div>
             </section>`,
 })
 
@@ -34,7 +44,6 @@ export class PlexSliderComponent implements AfterViewInit {
 
     @ContentChildren(PlexGridComponent) plexGrid: QueryList<PlexGridComponent>;
     @ViewChild('gridContainer', { static: true }) gridContainer: ElementRef;
-    @ViewChild('dotsContainer', { static: true }) dotsContainer: ElementRef;
     @Input() size: PlexSize = 'md';
 
     public items: number;
@@ -52,7 +61,7 @@ export class PlexSliderComponent implements AfterViewInit {
         private ref: ChangeDetectorRef
     ) { }
 
-
+    dotsCount;
     ngAfterViewInit(): void {
 
         // obtengo cantidad de elementos en slider
@@ -63,11 +72,12 @@ export class PlexSliderComponent implements AfterViewInit {
         if (this.items > 0) {
             this.gridContainer.nativeElement.style.setProperty('--item-length', this.items);
 
+
+            this.dotsCount = Array(this.items);
             // genera dots
-            let i;
-            for (i = 1; i < this.items; i++) {
-                this.createDot();
-            }
+            // for (let i = 1; i < this.items; i++) {
+            //     this.createDot();
+            // }
         }
 
         this.getRestantes();
@@ -106,18 +116,8 @@ export class PlexSliderComponent implements AfterViewInit {
         this.itemsRestantes = offsetWidth / this.itemSize;
     }
 
-    // Puntitos para navegación
-    createDot() {
-        const dot = document.createElement('span');
-        dot.className = 'plex-dot';
-        const dotContainer = this.dotsContainer.nativeElement;
-        dotContainer.appendChild(dot);
-    }
-
-    // En desuso hasta resolver funcionalidad
-    activeDots() {
-        const dot = document.getElementsByClassName('plex-dot');
-        dot[0].className = dot[0].className.replace('plex-dot', 'plex-dot active');
+    onDotClick(index) {
+        this.gridContainer.nativeElement.scrollLeft = this.itemSize * index;
     }
 
     prevSlide() {
@@ -128,7 +128,19 @@ export class PlexSliderComponent implements AfterViewInit {
         this.gridContainer.nativeElement.scrollLeft += this.itemSize * 2;
     }
 
+    startIndex: number;
+    endIndex: number;
     onScroll() {
+        const mitad = this.gridWidth / 2;
+        const left = this.gridContainer.nativeElement.scrollLeft;
+
+        const numeroDeItemsVisibles = Math.round(this.gridWidth / this.itemSize);
+
+
+        const centro = Math.round(left / this.itemSize);
+        this.startIndex = centro;
+        this.endIndex = centro + numeroDeItemsVisibles;
+
         const finalScroll = this.totalWidth;
         const currentScroll = this.gridContainer.nativeElement.scrollLeft + this.totalWidth / 2;
 
@@ -143,6 +155,8 @@ export class PlexSliderComponent implements AfterViewInit {
         } else {
             this.scrollStop = false;
         }
+
+
     }
 
 }
