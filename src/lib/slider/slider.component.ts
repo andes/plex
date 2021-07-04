@@ -15,25 +15,21 @@ export type PlexVisualizadorItem = FileObject | string;
                 <plex-grid type="full" [size]="size">
                     <ng-content></ng-content>
                 </plex-grid>
-
-                <!-- Navegación -->
                 <span prev class="btn-container" [class.disabled]="!onScrolling">
                     <plex-button icon="chevron-left" type="info" size="md" (click)="prevSlide()">
                     </plex-button>
                 </span>
-                <span next class="btn-container" *ngIf="itemsRestantes > 0">
-                    <plex-button label="+ {{ itemsRestantes - 1 | number: '1.0-0' }}"
+                <span next class="btn-container" *ngIf="onScrolling" [class.disabled]="scrollStop">
+                    <plex-button icon="chevron-right"
                                  type="info" size="md"
                                  tooltipPosition="left"
                                  (click)="nextSlide()"
-                                 [class.disabled]="scrollStop"
-                                 [disabled]="scrollStop === true">
+                                 [disabled]="scrollStop">
                     </plex-button>
                 </span>
-                <div #dotsContainer   class="plex-dots-wrapper">
+                <div #dotsContainer class="plex-dots-wrapper">
                     <span *ngFor="let t of dotsCount; let $index = index;" class="plex-dot" (click)="onDotClick($index)"
                         [ngClass]="{ 'active':  startIndex <= $index && $index <= endIndex }">
-
                     </span>
                 </div>
             </section>`,
@@ -72,12 +68,7 @@ export class PlexSliderComponent implements AfterViewInit {
         if (this.items > 0) {
             this.gridContainer.nativeElement.style.setProperty('--item-length', this.items);
 
-
             this.dotsCount = Array(this.items);
-            // genera dots
-            // for (let i = 1; i < this.items; i++) {
-            //     this.createDot();
-            // }
         }
 
         this.getRestantes();
@@ -150,7 +141,7 @@ export class PlexSliderComponent implements AfterViewInit {
             this.onScrolling = false;
         }
 
-        if (currentScroll > finalScroll) {
+        if (currentScroll >= finalScroll) {
             this.scrollStop = true;
         } else {
             this.scrollStop = false;
