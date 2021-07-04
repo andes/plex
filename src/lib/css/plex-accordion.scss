@@ -24,12 +24,12 @@ plex-accordion {
     .title,
     > div {
       width: 100%;
-      &:hover,
-      :focus {
-        color: $blue;
-      }
+          &:hover, &:focus:not(plex-button) {
+            color: $blue;
+        }  
     }
   }
+  
   [plex-accordion-title] {
     width: 100%;
     display: flex;
