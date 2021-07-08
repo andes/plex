@@ -1,7 +1,8 @@
 <plex-layout main="8">
     <plex-layout-main>
+        <plex-title titulo="toggle libre"></plex-title>
         <plex-accordion>
-            <plex-panel (toggle)="toggle($event)" active="true">
+            <plex-panel (toggle)="toggle($event)">
                 <div plex-accordion-title>
                     <div>Título con elementos html</div>
                     <plex-bool [(ngModel)]="test" type="slide" label="¿Está activo?" name="activo"
@@ -22,35 +23,31 @@
                              [readonly]="modelo2.soloLectura" placeholder="Ingrese un país">
                 </plex-select>
             </plex-panel>
-            <plex-panel icon="youtube" tituloPrincipal="Video embebido" tituloSecundario="Psychocandy!">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/iFp7W3PoNPI?ecver=1" frameborder="0"
-                        allowfullscreen></iframe>
+            <plex-panel icon="youtube" tituloPrincipal="Video embebido">
+                <div class="h-25" align="center">
+                    <plex-label aligned="center" direction="column" icon="information-variant" type="info" size="lg"
+                                titulo="Aqui va el contenido" subtitulo="Lorem ipsum sonnet..."></plex-label>
+                </div>
             </plex-panel>
         </plex-accordion>
+
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
-        <plex-accordion>
-            <plex-panel (toggle)="toggle($event)" active="true">
-                <div plex-accordion-title>
-                    Título con elementos html
-                    <plex-bool [(ngModel)]="test" type="slide" label="¿Está activo?" name="activo"
-                               (change)="bool($event)">
-                    </plex-bool>
-                </div>
-                <ng-container *ngIf="test">
-                    TOOGLE ACTIVE
-                </ng-container>
-                <ng-container *ngIf="!test">
-                    TOOGLE INACTIVE
-                </ng-container>
-            </plex-panel>
-            <plex-panel icon="history" tituloPrincipal="Título con ícono">
-                SEGUNDO PANEL
-            </plex-panel>
-            <plex-panel icon="youtube" tituloPrincipal="Video embebido" tituloSecundario="Psychocandy!">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/iFp7W3PoNPI?ecver=1" frameborder="0"
-                        allowfullscreen></iframe>
-            </plex-panel>
+
+        <plex-title titulo="toggle alternado"></plex-title>
+        <plex-accordion activeLast="true">
+            <ng-container *ngFor="let opcion of opciones">
+                <plex-panel>
+                    <div plex-accordion-title justify>
+                        <div>{{ opcion.nombre }}</div>
+                        <plex-badge type="info">{{ opcion.continente }}</plex-badge>
+                    </div>
+                    <div class="h-25" align="center">
+                        <plex-label aligned="center" direction="column" icon="information-variant" type="info" size="lg"
+                                    titulo="Aqui va el contenido" subtitulo="Lorem ipsum sonnet..."></plex-label>
+                    </div>
+                </plex-panel>
+            </ng-container>
         </plex-accordion>
     </plex-layout-sidebar>
 </plex-layout>
