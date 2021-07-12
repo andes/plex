@@ -2,7 +2,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'plex-tab',
-    template: `<ng-content *ngIf='active'></ng-content>`,
+    template: `<div tabindex="0" role="tabpanel">
+                    <ng-content *ngIf='active'></ng-content>
+                </div>`,
 })
 export class PlexTabComponent {
 
