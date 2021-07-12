@@ -52,7 +52,6 @@ plex-badge {
         border-color: var(--badge-color);
         &:hover {
             background-color: var(--badge-color);
-            mix-blend-mode: darken;
             opacity: 0.75;
         }
     }

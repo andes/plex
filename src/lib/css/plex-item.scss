@@ -313,6 +313,10 @@ plex-list {
         upload-file {
             margin: 0 0.15rem;
         }
+        
+        .btn-badge > plex-button {
+            margin: 0;
+        }
 
         .dropdown .btn {
             padding: 0.25rem 0.2rem;
