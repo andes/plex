@@ -105,16 +105,18 @@ plex-table {
 }
 // Sidebar
 plex-layout-sidebar {
-    table {
-        thead {
-            th {
-                background-color: rgba(0, 39, 56, 0.5) !important;
+    plex-table {
+        table {
+            thead {
+                th {
+                    background-color: rgba(0, 39, 56, 0.5) !important;
+                }
             }
-        }
 
-        tr {
-            &:nth-child(odd) {
-                background-color: rgba(0, 168, 224, 0.1) !important;
+            tr {
+                &:nth-child(odd) {
+                    background-color: rgba(0, 168, 224, 0.1) !important;
+                }
             }
         }
     }
