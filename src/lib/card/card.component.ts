@@ -51,7 +51,7 @@ export class PlexCardComponent implements OnChanges {
         }
 
         if (this.color && this.color.length > 0 && this.mode === 'outlined') {
-            this.cardColor.nativeElement.style.setProperty('--card-color', this.color + '20');
+            this.cardColor.nativeElement.style.setProperty('--card-color', this.color + '25');
         }
     }
 }

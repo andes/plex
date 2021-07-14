@@ -8,7 +8,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnChanges, ViewChild } fro
         <ng-content select="plex-icon"></ng-content>
         <ng-content select="[dato]"></ng-content>
         <div class="d-flex flex-column" [ngClass]="direction === 'column' ? 'align-items-center mt-2 px-4' : ''">
-            <span *ngIf="titulo" class="text-{{ type }}" [ngClass]="{'font-weight-bold': tituloBold}">{{ titulo }}</span>
+            <p *ngIf="titulo" class="text-{{ type }}" [ngClass]="{'font-weight-bold': tituloBold}">{{ titulo }}</p>
             <small *ngIf="titulo && subtitulo" class="">{{ subtitulo }}</small>
         </div>
         <ng-content *ngIf="!titulo && !subtitulo"></ng-content>
