@@ -48,6 +48,10 @@ plex-tabs {
                     opacity: 1;
                 }
 
+                a[tabindex] {
+                    color: inherit;
+                }
+
                 .nav-link {
                     border: none;
                     text-align: center;
