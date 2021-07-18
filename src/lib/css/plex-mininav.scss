@@ -4,68 +4,71 @@ plex-mininav {
 
     > section {
         --mininavWidth: 55px;
-        --mininavHeight: 100%;
-    
+        --mininavHeight: 100vh;
+        --border-color: gray;
+        
         display: flex;
         flex-direction: column;
-        //justify-content: space-between;
         width: var(--mininavWidth);
         height: var(--mininavHeight);
         background-color: var(--nav-color);
         overflow-x: hidden;
         transition: all 900ms ease;
+        border-right: solid 1px var(--border-color);
+        color: white;
 
-        &.expanded {
-            width: 200px;
-            overflow-x: visible;
+        //&.expanded {
+        //    --expandedWidth: 200px;
 
-            .nav-resizable-btn-wrapper {
-                left: 200px;
-                transition: left 900ms ease;
+        //    width: var(--expandedWidth);
+        //    overflow-x: visible;
 
-            }
-        }
+        //    .nav-resizable-btn-wrapper {
+        //        left: calc(var(--expandedWidth) + 16px);
+        //    }
+        //}
   
             /* Botonera sidebar expandible */
-            > .nav-resizable-btn-wrapper {
-                display: none;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                z-index: 1;
-                left: 58px;
-                top: calc(50vh - 5rem);
-                background: $light-grey;
-                box-shadow: 1px 1px 12px 3px $dark-grey;
-                width: 2.5rem;
-                height: 2.5rem;
-                border-top-right-radius: 25%;
-                border-bottom-right-radius: 25%;
-                transform: scale(.6);
-                cursor: col-resize!important;
-                opacity: .4;
+            //> .nav-resizable-btn-wrapper {
+            //    display: none;
+            //    flex-direction: row;
+            //    justify-content: center;
+            //    align-items: center;
+            //    position: absolute;
+            //    z-index: 1;
+            //    left: 71px;
+            //    top: calc(50vh - 5rem);
+            //    background: $light-grey;
+            //    box-shadow: 1px 1px 12px 3px $dark-grey;
+            //    width: 2.5rem;
+            //    height: 2.5rem;
+            //    border-top-right-radius: 25%;
+            //    border-bottom-right-radius: 25%;
+            //    transform: scale(.6);
+            //    cursor: col-resize!important;
+            //    opacity: .4;
 
-                &.resizable {
-                    display: flex!important;
-                }
+            //    &.resizable {
+            //        display: flex!important;
+            //        transition: all 900ms ease;
+            //    }
 
-                &:hover {
-                    opacity: 1;
+            //    &:hover {
+            //        opacity: 1;
 
-                    hr.divisor {
-                        height: 100vh;
-                        transition: height 1s ease;
-                        border: solid 2px $blue;
-                        left: 0;
-                    }
-                }
+            //        hr.divisor {
+            //            height: 100vh;
+            //            transition: height 1s ease;
+            //            border: solid 2px $blue;
+            //            left: 0;
+            //        }
+            //    }
                 
-                hr.divisor {
-                    height: 2.5rem;
-                    position: absolute;
-                }
-            }
+            //    hr.divisor {
+            //        height: 2.5rem;
+            //        position: absolute;
+            //    }
+            //}
         
         // Mixins estados
         @mixin mininavItemHover {
@@ -84,6 +87,7 @@ plex-mininav {
         nav {
             --vHeight: 200px;
             height: calc(100vh - var(--vHeight));
+            position: fixed;
             }
 
         ul {
@@ -120,6 +124,30 @@ plex-mininav {
                 }
             }
     
+        }
+    }
+}
+
+plex-layout-sidebar {
+    plex-mininav {
+        > section {
+            --border-color: white;
+            border-right: solid 1px var(--border-color);
+
+            &.expanded {
+                --expandedWidth: 200px;
+    
+                width: var(--expandedWidth);
+                overflow-x: visible;
+    
+                .nav-resizable-btn-wrapper {
+                    left: var(--expandedWidth);
+                }
+            }
+
+            > .nav-resizable-btn-wrapper {
+                left: 58px;
+            }
         }
     }
 }

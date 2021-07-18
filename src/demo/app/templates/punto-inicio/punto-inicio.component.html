@@ -1,7 +1,6 @@
-<plex-layout main="{{ sidebarValue }}" resizable="true" [min]="2" [max]="8" [steps]="2">
+<plex-layout main="{{ sidebarValue }}" resizable="true" [min]="2" [max]="6" [steps]="2">
     <plex-layout-main>
-        <header>
-            <!-- Cabezal -->
+        <!--<header>
             <section span="12" justify class="bg-info">
                 <div class="ml-3 my-2">
                     <plex-label icon="medico" size="xl" type="default" titulo="Bienvenido Walter"
@@ -14,13 +13,14 @@
                     <plex-button class="ml-2" type="info">Inicio Andes</plex-button>
                 </div>
             </section>
-        </header>
+        </header>-->
         <plex-grid cols="12" type="auto">
 
             <!-- Menu Lateral -->
             <plex-grid span="1" class="d-flex align-self-start">
+
                 <!-- Mininav -->
-                <plex-mininav>
+                <plex-mininav [color]="color">
                     <ul superiores>
                         <plex-mininav-item *ngFor="let item of menu$ | async" target="{{ item.path }}"
                                            titulo="{{ item.nombre }}" icono="{{ item.icono }}">
@@ -58,7 +58,7 @@
         </plex-title>
 
         <!-- Mininav -->
-        <plex-mininav [color]="color">
+        <plex-mininav>
             <ul superiores>
                 <plex-mininav-item *ngFor="let item of menu$ | async" target="target" titulo="{{ item.nombre }}"
                                    icono="{{ item.icono }}">

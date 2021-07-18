@@ -23,7 +23,7 @@ export class PlexMininavItemComponent {
         if (fragment) {
             const element = document.querySelector('[name="' + fragment + '"]');
             if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
+                element.scrollIntoView({ behavior: 'smooth' });
             }
         }
     }

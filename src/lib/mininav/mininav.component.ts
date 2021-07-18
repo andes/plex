@@ -1,5 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
-import { throwIfEmpty } from 'rxjs/operators';
+import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'plex-mininav',
@@ -28,15 +27,7 @@ export class PlexMininavComponent implements OnChanges {
     }
 
     // Resize
-    expandir() {
-        //this.miniNav.nativeElement.style.setProperty("width", "200px");
-        this.expanded = !this.expanded;
-        console.log(this.expanded)
-    }
-
-    contraer() {
-
-    }
-
-    // 
+    //expandir() {
+    //    this.expanded = !this.expanded;
+    //}
 }

@@ -23,7 +23,7 @@ export class PuntoInicioComponent implements OnInit {
     @Output() eventoSidebar = new EventEmitter<number>();
 
     vHeight = 200;
-    color = "#6a0dad"
+    color = '#92278e';
 
     items = [
         {
@@ -32,7 +32,7 @@ export class PuntoInicioComponent implements OnInit {
         {
             opcion: 'paciente autocitado',
         },
-    ]
+    ];
 
     public tModel: any;
     public opciones: any[];
