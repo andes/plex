@@ -1,3 +1,10 @@
+## [7.18.2](https://github.com/andes/plex/compare/v7.18.1...v7.18.2) (2021-07-19)
+
+
+### Bug Fixes
+
+* **plex-badge:** resuelve hover en invert + alineación badge-btn ([#291](https://github.com/andes/plex/issues/291)) ([fd50e45](https://github.com/andes/plex/commit/fd50e455477b0cd92961104865f232a7ade6a76e))
+
 ## [7.18.1](https://github.com/andes/plex/compare/v7.18.0...v7.18.1) (2021-06-10)
 
 
