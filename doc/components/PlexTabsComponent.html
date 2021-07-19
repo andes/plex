@@ -920,7 +920,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;section&nbsp;justify&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;#container&nbsp;class&#x3D;&quot;nav&nbsp;nav-tabs&quot;&nbsp;[ngClass]&#x3D;&quot;size&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;*ngFor&#x3D;&quot;let&nbsp;tab&nbsp;of&nbsp;tabs&quot;&nbsp;(click)&#x3D;&quot;selectTab(tab,&nbsp;$event)&quot;&nbsp;(auxclick)&#x3D;&quot;closeTab(tab,&nbsp;$event)&quot;&nbsp;class&#x3D;&quot;nav-item&nbsp;nav-item-{{tab.color}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;active&#x27;:&nbsp;tab.active,&nbsp;&#x27;icon&#x27;:&nbsp;tab.icon&nbsp;&amp;&amp;&nbsp;!tab.label}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class&#x3D;&quot;nav-link&quot;&nbsp;[ngClass]&#x3D;&quot;{active:&nbsp;tab.active}&quot;&nbsp;plexRipples&nbsp;onclick&#x3D;&quot;return&nbsp;false&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;tab.icon&quot;&nbsp;[name]&#x3D;&quot;tab.icon&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;[type]&#x3D;&quot;tab.color&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;tab.label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;tab.label&nbsp;&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;*ngIf&#x3D;&quot;tab.allowClose&quot;&nbsp;type&#x3D;&quot;button&quot;&nbsp;class&#x3D;&quot;close&quot;&nbsp;(click)&#x3D;&quot;closeTab(tab)&quot;&gt;&lt;i&nbsp;class&#x3D;&quot;mdi&nbsp;mdi-close&quot;&gt;&lt;/i&gt;&lt;/button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;justify&#x3D;&quot;end&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-dropdown&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-help&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br><br></code></td>
+                <td class="col-md-9"><code>&lt;section&nbsp;justify&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;role&#x3D;&quot;tablist&quot;&nbsp;#container&nbsp;class&#x3D;&quot;nav&nbsp;nav-tabs&quot;&nbsp;[ngClass]&#x3D;&quot;size&quot;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;role&#x3D;&quot;presentation&quot;&nbsp;*ngFor&#x3D;&quot;let&nbsp;tab&nbsp;of&nbsp;tabs&quot;&nbsp;(keydown.arrowright)&#x3D;&quot;nextTab()&quot;&nbsp;(keydown.arrowleft)&#x3D;&quot;prevTab()&quot;&nbsp;(keydown.enter)&#x3D;&quot;selectTab(tab,&nbsp;$event)&quot;&nbsp;(click)&#x3D;&quot;selectTab(tab,&nbsp;$event)&quot;&nbsp;(auxclick)&#x3D;&quot;closeTab(tab,&nbsp;$event)&quot;&nbsp;class&#x3D;&quot;nav-item&nbsp;nav-item-{{tab.color}}&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;active&#x27;:&nbsp;tab.active,&nbsp;&#x27;icon&#x27;:&nbsp;tab.icon&nbsp;&amp;&amp;&nbsp;!tab.label}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;[tabindex]&#x3D;&quot;tab.active&nbsp;?&nbsp;&#x27;0&#x27;&nbsp;:&nbsp;&#x27;-1&#x27;&quot;&nbsp;role&#x3D;&quot;tab&quot;&nbsp;[attr.aria-selected]&#x3D;&quot;tab.active&quot;&nbsp;[attr.aria-label]&#x3D;&quot;tab.label&quot;&nbsp;[id]&#x3D;&quot;tab.label&quot;&nbsp;class&#x3D;&quot;nav-link&quot;&nbsp;[ngClass]&#x3D;&quot;{active:&nbsp;tab.active}&quot;&nbsp;plexRipples&nbsp;onclick&#x3D;&quot;return&nbsp;false&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;*ngIf&#x3D;&quot;tab.icon&quot;&nbsp;[name]&#x3D;&quot;tab.icon&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;[type]&#x3D;&quot;tab.color&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;tab.label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;tab.label&nbsp;&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;*ngIf&#x3D;&quot;tab.allowClose&quot;&nbsp;aria-label&#x3D;&quot;cerrar&nbsp;pestaña&quot;&nbsp;type&#x3D;&quot;button&quot;&nbsp;class&#x3D;&quot;close&quot;&nbsp;(click)&#x3D;&quot;closeTab(tab)&quot;&gt;&lt;i&nbsp;class&#x3D;&quot;mdi&nbsp;mdi-close&quot;&gt;&lt;/i&gt;&lt;/button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;justify&#x3D;&quot;end&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-badge&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-dropdown&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-button&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-help&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br><br></code></td>
             </tr>
 
 
@@ -1071,6 +1071,84 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b><span class="modifier">Private</span> nextTab</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            <code>nextTab(event: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> prevTab</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            <code>prevTab(event: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> onKeydown</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>onKeydown(event: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b><span class="modifier">Private</span> doActiveTab</b>
                         </td>
                     </tr>
@@ -1166,20 +1244,20 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, AfterViewInit, Input, Output, EventEmitter, ContentChild, ContentChildren, ViewChildren, forwardRef, QueryList, ElementRef, AfterContentInit, ViewChild } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input, Output, EventEmitter, ContentChildren, QueryList, ElementRef, AfterContentInit, ViewChild } from &#x27;@angular/core&#x27;;
 import { PlexTabComponent } from &#x27;./tab.component&#x27;;
 
 @Component({
     selector: &#x27;plex-tabs&#x27;,
     template: &#x60; &lt;section justify&gt;
-                    &lt;ul #container class&#x3D;&quot;nav nav-tabs&quot; [ngClass]&#x3D;&quot;size&quot;&gt;
-                        &lt;li *ngFor&#x3D;&quot;let tab of tabs&quot; (click)&#x3D;&quot;selectTab(tab, $event)&quot; (auxclick)&#x3D;&quot;closeTab(tab, $event)&quot; class&#x3D;&quot;nav-item nav-item-{{tab.color}}&quot; [ngClass]&#x3D;&quot;{&#x27;active&#x27;: tab.active, &#x27;icon&#x27;: tab.icon &amp;&amp; !tab.label}&quot;&gt;
-                            &lt;a class&#x3D;&quot;nav-link&quot; [ngClass]&#x3D;&quot;{active: tab.active}&quot; plexRipples onclick&#x3D;&quot;return false&quot;&gt;
-                                &lt;plex-icon *ngIf&#x3D;&quot;tab.icon&quot; [name]&#x3D;&quot;tab.icon&quot; size&#x3D;&quot;sm&quot; [type]&#x3D;&quot;tab.color&quot;&gt;&lt;/plex-icon&gt;
+                    &lt;ul role&#x3D;&quot;tablist&quot; #container class&#x3D;&quot;nav nav-tabs&quot; [ngClass]&#x3D;&quot;size&quot; &gt;
+                        &lt;li role&#x3D;&quot;presentation&quot; *ngFor&#x3D;&quot;let tab of tabs&quot; (keydown.arrowright)&#x3D;&quot;nextTab()&quot; (keydown.arrowleft)&#x3D;&quot;prevTab()&quot; (keydown.enter)&#x3D;&quot;selectTab(tab, $event)&quot; (click)&#x3D;&quot;selectTab(tab, $event)&quot; (auxclick)&#x3D;&quot;closeTab(tab, $event)&quot; class&#x3D;&quot;nav-item nav-item-{{tab.color}}&quot; [ngClass]&#x3D;&quot;{&#x27;active&#x27;: tab.active, &#x27;icon&#x27;: tab.icon &amp;&amp; !tab.label}&quot;&gt;
+                        &lt;a [tabindex]&#x3D;&quot;tab.active ? &#x27;0&#x27; : &#x27;-1&#x27;&quot; role&#x3D;&quot;tab&quot; [attr.aria-selected]&#x3D;&quot;tab.active&quot; [attr.aria-label]&#x3D;&quot;tab.label&quot; [id]&#x3D;&quot;tab.label&quot; class&#x3D;&quot;nav-link&quot; [ngClass]&#x3D;&quot;{active: tab.active}&quot; plexRipples onclick&#x3D;&quot;return false&quot;&gt;
+                        &lt;plex-icon *ngIf&#x3D;&quot;tab.icon&quot; [name]&#x3D;&quot;tab.icon&quot; size&#x3D;&quot;sm&quot; [type]&#x3D;&quot;tab.color&quot;&gt;&lt;/plex-icon&gt;
                                 &lt;span *ngIf&#x3D;&quot;tab.label&quot;&gt;
                                     {{ tab.label  }}
                                 &lt;/span&gt;
-                                &lt;button *ngIf&#x3D;&quot;tab.allowClose&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; (click)&#x3D;&quot;closeTab(tab)&quot;&gt;&lt;i class&#x3D;&quot;mdi mdi-close&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+                                &lt;button *ngIf&#x3D;&quot;tab.allowClose&quot; aria-label&#x3D;&quot;cerrar pestaña&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; (click)&#x3D;&quot;closeTab(tab)&quot;&gt;&lt;i class&#x3D;&quot;mdi mdi-close&quot;&gt;&lt;/i&gt;&lt;/button&gt;
                             &lt;/a&gt;
                         &lt;/li&gt;
                     &lt;/ul&gt;
@@ -1238,6 +1316,38 @@ export class PlexTabsComponent implements AfterContentInit {
     closeTab(tab: PlexTabComponent, $event &#x3D; null) {
         if (!$event || ($event.button &#x3D;&#x3D;&#x3D; 1 &amp;&amp; tab.allowClose)) {
             this.close.emit(this.tabs.indexOf(tab));
+        }
+    }
+
+    // Accesibilidad
+    private nextTab(event) {
+        this._activeIndex++;
+        if (this._activeIndex &lt; this.tabs.length - 1) {
+            this._activeIndex &#x3D; this._activeIndex;
+        } else {
+            this._activeIndex &#x3D; this.tabs.length - 1;
+        }
+        this.doActiveTab(this._activeIndex);
+    }
+
+    private prevTab(event) {
+        if (this._activeIndex &gt; 0) {
+            this._activeIndex &#x3D; this._activeIndex - 1;
+        }
+        this.doActiveTab(this._activeIndex);
+    }
+
+    onKeydown(event) {
+        if (event.key &#x3D;&#x3D;&#x3D; &#x27;enter&#x27;) {
+            this.doActiveTab(event);
+        }
+
+        if (event.key &#x3D;&#x3D;&#x3D; &#x27;arrowright&#x27;) {
+            this.nextTab(event);
+        }
+
+        if (event.key &#x3D;&#x3D;&#x3D; &#x27;arrowleft&#x27;) {
+            this.prevTab(event);
         }
     }
 
