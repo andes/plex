@@ -1,4 +1,4 @@
-import { Component, AfterContentInit, Input, OnDestroy } from '@angular/core';
+import { AfterContentInit, Component, Input, OnDestroy } from '@angular/core';
 import { PlexPanelComponent } from './panel.component';
 
 
@@ -20,8 +20,8 @@ export class PlexAccordionComponent implements AfterContentInit, OnDestroy {
 
     ngAfterContentInit() {
         this.panels.forEach((panel) => {
-            panel.toggle.subscribe(() => {
-                if (this.activeLast) {
+            panel.toggle.subscribe((open) => {
+                if (this.activeLast && open) {
                     this.openPanel(panel);
                 }
             });
@@ -29,8 +29,7 @@ export class PlexAccordionComponent implements AfterContentInit, OnDestroy {
     }
 
     openPanel(panel: PlexPanelComponent) {
-        this.panels.forEach(p => p.active = false);
-        panel.active = true;
+        this.panels.filter(p => p !== panel).forEach(p => p.active = false);
     }
 
     ngOnDestroy() {
