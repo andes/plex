@@ -84,6 +84,7 @@ import { PlexTableColumnsComponent } from './table/table-column-dropdown.compone
 import { PlexTableColDirective } from './table/display-column.directive';
 import { PlexTableSortPipe } from './table/table-sort.pipe';
 import { PlexColumnDirective } from './table/columns.directive';
+import { AccordionDirective } from './accordion/pl-accordion.directive';
 import { PlexVisualizadorService } from './core/plex-visualizador.service';
 
 @NgModule({
@@ -165,6 +166,7 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         TooltipContentComponent,
         HintComponent,
         MobileDirective,
+        AccordionDirective,
 
         // EXTRAS - NO CORRER DE ACA
         ValidationMessagesComponent,
@@ -242,6 +244,7 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         MobileDirective,
         PlexTableColDirective,
         PlexColumnDirective,
+        AccordionDirective
     ],
     providers: [
         TitleCasePipe,
