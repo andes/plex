@@ -130,8 +130,10 @@ Modificado a partir de https://github.com/T00rk/bootstrap-material-datetimepicke
 .dtp table.dtp-picker-days tr > td > a {
   color: #212121;
   text-decoration: none;
-  padding: .4em .5em .5em .6em;
-  border-radius: 50%!important;
+  padding: 0.3em 0.5em;
+  border-radius: 50% !important;
+  display: inline-block;
+  margin-top: 5px;
 }
 
 .dtp table.dtp-picker-days tr > td > a.selected {
