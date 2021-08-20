@@ -33,7 +33,7 @@ export class PlexPanelComponent {
     @Input() icon: string;
     @Input() content: string;
     @Input() active: boolean;
-    @Output() toggle = new EventEmitter();
+    @Output() toggle = new EventEmitter<boolean>();
 
     constructor(accordion: PlexAccordionComponent) {
         accordion.addPanel(this);
