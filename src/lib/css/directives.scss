@@ -10,3 +10,22 @@ $heights: 5 10 12 15 20 25 30 35 40 45 50 60 75;
         height: calc(100% - #{$h}vh);
     }
 }
+
+// SPAN
+$columns: 1 2 3 4 5 6 7 8 9 10 11 12;
+
+@each $span in $columns {
+
+$i: index($columns, $span);
+    .grid-column-span-#{$span} { 
+    grid-column: span $i;
+    }
+
+    [span=auto] {
+        grid-column: auto;
+    }
+    [span=full] {
+        grid-column: 100%;
+    }
+}
+
