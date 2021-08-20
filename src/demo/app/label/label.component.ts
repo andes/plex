@@ -8,7 +8,6 @@ export class LabelDemoComponent {
 
     foto = true;
     icon = false;
-
     icono = {
         caracter: 'pencil',
         color: 'info',
@@ -26,9 +25,10 @@ export class LabelDemoComponent {
     ];
 
     pasos = [
-        { label: 'A', valor: 'Ingrese al menos tres caracteres. Si la búsqueda no arroja el resultado esperado, presione el botón "Paciente Nuevo".', type: 'Busque un paciente' },
-        { label: 'B', valor: 'La selección se realiza desde los campos desplegables que se encuentran sobre el calendario de agendas.', type: 'Seleccione prestación' },
-        { label: 'C', valor: 'Una vez seleccionado el profesional y la prestación, podrá visualizar las opciones de bloques y horarios.', type: 'Confirme horario' },
+        { label: 'A', valor: 'Ingrese al menos tres caracteres. Si la búsqueda no arroja el resultado esperado, presione el botón "Paciente Nuevo".', titulo: 'Busque un paciente', subtitulo: 'Alteración que se produce en el desarrollo normal de un proceso', semantic: 'Trastorno', icono: 'trastorno', color: '#ff4a1a' },
+        { label: 'B', valor: 'La selección se realiza desde los campos desplegables que se encuentran sobre el calendario de agendas.', titulo: 'Seleccione prestación', subtitulo: 'Procedimiento, entidad observable, régimen/tratamiento', semantic: 'Procedimiento', icono: 'termometro', color: '#92278e' },
+        { label: 'C', valor: 'Una vez seleccionado el profesional y la prestación, podrá visualizar las opciones de bloques y horarios.', titulo: 'Confirme horario', subtitulo: 'Producto, objeto físico, medicamento clínico, fármaco de uso clínico', semantic: 'Producto', icono: 'pildoras', color: '#00bcb4' },
+        { label: 'D', valor: '', titulo: '', subtitulo: 'Pedidos realizados desde un efector, sector o servicio', semantic: 'Solicitudes', icono: 'mano-corazon', color: '#0070cc' }
     ];
 
     eventos = [

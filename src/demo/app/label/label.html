@@ -10,18 +10,27 @@
                 </div>
                 <plex-title titulo="Pasos explicativos" size="sm"></plex-title>
                 <div justify="center" class="h-50">
-                    <plex-label *ngFor="let nodo of pasos" type="info" size="lg" direction="column"
-                                titulo="{{ nodo.type }}" subtitulo="{{ nodo.valor }}">
+                    <plex-label *ngFor="let nodo of pasos | slice:0:3" size="lg" direction="column"
+                                titulo="{{ nodo.titulo }}" subtitulo="{{ nodo.valor }}">
                         <p dato>{{ nodo.label }}</p>
                     </plex-label>
                 </div>
             </section>
-            <section class="ml-4 d-flex flex-column justify-content-betweeen h-100">
-                <plex-title titulo="Cronología"></plex-title>
-                <plex-label *ngFor="let fecha of eventos" type="info" size="md" direction="row"
-                            titulo="{{ fecha.type }}" subtitulo="{{ fecha.valor }}">
-                    <p dato>{{ fecha.label }}</p>
-                </plex-label>
+            <section class="mx-4 d-flex flex-column justify-content-betweeen h-100">
+                <div>
+                    <plex-title titulo="Cronología"></plex-title>
+                    <plex-label *ngFor="let fecha of eventos | slice:0:3" type="info" size="md" direction="row"
+                                titulo="{{ fecha.type }}" subtitulo="{{ fecha.valor }}">
+                        <p dato>{{ fecha.label }}</p>
+                    </plex-label>
+                </div>
+                <div>
+                    <plex-title titulo="Custom colors" size="sm"></plex-title>
+                    <plex-label *ngFor="let paso of pasos" [color]="paso.color" case="capitalize-first" size="md"
+                                icon="{{ paso.icono }}" direction="row" titulo="{{ paso.semantic }}"
+                                subtitulo="{{ paso.subtitulo }}">
+                    </plex-label>
+                </div>
             </section>
         </plex-grid>
     </plex-layout-main>
