@@ -11,7 +11,7 @@
             <div>
                 <section>
                     <plex-title titulo="size='xs'" size="sm"></plex-title>
-                    <plex-grid type="auto" size="xs">
+                    <plex-grid type="{{ colType }}" size="xs">
                         <plex-card direction="column" type="custom" mode="filled" color="{{ dato.color }}"
                                    aligned="center" *ngFor="let dato of datos | slice:0:1">
                             <plex-label size="xl" titulo="{{ dato.label }}" subtitulo="">
@@ -68,7 +68,8 @@
             <section class="mt-4">
                 <plex-title titulo="Encolumnado manual: colsSm | colsMd | colsLg (expandir sidebar!)" size="sm">
                 </plex-title>
-                <plex-grid responsive type="full" size="md" cols="3" colsSm="1" colsMd="2" colsLg="3">
+                <plex-grid responsive type="full" size="md" cols="3" colsSm="{{ colsSm }}" colsMd="{{ colsMd }}"
+                           colsLg="{{ colsLg }}">
                     <plex-card direction="column" type="info" mode="filled" aligned="center"
                                *ngFor="let dato of datos | slice:0:3">
                         <plex-label size="lg" titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}">

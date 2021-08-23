@@ -29,11 +29,11 @@ plex-grid {
         }
         
         // types
-        &[type=full] {
+        &[ng-reflect-type=full] {
             --type: auto-fit;
         }
         
-        &[type=auto] {
+        &[ng-reflect-type=auto] {
             --type: auto-fill;
         }
     
@@ -42,7 +42,7 @@ plex-grid {
 
         @each $col in $columns {
             $i: index($columns, $col);
-            &[cols="#{$col}"] { 
+            &[ng-reflect-cols="#{$col}"] { 
                 grid-template-columns: repeat($i, 1fr);	
             }
         }
@@ -87,7 +87,7 @@ plex-grid {
         &.size-sm {
             @each $col in $columns {
                 $i: index($columns, $col);
-                &[colsSm="#{$col}"] { 
+                &[ng-reflect-cols-sm="#{$col}"] { 
                     grid-template-columns: repeat($i, 1fr)!important;	
                 }
             }
@@ -96,7 +96,7 @@ plex-grid {
         &.size-md {
             @each $col in $columns {
                 $i: index($columns, $col);
-                &[colsMd="#{$col}"] { 
+                &[ng-reflect-cols-md="#{$col}"] { 
                     grid-template-columns: repeat($i, 1fr)!important;	
                 }
             }
@@ -105,7 +105,7 @@ plex-grid {
         &.size-lg {
             @each $col in $columns {
                 $i: index($columns, $col);
-                &[colsLg="#{$col}"] { 
+                &[ng-reflect-cols-lg="#{$col}"] { 
                     grid-template-columns: repeat($i, 1fr)!important;	
                 }
             }

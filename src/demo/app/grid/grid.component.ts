@@ -5,6 +5,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GridDemoComponent {
 
+    colCount = 4;
+    colType = 'auto';
+    colsSm = 1;
+    colsMd = 2;
+    colsLg = 3;
+
     datos = [
         { label: '1', valor: 'mobile: una columna (todo el ancho)', type: 'success', color: '#00bcb4' },
         { label: '2', valor: 'tablet: grilla de dos columnas', type: 'info', color: '#EA1E79' },
