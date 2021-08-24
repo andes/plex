@@ -12,63 +12,81 @@ plex-mininav {
         width: var(--mininavWidth);
         height: var(--mininavHeight);
         background-color: var(--nav-color);
-        overflow-x: hidden;
-        transition: all 900ms ease;
+        transition: width 900ms ease;
         border-right: solid 1px var(--border-color);
         color: white;
 
-        //&.expanded {
-        //    --expandedWidth: 200px;
+        & > nav {
+            overflow-x: hidden;
+            plex-label > div.plex-label > div > span {
+                opacity: 0;
+                white-space: pre;
+            }
+        }
 
-        //    width: var(--expandedWidth);
-        //    overflow-x: visible;
+        &.expanded {
+            --mininavWidth: 200px;
 
-        //    .nav-resizable-btn-wrapper {
-        //        left: calc(var(--expandedWidth) + 16px);
-        //    }
-        //}
+            width: var(--mininavWidth);
+            > nav {
+                overflow-x: visible;
+                plex-label > div.plex-label > div > span {
+                    opacity: 1;
+                    transition: opacity 900ms ease-in;
+                } 
+                
+                > ul > plex-mininav-item > li {
+                    width: var(--mininavWidth);
+                    transition: width 900ms ease-in;
+                }
+            }
+
+            .nav-resizable-btn-wrapper {
+                left: calc(var(--mininavWidth) + 16px);
+            }
+        }
   
             /* Botonera sidebar expandible */
-            //> .nav-resizable-btn-wrapper {
-            //    display: none;
-            //    flex-direction: row;
-            //    justify-content: center;
-            //    align-items: center;
-            //    position: absolute;
-            //    z-index: 1;
-            //    left: 71px;
-            //    top: calc(50vh - 5rem);
-            //    background: $light-grey;
-            //    box-shadow: 1px 1px 12px 3px $dark-grey;
-            //    width: 2.5rem;
-            //    height: 2.5rem;
-            //    border-top-right-radius: 25%;
-            //    border-bottom-right-radius: 25%;
-            //    transform: scale(.6);
-            //    cursor: col-resize!important;
-            //    opacity: .4;
+            > .nav-resizable-btn-wrapper {
+                display: none;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                z-index: 1;
+                left: 71px;
+                top: calc(50vh - 5rem);
+                background: $light-grey;
+                box-shadow: 1px 1px 12px 3px $dark-grey;
+                width: 2.5rem;
+                height: 2.5rem;
+                border-top-right-radius: 25%;
+                border-bottom-right-radius: 25%;
+                transform: scale(.6);
+                cursor: col-resize!important;
+                opacity: .4;
 
-            //    &.resizable {
-            //        display: flex!important;
-            //        transition: all 900ms ease;
-            //    }
+                &.resizable {
+                    display: flex!important;
+                    transition: all 900ms ease;
+                }
 
-            //    &:hover {
-            //        opacity: 1;
+                &:hover {
+                    opacity: 1;
 
-            //        hr.divisor {
-            //            height: 100vh;
-            //            transition: height 1s ease;
-            //            border: solid 2px $blue;
-            //            left: 0;
-            //        }
-            //    }
+                    hr.divisor {
+                        height: 100vh;
+                        transition: height 1s ease;
+                        border: solid 2px $blue;
+                        left: 0;
+                    }
+                }
                 
-            //    hr.divisor {
-            //        height: 2.5rem;
-            //        position: absolute;
-            //    }
-            //}
+                hr.divisor {
+                    height: 2.5rem;
+                    position: absolute;
+                }
+            }
         
         // Mixins estados
         @mixin mininavItemHover {
@@ -108,14 +126,13 @@ plex-mininav {
             }
 
             plex-mininav-item {
-                width: 100%;
                 
                 & > li {
                     --color-base: var(--nav-color);
                     --color-baseDark: var(--nav-color);
 
-                    width: 100%;
-                    padding: .25rem .5rem .25rem 0;
+                    width: var(--mininavWidth);
+                    padding: .5rem .5rem .5rem 0;
                     margin: 0;
                     list-style: none;
                     background-color: var(--nav-color)!important;

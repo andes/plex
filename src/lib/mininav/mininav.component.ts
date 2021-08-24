@@ -27,7 +27,7 @@ export class PlexMininavComponent implements OnChanges {
     }
 
     // Resize
-    //expandir() {
-    //    this.expanded = !this.expanded;
-    //}
+    expandir() {
+        this.expanded = !this.expanded;
+    }
 }
