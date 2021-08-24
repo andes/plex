@@ -47,32 +47,32 @@ plex-grid {
         }
                  
         // sizes 
-        &[ng-reflect-size=xs] {	
+        &[size=xs] {	
             --colSize: 2.5rem;
             --rowSize: 2.5rem;
         }
         
-        &[ng-reflect-size=sm] {	
+        &[size=sm] {	
             --colSize: 5rem;
             --rowSize: 5rem;
         }	
         
-        &[ng-reflect-size=md] {
+        &[size=md] {
             --colSize: 7.5rem;
             --rowSize: 7.5rem;
         }
         
-        &[ng-reflect-size=lg] {
+        &[size=lg] {
             --colSize: 10rem;
             --rowSize: 10rem;
         }
         
-        &[ng-reflect-size=xl] {	
+        &[size=xl] {	
             --colSize: 15rem;
             --rowSize: 15rem;
         }	
         
-        &[ng-reflect-size=auto] {	
+        &[size=auto] {	
             --colSize: auto;
             --rowSize: auto;
         }	

@@ -1,6 +1,6 @@
-import { Component, ElementRef, ContentChildren, ViewChild, AfterViewInit, QueryList, Input, ChangeDetectorRef } from '@angular/core';
-import { PlexSize } from './../core/plex-size.type';
+import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, Input, QueryList, ViewChild } from '@angular/core';
 import { PlexGridComponent } from '../grid/grid.component';
+import { PlexSize } from './../core/plex-size.type';
 
 export interface FileObject {
     url: String;
@@ -19,7 +19,7 @@ export type PlexVisualizadorItem = FileObject | string;
                     <plex-button icon="chevron-left" type="info" size="md" (click)="prevSlide()">
                     </plex-button>
                 </span>
-                <span next class="btn-container" *ngIf="onScrolling" [class.disabled]="scrollStop">
+                <span next class="btn-container" [class.disabled]="scrollStop">
                     <plex-button icon="chevron-right"
                                  type="info" size="md"
                                  tooltipPosition="left"
@@ -121,21 +121,22 @@ export class PlexSliderComponent implements AfterViewInit {
 
     startIndex: number;
     endIndex: number;
+
     onScroll() {
-        const mitad = this.gridWidth / 2;
-        const left = this.gridContainer.nativeElement.scrollLeft;
+        const leftPosition = this.gridContainer.nativeElement.scrollLeft;
 
         const numeroDeItemsVisibles = Math.round(this.gridWidth / this.itemSize);
 
 
-        const centro = Math.round(left / this.itemSize);
+        const centro = Math.round(leftPosition / this.itemSize);
         this.startIndex = centro;
         this.endIndex = centro + numeroDeItemsVisibles;
 
         const finalScroll = this.totalWidth;
-        const currentScroll = this.gridContainer.nativeElement.scrollLeft + this.totalWidth / 2;
+        const currentScroll = (leftPosition + this.gridWidth) * 1.03;
 
-        if (currentScroll > this.totalWidth / 2) {
+
+        if (leftPosition > 0) {
             this.onScrolling = true;
         } else {
             this.onScrolling = false;
