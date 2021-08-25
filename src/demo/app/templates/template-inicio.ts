@@ -37,6 +37,15 @@ export class TemplateInicioComponent implements OnInit {
             icon: 'view-day',
             selected: false,
         },
+        {
+            titulo: 'Template puntos de inicio',
+            subtitulo: 'Agrupamiento de información en acordiones',
+            mode: 'filled',
+            type: 'dark',
+            url: 'punto-inicio',
+            icon: 'adjust',
+            selected: false,
+        },
     ];
 
     constructor(private router: Router, private route: ActivatedRoute) {

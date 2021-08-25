@@ -1,4 +1,15 @@
 @import './variables.scss';
+@import './mixins/_contrast.scss';
+    
+// Mixins estados
+@mixin mininavItemHover {
+    &:hover, &.selected {
+        cursor: pointer;
+        //box-shadow: inset 0 0 0 2px var(--color-base)!important;
+        background-color: var(--color-baseDark)!important;
+        filter: brightness(0.85);
+    }
+}
 
 plex-mininav {
 
@@ -14,14 +25,56 @@ plex-mininav {
         background-color: var(--nav-color);
         transition: width 900ms ease;
         border-right: solid 1px var(--border-color);
-        color: white;
+        color: inherit;
+        
+        nav, ul {
+            display: flex;
+            flex-direction: column;
+        }
 
         & > nav {
+            --vHeight: 200px;
+            height: calc(100vh - var(--vHeight));
+            position: fixed;
             overflow-x: hidden;
+
             plex-label > div.plex-label > div > span {
                 opacity: 0;
                 white-space: pre;
             }
+        }
+
+        ul {
+            --color-base: var(--nav-color);
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0;
+            padding: 0;
+
+            background-color: var(--color-base);
+
+            &[sup] {
+                justify-content: flex-start;
+            }
+            
+            &[inf] {
+                justify-content: flex-end;
+            }
+
+            .plex-mininav-item {
+                 
+                    --color-base: var(--nav-color);
+                    --color-baseDark: var(--nav-color);
+
+                    width: var(--mininavWidth);
+                    padding: .5rem .5rem .5rem 0;
+                    margin: 0;
+                    list-style: none;
+                    background-color: var(--nav-color)!important;
+                    
+                    @include mininavItemHover;
+                }
+             
         }
 
         &.expanded {
@@ -45,102 +98,47 @@ plex-mininav {
                 left: calc(var(--mininavWidth) + 16px);
             }
         }
-  
-            /* Botonera sidebar expandible */
-            > .nav-resizable-btn-wrapper {
-                display: none;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                z-index: 1;
-                left: 71px;
-                top: calc(50vh - 5rem);
-                background: $light-grey;
-                box-shadow: 1px 1px 12px 3px $dark-grey;
-                width: 2.5rem;
-                height: 2.5rem;
-                border-top-right-radius: 25%;
-                border-bottom-right-radius: 25%;
-                transform: scale(.6);
-                cursor: col-resize!important;
-                opacity: .4;
 
-                &.resizable {
-                    display: flex!important;
-                    transition: all 900ms ease;
-                }
+        /* Botonera sidebar expandible */
+        > .nav-resizable-btn-wrapper {
+            display: none;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 1;
+            left: 71px;
+            top: calc(50vh - 5rem);
+            background: $light-grey;
+            box-shadow: 1px 1px 12px 3px $dark-grey;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-top-right-radius: 25%;
+            border-bottom-right-radius: 25%;
+            transform: scale(.6);
+            cursor: col-resize!important;
+            opacity: .4;
 
-                &:hover {
-                    opacity: 1;
+            &.resizable {
+                display: flex!important;
+                transition: all 900ms ease;
+            }
 
-                    hr.divisor {
-                        height: 100vh;
-                        transition: height 1s ease;
-                        border: solid 2px $blue;
-                        left: 0;
-                    }
-                }
-                
+            &:hover {
+                opacity: 1;
+
                 hr.divisor {
-                    height: 2.5rem;
-                    position: absolute;
+                    height: 100vh;
+                    transition: height 1s ease;
+                    border: solid 2px $blue;
+                    left: 0;
                 }
-            }
-        
-        // Mixins estados
-        @mixin mininavItemHover {
-                &:hover, &.selected {
-                    cursor: pointer;
-                    box-shadow: inset 0 0 0 2px var(--color-base)!important;
-                    background-color: var(--color-baseDark)!important;
-                    filter: brightness(0.85);
-                }
-        }
-        nav, ul {
-            display: flex;
-            flex-direction: column;
-        }
-
-        nav {
-            --vHeight: 200px;
-            height: calc(100vh - var(--vHeight));
-            position: fixed;
-            }
-
-        ul {
-            --color-base: var(--nav-color);
-            justify-content: space-between;
-            align-items: flex-start;
-            margin: 0;
-            padding: 0;
-
-            background-color: var(--color-base);
-
-            &[superiores] {
-                justify-content: flex-start;
             }
             
-            &[inferiores] {
-                justify-content: flex-end;
+            hr.divisor {
+                height: 2.5rem;
+                position: absolute;
             }
-
-            plex-mininav-item {
-                
-                & > li {
-                    --color-base: var(--nav-color);
-                    --color-baseDark: var(--nav-color);
-
-                    width: var(--mininavWidth);
-                    padding: .5rem .5rem .5rem 0;
-                    margin: 0;
-                    list-style: none;
-                    background-color: var(--nav-color)!important;
-                    
-                    @include mininavItemHover;
-                }
-            }
-    
         }
     }
 }

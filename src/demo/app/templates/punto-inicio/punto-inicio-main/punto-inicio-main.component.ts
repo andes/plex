@@ -14,7 +14,7 @@ import { EventEmitter, Output } from '@angular/core';
 })
 export class PuntoInicioMainComponent implements OnInit {
 
-    sidebarValue = 10;
+    sidebarValue = 9;
     filtros = false;
     @Output() eventoSidebar = new EventEmitter<number>();
 

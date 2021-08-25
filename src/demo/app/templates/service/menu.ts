@@ -5,6 +5,7 @@ export class Menu {
     semanticTag: String;
     icono: string;
     color: string;
-    path: string;
+    target: string;
+    link: string;
     outlet: string;
 }

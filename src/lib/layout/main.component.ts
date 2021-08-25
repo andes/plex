@@ -6,10 +6,13 @@ import { Component, Input, ElementRef, AfterViewInit, HostListener, Renderer2, V
         <div class="plex-box" [class.plex-box-invert]="type == 'invert'">
             <ng-content select="header"></ng-content>
             <ng-content select="plex-title[main]"></ng-content>
-            <div #content class="plex-box-content" >
-                <ng-content></ng-content>
+            <div #content class="plex-box-content">
+                <ng-content select="plex-mininav"></ng-content>
+                <div class="plex-content">
+                    <ng-content></ng-content>
+                </div>
             </div>
-            </div>
+        </div>
     `,
 })
 export class PlexLayoutMainComponent implements AfterViewInit {

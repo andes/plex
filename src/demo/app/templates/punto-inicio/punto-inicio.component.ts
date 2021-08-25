@@ -78,7 +78,6 @@ export class PuntoInicioComponent implements OnInit {
         };
         this.menu$ = this.menuService.getMenues();
         this.solicitudes$ = this.solicitudService.getSolicitudes();
-        this.plex.navbarVisible = false;
 
         // plex-float
         this.tModel = { valor: null };

@@ -43,7 +43,6 @@ export class TeleprestacionesComponent implements OnInit {
 
     ngOnInit() {
         this.solicitudes$ = this.solicitudService.getSolicitudes();
-        this.plex.navbarVisible = false;
 
         // plex-datetime
         this.tModel = {

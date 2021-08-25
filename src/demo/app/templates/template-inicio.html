@@ -5,17 +5,19 @@
         </section>
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
-
-        <plex-grid class="h-100" justify="center" type="full" cols="2" size="lg">
-            <plex-card *ngFor="let temp of templates" mode="{{ temp.mode }}" selectable="true" type="{{ temp.type }}"
-                       (click)="irTemplate(temp.url)" aligned="center" size="md">
-                <plex-label direction="column" size="lg" titulo="{{ temp.titulo }}" subtitulo="{{ temp.subtitulo }}"
-                            icon="{{ temp.icon }}">
-                </plex-label>
-                <plex-button class="mt-4" type="info" size="md" label="Navegar template" routerLink="{{ temp.url }}">
-                </plex-button>
-            </plex-card>
-        </plex-grid>
+        <section class="h-75" align="center">
+            <plex-grid class="h-25" type="full" size="lg">
+                <plex-card *ngFor="let temp of templates" mode="{{ temp.mode }}" selectable="true"
+                           type="{{ temp.type }}" (click)="irTemplate(temp.url)" aligned="center" size="md">
+                    <plex-label direction="column" size="lg" titulo="{{ temp.titulo }}" subtitulo="{{ temp.subtitulo }}"
+                                icon="{{ temp.icon }}">
+                    </plex-label>
+                    <plex-button class="mt-4" type="info" size="md" label="Navegar template"
+                                 routerLink="{{ temp.url }}">
+                    </plex-button>
+                </plex-card>
+            </plex-grid>
+        </section>
 
     </plex-layout-sidebar>
 </plex-layout>
