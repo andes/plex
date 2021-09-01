@@ -22,9 +22,9 @@
         // line-height: 1.5;
     }
     
-    span, small {
+    p, small {
         line-height: 1.25;
-
+        margin-bottom: 0;
     }
 
     // Icono
@@ -78,7 +78,7 @@
     margin-top: .5rem;
     text-transform: capitalize;
 
-    span {
+    p {
         white-space: wrap;
         text-overflow: ellipsis;
         overflow: hidden;
