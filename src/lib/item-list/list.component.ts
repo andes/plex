@@ -54,6 +54,12 @@ export class PlexListComponent implements AfterViewInit {
 
     @Input() size: PlexSize = 'md';
 
+    @Input() set offset(value: number) {
+        if (typeof value === 'number') {
+            this.height = `calc(100% - ${value}px)`;
+        }
+    }
+
     @Output() scrolled = new EventEmitter<void>();
 
     @Output() sort = new EventEmitter<IPlexTableColumns>();
