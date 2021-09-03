@@ -1,6 +1,5 @@
 plex-grid {
         display: grid;	
-        grid-gap: .5rem;	
         grid-auto-flow: dense; 	
         flex: 1 20em;	
         align-self: center;	
@@ -29,11 +28,11 @@ plex-grid {
         }
         
         // types
-        &[type=full] {
+        &.plex-grid-type-full {
             --type: auto-fit;
         }
         
-        &[type=auto] {
+        &.plex-grid-type-auto {
             --type: auto-fill;
         }
     
@@ -42,38 +41,38 @@ plex-grid {
 
         @each $col in $columns {
             $i: index($columns, $col);
-            &[cols="#{$col}"] { 
+            &.plex-grid-cols-#{$col} { 
                 grid-template-columns: repeat($i, 1fr);	
             }
         }
                  
         // sizes 
-        &[size=xs] {	
+        &.plex-grid-size-xs {	
             --colSize: 2.5rem;
             --rowSize: 2.5rem;
         }
         
-        &[size=sm] {	
+        &.plex-grid-size-sm {	
             --colSize: 5rem;
             --rowSize: 5rem;
         }	
         
-        &[size=md] {
+        &.plex-grid-size-md {
             --colSize: 7.5rem;
             --rowSize: 7.5rem;
         }
         
-        &[size=lg] {
+        &.plex-grid-size-lg {
             --colSize: 10rem;
             --rowSize: 10rem;
         }
         
-        &[size=xl] {	
+        &.plex-grid-size-xl {	
             --colSize: 15rem;
             --rowSize: 15rem;
         }	
         
-        &[size=auto] {	
+        &.plex-grid-size-auto {	
             --colSize: auto;
             --rowSize: auto;
         }	
@@ -87,23 +86,25 @@ plex-grid {
         $columns: 1 2 3 4 5 6 7 8 9 10 11 12;
     
         @each $span in $columns {
-        $i: index($columns, $span);
-            [span="#{$span}"] { 
-            grid-column: span $i;
+            $i: index($columns, $span);
+            .grid-column-span-#{$span} { 
+                grid-column: span $i;
             }       
-            [span=auto] {
-                grid-column: auto;
-            }
-            [span=full] {
-                grid-column: 100%;
-            }
+        }
+
+        .grid-column-auto {
+            grid-column: auto;
+        }
+
+        .grid-column-full {
+            grid-column: 100%;
         }
         
         // Encolumnado responsive manual
         &.size-sm {
             @each $col in $columns {
                 $i: index($columns, $col);
-                &[colsSm="#{$col}"] { 
+                &.plex-grid-colsm-#{$col} {
                     grid-template-columns: repeat($i, 1fr)!important;	
                 }
             }
@@ -112,7 +113,7 @@ plex-grid {
         &.size-md {
             @each $col in $columns {
                 $i: index($columns, $col);
-                &[colsMd="#{$col}"] { 
+                &.plex-grid-colmd-#{$col} {
                     grid-template-columns: repeat($i, 1fr)!important;	
                 }
             }
@@ -121,7 +122,7 @@ plex-grid {
         &.size-lg {
             @each $col in $columns {
                 $i: index($columns, $col);
-                &[colsLg="#{$col}"] { 
+                &.plex-grid-collg-#{$col} {
                     grid-template-columns: repeat($i, 1fr)!important;	
                 }
             }

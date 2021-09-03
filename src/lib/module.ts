@@ -50,6 +50,7 @@ import { PlexVisualizadorComponent } from './visualizador/visualizador.component
 import { PlexWrapperComponent } from './wrapper/wrapper.component';
 import { PlexGridComponent } from './grid/grid.component';
 import { PlexCardComponent } from './card/card.component';
+import { PlexSliderComponent } from './slider/slider.component';
 
 // Directivas
 import { AlignDirective } from './directives/align.directive';
@@ -149,6 +150,7 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         PlexTableColDirective,
         PlexTableSortPipe,
         PlexColumnDirective,
+        PlexSliderComponent,
 
         // Directivas
         AlignDirective,
@@ -226,6 +228,7 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         PlexCardComponent,
         PlexTableColumnsComponent,
         PlexTableSortPipe,
+        PlexSliderComponent,
 
         // Directivas
         AlignDirective,

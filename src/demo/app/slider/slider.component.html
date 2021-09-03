@@ -1,0 +1,50 @@
+<plex-layout main="8">
+    <plex-layout-main>
+        <plex-title size="sm" titulo="Plex-slider size='md'"></plex-title>
+
+        <plex-slider>
+            <plex-card *ngFor="let item of historial">
+                <plex-label titulo="{{ item.fecha }}" subtitulo="{{ item.prestacion }}"></plex-label>
+                <plex-badge type="info">{{ item.estado }}</plex-badge>
+                <plex-button size="sm" type="warning" icon="pencil"></plex-button>
+            </plex-card>
+        </plex-slider>
+
+        <hr>
+
+        <plex-title size="sm" titulo="Plex-slider size='lg'"></plex-title>
+        <plex-slider size="lg">
+
+            <plex-card *ngFor="let item of historial">
+                <plex-label titulo="{{ item.fecha }}" subtitulo="{{ item.prestacion }}"></plex-label>
+                <plex-badge type="info">{{ item.estado }}</plex-badge>
+                <plex-button size="sm" type="warning" icon="pencil"></plex-button>
+            </plex-card>
+        </plex-slider>
+
+        <hr>
+
+        <plex-title size="sm" titulo="Plex-slider size='xl'"></plex-title>
+        <plex-slider size="xl">
+            <plex-card *ngFor="let item of historial">
+                <plex-label titulo="{{ item.fecha }}" subtitulo="{{ item.prestacion }}"></plex-label>
+                <plex-badge type="info">{{ item.estado }}</plex-badge>
+                <plex-button size="sm" type="warning" icon="pencil"></plex-button>
+            </plex-card>
+        </plex-slider>
+
+    </plex-layout-main>
+
+    <plex-layout-sidebar type="invert">
+
+        <plex-title size="sm" titulo="Plex-slider en panel invert"></plex-title>
+        <plex-slider>
+            <plex-card *ngFor="let item of historial | slice:0:7">
+                <plex-label class="text-white" titulo="{{ item.fecha }}" subtitulo="{{ item.prestacion }}"></plex-label>
+                <plex-badge type="info">{{ item.estado }}</plex-badge>
+                <plex-button size="sm" type="warning" icon="pencil"></plex-button>
+            </plex-card>
+        </plex-slider>
+
+    </plex-layout-sidebar>
+</plex-layout>

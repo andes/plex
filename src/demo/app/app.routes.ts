@@ -37,7 +37,6 @@ import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
 import { CardDemoComponent } from './card/card.component';
-import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
 import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
 import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
 import { DemoDirectivesSidebarComponent } from './directives/listado-sidebar/directives-sidebar.component';
@@ -46,8 +45,8 @@ import { HintDemoComponent } from './directives/componentes/hint/hint.component'
 import { CaseDemoComponent } from './directives/componentes/case/case.component';
 import { AlignDemoComponent } from './directives/componentes/align/align.component';
 import { InternacionComponent } from './templates/modulos/internacion/internacion';
-import { RecursosListadoComponent } from './templates/modulos/internacion/listado/recursos-listado.component';
 import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar/detalle/recurso-detalle.component';
+import { SliderDemoComponent } from './slider/slider.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -77,6 +76,7 @@ const appRoutes: Routes = [
     { path: 'wrapper', component: WrapperDemoComponent },
     { path: 'grid', component: GridDemoComponent },
     { path: 'card', component: CardDemoComponent },
+    { path: 'slider', component: SliderDemoComponent },
     { path: 'templates', component: TemplateInicioComponent },
     { path: 'templates/form', component: TemplateFormComponent },
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },

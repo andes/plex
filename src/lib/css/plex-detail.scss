@@ -12,6 +12,7 @@ plex-detail {
         plex-label {
             display: flex;
             justify-content: center;
+            text-align: center;
         }
     }
     
@@ -27,7 +28,7 @@ plex-detail {
         --detail-img-size: 3.5rem;
     }
      
-    section, plex-grid {
+    section {
         &.direction-column {
             --detail-divider-align: center;
             --detail-img-mr: 0;
@@ -39,7 +40,7 @@ plex-detail {
         }
     }
     
-    section, plex-grid {
+    section {
         &.direction-row {
             --detail-divider-align: start; 
             --detail-img-mr: 0.75rem;
