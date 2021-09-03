@@ -223,7 +223,7 @@
                                     <a href="../components/PlexWrapperComponent.html" >PlexWrapperComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/SimpleNotificationsComponent.html"  class="active" >SimpleNotificationsComponent</a>
+                                    <a href="../components/SimpleNotificationsComponent.html" >SimpleNotificationsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/TooltipContentComponent.html" >TooltipContentComponent</a>
@@ -246,7 +246,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/AccordionDirective.html" >AccordionDirective</a>
+                                    <a href="../directives/AccordionDirective.html"  class="active" >AccordionDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/AlignDirective.html" >AlignDirective</a>
@@ -658,7 +658,7 @@
                                            <a href="../components/PlexWrapperComponent.html" >PlexWrapperComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/SimpleNotificationsComponent.html"  class="active" >SimpleNotificationsComponent</a>
+                                           <a href="../components/SimpleNotificationsComponent.html" >SimpleNotificationsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/TooltipContentComponent.html" >TooltipContentComponent</a>
@@ -681,7 +681,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/AccordionDirective.html" >AccordionDirective</a>
+                                           <a href="../directives/AccordionDirective.html"  class="active" >AccordionDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/AlignDirective.html" >AlignDirective</a>
@@ -884,896 +884,166 @@
                    
                    </nav>
                </div>
-               <div class="content component">
+               <div class="content directive">
                    <div class="content-data">
 
 
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>SimpleNotificationsComponent</li>
+  <li>Directives</li>
+  <li>AccordionDirective</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+    </li>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+    </li>
+</ul>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/lib/toast/simple-notifications/components/simple-notifications.component.ts</code>
-</p>
-
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
-
-
-            <tr>
-                <td class="col-md-3">encapsulation</td>
-                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
-            </tr>
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="infos">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/lib/accordion/pl-accordion.directive.ts</code>
+        </p>
 
 
 
-
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>simple-notifications</code></td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-3">styles</td>
-                <td class="col-md-9"><code>
-        .simple-notification-wrapper {
-            position: fixed;
-            width: 300px;
-            z-index: 1000;
-        }
-
-        .simple-notification-wrapper.left { left: 20px; }
-        .simple-notification-wrapper.top { top: 20px; }
-        .simple-notification-wrapper.right { right: 20px; }
-        .simple-notification-wrapper.bottom { bottom: 20px; }
-
-        @media (max-width: 340px) {
-            .simple-notification-wrapper {
-                width: auto;
-                left: 20px;
-                right: 20px;
-            }
-        }
-    </code></td>
-            </tr>
-
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;simple-notification-wrapper&quot;&nbsp;[ngClass]&#x3D;&quot;position&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;simple-notification<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;a&nbsp;of&nbsp;notifications;&nbsp;let&nbsp;i&nbsp;&#x3D;&nbsp;index&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[item]&#x3D;&quot;a&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[timeOut]&#x3D;&quot;timeOut&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[clickToClose]&#x3D;&quot;clickToClose&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[maxLength]&#x3D;&quot;maxLength&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[showProgressBar]&#x3D;&quot;showProgressBar&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[pauseOnHover]&#x3D;&quot;pauseOnHover&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[theClass]&#x3D;&quot;theClass&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[rtl]&#x3D;&quot;rtl&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[animate]&#x3D;&quot;animate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[position]&#x3D;&quot;i&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/simple-notification&gt;<br>&lt;/div&gt;<br></code></td>
-            </tr>
-
-
-
-        </tbody>
-    </table>
-</section>
-
-    <section>
-        <h3 id="inputs">Inputs</h3>
-            <table class="table table-sm table-bordered">
+        <section>
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover">
                 <tbody>
+
                     <tr>
-                        <td class="col-md-2">
-                            <code>options</code>
-                        </td>
-                        <td class="col-md-10">
-                        </td>
+                        <td class="col-md-3">selector</td>
+                        <td class="col-md-9"><code>[plAccordion]</code></td>
                     </tr>
+
                 </tbody>
             </table>
-    </section>
+        </section>
 
-    <section>
-        <h3 id="outputs">Outputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>onCreate</code>
-                        </td>
-                        <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
+            <section>
+                <h3 id="inputs">Inputs</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-2">
+                                    <code>plAccordion</code>
+                                </td>
+                                <td class="col-md-10">
+                                      <p>
+                                        <em>Type:</em>    <code>number</code>
 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>onDestroy</code>
-                        </td>
-                        <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
+                                      </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(_service: <a href="../injectables/NotificationsService.html" >NotificationsService</a>)</code>
-                        </td>
-                    </tr>
-    
-                </tbody>
-            </table>
-    </section>
+            <section>
+                <h3 id="constructor">Constructor</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>constructor(view: <a href="https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html" target="_blank" >ViewContainerRef</a>, nextRef: TemplateRef<any>, plexPanel: <a href="../injectables/Plex.html" >PlexPanelComponent</a>, changes: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank" >ChangeDetectorRef</a>)</code>
+                                </td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
+            </section>
 
-    <section>
-        <h3 id="methods">Methods</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> defaultBehavior</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>defaultBehavior(value: any)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> add</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>add(item: Notification)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> block</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>block(item: Notification)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>boolean</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> checkStandard</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>checkStandard(checker: Notification, item: Notification)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>boolean</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> checkHtml</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>checkHtml(checker: Notification, item: Notification)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>boolean</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> attachChanges</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>attachChanges(options: any)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> buildEmit</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>buildEmit(notification: Notification, to: boolean)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> cleanSingle</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>cleanSingle(id: string)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
-    <section>
-        <h3 id="inputs">Properties</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> animate</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>animate:     <code>&quot;fromRight&quot; | &quot;fromLeft&quot; | &quot;rotate&quot; | &quot;scale&quot;</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>fromRight</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> clickToClose</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>clickToClose:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>true</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> lastNotificationCreated</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>lastNotificationCreated:     <code>Notification</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> lastOnBottom</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>lastOnBottom:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>true</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> listener</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>listener:     <code>Subscription</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> maxLength</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>maxLength:     <code>number</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>0</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> maxStack</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>maxStack:     <code>number</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>8</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> notifications</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>notifications:     <code>Notification[]</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> pauseOnHover</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>pauseOnHover:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>true</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> position</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>position:     <code>[&quot;top&quot; | &quot;bottom&quot;, &quot;right&quot; | &quot;left&quot;]</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> preventDuplicates</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>preventDuplicates:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>false</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> preventLastDuplicates</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>preventLastDuplicates:     <code>any</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>false</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> rtl</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>rtl:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>false</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> showProgressBar</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>showProgressBar:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>true</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> theClass</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>theClass:     <code>string</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> timeOut</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>timeOut:     <code>number</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>0</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-    </section>
-</div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, EventEmitter, OnInit, OnDestroy, ViewEncapsulation, Input, Output } from &#x27;@angular/core&#x27;;
-import { Subscription } from &#x27;rxjs&#x27;;
-import { Options } from &#x27;../interfaces/options.type&#x27;;
-import { Notification } from &#x27;../interfaces/notification.type&#x27;;
-import { NotificationsService } from &#x27;../services/notifications.service&#x27;;
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> openSubscription</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>openSubscription:     <code>Subscription</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> viewRef</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>viewRef:     <code>any</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
-@Component({
-    // tslint:disable-next-line:component-selector
-    selector: &#x27;simple-notifications&#x27;,
-    encapsulation: ViewEncapsulation.None,
-    template: &#x60;
-        &lt;div class&#x3D;&quot;simple-notification-wrapper&quot; [ngClass]&#x3D;&quot;position&quot;&gt;
-            &lt;simple-notification
-                *ngFor&#x3D;&quot;let a of notifications; let i &#x3D; index&quot;
-                [item]&#x3D;&quot;a&quot;
-                [timeOut]&#x3D;&quot;timeOut&quot;
-                [clickToClose]&#x3D;&quot;clickToClose&quot;
-                [maxLength]&#x3D;&quot;maxLength&quot;
-                [showProgressBar]&#x3D;&quot;showProgressBar&quot;
-                [pauseOnHover]&#x3D;&quot;pauseOnHover&quot;
-                [theClass]&#x3D;&quot;theClass&quot;
-                [rtl]&#x3D;&quot;rtl&quot;
-                [animate]&#x3D;&quot;animate&quot;
-                [position]&#x3D;&quot;i&quot;
-                &gt;
-            &lt;/simple-notification&gt;
-        &lt;/div&gt;
-    &#x60;,
-    styles: [&#x60;
-        .simple-notification-wrapper {
-            position: fixed;
-            width: 300px;
-            z-index: 1000;
-        }
+    </div>
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre><code class="hljs javascript">import { ChangeDetectorRef, Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from &#x27;@angular/core&#x27;;
+import { interval, NEVER, Subscription, merge } from &#x27;rxjs&#x27;;
+import { filter } from &#x27;rxjs/operators&#x27;;
+import { PlexPanelComponent } from &#x27;./panel.component&#x27;;
 
-        .simple-notification-wrapper.left { left: 20px; }
-        .simple-notification-wrapper.top { top: 20px; }
-        .simple-notification-wrapper.right { right: 20px; }
-        .simple-notification-wrapper.bottom { bottom: 20px; }
-
-        @media (max-width: 340px) {
-            .simple-notification-wrapper {
-                width: auto;
-                left: 20px;
-                right: 20px;
-            }
-        }
-    &#x60;]
+@Directive({
+    // tslint:disable-next-line:directive-selector
+    selector: &#x27;[plAccordion]&#x27;
 })
 
-export class SimpleNotificationsComponent implements OnInit, OnDestroy {
+export class AccordionDirective implements OnInit, OnDestroy {
+    private openSubscription: Subscription;
+    private viewRef: any &#x3D; null;
 
-    @Input() set options(opt: Options) {
-        this.attachChanges(opt);
-    }
+    // En el caso que se indique una cantidad de milisegundos, se renderiza al cumplirse el tiempo ingresado.
+    @Input() plAccordion: number;
 
-    @Output() onCreate &#x3D; new EventEmitter();
-    @Output() onDestroy &#x3D; new EventEmitter();
+    constructor(
+        private view: ViewContainerRef,
+        private nextRef: TemplateRef&lt;any&gt;,
+        private plexPanel: PlexPanelComponent,
+        private changes: ChangeDetectorRef,
+    ) { }
 
-    public notifications: Notification[] &#x3D; [];
-    public position: [&#x27;top&#x27; | &#x27;bottom&#x27;, &#x27;right&#x27; | &#x27;left&#x27;] &#x3D; [&#x27;bottom&#x27;, &#x27;right&#x27;];
-
-    private lastNotificationCreated: Notification;
-    private listener: Subscription;
-
-    // Received values
-    private lastOnBottom &#x3D; true;
-    private maxStack &#x3D; 8;
-    private preventLastDuplicates: any &#x3D; false;
-    private preventDuplicates &#x3D; false;
-
-    // Sent values
-    public timeOut &#x3D; 0;
-    public maxLength &#x3D; 0;
-    public clickToClose &#x3D; true;
-    public showProgressBar &#x3D; true;
-    public pauseOnHover &#x3D; true;
-    public theClass &#x3D; &#x27;&#x27;;
-    public rtl &#x3D; false;
-    public animate: &#x27;fromRight&#x27; | &#x27;fromLeft&#x27; | &#x27;rotate&#x27; | &#x27;scale&#x27; &#x3D; &#x27;fromRight&#x27;;
-
-    constructor(private _service: NotificationsService) { }
-
-    ngOnInit(): void {
-        // Listen for changes in the service
-        this.listener &#x3D; this._service.getChangeEmitter()
-            .subscribe(item &#x3D;&gt; {
-                switch (item.command) {
-                    case &#x27;cleanAll&#x27;:
-                        this.notifications &#x3D; [];
-                        break;
-
-                    case &#x27;clean&#x27;:
-                        this.cleanSingle(item.id!);
-                        break;
-
-                    case &#x27;set&#x27;:
-                        if (item.add) {
-                            this.add(item.notification!);
-                        } else {
-                            this.defaultBehavior(item);
-                        }
-                        break;
-
-                    default:
-                        this.defaultBehavior(item);
-                        break;
-                }
-            });
-    }
-
-    // Default behavior on event
-    defaultBehavior(value: any): void {
-        this.notifications.splice(this.notifications.indexOf(value.notification), 1);
-        this.onDestroy.emit(this.buildEmit(value.notification, false));
-    }
-
-
-    // Add the new notification to the notification array
-    add(item: Notification): void {
-        item.createdOn &#x3D; new Date();
-
-        const toBlock: boolean &#x3D; this.preventLastDuplicates || this.preventDuplicates ? this.block(item) : false;
-
-        // Save this as the last created notification
-        this.lastNotificationCreated &#x3D; item;
-
-        if (!toBlock) {
-            // Check if the notification should be added at the start or the end of the array
-            if (this.lastOnBottom) {
-                if (this.notifications.length &gt;&#x3D; this.maxStack) {
-                    this.notifications.splice(0, 1);
-                }
-                this.notifications.push(item);
-            } else {
-                if (this.notifications.length &gt;&#x3D; this.maxStack) {
-                    this.notifications.splice(this.notifications.length - 1, 1);
-                }
-                this.notifications.splice(0, 0, item);
-            }
-
-            this.onCreate.emit(this.buildEmit(item, true));
-        }
-    }
-
-    // Check if notifications should be prevented
-    block(item: Notification): boolean {
-
-        const toCheck &#x3D; item.html ? this.checkHtml : this.checkStandard;
-
-        if (this.preventDuplicates &amp;&amp; this.notifications.length &gt; 0) {
-            for (let i &#x3D; 0; i &lt; this.notifications.length; i++) {
-                if (toCheck(this.notifications[i], item)) {
-                    return true;
-                }
-            }
-        }
-
-        if (this.preventLastDuplicates) {
-
-            let comp: Notification;
-
-            if (this.preventLastDuplicates &#x3D;&#x3D;&#x3D; &#x27;visible&#x27; &amp;&amp; this.notifications.length &gt; 0) {
-                if (this.lastOnBottom) {
-                    comp &#x3D; this.notifications[this.notifications.length - 1];
-                } else {
-                    comp &#x3D; this.notifications[0];
-                }
-            } else if (this.preventLastDuplicates &#x3D;&#x3D;&#x3D; &#x27;all&#x27; &amp;&amp; this.lastNotificationCreated) {
-                comp &#x3D; this.lastNotificationCreated;
-            } else {
-                return false;
-            }
-            return toCheck(comp, item);
-        }
-
-        return false;
-    }
-
-    checkStandard(checker: Notification, item: Notification): boolean {
-        return checker.type &#x3D;&#x3D;&#x3D; item.type &amp;&amp; checker.title &#x3D;&#x3D;&#x3D; item.title &amp;&amp; checker.content &#x3D;&#x3D;&#x3D; item.content;
-    }
-
-    checkHtml(checker: Notification, item: Notification): boolean {
-        return checker.html ? checker.type &#x3D;&#x3D;&#x3D; item.type &amp;&amp; checker.title &#x3D;&#x3D;&#x3D; item.title &amp;&amp; checker.content &#x3D;&#x3D;&#x3D; item.content &amp;&amp; checker.html &#x3D;&#x3D;&#x3D; item.html : false;
-    }
-
-    // Attach all the changes received in the options object
-    attachChanges(options: any): void {
-        Object.keys(options).forEach(a &#x3D;&gt; {
-            if (this.hasOwnProperty(a)) {
-                (&lt;any&gt;this)[a] &#x3D; options[a];
+    ngOnInit() {
+        const timer &#x3D; this.plAccordion ? interval(this.plAccordion) : NEVER;
+        this.openSubscription &#x3D; merge(
+            this.plexPanel.toggle.pipe(filter(active &#x3D;&gt; active)),
+            timer
+        ).subscribe(() &#x3D;&gt; {
+            if (!this.viewRef) {
+                this.viewRef &#x3D; this.view.createEmbeddedView(this.nextRef);
+                this.changes.markForCheck();
+                this.openSubscription.unsubscribe();
             }
         });
     }
 
-    buildEmit(notification: Notification, to: boolean) {
-        const toEmit: Notification &#x3D; {
-            createdOn: notification.createdOn,
-            type: notification.type,
-            icon: notification.icon,
-            id: notification.id
-        };
-
-        if (notification.html) {
-            toEmit.html &#x3D; notification.html;
-        } else {
-            toEmit.title &#x3D; notification.title;
-            toEmit.content &#x3D; notification.content;
-        }
-
-        if (!to) {
-            toEmit.destroyedOn &#x3D; new Date();
-        }
-
-        return toEmit;
-    }
-
-    cleanSingle(id: string): void {
-        let indexOfDelete &#x3D; 0;
-        let doDelete &#x3D; false;
-
-        this.notifications.forEach((notification, idx) &#x3D;&gt; {
-            if (notification.id &#x3D;&#x3D;&#x3D; id) {
-                indexOfDelete &#x3D; idx;
-                doDelete &#x3D; true;
-            }
-        });
-
-        if (doDelete) {
-            this.notifications.splice(indexOfDelete, 1);
-        }
-    }
-
-    ngOnDestroy(): void {
-        if (this.listener) {
-            this.listener.unsubscribe();
-        }
+    ngOnDestroy() {
+        this.openSubscription.unsubscribe();
     }
 }
 </code></pre>
-        </div>
     </div>
-
-
+</div>
 
 
 

@@ -196,7 +196,7 @@
                                     <a href="../components/PlexSelectComponent.html" >PlexSelectComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/PlexSliderComponent.html" >PlexSliderComponent</a>
+                                    <a href="../components/PlexSliderComponent.html"  class="active" >PlexSliderComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/PlexTabComponent.html" >PlexTabComponent</a>
@@ -223,7 +223,7 @@
                                     <a href="../components/PlexWrapperComponent.html" >PlexWrapperComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/SimpleNotificationsComponent.html"  class="active" >SimpleNotificationsComponent</a>
+                                    <a href="../components/SimpleNotificationsComponent.html" >SimpleNotificationsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/TooltipContentComponent.html" >TooltipContentComponent</a>
@@ -631,7 +631,7 @@
                                            <a href="../components/PlexSelectComponent.html" >PlexSelectComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/PlexSliderComponent.html" >PlexSliderComponent</a>
+                                           <a href="../components/PlexSliderComponent.html"  class="active" >PlexSliderComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/PlexTabComponent.html" >PlexTabComponent</a>
@@ -658,7 +658,7 @@
                                            <a href="../components/PlexWrapperComponent.html" >PlexWrapperComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/SimpleNotificationsComponent.html"  class="active" >SimpleNotificationsComponent</a>
+                                           <a href="../components/SimpleNotificationsComponent.html" >SimpleNotificationsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/TooltipContentComponent.html" >TooltipContentComponent</a>
@@ -890,7 +890,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>SimpleNotificationsComponent</li>
+  <li>PlexSliderComponent</li>
 </ol>
 
 
@@ -908,7 +908,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/lib/toast/simple-notifications/components/simple-notifications.component.ts</code>
+    <code>src/lib/slider/slider.component.ts</code>
 </p>
 
 
@@ -919,10 +919,6 @@
         <tbody>
 
 
-            <tr>
-                <td class="col-md-3">encapsulation</td>
-                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
-            </tr>
 
 
 
@@ -935,37 +931,14 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>simple-notifications</code></td>
+                <td class="col-md-9"><code>plex-slider</code></td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-3">styles</td>
-                <td class="col-md-9"><code>
-        .simple-notification-wrapper {
-            position: fixed;
-            width: 300px;
-            z-index: 1000;
-        }
-
-        .simple-notification-wrapper.left { left: 20px; }
-        .simple-notification-wrapper.top { top: 20px; }
-        .simple-notification-wrapper.right { right: 20px; }
-        .simple-notification-wrapper.bottom { bottom: 20px; }
-
-        @media (max-width: 340px) {
-            .simple-notification-wrapper {
-                width: auto;
-                left: 20px;
-                right: 20px;
-            }
-        }
-    </code></td>
-            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;simple-notification-wrapper&quot;&nbsp;[ngClass]&#x3D;&quot;position&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;simple-notification<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;a&nbsp;of&nbsp;notifications;&nbsp;let&nbsp;i&nbsp;&#x3D;&nbsp;index&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[item]&#x3D;&quot;a&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[timeOut]&#x3D;&quot;timeOut&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[clickToClose]&#x3D;&quot;clickToClose&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[maxLength]&#x3D;&quot;maxLength&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[showProgressBar]&#x3D;&quot;showProgressBar&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[pauseOnHover]&#x3D;&quot;pauseOnHover&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[theClass]&#x3D;&quot;theClass&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[rtl]&#x3D;&quot;rtl&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[animate]&#x3D;&quot;animate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[position]&#x3D;&quot;i&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/simple-notification&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;section&nbsp;id&#x3D;&quot;scroll&quot;&nbsp;#gridContainer&nbsp;(scroll)&#x3D;&quot;onScroll()&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-grid&nbsp;type&#x3D;&quot;full&quot;&nbsp;[size]&#x3D;&quot;size&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-grid&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;prev&nbsp;class&#x3D;&quot;btn-container&quot;&nbsp;[class.disabled]&#x3D;&quot;!onScrolling&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;icon&#x3D;&quot;chevron-left&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;size&#x3D;&quot;md&quot;&nbsp;(click)&#x3D;&quot;prevSlide()&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;next&nbsp;class&#x3D;&quot;btn-container&quot;&nbsp;[class.disabled]&#x3D;&quot;scrollStop&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;icon&#x3D;&quot;chevron-right&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&#x3D;&quot;info&quot;&nbsp;size&#x3D;&quot;md&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tooltipPosition&#x3D;&quot;left&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;nextSlide()&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[disabled]&#x3D;&quot;scrollStop&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;#dotsContainer&nbsp;class&#x3D;&quot;plex-dots-wrapper&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngFor&#x3D;&quot;let&nbsp;t&nbsp;of&nbsp;dotsCount;&nbsp;let&nbsp;$index&nbsp;&#x3D;&nbsp;index;&quot;&nbsp;class&#x3D;&quot;plex-dot&quot;&nbsp;(click)&#x3D;&quot;onDotClick($index)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ngClass]&#x3D;&quot;{&nbsp;&#x27;active&#x27;:&nbsp;&nbsp;startIndex&nbsp;&lt;&#x3D;&nbsp;$index&nbsp;&amp;&amp;&nbsp;$index&nbsp;&lt;&#x3D;&nbsp;endIndex&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;</code></td>
             </tr>
 
 
@@ -980,44 +953,22 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>options</code>
+                            <code>size</code>
                         </td>
                         <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code><a href="../injectables/Plex.html" target="_self" >PlexSize</a></code>
+
+                              </p>
+                            <p>
+                              <em>Default value: </em><code>md</code>
+                            </p>
                         </td>
                     </tr>
                 </tbody>
             </table>
     </section>
 
-    <section>
-        <h3 id="outputs">Outputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>onCreate</code>
-                        </td>
-                        <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>onDestroy</code>
-                        </td>
-                        <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
     <section>
         <h3 id="constructor">Constructor</h3>
@@ -1025,7 +976,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(_service: <a href="../injectables/NotificationsService.html" >NotificationsService</a>)</code>
+                            <code>constructor(elRef: any, ref: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank" >ChangeDetectorRef</a>)</code>
                         </td>
                     </tr>
     
@@ -1039,37 +990,13 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> defaultBehavior</b>
+                            <b> setHeight</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-    <code>defaultBehavior(value: any)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> add</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>add(item: Notification)</code>
+    <code>setHeight()</code>
                         </td>
                     </tr>
     
@@ -1087,85 +1014,13 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> block</b>
+                            <b> setWidth</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-    <code>block(item: Notification)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>boolean</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> checkStandard</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>checkStandard(checker: Notification, item: Notification)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>boolean</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> checkHtml</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>checkHtml(checker: Notification, item: Notification)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>boolean</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> attachChanges</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>attachChanges(options: any)</code>
+    <code>setWidth()</code>
                         </td>
                     </tr>
     
@@ -1183,13 +1038,13 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> buildEmit</b>
+                            <b> setGridWidth</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-    <code>buildEmit(notification: Notification, to: boolean)</code>
+    <code>setGridWidth()</code>
                         </td>
                     </tr>
     
@@ -1207,13 +1062,109 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> cleanSingle</b>
+                            <b> getRestantes</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-    <code>cleanSingle(id: string)</code>
+    <code>getRestantes()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> onDotClick</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>onDotClick(index: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> prevSlide</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>prevSlide()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> nextSlide</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>nextSlide()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> onScroll</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>onScroll()</code>
                         </td>
                     </tr>
     
@@ -1235,52 +1186,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> animate</b>
+                            <b><span class="modifier">Public</span> dots</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>animate:     <code>&quot;fromRight&quot; | &quot;fromLeft&quot; | &quot;rotate&quot; | &quot;scale&quot;</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>fromRight</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> clickToClose</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>clickToClose:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>true</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> lastNotificationCreated</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>lastNotificationCreated:     <code>Notification</code>
+                            <span class="modifier-icon fa fa-circle"></span><code>dots:     <code>any</code>
     </bcode>
                         </td>
                     </tr>
@@ -1290,32 +1201,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Private</span> lastOnBottom</b>
+                            <b> dotsCount</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>lastOnBottom:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>true</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> listener</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>listener:     <code>Subscription</code>
+                            <code>dotsCount:     <code>any</code>
     </bcode>
                         </td>
                     </tr>
@@ -1325,52 +1216,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> maxLength</b>
+                            <b> endIndex</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>maxLength:     <code>number</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>0</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> maxStack</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>maxStack:     <code>number</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>8</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> notifications</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>notifications:     <code>Notification[]</code>
+                            <code>endIndex:     <code>number</code>
     </bcode>
                         </td>
                     </tr>
@@ -1380,32 +1231,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> pauseOnHover</b>
+                            <b> gridContainer</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>pauseOnHover:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>true</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> position</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>position:     <code>[&quot;top&quot; | &quot;bottom&quot;, &quot;right&quot; | &quot;left&quot;]</code>
+                            <code>gridContainer:     <code>any</code>
     </bcode>
                         </td>
                     </tr>
@@ -1415,12 +1246,87 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Private</span> preventDuplicates</b>
+                            <b><span class="modifier">Public</span> gridHeight</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>preventDuplicates:     <code>boolean</code>
+                            <span class="modifier-icon fa fa-circle"></span><code>gridHeight:     <code>number</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> gridWidth</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>gridWidth:     <code>number</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> items</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>items:     <code>number</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> itemSize</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>itemSize:     <code>number</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> itemsRestantes</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>itemsRestantes:     <code>number</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> onScrolling</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>onScrolling:     <code>boolean</code>
     </bcode>
                         </td>
                     </tr>
@@ -1435,12 +1341,27 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Private</span> preventLastDuplicates</b>
+                            <b> plexGrid</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>preventLastDuplicates:     <code>any</code>
+                            <code>plexGrid:     <code><a href="../injectables/Plex.html" target="_self" >QueryList&lt;PlexGridComponent&gt;</a></code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> scrollStop</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>scrollStop:     <code>boolean</code>
     </bcode>
                         </td>
                     </tr>
@@ -1455,52 +1376,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> rtl</b>
+                            <b> startIndex</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>rtl:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>false</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> showProgressBar</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>showProgressBar:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>true</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> theClass</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>theClass:     <code>string</code>
+                            <code>startIndex:     <code>number</code>
     </bcode>
                         </td>
                     </tr>
@@ -1510,264 +1391,173 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> timeOut</b>
+                            <b><span class="modifier">Public</span> totalWidth</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>timeOut:     <code>number</code>
+                            <span class="modifier-icon fa fa-circle"></span><code>totalWidth:     <code>number</code>
     </bcode>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>0</code>
-                            </td>
-                        </tr>
                 </tbody>
             </table>
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, EventEmitter, OnInit, OnDestroy, ViewEncapsulation, Input, Output } from &#x27;@angular/core&#x27;;
-import { Subscription } from &#x27;rxjs&#x27;;
-import { Options } from &#x27;../interfaces/options.type&#x27;;
-import { Notification } from &#x27;../interfaces/notification.type&#x27;;
-import { NotificationsService } from &#x27;../services/notifications.service&#x27;;
+            <pre><code class="hljs javascript">import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, Input, QueryList, ViewChild } from &#x27;@angular/core&#x27;;
+import { PlexGridComponent } from &#x27;../grid/grid.component&#x27;;
+import { PlexSize } from &#x27;./../core/plex-size.type&#x27;;
+
+export interface FileObject {
+    url: String;
+    ext: String;
+}
+
+export type PlexVisualizadorItem &#x3D; FileObject | string;
 
 @Component({
-    // tslint:disable-next-line:component-selector
-    selector: &#x27;simple-notifications&#x27;,
-    encapsulation: ViewEncapsulation.None,
-    template: &#x60;
-        &lt;div class&#x3D;&quot;simple-notification-wrapper&quot; [ngClass]&#x3D;&quot;position&quot;&gt;
-            &lt;simple-notification
-                *ngFor&#x3D;&quot;let a of notifications; let i &#x3D; index&quot;
-                [item]&#x3D;&quot;a&quot;
-                [timeOut]&#x3D;&quot;timeOut&quot;
-                [clickToClose]&#x3D;&quot;clickToClose&quot;
-                [maxLength]&#x3D;&quot;maxLength&quot;
-                [showProgressBar]&#x3D;&quot;showProgressBar&quot;
-                [pauseOnHover]&#x3D;&quot;pauseOnHover&quot;
-                [theClass]&#x3D;&quot;theClass&quot;
-                [rtl]&#x3D;&quot;rtl&quot;
-                [animate]&#x3D;&quot;animate&quot;
-                [position]&#x3D;&quot;i&quot;
-                &gt;
-            &lt;/simple-notification&gt;
-        &lt;/div&gt;
-    &#x60;,
-    styles: [&#x60;
-        .simple-notification-wrapper {
-            position: fixed;
-            width: 300px;
-            z-index: 1000;
-        }
-
-        .simple-notification-wrapper.left { left: 20px; }
-        .simple-notification-wrapper.top { top: 20px; }
-        .simple-notification-wrapper.right { right: 20px; }
-        .simple-notification-wrapper.bottom { bottom: 20px; }
-
-        @media (max-width: 340px) {
-            .simple-notification-wrapper {
-                width: auto;
-                left: 20px;
-                right: 20px;
-            }
-        }
-    &#x60;]
+    selector: &#x27;plex-slider&#x27;,
+    template: &#x60;&lt;section id&#x3D;&quot;scroll&quot; #gridContainer (scroll)&#x3D;&quot;onScroll()&quot;&gt;
+                &lt;plex-grid type&#x3D;&quot;full&quot; [size]&#x3D;&quot;size&quot;&gt;
+                    &lt;ng-content&gt;&lt;/ng-content&gt;
+                &lt;/plex-grid&gt;
+                &lt;span prev class&#x3D;&quot;btn-container&quot; [class.disabled]&#x3D;&quot;!onScrolling&quot;&gt;
+                    &lt;plex-button icon&#x3D;&quot;chevron-left&quot; type&#x3D;&quot;info&quot; size&#x3D;&quot;md&quot; (click)&#x3D;&quot;prevSlide()&quot;&gt;
+                    &lt;/plex-button&gt;
+                &lt;/span&gt;
+                &lt;span next class&#x3D;&quot;btn-container&quot; [class.disabled]&#x3D;&quot;scrollStop&quot;&gt;
+                    &lt;plex-button icon&#x3D;&quot;chevron-right&quot;
+                                 type&#x3D;&quot;info&quot; size&#x3D;&quot;md&quot;
+                                 tooltipPosition&#x3D;&quot;left&quot;
+                                 (click)&#x3D;&quot;nextSlide()&quot;
+                                 [disabled]&#x3D;&quot;scrollStop&quot;&gt;
+                    &lt;/plex-button&gt;
+                &lt;/span&gt;
+                &lt;div #dotsContainer class&#x3D;&quot;plex-dots-wrapper&quot;&gt;
+                    &lt;span *ngFor&#x3D;&quot;let t of dotsCount; let $index &#x3D; index;&quot; class&#x3D;&quot;plex-dot&quot; (click)&#x3D;&quot;onDotClick($index)&quot;
+                        [ngClass]&#x3D;&quot;{ &#x27;active&#x27;:  startIndex &lt;&#x3D; $index &amp;&amp; $index &lt;&#x3D; endIndex }&quot;&gt;
+                    &lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/section&gt;&#x60;,
 })
 
-export class SimpleNotificationsComponent implements OnInit, OnDestroy {
 
-    @Input() set options(opt: Options) {
-        this.attachChanges(opt);
-    }
+export class PlexSliderComponent implements AfterViewInit {
 
-    @Output() onCreate &#x3D; new EventEmitter();
-    @Output() onDestroy &#x3D; new EventEmitter();
+    @ContentChildren(PlexGridComponent) plexGrid: QueryList&lt;PlexGridComponent&gt;;
+    @ViewChild(&#x27;gridContainer&#x27;, { static: true }) gridContainer: ElementRef;
+    @Input() size: PlexSize &#x3D; &#x27;md&#x27;;
 
-    public notifications: Notification[] &#x3D; [];
-    public position: [&#x27;top&#x27; | &#x27;bottom&#x27;, &#x27;right&#x27; | &#x27;left&#x27;] &#x3D; [&#x27;bottom&#x27;, &#x27;right&#x27;];
+    public items: number;
+    public itemSize: number;
+    public itemsRestantes: number;
+    public gridHeight: number;
+    public gridWidth: number;
+    public totalWidth: number;
+    public scrollStop &#x3D; false;
+    public onScrolling &#x3D; false;
+    public dots;
 
-    private lastNotificationCreated: Notification;
-    private listener: Subscription;
+    constructor(
+        private elRef: ElementRef,
+        private ref: ChangeDetectorRef
+    ) { }
 
-    // Received values
-    private lastOnBottom &#x3D; true;
-    private maxStack &#x3D; 8;
-    private preventLastDuplicates: any &#x3D; false;
-    private preventDuplicates &#x3D; false;
+    dotsCount;
+    ngAfterViewInit(): void {
 
-    // Sent values
-    public timeOut &#x3D; 0;
-    public maxLength &#x3D; 0;
-    public clickToClose &#x3D; true;
-    public showProgressBar &#x3D; true;
-    public pauseOnHover &#x3D; true;
-    public theClass &#x3D; &#x27;&#x27;;
-    public rtl &#x3D; false;
-    public animate: &#x27;fromRight&#x27; | &#x27;fromLeft&#x27; | &#x27;rotate&#x27; | &#x27;scale&#x27; &#x3D; &#x27;fromRight&#x27;;
+        // obtengo cantidad de elementos en slider
+        const elementos &#x3D; this.elRef.nativeElement.querySelectorAll(&#x27;plex-card&#x27;);
+        this.items &#x3D; elementos.length + 1;
 
-    constructor(private _service: NotificationsService) { }
+        // define custom para el ancho del contenido del slider
+        if (this.items &gt; 0) {
+            this.gridContainer.nativeElement.style.setProperty(&#x27;--item-length&#x27;, this.items);
 
-    ngOnInit(): void {
-        // Listen for changes in the service
-        this.listener &#x3D; this._service.getChangeEmitter()
-            .subscribe(item &#x3D;&gt; {
-                switch (item.command) {
-                    case &#x27;cleanAll&#x27;:
-                        this.notifications &#x3D; [];
-                        break;
-
-                    case &#x27;clean&#x27;:
-                        this.cleanSingle(item.id!);
-                        break;
-
-                    case &#x27;set&#x27;:
-                        if (item.add) {
-                            this.add(item.notification!);
-                        } else {
-                            this.defaultBehavior(item);
-                        }
-                        break;
-
-                    default:
-                        this.defaultBehavior(item);
-                        break;
-                }
-            });
-    }
-
-    // Default behavior on event
-    defaultBehavior(value: any): void {
-        this.notifications.splice(this.notifications.indexOf(value.notification), 1);
-        this.onDestroy.emit(this.buildEmit(value.notification, false));
-    }
-
-
-    // Add the new notification to the notification array
-    add(item: Notification): void {
-        item.createdOn &#x3D; new Date();
-
-        const toBlock: boolean &#x3D; this.preventLastDuplicates || this.preventDuplicates ? this.block(item) : false;
-
-        // Save this as the last created notification
-        this.lastNotificationCreated &#x3D; item;
-
-        if (!toBlock) {
-            // Check if the notification should be added at the start or the end of the array
-            if (this.lastOnBottom) {
-                if (this.notifications.length &gt;&#x3D; this.maxStack) {
-                    this.notifications.splice(0, 1);
-                }
-                this.notifications.push(item);
-            } else {
-                if (this.notifications.length &gt;&#x3D; this.maxStack) {
-                    this.notifications.splice(this.notifications.length - 1, 1);
-                }
-                this.notifications.splice(0, 0, item);
-            }
-
-            this.onCreate.emit(this.buildEmit(item, true));
-        }
-    }
-
-    // Check if notifications should be prevented
-    block(item: Notification): boolean {
-
-        const toCheck &#x3D; item.html ? this.checkHtml : this.checkStandard;
-
-        if (this.preventDuplicates &amp;&amp; this.notifications.length &gt; 0) {
-            for (let i &#x3D; 0; i &lt; this.notifications.length; i++) {
-                if (toCheck(this.notifications[i], item)) {
-                    return true;
-                }
-            }
+            this.dotsCount &#x3D; Array(this.items);
         }
 
-        if (this.preventLastDuplicates) {
+        this.getRestantes();
+        this.setWidth();
+        this.gridContainer.nativeElement.style.setProperty(&#x27;--grid-width&#x27;, this.gridWidth + &#x27;px&#x27;);
 
-            let comp: Notification;
+        this.setHeight();
+        this.gridContainer.nativeElement.style.setProperty(&#x27;--grid-height&#x27;, this.gridHeight + &#x27;px&#x27;);
 
-            if (this.preventLastDuplicates &#x3D;&#x3D;&#x3D; &#x27;visible&#x27; &amp;&amp; this.notifications.length &gt; 0) {
-                if (this.lastOnBottom) {
-                    comp &#x3D; this.notifications[this.notifications.length - 1];
-                } else {
-                    comp &#x3D; this.notifications[0];
-                }
-            } else if (this.preventLastDuplicates &#x3D;&#x3D;&#x3D; &#x27;all&#x27; &amp;&amp; this.lastNotificationCreated) {
-                comp &#x3D; this.lastNotificationCreated;
-            } else {
-                return false;
-            }
-            return toCheck(comp, item);
-        }
-
-        return false;
+        this.ref.detectChanges();
     }
 
-    checkStandard(checker: Notification, item: Notification): boolean {
-        return checker.type &#x3D;&#x3D;&#x3D; item.type &amp;&amp; checker.title &#x3D;&#x3D;&#x3D; item.title &amp;&amp; checker.content &#x3D;&#x3D;&#x3D; item.content;
+    // calcula y define alto de contendor
+    setHeight() {
+        const containerHeight &#x3D; this.gridContainer.nativeElement.clientHeight;
+        this.gridHeight &#x3D; containerHeight;
     }
 
-    checkHtml(checker: Notification, item: Notification): boolean {
-        return checker.html ? checker.type &#x3D;&#x3D;&#x3D; item.type &amp;&amp; checker.title &#x3D;&#x3D;&#x3D; item.title &amp;&amp; checker.content &#x3D;&#x3D;&#x3D; item.content &amp;&amp; checker.html &#x3D;&#x3D;&#x3D; item.html : false;
+    // calcula y define ancho de contenedor
+    setWidth() {
+        const containerWidth &#x3D; this.gridContainer.nativeElement.clientWidth;
+        this.gridWidth &#x3D; containerWidth;
     }
 
-    // Attach all the changes received in the options object
-    attachChanges(options: any): void {
-        Object.keys(options).forEach(a &#x3D;&gt; {
-            if (this.hasOwnProperty(a)) {
-                (&lt;any&gt;this)[a] &#x3D; options[a];
-            }
-        });
+    // calcula ancho total del plex-grid
+    setGridWidth() {
+        const gridWidth &#x3D; this.gridContainer.nativeElement.scrollWidth;
+        this.totalWidth &#x3D; gridWidth;
     }
 
-    buildEmit(notification: Notification, to: boolean) {
-        const toEmit: Notification &#x3D; {
-            createdOn: notification.createdOn,
-            type: notification.type,
-            icon: notification.icon,
-            id: notification.id
-        };
+    getRestantes() {
+        this.setGridWidth();
+        this.setWidth();
+        this.itemSize &#x3D; this.totalWidth / this.items;
+        const offsetWidth &#x3D; this.totalWidth - this.gridWidth;
+        this.itemsRestantes &#x3D; offsetWidth / this.itemSize;
+    }
 
-        if (notification.html) {
-            toEmit.html &#x3D; notification.html;
+    onDotClick(index) {
+        this.gridContainer.nativeElement.scrollLeft &#x3D; this.itemSize * index;
+    }
+
+    prevSlide() {
+        this.gridContainer.nativeElement.scrollLeft -&#x3D; this.itemSize * 2;
+    }
+
+    nextSlide() {
+        this.gridContainer.nativeElement.scrollLeft +&#x3D; this.itemSize * 2;
+    }
+
+    startIndex: number;
+    endIndex: number;
+
+    onScroll() {
+        const leftPosition &#x3D; this.gridContainer.nativeElement.scrollLeft;
+
+        const numeroDeItemsVisibles &#x3D; Math.round(this.gridWidth / this.itemSize);
+
+
+        const centro &#x3D; Math.round(leftPosition / this.itemSize);
+        this.startIndex &#x3D; centro;
+        this.endIndex &#x3D; centro + numeroDeItemsVisibles;
+
+        const finalScroll &#x3D; this.totalWidth;
+        const currentScroll &#x3D; (leftPosition + this.gridWidth) * 1.03;
+
+
+        if (leftPosition &gt; 0) {
+            this.onScrolling &#x3D; true;
         } else {
-            toEmit.title &#x3D; notification.title;
-            toEmit.content &#x3D; notification.content;
+            this.onScrolling &#x3D; false;
         }
 
-        if (!to) {
-            toEmit.destroyedOn &#x3D; new Date();
+        if (currentScroll &gt;&#x3D; finalScroll) {
+            this.scrollStop &#x3D; true;
+        } else {
+            this.scrollStop &#x3D; false;
         }
 
-        return toEmit;
+
     }
 
-    cleanSingle(id: string): void {
-        let indexOfDelete &#x3D; 0;
-        let doDelete &#x3D; false;
-
-        this.notifications.forEach((notification, idx) &#x3D;&gt; {
-            if (notification.id &#x3D;&#x3D;&#x3D; id) {
-                indexOfDelete &#x3D; idx;
-                doDelete &#x3D; true;
-            }
-        });
-
-        if (doDelete) {
-            this.notifications.splice(indexOfDelete, 1);
-        }
-    }
-
-    ngOnDestroy(): void {
-        if (this.listener) {
-            this.listener.unsubscribe();
-        }
-    }
 }
 </code></pre>
         </div>
