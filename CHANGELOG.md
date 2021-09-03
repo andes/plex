@@ -1,3 +1,14 @@
+# [7.19.0](https://github.com/andes/plex/compare/v7.18.2...v7.19.0) (2021-09-03)
+
+
+### Features
+
+* **accordion:** nueva directiva plAccordion ([#295](https://github.com/andes/plex/issues/295)) ([83db570](https://github.com/andes/plex/commit/83db570f9f3d51b378973c740b0d84c9142f53f6))
+* **plex-accordion:** posibilita toggle alternado ([#293](https://github.com/andes/plex/issues/293)) ([735463d](https://github.com/andes/plex/commit/735463d9aba39009ade6c3f20a0751d6c8020511))
+* **plex-card:** tabindex + refactor html plex-label ([#290](https://github.com/andes/plex/issues/290)) ([05437e0](https://github.com/andes/plex/commit/05437e01b414c113299a61f36eefef0d526d4aaa))
+* **plex-label:** posibilita custom-colors ([#296](https://github.com/andes/plex/issues/296)) ([8972ce8](https://github.com/andes/plex/commit/8972ce8c871a29adb7660e116c52046f1eda00d5))
+* **plex-slider:** carrousel de elementos ([#292](https://github.com/andes/plex/issues/292)) ([557cce1](https://github.com/andes/plex/commit/557cce1362dced798070d386ced8406413727f46))
+
 ## [7.18.2](https://github.com/andes/plex/compare/v7.18.1...v7.18.2) (2021-07-19)
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@andes/plex",
-    "version": "7.18.2",
+    "version": "7.19.0",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/andes/plex.git"
