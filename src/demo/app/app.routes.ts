@@ -54,7 +54,12 @@ const appRoutes: Routes = [
     { path: 'box', component: BoxDemoComponent },
     { path: 'text', component: TextDemoComponent },
     { path: 'datetime', component: DateTimeDemoComponent },
-    { path: 'help', component: HelpDemoComponent },
+    {
+        path: 'help', component: HelpDemoComponent,
+        children: [
+            { path: ':id', component: SidebarDetalleComponent }
+        ]
+    },
     { path: 'fonts', component: FontsDemoComponent },
     { path: 'bool', component: BoolDemoComponent },
     { path: 'radio', component: RadioDemoComponent },
