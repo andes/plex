@@ -1,12 +1,14 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { MatTooltip } from '@angular/material/tooltip';
+import { Component, OnInit, Input, HostListener, ViewChild } from '@angular/core';
 import { PlexType } from '../core/plex-type.type';
 
 @Component({
     selector: 'plex-hint',
     template: `
-        <a href="javascript:void(0)" *ngIf="position && content" class="hint-container detach-{{detach}}" [matTooltip]="content" [matTooltipPosition]="position">
+        <span #matTooltip="matTooltip" tabindex="0" role="link" *ngIf="position && content" class="hint-container detach-{{detach}}"
+            [matTooltip]="content" [matTooltipPosition]="position" (click)="showTooltip()">
             <plex-icon class="hint {{ hintType }}" [name]="hintIcon" size="xs" type="light"></plex-icon>
-        </a>
+        </span>
     `
 })
 export class HintComponent implements OnInit {
@@ -31,8 +33,14 @@ export class HintComponent implements OnInit {
 
     constructor() { }
 
+    @ViewChild('matTooltip', { static: false }) matTooltip: MatTooltip;
+
     ngOnInit() {
         this.position = 'above';
+    }
+
+    showTooltip() {
+        this.matTooltip.show(0);
     }
 
     // Si el elemento que tiene la directiva [hint] tiene un evento (click), este se ejecutará, guste o no.

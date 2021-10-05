@@ -1,4 +1,5 @@
 plex-hint {
+    width: 8px;
     .hint-container {
         @include position(relative);
         &.detach-both {
