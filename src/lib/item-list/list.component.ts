@@ -56,7 +56,7 @@ export class PlexListComponent implements AfterViewInit {
 
     @Input() set offset(value: number) {
         if (typeof value === 'number') {
-            this.height = `calc(100% - ${value}px)`;
+            this.height = `calc(100vh - ${value}px)`;
         }
     }
 
