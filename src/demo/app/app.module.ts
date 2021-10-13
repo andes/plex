@@ -48,6 +48,7 @@ import { WrapperDemoComponent } from './wrapper/wrapper.component';
 import { GridDemoComponent } from './grid/grid.component';
 import { CardDemoComponent } from './card/card.component';
 import { SliderDemoComponent } from './slider/slider.component';
+import { MininavDemoComponent } from './mininav/mininav.component';
 
 // Template
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
@@ -119,6 +120,7 @@ import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar
         GridDemoComponent,
         CardDemoComponent,
         SliderDemoComponent,
+        MininavDemoComponent,
         ListadoSidebarComponent,
         SidebarDetalleComponent,
         MainListadoComponent,

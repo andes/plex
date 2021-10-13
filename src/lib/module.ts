@@ -61,6 +61,8 @@ import { PreviewDirective } from './visualizador/preview.directive';
 import { ResponsiveDirective } from './directives/responsive.directive';
 import { SpanDirective } from './directives/span.directive';
 import { CaseDirective } from './directives/case.directive';
+import { PlexMininavComponent } from './mininav/mininav.component';
+import { PlexMininavItemComponent } from './mininav/mininav-item/mininav-item.component';
 
 // Third party
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -151,6 +153,8 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         PlexTableSortPipe,
         PlexColumnDirective,
         PlexSliderComponent,
+        PlexMininavComponent,
+        PlexMininavItemComponent,
 
         // Directivas
         AlignDirective,
@@ -229,6 +233,8 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         PlexTableColumnsComponent,
         PlexTableSortPipe,
         PlexSliderComponent,
+        PlexMininavComponent,
+        PlexMininavItemComponent,
 
         // Directivas
         AlignDirective,

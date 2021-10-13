@@ -1,5 +1,5 @@
 import { Component, Input, ElementRef, HostListener, OnInit, AfterViewInit, ViewChild, Renderer2, ContentChildren, QueryList, ChangeDetectorRef } from '@angular/core';
-import { PlexListComponent } from '../item-list/list.component';
+import { PlexMininavComponent } from './../mininav/mininav.component';
 
 @Component({
     selector: 'plex-layout-sidebar',
@@ -8,13 +8,16 @@ import { PlexListComponent } from '../item-list/list.component';
         <ng-content select="header"></ng-content>
         <ng-content select="plex-title[main]"></ng-content>
         <div #content class="plex-box-content">
-            <ng-content></ng-content>
+        <ng-content select="plex-mininav"></ng-content>
+        <ng-content></ng-content>
         </div>
     </div>
     `,
 })
 export class PlexLayoutSidebarComponent implements OnInit, AfterViewInit {
     @ViewChild('content', { read: ElementRef, static: false }) content: ElementRef;
+    @ContentChildren(PlexMininavComponent) mininav: QueryList<ElementRef>;
+
     @Input() type = '';
 
     constructor(private render: Renderer2, private ref: ChangeDetectorRef) {
@@ -22,11 +25,11 @@ export class PlexLayoutSidebarComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.checkScroll();
-
     }
 
     ngAfterViewInit(): void {
         this.ref.detectChanges();
+        this.checkMininav();
     }
 
     checkScroll() {
@@ -41,5 +44,12 @@ export class PlexLayoutSidebarComponent implements OnInit, AfterViewInit {
     @HostListener('window:resize', ['event'])
     onResize() {
         this.checkScroll();
+    }
+
+    // detecta mininav y modica display a 'grid'
+    checkMininav() {
+        if (this.mininav.length > 0) {
+            this.render.addClass(this.content.nativeElement, 'mininav');
+        }
     }
 }

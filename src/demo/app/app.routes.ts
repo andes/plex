@@ -47,6 +47,7 @@ import { AlignDemoComponent } from './directives/componentes/align/align.compone
 import { InternacionComponent } from './templates/modulos/internacion/internacion';
 import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar/detalle/recurso-detalle.component';
 import { SliderDemoComponent } from './slider/slider.component';
+import { MininavDemoComponent } from './mininav/mininav.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -82,6 +83,7 @@ const appRoutes: Routes = [
     { path: 'grid', component: GridDemoComponent },
     { path: 'card', component: CardDemoComponent },
     { path: 'slider', component: SliderDemoComponent },
+    { path: 'mininav', component: MininavDemoComponent },
     { path: 'templates', component: TemplateInicioComponent },
     { path: 'templates/form', component: TemplateFormComponent },
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },
