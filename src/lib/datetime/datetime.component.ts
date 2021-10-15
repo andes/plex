@@ -17,7 +17,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                 {{ label }}
                 <span *ngIf="control.name && esRequerido" class="requerido"></span>
             </label>
-            <div *ngIf="hintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
+            <div *ngIf="currentHintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
             <div class="input-group d-flex align-items-center">
                 <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
 
@@ -297,5 +297,9 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
 
     makeTooltip(dir) {
         return this.skipBy === 'hour' ? `hora ${dir}` : this.skipBy === 'day' ? `día ${dir}` : this.skipBy === 'month' ? `mes ${dir}` : `año ${dir}`;
+    }
+
+    get currentHintAction() {
+        return this.hintAction;
     }
 }
