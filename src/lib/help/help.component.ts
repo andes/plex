@@ -1,12 +1,13 @@
-import { Component, Input, Renderer2, Output, EventEmitter, ElementRef, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
+import { PlexType } from './../core/plex-type.type';
+import { Component, Input, Renderer2, Output, EventEmitter, ElementRef, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
     selector: 'plex-help',
     template: `
     <plex-button class="btn-close" *ngIf="!closed" type="danger" [size]="size" icon="close" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>
-    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" type="info" [size]="size" [icon]="icon" (click)="toggle();$event.stopImmediatePropagation();">
+    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" [type]="btnType" [size]="size" [icon]="icon" (click)="toggle();$event.stopImmediatePropagation();">
     </plex-button>
-    <plex-button class="btn-open" *ngIf="content && closed && tituloBoton" type="info" [size]="size" [label]="tituloBoton" (click)="toggle();$event.stopImmediatePropagation();">
+    <plex-button class="btn-open" *ngIf="content && closed && tituloBoton" [type]="btnType" [size]="size" [label]="tituloBoton" (click)="toggle();$event.stopImmediatePropagation();">
     </plex-button>
     <div class="toggle-help" [ngClass]="{'closed': closed, 'open': !closed}" #plHelpBody>
         <div class="card help" [class.open]="!closed" [class.closed]="closed" [ngClass]="cardSize" (click)="$event.stopImmediatePropagation();">
@@ -21,7 +22,7 @@ import { Component, Input, Renderer2, Output, EventEmitter, ElementRef, ViewChil
     </div>
     `
 })
-export class PlexHelpComponent implements OnInit {
+export class PlexHelpComponent {
 
 
     @Input() titulo = '';
@@ -36,6 +37,8 @@ export class PlexHelpComponent implements OnInit {
 
     @Input() type: 'info' | 'help' = 'help'; // deprecated
 
+    @Input() btnType: PlexType = 'info';
+
     @Input() tituloBoton = '';
 
     @Input() icon = 'help';
@@ -48,10 +51,6 @@ export class PlexHelpComponent implements OnInit {
 
     closed = true;
 
-    @ViewChild('plHelpBody', { read: ViewContainerRef }) plHelpBody: ElementRef<HTMLElement>;
-    div: any;
-    rect: any;
-
     constructor(
         private elementRef: ElementRef,
         private renderer: Renderer2
@@ -61,25 +60,10 @@ export class PlexHelpComponent implements OnInit {
         return (this.icon && this.icon.length > 0) || (this.tituloBoton && this.tituloBoton.length > 0);
     }
 
-    ngOnInit() {
-        // this.plHelpBody.changes.subscribe(changes => {
-        //     console.log(changes);
-        // });
-    }
-
-    // ngAfterViewInit() {
-    //     var div = this.elementRef.nativeElement.querySelector('div');
-    //     console.log(div);
-    // }
-
-    // for transcluded content
-    ngAfterContentInit() {
-
-    }
-
     public toggle() {
         this.closed = !this.closed;
         if (!this.closed) {
+
             setTimeout(() => {
                 const toggleDiv = this.elementRef.nativeElement.querySelector('div.toggle-help');
                 const auto = toggleDiv.querySelector('.auto');
@@ -88,8 +72,6 @@ export class PlexHelpComponent implements OnInit {
                     toggleDiv.querySelector('div.card-body').style.height = `calc(100vh - ${offset}px)`;
                 }
             }, 0);
-
-
 
             this.open.emit();
             this.unlisten = this.renderer.listen('document', 'click', (event) => {
