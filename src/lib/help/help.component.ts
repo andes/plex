@@ -4,9 +4,9 @@ import { Component, Input, Renderer2, Output, EventEmitter } from '@angular/core
     selector: 'plex-help',
     template: `
     <plex-button class="btn-close" *ngIf="!closed" type="danger" [size]="size" icon="close" (click)="toggle();$event.stopImmediatePropagation();"></plex-button>
-    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" [type]="btnType" [size]="size" [icon]="icon" (click)="toggle();$event.stopImmediatePropagation();">
+    <plex-button class="btn-open" *ngIf="content && closed && !tituloBoton" type="info" [size]="size" [icon]="icon" (click)="toggle();$event.stopImmediatePropagation();">
     </plex-button>
-    <plex-button class="btn-open" *ngIf="content && closed && tituloBoton" [type]="btnType" [size]="size" [label]="tituloBoton" (click)="toggle();$event.stopImmediatePropagation();">
+    <plex-button class="btn-open" *ngIf="content && closed && tituloBoton" type="info" [size]="size" [label]="tituloBoton" (click)="toggle();$event.stopImmediatePropagation();">
     </plex-button>
     <div class="toggle-help" [ngClass]="{'closed': closed, 'open': !closed}">
         <div class="card help" [ngClass]="{'open': !closed, 'full': cardSize === 'full', 'half': cardSize === 'half'}" (click)="$event.stopImmediatePropagation();">
@@ -35,8 +35,6 @@ export class PlexHelpComponent {
     @Input() title: string;
 
     @Input() type: 'info' | 'help' = 'help'; // deprecated
-
-    @Input() btnType: PlexType = 'info';
 
     @Input() tituloBoton = '';
 
