@@ -102,9 +102,8 @@
       <p>plex-help (cardSize:'half')</p>
 
       <plex-title size="sm" titulo="plex-help con acción interna y toggle()" class="mb-4">
-        <plex-help #helpTest type="info" titulo="seguimiento de pacientes" size="sm" icon="paciente" cardSize="auto"
-          btnType="warning">
-          <plex-list size="md" *plHelp>
+        <plex-help #helpTest type="info" titulo="seguimiento de pacientes" size="sm" icon="paciente" cardSize="full">
+          <plex-list size="md">
             <plex-item *ngFor="let paciente of pacientes$ | async | slice:0:3">
               <img src="{{ paciente.foto }}" alt="">
               <plex-label titulo="{{ paciente.apellido }}, {{ paciente.nombre }}" subtitulo="{{ paciente.documento }}">
@@ -148,7 +147,7 @@
 
     <plex-title titulo="plex-help (type ='info')" size="sm">
       <plex-button size="sm" type="success" label="acción satisfactoria"></plex-button>
-      <plex-help titulo="Información sobre este panel" subtitulo="A continuación los pasos a seguir" btnType="success">
+      <plex-help titulo="Información sobre este panel" subtitulo="A continuación los pasos a seguir">
         <ol info class="list-group-flush">
           <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
             (acepta búsquedas

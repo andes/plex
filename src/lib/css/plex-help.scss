@@ -52,12 +52,6 @@ plex-help {
       overflow-y: scroll;
       max-height: 70vh;
     }
-    &.auto {
-      width: auto;
-      height: auto;
-      overflow-x: hidden;
-      overflow-y: scroll;
-    }
 
     // @Input() titulo:
     .card-header {
