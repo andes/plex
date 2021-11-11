@@ -87,6 +87,8 @@ import { PlexTableSortPipe } from './table/table-sort.pipe';
 import { PlexColumnDirective } from './table/columns.directive';
 import { AccordionDirective } from './accordion/pl-accordion.directive';
 import { PlexVisualizadorService } from './core/plex-visualizador.service';
+import { PlexMininavComponent } from './mininav/mininav.component';
+import { PlexMininavItemComponent } from './mininav/mininav-item/mininav-item.component';
 
 @NgModule({
     imports: [
@@ -151,6 +153,8 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         PlexTableSortPipe,
         PlexColumnDirective,
         PlexSliderComponent,
+        PlexMininavComponent,
+        PlexMininavItemComponent,
 
         // Directivas
         AlignDirective,
@@ -229,6 +233,8 @@ import { PlexVisualizadorService } from './core/plex-visualizador.service';
         PlexTableColumnsComponent,
         PlexTableSortPipe,
         PlexSliderComponent,
+        PlexMininavComponent,
+        PlexMininavItemComponent,
 
         // Directivas
         AlignDirective,

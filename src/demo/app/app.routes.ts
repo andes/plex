@@ -36,6 +36,8 @@ import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/det
 import { DemoIconComponent } from './icon/icon';
 import { NavbarDemoComponent } from './navbar/navbar';
 import { ModalTemplateComponent } from './templates/componentes/plex-modal-template/plex-modal-template';
+import { PuntoInicioComponent } from './templates/punto-inicio/punto-inicio.component';
+import { DetalleAgendaComponent } from './templates/punto-inicio/punto-inicio-sidebar/detalle-agenda/detalle-agenda.component';
 import { CardDemoComponent } from './card/card.component';
 import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
 import { MpiAltaComponent } from './templates/modulos/mpi/main/alta/mpi-alta.component';
@@ -86,6 +88,12 @@ const appRoutes: Routes = [
     { path: 'templates/form', component: TemplateFormComponent },
     { path: 'templates/form-sidebar', component: TemplateBotoneraSidebarComponent },
     { path: 'templates/visualizacion', component: TemplateVisualizacionComponent },
+    {
+        path: 'templates/punto-inicio', component: PuntoInicioComponent,
+        children: [
+            { path: ':id', component: DetalleAgendaComponent }
+        ]
+    },
     { path: 'templates/busqueda', component: TemplateBusquedaComponent },
     { path: 'templates/mpi-maquetado/mpi-alta', component: MpiAltaComponent },
     {

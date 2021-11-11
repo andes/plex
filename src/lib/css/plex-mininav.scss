@@ -1,0 +1,168 @@
+@import './variables.scss';
+@import './mixins/_contrast.scss';
+    
+// Mixins estados
+@mixin mininavItemHover {
+    &:hover, &.selected {
+        cursor: pointer;
+        //box-shadow: inset 0 0 0 2px var(--color-base)!important;
+        background-color: var(--color-baseDark)!important;
+        filter: brightness(0.85);
+    }
+}
+
+plex-mininav {
+
+    > section {
+        --mininavWidth: 55px;
+        --mininavHeight: 100vh;
+        --border-color: gray;
+        
+        display: flex;
+        flex-direction: column;
+        width: var(--mininavWidth);
+        height: var(--mininavHeight);
+        background-color: var(--nav-color);
+        transition: width 900ms ease;
+        border-right: solid 1px var(--border-color);
+        color: inherit;
+        
+        nav, ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        & > nav {
+            --vHeight: 200px;
+            height: calc(100vh - var(--vHeight));
+            position: fixed;
+            overflow-x: hidden;
+
+            plex-label > div.plex-label > div > span {
+                opacity: 0;
+                white-space: pre;
+            }
+        }
+
+        ul {
+            --color-base: var(--nav-color);
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0;
+            padding: 0;
+
+            background-color: var(--color-base);
+
+            &[sup] {
+                justify-content: flex-start;
+            }
+            
+            &[inf] {
+                justify-content: flex-end;
+            }
+
+            .plex-mininav-item {
+                 
+                    --color-base: var(--nav-color);
+                    --color-baseDark: var(--nav-color);
+
+                    width: var(--mininavWidth);
+                    padding: .5rem .5rem .5rem 0;
+                    margin: 0;
+                    list-style: none;
+                    background-color: var(--nav-color)!important;
+                    
+                    @include mininavItemHover;
+                }
+             
+        }
+
+        &.expanded {
+            --mininavWidth: 200px;
+
+            width: var(--mininavWidth);
+            > nav {
+                overflow-x: visible;
+                plex-label > div.plex-label > div > span {
+                    opacity: 1;
+                    transition: opacity 900ms ease-in;
+                } 
+                
+                > ul > plex-mininav-item > li {
+                    width: var(--mininavWidth);
+                    transition: width 900ms ease-in;
+                }
+            }
+
+            .nav-resizable-btn-wrapper {
+                left: calc(var(--mininavWidth) + 16px);
+            }
+        }
+
+        /* Botonera sidebar expandible */
+        > .nav-resizable-btn-wrapper {
+            display: none;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 1;
+            left: 71px;
+            top: calc(50vh - 5rem);
+            background: $light-grey;
+            box-shadow: 1px 1px 12px 3px $dark-grey;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-top-right-radius: 25%;
+            border-bottom-right-radius: 25%;
+            transform: scale(.6);
+            cursor: col-resize!important;
+            opacity: .4;
+
+            &.resizable {
+                display: flex!important;
+                transition: all 900ms ease;
+            }
+
+            &:hover {
+                opacity: 1;
+
+                hr.divisor {
+                    height: 100vh;
+                    transition: height 1s ease;
+                    border: solid 2px $blue;
+                    left: 0;
+                }
+            }
+            
+            hr.divisor {
+                height: 2.5rem;
+                position: absolute;
+            }
+        }
+    }
+}
+
+plex-layout-sidebar {
+    plex-mininav {
+        > section {
+            --border-color: white;
+            border-right: solid 1px var(--border-color);
+
+            &.expanded {
+                --expandedWidth: 200px;
+    
+                width: var(--expandedWidth);
+                overflow-x: visible;
+    
+                .nav-resizable-btn-wrapper {
+                    left: var(--expandedWidth);
+                }
+            }
+
+            > .nav-resizable-btn-wrapper {
+                left: 58px;
+            }
+        }
+    }
+}

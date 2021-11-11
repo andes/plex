@@ -1,0 +1,20 @@
+<plex-title size="sm" titulo="Teleprestaciones"></plex-title>
+<plex-list>
+    <plex-item *ngFor="let solicitud of solicitudes$ | async">
+        <plex-label icon="{{ solicitud.organizacionId === 1 ? 'hospital' : 'hombre-caminando' }}" size="lg"
+                    type="default" titulo="{{ solicitud.unidadOrganizativa }}" subtitulo="{{ solicitud.servicio }}">
+        </plex-label>
+        <plex-label icon="paciente" size="sm" type="default"
+                    titulo="{{ solicitud.paciente.nombre }} {{ solicitud.paciente.apellido }}"
+                    subtitulo="{{ solicitud.paciente.documento }}">
+        </plex-label>
+        <plex-label size=" sm" icon="medico" direction="row" type="info" titulo="{{ solicitud.profesionalOrigen }}"
+                    subtitulo="{{ solicitud.prestacionOrigen }}">
+        </plex-label>
+        <plex-badge type="info">{{ solicitud.organizativaId != 1 ? 'solicitud' : 'interconsulta' }}
+        </plex-badge>
+        <plex-button size="sm" type="info" icon="eye"></plex-button>
+        <plex-button size="sm" type="info" icon="historial"></plex-button>
+        <plex-button size="sm" type="warning" icon="documento-lapiz"></plex-button>
+    </plex-item>
+</plex-list>

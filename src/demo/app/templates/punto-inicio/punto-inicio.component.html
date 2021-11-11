@@ -1,0 +1,114 @@
+<plex-layout main="{{ sidebarValue }}" resizable="true" [min]="2" [max]="6" [steps]="2">
+    <plex-layout-main>
+        <plex-title titulo="punto de inicio rup" main></plex-title>
+        <!-- Mininav -->
+        <plex-mininav>
+            <ul sup>
+                <li plex-mininav-item *ngFor="let item of menu$ | async" target="{{ item.target }}"
+                    titulo="{{ item.nombre }}" icono="{{ item.icono }}">
+                </li>
+            </ul>
+            <ul inf>
+                <li plex-mininav-item titulo="Navegar por ruteo" link="templates" icono="logo-youtube">
+                </li>
+            </ul>
+        </plex-mininav>
+
+        <plex-grid cols="3" class="align-self-start mr-2">
+            <!-- Teleprestaciones -->
+            <section span="1" class="align-self-start mr-2">
+                <plex-teleprestaciones>
+
+                </plex-teleprestaciones>
+            </section>
+
+            <!-- Listado -->
+            <section span="2" id="ancla">
+                <plex-punto-inicio-main (eventoSidebar)="recibirSidebar($event)">
+                </plex-punto-inicio-main>
+            </section>
+        </plex-grid>
+
+    </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+
+        <plex-title titulo="Buscar" main>
+            <plex-button type="danger" icon="close" size="sm" (click)="contraerSidebar()"></plex-button>
+        </plex-title>
+
+        <plex-mininav>
+            <ul sup>
+                <li plex-mininav-item *ngFor="let item of menu$ | async" target="{{ item.target }}"
+                    titulo="{{ item.nombre }}" tooltip="{{ item.target }}" icono="{{ item.icono }}">
+                </li>
+            </ul>
+            <ul inf>
+                <li plex-mininav-item titulo="" link="accordion" titulo="Navegar por ruteo" icono="logo-youtube">
+                </li>
+            </ul>
+        </plex-mininav>
+
+        <plex-title anchor="miHuds" size="sm" titulo="miHuds"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title size="sm" titulo="subtitulo 2"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title size="sm" titulo="subtitulo 1"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title size="sm" titulo="subtitulo 2"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title anchor="misConsultas" size="sm" titulo="id=misConsultas"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title size="sm" titulo="subtitulo 1"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+        <plex-title size="sm" titulo="subtitulo 2"></plex-title>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,</p>
+
+        <ng-container *ngIf="sidebarValue === 10">
+            <plex-wrapper>
+                <plex-datetime label="Ingrese la fecha" [(ngModel)]="tModel.fechaHora" name="fechaHora" required>
+                </plex-datetime>
+                <plex-select grow="3" [(ngModel)]="modelo1.select" [data]="opciones"
+                             label-field="nombre + ' (' + continente + ')'" label="Seleccione una prestación">
+                </plex-select>
+                <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre">
+                </plex-text>
+            </plex-wrapper>
+            <section aligned="center" vHeight="30">
+                <plex-label size="xl" type="info" titulo="Busca y selecciona un paciente"
+                            subtitulo="prdras ver detalles del registro" icon="magnify" direction="column">
+                </plex-label>
+            </section>
+        </ng-container>
+        <ng-container *ngIf="sidebarValue === 8">
+            <router-outlet></router-outlet>
+        </ng-container>
+    </plex-layout-sidebar>
+</plex-layout>

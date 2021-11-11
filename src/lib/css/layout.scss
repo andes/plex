@@ -66,6 +66,46 @@ plex-layout {
         }
     }
 
+    // mininav
+    plex-layout-main {
+        div.plex-box-content {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: min-content 1fr;
+            grid-gap: .5rem;
+    
+            > plex-mininav {
+                grid-column: 1;
+                grid-row: 2 / -1;
+            }
+            
+            div.plex-content {
+                grid-column: 2;
+                grid-row: 1 / -1;
+            }
+        }
+    }
+
+
+    plex-layout-sidebar {        
+        div.plex-box-content {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: min-content 1fr;
+            grid-gap: .5rem;
+
+            > plex-mininav {
+                grid-column: 1;
+                grid-row: 2 / -1;
+            }
+    
+            div.plex-content {
+                grid-column: 2;
+                grid-row: 1 / -1;
+            }
+        }
+    }
+
     &[resizable="true"] > section {
         > div.row {
             > div[class*="col-"] {
