@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { of } from 'rxjs';
 import { Plex } from '../../lib/core/service';
 import { DropdownItem } from './../../lib/dropdown/dropdown-item.inteface';
 
@@ -9,6 +10,28 @@ import { DropdownItem } from './../../lib/dropdown/dropdown-item.inteface';
 export class AppComponent implements OnInit {
     // Hace que PlexService sea un singleton para toda la aplicación
     constructor(public plex: Plex) { }
+
+    public columns = [
+        {
+            key: 'col-1',
+            label: 'Título',
+        },
+        {
+            key: 'col-2',
+            label: 'Matrícula',
+        },
+        {
+            key: 'col-4',
+            label: 'Vencimiento/Estado',
+        },
+    ];
+
+    data$ = of([
+        { titulo: 'Médico', matricula: '34934522', vencimiento: new Date(2021, 0, 0), estado: { type: 'success', texto: 'vigente' } },
+        { titulo: 'Kinesiólogo', matricula: '10000005', vencimiento: new Date(2020, 0, 0), estado: { type: 'danger', texto: 'suspendida' } },
+        { titulo: 'Enfermero', matricula: '20000003', vencimiento: new Date(2024, 0, 0), estado: { type: 'warning', texto: 'vencida' } },
+        { titulo: 'Psicólogo', matricula: '15000000', vencimiento: new Date(1990, 0, 0), estado: { type: 'success', texto: 'vigente' } },
+    ]);
 
     ngOnInit() {
         this.plex.updateTitle('Plex: UI/UX para ANDES');

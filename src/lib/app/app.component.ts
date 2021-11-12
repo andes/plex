@@ -46,7 +46,14 @@ import { Plex } from './../core/service';
                             </div>
                             <div *ngIf="plex.userInfo" class="userinfo hidden-sm-down">
                                 <div>
-                                    <span>{{plex.userInfo.usuario.nombreCompleto}}</span><br><span *ngIf="plex.userInfo.organizacion">{{plex.userInfo.organizacion.nombre}}</span>
+                                    <span>{{ plex.userInfo.usuario.nombreCompleto }}</span><br><span *ngIf="plex.userInfo.organizacion">{{ plex.userInfo.organizacion.nombre }}</span>
+                                </div>
+                                <div class="user-menu">
+                                    <div nav-item>
+                                        <plex-icon name="chevron-down"></plex-icon>
+                                        <plex-title titulo="Mis Datos"></plex-title>
+                                        <ng-content select=".user-profile"></ng-content>
+                                    </div>
                                 </div>
                             </div>
                             <!--Menu-->

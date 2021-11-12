@@ -32,4 +32,19 @@
       </plex-item>
     </plex-list>
   </div>
+  <div class="user-profile">
+    <plex-title titulo="Matrículas" size="sm"></plex-title>
+    <plex-list>
+      <plex-item *ngFor="let item of (data$ | async)">
+        <plex-label [titulo]="item.titulo"></plex-label>
+        <plex-label [titulo]="item.matricula"></plex-label>
+        <plex-badge type="info">
+          {{ item.vencimiento | date }}
+        </plex-badge>
+        <plex-badge [type]="item.estado.type">
+          {{ item.estado.texto }}
+        </plex-badge>
+      </plex-item>
+    </plex-list>
+  </div>
 </plex-app>
