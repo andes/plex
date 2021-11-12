@@ -1,236 +1,240 @@
 <plex-layout main="8">
-  <plex-layout-main>
+    <plex-layout-main>
 
-    <plex-title main titulo="plex-help (type ='help')">
-      <plex-button size="sm" type="warning" label="acción sensible"></plex-button>
-      <plex-help type="info" titulo="Ayuda de este panel" size="sm">
-        <div class="ml-4 mb-4" *plHelp>
-          <label>Organización:</label>
-          prestacion.solicitud.organizacion.nombre
-          <label>Fecha:</label>
-          prestacion.solicitud.fecha | date
-          <label>Prestación de origen:</label>
-          prestacion.solicitud.prestacionOrigen
-          {{ asyncContent | async | json }}
-          <label>Organización:</label>
-          prestacion.solicitud.organizacion.nombre
-          <label>Fecha:</label>
-          prestacion.solicitud.fecha | date
-          <label>Prestación de origen:</label>
-          prestacion.solicitud.prestacionOrigen
-          {{ asyncContent | async | json }}
+        <plex-title main titulo="plex-help (type ='help')">
+            <plex-button size="sm" type="warning" label="acción sensible"></plex-button>
+            <plex-help type="info" titulo="Ayuda de este panel" size="sm">
+                <div class="ml-4 mb-4" *plHelp>
+                    <label>Organización:</label>
+                    prestacion.solicitud.organizacion.nombre
+                    <label>Fecha:</label>
+                    prestacion.solicitud.fecha | date
+                    <label>Prestación de origen:</label>
+                    prestacion.solicitud.prestacionOrigen
+                    {{ asyncContent | async | json }}
+                    <label>Organización:</label>
+                    prestacion.solicitud.organizacion.nombre
+                    <label>Fecha:</label>
+                    prestacion.solicitud.fecha | date
+                    <label>Prestación de origen:</label>
+                    prestacion.solicitud.prestacionOrigen
+                    {{ asyncContent | async | json }}
 
-          <label>Organización:</label>
-          prestacion.solicitud.organizacion.nombre
-          <label>Fecha:</label>
-          prestacion.solicitud.fecha | date
-          <label>Prestación de origen:</label>
-          prestacion.solicitud.prestacionOrigen
-          {{ asyncContent | async | json }}
-          <label>Organización:</label>
-          prestacion.solicitud.organizacion.nombre
-          <label>Fecha:</label>
-          prestacion.solicitud.fecha | date
-          <label>Prestación de origen:</label>
-          prestacion.solicitud.prestacionOrigen
-          {{ asyncContent | async | json }}
-          <label>Organización:</label>
-          prestacion.solicitud.organizacion.nombre
-          <label>Fecha:</label>
-          prestacion.solicitud.fecha | date
-          <label>Prestación de origen:</label>
-          prestacion.solicitud.prestacionOrigen
-          {{ asyncContent | async | json }}
-          <label>Organización:</label>
-          prestacion.solicitud.organizacion.nombre
-          <label>Fecha:</label>
-          prestacion.solicitud.fecha | date
-          <label>Prestación de origen:</label>
-          prestacion.solicitud.prestacionOrigen
-          {{ asyncContent | async | json }}
-        </div>
-      </plex-help>
-    </plex-title>
-    <main role="main" class="inner">
-      <p class="lead">
-        El componente <em>plex-help</em> sirve como una ayuda más o menos amplia sobre un
-        módulo, pantalla o sección.
-      </p>
-      <ul>
-        <li class="list-item">En su tipología 'help', muestra un ícono de ayuda, sin subtítulo. Se usa como
-          ayuda contextual
-          de un panel o sección dentro de la pantalla.
-        </li>
-        <li class="list-item">En su tipología 'info', muestra un ícono de información, y opcionalmente puede
-          mostrar un subtítulo. Se usa como un panel de información general, descriptiva de un módulo o
-          pantalla.
-        </li>
-      </ul>
-      <hr>
+                    <label>Organización:</label>
+                    prestacion.solicitud.organizacion.nombre
+                    <label>Fecha:</label>
+                    prestacion.solicitud.fecha | date
+                    <label>Prestación de origen:</label>
+                    prestacion.solicitud.prestacionOrigen
+                    {{ asyncContent | async | json }}
+                    <label>Organización:</label>
+                    prestacion.solicitud.organizacion.nombre
+                    <label>Fecha:</label>
+                    prestacion.solicitud.fecha | date
+                    <label>Prestación de origen:</label>
+                    prestacion.solicitud.prestacionOrigen
+                    {{ asyncContent | async | json }}
+                    <label>Organización:</label>
+                    prestacion.solicitud.organizacion.nombre
+                    <label>Fecha:</label>
+                    prestacion.solicitud.fecha | date
+                    <label>Prestación de origen:</label>
+                    prestacion.solicitud.prestacionOrigen
+                    {{ asyncContent | async | json }}
+                    <label>Organización:</label>
+                    prestacion.solicitud.organizacion.nombre
+                    <label>Fecha:</label>
+                    prestacion.solicitud.fecha | date
+                    <label>Prestación de origen:</label>
+                    prestacion.solicitud.prestacionOrigen
+                    {{ asyncContent | async | json }}
+                </div>
+            </plex-help>
+        </plex-title>
+        <main role="main" class="inner">
+            <p class="lead">
+                El componente <em>plex-help</em> sirve como una ayuda más o menos amplia sobre un
+                módulo, pantalla o sección.
+            </p>
+            <ul>
+                <li class="list-item">En su tipología 'help', muestra un ícono de ayuda, sin subtítulo. Se usa como
+                    ayuda contextual
+                    de un panel o sección dentro de la pantalla.
+                </li>
+                <li class="list-item">En su tipología 'info', muestra un ícono de información, y opcionalmente puede
+                    mostrar un subtítulo. Se usa como un panel de información general, descriptiva de un módulo o
+                    pantalla.
+                </li>
+            </ul>
+            <hr>
 
-      <plex-title size="sm" titulo="plex-help (cardSize:'half')" class="mb-4">
-        <plex-badge type="info" size="sm">plex-help</plex-badge>
-        <plex-help titulo="size = sm, cardSize = half" size="sm" cardSize="half">
-          <div class="ml-4 mb-4">
-            <label>Organización:</label>
-            prestacion.solicitud.organizacion.nombre
-          </div>
-        </plex-help>
-      </plex-title>
-      <p>plex-help (cardSize:'half')</p>
+            <plex-title size="sm" titulo="plex-help (cardSize:'half')" class="mb-4">
+                <plex-badge type="info" size="sm">plex-help</plex-badge>
+                <plex-help titulo="size = sm, cardSize = half" size="sm" cardSize="half">
+                    <div class="ml-4 mb-4">
+                        <label>Organización:</label>
+                        prestacion.solicitud.organizacion.nombre
+                    </div>
+                </plex-help>
+            </plex-title>
+            <p>plex-help (cardSize:'half')</p>
 
-      <plex-title size="sm" titulo="plex-help" class="mb-4">
-        <plex-badge type="info" size="sm">plex-help</plex-badge>
-        <plex-help titulo="size = sm" size="sm">
-          <div class="ml-4 mb-4">
-            <label>Organización:</label>
-            prestacion.solicitud.organizacion.nombre
-          </div>
-        </plex-help>
-      </plex-title>
-      <p>plex-help (size:'sm')</p>
+            <plex-title size="sm" titulo="plex-help" class="mb-4">
+                <plex-badge type="info" size="sm">plex-help</plex-badge>
+                <plex-help titulo="size = sm" size="sm">
+                    <div class="ml-4 mb-4">
+                        <label>Organización:</label>
+                        prestacion.solicitud.organizacion.nombre
+                    </div>
+                </plex-help>
+            </plex-title>
+            <p>plex-help (size:'sm')</p>
 
-      <plex-title size="sm" titulo="plex-help (cardSize:'half')" class="mb-4">
-        <plex-badge type="info" size="sm">plex-help</plex-badge>
-        <plex-help titulo="size = sm, cardSize = half" size="sm" cardSize="half">
-          <div class="ml-4 mb-4">
-            <label>Organización:</label>
-            prestacion.solicitud.organizacion.nombre
-          </div>
-        </plex-help>
-      </plex-title>
-      <p>plex-help (cardSize:'half')</p>
+            <plex-title size="sm" titulo="plex-help (cardSize:'half')" class="mb-4">
+                <plex-badge type="info" size="sm">plex-help</plex-badge>
+                <plex-help titulo="size = sm, cardSize = half" size="sm" cardSize="half">
+                    <div class="ml-4 mb-4">
+                        <label>Organización:</label>
+                        prestacion.solicitud.organizacion.nombre
+                    </div>
+                </plex-help>
+            </plex-title>
+            <p>plex-help (cardSize:'half')</p>
 
-      <plex-title size="sm" titulo="plex-help con acción interna y toggle()" class="mb-4">
-        <plex-help #helpTest type="info" titulo="seguimiento de pacientes" size="sm" icon="paciente" cardSize="auto">
-          <plex-list size="md" *plHelp>
-            <plex-item *ngFor="let paciente of pacientes$ | async | slice:0:3">
-              <img src="{{ paciente.foto }}" alt="">
-              <plex-label titulo="{{ paciente.apellido }}, {{ paciente.nombre }}" subtitulo="{{ paciente.documento }}">
+            <plex-title size="sm" titulo="plex-help con acción interna y toggle()" class="mb-4">
+                <plex-help #helpTest type="info" titulo="seguimiento de pacientes" size="sm" icon="paciente"
+                           cardSize="auto">
+                    <plex-list size="md" *plHelp>
+                        <plex-item *ngFor="let paciente of pacientes$ | async | slice:0:3">
+                            <img src="{{ paciente.foto }}" alt="">
+                            <plex-label titulo="{{ paciente.apellido }}, {{ paciente.nombre }}"
+                                        subtitulo="{{ paciente.documento }}">
 
-              </plex-label>
-              <plex-label titulo="Edad" subtitulo="{{ paciente.edad }}">
+                            </plex-label>
+                            <plex-label titulo="Edad" subtitulo="{{ paciente.edad }}">
 
-              </plex-label>
-              <plex-label titulo="Financiador" subtitulo="{{ paciente.financiador }}">
+                            </plex-label>
+                            <plex-label titulo="Financiador" subtitulo="{{ paciente.financiador }}">
 
-              </plex-label>
-              <plex-badge type="info" size="sm">{{ paciente.fechaNacimiento }}</plex-badge>
-              <plex-button type="success" label="ver detalle" size="sm" (click)="agregarItem(paciente, helpTest)">
-              </plex-button>
-            </plex-item>
-          </plex-list>
-        </plex-help>
-      </plex-title>
-      <router-outlet>
-        <plex-card *ngIf="showItem === true && paciente$ | async as paciente">
+                            </plex-label>
+                            <plex-badge type="info" size="sm">{{ paciente.fechaNacimiento }}</plex-badge>
+                            <plex-button type="success" label="ver detalle" size="sm"
+                                         (click)="agregarItem(paciente, helpTest)">
+                            </plex-button>
+                        </plex-item>
+                    </plex-list>
+                </plex-help>
+            </plex-title>
+            <router-outlet>
+                <plex-card *ngIf="showItem === true && paciente$ | async as paciente">
 
-          <img src="{{ paciente.foto }}" alt="">
-          <plex-label titulo="{{ paciente.apellido }}, {{ paciente.nombre }}" subtitulo="{{ paciente.documento }}">
+                    <img src="{{ paciente.foto }}" alt="">
+                    <plex-label titulo="{{ paciente.apellido }}, {{ paciente.nombre }}"
+                                subtitulo="{{ paciente.documento }}">
 
-          </plex-label>
-          <plex-label titulo="Edad" subtitulo="{{ paciente.edad }}">
+                    </plex-label>
+                    <plex-label titulo="Edad" subtitulo="{{ paciente.edad }}">
 
-          </plex-label>
-          <plex-label titulo="Financiador" subtitulo="{{ paciente.financiador }}">
+                    </plex-label>
+                    <plex-label titulo="Financiador" subtitulo="{{ paciente.financiador }}">
 
-          </plex-label>
-          <plex-badge type="info" size="sm">{{ paciente.fechaNacimiento }}</plex-badge>
-          <plex-button type="success" icon="plus" size="sm">
-          </plex-button>
-        </plex-card>
-      </router-outlet>
-    </main>
+                    </plex-label>
+                    <plex-badge type="info" size="sm">{{ paciente.fechaNacimiento }}</plex-badge>
+                    <plex-button type="success" icon="plus" size="sm">
+                    </plex-button>
+                </plex-card>
+            </router-outlet>
+        </main>
 
-  </plex-layout-main>
-  <plex-layout-sidebar type="invert">
+    </plex-layout-main>
+    <plex-layout-sidebar type="invert">
 
-    <plex-title titulo="plex-help (type ='info')" size="sm">
-      <plex-button size="sm" type="success" label="acción satisfactoria"></plex-button>
-      <plex-help titulo="Información sobre este panel" subtitulo="A continuación los pasos a seguir">
-        <ol info class="list-group-flush">
-          <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
-            (acepta búsquedas
-            parciales)</li>
-          <li>Seleccioná el concepto al cual quieras agregar o modificar
-            plantillas</li>
-          <li>Completá los campos "Título" y "Texto del procedimiento"</li>
-          <li>Opcionalmente podés elegir seleccionar a todos los descendientes
-            del concepto.</li>
-          <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
-            guardar
-            una plantilla individual</li>
-          <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
-            (acepta búsquedas
-            parciales)</li>
-          <li>Seleccioná el concepto al cual quieras agregar o modificar
-            plantillas</li>
-          <li>Completá los campos "Título" y "Texto del procedimiento"</li>
-          <li>Opcionalmente podés elegir seleccionar a todos los descendientes
-            del concepto.</li>
-          <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
-            guardar
-            una plantilla individual</li>
-          <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
-            (acepta búsquedas
-            parciales)</li>
-          <li>Seleccioná el concepto al cual quieras agregar o modificar
-            plantillas</li>
-          <li>Completá los campos "Título" y "Texto del procedimiento"</li>
-          <li>Opcionalmente podés elegir seleccionar a todos los descendientes
-            del concepto.</li>
-          <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
-            guardar
-            una plantilla individual</li>
-          <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
-            (acepta búsquedas
-            parciales)</li>
-          <li>Seleccioná el concepto al cual quieras agregar o modificar
-            plantillas</li>
-          <li>Completá los campos "Título" y "Texto del procedimiento"</li>
-          <li>Opcionalmente podés elegir seleccionar a todos los descendientes
-            del concepto.</li>
-          <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
-            guardar
-            una plantilla individual</li>
-          <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
-            (acepta búsquedas
-            parciales)</li>
-          <li>Seleccioná el concepto al cual quieras agregar o modificar
-            plantillas</li>
-          <li>Completá los campos "Título" y "Texto del procedimiento"</li>
-          <li>Opcionalmente podés elegir seleccionar a todos los descendientes
-            del concepto.</li>
-          <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
-            guardar
-            una plantilla individual</li>
-        </ol>
-      </plex-help>
-    </plex-title>
-    <h6>
-      Se emplea en casos en los que se necesita brindar información complementaria y circunstancial al
-      usuario.
-      <hr>
-      <ul>
-        <li>Es un elemento emergente de carácter informativo.</li><br>
-        <li>Evita incorporar elementos informativos que le restan espacio, jerarquía y visibilidad a otros
-          de
-          mayor
-          relevancia o frecuencia de uso en las interfaces.</li><br>
-        <li>El componente presenta dos tipologías: <b>info</b> y <b>help</b>.</li>
-      </ul>
-    </h6>
-    <plex-title titulo="plex-help con botones" size="sm">
-      <plex-button size="sm" type="danger" label="acción peligrosa"></plex-button>
-      <plex-help titulo="Ayuda de este panel (invert automático)"
-        subtitulo="En este contexto se espera un contenido mas bien breve:">
-        <p>
-          &mdash;¿Hola? deme el contenido más breve que tenga.<br>
-          &mdash; ...<br>
-          &mdash; ¡No, no tan breve!
-        </p>
-      </plex-help>
-    </plex-title>
+        <plex-title titulo="plex-help (type ='info')" size="sm">
+            <plex-button size="sm" type="success" label="acción satisfactoria"></plex-button>
+            <plex-help titulo="Información sobre este panel" subtitulo="A continuación los pasos a seguir">
+                <ol info class="list-group-flush">
+                    <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li>Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li>Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li>Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
+                        guardar
+                        una plantilla individual</li>
+                    <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li>Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li>Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li>Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
+                        guardar
+                        una plantilla individual</li>
+                    <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li>Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li>Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li>Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
+                        guardar
+                        una plantilla individual</li>
+                    <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li>Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li>Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li>Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
+                        guardar
+                        una plantilla individual</li>
+                    <li>Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li>Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li>Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li>Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li>Hacé click en "Guardar todos" o el botón con el signo <i class="mdi mdi-check"></i> para
+                        guardar
+                        una plantilla individual</li>
+                </ol>
+            </plex-help>
+        </plex-title>
+        <h6>
+            Se emplea en casos en los que se necesita brindar información complementaria y circunstancial al
+            usuario.
+            <hr>
+            <ul>
+                <li>Es un elemento emergente de carácter informativo.</li><br>
+                <li>Evita incorporar elementos informativos que le restan espacio, jerarquía y visibilidad a otros
+                    de
+                    mayor
+                    relevancia o frecuencia de uso en las interfaces.</li><br>
+                <li>El componente presenta dos tipologías: <b>info</b> y <b>help</b>.</li>
+            </ul>
+        </h6>
+        <plex-title titulo="plex-help con botones" size="sm">
+            <plex-button size="sm" type="danger" label="acción peligrosa"></plex-button>
+            <plex-help titulo="Ayuda de este panel (invert automático)"
+                       subtitulo="En este contexto se espera un contenido mas bien breve:">
+                <p>
+                    &mdash;¿Hola? deme el contenido más breve que tenga.<br>
+                    &mdash; ...<br>
+                    &mdash; ¡No, no tan breve!
+                </p>
+            </plex-help>
+        </plex-title>
 
-  </plex-layout-sidebar>
+    </plex-layout-sidebar>
 </plex-layout>

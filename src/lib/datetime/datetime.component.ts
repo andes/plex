@@ -17,7 +17,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                 {{ label }}
                 <span *ngIf="control.name && esRequerido" class="requerido"></span>
             </label>
-            <div *ngIf="currentHintAction" hint="Seleccionar {{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
+            <div *ngIf="todayHintAction" hint="{{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
             <div class="input-group d-flex align-items-center">
                 <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
 
@@ -34,6 +34,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
         `,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+
     private _min: Date;
     private _max: Date;
     private format: string;
@@ -51,7 +52,9 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     @Input() type: string;
     @Input() label: string;
     @Input() placeholder: string;
-    @Input() hintAction: 'current' | 'nextDay' | 'nextHour' = null;
+    @Input() hintPrefix = 'Seleccionar';
+    @Input() hintSuffix = '';
+    @Input() hintAction: 'today' | 'nextDay' | 'nextHour' | 'custom' = null;
     @Input() hintIcon = 'asterisk';
     @Input() disabled = false;
     @Input() readonly = false;
@@ -140,19 +143,38 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
         this.type = 'datetime';
     }
 
+    customText() {
+        return `${this.hintPrefix} ${this.hintSuffix}`;
+    }
+
     get hintText() {
-        if (this.hintAction === 'current') {
-            return `${moment().format('DD/MM/YYYY HH:mm')}`;
+
+        if (this.hintAction === 'custom') {
+            return this.customText();
+        } else if (this.hintAction === 'today') {
+            return this.todayText();
         } else if (this.hintAction === 'nextDay') {
-            return moment().add(1, 'day').format('DD/MM/YYYY');
+            return this.nextDayText();
         } else if (this.hintAction === 'nextHour') {
-            return moment().add(1, 'hour').startOf('hour').format('HH:mm');
+            return this.nextHourText();
         }
+    }
+
+    private nextHourText() {
+        return `${this.hintPrefix} ${moment().add(1, 'hour').startOf('hour').format('HH:mm')} ${this.hintSuffix}`;
+    }
+
+    private nextDayText() {
+        return `${this.hintPrefix} ${moment().add(1, 'day').format('DD/MM/YYYY')} ${this.hintSuffix}`;
+    }
+
+    private todayText() {
+        return `${this.hintPrefix} ${moment().format('DD/MM/YYYY HH:mm [hs]')} ${this.hintSuffix}`;
     }
 
     getFormattedDate(action) {
         let formattedDate;
-        if (action === 'current') {
+        if (action === 'today') {
             formattedDate = moment().format(this.format);
         } else if (action === 'nextDay') {
             formattedDate = moment().add(1, 'day').format(this.format);
@@ -299,7 +321,7 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
         return this.skipBy === 'hour' ? `hora ${dir}` : this.skipBy === 'day' ? `día ${dir}` : this.skipBy === 'month' ? `mes ${dir}` : `año ${dir}`;
     }
 
-    get currentHintAction() {
+    get todayHintAction() {
         return this.hintAction;
     }
 }
