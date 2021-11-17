@@ -14,17 +14,19 @@ plex-datetime {
     }
 
     plex-hint {
-        width: auto;
+        width: 100%;
         display: flex;
         justify-content: flex-end;
         position: relative;
         height: 0px;
         align-items: flex-end;
         flex-direction: column-reverse;
-        right: 0;
+        right: 8px;
         top: 0;
         .hint-container {
-            height: 15px;
+            position: absolute;
+            right: 0;
+            top: 2px;
             &:hover,
             &:active,
             &:focus {

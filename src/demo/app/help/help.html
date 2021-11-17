@@ -103,8 +103,8 @@
 
             <plex-title size="sm" titulo="plex-help con acción interna y toggle()" class="mb-4">
                 <plex-help #helpTest type="info" titulo="seguimiento de pacientes" size="sm" icon="paciente"
-                           cardSize="full">
-                    <plex-list size="md">
+                           cardSize="auto">
+                    <plex-list size="md" *plHelp>
                         <plex-item *ngFor="let paciente of pacientes$ | async | slice:0:3">
                             <img src="{{ paciente.foto }}" alt="">
                             <plex-label titulo="{{ paciente.apellido }}, {{ paciente.nombre }}"

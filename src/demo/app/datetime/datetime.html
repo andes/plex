@@ -1,66 +1,57 @@
-<plex-layout>
+<plex-layout main="6">
     <plex-layout-main>
-        <form #form="ngForm">
-            <div class="row">
-                <div class="col-md-6">
-                    <plex-title titulo="Integrado con plex-badge">
-                        <plex-badge size="sm" type="info">{{ tModel.fechaDecounce | date: 'dd/MM/yyyy' }}
-                            <plex-datetime type="date" [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required
-                                           [btnOnly]="true" size="sm" hintAction="current">
-                            </plex-datetime>
-                        </plex-badge>
-                    </plex-title>
-                    <plex-badge size="sm" type="warning">{{ tModel.fechaDecounce | date: 'dd/MM/yyyy' }}
-                        <plex-datetime type="date" [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required
-                                       [btnOnly]="true" size="sm">
-                        </plex-datetime>
-                    </plex-badge>
+        <plex-title titulo="Integrado con plex-badge">
+            <plex-badge size="sm" type="info">{{ tModel.fechaDecounce | date: 'dd/MM/yyyy' }}
+                <plex-datetime type="date" [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required [btnOnly]="true"
+                               size="sm" hintAction="today" hintPrefix="Ir a" hintSuffix="(hoy)">
+                </plex-datetime>
+            </plex-badge>
+        </plex-title>
+        <plex-badge size="sm" type="warning">{{ tModel.fechaDecounce | date: 'dd/MM/yyyy' }}
+            <plex-datetime type="date" [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required [btnOnly]="true"
+                           size="sm">
+            </plex-datetime>
+        </plex-badge>
 
-                    <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora"
-                                   name="fechaHora" required>
-                    </plex-datetime>
-                    <plex-datetime label="Fecha menor a" type="date" [(ngModel)]="tModel.fecha" name="fecha"
-                                   [required]="true" [min]="tModel.min" [max]="tModel.max" size="lg">
-                    </plex-datetime>
+        <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora" name="fechaHora"
+                       required>
+        </plex-datetime>
+        <plex-datetime label="Fecha menor a" type="date" [(ngModel)]="tModel.fecha" name="fecha" [required]="true"
+                       [min]="tModel.min" [max]="tModel.max" size="lg">
+        </plex-datetime>
 
-                    <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora"
-                                   name="hora" (blur)="onBlur()" (focus)="onBlur()" size="sm">
-                    </plex-datetime>
+        <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora" name="hora"
+                       (blur)="onBlur()" (focus)="onBlur()" size="sm">
+        </plex-datetime>
 
-                    <plex-datetime label="Ingrese la hora de nacimiento 2" type="time" [(ngModel)]="tModel.horados"
-                                   [min]="horaPlus()" name="horaconmin">
-                    </plex-datetime>
+        <plex-datetime label="Ingrese la hora de nacimiento 2" type="time" [(ngModel)]="tModel.horados"
+                       [min]="horaPlus()" name="horaconmin">
+        </plex-datetime>
 
-                    <plex-datetime label="Este campo es readonly" type="time" [(ngModel)]="tModel.hora2" name="hora2"
-                                   [readonly]="model4.disabled">
-                    </plex-datetime>
+        <plex-datetime label="Este campo es readonly" type="time" [(ngModel)]="tModel.hora2" name="hora2"
+                       [readonly]="model4.disabled">
+        </plex-datetime>
 
-                    <plex-button label="Actualizar maxHora" (click)="updateMaxHora()"></plex-button>
-                    <plex-datetime label="Fecha con navegación inline (por dia)" [skipBy]="'day'"
-                                   [(ngModel)]="tModel.fecha" [min]="tModel.min" [max]="tModel.max" name="fechaSkip"
-                                   required>
-                    </plex-datetime>
-
-
-                </div>
-                <div class="col-md-6">
-                    <label>Modelo</label>
-                    <pre>{{ tModel | json }}</pre>
-                    <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'" size="sm"
-                                   [(ngModel)]="tModel.fechaHora" [min]="tModel.minHora" [max]="tModel.maxHora"
-                                   name="horaSkip" required hintAction="nextHour">
-                    </plex-datetime>
-
-                    <plex-datetime label="Datetime con debounce" name="debounce" type="date"
-                                   [(ngModel)]="tModel.fechaDecounce" (change)="onChange($event)" [debounce]="1000"
-                                   hintAction="nextDay" hintIcon="chevron-right" (typing)="onType()">
-                    </plex-datetime>
-
-                    <plex-datetime [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required [btnOnly]="true"
-                                   size="sm">
-                    </plex-datetime>
-                </div>
-            </div>
-        </form>
+        <plex-button label="Actualizar maxHora" (click)="updateMaxHora()"></plex-button>
+        <plex-datetime label="Fecha con navegación inline (por dia)" [skipBy]="'day'" [(ngModel)]="tModel.fecha"
+                       [min]="tModel.min" [max]="tModel.max" name="fechaSkip" required>
+        </plex-datetime>
     </plex-layout-main>
+
+    <plex-layout-sidebar>
+        <plex-title titulo="Modelo"></plex-title>
+        <pre>{{ tModel | json }}</pre>
+        <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'" size="sm"
+                       [(ngModel)]="tModel.fechaHora" [min]="tModel.minHora" [max]="tModel.maxHora" name="horaSkip"
+                       required hintAction="nextHour">
+        </plex-datetime>
+
+        <plex-datetime label="Datetime con debounce" name="debounce" type="date" [(ngModel)]="tModel.fechaDecounce"
+                       (change)="onChange($event)" [debounce]="1000" hintAction="nextDay" hintIcon="chevron-right"
+                       (typing)="onType()">
+        </plex-datetime>
+
+        <plex-datetime [(ngModel)]="tModel.fechaDecounce" name="onlybtn" required [btnOnly]="true" size="sm">
+        </plex-datetime>
+    </plex-layout-sidebar>
 </plex-layout>
