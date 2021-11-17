@@ -1,3 +1,12 @@
+## [7.19.1](https://github.com/andes/plex/compare/v7.19.0...v7.19.1) (2021-11-17)
+
+
+### Bug Fixes
+
+* **hint:** accesible en mobile ([#286](https://github.com/andes/plex/issues/286)) ([145786a](https://github.com/andes/plex/commit/145786ae961b00b7ef468c2a95baba3f6b6ce561))
+* **plex-datetime:** ajuste visual en hint ([#301](https://github.com/andes/plex/issues/301)) ([e5af750](https://github.com/andes/plex/commit/e5af7508d7f4003c65b61c139ff7922c2479fd07))
+* **plex-table:** evita ordenar cuando no es requerido ([#302](https://github.com/andes/plex/issues/302)) ([e327335](https://github.com/andes/plex/commit/e327335ff2416eb0b3b977cba69c97b24cd963f1))
+
 # [7.19.0](https://github.com/andes/plex/compare/v7.18.2...v7.19.0) (2021-09-03)
 
 
