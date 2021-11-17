@@ -982,6 +982,17 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <code>offset</code>
+                        </td>
+                        <td class="col-md-10">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
                             <code>selectable</code>
                         </td>
                         <td class="col-md-10">
@@ -1290,6 +1301,12 @@ export class PlexListComponent implements AfterViewInit {
     @Input() height: string;
 
     @Input() size: PlexSize &#x3D; &#x27;md&#x27;;
+
+    @Input() set offset(value: number) {
+        if (typeof value &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
+            this.height &#x3D; &#x60;calc(100vh - ${value}px)&#x60;;
+        }
+    }
 
     @Output() scrolled &#x3D; new EventEmitter&lt;void&gt;();
 

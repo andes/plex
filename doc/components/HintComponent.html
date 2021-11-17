@@ -938,7 +938,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;a&nbsp;href&#x3D;&quot;javascript:void(0)&quot;&nbsp;*ngIf&#x3D;&quot;position&nbsp;&amp;&amp;&nbsp;content&quot;&nbsp;class&#x3D;&quot;hint-container&nbsp;detach-{{detach}}&quot;&nbsp;[matTooltip]&#x3D;&quot;content&quot;&nbsp;[matTooltipPosition]&#x3D;&quot;position&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;class&#x3D;&quot;hint&nbsp;{{&nbsp;hintType&nbsp;}}&quot;&nbsp;[name]&#x3D;&quot;hintIcon&quot;&nbsp;size&#x3D;&quot;xs&quot;&nbsp;type&#x3D;&quot;light&quot;&gt;&lt;/plex-icon&gt;<br>&lt;/a&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;span&nbsp;#matTooltip&#x3D;&quot;matTooltip&quot;&nbsp;tabindex&#x3D;&quot;0&quot;&nbsp;role&#x3D;&quot;link&quot;&nbsp;*ngIf&#x3D;&quot;position&nbsp;&amp;&amp;&nbsp;content&quot;&nbsp;class&#x3D;&quot;hint-container&nbsp;detach-{{detach}}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[matTooltip]&#x3D;&quot;content&quot;&nbsp;[matTooltipPosition]&#x3D;&quot;position&quot;&nbsp;(click)&#x3D;&quot;showTooltip()&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;class&#x3D;&quot;hint&nbsp;{{&nbsp;hintType&nbsp;}}&quot;&nbsp;[name]&#x3D;&quot;hintIcon&quot;&nbsp;size&#x3D;&quot;xs&quot;&nbsp;type&#x3D;&quot;light&quot;&gt;&lt;/plex-icon&gt;<br>&lt;/span&gt;<br></code></td>
             </tr>
 
 
@@ -1060,6 +1060,30 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b> showTooltip</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>showTooltip()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b> onClick</b>
                         </td>
                     </tr>
@@ -1082,17 +1106,37 @@
             </table>
     </section>
 
+    <section>
+        <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> matTooltip</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>matTooltip:     <code>MatTooltip</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, OnInit, Input, HostListener } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { MatTooltip } from &#x27;@angular/material/tooltip&#x27;;
+import { Component, OnInit, Input, HostListener, ViewChild } from &#x27;@angular/core&#x27;;
 import { PlexType } from &#x27;../core/plex-type.type&#x27;;
 
 @Component({
     selector: &#x27;plex-hint&#x27;,
     template: &#x60;
-        &lt;a href&#x3D;&quot;javascript:void(0)&quot; *ngIf&#x3D;&quot;position &amp;&amp; content&quot; class&#x3D;&quot;hint-container detach-{{detach}}&quot; [matTooltip]&#x3D;&quot;content&quot; [matTooltipPosition]&#x3D;&quot;position&quot;&gt;
+        &lt;span #matTooltip&#x3D;&quot;matTooltip&quot; tabindex&#x3D;&quot;0&quot; role&#x3D;&quot;link&quot; *ngIf&#x3D;&quot;position &amp;&amp; content&quot; class&#x3D;&quot;hint-container detach-{{detach}}&quot;
+            [matTooltip]&#x3D;&quot;content&quot; [matTooltipPosition]&#x3D;&quot;position&quot; (click)&#x3D;&quot;showTooltip()&quot;&gt;
             &lt;plex-icon class&#x3D;&quot;hint {{ hintType }}&quot; [name]&#x3D;&quot;hintIcon&quot; size&#x3D;&quot;xs&quot; type&#x3D;&quot;light&quot;&gt;&lt;/plex-icon&gt;
-        &lt;/a&gt;
+        &lt;/span&gt;
     &#x60;
 })
 export class HintComponent implements OnInit {
@@ -1117,8 +1161,14 @@ export class HintComponent implements OnInit {
 
     constructor() { }
 
+    @ViewChild(&#x27;matTooltip&#x27;, { static: false }) matTooltip: MatTooltip;
+
     ngOnInit() {
         this.position &#x3D; &#x27;above&#x27;;
+    }
+
+    showTooltip() {
+        this.matTooltip.show(0);
     }
 
     // Si el elemento que tiene la directiva [hint] tiene un evento (click), este se ejecutará, guste o no.

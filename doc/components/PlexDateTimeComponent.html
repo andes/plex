@@ -938,7 +938,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&nbsp;datetime&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;(control.dirty&nbsp;||&nbsp;control.touched)&nbsp;&amp;&amp;&nbsp;!control.valid&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;label&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngIf&#x3D;&quot;hintAction&quot;&nbsp;hint&#x3D;&quot;Seleccionar&nbsp;{{&nbsp;hintText&nbsp;}}&quot;&nbsp;hintType&#x3D;&quot;warning&quot;&nbsp;[hintIcon]&#x3D;&quot;hintIcon&quot;&nbsp;(click)&#x3D;&quot;callAction(hintAction)&quot;&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;input-group&nbsp;d-flex&nbsp;align-items-center&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;showNav&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;menu-left&quot;&nbsp;(click)&#x3D;&quot;prev()&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[tooltip]&#x3D;&quot;makeTooltip(&#x27;anterior&#x27;)&quot;&gt;&lt;/plex-button&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type&#x3D;&quot;text&quot;&nbsp;class&#x3D;&quot;form-control&nbsp;form-control-{{size}}&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[readonly]&#x3D;&quot;readonly&quot;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(blur)&#x3D;&quot;onBlur()&quot;&nbsp;(focus)&#x3D;&quot;onFocus()&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&nbsp;*ngIf&#x3D;&quot;showInput&quot;/&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class&#x3D;&quot;input-group-btn&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;tabIndex&#x3D;&quot;-1&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[icon]&#x3D;&quot;icon&quot;&nbsp;[disabled]&#x3D;&quot;disabled&nbsp;||&nbsp;readonly&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;showNav&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;menu-right&quot;&nbsp;(click)&#x3D;&quot;next()&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[tooltip]&#x3D;&quot;makeTooltip(&#x27;siguiente&#x27;)&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;form-group&nbsp;datetime&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;has-danger&#x27;:&nbsp;(control.dirty&nbsp;||&nbsp;control.touched)&nbsp;&amp;&amp;&nbsp;!control.valid&nbsp;}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;*ngIf&#x3D;&quot;label&quot;&nbsp;class&#x3D;&quot;form-control-label&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;label&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;control.name&nbsp;&amp;&amp;&nbsp;esRequerido&quot;&nbsp;class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngIf&#x3D;&quot;todayHintAction&quot;&nbsp;hint&#x3D;&quot;{{&nbsp;hintText&nbsp;}}&quot;&nbsp;hintType&#x3D;&quot;warning&quot;&nbsp;[hintIcon]&#x3D;&quot;hintIcon&quot;&nbsp;(click)&#x3D;&quot;callAction(hintAction)&quot;&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;input-group&nbsp;d-flex&nbsp;align-items-center&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;showNav&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;menu-left&quot;&nbsp;(click)&#x3D;&quot;prev()&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[tooltip]&#x3D;&quot;makeTooltip(&#x27;anterior&#x27;)&quot;&gt;&lt;/plex-button&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type&#x3D;&quot;text&quot;&nbsp;class&#x3D;&quot;form-control&nbsp;form-control-{{size}}&quot;&nbsp;[placeholder]&#x3D;&quot;placeholder&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[readonly]&#x3D;&quot;readonly&quot;&nbsp;(input)&#x3D;&quot;onChange($event.target.value)&quot;&nbsp;(blur)&#x3D;&quot;onBlur()&quot;&nbsp;(focus)&#x3D;&quot;onFocus()&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(change)&#x3D;&quot;disabledEvent($event)&quot;&nbsp;*ngIf&#x3D;&quot;showInput&quot;/&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class&#x3D;&quot;input-group-btn&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;tabIndex&#x3D;&quot;-1&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[icon]&#x3D;&quot;icon&quot;&nbsp;[disabled]&#x3D;&quot;disabled&nbsp;||&nbsp;readonly&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-button&nbsp;*ngIf&#x3D;&quot;showNav&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;menu-right&quot;&nbsp;(click)&#x3D;&quot;next()&quot;&nbsp;[disabled]&#x3D;&quot;disabled&quot;&nbsp;[tooltip]&#x3D;&quot;makeTooltip(&#x27;siguiente&#x27;)&quot;&gt;&lt;/plex-button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-validation-messages&nbsp;*ngIf&#x3D;&quot;hasDanger()&quot;&nbsp;[control]&#x3D;&quot;control&quot;&gt;&lt;/plex-validation-messages&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -1014,7 +1014,7 @@
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>&quot;current&quot; | &quot;nextDay&quot; | &quot;nextHour&quot;</code>
+                                <em>Type:</em>    <code>&quot;today&quot; | &quot;nextDay&quot; | &quot;nextHour&quot; | &quot;custom&quot;</code>
 
                               </p>
                         </td>
@@ -1031,6 +1031,31 @@
                             <p>
                               <em>Default value: </em><code>asterisk</code>
                             </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>hintPrefix</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>Seleccionar</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>hintSuffix</code>
+                        </td>
+                        <td class="col-md-10">
                         </td>
                     </tr>
                 </tbody>
@@ -1257,6 +1282,111 @@
                     <tr>
                         <td class="col-md-4">
     <code>validate(c: <a href="https://angular.io/docs/ts/latest/api/forms/index/FormControl-class.html" target="_blank" >FormControl</a>)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> customText</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>customText()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> nextHourText</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            <code>nextHourText()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> nextDayText</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            <code>nextDayText()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> todayText</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            <code>todayText()</code>
                         </td>
                     </tr>
     
@@ -1773,6 +1903,21 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b> todayHintAction</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>todayHintAction:     <code>&quot;today&quot; | &quot;nextDay&quot; | &quot;nextHour&quot; | &quot;custom&quot;</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b> validateFn</b>
                         </td>
                     </tr>
@@ -1821,7 +1966,7 @@ require(&#x27;./bootstrap-material-datetimepicker/bootstrap-material-datetimepic
                 {{ label }}
                 &lt;span *ngIf&#x3D;&quot;control.name &amp;&amp; esRequerido&quot; class&#x3D;&quot;requerido&quot;&gt;&lt;/span&gt;
             &lt;/label&gt;
-            &lt;div *ngIf&#x3D;&quot;hintAction&quot; hint&#x3D;&quot;Seleccionar {{ hintText }}&quot; hintType&#x3D;&quot;warning&quot; [hintIcon]&#x3D;&quot;hintIcon&quot; (click)&#x3D;&quot;callAction(hintAction)&quot;&gt;&lt;/div&gt;
+            &lt;div *ngIf&#x3D;&quot;todayHintAction&quot; hint&#x3D;&quot;{{ hintText }}&quot; hintType&#x3D;&quot;warning&quot; [hintIcon]&#x3D;&quot;hintIcon&quot; (click)&#x3D;&quot;callAction(hintAction)&quot;&gt;&lt;/div&gt;
             &lt;div class&#x3D;&quot;input-group d-flex align-items-center&quot;&gt;
                 &lt;plex-button *ngIf&#x3D;&quot;showNav&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; icon&#x3D;&quot;menu-left&quot; (click)&#x3D;&quot;prev()&quot; [disabled]&#x3D;&quot;disabled&quot; [tooltip]&#x3D;&quot;makeTooltip(&#x27;anterior&#x27;)&quot;&gt;&lt;/plex-button&gt;
 
@@ -1838,6 +1983,7 @@ require(&#x27;./bootstrap-material-datetimepicker/bootstrap-material-datetimepic
         &#x60;,
 })
 export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+
     private _min: Date;
     private _max: Date;
     private format: string;
@@ -1855,7 +2001,9 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     @Input() type: string;
     @Input() label: string;
     @Input() placeholder: string;
-    @Input() hintAction: &#x27;current&#x27; | &#x27;nextDay&#x27; | &#x27;nextHour&#x27; &#x3D; null;
+    @Input() hintPrefix &#x3D; &#x27;Seleccionar&#x27;;
+    @Input() hintSuffix &#x3D; &#x27;&#x27;;
+    @Input() hintAction: &#x27;today&#x27; | &#x27;nextDay&#x27; | &#x27;nextHour&#x27; | &#x27;custom&#x27; &#x3D; null;
     @Input() hintIcon &#x3D; &#x27;asterisk&#x27;;
     @Input() disabled &#x3D; false;
     @Input() readonly &#x3D; false;
@@ -1944,19 +2092,38 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
         this.type &#x3D; &#x27;datetime&#x27;;
     }
 
+    customText() {
+        return &#x60;${this.hintPrefix} ${this.hintSuffix}&#x60;;
+    }
+
     get hintText() {
-        if (this.hintAction &#x3D;&#x3D;&#x3D; &#x27;current&#x27;) {
-            return &#x60;${moment().format(&#x27;DD/MM/YYYY HH:mm&#x27;)}&#x60;;
+
+        if (this.hintAction &#x3D;&#x3D;&#x3D; &#x27;custom&#x27;) {
+            return this.customText();
+        } else if (this.hintAction &#x3D;&#x3D;&#x3D; &#x27;today&#x27;) {
+            return this.todayText();
         } else if (this.hintAction &#x3D;&#x3D;&#x3D; &#x27;nextDay&#x27;) {
-            return moment().add(1, &#x27;day&#x27;).format(&#x27;DD/MM/YYYY&#x27;);
+            return this.nextDayText();
         } else if (this.hintAction &#x3D;&#x3D;&#x3D; &#x27;nextHour&#x27;) {
-            return moment().add(1, &#x27;hour&#x27;).startOf(&#x27;hour&#x27;).format(&#x27;HH:mm&#x27;);
+            return this.nextHourText();
         }
+    }
+
+    private nextHourText() {
+        return &#x60;${this.hintPrefix} ${moment().add(1, &#x27;hour&#x27;).startOf(&#x27;hour&#x27;).format(&#x27;HH:mm&#x27;)} ${this.hintSuffix}&#x60;;
+    }
+
+    private nextDayText() {
+        return &#x60;${this.hintPrefix} ${moment().add(1, &#x27;day&#x27;).format(&#x27;DD/MM/YYYY&#x27;)} ${this.hintSuffix}&#x60;;
+    }
+
+    private todayText() {
+        return &#x60;${this.hintPrefix} ${moment().format(&#x27;DD/MM/YYYY HH:mm [hs]&#x27;)} ${this.hintSuffix}&#x60;;
     }
 
     getFormattedDate(action) {
         let formattedDate;
-        if (action &#x3D;&#x3D;&#x3D; &#x27;current&#x27;) {
+        if (action &#x3D;&#x3D;&#x3D; &#x27;today&#x27;) {
             formattedDate &#x3D; moment().format(this.format);
         } else if (action &#x3D;&#x3D;&#x3D; &#x27;nextDay&#x27;) {
             formattedDate &#x3D; moment().add(1, &#x27;day&#x27;).format(this.format);
@@ -2101,6 +2268,10 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
 
     makeTooltip(dir) {
         return this.skipBy &#x3D;&#x3D;&#x3D; &#x27;hour&#x27; ? &#x60;hora ${dir}&#x60; : this.skipBy &#x3D;&#x3D;&#x3D; &#x27;day&#x27; ? &#x60;día ${dir}&#x60; : this.skipBy &#x3D;&#x3D;&#x3D; &#x27;month&#x27; ? &#x60;mes ${dir}&#x60; : &#x60;año ${dir}&#x60;;
+    }
+
+    get todayHintAction() {
+        return this.hintAction;
     }
 }
 </code></pre>
