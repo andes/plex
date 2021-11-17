@@ -1,5 +1,5 @@
+import { Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
 import { PlexType } from './../core/plex-type.type';
-import { Component, Input, Renderer2, Output, EventEmitter, ElementRef } from '@angular/core';
 
 @Component({
     selector: 'plex-help',
@@ -65,9 +65,8 @@ export class PlexHelpComponent {
         if (!this.closed) {
 
             setTimeout(() => {
-                const toggleDiv = this.elementRef.nativeElement.querySelector('div.toggle-help');
-                const auto = toggleDiv.querySelector('.auto');
-                if (auto) {
+                if (this.cardSize === 'auto') {
+                    const toggleDiv = this.elementRef.nativeElement.querySelector('div.toggle-help');
                     const offset = toggleDiv.querySelector('.card').getBoundingClientRect().top + 40;
                     toggleDiv.querySelector('div.card-body').style.height = `calc(100vh - ${offset}px)`;
                 }
