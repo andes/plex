@@ -72,6 +72,11 @@ export class PlexColumnDirective implements OnChanges, OnDestroy {
     }
 
     onColumnClick(column: IPlexTableColumns) {
+
+        if (!column.sorteable) {
+            return false;
+        }
+
         const data = this._sort.getValue();
 
         if (data.sortBy === column.key) {

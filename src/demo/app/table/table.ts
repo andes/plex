@@ -81,9 +81,8 @@ export class TableDemoComponent {
         {
             key: 'col-4',
             label: 'col 4',
-            sorteable: true,
+            sorteable: false,
             opcional: true,
-            sort: (a: any, b: any) => a.fecha.getTime() - b.fecha.getTime()
         },
         {
             key: 'col-5',
