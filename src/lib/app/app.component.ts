@@ -50,7 +50,7 @@ import { Plex } from './../core/service';
                                 </div>
                                 <div class="user-menu">
                                     <div nav-item>
-                                        <plex-icon name="chevron-down"></plex-icon>
+                                        <plex-icon name="menu-down" size="lg" class="hover"></plex-icon>
                                         <plex-title titulo="Mis Datos"></plex-title>
                                         <ng-content select=".user-profile"></ng-content>
                                     </div>
