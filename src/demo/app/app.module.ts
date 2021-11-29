@@ -1,3 +1,4 @@
+import { PlexColumnDirective } from './../../lib/table/columns.directive';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -161,7 +162,8 @@ import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar
         appRoutingProviders,
         ServiceDemoSelect,
         PacienteService,
-        CamaService
+        CamaService,
+        PlexColumnDirective
 
     ],
     bootstrap: [AppComponent]

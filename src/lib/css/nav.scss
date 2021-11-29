@@ -66,6 +66,14 @@ nav {
           top: unset !important;
         }
       }
+      .user-menu {
+        height: 30px;
+        display: flex;
+        align-items: flex-start;
+        plex-icon:hover {
+          color: $dark-blue;
+        }
+      }
     }
 
     > div.action.hover {
