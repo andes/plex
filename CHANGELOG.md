@@ -1,3 +1,11 @@
+# [7.20.0](https://github.com/andes/plex/compare/v7.19.1...v7.20.0) (2021-11-29)
+
+
+### Features
+
+* **nav:** implementa perfil de usuario desplegable ([#304](https://github.com/andes/plex/issues/304)) ([a62c07f](https://github.com/andes/plex/commit/a62c07f05f14f8452c459aefcb1475eae1b031b3))
+* **plex:** sumar tipos a plex-title ([#305](https://github.com/andes/plex/issues/305)) ([d21724f](https://github.com/andes/plex/commit/d21724fc6b563714ea0ae76402250a744aedef5b))
+
 ## [7.19.1](https://github.com/andes/plex/compare/v7.19.0...v7.19.1) (2021-11-17)
 
 
