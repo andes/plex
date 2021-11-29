@@ -938,7 +938,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;plex-button&nbsp;class&#x3D;&quot;btn-close&quot;&nbsp;*ngIf&#x3D;&quot;!closed&quot;&nbsp;type&#x3D;&quot;danger&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;close&quot;&nbsp;(click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;<br>&lt;plex-button&nbsp;class&#x3D;&quot;btn-open&quot;&nbsp;*ngIf&#x3D;&quot;content&nbsp;&amp;&amp;&nbsp;closed&nbsp;&amp;&amp;&nbsp;!tituloBoton&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[icon]&#x3D;&quot;icon&quot;&nbsp;(click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;<br>&lt;/plex-button&gt;<br>&lt;plex-button&nbsp;class&#x3D;&quot;btn-open&quot;&nbsp;*ngIf&#x3D;&quot;content&nbsp;&amp;&amp;&nbsp;closed&nbsp;&amp;&amp;&nbsp;tituloBoton&quot;&nbsp;type&#x3D;&quot;info&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[label]&#x3D;&quot;tituloBoton&quot;&nbsp;(click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;<br>&lt;/plex-button&gt;<br>&lt;div&nbsp;class&#x3D;&quot;toggle-help&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;closed&#x27;:&nbsp;closed,&nbsp;&#x27;open&#x27;:&nbsp;!closed}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card&nbsp;help&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;open&#x27;:&nbsp;!closed,&nbsp;&#x27;full&#x27;:&nbsp;cardSize&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;full&#x27;,&nbsp;&#x27;half&#x27;:&nbsp;cardSize&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;half&#x27;}&quot;&nbsp;(click)&#x3D;&quot;$event.stopImmediatePropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngIf&#x3D;&quot;!closed&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card-body&nbsp;m-3&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-title&nbsp;*ngIf&#x3D;&quot;titulo&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;[titulo]&#x3D;&quot;titulo&quot;&gt;&lt;/plex-title&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h6&nbsp;*ngIf&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;info&#x27;&nbsp;&amp;&amp;&nbsp;subtitulo&quot;&gt;{{&nbsp;subtitulo&nbsp;}}&lt;/h6&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;plex-button&nbsp;class&#x3D;&quot;btn-close&quot;&nbsp;*ngIf&#x3D;&quot;!closed&quot;&nbsp;type&#x3D;&quot;danger&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;icon&#x3D;&quot;close&quot;&nbsp;(click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;<br>&lt;plex-button&nbsp;class&#x3D;&quot;btn-open&quot;&nbsp;*ngIf&#x3D;&quot;content&nbsp;&amp;&amp;&nbsp;closed&nbsp;&amp;&amp;&nbsp;!tituloBoton&quot;&nbsp;[type]&#x3D;&quot;btnType&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[icon]&#x3D;&quot;icon&quot;&nbsp;(click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;<br>&lt;/plex-button&gt;<br>&lt;plex-button&nbsp;class&#x3D;&quot;btn-open&quot;&nbsp;*ngIf&#x3D;&quot;content&nbsp;&amp;&amp;&nbsp;closed&nbsp;&amp;&amp;&nbsp;tituloBoton&quot;&nbsp;[type]&#x3D;&quot;btnType&quot;&nbsp;[size]&#x3D;&quot;size&quot;&nbsp;[label]&#x3D;&quot;tituloBoton&quot;&nbsp;(click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;<br>&lt;/plex-button&gt;<br>&lt;div&nbsp;class&#x3D;&quot;toggle-help&quot;&nbsp;[ngClass]&#x3D;&quot;{&#x27;closed&#x27;:&nbsp;closed,&nbsp;&#x27;open&#x27;:&nbsp;!closed}&quot;&nbsp;#plHelpBody&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card&nbsp;help&quot;&nbsp;[class.open]&#x3D;&quot;!closed&quot;&nbsp;[class.closed]&#x3D;&quot;closed&quot;&nbsp;[ngClass]&#x3D;&quot;cardSize&quot;&nbsp;(click)&#x3D;&quot;$event.stopImmediatePropagation();&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&nbsp;*ngIf&#x3D;&quot;!closed&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card-body&nbsp;m-3&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-title&nbsp;*ngIf&#x3D;&quot;titulo&quot;&nbsp;size&#x3D;&quot;sm&quot;&nbsp;[titulo]&#x3D;&quot;titulo&quot;&gt;&lt;/plex-title&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h6&nbsp;*ngIf&#x3D;&quot;type&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;&#x27;info&#x27;&nbsp;&amp;&amp;&nbsp;subtitulo&quot;&gt;{{&nbsp;subtitulo&nbsp;}}&lt;/h6&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -953,11 +953,29 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <code>btnType</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code><a href="../injectables/Plex.html" target="_self" >PlexType</a></code>
+
+                              </p>
+                            <p>
+                              <em>Default value: </em><code>info</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
                             <code>cardSize</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>&quot;full&quot; | &quot;half&quot;</code>
+                                <em>Type:</em>    <code>&quot;full&quot; | &quot;half&quot; | &quot;auto&quot;</code>
 
                               </p>
                             <p>
@@ -1107,7 +1125,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(renderer: Renderer2)</code>
+                            <code>constructor(elementRef: any, renderer: Renderer2)</code>
                         </td>
                     </tr>
     
@@ -1201,18 +1219,19 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input, Renderer2, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from &#x27;@angular/core&#x27;;
+import { PlexType } from &#x27;./../core/plex-type.type&#x27;;
 
 @Component({
     selector: &#x27;plex-help&#x27;,
     template: &#x60;
     &lt;plex-button class&#x3D;&quot;btn-close&quot; *ngIf&#x3D;&quot;!closed&quot; type&#x3D;&quot;danger&quot; [size]&#x3D;&quot;size&quot; icon&#x3D;&quot;close&quot; (click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;&lt;/plex-button&gt;
-    &lt;plex-button class&#x3D;&quot;btn-open&quot; *ngIf&#x3D;&quot;content &amp;&amp; closed &amp;&amp; !tituloBoton&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; [icon]&#x3D;&quot;icon&quot; (click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;
+    &lt;plex-button class&#x3D;&quot;btn-open&quot; *ngIf&#x3D;&quot;content &amp;&amp; closed &amp;&amp; !tituloBoton&quot; [type]&#x3D;&quot;btnType&quot; [size]&#x3D;&quot;size&quot; [icon]&#x3D;&quot;icon&quot; (click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;
     &lt;/plex-button&gt;
-    &lt;plex-button class&#x3D;&quot;btn-open&quot; *ngIf&#x3D;&quot;content &amp;&amp; closed &amp;&amp; tituloBoton&quot; type&#x3D;&quot;info&quot; [size]&#x3D;&quot;size&quot; [label]&#x3D;&quot;tituloBoton&quot; (click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;
+    &lt;plex-button class&#x3D;&quot;btn-open&quot; *ngIf&#x3D;&quot;content &amp;&amp; closed &amp;&amp; tituloBoton&quot; [type]&#x3D;&quot;btnType&quot; [size]&#x3D;&quot;size&quot; [label]&#x3D;&quot;tituloBoton&quot; (click)&#x3D;&quot;toggle();$event.stopImmediatePropagation();&quot;&gt;
     &lt;/plex-button&gt;
-    &lt;div class&#x3D;&quot;toggle-help&quot; [ngClass]&#x3D;&quot;{&#x27;closed&#x27;: closed, &#x27;open&#x27;: !closed}&quot;&gt;
-        &lt;div class&#x3D;&quot;card help&quot; [ngClass]&#x3D;&quot;{&#x27;open&#x27;: !closed, &#x27;full&#x27;: cardSize &#x3D;&#x3D;&#x3D; &#x27;full&#x27;, &#x27;half&#x27;: cardSize &#x3D;&#x3D;&#x3D; &#x27;half&#x27;}&quot; (click)&#x3D;&quot;$event.stopImmediatePropagation();&quot;&gt;
+    &lt;div class&#x3D;&quot;toggle-help&quot; [ngClass]&#x3D;&quot;{&#x27;closed&#x27;: closed, &#x27;open&#x27;: !closed}&quot; #plHelpBody&gt;
+        &lt;div class&#x3D;&quot;card help&quot; [class.open]&#x3D;&quot;!closed&quot; [class.closed]&#x3D;&quot;closed&quot; [ngClass]&#x3D;&quot;cardSize&quot; (click)&#x3D;&quot;$event.stopImmediatePropagation();&quot;&gt;
             &lt;ng-container *ngIf&#x3D;&quot;!closed&quot;&gt;
                 &lt;div class&#x3D;&quot;card-body m-3&quot;&gt;
                     &lt;plex-title *ngIf&#x3D;&quot;titulo&quot; size&#x3D;&quot;sm&quot; [titulo]&#x3D;&quot;titulo&quot;&gt;&lt;/plex-title&gt;
@@ -1233,11 +1252,13 @@ export class PlexHelpComponent {
 
     @Input() size: &#x27;sm&#x27; | &#x27;md&#x27; &#x3D; &#x27;sm&#x27;;
 
-    @Input() cardSize: &#x27;full&#x27; | &#x27;half&#x27; &#x3D; &#x27;full&#x27;;
+    @Input() cardSize: &#x27;full&#x27; | &#x27;half&#x27; | &#x27;auto&#x27; &#x3D; &#x27;full&#x27;;
 
     @Input() title: string;
 
     @Input() type: &#x27;info&#x27; | &#x27;help&#x27; &#x3D; &#x27;help&#x27;; // deprecated
+
+    @Input() btnType: PlexType &#x3D; &#x27;info&#x27;;
 
     @Input() tituloBoton &#x3D; &#x27;&#x27;;
 
@@ -1251,16 +1272,26 @@ export class PlexHelpComponent {
 
     closed &#x3D; true;
 
-    constructor(private renderer: Renderer2) { }
+    constructor(
+        private elementRef: ElementRef,
+        private renderer: Renderer2
+    ) { }
 
     get content() {
         return (this.icon &amp;&amp; this.icon.length &gt; 0) || (this.tituloBoton &amp;&amp; this.tituloBoton.length &gt; 0);
     }
 
     public toggle() {
-
         this.closed &#x3D; !this.closed;
         if (!this.closed) {
+
+            setTimeout(() &#x3D;&gt; {
+                if (this.cardSize &#x3D;&#x3D;&#x3D; &#x27;auto&#x27;) {
+                    const toggleDiv &#x3D; this.elementRef.nativeElement.querySelector(&#x27;div.toggle-help&#x27;);
+                    const offset &#x3D; toggleDiv.querySelector(&#x27;.card&#x27;).getBoundingClientRect().top + 40;
+                    toggleDiv.querySelector(&#x27;div.card-body&#x27;).style.height &#x3D; &#x60;calc(100vh - ${offset}px)&#x60;;
+                }
+            }, 0);
 
             this.open.emit();
             this.unlisten &#x3D; this.renderer.listen(&#x27;document&#x27;, &#x27;click&#x27;, (event) &#x3D;&gt; {
