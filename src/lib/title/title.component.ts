@@ -1,15 +1,15 @@
 import { PlexType } from './../core/plex-type.type';
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 
 @Component({
     selector: 'plex-title',
     template: `
         <div role="heading" [attr.aria-level]="ariaLevel" class="plex-title d-flex flex-row justify-content-between align-items-center" responsive>
             <div class="nav-title" justify="start">
-                <span *ngIf="backNav" class="hover">
-                    <plex-icon name="flecha-izquierda" size="lg" type="info" (click)="backNav()"></plex-icon>
+                <span *ngIf="hasBackButton" class="hover mr-2" (click)="onBack()">
+                    <plex-icon name="flecha-izquierda" size="lg" type="info" ></plex-icon>
                 </span>
-                <div class="plex-title-label {{ size }} {{ cssType }} ml-2"> {{ titulo }} </div>
+                <div class="plex-title-label {{ size }} {{ cssType }}"> {{ titulo }} </div>
             </div>
             <div class="title-content">
                 <ng-content></ng-content>
@@ -21,11 +21,13 @@ import { Component, Input } from '@angular/core';
         </div>
     `
 })
-export class PlexTitleComponent {
+export class PlexTitleComponent implements OnInit {
     @Input() titulo: string;
     @Input() size: 'sm' | 'md' | 'xl' | 'lg' = 'lg';
     @Input() type: PlexType = 'info';
-    @Input() backNav: Function;
+    @Output() back = new EventEmitter();
+
+    hasBackButton = false;
 
     // Asigna un aria-level al heading según su tamaño
     get ariaLevel() {
@@ -38,5 +40,13 @@ export class PlexTitleComponent {
 
     constructor() {
 
+    }
+
+    ngOnInit() {
+        this.hasBackButton = this.back.observers.length > 0;
+    }
+
+    onBack() {
+        this.back.emit();
     }
 }
