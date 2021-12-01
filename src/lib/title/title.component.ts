@@ -5,7 +5,12 @@ import { Component, Input } from '@angular/core';
     selector: 'plex-title',
     template: `
         <div role="heading" [attr.aria-level]="ariaLevel" class="plex-title d-flex flex-row justify-content-between align-items-center" responsive>
-            <div class="plex-title-label {{ size }} {{cssType}}"> {{ titulo }} </div>
+            <div class="nav-title" justify="start">
+                <span *ngIf="backNav" class="hover">
+                    <plex-icon name="flecha-izquierda" size="lg" type="info" (click)="backNav()"></plex-icon>
+                </span>
+                <div class="plex-title-label {{ size }} {{ cssType }} ml-2"> {{ titulo }} </div>
+            </div>
             <div class="title-content">
                 <ng-content></ng-content>
             </div>
@@ -20,6 +25,7 @@ export class PlexTitleComponent {
     @Input() titulo: string;
     @Input() size: 'sm' | 'md' | 'xl' | 'lg' = 'lg';
     @Input() type: PlexType = 'info';
+    @Input() backNav: Function;
 
     // Asigna un aria-level al heading según su tamaño
     get ariaLevel() {

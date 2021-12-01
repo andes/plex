@@ -1,10 +1,11 @@
 <plex-layout main="8">
   <plex-layout-main>
-    <plex-title main justify titulo="Gestor de agendas">
+    <plex-title main justify titulo="Gestor de agendas" [backNav]="back">
       <plex-badge size="sm" type="success">VALIDADO
       </plex-badge>
       <plex-help icon="information" titulo="Información sobre este módulo"
-                 subtitulo="A continuación todas las opciones">
+        subtitulo="A continuación todas las opciones">
+
         <ol info class="list-group-flush">
           <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
             (acepta búsquedas
@@ -15,7 +16,7 @@
           <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
             del concepto.</li>
           <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <plex-icon type="default"
-                       size="md" name="check"></plex-icon> para guardar una plantilla
+              size="md" name="check"></plex-icon> para guardar una plantilla
             individual</li>
         </ol>
       </plex-help>
@@ -127,7 +128,7 @@
         </ul>
       </plex-help>
       <plex-button size="sm" type="{{ plex.navbarVisible ? 'danger' : 'success' }}"
-                   icon="{{ plex.navbarVisible ? 'close' : 'eye' }}" (click)="plex.toggleHideNavBar()">
+        icon="{{ plex.navbarVisible ? 'close' : 'eye' }}" (click)="plex.toggleHideNavBar()">
       </plex-button>
     </plex-title>
     <plex-detail size="sm">
@@ -241,7 +242,7 @@
     <form #form="ngForm">
       <p>El siguiente ejemplo muestra el uso de la propiedad <strong>validateForm</strong></p>
       <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false"
-                 required>
+        required>
       </plex-text>
       <plex-button label="Guardar formulario" validateForm="true" (click)="guardar($event)">
       </plex-button>
