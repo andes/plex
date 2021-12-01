@@ -7,7 +7,7 @@ import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
         <div role="heading" [attr.aria-level]="ariaLevel" class="plex-title d-flex flex-row justify-content-between align-items-center" responsive>
             <div class="nav-title" justify="start">
                 <span *ngIf="hasBackButton" class="hover mr-2" (click)="onBack()">
-                    <plex-icon name="flecha-izquierda" size="lg" type="info" ></plex-icon>
+                    <plex-icon name="flecha-izquierda" size="lg" type="info"></plex-icon>
                 </span>
                 <div class="plex-title-label {{ size }} {{ cssType }}"> {{ titulo }} </div>
             </div>
