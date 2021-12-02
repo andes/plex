@@ -50,4 +50,8 @@ export class HomeDemoComponent implements OnInit {
 
     helpClick() {
     }
+
+    back() {
+        alert('Navegando...');
+    }
 }
