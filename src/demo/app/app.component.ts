@@ -56,6 +56,7 @@ export class AppComponent implements OnInit {
             { label: 'Modal', icon: 'application', route: '/modal' },
             { label: 'Nav bar', icon: 'page-layout-header', route: '/navbar' },
             { label: 'Phone', icon: 'phone', route: '/phone' },
+            { label: 'Radio', icon: 'checkbox-blank-circle-outline', route: '/radio' },
             { label: 'Ribbon', icon: 'ribbon', route: '/ribbon' },
             { label: 'Select', icon: 'format-list-bulleted', route: '/select' },
             { label: 'Table', icon: 'grid', route: '/table' },

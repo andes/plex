@@ -1,47 +1,50 @@
-<plex-box>
-    <div class="row">
-        <div class="col-md-6">
-            <form>
-                <h1>Radio vertical</h1>
+<plex-layout main="8">
+    <plex-layout-main>
+        <plex-grid cols="2">
+            <section>
+                <plex-title titulo="Radio vertical">
+                </plex-title>
                 <plex-radio [(ngModel)]="modelo.radio" label="Selecciona un color" [data]="opciones" name="colores">
                 </plex-radio>
-            </form>
-        </div>
-        <div class="col-md-6">
-            <form>
-                <h1>Radio vertical</h1>
                 <plex-text [(ngModel)]="modelo.texto" label="Selecciona un color" name="tewtewrw">
                 </plex-text>
-            </form>
-        </div>
-        <!-- <div class="col-md-6" *ngIf="modelo">
-            <label>Modelo</label>
-            <pre>{{modelo | json}}</pre>
-        </div> -->
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <form>
-                <h3>Radio horizontal</h3>
+                <hr>
+                <plex-title titulo="Radio horizontal"></plex-title>
                 <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores" type="horizontal"
-                            [required]="true">
+                    [required]="true">
                 </plex-radio>
-
-                <h3>Checkbox Mulitple </h3>
-                <plex-radio [(ngModel)]="modelo.mulit" multiple="true" [data]="opciones" name="colores2"
-                            type="horizontal" [required]="true" label="Multiple seleccion">
+            </section>
+            <section>
+                <plex-title titulo="Checkbox Mulitple"></plex-title>
+                <plex-radio [(ngModel)]="modelo.mulit" [multiple]="true" [data]="opciones" name="colores2"
+                    type="horizontal" [required]="true" label="Multiple seleccion">
                 </plex-radio>
-
-                <h3>Checkbox Mulitple Vertical </h3>
+                <hr>
+                <plex-title titulo="Checkbox Mulitple Vertical"></plex-title>
                 <plex-radio [(ngModel)]="modelo.mulit" multiple="true" [data]="opciones" name="colores3"
-                            [required]="true">
+                    [required]="true">
                 </plex-radio>
-            </form>
-        </div>
-        <div class="col-md-6" *ngIf="modelo">
-            <label>Modelo</label>
-            <pre>{{modelo | json}}</pre>
-        </div>
-    </div>
-    <plex-button label="Borrar" (click)="borrar()"></plex-button>
-</plex-box>
+            </section>
+            <hr>
+            <section span="2" *ngIf="modelo">
+                <plex-title type="warning" titulo="Modelo">
+                    <plex-button label="Borrar" type="info" (click)="borrar()"></plex-button>
+                </plex-title>
+                <pre>{{ modelo | json }}</pre>
+            </section>
+        </plex-grid>
+    </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="plex-radio invert" type="success"></plex-title>
+        <plex-title titulo="Radio vertical" size="sm">
+        </plex-title>
+        <plex-radio [(ngModel)]="modelo.radio" label="Selecciona un color" [data]="opciones" name="colores">
+        </plex-radio>
+        <plex-text [(ngModel)]="modelo.texto" label="Selecciona un color" name="tewtewrw">
+        </plex-text>
+        <hr>
+        <plex-title titulo="Radio horizontal" size="sm"></plex-title>
+        <plex-radio [(ngModel)]="modelo.radio" [data]="opciones" name="colores" type="horizontal" [required]="true">
+        </plex-radio>
+    </plex-layout-sidebar>
+</plex-layout>

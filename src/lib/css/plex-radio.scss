@@ -23,3 +23,10 @@ plex-radio {
     margin-top: 0;
   }
 }
+
+// INVERT
+plex-layout-sidebar[type="invert"] {
+  .mat-radio-outer-circle {
+    border-color: inherit;
+  }
+}
