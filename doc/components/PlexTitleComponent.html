@@ -938,7 +938,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;role&#x3D;&quot;heading&quot;&nbsp;[attr.aria-level]&#x3D;&quot;ariaLevel&quot;&nbsp;class&#x3D;&quot;plex-title&nbsp;d-flex&nbsp;flex-row&nbsp;justify-content-between&nbsp;align-items-center&quot;&nbsp;responsive&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;plex-title-label&nbsp;{{&nbsp;size&nbsp;}}&nbsp;{{cssType}}&quot;&gt;&nbsp;{{&nbsp;titulo&nbsp;}}&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;title-content&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-tabs&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-wrapper&quot;&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;role&#x3D;&quot;heading&quot;&nbsp;[attr.aria-level]&#x3D;&quot;ariaLevel&quot;&nbsp;class&#x3D;&quot;plex-title&nbsp;d-flex&nbsp;flex-row&nbsp;justify-content-between&nbsp;align-items-center&quot;&nbsp;responsive&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;nav-title&quot;&nbsp;justify&#x3D;&quot;start&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&quot;hasBackButton&quot;&nbsp;class&#x3D;&quot;hover&nbsp;mr-2&quot;&nbsp;(click)&#x3D;&quot;onBack()&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plex-icon&nbsp;name&#x3D;&quot;flecha-izquierda&quot;&nbsp;size&#x3D;&quot;lg&quot;&nbsp;type&#x3D;&quot;info&quot;&gt;&lt;/plex-icon&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;plex-title-label&nbsp;{{&nbsp;size&nbsp;}}&nbsp;{{&nbsp;cssType&nbsp;}}&quot;&gt;&nbsp;{{&nbsp;titulo&nbsp;}}&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;title-content&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-tabs&quot;&gt;&lt;/ng-content&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-content&nbsp;select&#x3D;&quot;plex-wrapper&quot;&gt;&lt;/ng-content&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -1002,6 +1002,22 @@
             </table>
     </section>
 
+    <section>
+        <h3 id="outputs">Outputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>back</code>
+                        </td>
+                        <td class="col-md-10">
+                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
     <section>
         <h3 id="constructor">Constructor</h3>
@@ -1017,6 +1033,33 @@
             </table>
     </section>
 
+    <section>
+        <h3 id="methods">Methods</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> onBack</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>onBack()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
     <section>
         <h3 id="inputs">Properties</h3>
@@ -1050,17 +1093,42 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> hasBackButton</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>hasBackButton:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
             <pre><code class="hljs javascript">import { PlexType } from &#x27;./../core/plex-type.type&#x27;;
-import { Component, Input } from &#x27;@angular/core&#x27;;
+import { Component, Input, EventEmitter, Output, OnInit } from &#x27;@angular/core&#x27;;
 
 @Component({
     selector: &#x27;plex-title&#x27;,
     template: &#x60;
         &lt;div role&#x3D;&quot;heading&quot; [attr.aria-level]&#x3D;&quot;ariaLevel&quot; class&#x3D;&quot;plex-title d-flex flex-row justify-content-between align-items-center&quot; responsive&gt;
-            &lt;div class&#x3D;&quot;plex-title-label {{ size }} {{cssType}}&quot;&gt; {{ titulo }} &lt;/div&gt;
+            &lt;div class&#x3D;&quot;nav-title&quot; justify&#x3D;&quot;start&quot;&gt;
+                &lt;span *ngIf&#x3D;&quot;hasBackButton&quot; class&#x3D;&quot;hover mr-2&quot; (click)&#x3D;&quot;onBack()&quot;&gt;
+                    &lt;plex-icon name&#x3D;&quot;flecha-izquierda&quot; size&#x3D;&quot;lg&quot; type&#x3D;&quot;info&quot;&gt;&lt;/plex-icon&gt;
+                &lt;/span&gt;
+                &lt;div class&#x3D;&quot;plex-title-label {{ size }} {{ cssType }}&quot;&gt; {{ titulo }} &lt;/div&gt;
+            &lt;/div&gt;
             &lt;div class&#x3D;&quot;title-content&quot;&gt;
                 &lt;ng-content&gt;&lt;/ng-content&gt;
             &lt;/div&gt;
@@ -1071,10 +1139,13 @@ import { Component, Input } from &#x27;@angular/core&#x27;;
         &lt;/div&gt;
     &#x60;
 })
-export class PlexTitleComponent {
+export class PlexTitleComponent implements OnInit {
     @Input() titulo: string;
     @Input() size: &#x27;sm&#x27; | &#x27;md&#x27; | &#x27;xl&#x27; | &#x27;lg&#x27; &#x3D; &#x27;lg&#x27;;
     @Input() type: PlexType &#x3D; &#x27;info&#x27;;
+    @Output() back &#x3D; new EventEmitter();
+
+    hasBackButton &#x3D; false;
 
     // Asigna un aria-level al heading según su tamaño
     get ariaLevel() {
@@ -1087,6 +1158,14 @@ export class PlexTitleComponent {
 
     constructor() {
 
+    }
+
+    ngOnInit() {
+        this.hasBackButton &#x3D; this.back.observers.length &gt; 0;
+    }
+
+    onBack() {
+        this.back.emit();
     }
 }
 </code></pre>
