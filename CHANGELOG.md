@@ -1,3 +1,11 @@
+# [7.21.0](https://github.com/andes/plex/compare/v7.20.0...v7.21.0) (2021-12-10)
+
+
+### Features
+
+* **plex-radio:** implementa visualización invert ([783c3d4](https://github.com/andes/plex/commit/783c3d44eff2e05f4497bab42cf7534835e39ca9))
+* **plex-title:** se agrega navegación ([3244ba4](https://github.com/andes/plex/commit/3244ba4dfdba59c8f64362f0e0c47c65ff5d7921))
+
 # [7.20.0](https://github.com/andes/plex/compare/v7.19.1...v7.20.0) (2021-11-29)
 
 
