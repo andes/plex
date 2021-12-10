@@ -1,7 +1,11 @@
 <plex-layout>
   <plex-layout-main>
-    <plex-box>
-      <plex-ribbon [type]="'info'"></plex-ribbon>
-    </plex-box>
+    <plex-ribbon [type]="ribbonType"></plex-ribbon>
+    <plex-title titulo="Plex-ribbon">
+      <plex-button label="Cambiar type" [type]="ribbonType" (click)="cambiarType()"></plex-button>
+    </plex-title>
+    <main role="main" class="inner">
+      <p class="lead">plex-ribbon se usa para mostrar una "cinta" indicando el tipo de entorno de trabajo.</p>
+    </main>
   </plex-layout-main>
 </plex-layout>

@@ -1,34 +1,33 @@
 plex-ribbon > DIV {
-    width: 350px;
+    width: 150px;
     position: absolute;
     box-shadow: 0px 3px 24px #577f8c;
     opacity: 0.9;
     z-index: 9999; // I know
     .ribbon {
-      .texto {
-        border: 2px dashed white;
-        font-size: 1.5rem;
-        font-weight: 800;
-      }
+        .texto {
+            font-size: 1rem;
+            font-weight: 400;
+        }
     }
     &.top-left {
-      top: 30px;
-      left: -110px;
-      transform: rotateZ(-45deg);
+        top: 5px;
+        left: -55px;
+        transform: rotateZ(-45deg);
     }
     &.top-right {
-      top: 30px;
-      right: -110px;
-      transform: rotateZ(45deg);
+        top: 5px;
+        left: -55px;
+        transform: rotateZ(45deg);
     }
     &.bottom-left {
-      bottom: 30px;
-      left: -110px;
-      transform: rotateZ(45deg);
+        top: 5px;
+        left: -55px;
+        transform: rotateZ(45deg);
     }
     &.bottom-right {
-      bottom: 30px;
-      right: -110px;
-      transform: rotateZ(-45deg);
+        top: 5px;
+        left: -55px;
+        transform: rotateZ(-45deg);
     }
-  }
+}

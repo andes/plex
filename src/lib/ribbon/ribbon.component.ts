@@ -1,9 +1,10 @@
-import { Component, Input, OnInit, Renderer2 } from '@angular/core';
+import { PlexType } from './../core/plex-type.type';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'plex-ribbon',
     template: `
-    <div class="text-center p-1 {{position}} bg-{{type}}">
+    <div class="text-center {{position}} bg-{{type}}">
         <div class="ribbon">
             <div class="texto text-white p-1">
                 {{ text }}
@@ -13,11 +14,7 @@ import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 })
 
 export class PlexRibbonComponent {
-    @Input() type = 'info';
+    @Input() type: PlexType = 'info';
     @Input() text = 'demo';
     @Input() position: 'top-left' | 'top-right' = 'top-left';
-
-    constructor(renderer: Renderer2) {
-        this.type = 'info';
-    }
 }
