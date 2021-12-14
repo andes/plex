@@ -26,8 +26,8 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     private _readonly: boolean;
     private _disabled: boolean;
 
-
     public uniqueId = new Date().valueOf().toString();
+    splitLabelFields: any;
     public get esRequerido(): boolean {
         return hasRequiredValidator(this.control as any);
     }
@@ -42,6 +42,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     @Input() multiple: false;
     @Input() idField: string;
     @Input() labelField: string; // Puede ser un solo campo o una expresión tipo ('string' + campo + 'string' + campo + ...)
+    @Input() extraFields: string[] = [];
     @Input() groupField: string;
     @Input() closeAfterSelect = false;
 
@@ -124,7 +125,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             };
 
             const self = this;
-            const html = '<a href="javascript:void(0)" class="' + options.className + '" tabindex="-1" title="' + options.title + '">' + options.label + '</a>';
+            const html = '<a href="javascript:void(0)" class="' + options.className + '" tabindex="-1" tooltip="' + options.title + '">' + options.label + '</a>';
 
             const append = (html_container, html_element) => {
                 const pos = html_container.search(/(<\/[^>]+>\s*)$/);
@@ -184,24 +185,43 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         if (!item) {
             return '';
         }
+        this.splitLabelFields = this.splitLabelField(labelField, false);
 
         let result = '';
-        const labelFields = this.splitLabelField(labelField, false);
-        labelFields.forEach(field => {
-            if (field.startsWith('\'')) {
-                result += field.slice(1, field.length - 1) + ' ';
-            } else {
-                if (field.indexOf('.') < 0) {
-                    result += item[field] + ' ';
-                } else {
-                    const prefix = field.substr(0, field.indexOf('.'));
-                    const suffix = field.slice(field.indexOf('.') + 1);
-                    result += this.renderOption(item[prefix], suffix) + ' ';
-                }
-            }
+        this.splitLabelFields.forEach(field => {
+            result += `${this.renderField(field, item)} `;
         });
-        // Reemplaza comillas por vacío
+
+        return result;
+    }
+
+    private renderField(field: any, item: any) {
+        let result = '';
+        if (field.startsWith('\'')) {
+            result += field.slice(1, field.length - 1) + ' ';
+        } else {
+            if (field.indexOf('.') < 0) {
+                result += item[field] + ' ';
+            } else {
+                const prefix = field.substring(0, field.indexOf('.'));
+                const suffix = field.slice(field.indexOf('.') + 1);
+                result += this.renderOption(item[prefix], suffix) + ' ';
+            }
+        }
         return result.trim();
+    }
+
+    private renderExtraFields(item) {
+        if (this.extraFields.length <= 0) {
+            return '';
+        }
+        let extras = '';
+        if (this.extraFields.length) {
+            for (let i in this.extraFields) {
+                extras += this.renderField(this.extraFields[i], item);
+            }
+        }
+        return extras;
     }
 
     /**
@@ -251,7 +271,10 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             preload: !this.hasStaticData,
             // dropdownParent: 'body',
             render: {
-                option: (item, escape) => '<div class=\'option\'>' + escape(this.renderOption(item, this.labelField)) + '</div>',
+                option: (item, escape) => `<div class="d-flex justify-content-between">
+                    <div class="option">${escape(this.renderOption(item, this.labelField))}</div>
+                    <small>${this.renderExtraFields(item)}</small>
+                </div>`,
                 item: (item, escape) => {
                     if (this.multiple) {
                         return '<div class=\'item\'>' + escape(this.renderOption(item, this.labelField)) + '</div>';
