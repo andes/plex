@@ -49,7 +49,7 @@ export class SelectDemoComponent implements OnInit {
         if (event.query) {
             this.servicio.get(event.query)
                 .pipe(
-                    map(arrayPaises => arrayPaises.map(pais => ({ ...pais, ...{ extra: `<em>ID: [${pais.id.toUpperCase()}]</em>` } }))),
+                    map(arrayPaises => arrayPaises.map(pais => ({ ...pais, ...{ extra: `<em>ID: [${pais.id.toString().toUpperCase()}]</em>` } }))),
                     // tslint:disable-next-line:no-console
                     tap(console.log)
                 )

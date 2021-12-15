@@ -298,10 +298,12 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 // Busca en la lista de items un valor que coincida con la clave
                 if (this.multiple) {
                     let result = [];
-                    for (let i = 0; i < this.data.length; i++) {
-                        // value es siempre un string, por eso es necesario convertir el id
-                        if (value.indexOf('' + this.data[i][this.idField]) >= 0) {
-                            result = [...result, this.data[i]];
+                    if (this.data && this.data.length) {
+                        for (let i = 0; i < this.data.length; i++) {
+                            // value es siempre un string, por eso es necesario convertir el id
+                            if (value.indexOf('' + this.data[i][this.idField]) >= 0) {
+                                result = [...result, this.data[i]];
+                            }
                         }
                     }
                     this.value = result.length ? result : null;
