@@ -217,7 +217,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         }
         let extras = '';
         if (this.extraFields.length) {
-            for (let i in this.extraFields) {
+            for (const i in this.extraFields) {
                 extras += this.renderField(this.extraFields[i], item);
             }
         }

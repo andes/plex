@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { map, tap } from 'rxjs/operators';
 import { SelectEvent } from './../../../lib/select/select-event.interface';
 import { ServiceDemoSelect } from './select.service';
 
@@ -46,7 +47,13 @@ export class SelectDemoComponent implements OnInit {
 
     loadData(event: SelectEvent) {
         if (event.query) {
-            this.servicio.get(event.query).subscribe(event.callback);
+            this.servicio.get(event.query)
+                .pipe(
+                    map(arrayPaises => arrayPaises.map(pais => ({ ...pais, ...{ extra: `<em>ID: [${pais.id.toUpperCase()}]</em>` } }))),
+                    // tslint:disable-next-line:no-console
+                    tap(console.log)
+                )
+                .subscribe(event.callback);
         } else {
             event.callback(null);
         }

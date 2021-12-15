@@ -17,7 +17,7 @@
                     <plex-select [(ngModel)]="modelo2.selectMultiple" [multiple]="true" name="selectmultiple"
                         (getData)="loadData($event)" label="Múltiple con llamada a la API"
                         [readonly]="modelo2.soloLectura" placeholder="Ingrese un país" labelField="nombre"
-                        [extraFields]="['nombre']">
+                        [extraFields]="['extra']">
                     </plex-select>
                     <plex-bool [(ngModel)]="modelo2.soloLectura" name="soloLectura" label="Sólo lectura">
                     </plex-bool>
