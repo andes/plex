@@ -3,7 +3,6 @@ import { ControlValueAccessor, NgControl, } from '@angular/forms';
 import { SelectEvent } from './select-event.interface';
 import { hasRequiredValidator } from '../core/validator.functions';
 
-// Importo las librerías
 const Selectize = require('selectize/dist/js/standalone/selectize');
 
 @Component({
@@ -201,7 +200,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             result += field.slice(1, field.length - 1) + ' ';
         } else {
             if (field.indexOf('.') < 0) {
-                result += item[field] + ' ';
+                result += item[field] || '' + ' ';
             } else {
                 const prefix = field.substring(0, field.indexOf('.'));
                 const suffix = field.slice(field.indexOf('.') + 1);
@@ -218,7 +217,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
         let extras = '';
         if (this.extraFields.length) {
             for (const i in this.extraFields) {
-                extras += this.renderField(this.extraFields[i], item);
+                extras += `${this.renderField(this.extraFields[i], item)} `;
             }
         }
         return extras;
