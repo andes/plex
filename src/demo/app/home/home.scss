@@ -1,0 +1,37 @@
+$red: #dd4b39;
+$orange: #ff8d22;
+$yellow: #ffd500;
+$green: #8cc63f;
+$blue: #00a8e0;
+$dark-blue: #002738;
+$light-grey: #f9f9f9;
+$dark-grey: #999999;
+$light-blue: #edf8fd;
+
+.contenedor {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    .btn-prev,
+    .btn-next {
+        width: 20px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background: $blue;
+        &:hover {
+            plex-icon {
+                color: $dark-blue;
+            }
+        }
+        &.disabled {
+            background: #35474e;
+            plex-icon {
+                color: $dark-grey;
+            }
+        }
+    }
+}

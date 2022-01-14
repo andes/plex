@@ -4,7 +4,8 @@ import { Plex } from '../../../lib/core/service';
 import { HeaderPacienteComponent } from '../header-paciente/header-paciente.component';
 
 @Component({
-    templateUrl: 'home.html'
+    templateUrl: 'home.html',
+    styleUrls: ['./home.scss']
 })
 export class HomeDemoComponent implements OnInit {
     public field = '';

@@ -77,7 +77,19 @@
 
     <plex-scroll (change)="loadData()"></plex-scroll>
   </plex-layout-main>
-  <plex-layout-sidebar>
+  <plex-layout-sidebar type="invert">
+    <plex-title titulo="Hola Pala! 😁"></plex-title>
+    <!-- HTML para Pala -->
+    <div class="contenedor">
+      <div class="btn-prev disabled" aria-role="button">
+        <plex-icon name="pico-izquierda" type="light"></plex-icon>
+      </div>
+      <div class="contenido"></div>
+      <div class="btn-next" aria-role="button">
+        <plex-icon name="pico-derecha" type="light"></plex-icon>
+      </div>
+    </div>
+    <!-- Fin HTML para Pala -->
     <plex-title titulo="Texto principal" size="sm">
       <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Ayuda" position="right">
         <ul class="list-group">
