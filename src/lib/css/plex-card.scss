@@ -13,7 +13,30 @@ plex-card {
         padding: 1.5rem;
         height: 100%;
         justify-content: space-between;
+
+        .content-label, .content-general, .content-button{
+            margin-top: 0.5rem;
+        }
         
+        &.xs{
+            padding: 0.2rem 1.2rem 0.2rem 1.2rem;
+            .content-label, .content-general, .content-button{
+                margin-top: 0;
+            }
+
+            plex-label{
+                margin-bottom: 0.5rem;
+            }
+        }
+        &.sm{
+            padding: 0.3rem 1.5rem 0.3rem 1.5rem;
+        }
+        &.md{
+            padding: 1rem 1.5rem 1rem 1.5rem;
+        }
+        &.lg{
+            padding: 1.5rem;
+        }
         > img, > plex-icon {
             margin-bottom: .75rem;
             object-fit: cover!important;
