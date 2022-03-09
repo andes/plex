@@ -938,7 +938,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;text-center&nbsp;p-1&nbsp;{{position}}&nbsp;bg-{{type}}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;ribbon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;texto&nbsp;text-white&nbsp;p-1&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;text&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;</code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;text-center&nbsp;{{position}}&nbsp;bg-{{type}}&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;ribbon&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;texto&nbsp;text-white&nbsp;p-1&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;text&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;</code></td>
             </tr>
 
 
@@ -988,6 +988,10 @@
                             <code>type</code>
                         </td>
                         <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code><a href="../injectables/Plex.html" target="_self" >PlexType</a></code>
+
+                              </p>
                             <p>
                               <em>Default value: </em><code>info</code>
                             </p>
@@ -998,29 +1002,17 @@
     </section>
 
 
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(renderer: Renderer2)</code>
-                        </td>
-                    </tr>
-    
-                </tbody>
-            </table>
-    </section>
 
 
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input, OnInit, Renderer2 } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { PlexType } from &#x27;./../core/plex-type.type&#x27;;
+import { Component, Input } from &#x27;@angular/core&#x27;;
 
 @Component({
     selector: &#x27;plex-ribbon&#x27;,
     template: &#x60;
-    &lt;div class&#x3D;&quot;text-center p-1 {{position}} bg-{{type}}&quot;&gt;
+    &lt;div class&#x3D;&quot;text-center {{position}} bg-{{type}}&quot;&gt;
         &lt;div class&#x3D;&quot;ribbon&quot;&gt;
             &lt;div class&#x3D;&quot;texto text-white p-1&quot;&gt;
                 {{ text }}
@@ -1030,13 +1022,9 @@
 })
 
 export class PlexRibbonComponent {
-    @Input() type &#x3D; &#x27;info&#x27;;
+    @Input() type: PlexType &#x3D; &#x27;info&#x27;;
     @Input() text &#x3D; &#x27;demo&#x27;;
     @Input() position: &#x27;top-left&#x27; | &#x27;top-right&#x27; &#x3D; &#x27;top-left&#x27;;
-
-    constructor(renderer: Renderer2) {
-        this.type &#x3D; &#x27;info&#x27;;
-    }
 }
 </code></pre>
         </div>
