@@ -56,6 +56,26 @@
                 <plex-badge type="danger">urgente</plex-badge>
             </plex-item>
         </plex-list>
+        <div class="" style="display: flex; justify-content: space-between; flex-wrap:wrap-reverse;padding: 0.8rem;">
+            <div class="d-flex justify-content-start" style="flex-grow: 1;">
+                <plex-bool name="activo"></plex-bool>
+                <plex-label class="mx-1" titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="md">
+                </plex-label>
+                <plex-label class="mx-1" titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="md">
+                </plex-label>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-start align-items-center">
+                    <plex-badge type="danger" class="mx-1">ausente</plex-badge>
+                    <plex-badge type="danger" class="mx-1">ausente</plex-badge>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                    <plex-button class="mx-1" type="success" size="sm" label="aprobar"></plex-button>
+                    <!-- <plex-button type="info" size="sm" icon="check"></plex-button> -->
+                    <plex-button class="mx-1" type="danger" size="sm" label="Eliminar"></plex-button>
+                </div>
+            </div>
+        </div>
         <hr>
         <plex-list>
             <plex-heading>
@@ -109,7 +129,7 @@
                 </ol>
             </plex-help>
         </plex-title>
-        <plex-list size="sm" [selectable]="false">
+        <plex-list size="sm" [selectable]="true">
             <ng-container *ngFor="let item of lista">
                 <plex-item [colors]="item.colores" [selectable]="item.selectable">
                     <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
@@ -123,15 +143,35 @@
                 </plex-item>
             </ng-container>
         </plex-list>
+        <div class="" style="display: flex; justify-content: space-between; flex-wrap:wrap-reverse; padding: 0.8rem;">
+            <div class="d-flex justify-content-start" style="flex-grow: 1;">
+                <plex-bool name="activo"></plex-bool>
+                <plex-label class="mx-1" titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="md">
+                </plex-label>
+            </div>
+            <div class="d-flex justify-content-between align-items-center" style="flex-grow: 1;">
+                <div class="d-flex justify-content-start align-items-center">
+                    <plex-badge type="danger">ausente</plex-badge>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                    <plex-button type="success" size="sm" label="aprobar"></plex-button>
+                    <!-- <plex-button type="info" size="sm" icon="check"></plex-button> -->
+                    <plex-button type="danger" size="sm" label="Eliminar"></plex-button>
+                </div>
+            </div>
+        </div>
         <plex-list [selectable]="true">
             <ng-container *ngFor="let item of lista">
                 <plex-item [selectable]="item.selectable">
-                    <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
-                    <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="sm"></plex-label>
-                    <plex-button type="danger" size="sm" icon="delete"></plex-button>
+                    <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
+                    <plex-label titulo="Otro titulo del item" subtitulo="Otro subtítulo" size="md"> </plex-label>
                     <plex-badge type="danger">ausente</plex-badge>
-                    <plex-button type="success" size="sm" icon="check-circle"></plex-button>
-                    <plex-button type="warning" size="sm" icon="clock"></plex-button>
+                    <!-- <plex-badge type="danger">ausente</plex-badge>
+                    <plex-badge type="danger">ausente</plex-badge>
+                    <plex-badge type="danger">ausente</plex-badge> -->
+                    <plex-button type="success" size="sm" icon="check"></plex-button>
+                    <!-- <plex-button type="warning" size="sm" icon="clock"></plex-button> -->
+                    <plex-button type="danger" size="sm" icon="delete"></plex-button>
                 </plex-item>
             </ng-container>
         </plex-list>
