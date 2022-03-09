@@ -1,3 +1,12 @@
+# [7.22.0](https://github.com/andes/plex/compare/v7.21.0...v7.22.0) (2022-03-09)
+
+
+### Features
+
+* **plex-card:** agrega atributo size ([#310](https://github.com/andes/plex/issues/310)) ([5c358fe](https://github.com/andes/plex/commit/5c358fef2cf3a214ef300034e3f2daef9b36e025))
+* **plex-datetime:** agranda content para boton aceptar ([#311](https://github.com/andes/plex/issues/311)) ([bc636c3](https://github.com/andes/plex/commit/bc636c3bfaacab9c9321f4168f0205ae99ecb543))
+* **ribbon:** se reduce tamaño ([#308](https://github.com/andes/plex/issues/308)) ([87431ba](https://github.com/andes/plex/commit/87431ba0cdab9f5be3176700f54e4cec685ced4e))
+
 # [7.21.0](https://github.com/andes/plex/compare/v7.20.0...v7.21.0) (2021-12-10)
 
 
