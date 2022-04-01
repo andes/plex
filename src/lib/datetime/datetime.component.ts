@@ -19,7 +19,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
             </label>
             <div *ngIf="todayHintAction" hint="{{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
             <div class="input-group d-flex align-items-center">
-                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabled" [tooltip]="makeTooltip('anterior')"></plex-button>
+                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabledPrev" [tooltip]="makeTooltip('anterior')"></plex-button>
 
                 <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
                         [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"
@@ -27,7 +27,7 @@ require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker')
                 <span class="input-group-btn">
                     <plex-button tabIndex="-1" type="info" [size]="size" [icon]="icon" [disabled]="disabled || readonly"></plex-button>
                 </span>
-                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabled" [tooltip]="makeTooltip('siguiente')"></plex-button>
+                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabledNext" [tooltip]="makeTooltip('siguiente')"></plex-button>
             </div>
             <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
         </div>
@@ -57,6 +57,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     @Input() hintAction: 'today' | 'nextDay' | 'nextHour' | 'custom' = null;
     @Input() hintIcon = 'asterisk';
     @Input() disabled = false;
+    @Input() disabledPrev = false;
+    @Input() disabledNext = false;
     @Input() readonly = false;
     @Input() skipBy: 'hour' | 'day' | 'month' | 'year' = null;
     @Input() title: string;
@@ -295,15 +297,23 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     }
 
     prev() {
+        this.disabledNext = false;
         const temp = this.value ? moment(this.value, this.dateOrTime()).subtract(1, this.skipBy).format(this.format) : null;
         this.setElements(temp);
+
+        this.disabledPrev = (moment(this.value, this.dateOrTime()).subtract(1, this.skipBy) <= this.min) ? true : false;
         this.value = temp;
         this.onChange(this.value);
     }
 
     next() {
+        this.disabledPrev = false;
         const temp = this.value ? moment(this.value, this.dateOrTime()).add(1, this.skipBy).format(this.format) : null;
+
         this.setElements(temp);
+
+        this.disabledNext = (moment(this.value, this.dateOrTime()).add(1, this.skipBy) >= this.max) ? true : false;
+
         this.value = temp;
         this.onChange(this.value);
     }
