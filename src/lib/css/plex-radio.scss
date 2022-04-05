@@ -7,6 +7,12 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 plex-radio {
   display: inline-block;
+
+  &[type="horizontal"] {
+    .mat-radio-button {
+      margin-right: 0.5rem;
+    }
+  }
 }
 
 // Material design patches
@@ -14,12 +20,14 @@ plex-radio {
   font-family: "TypoPRO Source Sans Pro";
   font-size: 16px;
   font-weight: normal;
+  padding: 0 0.2rem !important;
 }
 
 .mat-radio-button {
-  margin-right: 1em;
+  height: 30px !important;
+  margin-right: 0px;
 
-  > label {
+  >label {
     margin-top: 0;
   }
 }

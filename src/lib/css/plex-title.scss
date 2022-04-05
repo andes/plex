@@ -3,11 +3,13 @@
     border-bottom: solid $dark-grey 1px;
 
     width: 100%;
+
     .plex-title-label {
         font-size: 1.8em;
         color: $blue;
         font-weight: 300;
         text-transform: uppercase;
+
         &.sm {
             font-size: 1.4em;
         }
@@ -24,14 +26,17 @@
             font-size: 2em;
         }
     }
+
     .title-content {
         height: 31px;
         max-height: 36px;
         display: flex;
         align-items: center;
     }
+
     &.size-sm {
         flex-wrap: wrap;
+
         .title-content {
             justify-content: space-between;
         }
