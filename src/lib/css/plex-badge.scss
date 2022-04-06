@@ -7,6 +7,10 @@
     text-transform: uppercase;
     border-color: var(--badge-color);
     color: var(--badge-color);
+    max-width: 17em;
+    width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
 
     plex-icon i {
         font-size: 20px;
@@ -27,9 +31,16 @@ plex-badge {
     &[size="block"] {
         width: 100%;
 
+        .container-badge {
+            width: 100%;
+        }
+
         span.badge-block {
             display: block;
             width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+
         }
     }
 
@@ -43,31 +54,41 @@ plex-badge {
 }
 
 .btn-badge {
-    button.btn {
-        padding: 0.3rem 0.5rem;
-        font-size: $badge-font-size;
-        border-radius: 0;
-        color: #fff;
-        background-color: var(--badge-color);
-        border-color: var(--badge-color);
-        &:hover {
+    height: auto;
+
+    plex-button {
+        height: 100%;
+
+        button.btn {
+            height: 100%;
+            padding: 0.3rem 0.5rem;
+            font-size: $badge-font-size;
+            border-radius: 0;
+            color: #fff;
             background-color: var(--badge-color);
-            opacity: 0.75;
+            border-color: var(--badge-color);
+
+            &:hover {
+                background-color: var(--badge-color);
+                opacity: 0.75;
+            }
         }
     }
 }
 
 // Espaciado del ícono
-[class^="badge-"] > i,
-[class^="label-"] > i {
+[class^="badge-"]>i,
+[class^="label-"]>i {
     margin-right: 5px;
 }
 
-@each $name, $color in $colors {
+@each $name,
+$color in $colors {
     .badge-#{$name} {
         --badge-color: #{$color};
         // Compatibilidad con andes hasta que se haga el refactor a plex-badge
         @extend %baseBadge;
+
         .btn {
             @include button-factory($color);
             position: relative;
@@ -77,11 +98,13 @@ plex-badge {
 
     .btn-badge-#{$name} {
         --badge-color: #{$color};
+
         .btn {
             @include button-factory($color);
             position: relative;
             right: 2px;
         }
+
         span[dato] {
             display: flex;
             justify-content: center;
@@ -97,15 +120,18 @@ plex-badge {
 /** BADGE EXTENSIBLE DESDE AFUERA DE PLEX */
 $badge-extend: () !default;
 
-@each $name, $color in $badge-extend {
+@each $name,
+$color in $badge-extend {
     .badge-#{$name} {
         --badge-color: #{$color};
+
         .btn {
             @include button-factory($color);
             position: relative;
             right: 2px;
         }
     }
+
     .btn-badge-#{$name} {
         .btn {
             @include button-factory($color);

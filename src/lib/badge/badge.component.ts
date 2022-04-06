@@ -5,6 +5,7 @@ import { Component, Input, ElementRef, ViewChild, OnChanges } from '@angular/cor
 @Component({
     selector: 'plex-badge',
     template: `
+    <div class="d-flex container-badge">
         <span #badgeIcon class="badge badge-{{ type }} badge-{{ size }}">
             <ng-content select="plex-icon"></ng-content>
             <ng-content></ng-content>
@@ -14,6 +15,7 @@ import { Component, Input, ElementRef, ViewChild, OnChanges } from '@angular/cor
             <ng-content select="plex-datetime"></ng-content>
             <ng-content select="span[dato]"></ng-content>
         </span>
+    </div>
         `,
 })
 export class PlexBadgeComponent implements OnChanges {
