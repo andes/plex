@@ -3,7 +3,6 @@ plex-detail {
     flex-wrap: wrap;
     margin: 1.5rem 0;
     align-items: flex-start;
-    // md size = md default
     --detail-img-size: 4.5rem;
 
     &[direction="column"] {
@@ -15,7 +14,7 @@ plex-detail {
             text-align: center;
         }
     }
-    
+
     &[direction="row"] {
         flex-direction: row;
     }
@@ -27,7 +26,7 @@ plex-detail {
     &[size=xs] {
         --detail-img-size: 3.5rem;
     }
-     
+
     section {
         &.direction-column {
             --detail-divider-align: center;
@@ -37,19 +36,75 @@ plex-detail {
             --detail-badge-align: center;
             width: 100%;
             text-align: center;
+
+            .contenedor-textos {
+                span {
+                    flex-direction: column !important;
+                    align-items: center;
+
+                    .cont-badge,
+                    .cont-button {
+                        flex-basis: 0;
+                        flex-grow: 1;
+                        max-width: 100%;
+                        margin: 0.25rem 0 0.25rem 0;
+                        flex-direction: row !important;
+                    }
+                }
+
+                plex-button {
+                    margin-bottom: 0.2rem;
+                    margin-left: 0.2rem;
+                }
+            }
         }
     }
-    
+
     section {
         &.direction-row {
-            --detail-divider-align: start; 
+            --detail-divider-align: start;
             --detail-img-mr: 0.75rem;
             --detail-img-mb: 1rem;
             --detail-text-align: left;
-            
+
             .contenedor-textos {
                 width: fit-content;
-                margin-right: 2rem;
+                margin-right: 1rem;
+
+                .cont-badge,
+                .cont-button {
+                    flex-basis: 0;
+                    flex-grow: 1;
+                    max-width: 100%;
+                }
+
+                plex-badge {
+                    margin-bottom: 0.2rem;
+                    margin-right: 0.2rem;
+                }
+
+                plex-button {
+                    margin-bottom: 0.2rem;
+                    margin-left: 0.2rem;
+                }
+
+                plex-badge:last-child,
+                plex-button:last-child {
+                    margin-right: 0;
+                }
+
+                plex-badge:first-child,
+                plex-button:first-child {
+                    margin-left: 0;
+                }
+
+                plex-dropdown {
+                    button {
+                        padding: 0.32rem 0.5rem;
+                        font-size: 0.75rem;
+                        border-radius: 0;
+                    }
+                }
             }
         }
     }
@@ -70,14 +125,14 @@ plex-detail {
             justify-content: var(--detail-badge-align);
         }
     }
-    
+
     section.direction-row:first-child {
         @extend %baseDirection;
         flex-direction: row;
         justify-content: flex-start;
     }
 
-    div.contenedor-elementos-graficos { 
+    div.contenedor-elementos-graficos {
 
         @mixin margins {
             margin-bottom: var(--detail-img-mb);
@@ -90,9 +145,9 @@ plex-detail {
             border-radius: 50%;
             object-fit: cover;
             width: var(--detail-img-size);
-            height: var(--detail-img-size); 
+            height: var(--detail-img-size);
         }
-        
+
         // Estilos iconos
         i {
             @include margins;
@@ -105,13 +160,13 @@ plex-detail {
             // se disminuye tamaño de iconos
             font-size: 2rem;
             padding: 15px;
-            height: var(--detail-img-size); 
+            height: var(--detail-img-size);
             width: var(--detail-img-size);
         }
     }
 
     .contenedor-textos {
-        
+
         div[title] {
             margin-top: .25rem;
             line-height: 1.65rem;
@@ -134,7 +189,7 @@ plex-detail {
             align-self: var(--detail-divider-align);
         }
     }
-        
+
     // size-lg
     section.size-lg {
 
@@ -143,24 +198,25 @@ plex-detail {
             // imagenes
             img {
                 width: var(--detail-img-size);
-                height: var(--detail-img-size); 
+                height: var(--detail-img-size);
             }
 
             // iconos
             i {
                 font-size: 2.5rem;
-                height: var(--detail-img-size); 
+                height: var(--detail-img-size);
                 padding: 15px;
                 width: var(--detail-img-size);
             }
         }
 
         .contenedor-textos {
-            
+
             div[title] {
                 font-size: 1.5rem;
                 margin-top: .5rem;
-            } 
+            }
+
             div[subtitle] {
                 font-size: 1rem;
             }
@@ -176,6 +232,7 @@ plex-detail {
                 font-size: 1.25rem;
                 margin-top: .5rem;
             }
+
             div[subtitle] {
                 font-size: 0.9rem;
             }
@@ -183,19 +240,20 @@ plex-detail {
     }
 
     // size-sm
-    section.size-sm { 
-        div.contenedor-elementos-graficos { 
+    section.size-sm {
+        div.contenedor-elementos-graficos {
+
             // se disminuyen las imagenes
-            img {  
+            img {
                 width: var(--detail-img-size);
-                height: var(--detail-img-size); 
+                height: var(--detail-img-size);
             }
-            
-            i { 
+
+            i {
                 font-size: 1.5rem;
                 padding: 10px;
                 width: 2.5rem;
-                height: 2.5rem; 
+                height: 2.5rem;
             }
         }
 
@@ -204,10 +262,10 @@ plex-detail {
                 font-size: 1.15rem;
                 margin-top: .5rem;
             }
+
             div[subtitle] {
                 font-size: 0.75rem;
             }
         }
     }
 }
-    
