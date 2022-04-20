@@ -19,20 +19,30 @@ plex-table {
                         text-decoration: underline !important;
                         cursor: pointer;
                     }
-                    > span {
+
+                    >span {
                         position: absolute;
                         top: 15px;
                     }
                 }
             }
+
+            &.column-right {
+                display: flex;
+                justify-content: flex-end;
+                text-align: end;
+            }
+
             plex-dropdown {
                 display: none;
             }
+
             &:hover {
                 plex-dropdown {
                     display: inline;
                     position: relative;
                     left: 12px;
+
                     .btn-sm {
                         padding: 0rem;
                     }
@@ -40,9 +50,17 @@ plex-table {
             }
         }
 
+        td {
+            plex-dropdown {
+                display: flex;
+                justify-content: end;
+            }
+        }
+
         tr {
             &.selectable {
                 cursor: pointer;
+
                 &:hover {
                     box-sizing: border-box;
                     box-shadow: inset 0 0 0 2px transparentize($color: $blue, $amount: 0.4);
@@ -57,29 +75,26 @@ plex-table {
                 background-color: $light-blue !important;
                 color: black;
             }
+
             &:nth-child(odd) {
                 background-color: rgba(0, 39, 56, 0.1);
             }
         }
 
         & th,
-        td {
-            //border: 1px solid black;
+        & td {
             border-collapse: collapse;
             padding: 15px;
             text-align: left;
 
             &.column-right {
-                display: flex;
-                justify-content: flex-end;
-                text-align: right;
+                text-align: end;
 
-                > span {
+                >span {
                     right: 0;
                 }
 
                 plex-button,
-                plex-badge,
                 plex-dropdown {
                     align-self: center;
                     margin-left: 0.25rem;
@@ -103,6 +118,7 @@ plex-table {
         }
     }
 }
+
 // Sidebar
 plex-layout-sidebar {
     plex-table {
