@@ -18,7 +18,7 @@ import { PlexLabelComponent } from '../label/label.component';
                 <hr>
             </div>
         </section>
-        <plex-grid size="md" type="auto">
+        <plex-grid responsive type="auto" size="md">
             <ng-container *ngFor="let dato of items">
                 <plex-label titulo="{{ dato.label }}" subtitulo="{{ dato.valor }}"></plex-label>
             </ng-container>
@@ -42,17 +42,15 @@ export class PlexDetailComponent implements AfterViewChecked {
     constructor(private render: Renderer2) {
 
     }
-
     ngAfterViewChecked() {
         const labelListElement = this.plexLabelsElement.toArray();
         this.plexLabels.forEach((label: PlexLabelComponent, index) => {
             const native: ElementRef = labelListElement[index];
             if (label.subtitulo.length > 28) {
-                this.render.setStyle(native.nativeElement, 'grid-column-end', 'span 2');
+                this.render.setStyle(native.nativeElement, 'grid-column-end', 'auto');
             } else {
                 this.render.setStyle(native.nativeElement, 'grid-column-end', 'unset');
             }
         });
     }
-
 }
