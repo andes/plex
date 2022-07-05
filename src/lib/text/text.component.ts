@@ -33,7 +33,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
         </div>
 
         <!-- Multiline -->
-        <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html" [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+        <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html" [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [rows]="rows" [disabled]="disabled" [readonly]="readonly"
         (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
         </textarea>
 
@@ -87,6 +87,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() disabled = false;
     @Input() readonly = false;
     @Input() multiline = false;
+    @Input() rows: number;
     @Input() html = false;
     @Input() debounce = 0;
     @Input() qlToolbar: PlexTextToolBar[];
@@ -242,9 +243,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
      * @memberof PlexTextComponent
      */
     adjustTextArea() {
-        this.textarea.nativeElement.style.overflow = 'hidden';
-        this.textarea.nativeElement.style.height = 'auto';
-        this.textarea.nativeElement.style.height = this.textarea.nativeElement.scrollHeight + 'px';
+        this.textarea.nativeElement.style.overflow = 'auto';
+        this.textarea.nativeElement.style.height = (this.rows) ? this.rows + 'em' : '4em';
     }
 
 
