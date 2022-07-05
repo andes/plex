@@ -3,15 +3,14 @@
  * Array de colores expandibles de los tabs desde una aplicación externa.
  */
 
-$plex-tabs-color-extend: (
-    procedimiento: $blue,
+$plex-tabs-color-extend: (procedimiento: $blue,
     trastorno: $red,
 ) !default;
 
 plex-tabs {
     width: 100%;
 
-    > section:first-child {
+    >section:first-child {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -27,11 +26,13 @@ plex-tabs {
             &.full .nav-item {
                 flex: 1;
                 text-align: center;
+
                 a {
                     display: inline-block;
                     width: 100%;
                 }
             }
+
             & .icon {
                 max-width: 50px;
             }
@@ -71,16 +72,19 @@ plex-tabs {
                 &.nav-item-default {
                     background-color: $white;
                     color: $blue;
+
                     a.active {
                         background-color: $dark-blue;
                         color: white;
                     }
                 }
 
-                @each $name, $color in $plex-tabs-color-extend {
+                @each $name,
+                $color in $plex-tabs-color-extend {
                     &.nav-item-#{$name} {
                         background-color: $white;
                         color: $color;
+
                         a.active {
                             background-color: $color;
                             color: white;
@@ -105,13 +109,19 @@ plex-tabs {
                 }
             }
 
-            & + div {
+            &+div {
                 width: fit-content;
 
                 plex-button,
                 plex-badge,
                 plex-dropdown {
                     margin-left: 0.5rem;
+                }
+
+                plex-badge {
+                    .badge {
+                        white-space: nowrap;
+                    }
                 }
             }
         }
