@@ -175,7 +175,7 @@ class PlexTextTestComponent {
 
 @Component({
     template: ``,
-    encapsulation: ViewEncapsulation.Native,
+    encapsulation: ViewEncapsulation.ShadowDom,
 })
 class EncapsulatedPlexTextTestComponent extends PlexTextTestComponent {
     @ViewChild(PlexTextComponent, { static: true }) select: PlexTextComponent;

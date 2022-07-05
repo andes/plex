@@ -261,7 +261,7 @@ export class PlexModule {
     }
 
 
-    static forRoot({ networkLoading }: PlexModuleConfig): ModuleWithProviders {
+    static forRoot({ networkLoading }: PlexModuleConfig): ModuleWithProviders<any> {
         return {
             ngModule: PlexModule,
             providers: [
