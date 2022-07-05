@@ -133,7 +133,7 @@ class PlexButtonTestComponent {
 
 @Component({
     template: ``,
-    encapsulation: ViewEncapsulation.Native,
+    encapsulation: ViewEncapsulation.ShadowDom,
 })
 class EncapsulatedPlexButtonTestComponent extends PlexButtonTestComponent {
     @ViewChild(PlexButtonComponent, { static: true }) select: PlexButtonComponent;
