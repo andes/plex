@@ -2,34 +2,41 @@
 
 plex-accordion {
   .card-header {
-    & > div {
+    &>div {
       width: 100%;
     }
+
     display: flex;
     align-items: flex-start;
+
     span {
       display: flex;
+      align-items: center;
     }
+
     plex-bool {
       label {
         margin-top: 0;
       }
     }
   }
+
   .card-action {
     display: flex;
     align-items: flex-start;
     width: 100%;
 
     .title,
-    > div {
+    >div {
       width: 100%;
-          &:hover, &:focus:not(plex-button) {
-            color: $blue;
-        }  
+
+      &:hover,
+      &:focus:not(plex-button) {
+        color: $blue;
+      }
     }
   }
-  
+
   [plex-accordion-title] {
     width: 100%;
     display: flex;
@@ -41,6 +48,7 @@ plex-accordion {
     0% {
       opacity: 0;
     }
+
     100% {
       opacity: 1;
     }
@@ -48,6 +56,7 @@ plex-accordion {
 
   .collapse {
     opacity: 0;
+
     &.show {
       animation: accordion ease-in-out 0.25s forwards;
       z-index: 1;
@@ -57,6 +66,7 @@ plex-accordion {
 
 // Inverted
 plex-layout-sidebar[type="invert"] {
+
   .card,
   .card-header {
     background-color: transparentize($color: $blue, $amount: 0.9);
