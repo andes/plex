@@ -1,3 +1,18 @@
+# [7.23.0](https://github.com/andes/plex/compare/v7.22.0...v7.23.0) (2022-07-05)
+
+
+### Bug Fixes
+
+* **core:** update angular ([#320](https://github.com/andes/plex/issues/320)) ([88f2d0d](https://github.com/andes/plex/commit/88f2d0d8a6580ef3d7d205a76bf00790fde41d39))
+
+
+### Features
+
+* **plex-badge:** tipologia multilinea ([#315](https://github.com/andes/plex/issues/315)) ([1b9d07a](https://github.com/andes/plex/commit/1b9d07a9fc6787143e1e5071f032b698adb3b782))
+* **plex-bool:** modificar estructura y readonly ([#313](https://github.com/andes/plex/issues/313)) ([7125ccd](https://github.com/andes/plex/commit/7125ccd7359449a92075cf46a962d52d059ed4d9))
+* **plex-datetime:** control de min y max en flechas ([#312](https://github.com/andes/plex/issues/312)) ([549a971](https://github.com/andes/plex/commit/549a971bffa4b59810634bbfcdab4a48ac846f7f))
+* **plex-text:** agrega rows en textarea ([#314](https://github.com/andes/plex/issues/314)) ([f332d54](https://github.com/andes/plex/commit/f332d5468b41fb90739f4263734acfe2161ec0e0))
+
 # [7.22.0](https://github.com/andes/plex/compare/v7.21.0...v7.22.0) (2022-03-09)
 
 
