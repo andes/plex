@@ -8,7 +8,7 @@
     border-color: var(--badge-color);
     color: var(--badge-color);
     max-width: 17em;
-    width: 100%;
+    width: auto;
     white-space: normal;
     overflow-wrap: break-word;
 
@@ -118,7 +118,8 @@ $color in $colors {
 }
 
 /** BADGE EXTENSIBLE DESDE AFUERA DE PLEX */
-$badge-extend: () !default;
+$badge-extend: (
+    ) !default;
 
 @each $name,
 $color in $badge-extend {
@@ -126,17 +127,18 @@ $color in $badge-extend {
         --badge-color: #{$color};
 
         .btn {
-            @include button-factory($color);
-            position: relative;
-            right: 2px;
-        }
+            @include button-factory($color
+        );
+        position: relative;
+        right: 2px;
     }
+}
 
-    .btn-badge-#{$name} {
-        .btn {
-            @include button-factory($color);
-            position: relative;
-            right: 2px;
-        }
+.btn-badge-#{$name} {
+    .btn {
+        @include button-factory($color);
+        position: relative;
+        right: 2px;
     }
+}
 }
