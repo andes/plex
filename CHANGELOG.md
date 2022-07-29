@@ -1,3 +1,10 @@
+# [7.24.0](https://github.com/andes/plex/compare/v7.23.0...v7.24.0) (2022-07-29)
+
+
+### Features
+
+* **plex-badge:** modifica ancho del plex ([#321](https://github.com/andes/plex/issues/321)) ([51aad77](https://github.com/andes/plex/commit/51aad779c36d9d800419167642e91b61f9e110ee))
+
 # [7.23.0](https://github.com/andes/plex/compare/v7.22.0...v7.23.0) (2022-07-05)
 
 
