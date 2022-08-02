@@ -76,7 +76,7 @@ export class PlexGridComponent implements AfterViewChecked {
         const labelListElement = this.plexLabelsElement.toArray();
         this.plexLabels.forEach((label: PlexLabelComponent, index) => {
             const native: ElementRef = labelListElement[index];
-            if (label.subtitulo.length > 28) {
+            if (label.subtitulo?.length > 28) {
                 this.render.setStyle(native.nativeElement, 'grid-column-end', 'span 2');
             } else {
                 this.render.setStyle(native.nativeElement, 'grid-column-end', 'unset');
