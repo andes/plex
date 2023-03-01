@@ -1,5 +1,6 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { PlexType } from './../core/plex-type.type';
+import { HelpService } from './services/help.service';
 
 @Component({
     selector: 'plex-help',
@@ -22,8 +23,7 @@ import { PlexType } from './../core/plex-type.type';
     </div>
     `
 })
-export class PlexHelpComponent {
-
+export class PlexHelpComponent implements OnInit {
 
     @Input() titulo = '';
 
@@ -51,11 +51,17 @@ export class PlexHelpComponent {
 
     closed = true;
     parentElement;
+    id;
 
     constructor(
         private elementRef: ElementRef,
-        private renderer: Renderer2
+        private renderer: Renderer2,
+        private helpService: HelpService,
     ) { }
+
+    ngOnInit(): void {
+        this.id = Math.floor(Math.random() * 1000);
+    }
 
     get content() {
         return (this.icon && this.icon.length > 0) || (this.tituloBoton && this.tituloBoton.length > 0);
@@ -67,9 +73,12 @@ export class PlexHelpComponent {
     }
 
     public toggle() {
-        this.closed = !this.closed;
+        this.helpService.closePreviuos(this.id);
 
+        this.closed = !this.closed;
         if (!this.closed) {
+            this.helpService.setHelp(this);
+
             setTimeout(() => {
                 const offset = this.elementRef.nativeElement.getBoundingClientRect().top;
                 const card = this.elementRef.nativeElement.querySelector('.card.open');
@@ -93,6 +102,8 @@ export class PlexHelpComponent {
         } else {
             this.toggleClose();
 
+            this.close.emit();
+            this.helpService.setHelp(null);
             if (this.unlisten) {
                 this.unlisten();
             }
