@@ -12,7 +12,9 @@ import { hasRequiredValidator } from '../core/validator.functions';
                 <ng-container *ngIf="!multiple">
                     <mat-radio-group [(ngModel)]="value">
                         <mat-radio-button *ngFor="let item of data" [value]="item[keyField]" [disabled]="readonly" (change)="radioChange($event)" [class.d-block]="type == 'vertical'">
+                        <span class="wrap-mat-radio-label">
                             {{ item[labelField] || item.text }}
+                        </span>
                          </mat-radio-button>
                      </mat-radio-group>
                 </ng-container>
@@ -25,7 +27,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
                                   [class.d-block]="type == 'vertical'"
                                   [class.ml-2]="type == 'horizontal'"
                     >
-                        <span>
+                        <span class="wrap-mat-checkbox-label">
                             {{ item[labelField] }}
                         </span>
                     </mat-checkbox>
