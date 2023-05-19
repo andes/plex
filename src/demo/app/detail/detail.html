@@ -5,6 +5,9 @@
                 <div info justify="center">
                     <plex-detail direction="column" justify="center">
                         <img src="{{ paciente.foto }}" alt="">
+                        <plex-button type="info" size="sm"><plex-icon
+                                name="information-variant"></plex-icon></plex-button>
+                        <plex-button type="warning" size="sm"><plex-icon name="pencil"></plex-icon></plex-button>
                         <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
                         <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
                         <plex-badge size="xs">{{ paciente.estado }}</plex-badge>
@@ -14,7 +17,7 @@
                         <plex-label titulo="C.U.I.L" subtitulo="20-31359294-5"></plex-label>
                         <plex-label titulo="D.N.I" subtitulo="31359294"></plex-label>
                         <plex-label titulo="Organización"
-                                    subtitulo="Hospital Provincial Neuquén Dr. Eduardo Castro Rendón"></plex-label>
+                            subtitulo="Hospital Provincial Neuquén Dr. Eduardo Castro Rendón"></plex-label>
                         <plex-label titulo="Sexo" subtitulo="Masculino"></plex-label>
                         <plex-label titulo="Género" subtitulo="Femenino"></plex-label>
                     </plex-detail>
@@ -24,7 +27,8 @@
 
         <plex-title size="sm" titulo="plex detail | lg"></plex-title>
         <plex-detail size="lg" [items]="datos">
-            <!-- <plex-icon name="pencil"></plex-icon> -->
+            <plex-button type="info" size="sm"><plex-icon name="information-variant"></plex-icon></plex-button>
+            <plex-button type="warning" size="sm"><plex-icon name="pencil"></plex-icon></plex-button>
             <img src="{{ paciente.foto }}" alt="">
             <plex-badge size="lg">{{ paciente.estado }}</plex-badge>
             <div title> {{ paciente.nombreCompleto }} </div>
