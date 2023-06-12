@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Optional, Output, Self, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PlexColumnDirective } from './columns.directive';
 import { IPlexTableColumns } from './table.interfaces';
@@ -21,6 +21,7 @@ import { IPlexTableColumns } from './table.interfaces';
                             (click)="onColumnClick(column)"
                             *ngIf="vm.displayColumns[column.key] || !column.opcional"
                             [class.column-right]="column.right"
+                            class="opacity-{{headOpacity}}"
                             >
                             <div class="d-flex">
                                 <div class="th-label">
@@ -64,6 +65,8 @@ export class PlexTableComponent {
      */
 
     public _height: string;
+
+    @Input() headOpacity = 0;
 
     /**
      * Indica la altura del listado respecto a su contenedor
