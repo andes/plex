@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 import { Component, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
-=======
-import { AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, Input, Optional, Output, Renderer2, Self, ViewChild, ViewEncapsulation } from '@angular/core';
->>>>>>> 8055766 (feat(plex-327): selector de transparecia en table head)
 import { Observable } from 'rxjs';
 import { PlexColumnDirective } from './columns.directive';
 import { IPlexTableColumns } from './table.interfaces';
-import { PlexLayoutComponent } from '../layout/layout.component';
-
 
 @Component({
     selector: 'plex-table',
@@ -71,11 +65,7 @@ export class PlexTableComponent {
 
     public _height: string;
 
-<<<<<<< HEAD
     @Input() headOpacity = 0;
-=======
-    @Input() headOpacity = 100;
->>>>>>> 8055766 (feat(plex-327): selector de transparecia en table head)
 
     /**
      * Indica la altura del listado respecto a su contenedor
