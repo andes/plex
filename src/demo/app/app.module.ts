@@ -50,6 +50,7 @@ import { GridDemoComponent } from './grid/grid.component';
 import { CardDemoComponent } from './card/card.component';
 import { SliderDemoComponent } from './slider/slider.component';
 
+
 // Template
 import { ListadoSidebarComponent } from './templates/listado-sidebar/listado-sidebar';
 import { SidebarDetalleComponent } from './templates/listado-sidebar/sidebar/detalle/sidebar-detalle.component';
@@ -78,6 +79,9 @@ import { InternacionComponent } from './templates/modulos/internacion/internacio
 import { RecursosListadoComponent } from './templates/modulos/internacion/listado/recursos-listado.component';
 import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar/detalle/recurso-detalle.component';
 
+
+import { PlexGroupComponent } from './../../lib/group/group.component';
+import { PlexGroupItemComponent } from './../../lib/group/group-item.component';
 
 @NgModule({
     declarations: [
@@ -146,7 +150,9 @@ import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar
         AlignDemoComponent,
         InternacionComponent,
         RecursosListadoComponent,
-        RecursoDetalleComponent
+        RecursoDetalleComponent,
+        PlexGroupComponent,
+        PlexGroupItemComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
