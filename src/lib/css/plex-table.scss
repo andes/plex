@@ -1,5 +1,7 @@
 @import "./variables.scss";
 
+$tags: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+
 plex-table {
     table {
         width: 100%;
@@ -11,7 +13,12 @@ plex-table {
             top: 0 !important;
             z-index: 10 !important;
             height: fit-content;
-            background-color: rgba(255, 255, 255, 0.5) !important;
+
+            @each $tag in $tags {
+                &.opacity-#{$tag} {
+                    background-color: rgba(255, 255, 255, $tag/100) !important;
+                }
+            }
 
             &.sortable {
                 .th-label {
@@ -125,7 +132,11 @@ plex-layout-sidebar {
         table {
             thead {
                 th {
-                    background-color: rgba(0, 39, 56, 0.5) !important;
+                    @each $tag in $tags {
+                        &.opacity-#{$tag} {
+                            background-color: rgba(0, 39, 56, $tag/100) !important;
+                        }
+                    }
                 }
             }
 
