@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { PlexType } from './../core/plex-type.type';
 
 @Component({
@@ -50,6 +50,7 @@ export class PlexHelpComponent {
     private unlisten: Function;
 
     closed = true;
+    parentElement;
 
     constructor(
         private elementRef: ElementRef,
@@ -60,26 +61,38 @@ export class PlexHelpComponent {
         return (this.icon && this.icon.length > 0) || (this.tituloBoton && this.tituloBoton.length > 0);
     }
 
+    public toggleClose() {
+        this.closed = true;
+        this.close.emit();
+    }
+
     public toggle() {
         this.closed = !this.closed;
-        if (!this.closed) {
 
+        if (!this.closed) {
             setTimeout(() => {
-                if (this.cardSize === 'auto') {
-                    const toggleDiv = this.elementRef.nativeElement.querySelector('div.toggle-help');
-                    const offset = toggleDiv.querySelector('.card').getBoundingClientRect().top + 40;
-                    toggleDiv.querySelector('div.card-body').style.height = `calc(100vh - ${offset}px)`;
-                }
+                const offset = this.elementRef.nativeElement.getBoundingClientRect().top;
+                const card = this.elementRef.nativeElement.querySelector('.card.open');
+
+                card.style.top = `${offset - 25}px`;
             }, 0);
 
             this.open.emit();
-            this.unlisten = this.renderer.listen('document', 'click', (event) => {
-                this.toggle();
+
+            this.unlisten = this.renderer.listen('document', 'click', () => {
+                this.toggleClose();
                 this.unlisten();
             });
-        } else {
 
-            this.close.emit();
+            this.parentElement = this.elementRef.nativeElement.closest('.plex-box-content');
+            this.parentElement?.addEventListener('scroll', () => {
+                if (this.parentElement?.scrollTop > 0) {
+                    this.toggleClose();
+                }
+            }, false);
+        } else {
+            this.toggleClose();
+
             if (this.unlisten) {
                 this.unlisten();
             }
