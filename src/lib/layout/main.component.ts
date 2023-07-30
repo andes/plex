@@ -1,4 +1,5 @@
-import { Component, Input, ElementRef, AfterViewInit, HostListener, Renderer2, ViewChild } from '@angular/core';
+import { Component, Input, ElementRef, AfterViewInit, HostListener, Renderer2, ViewChild, ContentChildren, QueryList } from '@angular/core';
+import { PlexMininavComponent } from './../mininav/mininav.component';
 
 @Component({
     selector: 'plex-layout-main',
@@ -6,22 +7,24 @@ import { Component, Input, ElementRef, AfterViewInit, HostListener, Renderer2, V
         <div class="plex-box" [class.plex-box-invert]="type == 'invert'">
             <ng-content select="header"></ng-content>
             <ng-content select="plex-title[main]"></ng-content>
-            <div #content class="plex-box-content" >
-                <ng-content></ng-content>
+            <div #content class="plex-box-content">
+            <ng-content select="plex-mininav"></ng-content>
+            <ng-content></ng-content>
             </div>
-            </div>
+        </div>
     `,
 })
 export class PlexLayoutMainComponent implements AfterViewInit {
     @ViewChild('content', { read: ElementRef, static: false }) content: ElementRef;
+    @ContentChildren(PlexMininavComponent) mininav: QueryList<ElementRef>;
 
     @Input() type = '';
 
-    constructor(private render: Renderer2) {
-    }
+    constructor(private render: Renderer2) { }
 
     ngAfterViewInit() {
         this.checkScroll();
+        this.checkMininav();
     }
 
     checkScroll() {
@@ -37,4 +40,10 @@ export class PlexLayoutMainComponent implements AfterViewInit {
         this.checkScroll();
     }
 
+    // detecta mininav y modica display a 'grid'
+    checkMininav() {
+        if (this.mininav.length > 0) {
+            this.render.addClass(this.content.nativeElement, 'mininav');
+        }
+    }
 }
