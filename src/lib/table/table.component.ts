@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { PlexColumnDirective } from './columns.directive';
 import { IPlexTableColumns } from './table.interfaces';
 
-
 @Component({
     selector: 'plex-table',
     template: `

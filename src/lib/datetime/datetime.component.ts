@@ -222,7 +222,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
             time: this.type === 'time' || this.type === 'datetime',
             minDate: this.min,
             maxDate: this.max,
-            triggerEvent: 'focus'
+            triggerEvent: 'focus',
+            year: true
         });
 
         this.$button.on('change', (event, date) => {
