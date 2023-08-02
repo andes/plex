@@ -1,0 +1,42 @@
+$tags: 1, 2, 3, 4;
+
+@each $tag in $tags {
+    .spacing-#{$tag} {
+        plex-button {
+            margin-right: $tag * 4 + px;
+
+            &:last-child {
+                margin-right: 0
+            }
+        }
+    }
+}
+
+plex-group {
+    .group-dropdown {
+        display: none;
+
+        &.display {
+            display: block;
+        }
+    }
+
+    plex-badge {
+        margin-right: 5px;
+        :last-child {
+            margin-right: 0;
+        }
+    }
+
+    .group-item {
+        display: flex;
+        padding: 5px 10px;
+        cursor: pointer;
+        color: $text-dark;
+
+        &:hover {
+            color: $blue;
+            text-decoration: none;
+        }
+    }
+}
