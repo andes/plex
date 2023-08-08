@@ -80,10 +80,11 @@ export class PlexHelpComponent implements OnInit {
             this.helpService.setHelp(this);
 
             setTimeout(() => {
-                const offset = this.elementRef.nativeElement.getBoundingClientRect().top;
-                const card = this.elementRef.nativeElement.querySelector('.card.open');
-
-                card.style.top = `${offset - 25}px`;
+                if (this.cardSize === 'auto') {
+                    const toggleDiv = this.elementRef.nativeElement.querySelector('div.toggle-help');
+                    const offset = toggleDiv.querySelector('.card').getBoundingClientRect().top + 40;
+                    toggleDiv.querySelector('div.card-body').style.height = `calc(100vh - ${offset}px)`;
+                }
             }, 0);
 
             this.open.emit();
