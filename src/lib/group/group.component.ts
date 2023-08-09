@@ -7,7 +7,7 @@ import { AfterViewInit, Component, ElementRef, Input } from '@angular/core';
             <div class="plex-group" class="spacing-{{spacing}}">
                 <ng-content select="plex-badge[size=sm]"></ng-content>
                 <ng-content select="plex-button[size=sm]"></ng-content>
-                <plex-dropdown icon="dots-vertical" type="link" size="sm" class="group-dropdown ml-1" [right]="true">
+                <plex-dropdown icon="dots-vertical" type="link" size="sm" class="group-dropdown ml-1" [right]="right">
                     <ng-content select="plex-group-item"></ng-content>
                 </plex-dropdown>
             </div>
@@ -17,6 +17,7 @@ import { AfterViewInit, Component, ElementRef, Input } from '@angular/core';
 
 export class PlexGroupComponent implements AfterViewInit {
     @Input() spacing = 1;
+    @Input() right = false;
 
     constructor(
         private elementRef: ElementRef,

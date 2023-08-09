@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 
 // Plex
 import { PlexModule } from '../../lib/module';
-import { Plex } from '../../lib/core/service';
 
 // Services
 import { ServiceDemoSelect } from './select/select.service';
@@ -79,10 +78,6 @@ import { InternacionComponent } from './templates/modulos/internacion/internacio
 import { RecursosListadoComponent } from './templates/modulos/internacion/listado/recursos-listado.component';
 import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar/detalle/recurso-detalle.component';
 
-
-import { PlexGroupComponent } from './../../lib/group/group.component';
-import { PlexGroupItemComponent } from './../../lib/group/group-item.component';
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -150,9 +145,7 @@ import { PlexGroupItemComponent } from './../../lib/group/group-item.component';
         AlignDemoComponent,
         InternacionComponent,
         RecursosListadoComponent,
-        RecursoDetalleComponent,
-        PlexGroupComponent,
-        PlexGroupItemComponent
+        RecursoDetalleComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
