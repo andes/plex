@@ -115,3 +115,15 @@ Plex es un conjunto de componentes de UI/UX para el proyecto ANDES.
     ```
 
 10. Navegar hasta `http://localhost:4200` 
+
+## Publicación
+La siguiente secuencia de pasos permite publicar la librería en NPM:
+
+1. Incrementar la versión package.json y package-lock.json. Por ejemplo `"version": "1.1.17"`
+2. Realizar commit con la nueva versión
+3. Crear un tag con la versión, tiene que ser la misma que en package.json. Por ejemplo `git tag 1.1.17`
+4. Realizar push de los cambios
+5. Realizar el PR con la versión y luego mergear a Master
+6. Volver a Master y obtener últimos cambios
+7. Ejecutar `npm login` (usando las credenciales de Andes)
+8. Ejecutar `npm publish`
