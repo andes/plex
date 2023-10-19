@@ -53,7 +53,7 @@ export class PlexDropdownComponent implements OnInit, OnDestroy {
     @Output() onOpen: EventEmitter<void> = new EventEmitter();
 
     private unlisten: Function;
-    private onDestroy$ = new Subject();
+    private onDestroy$ = new Subject<void>();
 
 
     constructor(

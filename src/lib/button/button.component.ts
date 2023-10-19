@@ -39,7 +39,7 @@ export class PlexButtonComponent implements OnInit, OnDestroy {
      */
     @Input() @HostBinding('style.pointer-events') pointerEvents = 'none';
 
-    private onDestroy$ = new Subject();
+    private onDestroy$ = new Subject<void>();
 
     constructor(
         public plex: Plex,
