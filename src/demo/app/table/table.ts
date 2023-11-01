@@ -43,6 +43,12 @@ export class TableDemoComponent {
         'col-6': true,
     };
 
+    colsVisibles2 = {
+        'col-1': true,
+        'col-2': true,
+        'col-3': true,
+    };
+
     // Permite :hover y click()
     @Input() selectable = true;
 
@@ -56,14 +62,14 @@ export class TableDemoComponent {
     public columns = [
         {
             key: 'col-1',
-            label: 'col 1',
+            label: 'Nombre',
             sorteable: true,
             opcional: false,
             sort: (a: any, b: any) => a.nombre.localeCompare(b.nombre)
         },
         {
             key: 'col-2',
-            label: 'col 2',
+            label: 'Apellido',
             sorteable: true,
             opcional: true,
             sort: (a: any, b: any) => a.apellido.localeCompare(b.apellido),
@@ -71,7 +77,7 @@ export class TableDemoComponent {
         },
         {
             key: 'col-3',
-            label: 'col 3',
+            label: 'Documento',
             sorteable: true,
             opcional: true,
             sort: (a: any, b: any) => a.documento.localeCompare(b.documento),
@@ -80,37 +86,51 @@ export class TableDemoComponent {
         },
         {
             key: 'col-4',
-            label: 'col 4',
+            label: 'Fecha',
             sorteable: false,
             opcional: true,
         },
         {
             key: 'col-5',
-            label: 'col 5',
+            label: 'Localidad',
             sorteable: true,
             opcional: true,
             sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad),
         },
         {
             key: 'col-6',
-            label: 'col 6',
+            label: '',
             sorteable: true,
-            opcional: true,
+            opcional: false,
             right: true,
-            sort: (a: any, b: any) => a.ciudad.localeCompare(b.ciudad),
-            filterBy: (a) => a.fecha.getTime()
         }
     ];
 
-    public datos = [
-        { label: 'edad', valor: '41 años', type: 'success' },
-        { label: 'documento', valor: '29.879.253', type: 'info' },
-        { label: 'sexo', valor: 'Masculino', type: 'default' },
-        { label: 'género', valor: 'Hospital Provincial de Neuquen Castro Rendon', type: 'warning' },
-        { label: 'fecha de nacimiento', valor: '14 de Julio de 1953', type: 'success' },
-        { label: 'CUIL', valor: '20-16879253-5', type: 'warning' },
-        { label: 'Nota', valor: 'Donec quam felis, ultricies nec, pellentesque eu, pretium quis. Lorem ipsum sonnet.', type: 'warning' },
-        { label: 'Comience buscando un paciente en la barra superior', valor: 'Ingrese al menos tres caracteres. Si la búsqueda no arroja el resultado esperado, presione el botón "Paciente Nuevo"', type: 'warning' }
+    public columns2 = [
+        {
+            key: 'col-1',
+            label: 'Nombre',
+            sorteable: true,
+            opcional: false,
+            sort: (a: any, b: any) => a.nombre.localeCompare(b.nombre)
+        },
+        {
+            key: 'col-2',
+            label: 'Apellido',
+            sorteable: true,
+            opcional: true,
+            sort: (a: any, b: any) => a.apellido.localeCompare(b.apellido),
+            filterBy: (a) => a.apellido
+        },
+        {
+            key: 'col-3',
+            label: 'Documento',
+            sorteable: true,
+            opcional: true,
+            sort: (a: any, b: any) => a.documento.localeCompare(b.documento),
+            filterBy: (a) => a.documento
+
+        }
     ];
 
     constructor(

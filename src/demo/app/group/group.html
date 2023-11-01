@@ -1,0 +1,97 @@
+<plex-layout main="8">
+    <plex-layout-main>
+        <plex-title titulo="plex-group"> </plex-title>
+        <p class="lead">El componente <em>plex-group-item</em> se utiliza para incorporar un conjunto de elementos de
+            forma
+            ordenada.</p>
+        <ul>
+            <li class="list-item">Puede incluir <em>plex-badge</em>, <em>plex-button</em> y <em>group-item</em> para
+                crear un selector de opciones.</li>
+            <li class="list-item">Evita la necesidad de dar estilos a los componentes para ordenar y alinear.</li>
+            <li class="list-item">Los elementos <em>badge</em> se ubican en primer lugar, los <em>button</em> en segundo
+                y por último los <em>item</em>.</li>
+        </ul>
+        <hr>
+
+        <plex-title titulo="Ejemplos" size="sm"></plex-title>
+        <p>Puede incluirse cualquier tipo de botón o badge. Solo serán visibles si poseen atributo size="sm".</p>
+        <section class="my-4">
+            <div class="d-flex flex-column justify-content-start w-100">
+                <div class="row mt-2" align="center">
+                    <div class="col-12 col-md-6">
+                        <plex-group>
+                            <plex-button label="Botón simple" type="info" size="sm"></plex-button>
+                            <plex-button label="Botón con ícono" type="success" icon="account" size="sm"></plex-button>
+                            <plex-button type="warning" icon="account" size="sm"
+                                         tooltip="Ícono sin texto"></plex-button>
+                        </plex-group>
+                        <p class="mt-1">Grupo con tres <em>button</em></p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <plex-group>
+                            <plex-button label="Botón simple" type="danger" size="sm"></plex-button>
+                            <plex-badge size="sm" type="info">02/02/2022</plex-badge>
+                        </plex-group>
+                        <p class="mt-1">Grupo con <em>button</em> y <em>badge</em></p>
+                    </div>
+                </div>
+                <div class="row mt-md-4" align="center">
+                    <div class="col-12 col-md-6">
+                        <plex-group>
+                            <plex-badge size="sm" type="success">Validado</plex-badge>
+                            <plex-button type="default" icon="usuarios" size="sm"></plex-button>
+                            <plex-badge size="sm" type="info">02/02/2022</plex-badge>
+                        </plex-group>
+                        <p class="mt-1">Grupo con doble <em>badge</em></p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <plex-group>
+                            <plex-badge size="sm" type="success">Validado</plex-badge>
+                            <plex-button type="warning" icon="usuarios" size="sm"></plex-button>
+                            <plex-group-item label="Item 1">Item 1</plex-group-item>
+                            <plex-group-item label="Item 2">Item 2</plex-group-item>
+                            <plex-group-item label="Item 3">Item 3</plex-group-item>
+                        </plex-group>
+                        <p class="mt-1">Grupo con triple <em>plex-item</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="PLEX-ITEM" size="lg"></plex-title>
+        <p>El componente agrega un menú si detecta <em>plex-group-item</em> entre sus elementos.</p>
+        <section class="my-4">
+            <div class="d-flex flex-column justify-content-start w-100">
+                <div class="row mt-2" align="center">
+                    <div class="col-12">
+                        <plex-group>
+                            <plex-button label="Botón simple" type="info" size="sm"></plex-button>
+                            <plex-group-item label="Item 1">Item 1</plex-group-item>
+                            <plex-group-item label="Item 2">Item 2</plex-group-item>
+                            <plex-group-item label="Item 3">Item 3</plex-group-item>
+                        </plex-group>
+                        <p class="mt-1">Menú de opciones con tres <em>items</em></p>
+                    </div>
+                    <div class="col-12 mt-md-4">
+                        <plex-group>
+                            <plex-badge size="sm" type="info">02/02/2022</plex-badge>
+                            <plex-group-item label="Item 1" icon="bell"></plex-group-item>
+                            <plex-group-item label="Item 2" icon="usuarios"></plex-group-item>
+                            <plex-group-item label="Item 3" icon="comment"></plex-group-item>
+                        </plex-group>
+                        <p class="mt-1">Menú de opciones con <em>items</em> e íconos.</p>
+                    </div>
+                </div>
+            </div>
+            <plex-title titulo="Atributos" size="sm"></plex-title>
+            <ul>
+                <li class="list-item">El atributo <em>label</em> permite agregar la descripción o nombre del
+                    <em>item</em>.
+                </li>
+                <li class="list-item">El atributo <em>icon</em> permite agregar el nombre del ícono para mostrar.</li>
+                <li class="list-item">El atributo <em>link</em> permite agregar un hipervínculo al <em>item</em>.</li>
+            </ul>
+        </section>
+    </plex-layout-sidebar>
+</plex-layout>

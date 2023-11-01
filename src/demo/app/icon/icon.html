@@ -1,11 +1,70 @@
-<plex-layout>
+<plex-layout main="8">
     <plex-layout-main>
-        <ng-container *ngFor="let icon of adi">
+        <plex-title titulo="plex-icon"> </plex-title>
+        <p class="lead">El componente <em>plex-icon</em> se utiliza para agrupar botones, badges y texto de manera ordenada.</p>
+        <p>Listado de íconos disponibles en <a target="_blank"
+               href="https://www.andes.gob.ar/andes-font-icon/">https://www.andes.gob.ar/andes-font-icon/</a>.</p>
 
-            <span>
-                <plex-icon [name]="icon" type="info"></plex-icon>
-            </span>
-
-        </ng-container>
+        <section class="d-flex flex-row justify-content-between w-100 mt-4">
+            <div class="d-flex flex-column justify-content-start w-100">
+                <plex-title titulo="Atributo SIZE" size="sm"></plex-title>
+                
+                <div class="row mt-4" align="center">
+                    <div class="col">
+                        <plex-icon name="emoticon" size="xs"></plex-icon>
+                        <p class="lead">xs</p>
+                    </div>
+                    <div class="col">
+                        <plex-icon name="emoticon" size="sm"></plex-icon>
+                        <p class="lead">sm</p>
+                    </div>
+                    <div class="col">
+                        <plex-icon name="emoticon" size="md"></plex-icon>
+                        <p class="lead">md</p>
+                    </div>
+                    <div class="col">
+                        <plex-icon name="emoticon" size="lg"></plex-icon>
+                        <p class="lead">lg</p>
+                    </div>
+                    <div class="col">
+                        <plex-icon name="emoticon" size="xl"></plex-icon>
+                        <p class="lead">xl</p>
+                    </div>
+                    <div class="col">
+                        <plex-icon name="emoticon" size="xxl"></plex-icon>
+                        <p class="lead">xxl</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="Atributo type"></plex-title>
+        <section class="d-flex flex-row justify-content-between w-100 mt-4">
+            <div class="d-flex flex-column justify-content-start w-100">
+                <div class="row mt-2" align="center">
+                    <div class="col">
+                        <plex-icon name="emoticon" size="lg"></plex-icon>
+                        <p>light</p>
+                    </div>
+                    <div class="col">
+                        <plex-icon name="emoticon" size="lg" type="success"></plex-icon>
+                        <p>success</p>
+                    </div>
+                    <div class="col">
+                        <plex-icon name="emoticon" size="lg" type="warning"></plex-icon>
+                        <p>warning</p>
+                    </div>
+                    <div class="col">
+                        <plex-icon name="emoticon" size="lg" type="info"></plex-icon>
+                        <p>info</p>
+                    </div>
+                    <div class="col">
+                        <plex-icon name="emoticon" size="lg" type="danger"></plex-icon>
+                        <p>danger</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </plex-layout-sidebar>
 </plex-layout>

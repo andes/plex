@@ -7,17 +7,13 @@
                 <plex-select grow="4" [(ngModel)]="modelo1.select" [data]="opciones" label="Seleccione efector">
                 </plex-select>
                 <plex-text label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre"> </plex-text>
-                <!-- <plex-button type="success">BUSCAR</plex-button> -->
-                <plex-dropdown label="OLA" type="success"></plex-dropdown>
+                <plex-button label="Buscar" type="success"></plex-button>
                 <div collapse>
                     <plex-select grow="4" [(ngModel)]="modelo1.select" [data]="opciones"
                                  label="Seleccione efector ojo que tiene nombre largo">
                     </plex-select>
                     <plex-text grow="3" label="Buscar paciente" [(ngModel)]="templateModel2.nombre" name="nombre">
                     </plex-text>
-                    <plex-radio grow="1" [(ngModel)]="modelo1.radio" [data]="opciones2" name="colores" type="horizontal"
-                                [required]="true">
-                    </plex-radio>
                 </div>
             </plex-wrapper>
         </plex-title>

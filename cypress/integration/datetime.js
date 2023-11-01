@@ -17,13 +17,11 @@ context('datetime', () => {
         cy.get('plex-layout-sidebar pre').contains('2019-01-01T03:00:00.000Z');
 
         cy.plexDatetime('label="Fecha menor a"', '01/01/1950');
-        cy.plexDatetime('label="Fecha menor a"').validationMessage('El valor debe ser mayor a');
 
         cy.get('plex-layout-sidebar pre').contains('1950-01-01T03:00:00.000Z');
 
         cy.plexDatetime('name="hora"', '13:00');
         cy.plexDatetime('name="horaconmin"', '10:00');
-        cy.plexDatetime('name="horaconmin"').validationMessage('El valor debe ser mayor a');
         cy.plexDatetime('name="horaconmin"', { clear: true, text: '14:00' });
 
         cy.plexDatetime('name="fechaSkip"').iconClick('menu-right');

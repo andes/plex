@@ -1,42 +1,17 @@
 <plex-layout main="8">
     <plex-layout-main>
         <plex-title size="md" titulo="PLEX LIST">
-            <plex-radio [(ngModel)]="modeloRadio.radio" name="color1" [data]="[{id: 1}]"
-                        (change)="ordenarLista('baja')">
+            <plex-radio [(ngModel)]="modeloRadio.radio" [data]="[{id: 1, label: 'Baja' }]" class="baja" name="color1"
+                        type="horizontal" (change)="ordenarLista('baja')"></plex-radio>
+            <plex-radio [(ngModel)]="modeloRadio.radio" [data]="[{id: 2, label: 'Media' }]" class="media" name="color2"
+                        type="horizontal" (change)="ordenarLista('media')">
             </plex-radio>
-            <div class="baja"></div>
-            <plex-radio [(ngModel)]="modeloRadio.radio" name="color2" [data]="[{id: 2}]"
-                        (change)="ordenarLista('media')">
+            <plex-radio [(ngModel)]="modeloRadio.radio" [data]="[{id: 3, label: 'Alta' }]" class="lta" name="color3"
+                        type="horizontal" (change)="ordenarLista('alta')">
             </plex-radio>
-            <div class="media"></div>
-            <plex-radio [(ngModel)]="modeloRadio.radio" name="color3" [data]="[{id: 3}]"
-                        (change)="ordenarLista('alta')">
+            <plex-radio [(ngModel)]="modeloRadio.radio" [data]="[{id: 4, label: 'Especial' }]" class="especial" name="color4"
+                        type="horizontal" (change)="ordenarLista('especial')">
             </plex-radio>
-            <div class="alta"></div>
-            <plex-radio [(ngModel)]="modeloRadio.radio" name="color4" [data]="[{id: 4}]"
-                        (change)="ordenarLista('especial')">
-            </plex-radio>
-            <div class="especial"></div>
-            <!-- <plex-help type="info">
-                <plex-list height="60%" (scrolled)="onScroll()" size="sm">
-                    <plex-heading>
-                        <b label>Datos importantes</b>
-                    </plex-heading>
-                    <plex-item *ngFor="let item of lista; let par = even" [selected]="item.selected"
-                               (click)="item.selected = !item.selected">
-                        <plex-bool [(ngModel)]="item.selected" name="activo"></plex-bool>
-                        <plex-icon name="pencil" size="18" type="warning"></plex-icon>
-                        <plex-label [titulo]="item.name" [tituloBold]="par">
-                        </plex-label>
-                        <plex-dropdown icon="dots-vertical" [right]="true" [items]="dropitems">
-                        </plex-dropdown>
-                        <plex-button type="warning" size="sm" icon="clock"></plex-button>
-                        <plex-button type="danger" size="sm" label="Eliminar" (click)="tModelFecha.fechaHora = null">
-                        </plex-button>
-                        <plex-badge type="danger">urgente</plex-badge>
-                    </plex-item>
-                </plex-list>
-            </plex-help> -->
         </plex-title>
         <plex-list height="60%" size="sm" [striped]="false" [offset]="300">
             <plex-heading>

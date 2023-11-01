@@ -36,8 +36,6 @@ import { IPlexTableColumns } from '../table/table.interfaces';
                 </ng-container>
             </plex-heading>
         </ng-container>
-
-
         <ng-content></ng-content>
     </div>
     `

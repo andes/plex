@@ -24,11 +24,11 @@
                        (blur)="onBlur()" (focus)="onBlur()" size="sm">
         </plex-datetime>
 
-        <plex-datetime label="Ingrese la hora de nacimiento 2" type="time" [(ngModel)]="tModel.horados"
-                       [min]="horaPlus()" name="horaconmin">
+        <plex-datetime label="Hora inicial más 30 minutos" type="time" [(ngModel)]="tModel.horados"
+                       [min]="tModel.min" name="horaconmin">
         </plex-datetime>
 
-        <plex-datetime label="Este campo es readonly" type="time" [(ngModel)]="tModel.hora2" name="hora2"
+        <plex-datetime label="Este campo es readonly" type="time" [(ngModel)]="tModel.hora" name="hora2"
                        [readonly]="model4.disabled">
         </plex-datetime>
 
@@ -42,7 +42,7 @@
         <plex-title titulo="Modelo"></plex-title>
         <pre>{{ tModel | json }}</pre>
         <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'" size="sm"
-                       [(ngModel)]="tModel.fechaHora" [min]="tModel.minHora" [max]="tModel.maxHora" name="horaSkip"
+                       [(ngModel)]="tModel.fechaHora" name="horaSkip"
                        required hintAction="nextHour">
         </plex-datetime>
 
