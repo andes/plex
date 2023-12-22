@@ -10,7 +10,7 @@ export class HelpService {
         this.helpCache.next(help);
     }
 
-    closePreviuos(id: number) {
+    closePrevious(id: number) {
         const help = this.helpCache.value;
 
         if (help && help.id !== id) {

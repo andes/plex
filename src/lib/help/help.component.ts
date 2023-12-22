@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { PlexType } from './../core/plex-type.type';
 import { HelpService } from './services/help.service';
 
@@ -23,7 +23,7 @@ import { HelpService } from './services/help.service';
     </div>
     `
 })
-export class PlexHelpComponent implements OnInit {
+export class PlexHelpComponent implements OnInit, AfterViewInit {
 
     @Input() titulo = '';
 
@@ -52,6 +52,7 @@ export class PlexHelpComponent implements OnInit {
     closed = true;
     parentElement;
     id;
+    posicionInicial;
 
     constructor(
         private elementRef: ElementRef,
@@ -61,6 +62,12 @@ export class PlexHelpComponent implements OnInit {
 
     ngOnInit(): void {
         this.id = Math.floor(Math.random() * 1000);
+    }
+
+    ngAfterViewInit() {
+        const elem = this.elementRef.nativeElement.getBoundingClientRect();
+        this.parentElement = this.elementRef.nativeElement.closest('.plex-box-content');
+        this.posicionInicial = elem.top - elem.height;
     }
 
     get content() {
@@ -73,7 +80,9 @@ export class PlexHelpComponent implements OnInit {
     }
 
     public toggle() {
-        this.helpService.closePreviuos(this.id);
+        this.helpService.closePrevious(this.id);
+
+        const helpCard = this.elementRef.nativeElement.querySelector('div.toggle-help .card');
 
         this.closed = !this.closed;
         if (!this.closed) {
@@ -94,10 +103,9 @@ export class PlexHelpComponent implements OnInit {
                 this.unlisten();
             });
 
-            this.parentElement = this.elementRef.nativeElement.closest('.plex-box-content');
             this.parentElement?.addEventListener('scroll', () => {
                 if (this.parentElement?.scrollTop > 0) {
-                    this.toggleClose();
+                    helpCard.style.top = this.posicionInicial - this.parentElement?.scrollTop + 'px';
                 }
             }, false);
         } else {
