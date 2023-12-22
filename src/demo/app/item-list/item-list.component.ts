@@ -5,31 +5,23 @@ import { DropdownItem } from '../../../lib/dropdown/dropdown-item.inteface';
     templateUrl: 'item-list.html',
     styles: [
         `
-        .baja, .media, .alta, .especial {
-            width: 24px;
-            height: 24px;
-            position:relative;
-            left: -20px;
-        }
-
         .baja {
-            background: #80b266;
+            color: #80b266;
         }
         .media {
-            background: #C6B300;
+            color: #C6B300;
         }
         .alta {
-            background: #B70B0B;
+            color: #B70B0B;
         }
         .especial {
-            background: #02111C;
+            color: #02111C;
         }
-                    `
+        `
     ]
 })
 export class ItemDemoComponent implements OnInit {
 
-    // #2C7F00 #C6B300 #B70B0B #02111C
     colores = {
         prioridadBaja: {
             border: '#80b266',
@@ -58,8 +50,9 @@ export class ItemDemoComponent implements OnInit {
     };
 
     public opcionesRadio = [
-        { id: 1 },
-        { id: 2 }
+        { id: 1, label: 'Baja' },
+        { id: 2, label: 'Media' },
+        { id: 2, label: 'media' }
     ];
 
     public modeloRadio: any = {
@@ -279,10 +272,7 @@ export class ItemDemoComponent implements OnInit {
         }
     }
 
-
     ordenarLista(prioridad) {
-        // console.log(this.lista);
-
         this.lista = this.lista.sort((a: any, b: any) => {
             if (b && b.prioridad === prioridad) {
                 return 1;
@@ -292,19 +282,5 @@ export class ItemDemoComponent implements OnInit {
                 return 0;
             }
         });
-
-        //     this.lista = this.lista.sort((a: any, b) => {
-        //         if (a.colores.name === prioridad) {
-        //             return -1;
-        //         }
-        //         // if (true) {
-        //         //     return -1;
-        //         // }
-        //         // if (true) {
-        //         //     return 1;
-        //         // }
-        //         return 0;
-        //     });
     }
-
 }

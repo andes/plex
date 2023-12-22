@@ -1,0 +1,98 @@
+<plex-layout main="8">
+    <plex-layout-main>
+        <plex-title titulo="plex-title"> </plex-title>
+        <p class="lead">El componente <em>plex-title</em> se utiliza para incorporar los títulos que definen cada sección.</p>
+
+        <plex-title titulo="Atributo SIZE" size="sm"></plex-title>
+        <p>El atributo size es opcional y su valor por defecto es 'lg'.</p>
+        <section class="my-4">
+            <div class="d-flex flex-column justify-content-start w-100 outline-dashed-default">
+                <div class="row mt-2" align="center">
+                    <div class="col-12 col-md-6">
+                        <plex-title titulo="Titulo 'sm'" size="sm"></plex-title>
+                        <p class="lead">size="sm"</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <plex-title titulo="Titulo 'md'" size="md"></plex-title>
+                        <p class="lead">size="md"</p>
+                    </div>
+                </div>
+                <div class="row mt-2" align="center">
+                    <div class="col-12 col-md-6">
+                        <plex-title titulo="Titulo 'lg'" size="lg"></plex-title>
+                        <p class="lead">size="lg"</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <plex-title titulo="Titulo 'xl'" size="xl"></plex-title>
+                        <p class="lead">size="xl"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <plex-title titulo="Contenido" size="sm"></plex-title>
+        <p>Puede agregar componentes Plex u otro elemento al titulo para visualizar información o disparar acciones.</p>
+        <section class="mt-4">
+            <div class="d-flex flex-column justify-content-start w-100 outline-dashed-default">
+                <div class="row mt-2" align="center">
+                    <div class="col-12 col-md-6">
+                        <plex-title titulo="Titulo con botón'" size="sm">
+                            <plex-button type="warning" label="Disparar acción" size="sm"></plex-button>
+                        </plex-title>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <plex-title titulo="Titulo con plex-help" size="md">
+                            <plex-help type="help" titulo="Ayuda de este panel" size="sm">
+                                <div class="ml-4 mb-4" *plHelp>
+                                    <label>Organización:</label>
+                                    prestacion.solicitud.organizacion.nombre
+                                </div>
+                            </plex-help>
+                        </plex-title>
+                    </div>
+                </div>
+                <div class="row mt-4" align="center">
+                    <div class="col-12 col-md-6">
+                        <plex-title titulo="Titulo con Badge + Icono" size="md">
+                            <plex-badge size="sm" type="warning" class="mr-1">TEMPORAL
+                                <plex-button icon="clock" size="sm"></plex-button>
+                            </plex-badge>
+                        </plex-title>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <plex-title titulo="Titulo con badge" size="md">
+                            <plex-badge size="sm" type="warning" class="mr-1">warning</plex-badge>
+                            <plex-badge size="sm" type="info">info</plex-badge>
+                        </plex-title>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </plex-layout-main>
+    <plex-layout-sidebar type="invert">
+        <plex-title titulo="Atributo type"></plex-title>
+        <p>El atributo type es opcional y su valor por defecto es 'info'.</p>
+        <section class="mt-4">
+            <div class="d-flex flex-column justify-content-start w-100">
+                <div class="row mt-2" align="center">
+                    <div class="col-12">
+                        <plex-title titulo="Titulo de ejemplo" size="md" type="info"></plex-title>
+                        <p>type="info"</p>
+                    </div>
+                    <div class="col-12">
+                        <plex-title titulo="Titulo de ejemplo" size="md" type="warning"></plex-title>
+                        <p>type="warning"</p>
+                    </div>
+                    <div class="col-12">
+                        <plex-title titulo="Titulo de ejemplo" size="md" type="success"></plex-title>
+                        <p>type="success"</p>
+                    </div>
+                    <div class="col-12">
+                        <plex-title titulo="Titulo de ejemplo" size="md" type="danger"></plex-title>
+                        <p>type="danger"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </plex-layout-sidebar>
+</plex-layout>

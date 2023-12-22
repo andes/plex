@@ -208,10 +208,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             if (this.multiline) {
                 this.adjustTextArea();
             }
-            // jgabriel | 24/03/2017 | Esto es un por bug de Angular2 que a veces no actualiza la vista cuando cambia el modelo
-            // this.change.emit({
-            //   value: value
-            // });
             if (this.changeTimeout) {
                 clearTimeout(this.changeTimeout);
             }

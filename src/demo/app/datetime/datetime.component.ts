@@ -16,7 +16,7 @@ export class DateTimeDemoComponent implements OnInit {
             fechaHora: null,
             fecha: null,
             hora: null,
-            horados: null,
+            horados: moment().add(30, 'minutes'),
             disabled: false,
             min: new Date(1970, 0, 1),
             minHora: moment().add(30, 'minutes'),
@@ -36,7 +36,6 @@ export class DateTimeDemoComponent implements OnInit {
     }
 
     horaPlus() {
-        return moment(this.tModel.hora).add(30, 'minutes');
     }
 
     onBlur() {

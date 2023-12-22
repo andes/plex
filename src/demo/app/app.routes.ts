@@ -47,6 +47,8 @@ import { AlignDemoComponent } from './directives/componentes/align/align.compone
 import { InternacionComponent } from './templates/modulos/internacion/internacion';
 import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar/detalle/recurso-detalle.component';
 import { SliderDemoComponent } from './slider/slider.component';
+import { DemoTitleComponent } from './title/title.component';
+import { DemoGroupComponent } from './group/group.component';
 
 const appRoutes: Routes = [
     { path: 'inicio', component: HomeDemoComponent },
@@ -106,7 +108,8 @@ const appRoutes: Routes = [
             { path: ':id', component: RecursoDetalleComponent },
         ]
     },
-
+    { path: 'title', component: DemoTitleComponent },
+    { path: 'group', component: DemoGroupComponent },
     { path: 'item', component: ItemDemoComponent },
     { path: 'detail', component: DetailDemoComponent },
     { path: 'icon', component: DemoIconComponent },

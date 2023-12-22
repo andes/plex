@@ -77,6 +77,9 @@ import { CamaService } from './templates/service/cama.service';
 import { InternacionComponent } from './templates/modulos/internacion/internacion';
 import { RecursosListadoComponent } from './templates/modulos/internacion/listado/recursos-listado.component';
 import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar/detalle/recurso-detalle.component';
+import { DemoTitleComponent } from './title/title.component';
+import { DemoGroupComponent } from './group/group.component';
+
 
 @NgModule({
     declarations: [
@@ -145,7 +148,9 @@ import { RecursoDetalleComponent } from './templates/modulos/internacion/sidebar
         AlignDemoComponent,
         InternacionComponent,
         RecursosListadoComponent,
-        RecursoDetalleComponent
+        RecursoDetalleComponent,
+        DemoTitleComponent,
+        DemoGroupComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
