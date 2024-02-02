@@ -43,6 +43,10 @@ export class PlexHelpComponent implements OnInit, AfterViewInit {
 
     @Input() icon = 'help';
 
+    @Input() scroll = true;
+
+    @Input() maxHeight = 'auto';
+
     @Output() close = new EventEmitter();
 
     @Output() open = new EventEmitter();
@@ -83,6 +87,9 @@ export class PlexHelpComponent implements OnInit, AfterViewInit {
         this.helpService.closePrevious(this.id);
 
         const helpCard = this.elementRef.nativeElement.querySelector('div.toggle-help .card');
+
+        helpCard.style.overflow = !this.scroll ? 'hidden' : 'auto';
+        helpCard.style.maxHeight = this.maxHeight ? `${this.maxHeight}px` : 'auto';
 
         this.closed = !this.closed;
         if (!this.closed) {
