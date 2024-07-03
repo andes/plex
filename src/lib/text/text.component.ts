@@ -262,10 +262,10 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     private createToolbarIcons() {
         if (this.qlToolbar) {
             const editor = (this.quillEditor as any).quillEditor;
-            const toolbar = editor.getModule('toolbar').container;
+            const toolbar = editor?.getModule('toolbar').container;
             this.qlToolbar.forEach(item => {
-                const qlItem = toolbar.getElementsByClassName(`ql-${item.name}`);
-                if (qlItem.length > 0) {
+                const qlItem = toolbar?.getElementsByClassName(`ql-${item.name}`);
+                if (qlItem?.length > 0) {
                     qlItem[0].innerHTML = `<i class="adi adi-${item.icon || item.name}"></i>`;
                 }
             });

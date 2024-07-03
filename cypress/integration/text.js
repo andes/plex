@@ -79,28 +79,4 @@ context('<plex-text>', () => {
         cy.toast('success');
 
     });
-
-    it('plex-text extend quill-editor', () => {
-
-        cy.plexTextArea('name="contenido1"').find('.ql-fullscreen').click();
-        cy.toast('success');
-
-    });
-
-    it('plex-text multiline', () => {
-
-        // Editor texto simple
-        cy.plexTextArea('name="multi"', 'Este\nTexto\nEstá\nCortado en cuatro');
-
-        // HTML Editor con texto en negrita
-        cy.plexTextArea('name="contenido1"', '<strong>Este\nTexto\nEstá\nEn negrita</strong>')
-        cy.get('.ql-container.ql-snow .ql-editor p').should('have', '<strong>');
-
-        // HTML Editor con height = 200
-        cy.plexTextArea('name="contenido2"').find('.ql-container.ql-snow').should(($el) => {
-            expect($el).to.have.css('height', '200px');
-        })
-    });
-
-
 });

@@ -50,7 +50,7 @@ describe('PlexOptionsComponent', () => {
 
         tickAndDetectChanges(fixture);
 
-        expect(fixture.componentInstance.onChange).toHaveBeenCalledWith('b');
+        expect(fixture.componentInstance.onChange).toHaveBeenCalledWith('b' as any);
 
         expect(options.active).toBe('b');
 
@@ -76,7 +76,7 @@ describe('PlexOptionsComponent', () => {
             expect(text).toBe(fixture.componentInstance.items[index].label);
         });
 
-        expect(fixture.componentInstance.onChange).toHaveBeenCalledWith('d');
+        expect(fixture.componentInstance.onChange).toHaveBeenCalledWith('d' as any);
     }));
 
     it('change item but preserve active key', fakeAsync(() => {
