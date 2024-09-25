@@ -1,11 +1,11 @@
 
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { By, BrowserModule } from '@angular/platform-browser';
 import { Component, DebugElement, Type, ViewChild, ViewEncapsulation } from '@angular/core';
-import { PlexButtonComponent } from './button.component';
-import { PlexModule } from '../module';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule, By } from '@angular/platform-browser';
 import { Plex } from '../core/service';
+import { PlexModule } from '../module';
+import { PlexButtonComponent } from './button.component';
 
 describe('PlexButtonComponent', () => {
 
