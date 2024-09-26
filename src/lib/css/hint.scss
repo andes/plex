@@ -1,24 +1,20 @@
 plex-hint {
-    width: 8px;
-    .hint-container {
-        @include position(relative);
-        &.detach-both {
-            left: 5px;
-            bottom: 5px;
-        }
-        &.detach-right {
-            left: 5px;
-        }
-        &.detach-top {
-            bottom: 5px;
-        }
+    .hint-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 5px;
+    }
 
-        width: 0;
-        height: 18px;
+    .hint-container {
+        position: relative;
+        top: -5px;
         display: inline-flex;
         z-index: 10;
 
         .hint {
+
             // $colors definidos en colors.scss
             @each $name, $color in $colors {
                 &.#{$name} {
@@ -30,15 +26,7 @@ plex-hint {
             font-size: 12px;
             border-radius: 9px;
             padding: 1px 3px;
-
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-
             z-index: 1;
-
-            // Position
-            @include position(relative, $bottom: 8px, $right: 10px);
 
             &:hover {
                 background-color: $blue;
