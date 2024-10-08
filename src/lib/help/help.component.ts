@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2 } from '@angular/core';
 import { PlexType } from './../core/plex-type.type';
 import { HelpService } from './services/help.service';
 
@@ -23,7 +23,7 @@ import { HelpService } from './services/help.service';
     </div>
     `
 })
-export class PlexHelpComponent implements OnInit, AfterViewInit {
+export class PlexHelpComponent implements OnInit, AfterViewInit, OnChanges {
 
     @Input() titulo = '';
 
@@ -47,16 +47,18 @@ export class PlexHelpComponent implements OnInit, AfterViewInit {
 
     @Input() maxHeight = 'auto';
 
+    @Input() closeHelp = false;
+
     @Output() close = new EventEmitter();
 
     @Output() open = new EventEmitter();
 
     private unlisten: Function;
+    private parentElement;
+    private id;
 
-    closed = true;
-    parentElement;
-    id;
-    posicionInicial;
+    public closed = true;
+    public posicionInicial;
 
     constructor(
         private elementRef: ElementRef,
@@ -70,8 +72,15 @@ export class PlexHelpComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         const elem = this.elementRef.nativeElement.getBoundingClientRect();
+
         this.parentElement = this.elementRef.nativeElement.closest('.plex-box-content');
         this.posicionInicial = elem.top - elem.height;
+    }
+
+    ngOnChanges() {
+        if (this.closeHelp) {
+            this.closed = true;
+        }
     }
 
     get content() {
@@ -83,6 +92,13 @@ export class PlexHelpComponent implements OnInit, AfterViewInit {
         this.close.emit();
     }
 
+    private calculatePosition() {
+        const position = this.elementRef.nativeElement.getBoundingClientRect().y;
+        const helpElement = this.elementRef.nativeElement.querySelector('plex-help .card.open');
+
+        helpElement.style.top = `${position - 25}px`;
+    }
+
     public toggle() {
         this.helpService.closePrevious(this.id);
 
@@ -92,15 +108,12 @@ export class PlexHelpComponent implements OnInit, AfterViewInit {
         helpCard.style.maxHeight = this.maxHeight ? `${this.maxHeight}px` : 'auto';
 
         this.closed = !this.closed;
+
         if (!this.closed) {
             this.helpService.setHelp(this);
 
             setTimeout(() => {
-                if (this.cardSize === 'auto') {
-                    const toggleDiv = this.elementRef.nativeElement.querySelector('div.toggle-help');
-                    const offset = toggleDiv.querySelector('.card').getBoundingClientRect().top + 40;
-                    toggleDiv.querySelector('div.card-body').style.height = `calc(100vh - ${offset}px)`;
-                }
+                this.calculatePosition();
             }, 0);
 
             this.open.emit();
@@ -111,13 +124,10 @@ export class PlexHelpComponent implements OnInit, AfterViewInit {
             });
 
             this.parentElement?.addEventListener('scroll', () => {
-                if (this.parentElement?.scrollTop > 0) {
-                    helpCard.style.top = this.posicionInicial - this.parentElement?.scrollTop + 'px';
-                }
+                this.calculatePosition();
             }, false);
         } else {
             this.toggleClose();
-
             this.close.emit();
             this.helpService.setHelp(null);
             if (this.unlisten) {
