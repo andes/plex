@@ -1,6 +1,6 @@
-import { Directive, ComponentRef, ViewContainerRef, ComponentFactoryResolver, Input, OnInit, ChangeDetectorRef } from '@angular/core';
-import { HintComponent } from './hint.component';
+import { ChangeDetectorRef, ComponentFactoryResolver, ComponentRef, Directive, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { PlexType } from '../core/plex-type.type';
+import { HintComponent } from './hint.component';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
@@ -13,7 +13,6 @@ export class HintDirective implements OnInit {
 
     // default = Background gris
     @Input() hintType: PlexType = 'default';
-    @Input() detach: '' | 'both' | 'right' | 'top' = '';
 
     @Input() hintIcon = 'help';
 
@@ -43,7 +42,6 @@ export class HintDirective implements OnInit {
         this.tooltip.instance.content = this.content as string;
         this.tooltip.instance.position = this.position as string;
         this.tooltip.instance.hintType = this.hintType;
-        this.tooltip.instance.detach = this.detach;
         this.tooltip.instance.hintIcon = this.hintIcon;
 
     }
