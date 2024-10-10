@@ -1,9 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'plex-validation-messages',
-    template: ` <div class="form-control-feedback" *ngIf="control.errors && control.errors.required">
+    template: ` <div class="form-control-feedback" *ngIf="control.errors && control.errors.customValidation">
+                    <span *ngIf="mensaje">{{ mensaje }}</span>
+                </div>
+                <div class="form-control-feedback" *ngIf="control.errors && control.errors.required">
                     <span *ngIf="!mensaje">Valor requerido</span>
                     <span *ngIf="mensaje">{{ mensaje }}</span>
                 </div>

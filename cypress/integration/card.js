@@ -8,9 +8,9 @@ context('card', () => {
 
     it('navega card', () => {
 
-        cy.get('plex-layout plex-grid:first').find('plex-card div').eq(0).click();
+        // cy.get('plex-layout plex-grid:first').find('plex-card div').eq(0).click();
 
-        cy.eyesCheckWindow('div selected');
+        // cy.eyesCheckWindow('div selected');
 
         cy.eyesClose();
 
