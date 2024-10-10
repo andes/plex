@@ -1,5 +1,5 @@
-import { ViewChild, Component, OnInit, Input, Output, ElementRef, EventEmitter, AfterViewInit, Renderer2, Self, Optional } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Optional, Output, Renderer2, Self, ViewChild } from '@angular/core';
+import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { hasRequiredValidator } from '../core/validator.functions';
 
 @Component({
@@ -116,6 +116,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         }
     }
 
+    @Input() customValidation;
+
     // Eventos
     @Output() change = new EventEmitter();
     @Output() focus = new EventEmitter();
@@ -139,6 +141,18 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
 
     private changeTimeout = null;
+
+    public validateFn = (c: FormControl) => { };
+
+    public validate(c: FormControl) {
+        if (c.value === null || c.value === undefined || c.value.toString().trim() === '') {
+            return null;
+        }
+
+        const isValid = this.customValidation(c.value);
+
+        return isValid ? null : { customValidation: true };
+    }
 
     constructor(
         private renderer: Renderer2,
@@ -170,7 +184,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             this.createToolbarIcons();
         }
     }
-
     // Actualización Modelo -> Vista
     writeValue(value: any) {
         const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
@@ -202,6 +215,13 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     registerOnChange(fn: any) {
         this.onChange = (value) => {
             value = value || null;
+
+            if (this.customValidation) {
+                if (this.control && this.control.control) {
+                    this.control.control.setValidators(this.validate.bind(this));
+                    this.control.control.updateValueAndValidity({ emitEvent: false });
+                }
+            }
             fn(value);
             // Check empty
             this.isEmpty = !(value && value.toString().trim());

@@ -24,6 +24,16 @@
           </plex-text>
           <plex-title size="sm" titulo="Patrón"></plex-title>
           <pre>a-zA-ZáâèéêíóùúüñÁÈÉÍÙÚÛÜ </pre>
+
+          <plex-text label="Validar a partir de una función personalizada" [(ngModel)]="templateModel1.validador"
+                     [customValidation]="customValidation" name="customValidation"
+                     mensaje="Error: el valor no supera la validación">
+          </plex-text>
+          <p>
+            Se evalua la condición <code>"valor && valor > 10 && valor < 25"</code>
+            y se pasa por parámetro [customValidation] como función para poder validar.
+          </p>
+
         </form>
 
         <plex-title size="sm" titulo="modelo"></plex-title>
