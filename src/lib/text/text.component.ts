@@ -194,7 +194,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             if (this.html) {
                 const component = (this.quillEditor as any);
 
-                if (component.quillEditor) {
+                if (component.quillEditor && value) {
                     const formattedValue = value.replace(/<\/p><p>/g, '</p><p><br></p>');
                     component.quillEditor.clipboard.dangerouslyPasteHTML(formattedValue);
                 }
