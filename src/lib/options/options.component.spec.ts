@@ -6,6 +6,7 @@ import { Component, DebugElement, Type, ViewChild, ViewEncapsulation } from '@an
 import { PlexOptionsComponent, IPlexOptionsItems } from './options.component';
 import { PlexModule } from '../module';
 import { FormsModule } from '@angular/forms';
+import { Plex } from '../core/service';
 
 describe('PlexOptionsComponent', () => {
     let fixture: ComponentFixture<PlexOptionsTestComponent>;
@@ -22,7 +23,7 @@ describe('PlexOptionsComponent', () => {
 
 
     it('have 3 buttons', fakeAsync(() => {
-        const elements = getElementAll(fixture, 'plex-options button');
+        const elements = getElementAll(fixture, 'plex-options plex-button');
         expect(elements.length).toBe(fixture.componentInstance.items.length);
     }));
 
@@ -31,7 +32,7 @@ describe('PlexOptionsComponent', () => {
     }));
 
     it('display label', fakeAsync(() => {
-        const elements = getElementAll(fixture, 'plex-options button');
+        const elements = getElementAll(fixture, 'plex-options plex-button');
 
         elements.forEach((elem, index) => {
             const elementRef = elem.nativeElement;
@@ -44,7 +45,7 @@ describe('PlexOptionsComponent', () => {
 
         spyOn(fixture.componentInstance, 'onChange');
 
-        const elements = getElementAll(fixture, 'plex-options button');
+        const elements = getElementAll(fixture, 'plex-options plex-button');
         const secondButton = elements[1].nativeElement;
         secondButton.dispatchEvent(new Event('click'));
 
@@ -66,7 +67,7 @@ describe('PlexOptionsComponent', () => {
 
         tickAndDetectChanges(fixture);
 
-        const elements = getElementAll(fixture, 'plex-options button');
+        const elements = getElementAll(fixture, 'plex-options plex-button');
 
         expect(options.active).toBe('d');
 
@@ -134,7 +135,8 @@ function createTestingModule<T>(cmp: Type<T>, template: string): ComponentFixtur
 
     TestBed.configureTestingModule({
         imports: [BrowserModule, PlexModule, FormsModule],
-        declarations: [cmp]
+        declarations: [cmp],
+        providers: [Plex]
     })
         .overrideComponent(cmp, {
             set: {
