@@ -1,18 +1,17 @@
 import { MatTooltip } from '@angular/material/tooltip';
-import { Component, OnInit, Input, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { PlexType } from '../core/plex-type.type';
 
 @Component({
     selector: 'plex-hint',
     template: `
-        <div #hintElem class="hint-wrapper">
-        <span #matTooltip="matTooltip" tabindex="0" role="link" *ngIf="position && content" class="hint-container"
+        <span #matTooltip="matTooltip" tabindex="0" role="link" *ngIf="position && content" class="hint-container detach-{{detach}}"
             [matTooltip]="content" [matTooltipPosition]="position" (click)="showTooltip()">
             <plex-icon class="hint {{ hintType }}" [name]="hintIcon" size="xs" type="light"></plex-icon>
-        </span></div>
+        </span>
     `
 })
-export class HintComponent implements OnInit, AfterViewInit {
+export class HintComponent implements OnInit {
 
     @Input()
     hostElement: HTMLElement;
@@ -29,19 +28,15 @@ export class HintComponent implements OnInit, AfterViewInit {
     @Input()
     position = 'above';
 
+    @Input()
+    detach: '' | 'both' | 'right' | 'top';
+
     constructor() { }
 
     @ViewChild('matTooltip', { static: false }) matTooltip: MatTooltip;
-    @ViewChild('hintElem') elementoActual!: ElementRef;
 
     ngOnInit() {
         this.position = 'above';
-    }
-
-    ngAfterViewInit() {
-        const elemento: HTMLElement = this.elementoActual.nativeElement;
-
-        elemento.appendChild(this.hostElement);
     }
 
     showTooltip() {
