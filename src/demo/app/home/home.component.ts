@@ -12,6 +12,8 @@ export class HomeDemoComponent implements OnInit {
     public data = [];
     documento = '45979360';
 
+    public modelSelector;
+
     constructor(
         public plex: Plex,
         private ref: ChangeDetectorRef,
@@ -23,7 +25,6 @@ export class HomeDemoComponent implements OnInit {
 
     ngOnInit() {
         this.ref.detectChanges();
-
     }
 
     openVisualizador() {
