@@ -1,5 +1,5 @@
 import { MatTooltip } from '@angular/material/tooltip';
-import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { PlexType } from '../core/plex-type.type';
 
 @Component({
@@ -11,7 +11,7 @@ import { PlexType } from '../core/plex-type.type';
         </span>
     `
 })
-export class HintComponent implements OnInit {
+export class HintComponent implements OnInit, AfterViewInit {
 
     @Input()
     hostElement: HTMLElement;
@@ -31,12 +31,38 @@ export class HintComponent implements OnInit {
     @Input()
     detach: '' | 'both' | 'right' | 'top';
 
-    constructor() { }
-
     @ViewChild('matTooltip', { static: false }) matTooltip: MatTooltip;
+
+    constructor() { }
 
     ngOnInit() {
         this.position = 'above';
+    }
+
+    ngAfterViewInit() {
+        this.adjustIfLabel();
+    }
+
+    adjustIfLabel() {
+        setTimeout(() => {
+            const labelElement = this.hostElement.querySelector('label');
+
+            if (labelElement !== null) {
+                labelElement.style.display = 'inline';
+
+                const label = labelElement.getBoundingClientRect();
+
+                const hintElement = this.hostElement.nextElementSibling as HTMLElement;
+                const hint = hintElement.getBoundingClientRect();
+
+                hintElement.style.position = 'relative';
+                hintElement.style.top = -label.height - 2 * hint.height + 'px';
+
+                const adjustX = this.hostElement.getAttribute('required') === 'true' ? 10 : 0;
+
+                hintElement.style.left = label.width + hint.width + adjustX + 'px';
+            }
+        }, 100);
     }
 
     showTooltip() {
