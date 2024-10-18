@@ -71,6 +71,7 @@ import 'hammerjs';
 import * as configMoment from './core/configMoment.function';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 import { ChartsModule } from 'ng2-charts';
+import { QuillModule } from 'ngx-quill';
 import { NavItemComponent } from './app/nav-item.component';
 import { HintComponent } from './hint/hint.component';
 import { HintDirective } from './hint/hint.directive';
@@ -89,7 +90,6 @@ import { AccordionDirective } from './accordion/pl-accordion.directive';
 import { PlexVisualizadorService } from './core/plex-visualizador.service';
 import { PlexGroupComponent } from './group/group.component';
 import { PlexGroupItemComponent } from './group/group-item.component';
-import { QuillModule } from 'ngx-quill';
 
 @NgModule({
     imports: [
@@ -101,9 +101,9 @@ import { QuillModule } from 'ngx-quill';
         MatRadioModule,
         MatTooltipModule,
         ChartsModule,
+        QuillModule,
         InfiniteScrollModule,
         SimpleNotificationsModule.forRoot(),
-        QuillModule
     ],
     declarations: [
         PlexAppComponent,
