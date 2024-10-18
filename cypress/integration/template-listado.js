@@ -7,19 +7,13 @@ context('template listado', () => {
     });
 
     it('test accordion', () => {
-        cy.eyesCheckWindow('main');
-
-        // SE SACO PORQUE PISARON TODA UNA COMPONENTE
-        // cy.get('plex-title').plexButtonIcon('chevron-down').click();
-        // cy.eyesCheckWindow('modal');
-
-        // cy.plexButton('CANCELAR').click();
+        cy.eyesCheckWindow('main');;
 
         cy.get('plex-list plex-item').eq(0).plexButtonIcon('eye').click();
 
         cy.eyesCheckWindow('item list selected');
 
-        cy.get('plex-options button').eq(0).click();
+        cy.get('plex-options').plexButton('opcion 1').eq(0).click();
 
         cy.eyesCheckWindow('plex-options');
 
