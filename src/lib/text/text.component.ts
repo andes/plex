@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Optional, Output, Renderer2, Self, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { hasRequiredValidator } from '../core/validator.functions';
+import { EditorConfig, BOLD_BUTTON, ITALIC_BUTTON, FONT_SIZE_SELECT, JUSTIFY_LEFT_BUTTON, JUSTIFY_CENTER_BUTTON, JUSTIFY_RIGHT_BUTTON, UNDERLINE_BUTTON } from 'ngx-simple-text-editor';
 
 @Component({
     selector: 'plex-text',
@@ -38,7 +39,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
         </textarea>
 
         <!-- HTML Editor -->
-        <quill-editor #quillEditor [attr.aria-label]="textLabel" [attr.aria-hidden]="multiline || !html" [hidden]="multiline || !html" [modules]="quill" [style]="quillStyle" [readOnly]="readonly" [placeholder]="placeholder" (onContentChanged)="onChange($event.html)"></quill-editor>
+        <st-editor #htmlEditor class="text-editor" *ngIf="html" [config]="config" [(ngModel)]="richText" (ngModelChange)="onChange($event)"></st-editor>
 
         <!-- Validación / Descripción ARIA -->
         <plex-validation-messages [mensaje]="mensaje" id="{{ ariaDescribedby.id }}" *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
@@ -46,29 +47,25 @@ import { hasRequiredValidator } from '../core/validator.functions';
     `
 })
 export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAccessor {
-    // private
-    public quillStyle = {
-        height: '200px'
+    richText = '';
+
+    config: EditorConfig = {
+        buttons: [
+            { ...BOLD_BUTTON, title: 'Negrita' },
+            { ...ITALIC_BUTTON, title: 'Itálica' },
+            { ...FONT_SIZE_SELECT, title: 'Tamaño' },
+            { ...JUSTIFY_LEFT_BUTTON, title: 'Alinear a Izquierda' },
+            { ...JUSTIFY_CENTER_BUTTON, title: 'Alinear a Derecha' },
+            { ...JUSTIFY_RIGHT_BUTTON, title: 'Centrar' },
+            { ...UNDERLINE_BUTTON, title: 'Subrayar' }]
     };
 
     // Public
     public isEmpty = true;
-    public quill = {
-        toolbar: {
-            container: [
-                ['bold', 'italic', 'underline', 'link'],
-                [{ list: 'ordered' }, { list: 'bullet' }],
-                [{ size: ['small', false, 'large', 'huge'] }],
-                [{ align: [] }],
-                ['clean'],
-            ],
-            handlers: {}
-        }
-    };
 
     @ViewChild('input', { static: true }) private input: ElementRef;
     @ViewChild('textarea', { static: true }) private textarea: ElementRef;
-    @ViewChild('quillEditor', { static: true }) private quillEditor: ElementRef;
+    @ViewChild('htmlEditor', { static: true }) private htmlEditor: ElementRef;
 
     public get esRequerido(): boolean {
         return hasRequiredValidator(this.control as any);
@@ -100,13 +97,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
 
     @Input()
-    set height(value: number | string) {
-        if (typeof value === 'number') {
-            this.quillStyle.height = value + 'px';
-        } else {
-            this.quillStyle.height = value;
-        }
-    }
+    set height(value: number | string) { }
+
     @Input()
     set autoFocus(value: any) {
         // Cada vez que cambia el valor vuelve a setear el foco
@@ -167,9 +159,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     // Inicialización
     ngOnInit() {
-        if (this.html) {
-            this.prepareQuillToolbar();
-        }
         if (this.type === 'password') {
             this.mensaje = 'Ingrese caracteres alfanuméricos, sin espacios.';
         }
@@ -180,9 +169,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
             element.focus();
         }
-        if (this.html) {
-            this.createToolbarIcons();
-        }
     }
     // Actualización Modelo -> Vista
     writeValue(value: any) {
@@ -190,16 +176,12 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.renderer.setProperty(element, 'value', typeof value === 'undefined' ? '' : value);
         if (this.multiline) {
             this.adjustTextArea();
-        } else {
-            if (this.html) {
-                const component = (this.quillEditor as any);
-
-                if (component.quillEditor && value) {
-                    const formattedValue = value.replace(/<\/p><p>/g, '</p><p><br></p>');
-                    component.quillEditor.clipboard.dangerouslyPasteHTML(formattedValue);
-                }
-            }
         }
+
+        if (this.html) {
+            this.richText = value;
+        }
+
         // Check empty
         this.isEmpty = !(value && value.toString().trim());
     }
@@ -262,35 +244,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     adjustTextArea() {
         this.textarea.nativeElement.style.overflow = 'auto';
         this.textarea.nativeElement.style.height = (this.rows) ? this.rows + 'em' : '4em';
-    }
-
-
-    private prepareQuillToolbar() {
-        if (this.qlToolbar) {
-            const toolBarItems: string[] = [];
-            const handlers: any = {};
-
-            this.qlToolbar.forEach(item => {
-                toolBarItems.push(item.name);
-                handlers[item.name] = item.handler;
-            });
-
-            this.quill.toolbar.container.push(toolBarItems);
-            this.quill.toolbar.handlers = handlers;
-        }
-    }
-
-    private createToolbarIcons() {
-        if (this.qlToolbar) {
-            const editor = (this.quillEditor as any).quillEditor;
-            const toolbar = editor?.getModule('toolbar').container;
-            this.qlToolbar.forEach(item => {
-                const qlItem = toolbar?.getElementsByClassName(`ql-${item.name}`);
-                if (qlItem?.length > 0) {
-                    qlItem[0].innerHTML = `<i class="adi adi-${item.icon || item.name}"></i>`;
-                }
-            });
-        }
     }
 
     get textLabel() {

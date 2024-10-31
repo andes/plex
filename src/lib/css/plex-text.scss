@@ -1,14 +1,14 @@
 plex-text {
-
     div.form-group {
         position: relative;
     }
 
     .input-group {
         display: flex;
+
         .input-group-addon {
             height: 35px;
-    }
+        }
     }
 
     .clear-icon {
@@ -41,14 +41,48 @@ plex-text {
             font-style: italic !important;
             opacity: 1;
         }
-
     }
 
-    .ql-toolbar .ql-formats {
-        i {
-            font-size: 24px;
-            line-height: 0.8;
+    .st-toolbar {
+        border-top-right-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-width: 0 !important;
+        border-color: #d9d9d9 !important;
+    }
+
+    .st-area {
+        border-radius: 0 !important;
+        border: 1px solid #d9d9d9 !important;
+        transition: border-color ease-in-out 0.15s;
+
+        &:focus {
+            outline-width: 0;
+            border-color: $blue !important;
         }
     }
 
+    .st-area.active {
+        border-top-right-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+    }
+
+    .st-toolbar-item {
+        &:focus,
+        &:active,
+        &:focus-visible {
+            outline-width: 0;
+            box-shadow: none !important;
+        }
+
+        &.active {
+            background-color: #eceeef !important;
+            color: $blue !important;
+        }
+    }
+}
+
+plex-layout-sidebar[type="invert"] {
+    .text-editor {
+        color: black;
+    }
 }

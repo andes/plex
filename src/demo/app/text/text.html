@@ -63,7 +63,7 @@
         <plex-title titulo="HTML Editor"></plex-title>
         <plex-grid type="full">
           <form>
-            <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido1" [html]="true"
+            <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido" [html]="true"
                        [readonly]="false" [height]="'100px'" [qlToolbar]="qlToolbar">
             </plex-text>
           </form>
@@ -76,7 +76,7 @@
         <plex-title titulo="HTML Editor con height = 200"></plex-title>
         <plex-grid type="full" size="md">
           <form>
-            <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido2" [html]="true"
+            <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido" [html]="true"
                        [height]="'200px'" [readonly]="false">
             </plex-text>
           </form>
@@ -92,7 +92,7 @@
   <plex-layout-sidebar type="invert">
     <plex-title titulo="plex-text [height]='300px'"></plex-title>
     <form>
-      <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido2" [html]="true"
+      <plex-text label="Escriba el informe" [(ngModel)]="richText.contenido" name="contenido" [html]="true"
                  [height]="'300px'" [readonly]="false">
       </plex-text>
     </form>
