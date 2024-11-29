@@ -1,6 +1,6 @@
 {
     "name": "@andes/plex",
-    "version": "8.0.6",
+    "version": "8.0.7",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/andes/plex.git"
@@ -16,7 +16,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "serve": "ng serve --progress=false",
-        "prepublishOnly": "rm -rf dist && tsc -p ./ --outDir dist/",
+        "prepublishOnly": "tsc -p ./ --outDir dist/",
         "test:ci": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
         "cypress": "wait-on http://localhost:4200 && cypress run",
         "test:cypress": "run-p --race serve cypress",
@@ -30,9 +30,8 @@
     },
     "main": "./dist/index.js",
     "dependencies": {
-        "@andes/icons": "^1.1.12",
+        "@andes/icons": "^1.1.28",
         "@angular/material": "^12.2.13",
-        "@fortawesome/fontawesome-free": "^5.15.4",
         "@mdi/font": "^5.0.45",
         "@types/estree": "^1.0.2",
         "@types/intro.js": "^2.4.6",
