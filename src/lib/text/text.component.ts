@@ -51,13 +51,13 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     config: EditorConfig = {
         buttons: [
-            { ...BOLD_BUTTON, title: 'Negrita' },
-            { ...ITALIC_BUTTON, title: 'Itálica' },
+            { ...BOLD_BUTTON, title: 'Negrita', icon: 'adi adi-Bold' },
+            { ...ITALIC_BUTTON, title: 'Itálica', icon: 'adi adi-Italic' },
             { ...FONT_SIZE_SELECT, title: 'Tamaño' },
-            { ...JUSTIFY_LEFT_BUTTON, title: 'Alinear a Izquierda' },
-            { ...JUSTIFY_CENTER_BUTTON, title: 'Alinear a Derecha' },
-            { ...JUSTIFY_RIGHT_BUTTON, title: 'Centrar' },
-            { ...UNDERLINE_BUTTON, title: 'Subrayar' }]
+            { ...JUSTIFY_LEFT_BUTTON, title: 'Alinear a Izquierda', icon: 'adi adi-Bandera-izquierda' },
+            { ...JUSTIFY_CENTER_BUTTON, title: 'Centrar', icon: 'adi adi-Bandera-centro' },
+            { ...JUSTIFY_RIGHT_BUTTON, title: 'Alinear a Derecha', icon: 'adi adi-Bandera-derecha' },
+            { ...UNDERLINE_BUTTON, title: 'Subrayar', icon: 'adi adi-Underline' }]
     };
 
     // Public

@@ -22,8 +22,7 @@
             ],
             "styles": [
               "src/demo/styles.scss",
-              "src/demo/app/wizard/styles.scss",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "src/demo/app/wizard/styles.scss"
             ],
             "scripts": [
               "./node_modules/intro.js/intro.js"
