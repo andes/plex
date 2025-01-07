@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Optional, Output, Renderer2, Self, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { BOLD_BUTTON, EditorConfig, FONT_SIZE_SELECT, ITALIC_BUTTON, JUSTIFY_CENTER_BUTTON, JUSTIFY_LEFT_BUTTON, JUSTIFY_RIGHT_BUTTON, UNDERLINE_BUTTON } from 'ngx-simple-text-editor';
 import { hasRequiredValidator } from '../core/validator.functions';
-import { EditorConfig, BOLD_BUTTON, ITALIC_BUTTON, FONT_SIZE_SELECT, JUSTIFY_LEFT_BUTTON, JUSTIFY_CENTER_BUTTON, JUSTIFY_RIGHT_BUTTON, UNDERLINE_BUTTON } from 'ngx-simple-text-editor';
 
 @Component({
     selector: 'plex-text',
@@ -39,7 +39,9 @@ import { EditorConfig, BOLD_BUTTON, ITALIC_BUTTON, FONT_SIZE_SELECT, JUSTIFY_LEF
         </textarea>
 
         <!-- HTML Editor -->
-        <st-editor #htmlEditor class="text-editor" *ngIf="html" [config]="config" [(ngModel)]="richText" (ngModelChange)="onChange($event)"></st-editor>
+        <div #htmlEditor>
+            <st-editor class="text-editor" *ngIf="html" [config]="config" [(ngModel)]="richText"></st-editor>
+        </div>
 
         <!-- Validación / Descripción ARIA -->
         <plex-validation-messages [mensaje]="mensaje" id="{{ ariaDescribedby.id }}" *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
@@ -65,7 +67,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     @ViewChild('input', { static: true }) private input: ElementRef;
     @ViewChild('textarea', { static: true }) private textarea: ElementRef;
-    @ViewChild('htmlEditor', { static: true }) private htmlEditor: ElementRef;
+    @ViewChild('htmlEditor', { static: false }) private htmlEditor: ElementRef;
 
     public get esRequerido(): boolean {
         return hasRequiredValidator(this.control as any);
@@ -168,6 +170,16 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         if (this.autoFocus) {
             const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
             element.focus();
+        }
+
+        const editorElement = this.htmlEditor?.nativeElement;
+        const selectElement = editorElement.querySelector('select');
+
+        if (selectElement) {
+            selectElement.addEventListener('change', (event: Event) => {
+                event.stopPropagation();
+                event.preventDefault();
+            });
         }
     }
     // Actualización Modelo -> Vista
