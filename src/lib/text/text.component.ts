@@ -196,7 +196,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
     registerOnChange(fn: any) {
         this.onChange = (value) => {
-            value = value || null;
+            value = value || '';
 
             if (this.customValidation) {
                 if (this.control && this.control.control) {

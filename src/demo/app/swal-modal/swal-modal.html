@@ -1,7 +1,7 @@
 <plex-layout>
   <plex-layout-main>
     <!--Info-->
-    <h4>Plex.info()</h4>
+    <plex-title titulo="Plex.info()"></plex-title>
     <div class="row margin-bottom">
       <div class="col-8">
         <plex-text label="Ingrese el texto" [(ngModel)]="alertText"></plex-text>
@@ -14,28 +14,59 @@
         <plex-int label="Cerrar después de" suffix="ms" [(ngModel)]="alertTimeout"></plex-int>
       </div>
     </div>
-    <!--Toast-->
-    <h4 class="pt-4">Plex.toast()</h4>
+
+    <h5 class="pt-4">Parámetros</h5>
     <div class="row margin-bottom">
-      <div class="col-8">
-        <plex-text label="Ingrese el texto" [(ngModel)]="toastText"></plex-text>
-        <plex-button label="INFO" type="info" (click)="toast('info')"></plex-button>
-        <plex-button label="WARNING" type="warning" (click)="toast('warning')"></plex-button>
-        <plex-button label="DANGER" type="danger" (click)="toast('danger')"></plex-button>
-        <plex-button label="SUCCESS" type="success" (click)="toast('success')"></plex-button>
-      </div>
-      <div class="col-4">
-        <plex-int label="Cerrar después de" suffix="ms" [(ngModel)]="toastTimeout"></plex-int>
+      <ul>
+        <li><strong>type</strong>: Tipo del mensaje (success, danger, warning, info). Si es <code>danger</code>, será tratado como <code>error</code>.</li>
+        <li><strong>content</strong>: Texto o contenido HTML del mensaje.</li>
+        <li><strong>title</strong> (opcional): Título del cuadro de diálogo. Por defecto, "Información".</li>
+        <li><strong>timeOut</strong> (opcional): Tiempo en milisegundos antes de que el mensaje se cierre automáticamente. Por defecto, no se cierra automáticamente.</li>
+        <li><strong>confirmButtonText</strong> (opcional): Texto del botón de confirmación. Por defecto, "Aceptar".</li>
+        <li><strong>customClass</strong> (opcional): Clase CSS personalizada para el cuadro de diálogo.</li>
+      </ul>
+    </div>
+
+    <!--Toast-->
+    <div>
+      <plex-title class="mt-4" titulo="Plex.toast()"></plex-title>
+      <div class="row margin-bottom">
+        <div class="col-8">
+          <plex-text label="Ingrese el texto" [(ngModel)]="toastText"></plex-text>
+          <plex-button label="INFO" type="info" (click)="toast('info')"></plex-button>
+          <plex-button label="WARNING" type="warning" (click)="toast('warning')"></plex-button>
+          <plex-button label="DANGER" type="danger" (click)="toast('danger')"></plex-button>
+          <plex-button label="SUCCESS" type="success" (click)="toast('success')"></plex-button>
+        </div>
+        <div class="col-4">
+          <plex-int label="Cerrar después de" suffix="ms" [(ngModel)]="toastTimeout"></plex-int>
+        </div>
       </div>
     </div>
+
     <!--Confirm-->
-    <h4 class="pt-4">Plex.confirm()</h4>
+    <plex-title class="mt-4" titulo="Plex.confirm()"></plex-title>
     <div class="row margin-bottom">
       <div class="col-12 rtl">
         <plex-text label="Ingrese el texto" [(ngModel)]="confirmText"></plex-text>
         <plex-button label="MOSTRAR" type="primary" (click)="confirm()"></plex-button>
         <pre *ngIf="resultado !== undefined">Resultado de la confirmación: <strong>{{ resultado }}</strong></pre>
       </div>
+    </div>
+
+    <!--Options-->
+    <h5 class="pt-4">Parámetros</h5>
+    <div class="row margin-bottom">
+      <ul>
+        <li><strong>content</strong>: Texto o contenido HTML del mensaje que se mostrará.</li>
+        <li><strong>title</strong> (opcional): Título del cuadro de diálogo. Por defecto, "Confirmación".</li>
+        <li><strong>confirmButtonText</strong> (opcional): Texto del botón de confirmación. Por defecto, "Confirmar".</li>
+        <li><strong>cancelButtonText</strong> (opcional): Texto del botón de cancelación. Por defecto, "Cancelar".</li>
+        <li><strong>confirmButtonType</strong> (opcional): Estilo del botón de confirmación (success, danger, warning, info). Por defecto, "danger".</li>
+        <li><strong>cancelButtonType</strong> (opcional): Estilo del botón de cancelación. Por defecto, "success".</li>
+        <li><strong>type</strong> (opcional): Tipo del cuadro de diálogo (question, warning, success, danger, warning, info). Por defecto, "question".</li>
+        <li><strong>customClass</strong> (opcional): Clase CSS personalizada para el cuadro de diálogo.</li>
+      </ul>
     </div>
   </plex-layout-main>
 </plex-layout>
