@@ -35,6 +35,10 @@ export class Plex {
         private titlecasePipe: TitleCasePipe
     ) { }
 
+    collapse() {
+        this.menu = this.menu.map((item) => ({ ...item, collapsed: true }))
+    }
+
     /**
      * Actualiza el ménu de la aplicación
      *
@@ -44,6 +48,7 @@ export class Plex {
      */
     updateMenu(menu: DropdownItem[]) {
         this.menu = menu.map((item) => {
+            item.collapsed = true;
             if (item.icon) {
                 const words = item.icon.split(' ');
                 if (words.length > 1) {

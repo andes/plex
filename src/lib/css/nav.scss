@@ -32,14 +32,14 @@ nav {
     color: white;
 
     // Botones
-    > div {
+    >div {
       position: relative;
       padding: 0 10px;
       float: left;
       height: $navbar-height;
 
-      > i,
-      > plex-icon i {
+      >i,
+      >plex-icon i {
         font-size: 2em;
         line-height: $navbar-height;
       }
@@ -66,21 +66,23 @@ nav {
           top: unset !important;
         }
       }
+
       .user-menu {
         height: 30px;
         display: flex;
         align-items: flex-start;
+
         plex-icon:hover {
           color: $dark-blue;
         }
       }
     }
 
-    > div.action.hover {
+    >div.action.hover {
       background: $dark-blue;
     }
 
-    > div.action:hover {
+    >div.action:hover {
       background: $dark-blue;
       cursor: pointer;
 
@@ -90,7 +92,7 @@ nav {
       }
     }
 
-    > div.action:focus {
+    >div.action:focus {
       outline: none;
       background: $dark-blue;
     }
@@ -110,7 +112,6 @@ nav {
     .dropdown .dropdown-menu {
       max-height: calc(100vh - 64px);
       overflow-y: scroll;
-      padding-right: 10px;
 
       li {
         line-height: 1.35;
@@ -154,6 +155,53 @@ nav {
     }
   }
 
+  .dropdown-menu {
+    padding: 5px;
+
+    ul {
+      list-style: none;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      padding-left: 25px;
+      padding-right: 25px;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &.active {
+        color: white;
+
+        .adi {
+          color: white;
+        }
+      }
+
+      &:hover {
+        &:not(.active):hover {
+          background-color: $light-grey;
+          color: inherit;
+        }
+      }
+
+      &.single {
+        padding-left: 50px;
+      }
+    }
+
+    .submenu {
+      padding: 5px 0;
+      padding-left: unset;
+
+      a {
+        font-size: 0.85rem;
+        padding-left: 50px;
+      }
+    }
+  }
+
   .loader {
     width: 100vw;
     position: absolute;
@@ -176,9 +224,5 @@ nav {
     text-transform: uppercase;
     margin-left: 0.5em;
     margin-top: 0.15em;
-
-    a {
-      color: white;
-    }
   }
 }

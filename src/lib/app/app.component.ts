@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import { PlexVisualizadorService } from '../core/plex-visualizador.service';
 import { Plex } from './../core/service';
 
@@ -62,18 +62,33 @@ import { Plex } from './../core/service';
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li *ngFor="let item of plex.menu; let i = index">
                                         <!--Item con router asociado-->
-                                        <ng-template [ngIf]="!item.divider && item.route">
-                                            <a plexRipples class="dropdown-item" href="#" tabindex="{{i + 1}}" [routerLink]="item.route" routerLinkActive="active">
+                                        <ng-template [ngIf]="!item.divider && item.route && !item.submodulos">
+                                            <a class="dropdown-item" href="#" tabindex="{{i + 1}}" [routerLink]="item.route" routerLinkActive="active">
                                                 <plex-icon *ngIf="item.icon" type="dark"  [prefix]="item.prefix" [name]="item.icon"></plex-icon>
                                                 {{item.label}}
-                                                </a>
+                                            </a>
+                                        </ng-template>
+                                        <!--Item con submodulos-->
+                                        <ng-template [ngIf]="item.submodulos">
+                                            <a [ngStyle]="{'background-color': !item.collapsed ? item.color : ''}" class="dropdown-item {{ !item.collapsed ? 'active' : ''}}" tabindex="{{i + 1}}" (click)="toggleSubmenu($event, item)">
+                                                <plex-icon name="{{!item.collapsed ? 'chevron-down' : 'chevron-right'}}" type="default" size="md"></plex-icon>
+                                                <plex-icon *ngIf="item.icon" type="dark"  [prefix]="item.prefix" [name]="item.icon"></plex-icon>
+                                                {{item.label}}
+                                            </a>
+                                            <ul class="submenu" *ngIf="!item.collapsed">
+                                                <li *ngFor="let subItem of item.submodulos">
+                                                    <a class="dropdown-item" href="#" [routerLink]="subItem.route" routerLinkActive="active">
+                                                        {{subItem.label}}
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </ng-template>
                                         <!--Item con handler asociado-->
                                         <ng-template [ngIf]="!item.divider && item.handler">
-                                            <a plexRipples class="dropdown-item" href="#" tabindex="{{i + 1}}" (click)="item.handler($event); false;">
+                                            <a class="dropdown-item" href="#" tabindex="{{i + 1}}" (click)="item.handler($event); false;">
                                                 <plex-icon *ngIf="item.icon" type="dark"  [prefix]="item.prefix" [name]="item.icon"></plex-icon>
                                                 {{item.label}}
-                                                </a>
+                                            </a>
                                         </ng-template>
                                         <!--Divider-->
                                         <ng-template [ngIf]="item.divider">
@@ -108,12 +123,13 @@ import { Plex } from './../core/service';
                     <router-outlet></router-outlet>
                 </div>`,
 })
+
 export class PlexAppComponent implements OnInit {
     private unlisten: Function;
     // Referencia al DOM para injectar una componente de forma dinámica
     @ViewChild('menuItem', { static: true, read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
-
     @Input() type = 'inverse';
+
     public loginOpen = false;
     public menuOpen = false;
     public online = true;
@@ -122,7 +138,6 @@ export class PlexAppComponent implements OnInit {
         dataset: [{ data: [] }],
         labels: [],
         options: {
-            // responsive: true,
             scales: {
                 yAxes: [{
                     display: false,
@@ -170,7 +185,6 @@ export class PlexAppComponent implements OnInit {
         for (let i = 0; i < this.chart.maxPoints; i++) {
             this.chart.dataset[0].data.push(1);
         }
-
     }
 
     public toggleMenu() {
@@ -184,10 +198,17 @@ export class PlexAppComponent implements OnInit {
             if (this.unlisten) {
                 this.unlisten();
             }
+
+            this.plex.collapse();
         }
     }
 
-    onMenuKeyup($event) {
+    public toggleSubmenu(e, item) {
+        e.stopPropagation();
+        item.collapsed = !item.collapsed;
+    }
+
+    public onMenuKeyup($event) {
         if ($event.keyCode === 32 || $event.keyCode === 13) {
             this.toggleMenu();
         }

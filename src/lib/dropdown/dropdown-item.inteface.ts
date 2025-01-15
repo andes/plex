@@ -1,4 +1,6 @@
 export interface DropdownItem {
+    id?: string;
+
     /**
      * Label del item
      *
@@ -41,4 +43,10 @@ export interface DropdownItem {
      * @memberOf DropdownItem
      */
     divider?: boolean;
+
+    submodulos?: any[];
+
+    collapsed?: boolean;
+
+    color?: string;
 }
