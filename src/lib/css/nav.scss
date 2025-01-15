@@ -32,14 +32,14 @@ nav {
     color: white;
 
     // Botones
-    > div {
+    >div {
       position: relative;
       padding: 0 10px;
       float: left;
       height: $navbar-height;
 
-      > i,
-      > plex-icon i {
+      >i,
+      >plex-icon i {
         font-size: 2em;
         line-height: $navbar-height;
       }
@@ -66,21 +66,23 @@ nav {
           top: unset !important;
         }
       }
+
       .user-menu {
         height: 30px;
         display: flex;
         align-items: flex-start;
+
         plex-icon:hover {
           color: $dark-blue;
         }
       }
     }
 
-    > div.action.hover {
+    >div.action.hover {
       background: $dark-blue;
     }
 
-    > div.action:hover {
+    >div.action:hover {
       background: $dark-blue;
       cursor: pointer;
 
@@ -90,7 +92,7 @@ nav {
       }
     }
 
-    > div.action:focus {
+    >div.action:focus {
       outline: none;
       background: $dark-blue;
     }
@@ -110,7 +112,6 @@ nav {
     .dropdown .dropdown-menu {
       max-height: calc(100vh - 64px);
       overflow-y: scroll;
-      padding-right: 10px;
 
       li {
         line-height: 1.35;
@@ -161,6 +162,26 @@ nav {
 
     .line-loader:before {
       background: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  .menu {
+    padding: 0 !important;
+
+    .dropdown {
+      padding: 0 10px;
+      height: $navbar-height;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        background: $dark-blue;
+      }
+
+      &.show {
+        background: $dark-blue;
+      }
     }
   }
 

@@ -1,0 +1,47 @@
+.main-menu {
+    padding: 5px;
+
+    ul {
+        list-style: none;
+    }
+
+    .dropdown-item {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        padding-left: 25px;
+        padding-right: 25px;
+        border-radius: 6px;
+        cursor: pointer;
+
+        &.active {
+            color: white;
+
+            .adi {
+                color: white;
+            }
+        }
+
+        &:hover {
+            &:not(.active):hover {
+                background-color: $grey;
+                color: inherit;
+            }
+        }
+
+        &.single {
+            padding-left: 50px;
+        }
+    }
+
+    .submenu {
+        padding: 5px 0;
+        padding-left: unset;
+        list-style: none;
+
+        a {
+            font-size: 0.85rem;
+            padding-left: 50px;
+        }
+    }
+}

@@ -49,7 +49,7 @@ import { TemplateVisualizacionComponent } from './templates/template-visualizaci
 import { TextDemoComponent } from './text/text.component';
 import { WizardDemoComponent } from './wizard/wizard.component';
 import { WrapperDemoComponent } from './wrapper/wrapper.component';
-
+import { MenuDemoComponent } from './menu/menu.component';
 
 // Template
 import { HttpClientModule } from '@angular/common/http';
@@ -80,7 +80,6 @@ import { MpiMaquetadoComponent } from './templates/modulos/mpi/mpi-maquetado';
 import { MpiDetalleComponent } from './templates/modulos/mpi/sidebar/detalle/mpi-detalle.component';
 import { CamaService } from './templates/service/cama.service';
 import { DemoTitleComponent } from './title/title.component';
-
 
 @NgModule({
     declarations: [
@@ -151,7 +150,8 @@ import { DemoTitleComponent } from './title/title.component';
         RecursosListadoComponent,
         RecursoDetalleComponent,
         DemoTitleComponent,
-        DemoGroupComponent
+        DemoGroupComponent,
+        MenuDemoComponent
     ],
     entryComponents: [
         HeaderPacienteComponent
