@@ -191,7 +191,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         }
 
         if (this.html) {
-            this.richText = value;
+            this.richText = value || '';
         }
 
         // Check empty
