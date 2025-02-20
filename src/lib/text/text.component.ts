@@ -40,8 +40,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
 
         <!-- HTML Editor -->
         <div #htmlEditor>
-            <st-editor class="text-editor" *ngIf="html" [config]="config" [(ngModel)]="richText"></st-editor>
-        <st-editor class="text-editor" *ngIf="html" [config]="config" [(ngModel)]="richText" (ngModelChange)="onChange($event)"></st-editor>
+            <st-editor class="text-editor" *ngIf="html" [config]="config" [(ngModel)]="richText" (ngModelChange)="onChange($event)"></st-editor>
         </div>
 
         <!-- Validación / Descripción ARIA -->
