@@ -119,7 +119,7 @@ export class Plex {
 
     confirm(content: string, title?: string, confirmButtonText?: string, cancelButtonText?: string, confirmButtonType?: string, cancelButtonType?: string, type?: string, customClass?: string);
 
-    confirm(content, title = 'Confirmación', confirmButtonText = 'Confirmar', cancelButtonText = 'Cancelar', confirmButtonType = 'danger', cancelButtonType = 'success', type = 'question', customClass = ''): Promise<any> {
+    confirm(content, title = 'Confirmación', confirmButtonText = 'Confirmar', cancelButtonText = 'Cancelar', confirmButtonType = 'success', cancelButtonType = 'danger', type = 'question', customClass = ''): Promise<any> {
 
         let htmlContent;
 
@@ -129,8 +129,8 @@ export class Plex {
             htmlContent = content.content;
             confirmButtonText = content.confirmButtonText || 'Confirmar';
             cancelButtonText = content.cancelButtonText || 'Cancelar';
-            confirmButtonType = content.confirmButtonType || 'danger';
-            cancelButtonType = content.cancelButtonType || 'success';
+            confirmButtonType = content.confirmButtonType || 'success';
+            cancelButtonType = content.cancelButtonType || 'danger';
             type = content.type || 'question';
             customClass = content.customClass || '';
         } else {
