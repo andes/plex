@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Optional, Output, Renderer2, Self, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
-import { BOLD_BUTTON, EditorConfig, FONT_SIZE_SELECT, ITALIC_BUTTON, JUSTIFY_CENTER_BUTTON, JUSTIFY_LEFT_BUTTON, JUSTIFY_RIGHT_BUTTON, UNDERLINE_BUTTON } from 'ngx-simple-text-editor';
+import { BOLD_BUTTON, EditorConfig, FONT_SIZE_SELECT, ITALIC_BUTTON, JUSTIFY_CENTER_BUTTON, JUSTIFY_LEFT_BUTTON, JUSTIFY_RIGHT_BUTTON, UNDERLINE_BUTTON, UNORDERED_LIST_BUTTON } from 'ngx-simple-text-editor';
 import { hasRequiredValidator } from '../core/validator.functions';
 
 @Component({
@@ -59,21 +59,15 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             { ...JUSTIFY_LEFT_BUTTON, title: 'Alinear a Izquierda', icon: 'adi adi-Bandera-izquierda' },
             { ...JUSTIFY_CENTER_BUTTON, title: 'Centrar', icon: 'adi adi-Bandera-centro' },
             { ...JUSTIFY_RIGHT_BUTTON, title: 'Alinear a Derecha', icon: 'adi adi-Bandera-derecha' },
-            { ...UNDERLINE_BUTTON, title: 'Subrayar', icon: 'adi adi-Underline' }]
+            { ...UNORDERED_LIST_BUTTON, title: 'Listado', icon: 'adi adi-listado' },
+            { ...UNDERLINE_BUTTON, title: 'Subrayar', icon: 'adi adi-Underline' }
+        ]
     };
-
-    // Public
-    public isEmpty = true;
 
     @ViewChild('input', { static: true }) private input: ElementRef;
     @ViewChild('textarea', { static: true }) private textarea: ElementRef;
     @ViewChild('htmlEditor', { static: false }) private htmlEditor: ElementRef;
 
-    public get esRequerido(): boolean {
-        return hasRequiredValidator(this.control as any);
-    }
-
-    // Propiedades
     @Input() type: 'text' | 'password' | 'email' = 'text';
     @Input() label: string;
     @Input() ariaLabel: string;
@@ -90,6 +84,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     @Input() html = false;
     @Input() debounce = 0;
     @Input() qlToolbar: PlexTextToolBar[];
+    @Input() customValidation;
 
     @Input()
     set password(value) {
@@ -102,7 +97,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     set height(value: number | string) { }
 
     @Input()
-    set autoFocus(value: any) {
+    set autoFocus(_) {
         // Cada vez que cambia el valor vuelve a setear el foco
         if (this.renderer) {
             const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
@@ -110,13 +105,16 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         }
     }
 
-    @Input() customValidation;
-
-    // Eventos
     @Output() change = new EventEmitter();
     @Output() focus = new EventEmitter();
     @Output() focusout = new EventEmitter();
     @Output() typing = new EventEmitter();
+
+    public isEmpty = true;
+
+    public get esRequerido(): boolean {
+        return hasRequiredValidator(this.control as any);
+    }
 
     public onFocus() {
         this.focus.emit();
@@ -126,15 +124,12 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.focusout.emit();
     }
 
-    // Funciones públicas
     public onChange = (_: any) => { };
 
     public disabledEvent(event: Event) {
         event.stopImmediatePropagation();
         return false;
     }
-
-    private changeTimeout = null;
 
     public validateFn = (c: FormControl) => { };
 
@@ -148,6 +143,8 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         return isValid ? null : { customValidation: true };
     }
 
+    private changeTimeout = null;
+
     constructor(
         private renderer: Renderer2,
         @Self() @Optional() public control: NgControl,
@@ -159,7 +156,12 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.password = false;
     }
 
-    // Inicialización
+    registerOnTouched(fn: any): void {
+    }
+
+    setDisabledState?(isDisabled: boolean): void {
+    }
+
     ngOnInit() {
         if (this.type === 'password') {
             this.mensaje = 'Ingrese caracteres alfanuméricos, sin espacios.';
@@ -181,8 +183,30 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
                 event.preventDefault();
             });
         }
+
+        if (this.html && editorElement) {
+            editorElement.addEventListener('paste', (event: ClipboardEvent) => {
+                event.preventDefault();
+                const text = event.clipboardData?.getData('text/plain');
+                const selection = window.getSelection();
+                const range = selection?.getRangeAt(0);
+
+                if (range && text) {
+                    const lines = text.split('\n');
+                    range.deleteContents();
+
+                    for (let i = lines.length - 1; i >= 0; i--) {
+                        range.insertNode(document.createTextNode(lines[i]));
+
+                        if (i > 0) {
+                            range.insertNode(document.createElement('br'));
+                        }
+                    }
+                }
+            });
+        }
     }
-    // Actualización Modelo -> Vista
+
     writeValue(value: any) {
         const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
         this.renderer.setProperty(element, 'value', typeof value === 'undefined' ? '' : value);
@@ -194,16 +218,11 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             this.richText = value || '';
         }
 
-        // Check empty
         this.isEmpty = !(value && value.toString().trim());
     }
 
-    public hasDanger() {
+    hasDanger() {
         return (this.control as any).name && (this.control.dirty || this.control.touched) && !this.control.valid;
-    }
-
-    // Actualización Vista -> Modelo
-    registerOnTouched() {
     }
 
     registerOnChange(fn: any) {
@@ -217,7 +236,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
                 }
             }
             fn(value);
-            // Check empty
+
             this.isEmpty = !(value && value.toString().trim());
 
             if (this.multiline) {
@@ -235,11 +254,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         };
     }
 
-    /**
-     * Borra el contenido del input
-     *
-     * @memberof PlexTextComponent
-     */
     clearInput() {
         if (!this.disabled && !this.isEmpty) {
             this.writeValue(null);
@@ -248,18 +262,12 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         }
     }
 
-    /**
-     * Ajusta el alto del textarea al contenido
-     *
-     * @memberof PlexTextComponent
-     */
     adjustTextArea() {
         this.textarea.nativeElement.style.overflow = 'auto';
         this.textarea.nativeElement.style.height = (this.rows) ? this.rows + 'em' : '4em';
     }
 
     get textLabel() {
-        // ARIA no permite aria-label en passwords (sólo aria-labelledby)
         if (this.type !== 'password') {
             return this.ariaLabel ? this.ariaLabel : this.label;
         } else {
@@ -270,7 +278,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     get passwordLabel() {
         return this.type === 'password' ? this.ariaDescribedby.id : null;
     }
-
 }
 
 export interface PlexTextToolBar {
