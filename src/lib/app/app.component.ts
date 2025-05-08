@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { PlexVisualizadorService } from '../core/plex-visualizador.service';
 import { Plex } from './../core/service';
 
@@ -56,32 +56,7 @@ import { Plex } from './../core/service';
                                     </div>
                                 </div>
                             </div>
-                            <!--Menu-->
-                            <div role="navigation" aria-label="Menú principal" *ngIf="plex.menu && plex.menu.length" class="action dropdown" tabindex="1" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();" (keyup)="onMenuKeyup($event)">
-                                <plex-icon type="light" size="xl" name="menu"></plex-icon>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li *ngFor="let item of plex.menu; let i = index">
-                                        <!--Item con router asociado-->
-                                        <ng-template [ngIf]="!item.divider && item.route">
-                                            <a plexRipples class="dropdown-item" href="#" tabindex="{{i + 1}}" [routerLink]="item.route" routerLinkActive="active">
-                                                <plex-icon *ngIf="item.icon" type="dark"  [prefix]="item.prefix" [name]="item.icon"></plex-icon>
-                                                {{item.label}}
-                                                </a>
-                                        </ng-template>
-                                        <!--Item con handler asociado-->
-                                        <ng-template [ngIf]="!item.divider && item.handler">
-                                            <a plexRipples class="dropdown-item" href="#" tabindex="{{i + 1}}" (click)="item.handler($event); false;">
-                                                <plex-icon *ngIf="item.icon" type="dark"  [prefix]="item.prefix" [name]="item.icon"></plex-icon>
-                                                {{item.label}}
-                                                </a>
-                                        </ng-template>
-                                        <!--Divider-->
-                                        <ng-template [ngIf]="item.divider">
-                                            <div role="separator" class="dropdown-divider"></div>
-                                        </ng-template>
-                                    </li>
-                                </ul>
-                            </div>
+                            <ng-content select="[main-menu]"></ng-content>
                         </div>
                         <plex-loader *ngIf="plex.loaderCount > 0" class="loader" type="linear"></plex-loader>
                     </nav>
@@ -108,21 +83,17 @@ import { Plex } from './../core/service';
                     <router-outlet></router-outlet>
                 </div>`,
 })
-export class PlexAppComponent implements OnInit {
-    private unlisten: Function;
-    // Referencia al DOM para injectar una componente de forma dinámica
-    @ViewChild('menuItem', { static: true, read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
 
+export class PlexAppComponent implements OnInit {
     @Input() type = 'inverse';
+
     public loginOpen = false;
-    public menuOpen = false;
     public online = true;
     public chart = {
         maxPoints: 10,
         dataset: [{ data: [] }],
         labels: [],
         options: {
-            // responsive: true,
             scales: {
                 yAxes: [{
                     display: false,
@@ -152,44 +123,19 @@ export class PlexAppComponent implements OnInit {
 
     constructor(
         public plex: Plex,
-        private renderer: Renderer2,
         public plexVisualizador: PlexVisualizadorService
     ) {
         this.initAppStatusCheck();
     }
 
     ngOnInit() {
-        this.plex.setViewContainerRef(this.viewContainerRef);
-
-        // Genera N labels vacíos
         this.chart.labels = [];
         for (let i = 0; i < this.chart.maxPoints; i++) {
             this.chart.labels.push('');
         }
-        // Inicializa todo el dataset en 1 (= 'Ok')
+
         for (let i = 0; i < this.chart.maxPoints; i++) {
             this.chart.dataset[0].data.push(1);
-        }
-
-    }
-
-    public toggleMenu() {
-        this.menuOpen = !this.menuOpen;
-        if (this.menuOpen) {
-            this.unlisten = this.renderer.listen('document', 'click', (event) => {
-                this.toggleMenu();
-                this.unlisten();
-            });
-        } else {
-            if (this.unlisten) {
-                this.unlisten();
-            }
-        }
-    }
-
-    onMenuKeyup($event) {
-        if ($event.keyCode === 32 || $event.keyCode === 13) {
-            this.toggleMenu();
         }
     }
 }

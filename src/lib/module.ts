@@ -51,6 +51,7 @@ import { TooltipComponent } from './tooltip/tooltip.component';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
 import { PlexWrapperComponent } from './wrapper/wrapper.component';
+import { PlexMenuComponent } from './menu/menu.component';
 
 // Directivas
 import { AlignDirective } from './directives/align.directive';
@@ -156,6 +157,7 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         PlexSliderComponent,
         PlexGroupComponent,
         PlexGroupItemComponent,
+        PlexMenuComponent,
 
         // Directivas
         AlignDirective,
@@ -236,6 +238,7 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         PlexSliderComponent,
         PlexGroupComponent,
         PlexGroupItemComponent,
+        PlexMenuComponent,
 
         // Directivas
         AlignDirective,
