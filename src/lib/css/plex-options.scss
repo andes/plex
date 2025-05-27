@@ -1,9 +1,18 @@
 plex-options {
-    .options-container {
-        display: flex;        
-    }
-
-    .option-grow {
+    plex-button {
         flex-grow: 1;
+
+        &.active {
+            button {
+                color: #fff;
+                background-color: #0082ad;
+                background-image: none;
+                border-color: #007aa3;
+            }
+        }
+
+        button {
+            width: 100%;
+        }
     }
 }
