@@ -3,6 +3,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatMenuModule } from '@angular/material/menu';
 
 // Componentes
 import { PlexAccordionComponent } from './accordion/accordion.component';
@@ -104,7 +105,8 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         NgChartsModule,
         InfiniteScrollModule,
         SimpleNotificationsModule.forRoot(),
-        NgxSimpleTextEditorModule
+        NgxSimpleTextEditorModule,
+        MatMenuModule
     ],
     declarations: [
         PlexAppComponent,
