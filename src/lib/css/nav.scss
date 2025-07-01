@@ -34,7 +34,6 @@ nav {
     // Botones
     >div {
       position: relative;
-      padding: 0 10px;
       float: left;
       height: $navbar-height;
 
@@ -42,6 +41,7 @@ nav {
       >plex-icon i {
         font-size: 2em;
         line-height: $navbar-height;
+        padding: 0 15px;
       }
 
       .popover {
@@ -65,10 +65,17 @@ nav {
           right: 0 !important;
           top: unset !important;
         }
+
+        button {
+          background-color: transparent !important;
+          border: none !important;
+          line-height: $navbar-height;
+          padding: 0 15px;
+          color: $white !important;
+        }
       }
 
       .user-menu {
-        height: 30px;
         display: flex;
         align-items: flex-start;
 
