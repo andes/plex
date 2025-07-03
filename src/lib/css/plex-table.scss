@@ -16,7 +16,7 @@ plex-table {
 
             @each $tag in $tags {
                 &.opacity-#{$tag} {
-                    background-color: rgba(255, 255, 255, $tag/100) !important;
+                    background-color: rgba(255, 255, 255, calc($tag/100)) !important;
                 }
             }
 
@@ -60,7 +60,7 @@ plex-table {
         td {
             plex-dropdown {
                 display: flex;
-                justify-content: end;
+                justify-content: flex-end;
             }
         }
 
@@ -134,7 +134,7 @@ plex-layout-sidebar {
                 th {
                     @each $tag in $tags {
                         &.opacity-#{$tag} {
-                            background-color: rgba(0, 39, 56, $tag/100) !important;
+                            background-color: rgba(0, 39, 56, calc($tag/100)) !important;
                         }
                     }
                 }

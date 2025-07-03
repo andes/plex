@@ -1,23 +1,24 @@
 {
     "compilerOptions": {
-        "outDir": "../../out-tsc/spec",
-        "types": [
-            "jasmine",
-            "jquery",
-            "intro.js",
-            "node"
-        ],
-        "declaration": false,
-        "experimentalDecorators": true,
-        "lib": [
-            "es6",
-            "dom"
-        ],
-        "mapRoot": "./",
-        "module": "esnext",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "target": "es5",
+      "outDir": "../../out-tsc/spec",
+      "types": [
+        "jasmine",
+        "jquery",
+        "intro.js",
+        "node"
+      ],
+      "declaration": false,
+      "experimentalDecorators": true,
+      "lib": [
+        "es6",
+        "dom"
+      ],
+      "mapRoot": "./",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "target": "ES2022",
+      "useDefineForClassFields": false
     },
     "files": [
         "test.ts",

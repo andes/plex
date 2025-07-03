@@ -1,5 +1,3 @@
-// Html
-
 html {
     height: 100% !important;
 }
@@ -7,13 +5,13 @@ html {
 body {
     font-size: $font-size-sm;
 }
+
 // Main container
 .content {
-    margin-left: ($grid-gutter-width-base / 3);
-    margin-right: ($grid-gutter-width-base / 2);
-    // height: 100%;
+    margin-left: calc($grid-gutter-width-base / 3);
+    margin-right: calc($grid-gutter-width-base / 2);
 
-    > *:not(router-outlet) {
+    >*:not(router-outlet) {
         display: flex;
         flex-flow: column;
         height: 100%;
@@ -23,6 +21,7 @@ body {
         height: calc(100vh - 55px) !important;
         margin-top: 55px;
     }
+
     &.nav-top-no-margin {
         height: calc(100vh - 10px);
         margin-top: 10px;
@@ -38,7 +37,6 @@ body {
     height: var(--nav-bar-height);
 }
 
-// Plex Layout
 .plex-layout,
 plex-layout {
     display: flex;
@@ -61,16 +59,16 @@ plex-layout {
         }
 
         //  Calle izq. del sidebar en responsive
-        > div > div.focused:nth-child(2) {
+        >div>div.focused:nth-child(2) {
             padding-left: 10px;
         }
     }
 
-    &[resizable="true"] > section {
-        > div.row {
-            > div[class*="col-"] {
+    &[resizable="true"]>section {
+        >div.row {
+            >div[class*="col-"] {
                 transition: all 900ms ease;
-                
+
                 /* Botonera sidebar expandible */
                 span.resizable-btn-wrapper {
                     display: none;
@@ -86,11 +84,11 @@ plex-layout {
                     height: 3.5rem;
                     border-radius: 50%;
                     transform: scale(.6);
-                    cursor: col-resize!important;
+                    cursor: col-resize !important;
                     opacity: .4;
 
                     &.resizable {
-                        display: flex!important;
+                        display: flex !important;
                     }
 
                     &:hover {
@@ -102,7 +100,7 @@ plex-layout {
                             border: solid 2px $blue;
                         }
                     }
-                    
+
                     hr.divisor {
                         height: 2.5rem;
                         border: dashed 1px $dark-blue;
@@ -114,40 +112,40 @@ plex-layout {
     }
 
     // Footer (se ubica fijo abajo de la pantalla)
-    > plex-layout-footer,
-    > footer {
-        margin-bottom: ($grid-gutter-width-base / 3);
-        padding: ($grid-gutter-width-base / 3);
+    >plex-layout-footer,
+    >footer {
+        margin-bottom: calc($grid-gutter-width-base / 3);
+        padding: calc($grid-gutter-width-base / 3);
         background: white;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     }
 
-    > footer[type="invert"] {
+    >footer[type="invert"] {
         background: $dark-blue;
         color: white;
     }
 
-    > section,
-    > plex-layout {
+    >section,
+    >plex-layout {
         min-height: 0;
         flex: 1; // Expande a todo el alto del contenedor
-        margin-bottom: ($grid-gutter-width-base / 3);
+        margin-bottom: calc($grid-gutter-width-base / 3);
 
-        > .row:first-child {
+        >.row:first-child {
             height: 100%;
 
-            > [class^="col-"]:first-child,
-            > .col:first-child {
-                padding-right: ($grid-gutter-width-base / 3) !important;
+            >[class^="col-"]:first-child,
+            >.col:first-child {
+                padding-right: calc($grid-gutter-width-base / 3) !important;
             }
 
-            > [class^="col-"]:only-child,
-            > .col:only-child {
-                padding-right: ($grid-gutter-width-base / 2) !important;
+            >[class^="col-"]:only-child,
+            >.col:only-child {
+                padding-right: calc($grid-gutter-width-base / 2) !important;
             }
         }
 
-        > .row > .col-12:only-child {
+        >.row>.col-12:only-child {
             plex-layout-main {
                 .plex-box {
                     margin-right: -5px !important;
@@ -155,10 +153,11 @@ plex-layout {
             }
         }
     }
-    > section,
-    > plex-layout {
-        > div > div:nth-child(2) {
-            padding-right: ($grid-gutter-width-base / 3) !important;
+
+    >section,
+    >plex-layout {
+        >div>div:nth-child(2) {
+            padding-right: calc($grid-gutter-width-base / 3) !important;
             padding-left: 0px;
         }
     }
@@ -166,6 +165,7 @@ plex-layout {
     plex-layout-footer,
     footer {
         margin-right: -5px;
+
         .row {
             padding-right: 0px;
             padding-left: 0px;
@@ -175,8 +175,9 @@ plex-layout {
 
 // Compatibiidad con layout viejo
 plex-box {
+
     .plex-box,
-    plex-box > DIV {
+    plex-box>DIV {
         margin-right: -5px;
     }
 }

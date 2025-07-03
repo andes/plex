@@ -7,8 +7,8 @@ fieldset {
     font-weight: 100;
     font-size: 1.4em;
     text-transform: uppercase;
-    margin-bottom: ($grid-gutter-width-base / 2);
-    padding-bottom: ($grid-gutter-width-base / 2);
+    margin-bottom: calc($grid-gutter-width-base / 2);
+    padding-bottom: calc($grid-gutter-width-base / 2);
   }
 }
 

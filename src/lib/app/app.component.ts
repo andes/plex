@@ -38,8 +38,8 @@ import { Plex } from './../core/service';
                                     <div class="popover-content">
                                         <p *ngIf="online">El servicio ANDES funciona correctamente</p>
                                         <p *ngIf="!online">El servicio ANDES no está disponible</p>
-                                        <canvas baseChart [datasets]="chart.dataset" [labels]="chart.labels" [options]="chart.options" [colors]="chart.colors" [legend]="false"
-                                            [chartType]="'line'">
+                                        <canvas baseChart [datasets]="chart.dataset" [labels]="chart.labels" [options]="chart.options" [legend]="false"
+                                            [type]="'line'">
                                         </canvas>
                                     </div>
                                 </div>

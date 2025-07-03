@@ -153,9 +153,6 @@ import { DemoTitleComponent } from './title/title.component';
         DemoGroupComponent,
         MenuDemoComponent
     ],
-    entryComponents: [
-        HeaderPacienteComponent
-    ],
     imports: [
         BrowserAnimationsModule,
         MatTooltipModule,
@@ -170,7 +167,6 @@ import { DemoTitleComponent } from './title/title.component';
         PacienteService,
         CamaService,
         PlexColumnDirective
-
     ],
     bootstrap: [AppComponent]
 })

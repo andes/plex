@@ -1,20 +1,21 @@
 {
     "compilerOptions": {
-        "declaration": false,
-        "experimentalDecorators": true,
-        "lib": [
-            "es6",
-            "dom"
-        ],
-        "mapRoot": "./",
-        "module": "esnext",
-        "moduleResolution": "node",
-        "outDir": "../dist/out-tsc",
-        "sourceMap": true,
-        "target": "es2015",
-        "typeRoots": [
-            "../../node_modules/@types"
-        ]
+      "declaration": false,
+      "experimentalDecorators": true,
+      "lib": [
+        "es6",
+        "dom"
+      ],
+      "mapRoot": "./",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "outDir": "../dist/out-tsc",
+      "sourceMap": true,
+      "target": "ES2022",
+      "typeRoots": [
+        "../../node_modules/@types"
+      ],
+      "useDefineForClassFields": false
     },
     "files": [
         "main.ts",
