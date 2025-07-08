@@ -86,3 +86,12 @@ plex-layout-sidebar[type="invert"] {
         color: black;
     }
 }
+
+// Fix para cambiar texto del botón "confirmar" de ingreso de texto con link
+.st-input-button {
+    font-size: 0;
+}
+.st-input-button::after {
+    content: 'Confirmar';
+    font-size: 14px;
+}

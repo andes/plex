@@ -11,7 +11,7 @@ export type PlexVisualizadorItem = FileObject | string;
 
 @Component({
     selector: 'plex-slider',
-    template: `<section id="scroll" #gridContainer (scroll)="onScroll()">
+    template: `<section id="scroll" #gridContainer>
                 <plex-grid type="full" [size]="size">
                     <ng-content></ng-content>
                 </plex-grid>
@@ -27,11 +27,6 @@ export type PlexVisualizadorItem = FileObject | string;
                                  [disabled]="scrollStop">
                     </plex-button>
                 </span>
-                <div #dotsContainer class="plex-dots-wrapper">
-                    <span *ngFor="let t of dotsCount; let $index = index;" class="plex-dot" (click)="onDotClick($index)"
-                        [ngClass]="{ 'active':  startIndex <= $index && $index <= endIndex }">
-                    </span>
-                </div>
             </section>`,
 })
 
@@ -50,14 +45,12 @@ export class PlexSliderComponent implements AfterViewInit {
     public totalWidth: number;
     public scrollStop = false;
     public onScrolling = false;
-    public dots;
 
     constructor(
         private elRef: ElementRef,
         private ref: ChangeDetectorRef
     ) { }
 
-    dotsCount;
     ngAfterViewInit(): void {
 
         // obtengo cantidad de elementos en slider
@@ -67,8 +60,6 @@ export class PlexSliderComponent implements AfterViewInit {
         // define custom para el ancho del contenido del slider
         if (this.items > 0) {
             this.gridContainer.nativeElement.style.setProperty('--item-length', this.items);
-
-            this.dotsCount = Array(this.items);
         }
 
         this.getRestantes();
@@ -121,34 +112,4 @@ export class PlexSliderComponent implements AfterViewInit {
 
     startIndex: number;
     endIndex: number;
-
-    onScroll() {
-        const leftPosition = this.gridContainer.nativeElement.scrollLeft;
-
-        const numeroDeItemsVisibles = Math.round(this.gridWidth / this.itemSize);
-
-
-        const centro = Math.round(leftPosition / this.itemSize);
-        this.startIndex = centro;
-        this.endIndex = centro + numeroDeItemsVisibles;
-
-        const finalScroll = this.totalWidth;
-        const currentScroll = (leftPosition + this.gridWidth) * 1.03;
-
-
-        if (leftPosition > 0) {
-            this.onScrolling = true;
-        } else {
-            this.onScrolling = false;
-        }
-
-        if (currentScroll >= finalScroll) {
-            this.scrollStop = true;
-        } else {
-            this.scrollStop = false;
-        }
-
-
-    }
-
 }

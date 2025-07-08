@@ -23,5 +23,9 @@
     "./src/**/*.ts",
     "./src/**/*.spec.ts",
     "./src/**/*.d.ts"
+  ],
+  "exclude": [
+    "./src/lib/**/*.spec.ts",
+    "./test.ts"
   ]
 }
