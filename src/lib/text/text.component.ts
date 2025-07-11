@@ -1,13 +1,12 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Optional, Output, Renderer2, Self, ViewChild } from '@angular/core';
 import { ControlValueAccessor, UntypedFormControl, NgControl } from '@angular/forms';
-import { BOLD_BUTTON, EditorConfig, FONT_SIZE_SELECT, ITALIC_BUTTON, JUSTIFY_CENTER_BUTTON, JUSTIFY_LEFT_BUTTON, JUSTIFY_RIGHT_BUTTON, UNDERLINE_BUTTON, UNORDERED_LIST_BUTTON } from 'ngx-simple-text-editor';
+import { BOLD_BUTTON, EditorConfig, FONT_SIZE_SELECT, ITALIC_BUTTON, JUSTIFY_CENTER_BUTTON, JUSTIFY_LEFT_BUTTON, LINK_INPUT, UNLINK_BUTTON, JUSTIFY_RIGHT_BUTTON, UNDERLINE_BUTTON, UNORDERED_LIST_BUTTON } from 'ngx-simple-text-editor';
 import { hasRequiredValidator } from '../core/validator.functions';
 
 @Component({
     selector: 'plex-text',
     template: `
     <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
-
         <!-- Label -->
         <label *ngIf="label" class="form-control-label">
             {{label}}
@@ -60,7 +59,9 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             { ...JUSTIFY_CENTER_BUTTON, title: 'Centrar', icon: 'adi adi-Bandera-centro' },
             { ...JUSTIFY_RIGHT_BUTTON, title: 'Alinear a Derecha', icon: 'adi adi-Bandera-derecha' },
             { ...UNORDERED_LIST_BUTTON, title: 'Listado', icon: 'adi adi-listado' },
-            { ...UNDERLINE_BUTTON, title: 'Subrayar', icon: 'adi adi-Underline' }
+            { ...UNDERLINE_BUTTON, title: 'Subrayar', icon: 'adi adi-Underline' },
+            { ...LINK_INPUT, title: "Ingresar vínculo", icon: 'adi adi-link-variant', label: 'Ingresar vínculo', text: 'Confirmar' },
+            { ...UNLINK_BUTTON, title: 'Quitar Vinculo', icon: 'adi adi-link-variant-off' },
         ]
     };
 

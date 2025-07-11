@@ -1,5 +1,7 @@
-import { Component, Input, Output, Renderer2, EventEmitter } from '@angular/core';
+import { Component, Input, Output, Renderer2, EventEmitter, AfterViewInit } from '@angular/core';
 import { Plex } from '../core/service';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
     selector: 'plex-menu',
@@ -54,7 +56,7 @@ import { Plex } from '../core/service';
     `,
 })
 
-export class PlexMenuComponent {
+export class PlexMenuComponent implements AfterViewInit {
     @Input() menu: any[] = [];
     @Input() menuOpen = false;
     @Input() static = false;
@@ -62,9 +64,19 @@ export class PlexMenuComponent {
     @Output() collapseMenu = new EventEmitter<void>();
     @Output() selected = new EventEmitter<void>();
 
-    constructor(public plex: Plex, private renderer: Renderer2) { }
+    constructor(public plex: Plex, private renderer: Renderer2, private router: Router) { }
 
     private unlisten: Function;
+    private currentRoute = '';
+
+    ngAfterViewInit() {
+        this.router.events
+            .pipe(filter(event => event instanceof NavigationEnd))
+            .subscribe((event: NavigationEnd) => {
+                this.currentRoute = event.urlAfterRedirects;
+                console.log('Ruta activa:', this.currentRoute);
+            });
+    }
 
     public toggleMenu() {
         if (!this.static) {
@@ -76,13 +88,27 @@ export class PlexMenuComponent {
                     this.toggleMenu();
                     this.unlisten();
                 });
+
+                this.collapseMenuExceptActive();
             } else {
                 if (this.unlisten) {
                     this.unlisten();
                 }
-
-                this.plex.collapse();
             }
+        }
+    }
+
+    private collapseMenuExceptActive() {
+        if (this.menu) {
+            this.menu.forEach(item => {
+                if (item.submodulos) {
+                    const hasActiveRoute = item.submodulos.some(subItem => this.currentRoute === subItem.route || this.currentRoute === "/" + subItem.route);
+
+                    item.collapsed = !hasActiveRoute;
+                } else {
+                    item.collapsed = true;
+                }
+            });
         }
     }
 
