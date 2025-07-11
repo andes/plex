@@ -8,7 +8,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-            node-version: '14.21.1'
+            node-version: '16.18.1'
       - name: Cache node modules
         uses: actions/cache@v3
         env:
@@ -27,9 +27,7 @@ jobs:
       - run: |
           GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c1-8)
           echo $GITHUB_SHA_SHORT
-      - run: npm install puppeteer --save-dev
-      - run: npm run test:ci
- 
+          
 
   cypress:
     runs-on: ubuntu-latest 
@@ -38,7 +36,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-            node-version: '14.21.1'
+            node-version: '16.18.1'
       - name: Cache node modules
         uses: actions/cache@v3
         env:

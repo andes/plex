@@ -1,5 +1,5 @@
 import { ViewChild, Component, OnInit, Input, AfterViewInit, Output, EventEmitter, ElementRef, Renderer2, Self, Optional } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NgControl } from '@angular/forms';
 import { hasRequiredValidator } from '../core/validator.functions';
 
 const RegEx_Mobile = /^[1-3][0-9]{9}$/;
@@ -66,7 +66,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     public onChange = (_: any) => { };
 
     // Validación
-    validate(c: FormControl) {
+    validate(c: UntypedFormControl) {
         if (c.value && !RegEx_Mobile.test(c.value)) {
             return {
                 format: {

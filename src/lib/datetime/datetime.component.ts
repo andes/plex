@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, ElementRef, EventEmitter, AfterViewInit, OnChanges, Self, Optional, OnDestroy } from '@angular/core';
-import { NgControl, FormControl } from '@angular/forms';
+import { NgControl, UntypedFormControl } from '@angular/forms';
 import * as moment from 'moment';
 import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
 
@@ -118,8 +118,8 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     public onChange = (_: any) => { };
 
     // Validación
-    validateFn = (c: FormControl) => { };
-    validate(c: FormControl) {
+    validateFn = (c: UntypedFormControl) => { };
+    validate(c: UntypedFormControl) {
         return this.validateFn(c);
     }
 

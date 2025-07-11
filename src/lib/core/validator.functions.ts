@@ -1,4 +1,4 @@
-import { FormControl, AbstractControl } from '@angular/forms';
+import { UntypedFormControl, AbstractControl } from '@angular/forms';
 // ESTO ES UN HORRIBLE!
 const moment = window['moment'] = require('moment/moment.js');
 require('moment/locale/es.js');
@@ -13,7 +13,7 @@ require('moment/locale/es.js');
  * @returns Objeto de validación
  */
 export function numberValidator(regEx: RegExp, min: any, max: any) {
-    return (c: FormControl): any => {
+    return (c: UntypedFormControl): any => {
         if ((c.value === null) || (('' + c.value).trim() === '')) {
             return null;
         }
@@ -70,7 +70,7 @@ export function numberValidator(regEx: RegExp, min: any, max: any) {
  * @returns Objeto de validación
  */
 export function dateValidator(type: string, min: any, max: any) {
-    return function (c: FormControl): any {
+    return function (c: UntypedFormControl): any {
         if (c.value && moment(c.value).isValid) {
             // Controla rango
             this.format = this.type === 'date' ? 'DD/MM/YYYY' : (this.type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm');

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Optional, Output, Renderer2, Self, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NgControl } from '@angular/forms';
 import { BOLD_BUTTON, EditorConfig, FONT_SIZE_SELECT, ITALIC_BUTTON, JUSTIFY_CENTER_BUTTON, JUSTIFY_LEFT_BUTTON, JUSTIFY_RIGHT_BUTTON, UNDERLINE_BUTTON, UNORDERED_LIST_BUTTON } from 'ngx-simple-text-editor';
 import { hasRequiredValidator } from '../core/validator.functions';
 
@@ -131,9 +131,9 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         return false;
     }
 
-    public validateFn = (c: FormControl) => { };
+    public validateFn = (c: UntypedFormControl) => { };
 
-    public validate(c: FormControl) {
+    public validate(c: UntypedFormControl) {
         if (c.value === null || c.value === undefined || c.value.toString().trim() === '') {
             return null;
         }

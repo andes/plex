@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 @Component({
     selector: 'plex-validation-messages',
@@ -40,7 +40,7 @@ import { FormControl } from '@angular/forms';
                 </div>`})
 
 export class ValidationMessagesComponent {
-    @Input() control: FormControl;
+    @Input() control: UntypedFormControl;
     @Input() mensaje: string;
 
     constructor() { }

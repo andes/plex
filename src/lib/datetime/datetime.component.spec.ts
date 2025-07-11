@@ -161,10 +161,11 @@ class PlexDateTimeTestComponent {
 function createTestingModule<T>(cmp: Type<T>, template: string): ComponentFixture<T> {
 
     TestBed.configureTestingModule({
-        imports: [BrowserModule, PlexModule, FormsModule],
-        declarations: [cmp],
-        providers: [Plex]
-    })
+    imports: [BrowserModule, PlexModule, FormsModule],
+    declarations: [cmp],
+    providers: [Plex],
+    teardown: { destroyAfterEach: false }
+})
         .overrideComponent(cmp, {
             set: {
                 template

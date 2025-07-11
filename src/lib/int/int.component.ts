@@ -1,6 +1,6 @@
 import { ViewChild, Component, OnInit, Input, AfterViewInit, Output, EventEmitter, ElementRef, ContentChild, OnChanges, Renderer2, Self, Optional } from '@angular/core';
 import {
-    ControlValueAccessor, FormControl, NgControl
+    ControlValueAccessor, UntypedFormControl, NgControl
 } from '@angular/forms';
 import { numberValidator, hasRequiredValidator } from '../core/validator.functions';
 
@@ -66,8 +66,8 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     }
 
     // Validación
-    validateFn = (c: FormControl) => { };
-    validate(c: FormControl) {
+    validateFn = (c: UntypedFormControl) => { };
+    validate(c: UntypedFormControl) {
         return this.validateFn(c);
     }
     ngOnChanges(changes) {

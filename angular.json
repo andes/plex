@@ -96,23 +96,25 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.json"
-            ],
-            "exclude": []
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "plex",
   "cli": {
     "warnings": {
       "typescriptMismatch": false
     },
-    "analytics": "8308d0fc-1e86-41d4-86b1-f56379624dcd"
+    "analytics": "8308d0fc-1e86-41d4-86b1-f56379624dcd",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   },
   "schematics": {
     "@schematics/angular:component": {

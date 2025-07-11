@@ -70,7 +70,7 @@ import { MatRadioButton, MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import 'hammerjs';
-import { ChartsModule } from 'ng2-charts';
+import { NgChartsModule } from 'ng2-charts';
 import { NgxSimpleTextEditorModule } from 'ngx-simple-text-editor';
 import { AccordionDirective } from './accordion/pl-accordion.directive';
 import { NavItemComponent } from './app/nav-item.component';
@@ -101,7 +101,7 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         MatCheckboxModule,
         MatRadioModule,
         MatTooltipModule,
-        ChartsModule,
+        NgChartsModule,
         InfiniteScrollModule,
         SimpleNotificationsModule.forRoot(),
         NgxSimpleTextEditorModule
@@ -158,7 +158,6 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         PlexGroupComponent,
         PlexGroupItemComponent,
         PlexMenuComponent,
-
         // Directivas
         AlignDirective,
         GrowDirective,
@@ -176,17 +175,10 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         HintComponent,
         MobileDirective,
         AccordionDirective,
-
         // EXTRAS - NO CORRER DE ACA
         ValidationMessagesComponent,
         TooltipContentComponent,
         HintComponent,
-    ],
-    entryComponents: [
-        TooltipContentComponent,
-        MatRadioButton,
-        PlexVisualizadorComponent,
-        HintComponent
     ],
     exports: [
         TooltipContentComponent,
@@ -239,7 +231,6 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         PlexGroupComponent,
         PlexGroupItemComponent,
         PlexMenuComponent,
-
         // Directivas
         AlignDirective,
         GrowDirective,
@@ -263,7 +254,6 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         TitleCasePipe,
         HelpService,
     ]
-
 })
 export class PlexModule {
 
