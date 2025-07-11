@@ -14,7 +14,8 @@ export class HelpService {
         const help = this.helpCache.value;
 
         if (help && help.id !== id) {
-            help.toggleClose();
+            help.closed = true;
+            help.close.emit();
             this.helpCache.next(null);
         }
     }
