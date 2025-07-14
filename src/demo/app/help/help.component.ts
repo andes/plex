@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { from, Observable } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 import { PlexHelpComponent } from '../../../lib/help/help.component';
@@ -12,13 +12,12 @@ import { Paciente } from '../templates/service/paciente';
     templateUrl: 'help.html',
 })
 export class HelpDemoComponent implements OnInit {
-
     showItem = false;
     showContent = false;
-
     pacientes$: Observable<Paciente[]>;
     paciente$: Observable<Paciente>;
     selectedId: string;
+    timer = 3;
 
     asyncContent = from([1, 2, 3, 4]).pipe(
         tap((index) => {
@@ -32,6 +31,8 @@ export class HelpDemoComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router
     ) { }
+
+    @ViewChild('toggleTest') toggleTest: PlexHelpComponent;
 
     ngOnInit() {
         this.pacientes$ = this.pacienteService.getPacientes();
@@ -49,4 +50,22 @@ export class HelpDemoComponent implements OnInit {
         this.router.navigate(['help', this.selectedId]);
     }
 
+    onHelpOpen() {
+        console.log('Help abierto');
+    }
+
+    onHelpClose() {
+        console.log('Help cerrado');
+    }
+
+    timerCerrar() {
+        const interval = setInterval(() => {
+            this.timer--;
+            if (this.timer === 0) {
+                clearInterval(interval);
+                this.toggleTest.toggle();
+                this.timer = 3;
+            }
+        }, 1000);
+    }
 }
