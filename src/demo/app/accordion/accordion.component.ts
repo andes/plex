@@ -29,16 +29,16 @@ export class AccordionDemoComponent implements OnInit {
             nombre: 'Argentina',
             continente: 'Latinoamerica',
         },
-        {
-            id: 2,
-            nombre: 'Brasil',
-            continente: 'Latinoamerica',
-        },
-        {
-            id: 3,
-            nombre: 'Chile',
-            continente: 'Latinoamerica',
-        }];
+                         {
+                             id: 2,
+                             nombre: 'Brasil',
+                             continente: 'Latinoamerica',
+                         },
+                         {
+                             id: 3,
+                             nombre: 'Chile',
+                             continente: 'Latinoamerica',
+                         }];
 
         this.modelo1.select = this.modelo2.select = this.opciones[1];
     }

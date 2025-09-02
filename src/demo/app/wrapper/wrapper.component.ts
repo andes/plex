@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
+import * as moment from 'moment';
 
 @Component({
     templateUrl: './wrapper.html',
@@ -55,26 +56,26 @@ export class WrapperDemoComponent implements OnInit {
             nombre: 'Hospital "Dr. Horacio Heller',
             continente: 'Zona metro',
         },
-        {
-            id: 2,
-            nombre: 'Hospital Bouquet Roldán',
-            continente: 'Zona metro',
-        },
-        {
-            id: 3,
-            nombre: 'Hospital San Martín de los Andes "Dr. Ramón Carrillo"',
-            continente: 'Zona tres',
-        },
-        {
-            id: 4,
-            nombre: 'Hospital Centenario',
-            continente: 'Zona metro',
-        },
-        {
-            id: 5,
-            nombre: 'Hospital Provincial Neuquen "Dr. Eduardo Castro Rendón"',
-            continente: 'Zona metro',
-        }
+                         {
+                             id: 2,
+                             nombre: 'Hospital Bouquet Roldán',
+                             continente: 'Zona metro',
+                         },
+                         {
+                             id: 3,
+                             nombre: 'Hospital San Martín de los Andes "Dr. Ramón Carrillo"',
+                             continente: 'Zona tres',
+                         },
+                         {
+                             id: 4,
+                             nombre: 'Hospital Centenario',
+                             continente: 'Zona metro',
+                         },
+                         {
+                             id: 5,
+                             nombre: 'Hospital Provincial Neuquen "Dr. Eduardo Castro Rendón"',
+                             continente: 'Zona metro',
+                         }
         ];
 
         this.modelo1.select = this.modelo2.select = this.opciones[1];

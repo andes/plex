@@ -17,10 +17,7 @@ export class TabsDemoComponent implements OnInit {
         { label: 'usuario', icon: 'account', color: 'default' },
         { label: 'semantic tag', icon: 'trastorno', color: 'trastorno' }
     ];
-    public contenidoAsync = of([1, 2, 3]).pipe(
-        // tslint:disable-next-line:no-console
-        tap(console.log)
-    );
+    public contenidoAsync = of([1, 2, 3]).pipe();
 
     public items: DropdownItem[];
 

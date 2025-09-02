@@ -40,7 +40,7 @@ export class HintDirective implements OnInit {
         this.tooltip = this.viewContainerRef.createComponent(factory);
         this.tooltip.instance.hostElement = this.viewContainerRef.element.nativeElement;
         this.tooltip.instance.content = this.content as string;
-        this.tooltip.instance.position = this.position as string;
+        this.tooltip.instance.position = this.position as any;
         this.tooltip.instance.hintType = this.hintType;
         this.tooltip.instance.hintIcon = this.hintIcon;
 

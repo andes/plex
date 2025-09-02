@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ServiceDemoSelect {
 
-    private paisUrl = 'https://demo.andes.gob.ar/api/core/tm/paises';  // URL to web api
+    private paisUrl = 'https://demo.andes.gob.ar/api/core/tm/paises'; // URL to web api
 
     constructor(private http: HttpClient) { }
 

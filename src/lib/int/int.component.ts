@@ -16,13 +16,13 @@ const REGEX = /^\s*(\-)?(\d*)\s*$/;
                 <span #prefixParent [hidden]="prefixParent?.children.length === 0" class="input-group-addon">
                     <ng-content select="[left]"></ng-content>
                 </span>
-                <input [attr.aria-label]="intLabel" #ref type="text" class="form-control" [disabled]="disabled" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)">
+                <input [attr.aria-label]="intLabel" #ref type="text" class="form-control" [disabled]="disabled" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event)" (change)="disabledEvent($event)">
                 <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
                 <span #suffixParent [hidden]="suffixParent?.children.length === 0" class="input-group-addon">
                     <ng-content select="[right]"></ng-content>
                 </span>
             </div>
-            <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
+            <plex-validation-messages *ngIf="hasDanger()" [control]="control?.control"></plex-validation-messages>
         </div>
     `,
 })
@@ -58,7 +58,7 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     @Output() change = new EventEmitter();
 
     // Funciones públicas
-    public onChange = (_: any) => { };
+    public onChange = (_: Event) => { };
 
     public disabledEvent(event: Event) {
         event.stopImmediatePropagation();
@@ -113,7 +113,8 @@ export class PlexIntComponent implements OnInit, AfterViewInit, ControlValueAcce
     }
 
     registerOnChange(fn: any) {
-        this.onChange = (value) => {
+        this.onChange = (event) => {
+            let value = (event.target as HTMLInputElement).value;
             // Estas líneas evitan que se muestren caracteres no permitidos en el input
             if ((value === '') || REGEX.test(value)) {
                 this.lastValue = value;

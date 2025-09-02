@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-
-// Servicios y modelo
-import { PacienteService } from '../../service/paciente.service';
+import * as moment from 'moment';
 import { Paciente } from '../../service/paciente';
-
-import { Plex } from './../../../../../lib/core/service';
-
 @Component({
     templateUrl: 'internacion.html',
     styleUrls: ['internacion.scss'],
@@ -64,42 +58,42 @@ export class InternacionComponent implements OnInit {
             nombre: 'Quirófano 1',
             continente: '',
         },
-        {
-            id: 2,
-            nombre: 'Quirófano 2',
-            continente: '',
-        },
-        {
-            id: 3,
-            nombre: 'Quirófano 3',
-            continente: '',
-        }];
+                         {
+                             id: 2,
+                             nombre: 'Quirófano 2',
+                             continente: '',
+                         },
+                         {
+                             id: 3,
+                             nombre: 'Quirófano 3',
+                             continente: '',
+                         }];
 
         this.opciones1 = [{
             id: 1,
             nombre: 'cuna',
             continente: '',
         },
-        {
-            id: 2,
-            nombre: 'cama eléctrica',
-            continente: '',
-        },
-        {
-            id: 3,
-            nombre: 'cama estándar',
-            continente: '',
-        },
-        {
-            id: 4,
-            nombre: 'cama terapéutica',
-            continente: '',
-        },
-        {
-            id: 5,
-            nombre: 'cama pediátrica',
-            continente: '',
-        },
+                          {
+                              id: 2,
+                              nombre: 'cama eléctrica',
+                              continente: '',
+                          },
+                          {
+                              id: 3,
+                              nombre: 'cama estándar',
+                              continente: '',
+                          },
+                          {
+                              id: 4,
+                              nombre: 'cama terapéutica',
+                              continente: '',
+                          },
+                          {
+                              id: 5,
+                              nombre: 'cama pediátrica',
+                              continente: '',
+                          },
         ];
 
         this.opciones2 = [{
@@ -107,11 +101,11 @@ export class InternacionComponent implements OnInit {
             nombre: 'Disponible',
             continente: '',
         },
-        {
-            id: 2,
-            nombre: 'Ocupada',
-            continente: '',
-        },
+                          {
+                              id: 2,
+                              nombre: 'Ocupada',
+                              continente: '',
+                          },
         ];
 
         this.items = [

@@ -1,6 +1,7 @@
 import { WizardConfig } from './../../../lib/core/wizard-config.interface';
 import { Component } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
+import * as moment from 'moment';
 
 @Component({
     templateUrl: 'wizard.html'

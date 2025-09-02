@@ -74,7 +74,6 @@ export class PlexMenuComponent implements AfterViewInit {
             .pipe(filter(event => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => {
                 this.currentRoute = event.urlAfterRedirects;
-                console.log('Ruta activa:', this.currentRoute);
             });
     }
 
@@ -102,7 +101,7 @@ export class PlexMenuComponent implements AfterViewInit {
         if (this.menu) {
             this.menu.forEach(item => {
                 if (item.submodulos) {
-                    const hasActiveRoute = item.submodulos.some(subItem => this.currentRoute === subItem.route || this.currentRoute === "/" + subItem.route);
+                    const hasActiveRoute = item.submodulos.some(subItem => this.currentRoute === subItem.route || this.currentRoute === '/' + subItem.route);
 
                     item.collapsed = !hasActiveRoute;
                 } else {

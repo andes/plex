@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
     selector: 'plex-validation-messages',
@@ -37,10 +37,10 @@ import { UntypedFormControl } from '@angular/forms';
                 <div class="form-control-feedback" *ngIf="control.errors && control.errors.maxlength">
                     <span *ngIf="!mensaje">Puede ingresar un máximo de {{control.errors.maxlength.requiredLength}} caracteres</span>
                     <span *ngIf="mensaje">{{ mensaje }}</span>
-                </div>`})
+                </div>` })
 
 export class ValidationMessagesComponent {
-    @Input() control: UntypedFormControl;
+    @Input() control: AbstractControl<any, any> | null;
     @Input() mensaje: string;
 
     constructor() { }

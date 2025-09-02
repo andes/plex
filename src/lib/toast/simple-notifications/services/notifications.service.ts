@@ -21,7 +21,7 @@ export class NotificationsService {
         return this.emitter;
     }
 
-    //// Access methods
+    /// / Access methods
     success(title: string, content?: string, override?: any) {
         return this.set({ title, content: content || '', type: 'success', icon: this.icons.success, override }, true);
     }

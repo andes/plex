@@ -2,13 +2,6 @@ import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, ElementRe
 import { PlexGridComponent } from '../grid/grid.component';
 import { PlexSize } from './../core/plex-size.type';
 
-export interface FileObject {
-    url: String;
-    ext: String;
-}
-
-export type PlexVisualizadorItem = FileObject | string;
-
 @Component({
     selector: 'plex-slider',
     template: `<section id="scroll" #gridContainer>

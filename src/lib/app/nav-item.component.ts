@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, HostListener, ViewChild, ElementRef, AfterViewInit, ContentChild } from '@angular/core';
+import { Component, HostBinding, HostListener, ViewChild, AfterViewInit, ContentChild } from '@angular/core';
 import { PlexHelpComponent } from '../help/help.component';
 import { PlexIconComponent } from '../icon/icon.component';
 
@@ -26,8 +26,6 @@ export class NavItemComponent implements AfterViewInit {
     @ContentChild(PlexIconComponent) plexIcon: PlexIconComponent;
 
     ngAfterViewInit() {
-        console.log(this.plexHelp, this.plexIcon);
-
         if (this.plexIcon) {
             const iconName = this.plexIcon.name;
 

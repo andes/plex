@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PacienteService } from '../../../../../service/paciente.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Plex } from '../../../../../../../../lib/core/service';
+import * as moment from 'moment';
 
 @Component({
     selector: 'plex-datos-basicos',
@@ -61,10 +62,10 @@ export class DatosBasicosComponent implements OnInit {
             id: 1,
             nombre: 'Femenino',
         },
-        {
-            id: 2,
-            nombre: 'Masculino',
-        }
+                         {
+                             id: 2,
+                             nombre: 'Masculino',
+                         }
         ];
 
         // género
@@ -72,14 +73,14 @@ export class DatosBasicosComponent implements OnInit {
             id: 1,
             nombre: 'Femenino',
         },
-        {
-            id: 2,
-            nombre: 'Masculino',
-        },
-        {
-            id: 3,
-            nombre: 'Otro"',
-        }
+                          {
+                              id: 2,
+                              nombre: 'Masculino',
+                          },
+                          {
+                              id: 3,
+                              nombre: 'Otro"',
+                          }
         ];
 
         // contacto
@@ -87,14 +88,14 @@ export class DatosBasicosComponent implements OnInit {
             id: 1,
             nombre: 'Teléfono celular',
         },
-        {
-            id: 2,
-            nombre: 'Teléfono fijo',
-        },
-        {
-            id: 3,
-            nombre: 'Email"',
-        }
+                          {
+                              id: 2,
+                              nombre: 'Teléfono fijo',
+                          },
+                          {
+                              id: 3,
+                              nombre: 'Email"',
+                          }
         ];
 
         // provincias
@@ -102,14 +103,14 @@ export class DatosBasicosComponent implements OnInit {
             id: 1,
             nombre: 'Neuquén',
         },
-        {
-            id: 2,
-            nombre: 'Rio Negro',
-        },
-        {
-            id: 3,
-            nombre: 'Santiago del Estero"',
-        }
+                          {
+                              id: 2,
+                              nombre: 'Rio Negro',
+                          },
+                          {
+                              id: 3,
+                              nombre: 'Santiago del Estero"',
+                          }
         ];
 
         // localidades
@@ -117,14 +118,14 @@ export class DatosBasicosComponent implements OnInit {
             id: 1,
             nombre: 'Las Lajas',
         },
-        {
-            id: 2,
-            nombre: 'Neuquén',
-        },
-        {
-            id: 3,
-            nombre: 'Chos Malal"',
-        }
+                          {
+                              id: 2,
+                              nombre: 'Neuquén',
+                          },
+                          {
+                              id: 3,
+                              nombre: 'Chos Malal"',
+                          }
         ];
 
         // relaciones
@@ -132,30 +133,30 @@ export class DatosBasicosComponent implements OnInit {
             id: 1,
             nombre: 'Abuelo/a',
         },
-        {
-            id: 2,
-            nombre: 'Hermano/a',
-        },
-        {
-            id: 3,
-            nombre: 'Hijo/a"',
-        },
-        {
-            id: 4,
-            nombre: 'Nieto/a"',
-        },
-        {
-            id: 5,
-            nombre: 'Otro"',
-        },
-        {
-            id: 6,
-            nombre: 'Progenito/a"',
-        },
-        {
-            id: 7,
-            nombre: 'Tutor/a"',
-        }
+                          {
+                              id: 2,
+                              nombre: 'Hermano/a',
+                          },
+                          {
+                              id: 3,
+                              nombre: 'Hijo/a"',
+                          },
+                          {
+                              id: 4,
+                              nombre: 'Nieto/a"',
+                          },
+                          {
+                              id: 5,
+                              nombre: 'Otro"',
+                          },
+                          {
+                              id: 6,
+                              nombre: 'Progenito/a"',
+                          },
+                          {
+                              id: 7,
+                              nombre: 'Tutor/a"',
+                          }
         ];
 
         this.modelo1.select = this.modelo2.select = this.opciones[1];

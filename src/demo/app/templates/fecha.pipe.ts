@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import * as moment from 'moment';
 
 /**
  * Esta es una copia del pipe 'fecha' del proyecto /app con el fin utilizarlo en los templates

@@ -2,14 +2,14 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { TitleCasePipe } from '@angular/common';
 import { ComponentFactoryResolver, Injectable, ViewContainerRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import * as introJs from 'intro.js';
+import * as _introJs from 'intro.js';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { default as swal, SweetAlertType } from 'sweetalert2';
 import { DropdownItem } from './../dropdown/dropdown-item.inteface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
 import { PlexTitle } from './plex-title.interface';
 import { WizardConfig } from './wizard-config.interface';
-
+const introJs: any = _introJs;
 @Injectable()
 export class Plex {
     public menu: DropdownItem[];
@@ -119,7 +119,7 @@ export class Plex {
      * @memberof Plex
      */
     confirm(params: {
-        content: string, title: string, confirmButtonText: string, cancelButtonText: string, confirmButtonType?: string, cancelButtonType?: string, type?: string, customClass?: string
+        content: string; title: string; confirmButtonText: string; cancelButtonText: string; confirmButtonType?: string; cancelButtonType?: string; type?: string; customClass?: string;
     });
 
     confirm(content: string, title?: string, confirmButtonText?: string, cancelButtonText?: string, confirmButtonType?: string, cancelButtonType?: string, type?: string, customClass?: string);
@@ -171,7 +171,7 @@ export class Plex {
      * @memberof Plex
      */
     info(type: String, content: String, title?: String, timeOut?: Number, confirmButtonText?: String, customClass?: string);
-    info(params: { type: String, content: String, title: String, confirmButtonText: String, timeOut?: Number, customClass?: string });
+    info(params: { type: String; content: String; title: String; confirmButtonText: String; timeOut?: Number; customClass?: string });
     info(type, content = '', title = 'Información', timeOut = 0, confirmButtonText = 'Aceptar', customClass = '') {
         let modalType;
 

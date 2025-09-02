@@ -1,1 +1,1 @@
-export type PlexType = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'light' | 'dark';
+export type PlexType = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'light' | 'dark' | 'link';

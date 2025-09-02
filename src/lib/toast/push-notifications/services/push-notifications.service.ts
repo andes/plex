@@ -33,7 +33,7 @@ export class PushNotificationsService {
             }
 
             if (this.permission !== 'granted') {
-                obs.error(`The user hasn't granted you permission to send push notifications`);
+                obs.error('The user hasn\'t granted you permission to send push notifications');
                 obs.complete();
             }
 

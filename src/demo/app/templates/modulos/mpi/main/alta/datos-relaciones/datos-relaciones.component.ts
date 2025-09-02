@@ -30,30 +30,30 @@ export class DatosRelacionesComponent implements OnInit {
             id: 1,
             nombre: 'Abuelo/a',
         },
-        {
-            id: 2,
-            nombre: 'Hermano/a',
-        },
-        {
-            id: 3,
-            nombre: 'Hijo/a"',
-        },
-        {
-            id: 4,
-            nombre: 'Nieto/a"',
-        },
-        {
-            id: 5,
-            nombre: 'Otro"',
-        },
-        {
-            id: 6,
-            nombre: 'Progenito/a"',
-        },
-        {
-            id: 7,
-            nombre: 'Tutor/a"',
-        }
+                          {
+                              id: 2,
+                              nombre: 'Hermano/a',
+                          },
+                          {
+                              id: 3,
+                              nombre: 'Hijo/a"',
+                          },
+                          {
+                              id: 4,
+                              nombre: 'Nieto/a"',
+                          },
+                          {
+                              id: 5,
+                              nombre: 'Otro"',
+                          },
+                          {
+                              id: 6,
+                              nombre: 'Progenito/a"',
+                          },
+                          {
+                              id: 7,
+                              nombre: 'Tutor/a"',
+                          }
         ];
 
         // plex-text

@@ -67,14 +67,14 @@ export class TemplateBusquedaComponent implements OnInit {
             id: 1,
             nombre: 'Femenino'
         },
-        {
-            id: 2,
-            nombre: 'Masculino'
-        },
-        {
-            id: 3,
-            nombre: 'Otro'
-        }];
+                          {
+                              id: 2,
+                              nombre: 'Masculino'
+                          },
+                          {
+                              id: 3,
+                              nombre: 'Otro'
+                          }];
 
         this.cargarListado();
 

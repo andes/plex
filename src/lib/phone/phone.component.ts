@@ -16,10 +16,10 @@ const RegEx_Numero = /^(\d)+$/;
                             <plex-icon type="default" size="md" [name]="icon"></plex-icon>
                         </span>
 
-                        <input #ref type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event.target.value)" (focus)="onFocus()" (focusout)="onFocusout()">
+                        <input #ref type="text" class="form-control" [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly" (input)="onChange($event)" (focus)="onFocus()" (focusout)="onFocusout()">
                         <span *ngIf="suffix" class="input-group-addon" [innerHTML]="suffix"></span>
                     </div>
-                    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
+                    <plex-validation-messages *ngIf="hasDanger()" [control]="control?.control"></plex-validation-messages>
                 </div>`,
 })
 export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAccessor {
@@ -63,7 +63,7 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     }
 
     // Funciones públicas
-    public onChange = (_: any) => { };
+    public onChange = (_: Event) => { };
 
     // Validación
     validate(c: UntypedFormControl) {
@@ -111,7 +111,8 @@ export class PlexPhoneComponent implements OnInit, AfterViewInit, ControlValueAc
     }
 
     registerOnChange(fn: any) {
-        this.onChange = (value) => {
+        this.onChange = (event: Event) => {
+            let value = (event.target as HTMLInputElement).value;
             // Estas líneas evitan que se muestren caracteres no permitidos en el input
             if ((value === '') || RegEx_Numero.test(value)) {
                 this.lastValue = value;

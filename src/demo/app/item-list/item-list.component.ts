@@ -180,7 +180,7 @@ export class ItemDemoComponent implements OnInit {
     public model1: any;
     public model2: any;
     public tModel: any;
-    tModelFecha: { fechaHora: any; fecha: any; hora: any; horados: any; disabled: boolean; min: Date; minHora: any; maxHora: any; };
+    tModelFecha: { fechaHora: any; fecha: any; hora: any; horados: any; disabled: boolean; min: Date; minHora: any; maxHora: any };
 
     ngOnInit() {
         // Template-Form1 model
@@ -194,22 +194,22 @@ export class ItemDemoComponent implements OnInit {
             id: 1,
             nombre: 'Hermano/a',
         },
-        {
-            id: 2,
-            nombre: 'Padre',
-        },
-        {
-            id: 3,
-            nombre: 'Madre',
-        },
-        {
-            id: 4,
-            nombre: 'Abuelo/a',
-        },
-        {
-            id: 5,
-            nombre: 'Primo/a',
-        }
+                         {
+                             id: 2,
+                             nombre: 'Padre',
+                         },
+                         {
+                             id: 3,
+                             nombre: 'Madre',
+                         },
+                         {
+                             id: 4,
+                             nombre: 'Abuelo/a',
+                         },
+                         {
+                             id: 5,
+                             nombre: 'Primo/a',
+                         }
         ];
 
 

@@ -1,6 +1,7 @@
-@import "../datetime/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker";
+// @import "../datetime/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker";
 
 plex-datetime {
+
     plex-button[icon="menu-left"],
     plex-button[icon="menu-right"] {
         button {
@@ -9,6 +10,7 @@ plex-datetime {
             opacity: 0.8;
         }
     }
+
     .input-group-btn {
         font-size: inherit;
     }
@@ -23,18 +25,22 @@ plex-datetime {
         flex-direction: column-reverse;
         right: 8px;
         top: 0;
+
         .hint-container {
             position: absolute;
             right: 0;
             top: 2px;
+
             &:hover,
             &:active,
             &:focus {
                 text-decoration: none;
             }
         }
+
         plex-icon {
             padding: 0;
+
             i.sm {
                 font-size: 10px;
                 line-height: 1;

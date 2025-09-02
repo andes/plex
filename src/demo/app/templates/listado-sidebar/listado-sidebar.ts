@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import * as moment from 'moment';
 
 // Servicios y modelo
 import { PacienteService } from '../service/paciente.service';
@@ -66,16 +66,16 @@ export class ListadoSidebarComponent implements OnInit {
             nombre: 'Argentina',
             continente: 'Latinoamerica',
         },
-        {
-            id: 2,
-            nombre: 'Brasil',
-            continente: 'Latinoamerica',
-        },
-        {
-            id: 3,
-            nombre: 'Hospital Provincial Neuquen "Dr. Eduardo Castro Rendón"',
-            continente: 'Latinoamerica',
-        }];
+                         {
+                             id: 2,
+                             nombre: 'Brasil',
+                             continente: 'Latinoamerica',
+                         },
+                         {
+                             id: 3,
+                             nombre: 'Hospital Provincial Neuquen "Dr. Eduardo Castro Rendón"',
+                             continente: 'Latinoamerica',
+                         }];
 
         this.modelo1.select = this.modelo2.select = this.opciones[1];
 

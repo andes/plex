@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
     selector: 'plex-copy',
     template: `
-        <span align class="d-inline-flex align-items-center ml-1" #container>
+        <span [align] class="d-inline-flex align-items-center ml-1" #container>
             <ng-content></ng-content>
             <button class="btn btn-link btn-lg p-1" (click)="copyToClipboard()" (mouseenter)="copying = true" (mouseleave)="copying = false" title="Copiar valor">
                 <plex-icon *ngIf="!copied || copying" type="info" [size]="size" name="clipboard-plus"></plex-icon>

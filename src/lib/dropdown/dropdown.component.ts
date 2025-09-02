@@ -7,7 +7,7 @@ import { DropdownItem } from './dropdown-item.inteface';
 @Component({
     selector: 'plex-dropdown',
     template: ` <div class="dropdown" [ngClass]="{show: open}">
-                    <button plexRipples data-toggle="dropdown" class="btn btn-{{type}} {{( 'size' ? 'btn-' + size : '' )}}" [ngClass]="{'dropdown-toggle': label}" type="button" [disabled]="disabled" (click)="toggleMenu(); $event.stopImmediatePropagation();">
+                    <button plexRipples matRipple data-toggle="dropdown" class="btn btn-{{type}} {{( size ? 'btn-' + size : '' )}}" [ngClass]="{'dropdown-toggle': label}" type="button" [disabled]="disabled" (click)="toggleMenu(); $event.stopImmediatePropagation();">
                         <plex-icon *ngIf="icon" [name]="icon" [size]="size"></plex-icon>
                         {{label}}
                     </button>
@@ -15,14 +15,14 @@ import { DropdownItem } from './dropdown-item.inteface';
                         <li *ngFor="let item of items">
                             <!--Item con router asociado-->
                             <ng-template [ngIf]="!item.divider && item.route">
-                                <a plexRipples class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active" (click)="open=false">
+                                <a plexRipples matRipple class="dropdown-item" href="#" [routerLink]="item.route" routerLinkActive="active" (click)="open=false">
                                     <plex-icon *ngIf="item.icon" type="default" [name]="item.icon"></plex-icon>
                                     {{item.label}}
                                 </a>
                             </ng-template>
                             <!--Item con handler asociado-->
                             <ng-template [ngIf]="!item.divider && item.handler">
-                                <a plexRipples class="dropdown-item" href="#" (click)="toggleMenu(); item.handler($event); false;">
+                                <a plexRipples matRipple class="dropdown-item" href="#" (click)="toggleMenu(); item.handler($event); false;">
                                     <plex-icon *ngIf="item.icon" type="default" [name]="item.icon"></plex-icon>
                                     {{item.label}}
                                 </a>

@@ -27,7 +27,7 @@ import { IPlexTableColumns } from '../table/table.interfaces';
                         </div>
                         <ng-container *ngIf="vm.filters[column.key]">
                             <plex-dropdown size="sm" icon="format-list-checks" type="link" class="filtros" [right]="i === vm.columns.length - 1">
-                                <plex-radio   multiple="true" [data]="vm.filters[column.key]"
+                                <plex-radio   [multiple]="true" [data]="vm.filters[column.key]"
                                     type="vertical" name="cacho" [(ngModel)]="plexRadioValue[column.key]" (change)="onFilterChange(column.key, $event)" >
                                 </plex-radio>
                             </plex-dropdown>

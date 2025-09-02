@@ -32,35 +32,255 @@ module.exports = {
     "root": true,
     "ignorePatterns": ["src/demo/**/*.html"],
     "rules": {
-        "@angular-eslint/component-class-suffix": "error",
-        "@angular-eslint/component-selector": [
+        // TypeScript rules
+        '@typescript-eslint/no-explicit-any': 'warn',
+        '@typescript-eslint/indent': [
+            'error',
+            4,
+            {
+                'ObjectExpression': 'first',
+                'FunctionDeclaration': {
+                    'parameters': 'first'
+                },
+                'FunctionExpression': {
+                    'parameters': 'first'
+                },
+                'SwitchCase': 1,
+                'ArrayExpression': 'first'
+            }
+        ],
+        '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/no-empty-interface': 'error',
+        '@typescript-eslint/no-inferrable-types': [
+            'error',
+            {
+                'ignoreParameters': true
+            }
+        ],
+        '@typescript-eslint/prefer-function-type': 'error',
+        '@typescript-eslint/unified-signatures': 'error',
+
+        "@typescript-eslint/member-delimiter-style": [
             "error",
             {
-                "type": "element",
-                // "prefix": "plex",
-                "style": "kebab-case"
+                "multiline": {
+                    "delimiter": "semi",
+                    "requireLast": true
+                },
+                "singleline": {
+                    "delimiter": "semi",
+                    "requireLast": false
+                }
             }
         ],
-        // "@angular-eslint/directive-class-suffix": "error",
-        "@angular-eslint/directive-selector": [
+        "@typescript-eslint/semi": [
             "error",
+            "always"
+        ],
+        "@typescript-eslint/type-annotation-spacing": "error",
+        "brace-style": [
+            "error",
+            "1tbs"
+        ],
+        "@typescript-eslint/quotes": [
+            "error",
+            "single"
+        ],
+
+        // Angular-specific rules
+        '@angular-eslint/component-class-suffix': ['error', { suffixes: ['Component'] }],
+        '@angular-eslint/directive-class-suffix': ['error', { suffixes: ['Directive'] }],
+        '@angular-eslint/no-host-metadata-property': 'error',
+        '@angular-eslint/no-inputs-metadata-property': 'error',
+        '@angular-eslint/no-outputs-metadata-property': 'error',
+        '@angular-eslint/use-lifecycle-interface': 'warn',
+        '@angular-eslint/use-pipe-transform-interface': 'warn',
+        '@angular-eslint/no-outputs-metadata-property': 'error',
+
+
+        '@typescript-eslint/consistent-type-definitions': 'error',
+        '@typescript-eslint/dot-notation': 'off',
+        '@typescript-eslint/explicit-member-accessibility': [
+            'off',
             {
-                "type": "attribute",
-                // "prefix": "plex",
-                "style": "camelCase"
+                'accessibility': 'explicit'
             }
         ],
-        "@angular-eslint/no-input-rename": "error",
-        "@angular-eslint/no-output-rename": "error",
-        "@angular-eslint/use-pipe-transform-interface": "error",
-        "@typescript-eslint/consistent-type-definitions": "error",
-        "@typescript-eslint/dot-notation": "off",
-        "@typescript-eslint/explicit-member-accessibility": [
-            "off",
+        '@angular-eslint/component-selector': [
+            'off',
             {
-                "accessibility": "explicit"
+                'type': 'element',
+                'prefix': [
+                    'app',
+                    'mpi'
+                ],
+                'style': 'kebab-case'
             }
         ],
+        '@angular-eslint/directive-selector': [
+            'off',
+            {
+                'type': 'attribute',
+                'prefix': [
+                    'app',
+                    'mpi',
+                    'tm'
+                ],
+                'style': 'camelCase'
+            }
+        ],
+
+        // JS/TS base rules
+        "indent": "off",
+        'keyword-spacing': ['error', { 'after': true, 'before': true }],
+        'space-before-blocks': ['error', { 'functions': 'always', 'keywords': 'always', 'classes': 'always' }],
+        'brace-style': [
+            'error',
+            '1tbs',
+            { 'allowSingleLine': true }
+        ],
+        'object-curly-spacing': ['error', 'always'],
+        'curly': 'error',
+        'comma-spacing': ['error', { 'before': false, 'after': true }],
+        'dot-notation': 'off',
+        'eol-last': 'error',
+        'eqeqeq': [
+            'error',
+            'smart'
+        ],
+        'guard-for-in': 'off',
+        'id-blacklist': 'off',
+        'id-match': 'off',
+        'max-len': [
+            'off',
+            {
+                'code': 140
+            }
+        ],
+        'no-bitwise': 'error',
+        'no-caller': 'error',
+        'no-console': [
+            'error',
+            {
+                'allow': [
+                    'debug',
+                    'info',
+                    'dirxml',
+                    'warn',
+                    'dir',
+                    'time',
+                    'timeEnd',
+                    'timeLog',
+                    'trace',
+                    'assert',
+                    'clear',
+                    'count',
+                    'countReset',
+                    'group',
+                    'groupCollapsed',
+                    'groupEnd',
+                    'table',
+                    'Console',
+                    'markTimeline',
+                    'profile',
+                    'profileEnd',
+                    'timeline',
+                    'timelineEnd',
+                    'timeStamp',
+                    'context'
+                ]
+            }
+        ],
+        'no-debugger': 'error',
+        'no-empty': 'off',
+        'no-empty-function': 'off',
+        'no-eval': 'error',
+        'no-fallthrough': 'error',
+        'no-new-wrappers': 'error',
+        'no-redeclare': 'error',
+        'no-restricted-imports': 'error',
+        'no-throw-literal': 'error',
+        'no-trailing-spaces': 'error',
+        'no-underscore-dangle': 'off',
+        'no-unused-labels': 'error',
+        'no-var': 'error',
+        'prefer-const': ['error', {
+            'destructuring': 'any',
+            'ignoreReadBeforeAssign': false
+        }],
+        'prefer-arrow-callback': [
+            'error',
+            { 'allowUnboundThis': true, 'allowNamedFunctions': true }
+        ],
+        'space-before-function-paren': [
+            'error',
+            {
+                'anonymous': 'always',
+                'named': 'never',
+                'asyncArrow': 'always'
+            }
+        ],
+        'quotes': ['error', 'single'],
+        'radix': 'error',
+        'semi': 'error',
+        'spaced-comment': [
+            'error',
+            'always',
+            {
+                'markers': [
+                    '/'
+                ]
+            }
+        ],
+        'array-bracket-spacing': [
+            'error',
+            'never',
+            {
+                'singleValue': false,
+                'objectsInArrays': false,
+                'arraysInArrays': false
+            }
+        ],
+        'no-irregular-whitespace': ['error', { 'skipComments': true }],
+        'no-multi-spaces': 'error'
+
+
+
+
+
+        // esto si
+        // "@angular-eslint/component-class-suffix": "error",
+        // "@angular-eslint/component-selector": [
+        //     "error",
+        //     {
+        //         "type": "element",
+        //         // "prefix": "plex",
+        //         "style": "kebab-case"
+        //     }
+        // ],
+        // // "@angular-eslint/directive-class-suffix": "error",
+        // "@angular-eslint/directive-selector": [
+        //     "error",
+        //     {
+        //         "type": "attribute",
+        //         // "prefix": "plex",
+        //         "style": "camelCase"
+        //     }
+        // ],
+        // "@angular-eslint/no-input-rename": "error",
+        // "@angular-eslint/no-output-rename": "error",
+        // "@angular-eslint/use-pipe-transform-interface": "error",
+        // "@typescript-eslint/consistent-type-definitions": "error",
+        // "@typescript-eslint/dot-notation": "off",
+        // "@typescript-eslint/explicit-member-accessibility": [
+        //     "off",
+        //     {
+        //         "accessibility": "explicit"
+        //     }
+        // ],
+
+
+        // esto no
         // "@typescript-eslint/indent": [
         //     "error",
         //     4,
@@ -99,14 +319,6 @@ module.exports = {
         //         "trailingUnderscore": "forbid"
         //     }
         // ],
-        "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/no-empty-interface": "error",
-        "@typescript-eslint/no-inferrable-types": [
-            "error",
-            {
-                "ignoreParameters": true
-            }
-        ],
         // "@typescript-eslint/no-shadow": [
         //     "error",
         //     {
@@ -114,7 +326,6 @@ module.exports = {
         //     }
         // ],
         // "@typescript-eslint/no-unused-expressions": "error",
-        "@typescript-eslint/prefer-function-type": "error",
         // "@typescript-eslint/quotes": [
         //     "error",
         //     "single"
@@ -124,58 +335,16 @@ module.exports = {
         //     "always"
         // ],
         // "@typescript-eslint/type-annotation-spacing": "error",
-        "@typescript-eslint/unified-signatures": "error",
         // "brace-style": [
         //     "error",
         //     "1tbs"
         // ],
         // "curly": "error",
-        "dot-notation": "off",
         // "eol-last": "error",
         // "eqeqeq": [
         //     "error",
         //     "smart"
         // ],
-        "guard-for-in": "off",
-        "id-denylist": "off",
-        "id-match": "off",
-        "import/no-extraneous-dependencies": [
-            "error",
-            {
-                "devDependencies": false
-            }
-        ],
-        "indent": "off",
-        "max-len": [
-            "off",
-            {
-                "code": 140
-            }
-        ],
-        "no-bitwise": "error",
-        "no-caller": "error",
-        // "no-console": "error",
-        "no-constant-condition": "error",
-        "no-debugger": "error",
-        "no-empty": "off",
-        "no-empty-function": "off",
-        "no-eval": "error",
-        "no-fallthrough": "error",
-        "no-multiple-empty-lines": [
-            "error",
-            {
-                "max": 2
-            }
-        ],
-        "no-new-wrappers": "error",
-        // "no-redeclare": "error",
-        "no-restricted-imports": "error",
-        "no-shadow": "off",
-        "no-throw-literal": "error",
-        "no-trailing-spaces": "error",
-        "no-underscore-dangle": "off",
-        "no-unused-expressions": "off",
-        "no-unused-labels": "error",
         // "no-var": "error",
         // "object-shorthand": "error",
         // "prefer-arrow/prefer-arrow-functions": [
@@ -184,15 +353,6 @@ module.exports = {
         //         "allowStandaloneDeclarations": true
         //     }
         // ],
-        "prefer-const": "error",
-        "prefer-object-spread": "error",
-        // "quote-props": [
-        //     "error",
-        //     "as-needed"
-        // ],
-        "quotes": "off",
-        // "radix": "error",
-        "semi": "off",
         // "space-before-function-paren": [
         //     "error",
         //     {
@@ -210,5 +370,74 @@ module.exports = {
         //         ]
         //     }
         // ],
+
+
+        //esto si
+        // "@typescript-eslint/no-empty-function": "off",
+        // "@typescript-eslint/no-empty-interface": "error",
+        // "@typescript-eslint/no-inferrable-types": [
+        //     "error",
+        //     {
+        //         "ignoreParameters": true
+        //     }
+        // ],
+
+        // "@typescript-eslint/prefer-function-type": "error",
+
+        // "@typescript-eslint/unified-signatures": "error",
+
+        //     "dot-notation": "off",
+
+        //     "guard-for-in": "off",
+        //     "id-denylist": "off",
+        //     "id-match": "off",
+        //     "import/no-extraneous-dependencies": [
+        //         "error",
+        //         {
+        //             "devDependencies": false
+        //         }
+        //     ],
+        //     "indent": "off",
+        //     "max-len": [
+        //         "off",
+        //         {
+        //             "code": 140
+        //         }
+        //     ],
+        //     "no-bitwise": "error",
+        //     "no-caller": "error",
+        //     // "no-console": "error",
+        //     "no-constant-condition": "error",
+        //     "no-debugger": "error",
+        //     "no-empty": "off",
+        //     "no-empty-function": "off",
+        //     "no-eval": "error",
+        //     "no-fallthrough": "error",
+        //     "no-multiple-empty-lines": [
+        //         "error",
+        //         {
+        //             "max": 2
+        //         }
+        //     ],
+        //     "no-new-wrappers": "error",
+        //     // "no-redeclare": "error",
+        //     "no-restricted-imports": "error",
+        //     "no-shadow": "off",
+        //     "no-throw-literal": "error",
+        //     "no-trailing-spaces": "error",
+        //     "no-underscore-dangle": "off",
+        //     "no-unused-expressions": "off",
+        //     "no-unused-labels": "error",
+
+        //     "prefer-const": "error",
+        //     "prefer-object-spread": "error",
+        //     // "quote-props": [
+        //     //     "error",
+        //     //     "as-needed"
+        //     // ],
+        //     "quotes": "off",
+        //     // "radix": "error",
+        //     "semi": "off",
+
     }
 };

@@ -33,7 +33,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
                     </mat-checkbox>
                 </ng-container>
                  <!-- Validation -->
-                 <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control"></plex-validation-messages>
+                 <plex-validation-messages *ngIf="(control.dirty || control.touched) && !control.valid" [control]="control?.control"></plex-validation-messages>
                </div>
               `
 })

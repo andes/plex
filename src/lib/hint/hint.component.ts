@@ -1,4 +1,4 @@
-import { MatTooltip } from '@angular/material/tooltip';
+import { MatTooltip, TooltipPosition } from '@angular/material/tooltip';
 import { Component, OnInit, Input, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { PlexType } from '../core/plex-type.type';
 
@@ -26,7 +26,7 @@ export class HintComponent implements OnInit, AfterViewInit {
     content: string;
 
     @Input()
-    position = 'above';
+    position: Partial<TooltipPosition> = 'above';
 
     @Input()
     detach: '' | 'both' | 'right' | 'top';

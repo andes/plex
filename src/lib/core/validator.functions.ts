@@ -1,7 +1,7 @@
 import { UntypedFormControl, AbstractControl } from '@angular/forms';
-// ESTO ES UN HORRIBLE!
-const moment = window['moment'] = require('moment/moment.js');
-require('moment/locale/es.js');
+import * as moment from 'moment';
+import 'moment/locale/es';
+(window as any).moment = moment;
 
 /**
  * Devuelve un validator de números

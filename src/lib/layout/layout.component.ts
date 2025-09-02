@@ -42,7 +42,7 @@ import { Subscription } from 'rxjs';
                 <span *ngIf="resizable" class="resizable-btn-wrapper" [class.resizable]="resizable" draggable="true">
                     <plex-button size="sm" (click)="expandir($event)" (dragover)="expandir($event)" type="link" icon="pico-izquierda"></plex-button>
                     <hr class="divisor">
-                    <plex-button size="sm" (click)="contraer($event)" (dragover)="contraer($event)" type="link" icon="pico-derecha" ></plex-button>
+                    <plex-button size="sm" (click)="contraer()" (dragover)="contraer()" type="link" icon="pico-derecha" ></plex-button>
                 </span>
                 </div>
         </div>

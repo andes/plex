@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Plex } from './../../../../../lib/core/service';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 // Servicios y modelo
 import { PacienteService } from '../../service/paciente.service';
@@ -78,26 +79,26 @@ export class MpiMaquetadoComponent implements OnInit {
             nombre: 'Hospital "Dr. Horacio Heller',
             continente: 'Zona metro',
         },
-        {
-            id: 2,
-            nombre: 'Hospital Bouquet Roldán',
-            continente: 'Zona metro',
-        },
-        {
-            id: 3,
-            nombre: 'Hospital San Martín de los Andes "Dr. Ramón Carrillo"',
-            continente: 'Zona tres',
-        },
-        {
-            id: 4,
-            nombre: 'Hospital Centenario',
-            continente: 'Zona metro',
-        },
-        {
-            id: 5,
-            nombre: 'Hospital Provincial Neuquen "Dr. Eduardo Castro Rendón"',
-            continente: 'Zona metro',
-        }
+                         {
+                             id: 2,
+                             nombre: 'Hospital Bouquet Roldán',
+                             continente: 'Zona metro',
+                         },
+                         {
+                             id: 3,
+                             nombre: 'Hospital San Martín de los Andes "Dr. Ramón Carrillo"',
+                             continente: 'Zona tres',
+                         },
+                         {
+                             id: 4,
+                             nombre: 'Hospital Centenario',
+                             continente: 'Zona metro',
+                         },
+                         {
+                             id: 5,
+                             nombre: 'Hospital Provincial Neuquen "Dr. Eduardo Castro Rendón"',
+                             continente: 'Zona metro',
+                         }
         ];
 
         this.modelo1.select = this.modelo2.select = this.opciones[1];

@@ -138,7 +138,5 @@ export class TableDemoComponent {
 
 
     onScroll() {
-        // tslint:disable-next-line:no-console
-        console.log('VIRTUAL SCROLL');
     }
 }

@@ -18,37 +18,37 @@ export class DetailDemoComponent {
     };
 
     paciente =
-        {
-            id: 'ìd00321453221',
-            documento: '36307632',
-            cuil: '20-36307632-5',
-            activo: true,
-            estado: 'temporal',
-            nombre: 'Fernanda Agustina',
-            apellido: 'Sastre Maranelli',
-            nombreCompleto: 'Fernanda Agustina Sastre Maranelli',
-            alias: '',
-            contacto: [this.contacto],
-            sexo: undefined,
-            genero: undefined,
-            fechaNacimiento: '20/09/1992', // Fecha Nacimiento
-            tipoIdentificacion: '',
-            numeroIdentificacion: '',
-            edad: 27,
-            edadReal: null,
-            fechaFallecimiento: null,
-            direccion: [this.direccion],
-            estadoCivil: undefined,
-            foto: 'https://cdn10.bostonmagazine.com/wp-content/uploads/sites/2/2014/11/new-lead-docs.jpg',
-            relaciones: null,
-            financiador: 'ISSN',
-            identificadores: null,
-            claveBlocking: null,
-            entidadesValidadoras: [this.entidadValidadora],
-            scan: null,
-            reportarError: false,
-            notaError: ''
-        };
+    {
+        id: 'ìd00321453221',
+        documento: '36307632',
+        cuil: '20-36307632-5',
+        activo: true,
+        estado: 'temporal',
+        nombre: 'Fernanda Agustina',
+        apellido: 'Sastre Maranelli',
+        nombreCompleto: 'Fernanda Agustina Sastre Maranelli',
+        alias: '',
+        contacto: [this.contacto],
+        sexo: undefined,
+        genero: undefined,
+        fechaNacimiento: '20/09/1992', // Fecha Nacimiento
+        tipoIdentificacion: '',
+        numeroIdentificacion: '',
+        edad: 27,
+        edadReal: null,
+        fechaFallecimiento: null,
+        direccion: [this.direccion],
+        estadoCivil: undefined,
+        foto: 'https://cdn10.bostonmagazine.com/wp-content/uploads/sites/2/2014/11/new-lead-docs.jpg',
+        relaciones: null,
+        financiador: 'ISSN',
+        identificadores: null,
+        claveBlocking: null,
+        entidadesValidadoras: [this.entidadValidadora],
+        scan: null,
+        reportarError: false,
+        notaError: ''
+    };
 
     datos = [
         { label: 'edad', valor: '41 años' },

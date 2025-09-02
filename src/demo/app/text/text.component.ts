@@ -25,7 +25,7 @@ export class TextDemoComponent implements OnInit {
 
     public customValidation = (value: any) => {
         return value && (value > 10 && value < 25);
-    }
+    };
 
     constructor(private plex: Plex) { }
 
