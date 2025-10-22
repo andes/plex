@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Plex } from '../../../lib/core/service';
 import { SelectEvent } from './../../../lib/select/select-event.interface';
 import { ServiceDemoSelect } from './../select/select.service';
+import * as moment from 'moment';
 
 @Component({
     templateUrl: 'template-busqueda.html'

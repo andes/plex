@@ -272,7 +272,6 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         HelpService,
         Plex,
         { provide: MAT_DATE_LOCALE, useValue: 'es-AR' },
-        // { provide: NGX_MAT_DATE_FORMATS, useValue: NGX_MAT_MOMENT_FORMATS }
     ]
 })
 export class PlexModule {

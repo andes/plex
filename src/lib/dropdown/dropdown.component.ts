@@ -2,7 +2,7 @@ import { Component, Input, HostBinding, Renderer2, Output, EventEmitter, OnDestr
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Plex } from '../../lib/core/service';
-import { DropdownItem } from './dropdown-item.inteface';
+import { DropdownItem } from './dropdown-item.interface';
 
 @Component({
     selector: 'plex-dropdown',
@@ -93,5 +93,4 @@ export class PlexDropdownComponent implements OnInit, OnDestroy {
             }
         }
     }
-
 }

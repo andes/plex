@@ -10,10 +10,10 @@ $selectize-line-height: 18px !default;
 
 $selectize-color-text: #303030 !default;
 $selectize-color-border: rgba(0, 0, 0, 0.15) !default;
-$selectize-color-highlight: rgba(125,168,208,0.2) !default;
+$selectize-color-highlight: rgba(125, 168, 208, 0.2) !default;
 $selectize-color-input: white !default;
 $selectize-color-input-full: $selectize-color-input !default;
-$selectize-color-disabled: #eceeef !default; 
+$selectize-color-disabled: #eceeef !default;
 $selectize-color-item: #f2f2f2 !default;
 $selectize-color-item-text: $selectize-color-text !default;
 $selectize-color-item-border: #d0d0d0 !default;
@@ -65,21 +65,25 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
   -moz-border-radius: $radii;
   border-radius: $radii;
 }
+
 @mixin selectize-unselectable () {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
+
 @mixin selectize-box-shadow ($shadow) {
   -webkit-box-shadow: $shadow;
   box-shadow: $shadow;
 }
+
 @mixin selectize-box-sizing ($type: border-box) {
   -webkit-box-sizing: $type;
   -moz-box-sizing: $type;
   box-sizing: $type;
 }
+
 @mixin selectize-vertical-gradient ($color-top, $color-bottom) {
   background-color: mix($color-top, $color-bottom, 60%);
   background-image: -moz-linear-gradient(top, $color-top, $color-bottom); // FF 3.6+
@@ -88,7 +92,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
   background-image: -o-linear-gradient(top, $color-top, $color-bottom); // Opera 11.10
   background-image: linear-gradient(to bottom, $color-top, $color-bottom); // Standard, IE10
   background-repeat: repeat-x;
-  filter:  "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{argb($color-top)}', endColorstr='#{argb($color-bottom)}', GradientType=0)"; // IE9 and down
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{argb($color-top)}', endColorstr='#{argb($color-bottom)}', GradientType=0)"; // IE9 and down
 }
 
 .selectize-control {
@@ -147,7 +151,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
     @include selectize-border-radius ($selectize-border-radius $selectize-border-radius 0 0);
   }
 
-  > * {
+  >* {
     vertical-align: baseline;
     display: -moz-inline-stack;
     display: inline-block;
@@ -155,7 +159,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
     display: inline;
   }
 
-  .selectize-control.multi & > div {
+  .selectize-control.multi &>div {
     cursor: pointer;
     margin: 0 $selectize-margin-item-x $selectize-margin-item-y 0;
     padding: $selectize-padding-item-y $selectize-padding-item-x;
@@ -174,7 +178,8 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
     background-color: $selectize-color-disabled;
   }
 
-  .selectize-control.multi &.disabled > div {
+  .selectize-control.multi &.disabled>div {
+
     &,
     &.active {
       color: lighten(desaturate($selectize-color-item-text, 100%), $selectize-lighten-disabled-item-text);
@@ -183,10 +188,11 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
     }
   }
 
-  > input {
+  >input {
     &::-ms-clear {
       display: none;
     }
+
     display: inline-block !important;
     padding: 0 !important;
     min-height: 0 !important;
@@ -285,6 +291,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
 }
 
 .selectize-control.single .selectize-input {
+
   &,
   input {
     cursor: pointer;
@@ -322,7 +329,7 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px !default;
     right: auto;
   }
 
-  .selectize-input > input {
+  .selectize-input>input {
     margin: $selectize-caret-margin-rtl !important;
   }
 }
@@ -391,7 +398,7 @@ $selectize-font-size: inherit !default;
 $selectize-line-height: $line-height-computed !default;
 
 $selectize-color-text: $text-color !default;
-$selectize-color-highlight: rgba(255,237,40,0.4) !default;
+$selectize-color-highlight: rgba(255, 237, 40, 0.4) !default;
 $selectize-color-input: $input-bg !default;
 $selectize-color-input-full: $input-bg !default;
 $selectize-color-input-error: $state-danger-text !default;
@@ -510,7 +517,7 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
       padding-right: $selectize-padding-x - $selectize-padding-item-x;
     }
 
-    .selectize-input > div {
+    .selectize-input>div {
       @include selectize-border-radius ($selectize-border-radius - 1px);
     }
   }
@@ -546,6 +553,7 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
   -webkit-animation: fa-spin 2s infinite linear;
   animation: selectize-spin 2s infinite linear;
 }
+
 @-webkit-keyframes selectize-spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -557,6 +565,7 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
     transform: rotate(359deg);
   }
 }
+
 @keyframes selectize-spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -572,13 +581,15 @@ $selectize-arrow-offset: $selectize-padding-x + 5px !default;
 plex-select {
   .search-icon-container {
     position: relative;
+
     .search-icon {
       position: absolute;
       right: 0.5rem;
-      bottom: 0.5rem;
+      bottom: 0.8rem;
       color: $dark-grey;
       z-index: 100;
       font-size: 0.9em;
+
       &.disabled {
         color: #ccc;
       }

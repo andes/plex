@@ -1,5 +1,5 @@
 $primary-color: $blue;
-@import 'node_modules/loaders.css/src/loaders';
+@import 'loaders.css/src/loaders';
 
 .preloader {
   position: fixed;
@@ -11,7 +11,7 @@ $primary-color: $blue;
   z-index: 99;
 }
 
-.preloader > DIV {
+.preloader>DIV {
   width: 200px;
   height: 200px;
   position: absolute;
@@ -59,6 +59,7 @@ $primary-color: $blue;
   background-color: $teal;
   animation: lineLoading 2s linear infinite;
 }
+
 @keyframes lineLoading {
   from {
     left: -200px;

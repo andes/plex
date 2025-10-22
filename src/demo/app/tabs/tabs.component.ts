@@ -1,8 +1,7 @@
 import { Plex } from './../../../lib/core/service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { from, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { DropdownItem } from '../../../lib/dropdown/dropdown-item.inteface';
+import { Component, OnInit } from '@angular/core';
+import { of } from 'rxjs';
+import { DropdownItem } from '../../../lib/dropdown/dropdown-item.interface';
 
 
 @Component({

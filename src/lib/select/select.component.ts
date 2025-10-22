@@ -2,11 +2,13 @@ import { Component, Input, Output, ElementRef, EventEmitter, AfterViewInit, Self
 import { ControlValueAccessor, NgControl, } from '@angular/forms';
 import { SelectEvent } from './select-event.interface';
 import { hasRequiredValidator } from '../core/validator.functions';
-import * as jQuery from 'jquery';
 import Selectize from 'selectize/dist/js/standalone/selectize';
+import * as _jq from 'jquery';
+const $ = (_jq as any).default || _jq;
 
-(window as any).jQuery = jQuery;
-(window as any).Selectize = Selectize;
+declare const window: any;
+window.$ = window.$ || $;
+window.jQuery = window.jQuery || $;
 
 @Component({
     selector: 'plex-select',
@@ -297,7 +299,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                 });
             },
             onChange: (event) => {
-                const value = (event.target as HTMLSelectElement).value;
+                const value = (event?.target as HTMLSelectElement)?.value || event;
                 // Busca en la lista de items un valor que coincida con la clave
                 if (this.multiple) {
                     let result = [];

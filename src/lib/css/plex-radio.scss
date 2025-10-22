@@ -1,51 +1,62 @@
-// Tema principal
-$primary: mat-palette($mat-blue);
-$accent: mat-palette($mat-blue, A200, A100, A400);
-$warn: mat-palette($mat-red);
-$theme: mat-light-theme($primary, $accent, $warn);
-
 plex-radio {
-  display: inline-block;
+    display: inline-block;
 
-  &[type="horizontal"] {
-    .mat-radio-button {
-      margin-right: 0.5rem;
+    &[type="horizontal"] {
+        .mat-radio-button {
+            margin-right: 0.5rem;
+        }
     }
-  }
 }
 
 // Material design patches
-.mat-radio-label-content {
-  font-family: "TypoPRO Source Sans Pro";
-  font-size: 16px;
-  font-weight: normal;
-  padding: 0 0.2rem !important;
-}
+mat-radio-group .mat-mdc-radio-button {
+    margin-right: 0px;
+    margin-bottom: 5px;
+    white-space: normal !important;
 
-.mat-radio-button {
-  margin-right: 0px;
-  margin-bottom: 5px;
-  white-space: normal !important;
+    .mdc-radio {
+        padding: 0 0 0 6px !important;
+        margin: 0 !important;
+    }
 
-  >label {
-    margin-top: 0;
-  }
-}
+    label {
+        margin-top: 0;
+        font-family: "TypoPRO Source Sans Pro";
+        font-size: 15px;
+        font-weight: normal;
+        padding: 0 0.2rem !important;
 
-.wrap-mat-radio-label,
-.wrap-mat-checkbox-label {
-  white-space: normal !important;
-  margin-left: 5px;
-  overflow-wrap: anywhere;
+        .wrap-mat-radio-label,
+        .wrap-mat-checkbox-label {
+            white-space: normal !important;
+            margin-left: 5px;
+            overflow-wrap: anywhere;
+        }
+    }
+
+    .mdc-radio__background {
+        overflow: unset;
+    }
 }
 
 // INVERT
 plex-layout-sidebar[type="invert"] {
-  .mat-radio-outer-circle {
-    border-color: inherit;
-  }
-}
 
-.mat-radio-container {
-  overflow: unset;
+    mat-radio-group .mat-mdc-radio-button {
+
+        label {
+            color: #fff !important;
+        }
+
+        .mdc-radio__outer-circle {
+            border-color: #fff !important;
+
+        }
+
+        &.mat-mdc-radio-checked {
+            .mdc-radio__outer-circle {
+                border-color: #448aff !important;
+            }
+        }
+    }
 }

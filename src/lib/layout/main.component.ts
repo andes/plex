@@ -13,7 +13,7 @@ import { Component, Input, ElementRef, AfterViewInit, HostListener, Renderer2, V
     `,
 })
 export class PlexLayoutMainComponent implements AfterViewInit {
-    @ViewChild('content', { read: ElementRef, static: false }) content: ElementRef;
+    @ViewChild('content', { read: ElementRef, static: false }) content?: ElementRef;
 
     @Input() type = '';
 
@@ -25,7 +25,12 @@ export class PlexLayoutMainComponent implements AfterViewInit {
     }
 
     checkScroll() {
-        if (this.content.nativeElement.scrollHeight > this.content.nativeElement.clientHeight) {
+        const element = this.content?.nativeElement;
+        if (!element) {
+            // no hay contenedor aún (o esta pantalla no lo usa)
+            return;
+        }
+        if (element.scrollHeight > element.clientHeight) {
             this.render.addClass(this.content.nativeElement, 'scrolbar');
         } else {
             this.render.removeClass(this.content.nativeElement, 'scrolbar');

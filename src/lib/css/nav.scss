@@ -24,6 +24,10 @@ nav {
     height: 50px;
   }
 
+  .action.hidden-sm-down {
+    display: block !important;
+  }
+
   .actions {
     position: absolute;
     right: 0;
@@ -70,7 +74,7 @@ nav {
           background-color: transparent !important;
           border: none !important;
           line-height: $navbar-height;
-          padding: 0 15px;
+          padding: 2px 8px;
           color: $white !important;
         }
       }
@@ -119,9 +123,12 @@ nav {
     .dropdown .dropdown-menu {
       max-height: calc(100vh - 64px);
       overflow-y: scroll;
+      border-radius: 12px;
+      margin-top: 5px;
+      min-width: 380px;
 
       li {
-        line-height: 1.35;
+        line-height: 1.9;
       }
 
       &::-webkit-scrollbar {

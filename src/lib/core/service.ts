@@ -5,11 +5,12 @@ import { Title } from '@angular/platform-browser';
 import * as _introJs from 'intro.js';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { default as swal, SweetAlertType } from 'sweetalert2';
-import { DropdownItem } from './../dropdown/dropdown-item.inteface';
+import { DropdownItem } from '../dropdown/dropdown-item.interface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
 import { PlexTitle } from './plex-title.interface';
 import { WizardConfig } from './wizard-config.interface';
 const introJs: any = _introJs;
+
 @Injectable()
 export class Plex {
     public menu: DropdownItem[];
@@ -395,7 +396,7 @@ export class Plex {
             this.viewContainerRef?.clear();
             const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentRef);
             const component = this.viewContainerRef?.createComponent(componentFactory);
-            Object.assign(component?.instance, inputs);
+            Object.assign(component?.instance ?? {}, inputs);
         }, 0);
     }
 

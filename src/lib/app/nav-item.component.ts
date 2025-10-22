@@ -1,6 +1,6 @@
-import { Component, HostBinding, HostListener, ViewChild, AfterViewInit, ContentChild } from '@angular/core';
-import { PlexHelpComponent } from '../help/help.component';
+import { Component, HostBinding, ContentChild, HostListener, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { PlexIconComponent } from '../icon/icon.component';
+import { PlexHelpComponent } from '../help/help.component';
 
 @Component({
     // tslint:disable-next-line: component-selector
@@ -11,12 +11,9 @@ import { PlexIconComponent } from '../icon/icon.component';
                 <ng-content select=":not(plex-icon)"></ng-content>
             </div>
         </plex-help>
-
-
     `,
 })
 export class NavItemComponent implements AfterViewInit {
-
     @HostBinding('class') classList = 'action hidden-sm-down';
 
     @HostBinding('class.hover') opened = false;
@@ -25,12 +22,14 @@ export class NavItemComponent implements AfterViewInit {
 
     @ContentChild(PlexIconComponent) plexIcon: PlexIconComponent;
 
+    constructor(private cd: ChangeDetectorRef) { }
+
     ngAfterViewInit() {
         if (this.plexIcon) {
             const iconName = this.plexIcon.name;
-
             this.plexHelp.icon = iconName;
         }
+        this.cd.detectChanges();
     }
 
     @HostListener('click', ['event'])
@@ -45,4 +44,23 @@ export class NavItemComponent implements AfterViewInit {
     onClose() {
         this.opened = false;
     }
+
+
+
+
+
+
+
+
+
+    // @HostBinding('class') classList = 'action';
+    // @HostBinding('class.hover') opened = false;
+
+    // // Si se proyecta un <plex-icon>, lo usamos; si no, caemos al 'menu'
+    // @ContentChild(PlexIconComponent) plexIcon?: PlexIconComponent;
+
+
+    // onClose() {
+    //     this.opened = false;
+    // }
 }

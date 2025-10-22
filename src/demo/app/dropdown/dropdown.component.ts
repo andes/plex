@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
-import { DropdownItem } from '../../../lib/dropdown/dropdown-item.inteface';
-import { PlexDropdownComponent } from '../../../lib/dropdown/dropdown.component';
+import { Component, OnInit } from '@angular/core';
+import { DropdownItem } from '../../../lib/dropdown/dropdown-item.interface';
 
 @Component({
     templateUrl: 'dropdown.html',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DropdownItem } from '../../../lib/dropdown/dropdown-item.inteface';
+import { DropdownItem } from '../../../lib/dropdown/dropdown-item.interface';
+import * as moment from 'moment';
 
 @Component({
     templateUrl: 'item-list.html',

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChildren, QueryList } from '@angular/core';
 import { PlexModalComponent } from '../../../../../lib/modal/modal.component';
 
 @Component({

@@ -3,9 +3,10 @@
  * Array de colores expandibles de los tabs desde una aplicación externa.
  */
 
-$plex-tabs-color-extend: (procedimiento: $blue,
+$plex-tabs-color-extend: (
+    procedimiento: $blue,
     trastorno: $red,
-) !default;
+    ) !default;
 
 plex-tabs {
     width: 100%;
@@ -38,7 +39,7 @@ plex-tabs {
             }
 
             .nav-item {
-                margin-bottom: -7px;
+                margin-bottom: -1px;
                 text-transform: uppercase;
                 opacity: 0.75;
                 border: 1px solid #a5a5a5;
@@ -76,6 +77,10 @@ plex-tabs {
                     a.active {
                         background-color: $dark-blue;
                         color: white;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
                     }
                 }
 

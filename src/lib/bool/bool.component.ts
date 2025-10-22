@@ -6,15 +6,15 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
     template: ` <!-- Slide -->
                 <mat-slide-toggle *ngIf="type == 'slide'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
                     <span  *ngIf="label">
-                    {{label}}
-                </span>
+                        {{label}}
+                    </span>
                 </mat-slide-toggle>
 
                 <!-- Checbox -->
                 <mat-checkbox *ngIf="type == 'checkbox'" [(ngModel)]="value" (change)="innerChange()" [disabled]="readonly" (click)="$event.stopPropagation()">
                     <span *ngIf="label">
-                    {{label}}
-                </span>
+                        {{label}}
+                    </span>
                 </mat-checkbox>
                 `,
 })

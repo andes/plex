@@ -9,9 +9,9 @@ export function configureLocale() {
         months: 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split('_'),
         monthsShort(m, format) {
             if (/-MMM-/.test(format)) {
-                return monthsShort[m.month()];
+                return monthsShort[m?.month()];
             } else {
-                return monthsShortDot[m.month()];
+                return monthsShortDot[m?.month()];
             }
         },
         monthsParseExact: true,
