@@ -6,3 +6,4 @@ package*.json
 
 # Ignorar archivos de build y dependencias
 node_modules/
+dist/**

@@ -1,11 +1,23 @@
 {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "dest": "dist/app",
+    "dest": "./dist",
     "lib": {
         "entryFile": "src/public-api.ts",
-        "cssUrl": "inline"
+        "styleIncludePaths": [
+            "src/lib/css"
+        ]
     },
     "assets": [
-        "src/lib/css"
+        "README.md",
+        "LICENSE",
+        {
+            "input": "src/lib/css",
+            "glob": "**/*",
+            "output": "styles"
+        }
+    ],
+    "allowedNonPeerDependencies": [
+        "@andes/icons",
+        "@mdi/font"
     ]
 }

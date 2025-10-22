@@ -3,11 +3,13 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 
 // Componentes
 import { PlexAccordionComponent } from './accordion/accordion.component';
@@ -73,7 +75,7 @@ import { MatRippleModule } from '@angular/material/core';
 // Third party
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatRadioButton, MatRadioModule } from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import 'hammerjs';
@@ -120,7 +122,8 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         MatFormFieldModule,
         MatInputModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        NgxMatTimepickerModule,
+        MatDividerModule
     ],
     declarations: [
         PlexAppComponent,
@@ -192,9 +195,7 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         MobileDirective,
         AccordionDirective,
         // EXTRAS - NO CORRER DE ACA
-        ValidationMessagesComponent,
-        TooltipContentComponent,
-        HintComponent,
+        ValidationMessagesComponent
     ],
     exports: [
         TooltipContentComponent,
@@ -270,7 +271,8 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         TitleCasePipe,
         HelpService,
         Plex,
-        { provide: MAT_DATE_LOCALE, useValue: 'es-AR' }
+        { provide: MAT_DATE_LOCALE, useValue: 'es-AR' },
+        // { provide: NGX_MAT_DATE_FORMATS, useValue: NGX_MAT_MOMENT_FORMATS }
     ]
 })
 export class PlexModule {
