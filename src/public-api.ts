@@ -94,6 +94,7 @@ export * from './lib/table/table.interfaces';
 export * from './lib/core/plex-title.interface';
 export * from './lib/core/wizard-config.interface';
 export * from './lib/select/select-event.interface';
+export * from './lib/dropdown/dropdown-item.interface';
 
 
 

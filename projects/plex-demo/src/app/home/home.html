@@ -1,0 +1,243 @@
+<plex-layout main="8">
+    <plex-layout-main>
+        <plex-title main justify titulo="Gestor de agendas" (back)="back()">
+            <plex-badge size="sm" type="success">VALIDADO
+            </plex-badge>
+            <plex-help icon="information" size="lg" titulo="Información sobre este módulo"
+                       subtitulo="A continuación todas las opciones">
+
+                <ol info class="list-group-flush">
+                    <li class="list-group-item">Buscá conceptos SNOMED en el campo de texto del panel lateral
+                        (acepta búsquedas
+                        parciales)</li>
+                    <li class="list-group-item">Seleccioná el concepto al cual quieras agregar o modificar
+                        plantillas</li>
+                    <li class="list-group-item">Completá los campos "Título" y "Texto del procedimiento"</li>
+                    <li class="list-group-item">Opcionalmente podés elegir seleccionar a todos los descendientes
+                        del concepto.</li>
+                    <li class="list-group-item">Hacé click en "Guardar todos" o el botón con el signo <plex-icon
+                                   type="default" size="md" name="check"></plex-icon> para guardar una plantilla
+                        individual</li>
+                </ol>
+            </plex-help>
+        </plex-title>
+        <div justify="end">
+            <plex-button type="success" label="Restaurar usuario" size="sm" (click)="openVisualizador()">
+            </plex-button>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <b>Documento:</b>
+                <plex-copy [value]="documento">{{ documento | number }}</plex-copy>
+            </div>
+        </div>
+        <hr>
+
+        <fieldset>
+            <plex-title titulo="Esta es una leyenda"></plex-title>
+            <div class="outline-dashed-default">
+                CONTENIDO<br>CONTENIDO<br>CONTENIDO<br>CONTENIDO<br>CONTENIDO<br>
+            </div>
+        </fieldset>
+        <fieldset>
+            <plex-title titulo="Subtitle" size="md"></plex-title>
+
+            CONTENIDO<br>CONTENIDO<br>CONTENIDO
+            <label>Nombre</label> Pedro
+            <label>Apellido</label> Gutiérrez
+        </fieldset>
+        <fieldset>
+            <plex-title titulo="Edit subtitle" type="warning" size="md"></plex-title>
+            CONTENIDO<br>CONTENIDO<br>CONTENIDO
+        </fieldset>
+        <fieldset>
+            <legend>Tabla dinámica con plex-scroll</legend>
+            <table class="table table-striped">
+                <tr *ngFor="let item of data">
+                    <td>{{item.identificador}}</td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <plex-scroll (change)="loadData()"></plex-scroll>
+    </plex-layout-main>
+    <plex-layout-sidebar>
+        <plex-title titulo="Texto principal" size="sm">
+            <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Ayuda" position="right">
+                <ul class="list-group">
+                    <li class="list-group-item active">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </plex-help>
+            <plex-button size="sm" type="{{ plex.navbarVisible ? 'danger' : 'success' }}"
+                         icon="{{ plex.navbarVisible ? 'close' : 'eye' }}" (click)="plex.toggleHideNavBar()">
+            </plex-button>
+        </plex-title>
+        <plex-detail size="sm">
+            <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_1280.png" alt="">
+            <plex-badge type="info">Validado</plex-badge>
+            <div title>Texto principal o titulo</div>
+            <div subtitle>Texto secundario intrisecamente relacionado al titulo</div>
+        </plex-detail>
+        <plex-detail size="sm">
+            <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_1280.png" alt="" preview>
+            <plex-badge type="info">Validado</plex-badge>
+            <div title>Texto principal o titulo</div>
+            <div subtitle>Texto secundario
+                intrisecamente relacionado al titulo</div>
+        </plex-detail>
+
+        <plex-title titulo="Texto principal 2" size="sm">
+            <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="TOP">
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                Columna
+                            </div>
+                            <div class="col-6">
+                                Columna xbxb xb xbx b xb xb xb xb xbx bx bx bx bx
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </plex-help>
+        </plex-title>
+
+        <form #form="ngForm">
+            <p>El siguiente ejemplo muestra el uso de la propiedad <strong>validateForm</strong></p>
+            <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false"
+                       required>
+            </plex-text>
+            <plex-button label="Guardar formulario" validateForm="true" (click)="guardar($event)">
+            </plex-button>
+        </form>
+        <div class="grow">
+            <plex-text [(ngModel)]="field" prefix="barcode" ariaLabel="Ingrese un código"></plex-text>
+            <plex-button type="success">HOLA</plex-button>
+
+        </div>
+    </plex-layout-sidebar>
+    <plex-layout-footer>
+        <plex-button label="Cancelar" type="danger" position="left"></plex-button>
+        <plex-button label="Guardar formulario" type="success" position="right" [validateForm]="form"></plex-button>
+    </plex-layout-footer>
+</plex-layout>

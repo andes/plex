@@ -44,23 +44,4 @@ export class NavItemComponent implements AfterViewInit {
     onClose() {
         this.opened = false;
     }
-
-
-
-
-
-
-
-
-
-    // @HostBinding('class') classList = 'action';
-    // @HostBinding('class.hover') opened = false;
-
-    // // Si se proyecta un <plex-icon>, lo usamos; si no, caemos al 'menu'
-    // @ContentChild(PlexIconComponent) plexIcon?: PlexIconComponent;
-
-
-    // onClose() {
-    //     this.opened = false;
-    // }
 }
