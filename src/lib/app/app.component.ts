@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PlexVisualizadorService } from '../core/plex-visualizador.service';
 import { Plex } from './../core/service';
 
@@ -95,20 +95,16 @@ export class PlexAppComponent implements OnInit {
         labels: [],
         options: {
             scales: {
-                yAxes: [{
-                    display: false,
-                    gridLines: {
-                        display: false
-                    },
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
+                y: {
+                    display: true,
+                    grid: { display: false },
+                    ticks: { beginAtZero: true }
+                }
             },
-            tooltips: {
-                enabled: false,
+            plugins: {
+                tooltip: { enabled: true }
             }
-        },
+        } as any,
         colors: [{ pointBackgroundColor: 'grey' }]
     };
 

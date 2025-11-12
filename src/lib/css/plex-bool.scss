@@ -1,135 +1,92 @@
 @use 'sass:color';
 
-// Tema principal
-$primary: mat-palette($mat-blue);
-$accent: mat-palette($mat-blue, A200, A100, A400);
-$warn: mat-palette($mat-red);
-$theme: mat-light-theme($primary, $accent, $warn);
-@include angular-material-theme($theme);
-
 // Material design patches
-mat-slide-toggle {
-    margin: 0 !important;
-}
-
 plex-bool {
     display: flex;
     align-items: center;
 }
 
-.mat-checkbox-layout {
-    display: inline-flex !important;
-    align-items: baseline !important;
-    white-space: normal !important;
-    vertical-align: unset !important;
-    margin-top: 0 !important;
 
-    ::first-letter {
-        text-transform: uppercase;
-    }
-}
-
-.mat-checkbox-inner-container {
-    overflow: unset !important;
-    margin: unset !important;
-    overflow: unset !important;
-}
-
-.mat-checkbox-frame {
-    border-width: 1px !important;
-}
-
-.mat-checkbox-background,
-.mat-checkbox-frame {
-    border-radius: 0 !important;
-}
-
-.mat-checkbox-label {
-    font-family: "TypoPRO Source Sans Pro";
-    font-size: 0.9rem;
-    line-height: 17px !important;
-    font-weight: normal;
-    align-self: center;
-    margin-left: 0.5rem;
-
-    &:hover {
-        // $colors definidos en variables.scss
-        @include generic-factory($front-color: $blue);
-    }
-}
-
-.mat-slide-toggle-content>span {
-    font-family: "TypoPRO Source Sans Pro";
-    font-size: 0.9rem;
-    font-weight: normal;
-    align-self: center;
-
-    &:hover {
-        @include generic-factory($front-color: $blue);
-    }
-}
-
-.mat-checkbox {
-    display: flex;
+mat-checkbox.mat-mdc-checkbox {
+    align-self: start;
     align-items: center;
     margin: 0 !important;
-    height: 30px !important;
     line-height: 17px !important;
 
-    .mat-checkbox-layout .mat-checkbox-label {
-        margin: 0 0.2rem !important;
+    .mdc-checkbox__background {
+        border: 1px solid currentColor;
+        background-color: #fff !important;
+        overflow: unset !important;
+        margin: unset !important;
+    }
+
+    &.mat-mdc-checkbox-checked .mdc-checkbox__background {
+        background-color: $blue !important;
+    }
+
+    label {
+        font-family: "TypoPRO Source Sans Pro";
+        font-size: 0.9rem;
+        line-height: 17px !important;
+        font-weight: normal;
+        align-self: normal;
+        padding-left: 0;
+        margin-left: -5px;
+        margin-top: 12px;
+
+        &:hover {
+            // $colors definidos en variables.scss
+            @include generic-factory($front-color: $blue);
+        }
     }
 }
 
-.mat-slide-toggle {
-    margin: 0 !important;
+mat-slide-toggle {
+    margin-top: 6px !important;
     height: 30px !important;
     line-height: 17px !important;
 
-    .mat-slide-toggle-label {
-        margin-top: 0 !important;
+    label {
+        margin-top: 0px !important;
+        margin-left: 3px !important;
+        font-weight: normal;
     }
 
-    &.mat-checked {
-        .mat-slide-toggle-bar {
-            .mat-slide-toggle-thumb-container {
-                transform: translate3d(14px, 0, 0);
+    span {
+        font-family: "TypoPRO Source Sans Pro";
+        font-size: 0.9rem;
+        font-weight: normal;
+        align-self: center;
+
+        &:hover {
+            @include generic-factory($front-color: $blue);
+        }
+    }
+
+    button {
+        outline: none !important;
+
+        &.mdc-switch {
+            width: var(--mdc-switch-track-width, 40px);
+
+            .mdc-switch__track {
+                border-radius: var(--mdc-switch-track-shape, 12px) !important;
+                height: var(--mdc-switch-track-height, 22px) !important;
             }
         }
     }
-
-    .mat-slide-toggle-bar {
-        width: 2.5rem !important;
-        height: 1.5rem !important;
-        border-radius: 0.75rem !important;
-
-        .mat-slide-toggle-thumb-container {
-            top: 0.12rem !important;
-            left: 0.15rem !important;
-        }
-
-        .mat-slide-toggle-thumb {
-            height: 1.25rem !important;
-            width: 1.25rem !important;
-            box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 1%), 0px 0px 0px 0px rgb(0 0 0 / 5%), 0px 0px 0px 0px rgb(0 0 0 / 5%) !important;
-        }
-    }
 }
 
-.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-    background-color: $blue !important;
+.mat-mdc-slide-toggle .mdc-switch .mdc-switch__track {
+    border-radius: var(--mdc-switch-track-shape, 12px);
+    height: var(--mdc-switch-track-height, 22px);
 }
 
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
-.mat-checkbox-checked.mat-accent .mat-checkbox-background {
-    background-color: $blue !important;
+.mat-mdc-slide-toggle .mdc-switch {
+    width: var(--mdc-switch-track-width, 40px);
 }
 
-.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-    background-color: transparentize($color: $blue, $amount: 0.54) !important;
-}
-
-.mat-slide-toggle.mat-disabled {
+mat-slide-toggle.mat-disabled {
     .mat-slide-toggle-bar {
         background-color: rgba(0, 0, 0, 0.2) !important;
 
@@ -139,18 +96,19 @@ plex-bool {
     }
 }
 
-.mat-slide-toggle.mat-disabled .mat-slide-toggle-label,
-.mat-slide-toggle.mat-disabled .mat-slide-toggle-content>span {
-    @include generic-factory($front-color: #969696);
-}
-
-.mat-checkbox.mat-checkbox-disabled .mat-checkbox-inner-container {
-    background-color: rgba(0, 0, 0, 0.1) !important;
-}
-
 // INVERT
 plex-layout-sidebar[type="invert"] {
-    .mat-slide-toggle .mat-slide-toggle-bar {
-        background-color: color.scale($color: $blue, $saturation: -80%) !important;
+    mat-slide-toggle {
+        label {
+            color: #fff;
+        }
+
+        .mat-mdc-slide-toggle {
+            background-color: color.scale($color: $blue, $saturation: -80%) !important;
+        }
+    }
+
+    mat-checkbox.mat-mdc-checkbox label {
+        color: #fff;
     }
 }

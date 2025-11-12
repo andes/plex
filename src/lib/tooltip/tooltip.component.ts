@@ -7,7 +7,7 @@ import { TooltipContentComponent } from './tooltip-content.component';
     selector: '[tooltip],[title]'
 })
 // tslint:disable-next-line:directive-class-suffix
-export class TooltipComponent {
+export class TooltipComponentDirective {
     // -------------------------------------------------------------------------
     // Properties
     // -------------------------------------------------------------------------

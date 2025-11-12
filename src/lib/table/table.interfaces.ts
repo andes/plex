@@ -15,4 +15,4 @@ export interface IPlexSortData {
 }
 
 
-export interface IPlexColumnDisplay { [key: string]: boolean; }
+export interface IPlexColumnDisplay { [key: string]: boolean }

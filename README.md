@@ -125,5 +125,5 @@ La siguiente secuencia de pasos permite publicar la librería en NPM:
 4. Realizar push de los cambios
 5. Realizar el PR con la versión y luego mergear a Master
 6. Volver a Master y obtener últimos cambios
-7. Ejecutar `npm login` (usando las credenciales de Andes)
+7. Desde el directorio dist/ ejecutar `npm login` (usando las credenciales de Andes)
 8. Ejecutar `npm publish`

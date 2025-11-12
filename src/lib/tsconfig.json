@@ -1,18 +1,31 @@
 {
+    "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "declaration": false,
-        "experimentalDecorators": true,
+        "target": "es2022",
+        "module": "es2022",
         "lib": [
-            "es6",
-            "dom"
+            "es2022",
+            "DOM"
         ],
-        "mapRoot": "./",
-        "module": "es6",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "target": "es2015",
+        "types": [
+            "node"
+        ],
         "typeRoots": [
             "../../node_modules/@types"
-        ]
-    }
+        ],
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "declaration": false,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "mapRoot": "./",
+        "esModuleInterop": false
+    },
+    "angularCompilerOptions": {
+        "enableIvy": true,
+    },
+    "exclude": [
+        "test.ts",
+        "**/*.spec.ts"
+    ]
 }

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChildren, QueryList, AfterContentInit, AfterViewChecked, ContentChildren, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, QueryList, AfterViewChecked, ContentChildren, ElementRef, Renderer2 } from '@angular/core';
 import { PlexLabelComponent } from '../label/label.component';
 import { PlexButtonComponent } from '../button/button.component';
 
@@ -37,7 +37,7 @@ import { PlexButtonComponent } from '../button/button.component';
 export class PlexDetailComponent implements AfterViewChecked {
     @Input() direction: 'column' | 'row' = 'row';
     @Input() size: 'xs' | 'md' | 'lg' = 'md';
-    @Input() items: [];
+    @Input() items: any[];
 
     @ContentChildren(PlexLabelComponent) plexLabels: QueryList<PlexLabelComponent>;
     @ContentChildren(PlexLabelComponent, { read: ElementRef }) plexLabelsElement: QueryList<ElementRef>;

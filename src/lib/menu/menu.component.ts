@@ -1,18 +1,17 @@
 import { Component, Input, Output, Renderer2, EventEmitter, AfterViewInit } from '@angular/core';
 import { Plex } from '../core/service';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
-
 @Component({
     selector: 'plex-menu',
     template: `
-        <div role="navigation" aria-label="Menú principal" *ngIf="menu && menu.length" class="dropdown" tabindex="1" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();" (keyup)="onMenuKeyup($event)">
-            <plex-icon type="light" size="xl" name="menu"></plex-icon>
+        <div role="navigation" aria-label="Menú principal" *ngIf="items?.length" class="dropdown" tabindex="1" [ngClass]="{show: menuOpen}" (click)="toggleMenu(); $event.stopImmediatePropagation();" (keyup)="onMenuKeyup($event)">
+                    <plex-icon type="light" size="xl" name="menu"></plex-icon>
             <ul class="dropdown-menu dropdown-menu-right main-menu">
-                <li *ngFor="let item of menu; let i = index">
+                <li *ngFor="let item of items; let i = index">
                     <!--Item con router asociado-->
                     <ng-template [ngIf]="!item.divider && !item.submodulos">
-                        <a *ngIf="item.route" class="dropdown-item" href="#" tabindex="{{i + 1}}" (click)="selectItem(item)" [ngStyle]="{'background-color': item.route ? item.color : ''}" [routerLink]="item.route" routerLinkActive="active">
+                        <a *ngIf="item.route" class="dropdown-item" href="#" tabindex="{{i + 1}}" (click)="selectItem(item)" [ngStyle]="{'background-color': item.route === currentRoute ? item.color : ''}" [routerLink]="item.route" routerLinkActive="active">
                             <plex-icon *ngIf="item.icon" type="dark" [prefix]="item.prefix" [name]="item.icon"></plex-icon>
                             {{item.label}}
                         </a>
@@ -57,24 +56,28 @@ import { filter } from 'rxjs';
 })
 
 export class PlexMenuComponent implements AfterViewInit {
-    @Input() menu: any[] = [];
     @Input() menuOpen = false;
     @Input() static = false;
     @Output() menuToggled = new EventEmitter<boolean>();
     @Output() collapseMenu = new EventEmitter<void>();
     @Output() selected = new EventEmitter<void>();
 
-    constructor(public plex: Plex, private renderer: Renderer2, private router: Router) { }
+    @Input() items: any[] = [];
 
+    constructor(
+        public plex: Plex,
+        private renderer: Renderer2,
+        private router: Router
+    ) { }
+
+    public currentRoute = '';
     private unlisten: Function;
-    private currentRoute = '';
 
     ngAfterViewInit() {
         this.router.events
             .pipe(filter(event => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => {
                 this.currentRoute = event.urlAfterRedirects;
-                console.log('Ruta activa:', this.currentRoute);
             });
     }
 
@@ -99,19 +102,15 @@ export class PlexMenuComponent implements AfterViewInit {
     }
 
     private collapseMenuExceptActive() {
-        if (this.menu) {
-            this.menu.forEach(item => {
-                if (item.submodulos) {
-                    const hasActiveRoute = item.submodulos.some(subItem => this.currentRoute === subItem.route || this.currentRoute === "/" + subItem.route);
-
-                    item.collapsed = !hasActiveRoute;
-                } else {
-                    item.collapsed = true;
-                }
-            });
-        }
+        this.items.forEach(item => {
+            if (item.submodulos) {
+                const hasActiveRoute = item.submodulos.some(subItem => this.currentRoute.includes(subItem.route));
+                item.collapsed = !hasActiveRoute;
+            } else {
+                item.collapsed = true;
+            }
+        });
     }
-
     public toggleSubmenu(e, item) {
         e.stopPropagation();
         item.collapsed = !item.collapsed;

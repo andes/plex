@@ -31,8 +31,8 @@ import { IPlexTableColumns } from './table.interfaces';
                                     </span>
                                 </div>
                                 <ng-container *ngIf="vm.filters[column.key]">
-                                    <plex-dropdown size="sm" icon="format-list-checks" type="link" right="true" class="filtros" [right]="i === vm.columns.length - 1">
-                                        <plex-radio   multiple="true" [data]="vm.filters[column.key]"
+                                    <plex-dropdown size="sm" icon="format-list-checks" type="link" [right]="true" class="filtros" [right]="i === vm.columns.length - 1">
+                                        <plex-radio [multiple]="true" [data]="vm.filters[column.key]"
                                             type="vertical" name="cacho" [(ngModel)]="plexRadioValue[column.key]" (change)="onFilterChange(column.key, $event)">
                                         </plex-radio>
                                     </plex-dropdown>

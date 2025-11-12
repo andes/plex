@@ -3,12 +3,13 @@ import { Component, Input, HostBinding, HostListener, Optional, forwardRef, OnIn
 import { Plex } from '../core/service';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { PlexType } from '../core/plex-type.type';
 
 @Component({
     selector: 'plex-button',
     template: `
         <ng-container *ngIf="type">
-                <button plexRipples style="pointer-events: auto" [tabIndex]="tabIndex" [attr.aria-label]="ariaLabel" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
+                <button plexRipples matRipple style="pointer-events: auto" [tabIndex]="tabIndex" [attr.aria-label]="ariaLabel" class="btn btn-{{type}} {{(size ? 'btn-' + size : '')}}" [disabled]="disabled">
                     <plex-icon
                         *ngIf="icon"
                         [name]="icon"
@@ -29,7 +30,7 @@ export class PlexButtonComponent implements OnInit, OnDestroy {
     @Input() ariaLabel: string;
     @Input() label: string;
     @Input() icon: string;
-    @Input() type: 'success' | 'info' | 'warning' | 'danger' | 'default';
+    @Input() type: PlexType;
     @Input() size: 'md' | 'lg' | 'sm' | 'block' = 'md';
     @Input() validateForm: boolean | NgForm;
     @Input() @HostBinding('attr.disabled') disabled: boolean;

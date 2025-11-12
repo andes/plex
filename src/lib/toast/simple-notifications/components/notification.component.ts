@@ -4,7 +4,6 @@ import { Notification } from '../interfaces/notification.type';
 import { NotificationsService } from '../services/notifications.service';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'simple-notification',
     encapsulation: ViewEncapsulation.None,
     template: `
@@ -198,7 +197,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
     attachOverrides(): void {
         Object.keys(this.item.override).forEach(a => {
             if (this.hasOwnProperty(a)) {
-                (<any>this)[a] = this.item.override[a];
+                (<any> this)[a] = this.item.override[a];
             }
         });
     }
@@ -223,7 +222,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
                 }
             }
         });
-    }
+    };
 
     private remove() {
         if (this.animate) {

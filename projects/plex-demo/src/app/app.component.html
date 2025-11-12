@@ -1,0 +1,55 @@
+<plex-app>
+    <div navIcon class="navbar-brand hover" [routerLink]="'/'" tabindex="-1">
+        <div class="logo"></div>
+        <div class="text"></div>
+    </div>
+
+    <div nav-item>
+        <plex-icon name="bell" type="light" size="lg" tooltip="¡hay novedades!" tooltipPosition="bottom"></plex-icon>
+        <plex-title titulo="Novedades"></plex-title>
+        <plex-list>
+            <plex-item>
+                <img src="https://picsum.photos/200" alt="">
+                <plex-label titulo="Se realizó el primer taller de vocabularios controlados de Salud" subtitulo="">
+                </plex-label>
+                <plex-badge size="md" type="info"> 22/22/2019 </plex-badge>
+                <plex-badge size="md" type="success"> MPI </plex-badge>
+            </plex-item>
+            <plex-item>
+                <img src="https://picsum.photos/200" alt="">
+                <plex-label titulo="Se realizó el primer taller de vocabularios controlados de Salud" subtitulo="">
+                </plex-label>
+                <plex-badge size="md" type="info"> 22/22/2019 </plex-badge>
+                <plex-badge size="md" type="success"> MPI </plex-badge>
+            </plex-item>
+            <plex-item>
+                <img src="https://picsum.photos/200" alt="">
+                <plex-label titulo="Se realizó el primer taller de vocabularios controlados de Salud" subtitulo="">
+                </plex-label>
+                <plex-badge size="md" type="info"> 22/22/2019 </plex-badge>
+                <plex-badge size="md" type="success"> MPI </plex-badge>
+            </plex-item>
+        </plex-list>
+    </div>
+
+    <div class="user-profile">
+        <plex-title titulo="Matrículas" size="sm"></plex-title>
+
+        <plex-list>
+            <plex-item *ngFor="let item of (data$ | async)">
+                <plex-label [titulo]="item.titulo"></plex-label>
+                <plex-label [titulo]="item.matricula"></plex-label>
+                <plex-badge type="info">
+                    {{ item.vencimiento | date }}
+                </plex-badge>
+                <plex-badge [type]="item.estado.type">
+                    {{ item.estado.texto }}
+                </plex-badge>
+            </plex-item>
+        </plex-list>
+    </div>
+
+    <div main-menu class="menu">
+        <plex-menu [items]="menuItems"></plex-menu>
+    </div>
+</plex-app>

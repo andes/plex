@@ -1,9 +1,15 @@
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 
 // Componentes
 import { PlexAccordionComponent } from './accordion/accordion.component';
@@ -48,11 +54,12 @@ import { PlexTabsComponent } from './tabs/tabs.component';
 import { PlexTextComponent } from './text/text.component';
 import { PlexTitleComponent } from './title/title.component';
 import { TooltipContentComponent } from './tooltip/tooltip-content.component';
-import { TooltipComponent } from './tooltip/tooltip.component';
+import { TooltipComponentDirective } from './tooltip/tooltip.component';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 import { PlexVisualizadorComponent } from './visualizador/visualizador.component';
 import { PlexWrapperComponent } from './wrapper/wrapper.component';
 import { PlexMenuComponent } from './menu/menu.component';
+
 
 // Directivas
 import { AlignDirective } from './directives/align.directive';
@@ -63,11 +70,12 @@ import { ResponsiveDirective } from './directives/responsive.directive';
 import { SpanDirective } from './directives/span.directive';
 import { PreviewDirective } from './visualizador/preview.directive';
 import { PlexWizardDirective } from './wizard/wizard.directive';
+import { MatRippleModule } from '@angular/material/core';
 
 // Third party
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatRadioButton, MatRadioModule } from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import 'hammerjs';
@@ -93,6 +101,7 @@ import { PlexTableSortPipe } from './table/table-sort.pipe';
 import { TabDirective } from './tabs/pl-tab.directive';
 import { SimpleNotificationsModule } from './toast/simple-notifications.module';
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -106,7 +115,15 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         InfiniteScrollModule,
         SimpleNotificationsModule.forRoot(),
         NgxSimpleTextEditorModule,
-        MatMenuModule
+        MatMenuModule,
+        MatRippleModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDatepickerModule,
+        NgxMatTimepickerModule,
+        MatDividerModule
     ],
     declarations: [
         PlexAppComponent,
@@ -140,7 +157,7 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         PlexLabelComponent,
         PlexHeadingComponent,
         PlexTitleComponent,
-        TooltipComponent,
+        TooltipComponentDirective,
         PlexHelpComponent,
         PlexModalComponent,
         PlexModalTitleComponent,
@@ -178,9 +195,7 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         MobileDirective,
         AccordionDirective,
         // EXTRAS - NO CORRER DE ACA
-        ValidationMessagesComponent,
-        TooltipContentComponent,
-        HintComponent,
+        ValidationMessagesComponent
     ],
     exports: [
         TooltipContentComponent,
@@ -215,7 +230,7 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
         PlexLabelComponent,
         PlexHeadingComponent,
         PlexTitleComponent,
-        TooltipComponent,
+        TooltipComponentDirective,
         PlexHelpComponent,
         PlexModalComponent,
         PlexModalTitleComponent,
@@ -255,6 +270,8 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
     providers: [
         TitleCasePipe,
         HelpService,
+        Plex,
+        { provide: MAT_DATE_LOCALE, useValue: 'es-AR' },
     ]
 })
 export class PlexModule {
@@ -264,22 +281,15 @@ export class PlexModule {
     }
 
 
-    static forRoot({ networkLoading }: PlexModuleConfig): ModuleWithProviders<any> {
+    static forRoot(config: PlexModuleConfig = {}): ModuleWithProviders<PlexModule> {
         return {
             ngModule: PlexModule,
             providers: [
                 Plex,
                 PlexVisualizadorService,
-                {
-                    provide: NETWORK_LOADING,
-                    useValue: networkLoading
-                },
-                {
-                    provide: HTTP_INTERCEPTORS,
-                    useClass: NetworkLoadingInterceptor,
-                    multi: true,
-                }
-            ]
+                { provide: NETWORK_LOADING, useValue: config.networkLoading },
+                { provide: HTTP_INTERCEPTORS, useClass: NetworkLoadingInterceptor, multi: true },
+            ],
         };
     }
 }

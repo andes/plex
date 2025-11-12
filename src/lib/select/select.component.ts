@@ -2,19 +2,24 @@ import { Component, Input, Output, ElementRef, EventEmitter, AfterViewInit, Self
 import { ControlValueAccessor, NgControl, } from '@angular/forms';
 import { SelectEvent } from './select-event.interface';
 import { hasRequiredValidator } from '../core/validator.functions';
+import Selectize from 'selectize/dist/js/standalone/selectize';
+import * as _jq from 'jquery';
+const $ = (_jq as any).default || _jq;
 
-const Selectize = require('selectize/dist/js/standalone/selectize');
+declare const window: any;
+window.$ = window.$ || $;
+window.jQuery = window.jQuery || $;
 
 @Component({
     selector: 'plex-select',
     template: ` <div class="form-group" [ngClass]="{'has-danger': hasDanger() }">
                     <label *ngIf="label" class="form-control-label">{{ label }}<span *ngIf="esRequerido" class="requerido"></span></label>
-                    <select *ngIf="!multiple" id="{{ uniqueId }}" (change)="onChange($event.target.value)"></select>
-                    <select *ngIf="multiple" id="{{ uniqueId }}" multiple (change)="onChange($event.target.value)"></select>
+                    <select *ngIf="!multiple" id="{{ uniqueId }}" (change)="onChange($event)"></select>
+                    <select *ngIf="multiple" id="{{ uniqueId }}" multiple (change)="onChange($event)"></select>
                     <div *ngIf="multiple" class="search-icon-container">
                         <plex-icon size="sm" name="form-textbox" class="search-icon" [class.disabled]="control.disabled"></plex-icon>
                     </div>
-                    <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
+                    <plex-validation-messages *ngIf="hasDanger()" [control]="control?.control"></plex-validation-messages>
                 </div>`,
 })
 export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor {
@@ -94,7 +99,7 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
     @Output() change = new EventEmitter();
 
     // Funciones públicas
-    public onChange = (_: any) => { };
+    public onChange = (_: Event) => { };
 
     // Constructor
     constructor(
@@ -293,7 +298,8 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
                     }
                 });
             },
-            onChange: (value) => {
+            onChange: (event) => {
+                const value = (event?.target as HTMLSelectElement)?.value || event;
                 // Busca en la lista de items un valor que coincida con la clave
                 if (this.multiple) {
                     let result = [];
@@ -361,12 +367,11 @@ export class PlexSelectComponent implements AfterViewInit, ControlValueAccessor 
             const valueAsString = (v: any): string => {
                 if (v === null) {
                     return null;
-                } else
-                    if (typeof v === 'object') {
-                        return '' + v[this.idField];
-                    } else {
-                        return '' + v;
-                    }
+                } else if (typeof v === 'object') {
+                    return '' + v[this.idField];
+                } else {
+                    return '' + v;
+                }
             };
 
             // Busca el id que corresponde al item

@@ -21,10 +21,10 @@ export interface WizardConfig {
      * @memberof WizardConfig
      */
     steps: {
-        title: string,
-        content: string,
-        imageClass?: string,
-        position?: 'left' | 'top' | 'bottom' | 'right'
+        title: string;
+        content: string;
+        imageClass?: string;
+        position?: 'left' | 'top' | 'bottom' | 'right';
     }[];
 
     /**

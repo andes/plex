@@ -1,5 +1,5 @@
 // Íconos sólo disponibles con plex-icon
-$adi-font-path: "~@andes/icons/fonts/";
+$adi-font-path: "../fonts";
 @import "@andes/icons/scss/andes-icons";
 
 $icon-sizes: (
@@ -21,10 +21,9 @@ plex-icon {
         }
     }
 
-    @each $name, $value in $colors { 
+    @each $name, $value in $colors {
         .ii-#{$name} {
             color: $value;
         }
     }
 }
- 

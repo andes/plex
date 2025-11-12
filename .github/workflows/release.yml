@@ -1,26 +1,50 @@
 name: deploy
-on: [workflow_dispatch]
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write   # necesario para gh-pages y semantic-release (github plugin)
+  packages: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
         with:
-            node-version: '10.x'
-      - run: npm ci  
-        env: 
-            CYPRESS_INSTALL_BINARY: 0    
-      - run: npm run build:doc  
-      - run: npm run build
-      - name: Deploy
+          fetch-depth: 0   # semantic-release necesita el historial/tags
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install deps
+        run: npm ci
+
+      # Build de PLEX
+      - name: Build library
+        run: npm run build
+
+      # Docs (Compodoc) -> dist/doc
+      - name: Build docs
+        run: npm run build:doc
+
+      # Publicar docs a gh-pages
+      - name: Deploy docs to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-            github_token: ${{ secrets.DEPLOY_TOKEN }}
-            publish_dir: ./dist
-      - name: Release 
+          # se puede cambiar a secrets.DEPLOY_TOKEN para uso de token propio
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist/doc
+
+      # publicación a npm/gitHub releases con semantic-release
+      - name: semantic-release
         env:
-            GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # (o DEPLOY_TOKEN) 
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release

@@ -5,7 +5,7 @@ import { PlexVisualizadorItem } from '../visualizador/visualizador.component';
 @Injectable()
 export class PlexVisualizadorService {
 
-    public state$ = new Subject<{ documentos: PlexVisualizadorItem[], index: number }>();
+    public state$ = new Subject<{ documentos: PlexVisualizadorItem[]; index: number }>();
 
     public close$: Subject<void>;
 

@@ -1,6 +1,14 @@
-@import "../datetime/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker";
-
 plex-datetime {
+
+    input.hidden {
+        display: contents;
+        margin: 0;
+        padding: 0;
+        width: 0 !important;
+        height: 0;
+        visibility: hidden;
+    }
+
     plex-button[icon="menu-left"],
     plex-button[icon="menu-right"] {
         button {
@@ -9,6 +17,7 @@ plex-datetime {
             opacity: 0.8;
         }
     }
+
     .input-group-btn {
         font-size: inherit;
     }
@@ -23,18 +32,22 @@ plex-datetime {
         flex-direction: column-reverse;
         right: 8px;
         top: 0;
+
         .hint-container {
             position: absolute;
             right: 0;
             top: 2px;
+
             &:hover,
             &:active,
             &:focus {
                 text-decoration: none;
             }
         }
+
         plex-icon {
             padding: 0;
+
             i.sm {
                 font-size: 10px;
                 line-height: 1;
@@ -46,4 +59,69 @@ plex-datetime {
             }
         }
     }
+}
+
+// popup calendario
+.mat-datepicker-content-touch .mat-datepicker-content-container {
+    min-height: 312px !important;
+    max-height: 420px !important;
+    min-width: 250px !important;
+    max-width: 320px !important;
+
+    .mat-calendar-header {
+        background-color: #00a8e0;
+
+        .mat-calendar-controls span {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+    }
+
+    .mat-calendar-previous-button,
+    .mat-calendar-next-button {
+        color: #fff
+    }
+
+    .mat-calendar-content.cdk-focused.cdk-mouse-focused {
+        outline: none !important;
+    }
+
+    .mat-calendar-body-selected {
+        background: #00a8e0 !important;
+        color: #fff;
+    }
+
+    .mat-calendar-arrow {
+        fill: #fff;
+    }
+}
+
+
+// popup reloj
+
+.mat-toolbar.mat-primary {
+    background: #00a8e0 !important;
+    color: #fff !important;
+}
+
+ngx-mat-timepicker-dial-control {
+    &.hover {
+        cursor: pointer;
+    }
+
+    input,
+    span {
+        font-size: 40px !important;
+        width: 50px !important;
+    }
+}
+
+.timepicker-dial__time span {
+    font-size: 40px !important;
+    margin-top: 0.3rem !important;
+}
+
+.mat-mdc-fab.mat-primary,
+.mat-mdc-mini-fab.mat-primary {
+    background: #00a8e0 !important;
 }

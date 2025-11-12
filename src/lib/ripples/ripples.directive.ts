@@ -1,17 +1,21 @@
 import { Directive, OnInit, ElementRef, AfterViewInit } from '@angular/core';
-const Waves = require('node-waves/dist/waves');
-Waves.init();
+import { MatRipple } from '@angular/material/core';
 
 @Directive({
     selector: '[plexRipples]',
+    providers: [MatRipple]
 })
 export class PlexRipplesDirective implements OnInit, AfterViewInit {
-    constructor(private element: ElementRef ) {
-    }
+    constructor(
+        private element: ElementRef,
+        private ripple: MatRipple
+    ) { }
     // Inicialización
     ngOnInit() {
     }
     ngAfterViewInit() {
-        Waves.attach(this.element.nativeElement, ['']);
+        this.ripple.centered = false;
+        this.ripple.color = 'rgba(0,0,0,0.1)';
+        this.ripple.disabled = false;
     }
 }

@@ -7,11 +7,11 @@ export function configureLocale() {
     moment.locale('es');
     (moment as any).updateLocale('es', {
         months: 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split('_'),
-        monthsShort (m, format) {
+        monthsShort(m, format) {
             if (/-MMM-/.test(format)) {
-                return monthsShort[m.month()];
+                return monthsShort[m?.month()];
             } else {
-                return monthsShortDot[m.month()];
+                return monthsShortDot[m?.month()];
             }
         },
         monthsParseExact: true,
@@ -28,19 +28,19 @@ export function configureLocale() {
             LLLL: 'dddd, D [de] MMMM [de] YYYY H:mm'
         },
         calendar: {
-            sameDay () {
+            sameDay() {
                 return '[hoy a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
-            nextDay () {
+            nextDay() {
                 return '[mañana a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
-            nextWeek () {
+            nextWeek() {
                 return 'dddd [a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
-            lastDay () {
+            lastDay() {
                 return '[ayer a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
-            lastWeek () {
+            lastWeek() {
                 return '[el] dddd [pasado a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
             sameElse: 'L'
@@ -64,7 +64,7 @@ export function configureLocale() {
         ordinal: '%dº',
         week: {
             dow: 1, // Monday is the first day of the week.
-            doy: 4  // The week that contains Jan 4th is the first week of the year.
+            doy: 4 // The week that contains Jan 4th is the first week of the year.
         }
     });
 }

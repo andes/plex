@@ -1,5 +1,6 @@
 // Intro.JS CSS
-@import "node_modules/intro.js/introjs";
+@import "intro.js/minified/introjs.min";
+@import "intro.js/themes/introjs-modern.css";
 
 .introjs-button {
   display: inline-block;

@@ -23,7 +23,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
             </span>
 
             <input #input [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-describedby]="ariaDescribedby.id" type="{{type}}" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
-                [readonly]="readonly" (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
+                [readonly]="readonly" (input)="onChange($event)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
 
             <plex-icon  *ngIf="!readonly && !multiline && !html && !isEmpty" size="sm" name="close-circle" class="clear-icon" (click)="clearInput()"></plex-icon>
 
@@ -34,7 +34,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
 
         <!-- Multiline -->
         <textarea [attr.aria-label]="textLabel" [attr.aria-labelledby]="passwordLabel" [attr.aria-hidden]="!multiline || html" [hidden]="!multiline || html" #textarea class="form-control" [placeholder]="placeholder" [rows]="rows" [disabled]="disabled" [readonly]="readonly"
-        (input)="onChange($event.target.value)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
+        (input)="onChange($event)" (change)="disabledEvent($event)" (focus)="onFocus()" (focusout)="onFocusout()">
         </textarea>
 
         <!-- HTML Editor -->
@@ -43,7 +43,7 @@ import { hasRequiredValidator } from '../core/validator.functions';
         </div>
 
         <!-- Validación / Descripción ARIA -->
-        <plex-validation-messages [mensaje]="mensaje" id="{{ ariaDescribedby.id }}" *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
+        <plex-validation-messages [mensaje]="mensaje" id="{{ ariaDescribedby.id }}" *ngIf="hasDanger()" [control]="control?.control"></plex-validation-messages>
     </div>
     `
 })
@@ -60,7 +60,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
             { ...JUSTIFY_RIGHT_BUTTON, title: 'Alinear a Derecha', icon: 'adi adi-Bandera-derecha' },
             { ...UNORDERED_LIST_BUTTON, title: 'Listado', icon: 'adi adi-listado' },
             { ...UNDERLINE_BUTTON, title: 'Subrayar', icon: 'adi adi-Underline' },
-            { ...LINK_INPUT, title: "Ingresar vínculo", icon: 'adi adi-link-variant', label: 'Ingresar vínculo', text: 'Confirmar' },
+            { ...LINK_INPUT, title: 'Ingresar vínculo', icon: 'adi adi-link-variant', label: 'Ingresar vínculo', text: 'Confirmar' },
             { ...UNLINK_BUTTON, title: 'Quitar Vinculo', icon: 'adi adi-link-variant-off' },
         ]
     };
@@ -125,7 +125,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.focusout.emit();
     }
 
-    public onChange = (_: any) => { };
+    public onChange = (_: Event) => { };
 
     public disabledEvent(event: Event) {
         event.stopImmediatePropagation();
@@ -226,9 +226,9 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         return (this.control as any).name && (this.control.dirty || this.control.touched) && !this.control.valid;
     }
 
-    registerOnChange(fn: any) {
-        this.onChange = (value) => {
-            value = value || '';
+    registerOnChange(fn) {
+        this.onChange = (event: Event) => {
+            const value = (event.target as HTMLInputElement).value || '';
 
             if (this.customValidation) {
                 if (this.control && this.control.control) {

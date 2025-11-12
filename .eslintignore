@@ -1,0 +1,9 @@
+# Ignorar configuración propia
+.eslintrc.js
+angular.json
+tsconfig*.json
+package*.json
+
+# Ignorar archivos de build y dependencias
+node_modules/
+dist/**

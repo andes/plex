@@ -3,11 +3,11 @@ import { PlexTabComponent } from './tab.component';
 
 @Component({
     selector: 'plex-tabs',
-    template: ` <section justify>
+    template: ` <section [justify]>
                     <ul role="tablist" #container class="nav nav-tabs" [ngClass]="size" >
-                        <li role="presentation" *ngFor="let tab of tabs" (keydown.arrowright)="nextTab()" (keydown.arrowleft)="prevTab()" (keydown.enter)="selectTab(tab, $event)" (click)="selectTab(tab, $event)" (auxclick)="closeTab(tab, $event)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{'active': tab.active, 'icon': tab.icon && !tab.label}">
-                        <a [tabindex]="tab.active ? '0' : '-1'" role="tab" [attr.aria-selected]="tab.active" [attr.aria-label]="tab.label" [id]="tab.label" class="nav-link" [ngClass]="{active: tab.active}" plexRipples onclick="return false">
-                        <plex-icon *ngIf="tab.icon" [name]="tab.icon" size="sm" [type]="tab.color"></plex-icon>
+                        <li role="presentation" *ngFor="let tab of tabs" (keydown.arrowright)="nextTab()" (keydown.arrowleft)="prevTab()" (keydown.enter)="selectTab(tab)" (click)="selectTab(tab)" (auxclick)="closeTab(tab, $event)" class="nav-item nav-item-{{tab.color}}" [ngClass]="{'active': tab.active, 'icon': tab.icon && !tab.label}">
+                        <a [tabindex]="tab.active ? '0' : '-1'" role="tab" [attr.aria-selected]="tab.active" [attr.aria-label]="tab.label" [id]="tab.label" class="nav-link" [ngClass]="{active: tab.active}" plexRipples matRipple onclick="return false">
+                        <plex-icon *ngIf="tab.icon" [name]="tab.icon" size="sm" [type]="$any(tab.color)"></plex-icon>
                                 <span *ngIf="tab.label">
                                     {{ tab.label  }}
                                 </span>
@@ -74,7 +74,7 @@ export class PlexTabsComponent implements AfterContentInit {
     }
 
     // Accesibilidad
-    private nextTab(event) {
+    public nextTab() {
         this._activeIndex++;
         if (this._activeIndex < this.tabs.length - 1) {
             this._activeIndex = this._activeIndex;
@@ -84,7 +84,7 @@ export class PlexTabsComponent implements AfterContentInit {
         this.doActiveTab(this._activeIndex);
     }
 
-    private prevTab(event) {
+    public prevTab() {
         if (this._activeIndex > 0) {
             this._activeIndex = this._activeIndex - 1;
         }
@@ -97,11 +97,11 @@ export class PlexTabsComponent implements AfterContentInit {
         }
 
         if (event.key === 'arrowright') {
-            this.nextTab(event);
+            this.nextTab();
         }
 
         if (event.key === 'arrowleft') {
-            this.prevTab(event);
+            this.prevTab();
         }
     }
 

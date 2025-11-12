@@ -9,7 +9,7 @@ import { IPlexColumnDisplay, IPlexTableColumns } from './table.interfaces';
     selector: 'plex-table-columns',
     template: `
         <plex-dropdown icon="format-list-checks" type="info" size="sm" class="d-inline-block ml-1" [right]="true">
-            <plex-grid cols="3">
+            <plex-grid [cols]="3">
                 <ng-container *ngFor="let column of columns$ | async">
                     <plex-bool [label]="column.label" [(ngModel)]="estadoColumnas[column.key]" (change)="onColumnChange()" *ngIf="column.opcional">
                     </plex-bool>

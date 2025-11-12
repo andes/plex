@@ -1,0 +1,128 @@
+@use '@angular/material' as mat;
+
+// Core variables and mixins
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// Material theme
+@include mat.core();
+
+// Tema principal
+$primary: mat.define-palette(mat.$blue-palette);
+$accent: mat.define-palette(mat.$blue-palette, A200, A100, A400);
+$warn: mat.define-palette(mat.$red-palette);
+
+$plex-theme: mat.define-light-theme((color: (primary: $primary,
+                accent: $accent,
+                warn: $warn )));
+
+@include mat.all-component-themes($plex-theme);
+
+// Reset and dependencies
+@import "bootstrap/scss/normalize";
+@import "bootstrap/scss/print";
+
+
+// Plex colors & variables
+@import "./variables";
+
+// Mixins
+@import "./mixins/generic";
+@import "./mixins/hover";
+@import "./mixins/buttons";
+@import "./mixins/scrollbar";
+@import "./mixins/position";
+@import "./mixins/item";
+
+// Core CSS
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/code";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+// Components
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/button-group";
+@import "bootstrap/scss/input-group";
+@import "bootstrap/scss/custom-forms";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/pagination";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/jumbotron";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/progress";
+@import "bootstrap/scss/media";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/responsive-embed";
+@import "bootstrap/scss/close";
+// Components w/ JavaScript
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/popover";
+// Utility classes
+@import "bootstrap/scss/utilities";
+// Fonts
+$typoPRO-font-path: "./" !default;
+@import "./fonts/TypoPRO-SourceSansPro";
+
+$mdi-font-path: "../fonts";
+@import "@mdi/font/scss/materialdesignicons";
+
+// Misc
+// @import "node-waves/src/scss/waves";
+@import "sweetalert2/src/sweetalert2";
+
+// Plex core
+@import "./layout";
+@import "./alert";
+@import "./colors";
+@import "./nav";
+@import "./classes";
+@import "./fonts";
+@import "./forms";
+@import "./list-group";
+@import "./tooltip.scss";
+@import "./hint.scss";
+@import "./directives.scss";
+
+// Third party
+@import "./toast";
+@import "./modals";
+
+// Plex Components
+@import "./plex-accordion";
+@import "./plex-badge";
+@import "./plex-bool";
+@import "./plex-box";
+@import "./plex-button";
+@import "./plex-card";
+@import "./plex-datetime";
+@import "./plex-dropdown";
+@import "./plex-icon";
+@import "./plex-loader";
+@import "./plex-radio";
+@import "./plex-ribbon";
+@import "./plex-select";
+@import "./plex-tabs";
+@import "./plex-text";
+@import "./plex-wizard";
+@import "./plex-item";
+@import "./plex-label";
+@import "./plex-title";
+@import "./plex-help";
+@import "./plex-menu";
+@import "./plex-modal";
+@import "./plex-detail";
+@import "./plex-options";
+@import "./plex-visualizador";
+@import "./plex-wrapper";
+@import "./plex-grid";
+@import "./plex-table";
+@import "./plex-slider";
+@import "./plex-group";

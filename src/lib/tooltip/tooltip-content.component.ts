@@ -89,7 +89,7 @@ export class TooltipContentComponent implements AfterViewInit {
     // Private Methods
     // -------------------------------------------------------------------------
 
-    private positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody = false): { top: number, left: number } {
+    private positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody = false): { top: number; left: number } {
         const positionStrParts = positionStr.split('-');
         const pos0 = positionStrParts[0];
         const pos1 = positionStrParts[1] || 'center';
@@ -120,7 +120,7 @@ export class TooltipContentComponent implements AfterViewInit {
             }
         };
 
-        let targetElPos: { top: number, left: number };
+        let targetElPos: { top: number; left: number };
         switch (pos0) {
             case 'right':
                 targetElPos = {
@@ -154,7 +154,7 @@ export class TooltipContentComponent implements AfterViewInit {
         return targetElPos;
     }
 
-    private position(nativeEl: HTMLElement): { width: number, height: number, top: number, left: number } {
+    private position(nativeEl: HTMLElement): { width: number; height: number; top: number; left: number } {
         let offsetParentBCR = { top: 0, left: 0 };
         const elBCR = this.offset(nativeEl);
         const offsetParentEl = this.parentOffsetEl(nativeEl);
@@ -173,7 +173,7 @@ export class TooltipContentComponent implements AfterViewInit {
         };
     }
 
-    private offset(nativeEl: any): { width: number, height: number, top: number, left: number } {
+    private offset(nativeEl: any): { width: number; height: number; top: number; left: number } {
         const boundingClientRect = nativeEl.getBoundingClientRect();
         return {
             width: boundingClientRect.width || nativeEl.offsetWidth,

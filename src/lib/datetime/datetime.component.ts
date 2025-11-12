@@ -1,55 +1,161 @@
-import { Component, OnInit, Input, Output, ElementRef, EventEmitter, AfterViewInit, OnChanges, Self, Optional, OnDestroy } from '@angular/core';
-import { NgControl, UntypedFormControl } from '@angular/forms';
-import * as moment from 'moment';
+import {
+    Component,
+    Input,
+    Output,
+    ElementRef,
+    EventEmitter,
+    AfterViewInit,
+    OnChanges,
+    ChangeDetectionStrategy,
+    forwardRef,
+    Injector,
+    ViewChild
+} from '@angular/core';
+import { NgControl, UntypedFormControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
-
-// Importo las librerías de jQuery
-// @jgabriel: No encontré una forma más elegante de incluir jQuery
-// @andrrr: qué mal
-const jQuery = window['jQuery'] = require('jquery/dist/jquery');
-require('./bootstrap-material-datetimepicker/bootstrap-material-datetimepicker');
+import { MatDatepicker } from '@angular/material/datepicker';
+import { NgxMatTimepickerComponent } from 'ngx-mat-timepicker';
+import * as _moment from 'moment';
+const moment = (_moment as any).default || _moment;
+export type Moment = _moment.Moment;
 
 @Component({
     selector: 'plex-datetime',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => PlexDateTimeComponent),
+            multi: true,
+        },
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [`
+        .form-group.datetime .input-group {
+            align-items: center;
+        }
+    `],
     template: `
-        <div class="form-group datetime" [ngClass]="{'has-danger': (control.dirty || control.touched) && !control.valid }">
+        <div class="form-group datetime" [ngClass]="{'has-danger': (control?.dirty || control?.touched) && !control?.valid }">
             <label *ngIf="label" class="form-control-label">
                 {{ label }}
-                <span *ngIf="control.name && esRequerido" class="requerido"></span>
+                <span *ngIf="control?.name && esRequerido" class="requerido"></span>
             </label>
+
             <div *ngIf="todayHintAction" hint="{{ hintText }}" hintType="warning" [hintIcon]="hintIcon" (click)="callAction(hintAction)"></div>
+
             <div class="input-group d-flex align-items-center">
-                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left" (click)="prev()" [disabled]="disabledPrev" [tooltip]="makeTooltip('anterior')"></plex-button>
+                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-left"
+                            (click)="prev()" [disabled]="disabledPrev" [tooltip]="makeTooltip('anterior')">
+                </plex-button>
 
-                <input type="text" class="form-control form-control-{{size}}" [placeholder]="placeholder" [disabled]="disabled"
-                        [readonly]="readonly" (input)="onChange($event.target.value)" (blur)="onBlur()" (focus)="onFocus()"
-                        (change)="disabledEvent($event)" *ngIf="showInput"/>
+                <!-- Calendario -->
+                <ng-container [ngSwitch]="type">
+
+                    <!-- DATE: solo fecha -->
+                    <ng-container *ngSwitchCase="'date'">
+                        <input data-main matInput [ngClass]="{'hidden': btnOnly}" class="form-control form-control-{{size}}"
+                                [matDatepicker]="datePicker"
+                                [(ngModel)]="_value" [min]="min" [max]="max"
+                                [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+                                (dateChange)="onDateChange($event)">
+                        <mat-datepicker #datePicker [touchUi]="true" type="datetime">
+                            <mat-datepicker-actions>
+                                <plex-button class="btn-ok-fecha" matDatepickerApply type="info" size="sm" label="Aceptar"></plex-button>
+                            </mat-datepicker-actions>
+                        </mat-datepicker>
+                    </ng-container>
+
+                    <!-- DATETIME: fecha y hora -->
+                    <ng-container *ngSwitchCase="'datetime'">
+                        <input data-main matInput [ngClass]="{'hidden': btnOnly}" class="form-control form-control-{{size}}"
+                                [(ngModel)]="dateTimeString" [min]="min" [max]="max"
+                                [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+                                (change)="onInputDateTimeChange($event)">
+
+                        <input data-main matInput class="hidden" [matDatepicker]="datePicker"
+                                [(ngModel)]="_value" [min]="min" [max]="max"
+                                [disabled]="disabled" [readonly]="readonly"
+                                (dateChange)="onDateTimeChange($event, 'date')">
+
+                                <mat-datepicker #datePicker [touchUi]="true">
+                            <mat-datepicker-actions>
+                                <plex-button class="btn-ok-fecha" matDatepickerApply type="info" size="sm" label="Aceptar"></plex-button>
+                            </mat-datepicker-actions>
+                        </mat-datepicker>
+
+                        <input data-main matInput class="hidden"
+                                [ngxMatTimepicker]="dateTimePicker" [format]="24" [disableClick]="true"
+                                [(ngModel)]="timeString" [min]="minTimeString" [max]="maxTimeString"
+                                [disabled]="disabled" [readonly]="readonly">
+
+                                <ngx-mat-timepicker #dateTimePicker [cancelBtnTmpl]="emptyTpl" [confirmBtnTmpl]="okTpl"
+                                (timeSet)="onDateTimeChange($event, 'time')">
+                        </ngx-mat-timepicker>
+                    </ng-container>
+
+                    <!-- TIME: solo hora -->
+                    <ng-container *ngSwitchCase="'time'">
+                        <input data-main matInput [ngClass]="{'hidden': btnOnly}" class="form-control form-control-{{size}}"
+                                [(ngModel)]="timeString" [min]="minTimeString" [max]="maxTimeString"
+                                [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
+                                (change)="onTimeChange($event)">
+
+                        <input data-main matInput class="hidden"
+                                [ngxMatTimepicker]="timePicker" [disableClick]="true" [format]="24"
+                                [(ngModel)]="dateTimeString" [min]="minTimeString" [max]="maxTimeString"
+                                [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly">
+
+                                <ngx-mat-timepicker #timePicker [cancelBtnTmpl]="emptyTpl" [confirmBtnTmpl]="okTpl"
+                                (timeSet)="onTimeChange($event)">
+                        </ngx-mat-timepicker>
+                    </ng-container>
+
+                    <!-- botón Aceptar para reloj-->
+                    <ng-template #okTpl>
+                        <plex-button type="info" size="sm" label="Aceptar"></plex-button>
+                    </ng-template>
+
+                    <!-- boton cancelar (oculto) -->
+                    <ng-template #emptyTpl></ng-template>
+
+                </ng-container>
+
                 <span class="input-group-btn">
-                    <plex-button tabIndex="-1" type="info" [size]="size" [icon]="icon" [disabled]="disabled || readonly"></plex-button>
+                    <plex-button [tabIndex]="-1" type="info" [size]="size" [icon]="icon" [disabled]="disabled || readonly" (click)="abrir()"></plex-button>
                 </span>
-                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right" (click)="next()" [disabled]="disabledNext" [tooltip]="makeTooltip('siguiente')"></plex-button>
-            </div>
-            <plex-validation-messages *ngIf="hasDanger()" [control]="control"></plex-validation-messages>
-        </div>
-        `,
-})
-export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
-    private _min: Date;
-    private _max: Date;
-    private format: string;
-    private value: any;
-    private $button: any;
-    private $input: any;
-    private changeTimeout = null;
+                <plex-button *ngIf="showNav" type="info" [size]="size" icon="menu-right"
+                            (click)="next()" [disabled]="disabledNext" [tooltip]="makeTooltip('siguiente')">
+                </plex-button>
+            </div>
+
+            <plex-validation-messages *ngIf="hasDanger()" [control]="control?.control"></plex-validation-messages>
+        </div>
+    `,
+})
+
+export class PlexDateTimeComponent implements AfterViewInit, OnChanges, ControlValueAccessor {
+
+    @ViewChild(MatDatepicker) datePicker?: MatDatepicker<Date>;
+    @ViewChild(NgxMatTimepickerComponent) dateTimePicker?: NgxMatTimepickerComponent;
+    @ViewChild(NgxMatTimepickerComponent) timePicker?: NgxMatTimepickerComponent;
+
+    private _min: Date | null = null;
+    private _max: Date | null = null;
+    private _format = 'DD/MM/YYYY HH:mm';
+    private changeTimeout: any = null;
+    public _value: Date | null = null;
+    public dateTimeString = '';
+    public timeString = '';
+    public minTimeString = '00:00';
+    public maxTimeString = '23:59';
 
     public get esRequerido(): boolean {
         return hasRequiredValidator(this.control as any);
     }
 
-    // Input properties
     @Input() autoFocus: boolean;
-    @Input() type: string;
+    @Input() type: 'date' | 'time' | 'datetime' = 'datetime';
     @Input() label: string;
     @Input() placeholder: string;
     @Input() hintPrefix = 'Seleccionar';
@@ -66,56 +172,46 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
     @Input() size: 'sm' | 'md' | 'lg' = 'md';
     @Input() btnOnly = false;
 
-    public get showInput() {
-        return !this.btnOnly;
-    }
+    public get showInput() { return !this.btnOnly; }
 
     @Input()
-    get min(): Date | moment.Moment {
+    get min(): Date | Moment {
         return this._min;
     }
-    set min(value: Date | moment.Moment) {
-        const temp: Date = (value) ? moment(value).toDate() : null;
+    set min(value: Date | Moment) {
+        const temp: Date = value ? moment(value).toDate() : null;
         if (this.fechaCambio(this._min, temp)) {
             this._min = temp;
-            if (this.$button) {
-                this.$button.bootstrapMaterialDatePicker('setMinDate', this._min);
-            }
+            this.minTimeString = this.toHHmm(temp);
         }
     }
+
     @Input()
-    get max(): Date | moment.Moment {
+    get max(): Date | Moment {
         return this._max;
     }
-    set max(value: Date | moment.Moment) {
-        const temp: Date = (value) ? moment(value).toDate() : null;
+    set max(value: Date | Moment) {
+        const temp: Date = value ? moment(value).toDate() : null;
         if (this.fechaCambio(this._max, temp)) {
             this._max = temp;
-            if (this.$button) {
-                this.$button.bootstrapMaterialDatePicker('setMaxDate', this._max);
-            }
+            this.maxTimeString = this.toHHmm(temp);
         }
     }
 
-
-    get showNav(): Boolean {
-        return this.skipBy && this.value;
+    get showNav(): boolean {
+        return !!(this.skipBy && this._value);
     }
 
     get icon() {
         return this.type === 'date' ? 'calendar' :
-            (this.type === 'time' ? 'clock' :
-                (this.type === 'datetime' ? 'calendar-clock' : 'date'));
+            this.type === 'time' ? 'clock' :
+                this.type === 'datetime' ? 'calendar-clock' : 'date';
     }
 
-    // Eventos
-    @Output() change = new EventEmitter();
+    @Output() change = new EventEmitter<{ value: Date | null }>();
     @Output() blur = new EventEmitter();
     @Output() focus = new EventEmitter();
     @Output() typing = new EventEmitter();
-
-    // Funciones públicas
-    public onChange = (_: any) => { };
 
     // Validación
     validateFn = (c: UntypedFormControl) => { };
@@ -123,43 +219,56 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
         return this.validateFn(c);
     }
 
-    ngOnChanges(changes) {
-        // Cuando cambias las cotas, devuelve una nueva función de validación
-        if (changes.min || changes.max) {
-            this.validateFn = dateValidator(this.type, this.min, this.max);
-        }
-    }
-
-    ngOnDestroy() {
-        this.$button.bootstrapMaterialDatePicker('destroy');
-    }
+    // CVA
+    private onTouched: () => void = () => { };
+    private propagateChange: (val: Date | null) => void = () => { };
+    control?: NgControl;
 
     constructor(
-        private element: ElementRef,
-        @Self() @Optional() public control: NgControl
-    ) {
-        if (this.control) {
-            this.control.valueAccessor = this;
-        }
+        private element: ElementRef<HTMLElement>,
+        private injector: Injector) {
         this.placeholder = '';
         this.type = 'datetime';
     }
 
-    customText() {
-        return `${this.hintPrefix} ${this.hintSuffix}`;
+    ngAfterViewInit() {
+        this.control = this.injector.get(NgControl, null);
+        this._format = this.dateOrTime();
+        if (this.autoFocus) {
+            const input: HTMLInputElement | null = this.element.nativeElement?.querySelector('input[data-main]');
+            input?.focus();
+        }
     }
 
-    get hintText() {
+    ngOnChanges(changes: any) {
+        if (changes.min || changes.max || changes.type) {
+            this._format = this.dateOrTime();
+            this.validateFn = dateValidator(this.type, this.min, this.max);
+        }
+    }
 
+    writeValue(value: any) {
+        this._value = value ? moment(value).toDate() : null;
+        this.timeString = this._value ? moment(this._value).format('HH:mm') : '';
+        this.dateTimeString = this._value ? moment(this._value).format('DD/MM/YYYY HH:mm') : '';
+    }
+
+    customText() { return `${this.hintPrefix} ${this.hintSuffix}`; }
+
+    get hintText() {
         if (this.hintAction === 'custom') {
             return this.customText();
-        } else if (this.hintAction === 'today') {
+        }
+        if (this.hintAction === 'today') {
             return this.todayText();
-        } else if (this.hintAction === 'nextDay') {
+        }
+        if (this.hintAction === 'nextDay') {
             return this.nextDayText();
-        } else if (this.hintAction === 'nextHour') {
+        }
+        if (this.hintAction === 'nextHour') {
             return this.nextHourText();
         }
+        return null;
     }
 
     private nextHourText() {
@@ -174,165 +283,179 @@ export class PlexDateTimeComponent implements OnInit, AfterViewInit, OnChanges, 
         return `${this.hintPrefix} ${moment().format('DD/MM/YYYY HH:mm [hs]')} ${this.hintSuffix}`;
     }
 
-    getFormattedDate(action) {
-        let formattedDate;
+    private getFormattedDate(action: 'today' | 'nextDay' | 'nextHour') {
         if (action === 'today') {
-            formattedDate = moment().format(this.format);
-        } else if (action === 'nextDay') {
-            formattedDate = moment().add(1, 'day').format(this.format);
-        } else if (action === 'nextHour') {
-            formattedDate = moment().add(1, 'hour').startOf('hour').format(this.format);
+            return moment().format(this._format);
         }
-        return formattedDate;
+        if (action === 'nextDay') {
+            return moment().add(1, 'day').format(this._format);
+        }
+        if (action === 'nextHour') {
+            return moment().add(1, 'hour').startOf('hour').format(this._format);
+        }
+        return null;
     }
 
-    callAction(action) {
+    abrir(): void {
+        if (this.disabled || this.readonly) { return; }
+
+        if (this.type === 'date' || this.type === 'datetime') {
+            this.datePicker?.open();
+        } else {
+            this.timePicker?.open(); // type === 'time'
+        }
+    }
+
+    callAction(action: 'today' | 'nextDay' | 'nextHour' | 'custom') {
         this.hintAction = action;
-        const temp = this.getFormattedDate(action);
-
-        this.setElements(temp);
-        this.value = temp;
-        this.onChange(this.value);
+        const temp = action === 'custom' ? this.customText() : this.getFormattedDate(action);
+        const parsed = temp ? moment(temp, this._format) : null;
+        this._value = parsed?.isValid() ? parsed.toDate() : null;
+        this.emitChange();
     }
 
-    public disabledEvent(event: Event) {
-        event.stopImmediatePropagation();
-        return false;
-    }
+    registerOnChange(fn: (val: Date | null) => void) { this.propagateChange = fn; }
+    registerOnTouched(fn: () => void) { this.onTouched = fn; }
+    setDisabledState(isDisabled: boolean) { this.disabled = isDisabled; }
 
-    // Inicialización
-    ngOnInit() { }
-    ngAfterViewInit() {
-        if (this.control && this.control.control) {
-            this.control.control.setValidators(this.validate.bind(this) as any);
+    // type === 'date'
+    onDateChange(ev: any) {
+        const input = ev.targetElement?.value || ev.target?.value;
+        if (!input) {
+            return;
         }
-        this.format = this.dateOrTime();
-        this.$input = jQuery('INPUT', this.element.nativeElement.children[0]);
-        this.$button = jQuery('BUTTON', this.element.nativeElement.children[0]);
-        this.$button.bootstrapMaterialDatePicker({
-            lang: 'es',
-            format: this.format,
-            currentDate: this.value,
-            okText: 'ACEPTAR',
-            cancelText: 'CANCELAR',
-            clearButton: false,
-            nowButton: false,
-            switchOnClick: true,
-            date: this.type === 'date' || this.type === 'datetime',
-            time: this.type === 'time' || this.type === 'datetime',
-            minDate: this.min,
-            maxDate: this.max,
-            triggerEvent: 'focus',
-            year: true
-        });
-
-        this.$button.on('change', (event, date) => {
-            this.onChange(date.toDate());
-            this.writeValue(this.value);
-        });
+        const m = moment(input, this._format);
+        this._value = m.isValid() ? m.toDate() : null;
+        this.emitChange(true);
     }
 
-    private dateOrTime(): string {
-        return this.type === 'date' ? 'DD/MM/YYYY' : (this.type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm');
+    // type === 'datetime' (input)
+    onInputDateTimeChange(ev: any) {
+        const input = ev.target?.value;
+        if (!input || !input.length) {
+            this._value = null;
+            this.dateTimeString = '';
+            this.emitChange(true);
+            return;
+        }
+        const m = moment(this.dateTimeString, this._format);
+        this._value = m.isValid() ? m.toDate() : null;
+        this.dateTimeString = this._value ? moment(this._value).format('DD/MM/YYYY HH:mm') : '';
+        this.emitChange(true);
     }
 
-    // Actualización Modelo -> Vista
-    writeValue(value: any) {
-        this.value = value;
-        const temp = this.value ? moment(this.value).format(this.format) : null;
-        this.setElements(temp);
+    // type === 'datetime' (calendario)
+    onDateTimeChange(ev: any, pickerType: 'date' | 'time') {
+        const input = ev?.targetElement?.value || ev;
+
+        if (pickerType === 'date') {
+            this.dateTimeString = this._value ? moment(this._value).format('DD/MM/YYYY HH:mm') : '';
+            this.timePicker?.open();
+        } else { // pickerType === 'time'
+            const [hh, mm] = input.split(':').map(Number);
+            const m = moment(this._value).set({ hour: hh, minute: mm, second: 0, millisecond: 0 });
+            const mFormated = moment(m, this._format);
+            this._value = mFormated.isValid() ? mFormated.toDate() : null;
+            this.dateTimeString = this._value ? moment(this._value).format('DD/MM/YYYY HH:mm') : '';
+        }
+        this.emitChange(true);
     }
 
-    hasDanger() {
-        return (this.control as any).name && (this.control.dirty || this.control.touched) && !this.control.valid;
-    }
-
-    // Actualización Vista -> Modelo
-    registerOnTouched() {
-    }
-
-    registerOnChange(fn: any) {
-        this.onChange = (value) => {
-            if (typeof value === 'string') {
-                const m = moment(value, this.format);
-                if (m.isValid()) {
-                    value = m.toDate();
-                } else {
-                    value = null;
-                }
-            }
-
-            this.value = value;
-            fn(value);
-            if (this.changeTimeout) {
-                clearTimeout(this.changeTimeout);
-            }
-            this.changeTimeout = setTimeout(() => {
-                this.change.emit({
-                    value
-                });
-            }, this.debounce);
-            this.typing.emit();
-        };
+    // type === 'time'
+    onTimeChange(ev: any) {
+        const input = ev.target?.value || ev;
+        if (!input) {
+            this._value = null;
+            this.timeString = '';
+            this.emitChange(true);
+            return;
+        }
+        const m = moment(input, this._format);
+        this._value = m.isValid() ? m.toDate() : null;
+        this.timeString = this._value ? this.toHHmm(this._value) : '';
+        this.emitChange(true);
     }
 
     onBlur() {
-        this.writeValue(this.value);
         this.blur.emit();
+        this.onTouched();
     }
 
-    onFocus() {
-        this.focus.emit();
-    }
+    onFocus() { this.focus.emit(); }
 
-    private fechaCambio(fecha1: Date, fecha2: Date): boolean {
-        if (fecha1 && !fecha2) {
-            return true;
-        } else {
-            if ((!fecha1 && fecha2)) {
-                return true;
-            } else {
-                return (fecha1 && fecha2 && fecha1.getTime() !== fecha2.getTime());
-            }
-        }
-    }
-
+    // navegación anterior/siguiente
     prev() {
+        if (!this._value || !this.skipBy) {
+            return;
+        }
         this.disabledNext = false;
-        const temp = this.value ? moment(this.value, this.dateOrTime()).subtract(1, this.skipBy).format(this.format) : null;
-        this.setElements(temp);
-
-        this.disabledPrev = (moment(this.value, this.dateOrTime()).subtract(1, this.skipBy) <= this.min) ? true : false;
-        this.value = temp;
-        this.onChange(this.value);
+        const m = moment(this._value).subtract(1, this.skipBy);
+        this._value = m.toDate();
+        this.disabledPrev = !!(this._min && m.isSameOrBefore(moment(this._min)));
+        this.emitChange();
     }
 
     next() {
+        if (!this._value || !this.skipBy) {
+            return;
+        }
         this.disabledPrev = false;
-        const temp = this.value ? moment(this.value, this.dateOrTime()).add(1, this.skipBy).format(this.format) : null;
-
-        this.setElements(temp);
-
-        this.disabledNext = (moment(this.value, this.dateOrTime()).add(1, this.skipBy) >= this.max) ? true : false;
-
-        this.value = temp;
-        this.onChange(this.value);
+        const m = moment(this._value).add(1, this.skipBy);
+        this._value = m.toDate();
+        this.disabledNext = !!(this._max && m.isSameOrAfter(moment(this._max)));
+        this.emitChange();
     }
 
-    private setElements(temp: string) {
-        if (this.$button) {
-            this.$button.val(temp);
+    // --- varios ---
+    hasDanger() {
+        return (this.control as any)?.name && (this.control.dirty || this.control.touched) && !this.control.valid;
+    }
+
+    makeTooltip(dir: 'anterior' | 'siguiente') {
+        return this.skipBy === 'hour' ? `hora ${dir}` :
+            this.skipBy === 'day' ? `día ${dir}` :
+                this.skipBy === 'month' ? `mes ${dir}` : `año ${dir}`;
+    }
+
+    get todayHintAction() { return this.hintAction; }
+
+    private emitChange(isTyping = false) {
+        this.propagateChange(this._value);
+        if (this.changeTimeout) {
+            clearTimeout(this.changeTimeout);
         }
-        if (this.$input) {
-            this.$input.val(temp);
+        let newValue;
+        switch (this.type) {
+            case 'date': newValue = this._value; break;
+            case 'time': newValue = this.timeString; break;
+            case 'datetime': newValue = this.dateTimeString; break;
+        }
+        this.changeTimeout = setTimeout(() => this.change.emit({ value: this._value }), this.debounce);
+        if (!isTyping) {
+            this.typing.emit();
         }
     }
 
-    makeTooltip(dir) {
-        return this.skipBy === 'hour' ? `hora ${dir}` : this.skipBy === 'day' ? `día ${dir}` : this.skipBy === 'month' ? `mes ${dir}` : `año ${dir}`;
+    private fechaCambio(a?: Date | null, b?: Date | null): boolean {
+        if (a && !b) {
+            return true;
+        }
+        if (!a && b) {
+            return true;
+        }
+        return !!(a && b && a.getTime() !== b.getTime());
     }
 
-    get todayHintAction() {
-        return this.hintAction;
+    private dateOrTime(): string {
+        return this.type === 'date'
+            ? 'DD/MM/YYYY'
+            : this.type === 'time'
+                ? 'HH:mm'
+                : 'DD/MM/YYYY HH:mm';
+    }
+
+    // otros
+    public toHHmm(date: Date): string {
+        return date ? moment(date).format('HH:mm') : '';
     }
 }

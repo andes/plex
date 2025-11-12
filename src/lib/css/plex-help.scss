@@ -1,42 +1,72 @@
-.mat-menu-panel {
-  background-color: #f1f1f1;
-  max-width: unset !important;
-
-  ol,
-  ul {
-    li {
-      background-color: transparent;
-
-      &:first-child {
-        border: none;
-      }
-    }
-  }
-
-  .inverted {
-    background-color: #00415d;
-    color: #fff;
-  }
+.cdk-overlay-container {
+    z-index: 1200;
 }
 
-.mat-menu-content {
-  .help-content {
-    max-width: 800px;
-    min-width: 300px;
-  }
+.mat-mdc-menu-panel.mat-mdc-menu-panel {
+    min-width: none !important;
+    max-width: none !important;
+}
+
+.mat-mdc-menu-panel.plex-help {
+    --mat-menu-container-color: #f1f1f1;
+    background-color: #f1f1f1;
+    margin-top: 0.5rem;
+    border-top: 1px solid #d3d3d3;
+    border-left: 1px solid #d3d3d3;
+    border-radius: .25rem;
+
+    .help-content {
+        min-width: 380px;
+    }
+
+    .mat-mdc-menu-content {
+        padding: 0;
+    }
+
+    /* Listas dentro del help */
+    ol,
+    ul {
+        li {
+            background-color: transparent;
+
+            &:first-child {
+                border: none;
+            }
+        }
+    }
+}
+
+.mat-mdc-menu-panel.plex-help.inverted {
+    --mat-menu-container-color: #00415d;
+    background-color: #00415d;
+    border-color: #edf8fd1a;
+    color: #fff;
+
+    a,
+    p,
+    span,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: inherit;
+    }
 }
 
 // Estilo para el botón cuando el menú de ayuda está abierto
 plex-help {
-  .help-button-active {
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-    box-shadow: none;
+    .help-button-active {
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+        box-shadow: none;
 
-    .btn:focus,
-    .btn:hover {
-      text-decoration: none;
-      box-shadow: none !important;
+        .btn:focus,
+        .btn:hover {
+            text-decoration: none;
+            box-shadow: none !important;
+        }
     }
-  }
 }
