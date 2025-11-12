@@ -1,9 +1,5 @@
 name: build and test
-
-on:
-  push:
-    branches: [ master, beta ]   
-
+on: [push]
 jobs:
   # 1) Lint + build de PLEX
   lib-ci:
@@ -74,11 +70,11 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
           TZ: "America/Argentina/Salta"
 
-  # 4) (OPCIONAL) publicación automática con semantic-release (para activar reemplazar false por github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta')
+  # 4) (OPCIONAL) publicación automática con semantic-release. 
   release:
     needs: lib-ci
     runs-on: ubuntu-latest
-    if: false
+    if: false   # github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta'
     steps:
       - uses: actions/checkout@v3
         with:
@@ -96,5 +92,5 @@ jobs:
       - name: semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          #NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
