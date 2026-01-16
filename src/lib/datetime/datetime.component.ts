@@ -9,7 +9,8 @@ import {
     ChangeDetectionStrategy,
     forwardRef,
     Injector,
-    ViewChild
+    ViewChild,
+    OnDestroy
 } from '@angular/core';
 import { NgControl, UntypedFormControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
@@ -58,9 +59,11 @@ export type Moment = _moment.Moment;
                                 [(ngModel)]="_value" [min]="min" [max]="max"
                                 [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly"
                                 (dateChange)="onDateChange($event)">
-                        <mat-datepicker #datePicker [touchUi]="true" type="datetime">
+                        <mat-datepicker #datePicker [touchUi]="true" type="datetime" >
                             <mat-datepicker-actions>
-                                <plex-button class="btn-ok-fecha" matDatepickerApply type="info" size="sm" label="Aceptar"></plex-button>
+                                <plex-button class="btn-ok-fecha" matDatepickerApply type="info" size="sm" label="Aceptar"
+                                            [disabled]="!hasDaySelected">
+                                </plex-button>
                             </mat-datepicker-actions>
                         </mat-datepicker>
                     </ng-container>
@@ -134,11 +137,11 @@ export type Moment = _moment.Moment;
     `,
 })
 
-export class PlexDateTimeComponent implements AfterViewInit, OnChanges, ControlValueAccessor {
+export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestroy, ControlValueAccessor {
 
-    @ViewChild(MatDatepicker) datePicker?: MatDatepicker<Date>;
-    @ViewChild(NgxMatTimepickerComponent) dateTimePicker?: NgxMatTimepickerComponent;
-    @ViewChild(NgxMatTimepickerComponent) timePicker?: NgxMatTimepickerComponent;
+    @ViewChild('datePicker') datePicker?: MatDatepicker<Date>;
+    @ViewChild('dateTimePicker') dateTimePicker?: NgxMatTimepickerComponent;
+    @ViewChild('timePicker') timePicker?: NgxMatTimepickerComponent;
 
     private _min: Date | null = null;
     private _max: Date | null = null;
@@ -223,6 +226,7 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, ControlV
     private onTouched: () => void = () => { };
     private propagateChange: (val: Date | null) => void = () => { };
     control?: NgControl;
+    hasDaySelected = false;
 
     constructor(
         private element: ElementRef<HTMLElement>,
@@ -238,6 +242,41 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, ControlV
             const input: HTMLInputElement | null = this.element.nativeElement?.querySelector('input[data-main]');
             input?.focus();
         }
+
+        this.datePicker?.openedStream.subscribe(() => {
+            // este bloque se usa para habilitar/deshabilitar el botón Aceptar del datepicker
+            this.hasDaySelected = false;
+
+            setTimeout(() => {
+                const dpAny = this.datePicker as any;
+                const overlayEl: HTMLElement | null = dpAny?._overlayRef?.overlayElement ?? null;
+                if (!overlayEl) { return; }
+
+                const handler = (ev: MouseEvent) => {
+                    const t = ev.target as HTMLElement | null;
+                    if (!t) { return; }
+
+                    // Si el click ocurrió en una celda de día del calendario => ya hay selección (o intento de selección)
+                    if (t.closest('.mat-calendar-content .mat-calendar-body-cell')) {
+                        this.hasDaySelected = true;
+                    }
+                };
+
+                overlayEl.addEventListener('click', handler, true);
+                this.removeClickListener = () => overlayEl.removeEventListener('click', handler, true);
+            }, 0);
+        });
+
+        this.datePicker?.closedStream.subscribe(() => this.cleanup());
+    }
+
+    ngOnDestroy() {
+        this.cleanup();
+    }
+
+    private cleanup() {
+        this.removeClickListener?.();
+        this.removeClickListener = undefined;
     }
 
     ngOnChanges(changes: any) {
@@ -246,6 +285,9 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, ControlV
             this.validateFn = dateValidator(this.type, this.min, this.max);
         }
     }
+
+    private removeClickListener?: () => void;
+
 
     writeValue(value: any) {
         this._value = value ? moment(value).toDate() : null;
@@ -318,12 +360,10 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, ControlV
     registerOnTouched(fn: () => void) { this.onTouched = fn; }
     setDisabledState(isDisabled: boolean) { this.disabled = isDisabled; }
 
+
     // type === 'date'
     onDateChange(ev: any) {
         const input = ev.targetElement?.value || ev.target?.value;
-        if (!input) {
-            return;
-        }
         const m = moment(input, this._format);
         this._value = m.isValid() ? m.toDate() : null;
         this.emitChange(true);

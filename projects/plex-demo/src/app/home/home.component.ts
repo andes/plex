@@ -7,9 +7,11 @@ import { Plex } from '@andes/plex';
 })
 export class HomeDemoComponent implements OnInit {
     public field = '';
-    public tooltip = 'Este es un tooltip<br>multilinea que ocupa mucho espacio';
+    public tooltip = 'Este es un tooltip de una sola linea pero con gran tantidad de texto';
+    hint = 'Este es un hint ubicado en el sidebar. Debería poder contener varias líneas de texto.';
     public data = [];
     documento = '45979360';
+    fecha;
 
     public modelSelector;
 

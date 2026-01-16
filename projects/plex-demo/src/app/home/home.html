@@ -224,16 +224,21 @@
 
         <form #form="ngForm">
             <p>El siguiente ejemplo muestra el uso de la propiedad <strong>validateForm</strong></p>
+            <plex-badge size="sm" type="info" tooltip="{{tooltip}}" tooltipPosition="right">
+                <plex-icon name="message"></plex-icon>
+            </plex-badge>
             <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false"
-                       required>
+                       required [hint]="hint">
             </plex-text>
             <plex-button label="Guardar formulario" validateForm="true" (click)="guardar($event)">
             </plex-button>
+            <plex-datetime type="date" label="Seleccione fecha" name="componenteFecha" [(ngModel)]="fecha"
+                           placeholder="dd/mm/aaaa" size="sm" [required]="true">
+            </plex-datetime>
         </form>
-        <div class="grow">
-            <plex-text [(ngModel)]="field" prefix="barcode" ariaLabel="Ingrese un código"></plex-text>
-            <plex-button type="success">HOLA</plex-button>
-
+        <div class="grow mt-2">
+            <plex-text label="Búsqueda por texto o scanner" [(ngModel)]="field" prefix="barcode"
+                       ariaLabel="Ingrese un código"></plex-text>
         </div>
     </plex-layout-sidebar>
     <plex-layout-footer>
