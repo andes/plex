@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { appRoutingProviders, routing } from './app.routes';
@@ -162,7 +163,7 @@ import { DemoTitleComponent } from './title/title.component';
         SimpleNotificationsModule,
         PushNotificationsModule,
         routing,
-        // PlexIconsModule
+        MatNativeDateModule
     ],
     providers: [
         appRoutingProviders,

@@ -1,9 +1,9 @@
-$tooltip-padding-y: 0.35rem;
-$tooltip-padding-x: 0.55rem;
+$tooltip-padding-y: 0.25rem;
+$tooltip-padding-x: 0.25rem;
 $border-radius: 4px;
-// $tooltip-bg: #616161;
+$tooltip-bg: #505050;
 $tooltip-opacity: 0.85;
-$tooltip-arrow-color: #616161;
+$tooltip-arrow-color: #505050;
 
 .tooltip {
     display: flex;
@@ -14,8 +14,8 @@ $tooltip-arrow-color: #616161;
 
     // Wrapper for the tooltip content
     .tooltip-inner {
-        font-size: 11px;
-        max-width: $tooltip-max-width;
+        font-size: 12px;
+        max-width: none !important;
         padding: $tooltip-padding-y $tooltip-padding-x;
         color: $tooltip-color;
         text-align: center;
