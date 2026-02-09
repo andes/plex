@@ -270,7 +270,6 @@ import { SimpleNotificationsModule } from './toast/simple-notifications.module';
     providers: [
         TitleCasePipe,
         HelpService,
-        Plex,
         { provide: MAT_DATE_LOCALE, useValue: 'es-AR' },
     ]
 })

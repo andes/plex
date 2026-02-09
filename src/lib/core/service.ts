@@ -1,6 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { TitleCasePipe } from '@angular/common';
-import { ComponentFactoryResolver, Injectable, ViewContainerRef } from '@angular/core';
+import { ComponentRef, Injectable, Type, ViewContainerRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import * as _introJs from 'intro.js';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -18,6 +18,9 @@ export class Plex {
     public appStatus: Subject<any> = new Subject();
     public userInfo: any;
     public navbarVisible = true;
+    private navbarHost?: ViewContainerRef;
+    private navbarCmpRef?: ComponentRef<any>;
+    private pending?: { component: Type<any>; inputs?: any };
 
     /**
      * Cuenta los POST, PATCH, PUT, DELETE
@@ -31,10 +34,10 @@ export class Plex {
     constructor(
         private titleService: Title,
         private noficationService: NotificationsService,
-        private componentFactoryResolver: ComponentFactoryResolver,
         private breakpointObserver: BreakpointObserver,
         private titlecasePipe: TitleCasePipe
-    ) { }
+    ) {
+    }
 
     collapse() {
         this.menu = this.menu.map((item) => ({ ...item, collapsed: true }));
@@ -296,9 +299,7 @@ export class Plex {
                     imageHeight: 250,
                     confirmButtonText: 'Siguiente',
                     cancelButtonText: 'Cancelar',
-                    showCancelButton: true,
-                    // animation: false,
-                    // customClass: 'animated fadeInLeft'
+                    showCancelButton: true
                 });
             }
 
@@ -344,7 +345,6 @@ export class Plex {
             const steps: introJs.Step[] = [];
             for (const i in config.steps) {
                 steps.push({
-                    // title: config.steps[i].title,
                     intro: (config.steps[i].title ? `<h3>${config.steps[i].title}</h3>` : '') + config.steps[i].content,
                     element: document.querySelector(`[plex-wizard-ref="${i}"]`),
                     position: 'right'
@@ -383,21 +383,39 @@ export class Plex {
         this.viewContainerRef = viewContainerRef;
     }
 
+    setNavbarHost(vcr: ViewContainerRef) {
+        this.navbarHost = vcr;
+
+        if (this.pending) {
+            const p = this.pending;
+            this.pending = undefined;
+            this.setNavbarItem(p.component, p.inputs);
+        }
+    }
+
     /**
      * Instancia una componente y la injecta en la parte dinamica del plex-app
      * @param componentRef
      * @param inputs
      */
-    setNavbarItem(componentRef, inputs) {
-        // el setTimeout resuelve el error ExpressionChangedAfterItHasBeenCheckedError.
-        // La componente dinamica se estaba creando antes de que finalize la componente padre, lo que generaba ese error.
-        // Por eso encolamos la creación de la componente al proximo tick del navegador.
-        setTimeout(() => {
-            this.viewContainerRef?.clear();
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentRef);
-            const component = this.viewContainerRef?.createComponent(componentFactory);
-            Object.assign(component?.instance ?? {}, inputs);
-        }, 0);
+    setNavbarItem<T>(component: Type<T>, inputs?: Partial<T>) {
+
+        if (!this.navbarHost) {
+            this.pending = { component, inputs };
+            return; // evita reintentos infinitos
+        }
+
+        this.navbarHost.clear();
+        const cmpRef = this.navbarHost.createComponent(component);
+        if (inputs) { Object.assign(cmpRef.instance, inputs); }
+        cmpRef.changeDetectorRef.detectChanges();
+        this.navbarCmpRef = cmpRef;
+    }
+
+    clearNavbarItem() {
+        this.navbarCmpRef?.destroy();
+        this.navbarCmpRef = undefined;
+        this.navbarHost?.clear();
     }
 
     /**

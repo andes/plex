@@ -32,10 +32,10 @@ export class NavItemComponent implements AfterViewInit {
         this.cd.detectChanges();
     }
 
-    @HostListener('click', ['event'])
-    click() {
+    @HostListener('click', ['$event'])
+    click($event: Event) {
         if (!this.opened) {
-            event.stopImmediatePropagation();
+            $event.stopImmediatePropagation();
             this.plexHelp.toggle();
             this.opened = true;
         }

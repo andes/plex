@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { PlexVisualizadorService } from '../core/plex-visualizador.service';
 import { Plex } from './../core/service';
 
@@ -11,7 +11,7 @@ import { Plex } from './../core/service';
                             <ng-content select="[navIcon]"></ng-content>
 
                             <div class="menu-item">
-                                <ng-template #menuItem></ng-template>
+                                <ng-template #navbarItemHost></ng-template>
                             </div>
                             <div class="title">
                                 <ng-container *ngFor="let item of plex.title; let last = last">
@@ -84,7 +84,8 @@ import { Plex } from './../core/service';
                 </div>`,
 })
 
-export class PlexAppComponent implements OnInit {
+export class PlexAppComponent implements OnInit, AfterViewInit {
+    @ViewChild('navbarItemHost', { read: ViewContainerRef }) navbarItemVcr!: ViewContainerRef;
     @Input() type = 'inverse';
 
     public loginOpen = false;
@@ -133,5 +134,10 @@ export class PlexAppComponent implements OnInit {
         for (let i = 0; i < this.chart.maxPoints; i++) {
             this.chart.dataset[0].data.push(1);
         }
+    }
+
+    ngAfterViewInit() {
+        // se pasamos al servicio de plex el host donde insertar componentes dinámicos
+        this.plex.setNavbarHost(this.navbarItemVcr);
     }
 }
