@@ -1,7 +1,7 @@
 @use 'sass:color';
 
 .plex-box,
-plex-box > DIV {
+plex-box>DIV {
     box-sizing: border-box;
     height: 100%;
     background: white;
@@ -10,12 +10,12 @@ plex-box > DIV {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     padding: calc($grid-gutter-width-base / 3);
 
-    & > header {
+    &>header {
         margin-bottom: 15px;
         border-bottom: solid #aaa 1px;
     }
 
-    & > .plex-box-content {
+    &>.plex-box-content {
         clear: both;
         overflow-x: hidden; // expandir a todo el alto del contenedor
         flex: 1;
@@ -29,6 +29,7 @@ plex-box > DIV {
         // Ver src/lib/layout/{main,sidebar}.component.ts
         &.scrollbar {
             padding-right: 10px;
+
             plex-help .card {
                 right: 30px;
             }
@@ -40,9 +41,10 @@ plex-box > DIV {
 
 // Firefox hacks
 @-moz-document url-prefix() {
+
     // https://codepen.io/sulfurious/pen/eWPBjY
     .plex-box,
-    plex-box > DIV {
+    plex-box>DIV {
         position: absolute;
         width: calc(100% - 30px);
     }
@@ -50,7 +52,7 @@ plex-box > DIV {
 
 .plex-box-invert {
     background: $dark-blue;
-    color: white;
+    color: white !important;
     --heading-background-color: #{$dark-blue};
 
     ::-webkit-scrollbar-thumb {
@@ -75,10 +77,17 @@ plex-box > DIV {
 
     plex-modal {
         color: initial !important;
+
         plex-list {
             section.item.selectable:hover {
                 color: #292b2c;
             }
+        }
+    }
+
+    mat-slide-toggle {
+        label {
+            color: #fff !important;
         }
     }
 
@@ -94,7 +103,7 @@ plex-box > DIV {
             }
         }
 
-        .striped > :nth-child(odd) > section.item {
+        .striped> :nth-child(odd)>section.item {
             background-color: transparentize($color: $blue, $amount: 0.85) !important;
         }
     }

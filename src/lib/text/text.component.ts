@@ -125,7 +125,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         this.focusout.emit();
     }
 
-    public onChange = (_: Event) => { };
+    public onChange = (eventOrValue: Event | string | null) => { };
 
     public disabledEvent(event: Event) {
         event.stopImmediatePropagation();
@@ -135,12 +135,15 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     public validateFn = (c: UntypedFormControl) => { };
 
     public validate(c: UntypedFormControl) {
-        if (c.value === null || c.value === undefined || c.value.toString().trim() === '') {
+        const value = this.html
+            ? this.normalizeValue(c.value)
+            : c.value;
+
+        if (value === null || value === undefined || value.toString().trim() === '') {
             return null;
         }
 
-        const isValid = this.customValidation(c.value);
-
+        const isValid = this.customValidation(value);
         return isValid ? null : { customValidation: true };
     }
 
@@ -155,12 +158,6 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         }
         this.placeholder = '';
         this.password = false;
-    }
-
-    registerOnTouched(fn: any): void {
-    }
-
-    setDisabledState?(isDisabled: boolean): void {
     }
 
     ngOnInit() {
@@ -208,49 +205,105 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         }
     }
 
+    registerOnTouched(fn: any): void {
+    }
+
+    setDisabledState?(isDisabled: boolean): void {
+    }
+
+
+    private normalizeValue(value: string | null | undefined): string {
+        if (!value) {
+            return '';
+        }
+
+        if (!this.html) {
+            return value;
+        }
+
+        const normalized = value
+            .replace(/&nbsp;/gi, ' ')
+            .replace(/<br\s*\/?>/gi, '')
+            .replace(/<\/?(div|p|span)[^>]*>/gi, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+
+        return normalized === '' ? '' : value;
+    }
+
+    private isHtmlVisuallyEmpty(value: string | null | undefined): boolean {
+        if (!value) {
+            return true;
+        }
+
+        const text = value
+            .replace(/&nbsp;/gi, ' ')
+            .replace(/<br\s*\/?>/gi, '')
+            .replace(/<\/?(div|p|span)[^>]*>/gi, '')
+            .replace(/<[^>]+>/g, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+
+        return text === '';
+    }
+
     writeValue(value: any) {
-        const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
-        this.renderer.setProperty(element, 'value', typeof value === 'undefined' ? '' : value);
-        if (this.multiline) {
-            this.adjustTextArea();
-        }
-
         if (this.html) {
-            this.richText = value || '';
+            this.richText = this.normalizeValue(value || '');
+        } else {
+            const element = this.multiline ? this.textarea.nativeElement : this.input.nativeElement;
+            this.renderer.setProperty(element, 'value', typeof value === 'undefined' ? '' : value);
+
+            if (this.multiline) {
+                this.adjustTextArea();
+            }
         }
 
-        this.isEmpty = !(value && value.toString().trim());
+        this.isEmpty = this.html
+            ? this.isHtmlVisuallyEmpty(this.richText)
+            : !(value && value.toString().trim());
     }
 
     hasDanger() {
         return (this.control as any).name && (this.control.dirty || this.control.touched) && !this.control.valid;
     }
 
-    registerOnChange(fn) {
-        this.onChange = (event: Event) => {
-            const value = (event.target as HTMLInputElement).value || '';
+    registerOnChange(fn: any) {
+        this.onChange = (eventOrValue: Event | string | null) => {
+            let value = '';
 
-            if (this.customValidation) {
-                if (this.control && this.control.control) {
-                    this.control.control.setValidators(this.validate.bind(this));
-                    this.control.control.updateValueAndValidity({ emitEvent: false });
-                }
+            if (this.html) {
+                value = typeof eventOrValue === 'string' ? eventOrValue : '';
+                value = this.normalizeValue(value);
+            } else {
+                value = (eventOrValue as Event)?.target
+                    ? ((eventOrValue as Event).target as HTMLInputElement).value || ''
+                    : '';
             }
+
+            if (this.customValidation && this.control?.control) {
+                this.control.control.setValidators(this.validate.bind(this));
+                this.control.control.updateValueAndValidity({ emitEvent: false });
+            }
+
             fn(value);
 
-            this.isEmpty = !(value && value.toString().trim());
+            this.isEmpty = this.html
+                ? this.isHtmlVisuallyEmpty(value)
+                : !(value && value.toString().trim());
 
             if (this.multiline) {
                 this.adjustTextArea();
             }
+
             if (this.changeTimeout) {
                 clearTimeout(this.changeTimeout);
             }
+
             this.changeTimeout = setTimeout(() => {
-                this.change.emit({
-                    value
-                });
+                this.change.emit({ value });
             }, this.debounce);
+
             this.typing.emit();
         };
     }
@@ -258,8 +311,11 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
     clearInput() {
         if (!this.disabled && !this.isEmpty) {
             this.writeValue(null);
-            this.onChange(null);
-            this.input.nativeElement.focus();
+            this.onChange(this.html ? '' : null);
+
+            if (!this.html) {
+                this.input.nativeElement.focus();
+            }
         }
     }
 

@@ -9,17 +9,20 @@ import { DropdownItem } from '../dropdown/dropdown-item.interface';
 import { NotificationsService } from './../toast/simple-notifications/services/notifications.service';
 import { PlexTitle } from './plex-title.interface';
 import { WizardConfig } from './wizard-config.interface';
+import { PlexNavbarItemOwnerComponent } from './navbar-item-owner.component';
 const introJs: any = _introJs;
 
 @Injectable()
 export class Plex {
-    public menu: DropdownItem[];
+    public menu!: DropdownItem[];
     public loaderCount = 0;
     public appStatus: Subject<any> = new Subject();
     public userInfo: any;
     public navbarVisible = true;
     private navbarHost?: ViewContainerRef;
     private navbarCmpRef?: ComponentRef<any>;
+    private navbarOwnerRef?: ComponentRef<any>;
+    private navbarItemToken = 0;
     private pending?: { component: Type<any>; inputs?: any };
 
     /**
@@ -29,7 +32,7 @@ export class Plex {
     /**
      * Contiene el título y breadcrumb que se muestran en el navbar
      */
-    public title: PlexTitle[];
+    public title!: PlexTitle[];
 
     constructor(
         private titleService: Title,
@@ -378,8 +381,8 @@ export class Plex {
      * Navbar dinamico
      */
 
-    private viewContainerRef: ViewContainerRef;
-    setViewContainerRef(viewContainerRef) {
+    private viewContainerRef!: ViewContainerRef;
+    setViewContainerRef(viewContainerRef: ViewContainerRef) {
         this.viewContainerRef = viewContainerRef;
     }
 
@@ -398,24 +401,46 @@ export class Plex {
      * @param componentRef
      * @param inputs
      */
-    setNavbarItem<T>(component: Type<T>, inputs?: Partial<T>) {
-
+    setNavbarItem<T extends object>(component: Type<T>, inputs?: Partial<T>) {
         if (!this.navbarHost) {
             this.pending = { component, inputs };
-            return; // evita reintentos infinitos
+            return;
         }
 
-        this.navbarHost.clear();
+        const token = ++this.navbarItemToken;
+
+        this.clearNavbarItem();
+
         const cmpRef = this.navbarHost.createComponent(component);
-        if (inputs) { Object.assign(cmpRef.instance, inputs); }
+
+        if (inputs) {
+            Object.assign(cmpRef.instance, inputs);
+        }
+
         cmpRef.changeDetectorRef.detectChanges();
         this.navbarCmpRef = cmpRef;
+
+        if (this.viewContainerRef) {
+            const ownerRef = this.viewContainerRef.createComponent(PlexNavbarItemOwnerComponent);
+            ownerRef.instance.token = token;
+            this.navbarOwnerRef = ownerRef;
+        }
     }
 
     clearNavbarItem() {
         this.navbarCmpRef?.destroy();
         this.navbarCmpRef = undefined;
+
+        this.navbarOwnerRef?.destroy();
+        this.navbarOwnerRef = undefined;
+
         this.navbarHost?.clear();
+    }
+
+    clearNavbarItemIfToken(token: number) {
+        if (this.navbarItemToken === token) {
+            this.clearNavbarItem();
+        }
     }
 
     /**

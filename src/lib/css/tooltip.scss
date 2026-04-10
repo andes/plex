@@ -25,6 +25,7 @@ $tooltip-arrow-color: #505050;
     }
 }
 
+tooltip-content .tooltip,
 mat-tooltip-component .mdc-tooltip {
-    font-size: 12px !important;
+    font-size: 12px;
 }

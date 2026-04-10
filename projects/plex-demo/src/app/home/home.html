@@ -25,12 +25,31 @@
             <plex-button type="success" label="Restaurar usuario" size="sm" (click)="openVisualizador()">
             </plex-button>
         </div>
-        <div class="row mt-3">
-            <div class="col">
-                <b>Documento:</b>
-                <plex-copy [value]="documento">{{ documento | number }}</plex-copy>
-            </div>
+        <div title><b>Documento:</b>
+            <plex-copy [value]="documento">
+                {{ documento | number }}
+            </plex-copy>
         </div>
+
+
+        <plex-title titulo="Ejemplo de listado" size="md"></plex-title>
+        <plex-list>
+            <plex-item *ngFor="let item of dataSelect">
+                <plex-label titulo="Titulo de {{ item.nombre }}" subtitulo="Subtitulo de interés"></plex-label>
+
+                <plex-label titulo="Dato de interés" subtitulo="Un valor">
+                </plex-label>
+
+                <plex-select label="Dato seleccionable" [(ngModel)]="modelSelector" name="select" [data]="dataSelect"
+                             placeholder="Seleccione ...">
+                </plex-select>
+
+                <!-- Se muestra con un 'OR' porque no todas las relaciones guardan el genero -->
+                <plex-badge type="info">Badge info</plex-badge>
+
+                <plex-badge type="warning"> Badge warning</plex-badge>
+            </plex-item>
+        </plex-list>
         <hr>
 
         <fieldset>
@@ -61,8 +80,9 @@
 
         <plex-scroll (change)="loadData()"></plex-scroll>
     </plex-layout-main>
-    <plex-layout-sidebar>
+    <plex-layout-sidebar [type]="inverted ? 'invert' : 'default'">
         <plex-title titulo="Texto principal" size="sm">
+            <plex-bool class="mr-1" type="slide" label="Inverted" [(ngModel)]="inverted"></plex-bool>
             <plex-help type="help" titulo="Ayuda de este panel" tituloBoton="Ayuda" position="right">
                 <ul class="list-group">
                     <li class="list-group-item active">Cras justo odio</li>
@@ -112,7 +132,9 @@
                 </ul>
             </plex-help>
             <plex-button size="sm" type="{{ plex.navbarVisible ? 'danger' : 'success' }}"
-                         icon="{{ plex.navbarVisible ? 'close' : 'eye' }}" (click)="plex.toggleHideNavBar()">
+                         icon="{{ plex.navbarVisible ? 'close' : 'eye' }}" (click)="plex.toggleHideNavBar()"
+                         tooltip="{{ plex.navbarVisible ? 'Ocultar barra de navegación' : 'Mostrar barra de navegación' }}"
+                         tooltipPosition="left">
             </plex-button>
         </plex-title>
         <plex-detail size="sm">
@@ -120,13 +142,6 @@
             <plex-badge type="info">Validado</plex-badge>
             <div title>Texto principal o titulo</div>
             <div subtitle>Texto secundario intrisecamente relacionado al titulo</div>
-        </plex-detail>
-        <plex-detail size="sm">
-            <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_1280.png" alt="" preview>
-            <plex-badge type="info">Validado</plex-badge>
-            <div title>Texto principal o titulo</div>
-            <div subtitle>Texto secundario
-                intrisecamente relacionado al titulo</div>
         </plex-detail>
 
         <plex-title titulo="Texto principal 2" size="sm">
@@ -228,17 +243,21 @@
                 <plex-icon name="message"></plex-icon>
             </plex-badge>
             <plex-text label="Este es un campo de texto requerido" name="campo1" [(ngModel)]="field" [disabled]="false"
-                       required [hint]="hint">
+                       required [hint]="hintRequerido">
             </plex-text>
-            <plex-button label="Guardar formulario" validateForm="true" (click)="guardar($event)">
+            <plex-button label="Guardar formulario" type="success" size="sm" validateForm="true"
+                         (click)="guardar($event)">
             </plex-button>
-            <plex-datetime type="date" label="Seleccione fecha" name="componenteFecha" [(ngModel)]="fecha"
-                           placeholder="dd/mm/aaaa" size="sm" [required]="true">
-            </plex-datetime>
+            <div class="pt-3">
+                <plex-text label=" Campo de texto enriquecido" [hint]="hint" name="textoEnriquecido" [(ngModel)]="field"
+                           [disabled]="false" [html]="true">
+                </plex-text>
+            </div>
         </form>
         <div class="grow mt-2">
             <plex-text label="Búsqueda por texto o scanner" [(ngModel)]="field" prefix="barcode"
-                       ariaLabel="Ingrese un código"></plex-text>
+                       ariaLabel="Ingrese un código">
+            </plex-text>
         </div>
     </plex-layout-sidebar>
     <plex-layout-footer>

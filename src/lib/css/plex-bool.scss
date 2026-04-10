@@ -100,7 +100,7 @@ mat-slide-toggle.mat-disabled {
 plex-layout-sidebar[type="invert"] {
     mat-slide-toggle {
         label {
-            color: #fff;
+            color: #fff !important;
         }
 
         .mat-mdc-slide-toggle {
