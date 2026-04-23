@@ -1,6 +1,6 @@
 {
     "name": "@andes/plex",
-    "version": "9.0.0-beta.3",
+    "version": "9.0.0-beta.4",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/andes/plex.git"
@@ -14,7 +14,7 @@
         "build:lib:watch": "ng-packagr -p ng-package.json -w",
         "build": "npm run build:lib && npm run postbuild:lib",
         "pack": "npm run build && cd dist && npm pack",
-        "start:demo": "node scripts/check-dist.js && ng serve plex-demo",
+        "start:demo": "node scripts/check-dist.js && ng serve plex-demo --port 4444",
         "dev:demo": "npm run build:lib && concurrently -k -r \"npm:build:lib:watch\" \"npm:start:demo\"",
         "build:demo": "npm run build && ng build plex-demo",
         "build:demo:prod": "npm run build:lib && ng build plex-demo --configuration production --base-href \"/plex/demo/\"",

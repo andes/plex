@@ -1,19 +1,23 @@
-import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy } from '@angular/core';
 
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'tooltip-content',
-    template: `<div class="tooltip show tooltip-{{ placement }} no-wrap"
-                [style.top]="top + 'px'"
-                [style.left]="left + 'px'"
-                role="tooltip">
-                <div class="tooltip-inner">
-                    <ng-content></ng-content>
-                    <div [innerHTML]="content"></div>
+    template: `<div *ngIf="hostElement"
+                    class="tooltip show tooltip-{{ placement }} no-wrap"
+                    [style.top]="top + 'px'"
+                    [style.left]="left + 'px'"
+                    [style.visibility]="isIn ? 'visible' : 'hidden'"
+                    [style.pointer-events]="'none'"
+                    role="tooltip">
+                    <div class="tooltip-inner">
+                        <ng-content></ng-content>
+                        <div [innerHTML]="content"></div>
+                    </div>
                 </div>
-            </div>`
+            `
 })
-export class TooltipContentComponent implements AfterViewInit {
+export class TooltipContentComponent implements AfterViewInit, OnDestroy {
 
     // -------------------------------------------------------------------------
     // Inputs / Outputs
@@ -40,6 +44,9 @@ export class TooltipContentComponent implements AfterViewInit {
     isIn = false;
     isFade = false;
 
+    private destroyed = false;
+    private watchId: any = null;
+
     // -------------------------------------------------------------------------
     // Constructor
     // -------------------------------------------------------------------------
@@ -54,8 +61,15 @@ export class TooltipContentComponent implements AfterViewInit {
     // -------------------------------------------------------------------------
 
     ngAfterViewInit(): void {
-        this.show();
+        this.reset();
+        this.startHostWatch();
         this.cdr.detectChanges();
+    }
+
+    ngOnDestroy(): void {
+        this.destroyed = true;
+        this.stopHostWatch();
+        this.reset();
     }
 
     // -------------------------------------------------------------------------
@@ -63,31 +77,126 @@ export class TooltipContentComponent implements AfterViewInit {
     // -------------------------------------------------------------------------
 
     show(): void {
-        if (!this.hostElement) {
+        const effectiveHost = this.getEffectiveHost();
+        if (!this.isHostRenderable(effectiveHost)) {
+            this.reset();
             return;
         }
 
-        const p = this.positionElements(this.hostElement, this.element.nativeElement.children[0], this.placement);
+        const tooltipEl = this.getTooltipElement();
+        if (!tooltipEl) {
+            return;
+        }
+
+        const p = this.positionElements(effectiveHost as HTMLElement, tooltipEl, this.placement);
         this.top = p.top;
         this.left = p.left;
         this.isIn = true;
+
         if (this.animation) {
             this.isFade = true;
         }
     }
 
     hide(): void {
-        this.top = -100000;
-        this.left = -100000;
-        this.isIn = true;
-        if (this.animation) {
-            this.isFade = false;
-        }
+        this.reset();
     }
 
     // -------------------------------------------------------------------------
     // Private Methods
     // -------------------------------------------------------------------------
+
+    private reset(): void {
+        this.top = -100000;
+        this.left = -100000;
+        this.isIn = false;
+        this.isFade = false;
+        if (this.animation) {
+            this.isFade = false;
+        }
+    }
+
+    private startHostWatch(): void {
+        if (this.watchId || this.destroyed) {
+            return;
+        }
+
+        this.watchId = setInterval(() => {
+            if (this.destroyed) {
+                this.stopHostWatch();
+                return;
+            }
+
+            const effectiveHost = this.getEffectiveHost();
+
+            if (!this.isHostRenderable(effectiveHost)) {
+                this.reset();
+                this.stopHostWatch();
+                return;
+            }
+
+            if (!this.isHostHovered(effectiveHost)) {
+                this.reset();
+                return;
+            }
+
+            this.show();
+        }, 100);
+    }
+
+    private stopHostWatch(): void {
+        if (this.watchId) {
+            clearInterval(this.watchId);
+            this.watchId = null;
+        }
+    }
+
+    private getTooltipElement(): HTMLElement | null {
+        return this.element?.nativeElement?.children?.[0] ?? null;
+    }
+
+    /**
+     * Si el host es un wrapper como <plex-button>, intenta usar el botón real interno.
+     * Eso mejora medición, hover real y evita inconsistencias con pointer-events.
+     */
+    private getEffectiveHost(): HTMLElement | null {
+        if (!this.hostElement) {
+            return null;
+        }
+
+        const innerButton = this.hostElement.querySelector('button');
+        return (innerButton as HTMLElement) || this.hostElement;
+    }
+
+    private isHostRenderable(host: HTMLElement | null): boolean {
+        if (!host) {
+            return false;
+        }
+
+        if (!host.isConnected) {
+            return false;
+        }
+
+        const rect = host.getBoundingClientRect();
+
+        if (rect.width === 0 && rect.height === 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private isHostHovered(host: HTMLElement | null): boolean {
+        if (!host) {
+            return false;
+        }
+
+        try {
+            return host.matches(':hover');
+        } catch {
+            return false;
+        }
+    }
 
     private positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody = false): { top: number; left: number } {
         const positionStrParts = positionStr.split('-');
@@ -96,6 +205,7 @@ export class TooltipContentComponent implements AfterViewInit {
         const hostElPos = appendToBody ? this.offset(hostEl) : this.position(hostEl);
         const targetElWidth = targetEl.offsetWidth;
         const targetElHeight = targetEl.offsetHeight;
+
         const shiftWidth: any = {
             center(): number {
                 return hostElPos.left + hostElPos.width / 2 - targetElWidth / 2;
@@ -121,6 +231,7 @@ export class TooltipContentComponent implements AfterViewInit {
         };
 
         let targetElPos: { top: number; left: number };
+
         switch (pos0) {
             case 'right':
                 targetElPos = {
@@ -158,6 +269,7 @@ export class TooltipContentComponent implements AfterViewInit {
         let offsetParentBCR = { top: 0, left: 0 };
         const elBCR = this.offset(nativeEl);
         const offsetParentEl = this.parentOffsetEl(nativeEl);
+
         if (offsetParentEl !== window.document) {
             offsetParentBCR = this.offset(offsetParentEl);
             offsetParentBCR.top += offsetParentEl.clientTop - offsetParentEl.scrollTop;
@@ -165,6 +277,7 @@ export class TooltipContentComponent implements AfterViewInit {
         }
 
         const boundingClientRect = nativeEl.getBoundingClientRect();
+
         return {
             width: boundingClientRect.width || nativeEl.offsetWidth,
             height: boundingClientRect.height || nativeEl.offsetHeight,
@@ -175,6 +288,7 @@ export class TooltipContentComponent implements AfterViewInit {
 
     private offset(nativeEl: any): { width: number; height: number; top: number; left: number } {
         const boundingClientRect = nativeEl.getBoundingClientRect();
+
         return {
             width: boundingClientRect.width || nativeEl.offsetWidth,
             height: boundingClientRect.height || nativeEl.offsetHeight,
@@ -184,7 +298,7 @@ export class TooltipContentComponent implements AfterViewInit {
     }
 
     private getStyle(nativeEl: HTMLElement, cssProp: string): string {
-        if ((nativeEl as any).currentStyle) { // IE
+        if ((nativeEl as any).currentStyle) {
             return (nativeEl as any).currentStyle[cssProp];
         }
 
@@ -192,7 +306,6 @@ export class TooltipContentComponent implements AfterViewInit {
             return (window.getComputedStyle(nativeEl) as any)[cssProp];
         }
 
-        // finally try and get inline style
         return (nativeEl.style as any)[cssProp];
     }
 
@@ -202,9 +315,11 @@ export class TooltipContentComponent implements AfterViewInit {
 
     private parentOffsetEl(nativeEl: HTMLElement): any {
         let offsetParent: any = nativeEl.offsetParent || window.document;
+
         while (offsetParent && offsetParent !== window.document && this.isStaticPositioned(offsetParent)) {
             offsetParent = offsetParent.offsetParent;
         }
+
         return offsetParent || window.document;
     }
 }

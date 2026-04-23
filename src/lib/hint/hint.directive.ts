@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, ComponentFactoryResolver, ComponentRef, Directive, Input, OnInit, ViewContainerRef } from '@angular/core';
+import { ChangeDetectorRef, ComponentRef, Directive, inject, Input, OnInit, ViewContainerRef, EnvironmentInjector } from '@angular/core';
 import { PlexType } from '../core/plex-type.type';
 import { HintComponent } from './hint.component';
 
@@ -9,6 +9,8 @@ import { HintComponent } from './hint.component';
 export class HintDirective implements OnInit {
 
     private tooltip: ComponentRef<HintComponent>;
+    private envInjector = inject(EnvironmentInjector);
+
     @Input('hint') content: string | HintComponent;
 
     // default = Background gris
@@ -28,7 +30,6 @@ export class HintDirective implements OnInit {
 
     constructor(
         private viewContainerRef: ViewContainerRef,
-        private resolver: ComponentFactoryResolver,
         private cdr: ChangeDetectorRef
     ) {
     }
@@ -36,14 +37,11 @@ export class HintDirective implements OnInit {
     ngOnInit(): void {
         this.cdr.detectChanges();
 
-        const factory = this.resolver.resolveComponentFactory(HintComponent);
-        this.tooltip = this.viewContainerRef.createComponent(factory);
+        this.tooltip = this.viewContainerRef.createComponent(HintComponent, { environmentInjector: this.envInjector });
         this.tooltip.instance.hostElement = this.viewContainerRef.element.nativeElement;
         this.tooltip.instance.content = this.content as string;
         this.tooltip.instance.position = this.position as any;
         this.tooltip.instance.hintType = this.hintType;
         this.tooltip.instance.hintIcon = this.hintIcon;
-
     }
-
 }

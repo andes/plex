@@ -108,7 +108,7 @@ export type Moment = _moment.Moment;
                                 [(ngModel)]="dateTimeString" [min]="minTimeString" [max]="maxTimeString"
                                 [placeholder]="placeholder" [disabled]="disabled" [readonly]="readonly">
 
-                                <ngx-mat-timepicker #timePicker [cancelBtnTmpl]="emptyTpl" [confirmBtnTmpl]="okTpl"
+                        <ngx-mat-timepicker #timePicker [cancelBtnTmpl]="emptyTpl" [confirmBtnTmpl]="okTpl"
                                 (timeSet)="onTimeChange($event)">
                         </ngx-mat-timepicker>
                     </ng-container>
@@ -292,7 +292,7 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
     writeValue(value: any) {
         this._value = value ? moment(value).toDate() : null;
         this.timeString = this._value ? moment(this._value).format('HH:mm') : '';
-        this.dateTimeString = this._value ? moment(this._value).format('DD/MM/YYYY HH:mm') : '';
+        this.dateTimeString = this._value ? moment(this._value).format(this._format) : '';
     }
 
     customText() { return `${this.hintPrefix} ${this.hintSuffix}`; }
@@ -380,7 +380,7 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
         }
         const m = moment(this.dateTimeString, this._format);
         this._value = m.isValid() ? m.toDate() : null;
-        this.dateTimeString = this._value ? moment(this._value).format('DD/MM/YYYY HH:mm') : '';
+        this.dateTimeString = this._value ? moment(this._value).format(this._format) : '';
         this.emitChange(true);
     }
 
@@ -389,14 +389,14 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
         const input = ev?.targetElement?.value || ev;
 
         if (pickerType === 'date') {
-            this.dateTimeString = this._value ? moment(this._value).format('DD/MM/YYYY HH:mm') : '';
+            this.dateTimeString = this._value ? moment(this._value).format(this._format) : '';
             this.timePicker?.open();
         } else { // pickerType === 'time'
             const [hh, mm] = input.split(':').map(Number);
             const m = moment(this._value).set({ hour: hh, minute: mm, second: 0, millisecond: 0 });
             const mFormated = moment(m, this._format);
             this._value = mFormated.isValid() ? mFormated.toDate() : null;
-            this.dateTimeString = this._value ? moment(this._value).format('DD/MM/YYYY HH:mm') : '';
+            this.dateTimeString = this._value ? moment(this._value).format(this._format) : '';
         }
         this.emitChange(true);
     }

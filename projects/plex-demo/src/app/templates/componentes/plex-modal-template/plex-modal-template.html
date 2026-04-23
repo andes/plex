@@ -140,7 +140,8 @@
                     contener formularios y otros componentes
                     <div class="mt-2">
                         <b>
-                            Este modal se puede cerrar con el botón "Aceptar", con la tecla ESC, con la cruz en la esquina superior derecha, o
+                            Este modal se puede cerrar con el botón "Aceptar", con la tecla ESC, con la cruz en la
+                            esquina superior derecha, o
                             haciendo click fuera del mismo.
                         </b>
                     </div>
@@ -169,13 +170,16 @@
     </plex-layout-main>
     <plex-layout-sidebar type="invert">
         <plex-title size="md" titulo="Modal en sidebar">
-            <plex-button icon="eye" type="info" size="sm" (click)="openModal(4)"></plex-button>
+            <plex-button icon="eye" type="info" size="sm" tooltip="Mostrar modal" tooltipPosition="left"
+                         (click)="openModal(4)">
+            </plex-button>
         </plex-title>
         <plex-modal size="sm" #modal [startOpen]="false" (closed)="notificarAccion(false)">
             <plex-modal-title type="info">Modal dentro de un plex-sidebar invert</plex-modal-title>
             <main>
                 <p>
-                    Un componente que abarca toda la pantalla o el foco de la misma, como un modal o un alert, nunca deben heredar estilos del contendor.
+                    Un componente que abarca toda la pantalla o el foco de la misma, como un modal o un alert, nunca
+                    deben heredar estilos del contendor.
                 </p>
                 <plex-list size="sm" class="w-100">
                     <plex-item>

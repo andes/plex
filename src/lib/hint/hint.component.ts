@@ -1,5 +1,5 @@
 import { MatTooltip, TooltipPosition } from '@angular/material/tooltip';
-import { Component, OnInit, Input, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, HostListener, ViewChild, AfterViewInit } from '@angular/core';
 import { PlexType } from '../core/plex-type.type';
 
 @Component({
@@ -31,6 +31,12 @@ export class HintComponent implements OnInit, AfterViewInit {
     @Input()
     detach: '' | 'both' | 'right' | 'top';
 
+    @Input()
+    hintOffsetX = 0;
+
+    @Input()
+    hintOffsetY = 0;
+
     @ViewChild('matTooltip', { static: false }) matTooltip: MatTooltip;
 
     constructor() { }
@@ -45,23 +51,42 @@ export class HintComponent implements OnInit, AfterViewInit {
 
     adjustIfLabel() {
         setTimeout(() => {
-            const labelElement = this.hostElement.querySelector('label');
-
-            if (labelElement !== null) {
-                labelElement.style.display = 'inline';
-
-                const label = labelElement.getBoundingClientRect();
-
-                const hintElement = this.hostElement.nextElementSibling as HTMLElement;
-                const hint = hintElement.getBoundingClientRect();
-
-                hintElement.style.position = 'relative';
-                hintElement.style.top = -label.height - 2 * hint.height + 'px';
-
-                const adjustX = this.hostElement.getAttribute('required') === 'true' ? 10 : 0;
-
-                hintElement.style.left = label.width + hint.width + adjustX + 'px';
+            if (!this.hostElement) {
+                return;
             }
+
+            const hintElement = this.hostElement.nextElementSibling as HTMLElement | null;
+            const container = this.hostElement.parentElement as HTMLElement | null;
+            const labelElement = this.hostElement.querySelector('label') as HTMLElement | null;
+
+            if (!hintElement || !container) {
+                return;
+            }
+
+            if (getComputedStyle(container).position === 'static') {
+                container.style.position = 'relative';
+            }
+
+            const hostRect = this.hostElement.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+
+            let top = 0;
+            let left = hostRect.left - containerRect.left;
+
+            if (labelElement) {
+                labelElement.style.display = 'inline';
+                hintElement.style.position = 'absolute';
+
+                const labelRect = labelElement.getBoundingClientRect();
+                top += hostRect.top - containerRect.top - 5;
+                left = labelRect.right - containerRect.left + 15;
+            } else {
+                hintElement.style.position = 'relative';
+                left = hostRect.right - hostRect.left;
+            }
+
+            hintElement.style.top = (top + this.hintOffsetY) + 'px';
+            hintElement.style.left = (left + this.hintOffsetX) + 'px';
         }, 100);
     }
 

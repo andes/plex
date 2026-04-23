@@ -1,19 +1,26 @@
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { PlexVisualizadorService } from '@andes/plex';
 import { Plex } from '@andes/plex';
+import * as moment from 'moment';
 
 @Component({
     templateUrl: 'home.html'
 })
 export class HomeDemoComponent implements OnInit {
-    public field = '';
-    public tooltip = 'Este es un tooltip de una sola linea pero con gran tantidad de texto';
+    field = '';
+    tooltip = 'Este es un tooltip de una sola linea pero con gran tantidad de texto';
     hint = 'Este es un hint ubicado en el sidebar. Debería poder contener varias líneas de texto.';
-    public data = [];
+    hintRequerido = 'Este campo es requerido. Por favor completarlo para poder guardar el formulario.';
+    data = [];
     documento = '45979360';
     fecha;
-
-    public modelSelector;
+    dataSelect = [
+        { id: 1, nombre: 'Opción 1' },
+        { id: 2, nombre: 'Opción 2' }
+    ];
+    modelSelector;
+    inverted = true;
+    pepe = false;
 
     constructor(
         public plex: Plex,
@@ -48,6 +55,10 @@ export class HomeDemoComponent implements OnInit {
         for (let i = 0; i < max; i++) {
             this.data = [...this.data, { identificador: Math.round(Math.random() * 1000) + 1 }];
         }
+    }
+
+    modificarFecha() {
+        this.fecha = moment().format('DD/MM/YYYY HH:mm');
     }
 
     helpClick() {
