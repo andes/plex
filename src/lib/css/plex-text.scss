@@ -80,6 +80,10 @@ plex-text {
             color: $blue !important;
         }
     }
+
+    st-editor .st-editor-container {
+        color: #000 !important;
+    }
 }
 
 // Fix para cambiar texto del botón "confirmar" de ingreso de texto con link

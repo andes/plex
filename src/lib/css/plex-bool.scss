@@ -24,6 +24,10 @@ mat-checkbox.mat-mdc-checkbox {
         background-color: $blue !important;
     }
 
+    &.mat-mdc-checkbox-disabled .mdc-checkbox__background {
+        background-color: #0000002a !important;
+    }
+
     label {
         font-family: "TypoPRO Source Sans Pro";
         font-size: 0.9rem;

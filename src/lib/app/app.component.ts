@@ -1,6 +1,9 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild, ViewContainerRef, OnDestroy } from '@angular/core';
 import { PlexVisualizadorService } from '../core/plex-visualizador.service';
 import { Plex } from './../core/service';
+import { NavigationStart, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
     selector: 'plex-app',
@@ -84,7 +87,7 @@ import { Plex } from './../core/service';
                 </div>`,
 })
 
-export class PlexAppComponent implements OnInit, AfterViewInit {
+export class PlexAppComponent implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('navbarItemHost', { read: ViewContainerRef }) navbarItemVcr!: ViewContainerRef;
     @Input() type = 'inverse';
 
@@ -117,12 +120,19 @@ export class PlexAppComponent implements OnInit, AfterViewInit {
             this.chart.dataset[0].data.push(this.online ? 1 : 0);
         });
     }
+    private routerSubscription: Subscription;
 
     constructor(
         public plex: Plex,
-        public plexVisualizador: PlexVisualizadorService
+        public plexVisualizador: PlexVisualizadorService,
+        private router: Router
     ) {
         this.initAppStatusCheck();
+        this.routerSubscription = this.router.events.pipe(
+            filter(event => event instanceof NavigationStart)
+        ).subscribe(() => {
+            this.plex.clearNavbarItem();
+        });
     }
 
     ngOnInit() {
@@ -137,7 +147,11 @@ export class PlexAppComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        // se pasamos al servicio de plex el host donde insertar componentes dinámicos
+        // le pasamos al servicio de plex el host donde insertar componentes dinámicos
         this.plex.setNavbarHost(this.navbarItemVcr);
+    }
+
+    ngOnDestroy() {
+        this.routerSubscription?.unsubscribe();
     }
 }

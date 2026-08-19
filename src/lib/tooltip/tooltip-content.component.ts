@@ -198,11 +198,40 @@ export class TooltipContentComponent implements AfterViewInit, OnDestroy {
         }
     }
 
+    private positionRelativeToTarget(hostEl: HTMLElement, targetEl: HTMLElement): { width: number; height: number; top: number; left: number } {
+
+        const hostRect = hostEl.getBoundingClientRect();
+        const targetParent = targetEl.offsetParent as HTMLElement | null;
+        let parentTop = 0;
+        let parentLeft = 0;
+
+        if (targetParent) {
+            const parentRect = targetParent.getBoundingClientRect();
+
+            parentTop =
+                parentRect.top +
+                targetParent.clientTop -
+                targetParent.scrollTop;
+
+            parentLeft =
+                parentRect.left +
+                targetParent.clientLeft -
+                targetParent.scrollLeft;
+        }
+
+        return {
+            width: hostRect.width,
+            height: hostRect.height,
+            top: hostRect.top - parentTop,
+            left: hostRect.left - parentLeft
+        };
+    }
+
     private positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody = false): { top: number; left: number } {
         const positionStrParts = positionStr.split('-');
         const pos0 = positionStrParts[0];
         const pos1 = positionStrParts[1] || 'center';
-        const hostElPos = appendToBody ? this.offset(hostEl) : this.position(hostEl);
+        const hostElPos = this.positionRelativeToTarget(hostEl, targetEl);
         const targetElWidth = targetEl.offsetWidth;
         const targetElHeight = targetEl.offsetHeight;
 
