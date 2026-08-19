@@ -82,7 +82,7 @@ export class HintComponent implements OnInit, AfterViewInit {
                 left = labelRect.right - containerRect.left + 15;
             } else {
                 hintElement.style.position = 'relative';
-                left = hostRect.right - hostRect.left;
+                left = 0;
             }
 
             hintElement.style.top = (top + this.hintOffsetY) + 'px';
@@ -95,7 +95,7 @@ export class HintComponent implements OnInit, AfterViewInit {
     }
 
     // Si el elemento que tiene la directiva [hint] tiene un evento (click), este se ejecutará, guste o no.
-    @HostListener('click', ['$event']) onClick() {
+    @HostListener('click') onClick() {
         this.hostElement.click();
     }
 }

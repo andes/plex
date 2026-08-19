@@ -23,7 +23,11 @@ export class Plex {
     private navbarCmpRef?: ComponentRef<any>;
     private navbarOwnerRef?: ComponentRef<any>;
     private navbarItemToken = 0;
-    private pending?: { component: Type<any>; inputs?: any };
+    private pending?: {
+        component: Type<any>;
+        inputs?: any;
+        ownerViewContainerRef?: ViewContainerRef;
+    };
 
     /**
      * Cuenta los POST, PATCH, PUT, DELETE
@@ -390,9 +394,11 @@ export class Plex {
         this.navbarHost = vcr;
 
         if (this.pending) {
-            const p = this.pending;
+            const { component, inputs, ownerViewContainerRef } = this.pending;
+
             this.pending = undefined;
-            this.setNavbarItem(p.component, p.inputs);
+
+            this.setNavbarItem(component, inputs, ownerViewContainerRef);
         }
     }
 
@@ -401,16 +407,15 @@ export class Plex {
      * @param componentRef
      * @param inputs
      */
-    setNavbarItem<T extends object>(component: Type<T>, inputs?: Partial<T>) {
+    setNavbarItem<T extends object>(component: Type<T>, inputs?: Partial<T>, ownerViewContainerRef?: ViewContainerRef) {
         if (!this.navbarHost) {
-            this.pending = { component, inputs };
+            this.pending = { component, inputs, ownerViewContainerRef };
             return;
         }
 
-        const token = ++this.navbarItemToken;
-
         this.clearNavbarItem();
 
+        const token = ++this.navbarItemToken;
         const cmpRef = this.navbarHost.createComponent(component);
 
         if (inputs) {
@@ -420,19 +425,28 @@ export class Plex {
         cmpRef.changeDetectorRef.detectChanges();
         this.navbarCmpRef = cmpRef;
 
-        if (this.viewContainerRef) {
-            const ownerRef = this.viewContainerRef.createComponent(PlexNavbarItemOwnerComponent);
+        if (ownerViewContainerRef) {
+            const ownerRef = ownerViewContainerRef.createComponent(PlexNavbarItemOwnerComponent);
             ownerRef.instance.token = token;
             this.navbarOwnerRef = ownerRef;
+        } else {
+            console.warn('[Plex] navbar item creado sin owner');
         }
     }
 
     clearNavbarItem() {
-        this.navbarCmpRef?.destroy();
-        this.navbarCmpRef = undefined;
+        this.pending = undefined;
 
-        this.navbarOwnerRef?.destroy();
+        ++this.navbarItemToken;
+
+        const cmpRef = this.navbarCmpRef;
+        const ownerRef = this.navbarOwnerRef;
+
+        this.navbarCmpRef = undefined;
         this.navbarOwnerRef = undefined;
+
+        cmpRef?.destroy();
+        ownerRef?.destroy();
 
         this.navbarHost?.clear();
     }
@@ -440,6 +454,8 @@ export class Plex {
     clearNavbarItemIfToken(token: number) {
         if (this.navbarItemToken === token) {
             this.clearNavbarItem();
+        } else {
+            console.warn('[Plex] token NO coincide -> no se limpia navbar');
         }
     }
 
