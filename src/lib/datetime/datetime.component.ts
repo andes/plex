@@ -391,6 +391,7 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
         if (pickerType === 'date') {
             this.dateTimeString = this._value ? moment(this._value).format(this._format) : '';
             this.timePicker?.open();
+            this.dateTimePicker?.open();
         } else { // pickerType === 'time'
             const [hh, mm] = input.split(':').map(Number);
             const m = moment(this._value).set({ hour: hh, minute: mm, second: 0, millisecond: 0 });
