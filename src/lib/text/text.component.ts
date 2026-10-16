@@ -173,7 +173,7 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
         }
 
         const editorElement = this.htmlEditor?.nativeElement;
-        const selectElement = editorElement.querySelector('select');
+        const selectElement = editorElement?.querySelector('select');
 
         if (selectElement) {
             selectElement.addEventListener('change', (event: Event) => {
@@ -184,13 +184,82 @@ export class PlexTextComponent implements OnInit, AfterViewInit, ControlValueAcc
 
         if (this.html && editorElement) {
             editorElement.addEventListener('paste', (event: ClipboardEvent) => {
+
+                const items = Array.from(event.clipboardData?.items || []);
+
+                const hasImage = items.some(item =>
+                    item.kind === 'file' && item.type.startsWith('image/')
+                );
+
+                if (hasImage) {
+                    const html = event.clipboardData?.getData('text/html') || '';
+
+                    // Solo intervenimos cuando el HTML contiene una imagen blob.
+                    const hasBlobImage = /<img\b[^>]*\bsrc\s*=\s*["']blob:/i.test(html);
+
+                    if (!hasBlobImage) {
+                        return;
+                    }
+
+                    const imageItem = items.find(item =>
+                        item.kind === 'file' && item.type.startsWith('image/')
+                    );
+
+                    const file = imageItem?.getAsFile();
+
+                    if (!file) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    const selection = window.getSelection();
+                    const range = selection?.rangeCount
+                        ? selection.getRangeAt(0).cloneRange()
+                        : null;
+
+                    if (!range) {
+                        return;
+                    }
+
+                    const reader = new FileReader();
+
+                    reader.onload = () => {
+                        if (typeof reader.result !== 'string') {
+                            return;
+                        }
+
+                        const img = document.createElement('img');
+                        img.src = reader.result;
+                        img.style.maxWidth = '100%';
+
+                        range.deleteContents();
+                        range.insertNode(img);
+
+                        range.setStartAfter(img);
+                        range.collapse(true);
+
+                        selection?.removeAllRanges();
+                        selection?.addRange(range);
+
+                        editorElement.querySelector('.st-area')
+                            ?.dispatchEvent(new Event('input', { bubbles: true }));
+                    };
+
+                    reader.readAsDataURL(file);
+                    return;
+                }
+
+                // Conservamos el comportamiento existente para texto plano.
                 event.preventDefault();
+
                 const text = event.clipboardData?.getData('text/plain');
                 const selection = window.getSelection();
-                const range = selection?.getRangeAt(0);
+                const range = selection?.rangeCount ? selection.getRangeAt(0) : null;
 
                 if (range && text) {
                     const lines = text.split('\n');
+
                     range.deleteContents();
 
                     for (let i = lines.length - 1; i >= 0; i--) {
