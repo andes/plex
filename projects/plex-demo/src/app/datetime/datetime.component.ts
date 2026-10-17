@@ -19,8 +19,8 @@ export class DateTimeDemoComponent implements OnInit {
             hora: null,
             horados: moment().add(30, 'minutes'),
             disabled: false,
-            min: new Date(1970, 0, 1),
-            minHora: moment().add(30, 'minutes'),
+            min: new Date(),
+            minHora: moment().hour(15).minute(0).second(0),
             maxHora: moment().add(180, 'minutes'),
             fechaDecounce: new Date(1970, 0, 1),
         };

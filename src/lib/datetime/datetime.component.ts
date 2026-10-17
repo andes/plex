@@ -10,7 +10,8 @@ import {
     forwardRef,
     Injector,
     ViewChild,
-    OnDestroy
+    OnDestroy,
+    ChangeDetectorRef
 } from '@angular/core';
 import { NgControl, UntypedFormControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { dateValidator, hasRequiredValidator } from '../core/validator.functions';
@@ -76,13 +77,16 @@ export type Moment = _moment.Moment;
                                 (change)="onInputDateTimeChange($event)">
 
                         <input data-main matInput class="hidden" [matDatepicker]="datePicker"
-                                [(ngModel)]="_value" [min]="min" [max]="max"
+                                [ngModel]="pendingDateTime ?? _value"
+                                (ngModelChange)="pendingDateTime = $event"
+                                [min]="min" [max]="max"
                                 [disabled]="disabled" [readonly]="readonly"
                                 (dateChange)="onDateTimeChange($event, 'date')">
 
                                 <mat-datepicker #datePicker [touchUi]="true">
                             <mat-datepicker-actions>
-                                <plex-button class="btn-ok-fecha" matDatepickerApply type="info" size="sm" label="Aceptar"></plex-button>
+                                <plex-button class="btn-ok-fecha" matDatepickerApply type="info" size="sm" label="Aceptar"
+                                            [disabled]="!hasDaySelected"></plex-button>
                             </mat-datepicker-actions>
                         </mat-datepicker>
 
@@ -147,6 +151,7 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
     private _max: Date | null = null;
     private _format = 'DD/MM/YYYY HH:mm';
     private changeTimeout: any = null;
+    public pendingDateTime: Date | null = null; // Fecha temporal utilizada hasta confirmar la hora, sin modificar el valor del formulario.
     public _value: Date | null = null;
     public dateTimeString = '';
     public timeString = '';
@@ -226,11 +231,13 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
     private onTouched: () => void = () => { };
     private propagateChange: (val: Date | null) => void = () => { };
     control?: NgControl;
-    hasDaySelected = false;
+    hasDaySelected = false; // Controla si la fecha seleccionada permite habilitar el botón Aceptar.
 
     constructor(
         private element: ElementRef<HTMLElement>,
-        private injector: Injector) {
+        private injector: Injector,
+        private cdr: ChangeDetectorRef
+    ) {
         this.placeholder = '';
         this.type = 'datetime';
     }
@@ -244,22 +251,40 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
         }
 
         this.datePicker?.openedStream.subscribe(() => {
-            // este bloque se usa para habilitar/deshabilitar el botón Aceptar del datepicker
-            this.hasDaySelected = false;
+            // Habilita el botón Aceptar del datepicker si existe una fecha preseleccionada válida
+            const selectedDate = this.type === 'datetime'
+                ? (this.pendingDateTime ?? this._value)
+                : this._value;
+
+            this.hasDaySelected = !!selectedDate &&
+                moment(selectedDate).isValid() &&
+                (!this.min || moment(selectedDate).isSameOrAfter(moment(this.min), 'day')) &&
+                (!this.max || moment(selectedDate).isSameOrBefore(moment(this.max), 'day'));
+
+            this.cdr.detectChanges();
 
             setTimeout(() => {
+                // Accede al overlay interno de Material para detectar clics en fechas deshabilitadas.
                 const dpAny = this.datePicker as any;
                 const overlayEl: HTMLElement | null = dpAny?._overlayRef?.overlayElement ?? null;
                 if (!overlayEl) { return; }
 
+                // Detecta selecciones en el calendario, incluyendo fechas deshabilitadas.
                 const handler = (ev: MouseEvent) => {
-                    const t = ev.target as HTMLElement | null;
-                    if (!t) { return; }
+                    const target = ev.target as HTMLElement | null;
+                    const cell = target?.closest('.mat-calendar-body-cell');
 
-                    // Si el click ocurrió en una celda de día del calendario => ya hay selección (o intento de selección)
-                    if (t.closest('.mat-calendar-content .mat-calendar-body-cell')) {
-                        this.hasDaySelected = true;
+                    if (!cell) {
+                        return;
                     }
+
+                    // Aceptar solo si la última fecha seleccionada está habilitada.
+                    const isDisabled =
+                        cell.classList.contains('mat-calendar-body-disabled') ||
+                        cell.getAttribute('aria-disabled') === 'true';
+
+                    this.hasDaySelected = !isDisabled;
+                    this.cdr.detectChanges();
                 };
 
                 overlayEl.addEventListener('click', handler, true);
@@ -275,6 +300,7 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
     }
 
     private cleanup() {
+        // Evita listeners acumulados al abrir y cerrar el calendario.
         this.removeClickListener?.();
         this.removeClickListener = undefined;
     }
@@ -293,6 +319,7 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
         this._value = value ? moment(value).toDate() : null;
         this.timeString = this._value ? moment(this._value).format('HH:mm') : '';
         this.dateTimeString = this._value ? moment(this._value).format(this._format) : '';
+        this.pendingDateTime = null;
     }
 
     customText() { return `${this.hintPrefix} ${this.hintSuffix}`; }
@@ -339,12 +366,17 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
     }
 
     abrir(): void {
-        if (this.disabled || this.readonly) { return; }
+        if (this.disabled || this.readonly) {
+            return;
+        }
 
-        if (this.type === 'date' || this.type === 'datetime') {
+        if (this.type === 'datetime') {
+            this.pendingDateTime = null;
+            this.datePicker?.open();
+        } else if (this.type === 'date') {
             this.datePicker?.open();
         } else {
-            this.timePicker?.open(); // type === 'time'
+            this.timePicker?.open();
         }
     }
 
@@ -386,19 +418,52 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
 
     // type === 'datetime' (calendario)
     onDateTimeChange(ev: any, pickerType: 'date' | 'time') {
-        const input = ev?.targetElement?.value || ev;
 
         if (pickerType === 'date') {
-            this.dateTimeString = this._value ? moment(this._value).format(this._format) : '';
-            this.timePicker?.open();
+            // Guardamos la fecha temporalmente hasta que se confirme la hora.
+            const selectedDate = ev?.value;
+
+            if (selectedDate) {
+                this.pendingDateTime = moment(selectedDate).toDate();
+            }
+
+            // Abrimos el reloj, pero NO emitimos cambios.
             this.dateTimePicker?.open();
-        } else { // pickerType === 'time'
-            const [hh, mm] = input.split(':').map(Number);
-            const m = moment(this._value).set({ hour: hh, minute: mm, second: 0, millisecond: 0 });
-            const mFormated = moment(m, this._format);
-            this._value = mFormated.isValid() ? mFormated.toDate() : null;
-            this.dateTimeString = this._value ? moment(this._value).format(this._format) : '';
+            return;
         }
+
+        const input = ev?.targetElement?.value || ev;
+
+        if (!this.pendingDateTime || typeof input !== 'string') {
+            return;
+        }
+
+        const [hh, mm] = input.split(':').map(Number);
+
+        if (!Number.isInteger(hh) || !Number.isInteger(mm) ||
+            hh < 0 || hh > 23 || mm < 0 || mm > 59) {
+            return;
+        }
+
+        const m = moment(this.pendingDateTime).set({
+            hour: hh,
+            minute: mm,
+            second: 0,
+            millisecond: 0
+        });
+
+        if (!m.isValid()) {
+            return;
+        }
+
+        // Recién ahora confirmamos el valor.
+        this._value = m.toDate();
+        this.dateTimeString = m.format(this._format);
+        this.timeString = m.format('HH:mm');
+
+        this.pendingDateTime = null;
+
+        // Una única notificación al formulario.
         this.emitChange(true);
     }
 
