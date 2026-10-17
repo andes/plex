@@ -94,6 +94,19 @@ plex-datetime {
     .mat-calendar-arrow {
         fill: #fff;
     }
+
+    .mat-calendar-body-cell-content {
+
+        .mat-calendar-body-active {
+            font-weight: 400 !important;
+            color: #414141 !important;
+        }
+
+        .mat-calendar-body-disabled {
+            font-weight: 200 !important;
+            color: #888888 !important;
+        }
+    }
 }
 
 
@@ -119,6 +132,16 @@ ngx-mat-timepicker-dial-control {
 .timepicker-dial__time span {
     font-size: 40px !important;
     margin-top: 0.3rem !important;
+}
+
+.mat-mdc-fab,
+.mat-mdc-mini-fab {
+    font-weight: 600 !important;
+
+    &[disabled] {
+        font-weight: 300 !important;
+        color: #0000004d !important;
+    }
 }
 
 .mat-mdc-fab.mat-primary,

@@ -16,7 +16,7 @@
         <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora" name="fechaHora"
                        required>
         </plex-datetime>
-        <plex-datetime label="Fecha menor a" type="date" [(ngModel)]="tModel.fecha" name="fecha" [required]="true"
+        <plex-datetime label="Fecha mayor a hoy" type="date" [(ngModel)]="tModel.fecha" name="fecha" [required]="true"
                        [min]="tModel.min" [max]="tModel.max" size="lg">
         </plex-datetime>
 
@@ -24,8 +24,8 @@
                        (blur)="onBlur()" (focus)="onBlur()" size="sm">
         </plex-datetime>
 
-        <plex-datetime label="Hora inicial más 30 minutos" type="time" [(ngModel)]="tModel.horados"
-                       [min]="tModel.min" name="horaconmin">
+        <plex-datetime label="Hora válida desde las 15:00" type="time" [(ngModel)]="tModel.hora" [min]="tModel.minHora"
+                       name="horaconmin">
         </plex-datetime>
 
         <plex-datetime label="Este campo es readonly" type="time" [(ngModel)]="tModel.hora" name="hora2"
@@ -42,8 +42,7 @@
         <plex-title titulo="Modelo"></plex-title>
         <pre>{{ tModel | json }}</pre>
         <plex-datetime label="Hora con navegación inline (por hora)" type="time" [skipBy]="'hour'" size="sm"
-                       [(ngModel)]="tModel.fechaHora" name="horaSkip"
-                       required hintAction="nextHour">
+                       [(ngModel)]="tModel.fechaHora" name="horaSkip" required hintAction="nextHour">
         </plex-datetime>
 
         <plex-datetime label="Datetime con debounce" name="debounce" type="date" [(ngModel)]="tModel.fechaDecounce"
