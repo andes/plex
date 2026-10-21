@@ -1,5 +1,6 @@
 import { UntypedFormControl, AbstractControl } from '@angular/forms';
-import * as moment from 'moment';
+import * as _moment from 'moment';
+const moment = (_moment as any).default || _moment;
 import 'moment/locale/es';
 (window as any).moment = moment;
 
@@ -70,48 +71,66 @@ export function numberValidator(regEx: RegExp, min: any, max: any) {
  * @returns Objeto de validación
  */
 export function dateValidator(type: string, min: any, max: any) {
-    return function (c: UntypedFormControl): any {
-        if (c.value && moment(c.value).isValid) {
-            // Controla rango
-            this.format = this.type === 'date' ? 'DD/MM/YYYY' : (this.type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm');
-            const value = moment(c.value, this.format).toDate();
-            // Controla min
-            if (min !== undefined && min !== null && min !== '') {
-                min = moment(min).toDate();
-                // Igualamos las fechas para solor comparar hora y minutos
-                if (this.type === 'time') {
-                    min.setFullYear(value.getFullYear());
-                    min.setMonth(value.getMonth());
-                    min.setDate(value.getDate());
-                }
-                if (value < min) {
-                    return {
-                        min: {
-                            given: c.value,
-                            limit: moment(min).format(type === 'date' ? 'DD/MM/YYYY' : (type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm'))
-                        }
-                    };
-                }
-            }
-            // Controla max
-            if (max !== undefined && max !== null && max !== '') {
-                max = moment(max).toDate();
-                // Igualamos las fechas para solor comparar hora y minutos
-                if (this.type === 'time') {
-                    max.setFullYear(value.getFullYear());
-                    max.setMonth(value.getMonth());
-                    max.setDate(value.getDate());
-                }
-                if (value > max) {
-                    return {
-                        max: {
-                            given: c.value,
-                            limit: moment(max).format(type === 'date' ? 'DD/MM/YYYY' : (type === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'HH:mm'))
-                        }
-                    };
-                }
-            }
+    return (c: UntypedFormControl): any => {
+        if (c.value === null || c.value === undefined || c.value === '') {
+            return null;
         }
+
+        const format = type === 'date'
+            ? 'DD/MM/YYYY'
+            : type === 'time'
+                ? 'HH:mm'
+                : 'DD/MM/YYYY HH:mm';
+
+        const value = typeof c.value === 'string'
+            ? moment(c.value, format, true)
+            : moment(c.value);
+
+        if (!value.isValid()) {
+            return { format: { given: c.value } };
+        }
+
+        const ajustarLimite = (limite: any) => {
+            const fecha = moment(limite);
+
+            if (type === 'time') {
+                fecha.year(value.year())
+                    .month(value.month())
+                    .date(value.date());
+            }
+
+            return fecha;
+        };
+
+        const minimo = min != null ? ajustarLimite(min) : null;
+        const maximo = max != null ? ajustarLimite(max) : null;
+
+        if (minimo?.isValid() && (
+            type === 'date'
+                ? value.isBefore(minimo, 'day')
+                : value.isBefore(minimo)
+        )) {
+            return {
+                min: {
+                    given: c.value,
+                    limit: minimo.format(format)
+                }
+            };
+        }
+
+        if (maximo?.isValid() && (
+            type === 'date'
+                ? value.isAfter(maximo, 'day')
+                : value.isAfter(maximo)
+        )) {
+            return {
+                max: {
+                    given: c.value,
+                    limit: maximo.format(format)
+                }
+            };
+        }
+
         return null;
     };
 }
