@@ -20,6 +20,7 @@ export class DateTimeDemoComponent implements OnInit {
             horados: moment().add(30, 'minutes'),
             disabled: false,
             min: new Date(),
+            max: moment().add(7, 'days').toDate(),
             minHora: moment().hour(15).minute(0).second(0),
             maxHora: moment().add(180, 'minutes'),
             fechaDecounce: new Date(1970, 0, 1),

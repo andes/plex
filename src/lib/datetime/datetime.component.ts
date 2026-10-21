@@ -190,7 +190,7 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
         const temp: Date = value ? moment(value).toDate() : null;
         if (this.fechaCambio(this._min, temp)) {
             this._min = temp;
-            this.minTimeString = this.toHHmm(temp);
+            this.actualizarLimitesHorarios();
         }
     }
 
@@ -202,7 +202,7 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
         const temp: Date = value ? moment(value).toDate() : null;
         if (this.fechaCambio(this._max, temp)) {
             this._max = temp;
-            this.maxTimeString = this.toHHmm(temp);
+            this.actualizarLimitesHorarios();
         }
     }
 
@@ -244,6 +244,11 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
 
     ngAfterViewInit() {
         this.control = this.injector.get(NgControl, null);
+        if (this.control?.control) {
+            this.control.control.addValidators(this.validate.bind(this));
+            this.control.control.updateValueAndValidity({ emitEvent: false });
+        }
+
         this._format = this.dateOrTime();
         if (this.autoFocus) {
             const input: HTMLInputElement | null = this.element.nativeElement?.querySelector('input[data-main]');
@@ -309,17 +314,40 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
         if (changes.min || changes.max || changes.type) {
             this._format = this.dateOrTime();
             this.validateFn = dateValidator(this.type, this.min, this.max);
+            this.control?.control?.updateValueAndValidity({ emitEvent: false });
         }
     }
 
     private removeClickListener?: () => void;
 
+    private actualizarLimitesHorarios(fecha?: Date | null): void {
+        if (this.type === 'time') {
+            this.minTimeString = this._min ? this.toHHmm(this._min) : '00:00';
+            this.maxTimeString = this._max ? this.toHHmm(this._max) : '23:59';
+            return;
+        }
+        if (this.type !== 'datetime') {
+            return;
+        }
+        const seleccionada = fecha ?? this.pendingDateTime ?? this._value;
+
+        this.minTimeString = this._min && seleccionada &&
+            moment(seleccionada).isSame(this._min, 'day')
+            ? this.toHHmm(this._min)
+            : '00:00';
+
+        this.maxTimeString = this._max && seleccionada &&
+            moment(seleccionada).isSame(this._max, 'day')
+            ? this.toHHmm(this._max)
+            : '23:59';
+    }
 
     writeValue(value: any) {
         this._value = value ? moment(value).toDate() : null;
         this.timeString = this._value ? moment(this._value).format('HH:mm') : '';
         this.dateTimeString = this._value ? moment(this._value).format(this._format) : '';
         this.pendingDateTime = null;
+        this.actualizarLimitesHorarios();
     }
 
     customText() { return `${this.hintPrefix} ${this.hintSuffix}`; }
@@ -426,6 +454,9 @@ export class PlexDateTimeComponent implements AfterViewInit, OnChanges, OnDestro
             if (selectedDate) {
                 this.pendingDateTime = moment(selectedDate).toDate();
             }
+
+            this.actualizarLimitesHorarios();
+            this.cdr.detectChanges();
 
             // Abrimos el reloj, pero NO emitimos cambios.
             this.dateTimePicker?.open();

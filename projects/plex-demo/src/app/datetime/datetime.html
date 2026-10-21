@@ -16,8 +16,8 @@
         <plex-datetime label="Ingrese la fecha y la hora del evento" [(ngModel)]="tModel.fechaHora" name="fechaHora"
                        required>
         </plex-datetime>
-        <plex-datetime label="Fecha mayor a hoy" type="date" [(ngModel)]="tModel.fecha" name="fecha" [required]="true"
-                       [min]="tModel.min" [max]="tModel.max" size="lg">
+        <plex-datetime label="Fecha entre hoy y siete dias más" type="date" [(ngModel)]="tModel.fecha" name="fecha"
+                       [required]="true" [min]="tModel.min" [max]="tModel.max" size="lg">
         </plex-datetime>
 
         <plex-datetime label="Ingrese la hora de nacimiento" type="time" [(ngModel)]="tModel.hora" name="hora"
