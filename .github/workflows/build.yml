@@ -1,96 +1,16 @@
-name: build and test
+name: Build
+
 on: [push]
+
+permissions:
+  contents: read
+
 jobs:
-  # 1) Lint + build de PLEX
-  lib-ci:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - run: npm ci
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Build library (ng-packagr + patch)
-        run: npm run build
-
-      - name: Upload dist as artifact (opcional)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: plex-dist
-          path: dist
-
-  # 2) (OPCIONAL) build de demo solo para sanity check
-  demo-build:
-    needs: lib-ci
-    if: false   # poner en true si se quiere validar la demo en CI
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-      - run: npm ci
-      - name: Build demo (prod)
-        run: npm run build:demo:prod -- --progress=false
-
-  # 3) (OPCIONAL) cypress contra la demo compilada
-  cypress:
-    needs: demo-build
-    if: false   # activar cuando se necesite correr cypress
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-      - run: npm ci
-
-      - name: Build demo (prod)
-        run: npm run build:demo:prod -- --progress=false
-
-      - name: Start web server
-        run: npm run web-server &
-        env:
-          TZ: "America/Argentina/Salta"
-
-      - name: Run Cypress
-        run: npx cypress run --record
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-          TZ: "America/Argentina/Salta"
-
-  # 4) (OPCIONAL) publicación automática con semantic-release. 
-  release:
-    needs: lib-ci
-    runs-on: ubuntu-latest
-    if: false   # github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta'
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0   # semantic-release necesita los tags
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
-
-      - run: npm ci
-      - run: npm run build
-
-      - name: semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          #NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+  build:
+    uses: andes/shared-workflows/.github/workflows/node-ci.yml@v1
+    with:
+      node-version: "18"
+      cache: npm
+      commands: |
+        npm run lint
+        npm run build
