@@ -14,3 +14,5 @@ jobs:
       commands: |
         npm run lint
         npm run build
+        npx ng build plex-demo --configuration development --progress=false
+        test -s dist/plex-demo/index.html
